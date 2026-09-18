@@ -6,7 +6,7 @@ Demian Lab publishes research notes and evidence about recurrent state: what per
 
 - The public Astro site and its dated research posts, feeds, and claim boundaries.
 - The [Demian-Substrate runtime](https://github.com/Aeshma-Daeva/Demian-Substrate), including explicit recurrent channels, checkpoint/restore controls, and deterministic probes.
-- A bounded [case-study index](docs/CASE_STUDIES.md) that separates public source from local experimental work and historical reports.
+- A bounded [case-study index](docs/CASE_STUDIES.md) that separates runnable public source, historical aggregates, and local-only evidence.
 
 ## Practical questions
 
@@ -20,9 +20,9 @@ Demian Lab publishes research notes and evidence about recurrent state: what per
 | --- | --- | --- | --- |
 | Restore controls | [Demian-Substrate source and tests](https://github.com/Aeshma-Daeva/Demian-Substrate) | Inspectable public runtime | A control, not an intelligence benchmark. |
 | Acoustic probe | [Deterministic virtual-audio validation](https://github.com/Aeshma-Daeva/Demian-Substrate/blob/main/docs/VIRTUAL_AUDIO_VALIDATION_2026-09-12.md) | Dated public validation record | Software behavior; not microphone acceptance. |
-| EEG observer | [Sanitized aggregate](public/evidence/eeg-perturbation-summary.json) | Historical local-report excerpt | Not clinical validation, decoding, or independent replication. |
-| Wellbore Geo | [Case boundary](docs/CASE_STUDIES.md#wellbore-geo) | Local experimental adapter | No predictive-lift or public-submission claim. |
-| Zenith | [Case boundary](docs/CASE_STUDIES.md#zenith) | Local research direction | Not public source, production qualification, or real-target performance. |
+| EEG observer | [Runnable synthetic adapter](https://github.com/Aeshma-Daeva/Demian-EEG) + [sanitized aggregate](public/evidence/eeg-perturbation-summary.json) | Public mechanism; historical aggregate | Not clinical validation, decoding, or independent replication. |
+| Wellbore Geo | [Runnable synthetic adapter](https://github.com/Aeshma-Daeva/Demian-Geo) | Public mechanism and tests | No predictive-lift or public-submission claim. |
+| Zenith | [Epistemic runtime extraction](https://github.com/Aeshma-Daeva/Zenith-Epistemic-Runtime) | Public typed state machine | Not a complete agent, production qualification, or truth-discovery system. |
 
 ## Run the site locally
 
@@ -39,7 +39,7 @@ npm run build
 
 ## Repository boundary
 
-This repository is the publication site, not a distribution of every experiment referenced here. EEG and wellbore adapters, their datasets, and full artifacts remain local. The aggregate EEG excerpt preserves only documented summary values and its source digest. The research branch is linked above; its history and findings should be read as research material, not as a release of this website branch.
+This repository is the publication site, not a distribution of every experiment referenced here. Minimal EEG, Geo, and Zenith mechanisms are now public in separate repositories; raw datasets, private operations, full experiment trees, and historical artifacts remain local. The aggregate EEG excerpt preserves only documented summary values and its source digest. The research branch is linked above; its history and findings should be read as research material, not as a release of this website branch.
 
 ## Further reading
 

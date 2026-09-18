@@ -6,9 +6,9 @@ This page is an index of the concrete experiments connected to Demian. It distin
 | --- | --- | --- | --- | --- |
 | [Demian-Substrate restore controls](#demian-substrate-restore-controls) | Explicit recurrent state; full or surface-only checkpoint restore | Next-state and diagnostic comparison | Public runtime source and focused tests | A control experiment, not an intelligence measure. |
 | [Acoustic probe](#acoustic-probe) | Synthetic or virtual-audio features drive a fixed recurrent runtime | Derived traces and step diagnostics | Public deterministic validation record | Not a microphone, speech, or semantic-understanding result. |
-| [EEG observer](#eeg-observer) | EEG-derived coupling sequence through a fixed local adapter | Observer-route comparisons under resume, shuffle, and perturbation | Sanitized aggregate from a saved local report | Not brain-state decoding, clinical validation, or a formal Lyapunov result. |
-| [Wellbore Geo](#wellbore-geo) | Per-well depth-ordered log measurements become fixed-width coupling | Keyed sidecar diagnostics | Local source and tests inspected during documentation planning | No public source, Kaggle result, or predictive-lift claim. |
-| [Zenith](#zenith) | Typed Red/Blue proposals in a local simulation | Referee records and replay comparisons | Local research direction only | Not public code, production qualification, or real-target performance. |
+| [EEG observer](#eeg-observer) | EEG-like coupling sequence through a fixed adapter | Order and restore comparisons; historical perturbation aggregate | Public synthetic source plus sanitized saved-report aggregate | Not brain-state decoding, clinical validation, or a formal Lyapunov result. |
+| [Wellbore Geo](#wellbore-geo) | Per-well depth-ordered log measurements become fixed-width coupling | Keyed recurrent diagnostics | Public synthetic source and tests | No Kaggle result or predictive-lift claim. |
+| [Zenith](#zenith) | Evidence and validity events update a typed epistemic position | Belief, justification, tension, history, and action-authority transitions | Public minimal extraction and tests | Not a complete agent, truth-discovery system, or production qualification. |
 
 ## Demian-Substrate restore controls
 
@@ -20,22 +20,22 @@ The same public runtime includes deterministic offline and virtual-audio probes:
 
 ## EEG observer
 
-The local EEG experiment uses an EEG-derived sequence as input to a recurrent observer. Its useful question is whether input order, checkpoint state, and a controlled small perturbation alter the observer's internal trajectory:
+The public [Demian-EEG](https://github.com/Aeshma-Daeva/Demian-EEG) extraction uses a deterministic synthetic EEG-like sequence as input to a recurrent observer. Its useful question is whether input order and checkpoint completeness alter the observer's internal trajectory:
 
 `EEG-derived sequence → fixed experimental adapter → recurrent state → resume / shuffle / perturbation comparison`
 
-The published [aggregate excerpt](../public/evidence/eeg-perturbation-summary.json) reports a historical 2026-06-23 saved run over 250 seed-0 coupling streams. It reports a mean log-growth slope of `0.0892305`, a mean bounded separation ratio of `0.000105279`, and the probe-defined regimes `bounded_sensitive` (149) and `bounded_sensitive_reconvergent` (101). These are observer diagnostics. The source implementation, data provenance, and full artifacts are local and were not rerun for this documentation update; the aggregate is not an independent replication. A finite-stream perturbation slope is not presented as a formal Lyapunov exponent or mathematical chaos.
+The published [aggregate excerpt](../public/evidence/eeg-perturbation-summary.json) reports a historical 2026-06-23 saved run over 250 seed-0 coupling streams. It reports a mean log-growth slope of `0.0892305`, a mean bounded separation ratio of `0.000105279`, and the probe-defined regimes `bounded_sensitive` (149) and `bounded_sensitive_reconvergent` (101). These are observer diagnostics. The public repository makes the core order/restore mechanism runnable but does not reproduce that raw-data campaign; the aggregate is not an independent replication. A finite-stream perturbation slope is not presented as a formal Lyapunov exponent or mathematical chaos.
 
 ## Wellbore Geo
 
-Demian Geo is a local experimental adapter for well-log sequences from the ROGII wellbore-geology task. It orders measurements by depth within each well, resets recurrent state between wells, and emits auxiliary `demian_*` diagnostics that can be joined to conventional baselines by row ID.
+[Demian-Geo](https://github.com/Aeshma-Daeva/Demian-Geo) is a public experimental adapter for well-log sequences. It orders measurements by depth within each well, resets recurrent state between wells, and emits auxiliary `demian_*` diagnostics that can be joined to conventional baselines by row ID.
 
 Concrete flow: `one well's ordered measurements → conventional normalized features → fixed-width coupling → one recurrent step per row → keyed sidecar columns`.
 
-Physical wellbore trajectory and internal observer-route trajectory are different quantities: observer-route tortuosity is not drill-path tortuosity. The local implementation and controls were inspected under `demian_geo/features.py`, `demian_geo/demian.py:generate_demian_geo_features`, `tests/test_geo_features.py:test_generate_demian_geo_features_resets_between_wells_and_preserves_rows`, and `docs/baseline_integration.md`; they are not included in this publication branch. No externally verified submission, matched held-out comparison, or non-leaky baseline result is published here. Any lift claim would require an unchanged baseline, identical split, adapter comparison, shuffled-depth control, and per-well/tail-error stability.
+Physical wellbore trajectory and internal observer-route trajectory are different quantities: observer-route tortuosity is not drill-path tortuosity. The public repository includes the adapter, synthetic wells, focused tests, and a group-aware comparison helper. It excludes private competition files and does not publish an externally verified submission or predictive-lift result. Any lift claim would require an unchanged baseline, identical split, adapter comparison, shuffled-depth control, and per-well/tail-error stability.
 
 ## Zenith
 
-Zenith is a separate local research direction for Red/Blue simulation with private role state, typed proposals, a deterministic referee, and replay-based evaluation. A useful conceptual flow is `typed Red proposal → engine validates action → local enterprise transition → role-limited observation → independent referee record → replay fingerprint comparison`.
+[Zenith Epistemic Runtime](https://github.com/Aeshma-Daeva/Zenith-Epistemic-Runtime) extracts the domain-neutral state machine that proved most relevant to this research line: `evidence reference → justification standing → tension state → authority assessment → commitment or abstention`.
 
-Its code and full evidence package are not part of this repository or a confirmed public branch. This is not a claim of production qualification, network-isolation attestation, or real-target performance.
+The extraction distinguishes evidence expiry from contradiction, retains append-only transition history, rejects non-monotonic updates, protects checkpoints with a digest, and prevents a denied authority assessment from becoming a selected commitment. The broader Red/Blue simulator and operational Abraxas material remain private. This is not a claim of truth discovery, complete agency, production qualification, or real-target performance.
