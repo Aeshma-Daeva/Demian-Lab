@@ -1,0 +1,15 @@
+{
+  "study": "Demian EEG Lyapunov-Style Perturbation Probe",
+  "reported_date": "2026-06-23",
+  "evidence_kind": "aggregate_from_local_saved_report",
+  "source_file": "adaptation_probes/eeg_demian_architecture_v3_all3264/lyapunov_style_probe_report.md",
+  "source_sha256": "86a0aad617104fce255056cd62481267890e7d64f058cba8d79ccd60be91288b",
+  "recordings": 250,
+  "seed": 0,
+  "mean_log_growth_slope": 0.0892305,
+  "mean_bounded_separation_ratio": 0.000105279,
+  "regime_counts": {
+    "bounded_sensitive": 149,
+    "bounded_sensitive_reconvergent": 101
+  }
+}

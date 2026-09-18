@@ -1,74 +1,54 @@
-# Demian Lab - research site
+# Demian Lab
 
-Research log for the Demian Substrate EEG adaptation project.
+Demian Lab publishes research notes and evidence about recurrent state: what persists after interruption, which internal channels affect continuation, and how an observer changes when its input sequence is perturbed. This branch contains the research website. The runtime is maintained in [Demian-Substrate](https://github.com/Aeshma-Daeva/Demian-Substrate); the Python research workbench is on the [`refactor-current-substrate-workbench`](https://github.com/Aeshma-Daeva/Demian-Lab/tree/refactor-current-substrate-workbench) branch.
 
-Built with [Astro](https://astro.build), deployed to GitHub Pages automatically on push.
+## What a reviewer can inspect
 
-## Local setup
+- The public Astro site and its dated research posts, feeds, and claim boundaries.
+- The [Demian-Substrate runtime](https://github.com/Aeshma-Daeva/Demian-Substrate), including explicit recurrent channels, checkpoint/restore controls, and deterministic probes.
+- A bounded [case-study index](docs/CASE_STUDIES.md) that separates public source from local experimental work and historical reports.
+
+## Practical questions
+
+- Does a full checkpoint preserve the next recurrent state differently from a surface-only restore?
+- Does changing the order or a small perturbation of an EEG-derived input sequence change an observer trajectory?
+- Can ordered well-log measurements be adapted into recurrent diagnostics without treating the observer route as a physical drill path?
+
+## Evidence at a glance
+
+| Case | Public evidence | Status | Boundary |
+| --- | --- | --- | --- |
+| Restore controls | [Demian-Substrate source and tests](https://github.com/Aeshma-Daeva/Demian-Substrate) | Inspectable public runtime | A control, not an intelligence benchmark. |
+| Acoustic probe | [Deterministic virtual-audio validation](https://github.com/Aeshma-Daeva/Demian-Substrate/blob/main/docs/VIRTUAL_AUDIO_VALIDATION_2026-09-12.md) | Dated public validation record | Software behavior; not microphone acceptance. |
+| EEG observer | [Sanitized aggregate](public/evidence/eeg-perturbation-summary.json) | Historical local-report excerpt | Not clinical validation, decoding, or independent replication. |
+| Wellbore Geo | [Case boundary](docs/CASE_STUDIES.md#wellbore-geo) | Local experimental adapter | No predictive-lift or public-submission claim. |
+| Zenith | [Case boundary](docs/CASE_STUDIES.md#zenith) | Local research direction | Not public source, production qualification, or real-target performance. |
+
+## Run the site locally
 
 ```bash
 npm install
 npm run dev
 ```
 
-## GitHub Pages
-
-Enable Pages in GitHub repo settings with Source set to **GitHub Actions**.
-The workflow builds this Astro app from the repository root and publishes `dist/`.
+Build the deployable site with:
 
 ```bash
-git add .
-git commit -m "add research site"
-git push origin main
+npm run build
 ```
 
-GitHub Actions builds and deploys automatically. Site goes live at:
-`https://aeshma-daeva.github.io/Demian-Lab`
+## Repository boundary
 
-## Public blackboard and feeds
+This repository is the publication site, not a distribution of every experiment referenced here. EEG and wellbore adapters, their datasets, and full artifacts remain local. The aggregate EEG excerpt preserves only documented summary values and its source digest. The research branch is linked above; its history and findings should be read as research material, not as a release of this website branch.
 
-- `/blackboard` shows the current public status, objectives, artifacts, and claim boundaries.
-- `/updates.json` is the stable Discord bot feed.
-- `/rss.xml` is the standard RSS feed.
+## Further reading
 
-Discord bots should poll `/updates.json`, use `tags` for channel routing, and post the `title`, `description`, `url`, `metrics`, and `artifacts` fields.
+- [Case studies](docs/CASE_STUDIES.md)
+- [Research workbench claims](https://github.com/Aeshma-Daeva/Demian-Lab/blob/refactor-current-substrate-workbench/docs/CLAIMS.md)
+- [Public blackboard](/Demian-Lab/blackboard)
+- [JSON updates feed](/Demian-Lab/updates.json)
+- [RSS feed](/Demian-Lab/rss.xml)
 
-## Adding posts
+## Publishing notes
 
-Drop a `.md` file in `src/content/posts/` with this frontmatter:
-
-```markdown
----
-title: "Your title"
-date: 2026-06-23
-description: "One sentence for the index"
-status: public
-tags: ["eeg", "v3"]
-artifacts:
-  - label: "Report"
-    path: "adaptation_probes/.../report.md"
-metrics:
-  - label: "recordings"
-    value: 250
----
-
-Your content here.
-```
-
-Push and the site updates.
-
-## Drafting from EEG artifacts
-
-Generate an editable draft from a local artifact:
-
-```bash
-npm run draft:post -- --source adaptation_probes/eeg_demian_architecture_v3_all3264/lyapunov_style_probe_report.md --tags eeg,v3,probe
-```
-
-By default the script reads artifacts from `/home/xenith/demian_eeg`. Override with:
-
-```bash
-DEMIAN_EEG_ROOT=/path/to/demian_eeg npm run draft:post -- --source adaptation_probes/.../report.md
-```
-
-Drafts are created with `status: draft`; change to `status: public` after review.
+Posts live in `src/content/posts/`. The public blackboard is at `/blackboard`, while `/updates.json` and `/rss.xml` are feed endpoints. Deployment is performed by the existing GitHub Actions workflow when a maintainer chooses to publish; this documentation update does not change deployment settings.
