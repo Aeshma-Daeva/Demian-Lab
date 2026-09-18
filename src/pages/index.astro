@@ -291,12 +291,12 @@ h2{font-size:1rem;font-weight:400;margin-bottom:.25rem}
     <div class="stat-card accent">
       <div class="stat-val green">250</div>
       <div class="stat-label">recordings</div>
-      <div class="stat-sub">latest Lyapunov-style probe sample</div>
+      <div class="stat-sub">historical saved-run sample</div>
     </div>
     <div class="stat-card">
       <div class="stat-val green">1.0</div>
       <div class="stat-label">positive growth fraction</div>
-      <div class="stat-sub">controlled nonlinear sensitivity</div>
+      <div class="stat-sub">recorded probe measure</div>
     </div>
     <div class="stat-card">
       <div class="stat-val amber">101/250</div>
@@ -361,16 +361,15 @@ h2{font-size:1rem;font-weight:400;margin-bottom:.25rem}
       <div class="l2-row"><span class="l2-label">live vs gate-frozen L2</span><span class="l2-val">1.085</span></div>
       <div class="l2-row"><span class="l2-label">ordered vs shuffled L2</span><span class="l2-val">1.479</span></div>
       <p style="font-size:11px;color:var(--muted);margin-top:1rem;line-height:1.65">
-        Interpretation: this local run appendix remains useful evidence, but the public blackboard headline is now the 250-recording Lyapunov-style probe.
+        Interpretation: this local run appendix remains useful evidence, while the public blackboard headline is the 250-recording saved probe summary.
       </p>
     </div>
   </div>
 
   <div class="verdict-box">
     <p>
-      <strong>Plain-English verdict:</strong> the public claim is narrow: Demian v3 shows controlled nonlinear perturbation sensitivity
-      inside bounded observer-route dynamics. The local charts below show one detailed EEG-derived run appendix. Neither surface shows brain decoding,
-      diagnosis, consciousness, biomarkers, or clinical relevance.
+      <strong>Plain-English verdict:</strong> the saved probe records a bounded observer response to a small input perturbation.
+      The local charts below show one detailed EEG-derived run appendix. Neither surface establishes brain-state decoding, diagnosis, biomarkers, or clinical relevance.
     </p>
   </div>
 
@@ -652,7 +651,7 @@ h2{font-size:1rem;font-weight:400;margin-bottom:.25rem}
   <div class="section-label">not claimed</div>
   <div class="panel">
     <p style="font-size:13px;color:var(--muted);line-height:1.9">
-      This experiment does <strong style="color:var(--text)">not</strong> claim: brain simulation · neural decoding · consciousness modeling · biomarker discovery · clinical relevance.<br/>
+      This experiment does <strong style="color:var(--text)">not</strong> claim: brain simulation · neural decoding · biomarker discovery · clinical relevance.<br/>
       The model observes EEG-derived features and evolves internal dynamics. All observations are about the model's behavior, not the brain.
     </p>
   </div>
@@ -667,7 +666,7 @@ h2{font-size:1rem;font-weight:400;margin-bottom:.25rem}
       <span class="log-date">2026-06-23</span>
       <div>
         <div class="log-title">Lyapunov-style perturbation probe: v3 results</div>
-        <div class="log-body">Added chaos/order layer via Lyapunov-style perturbation probing. Real run on 250 seed-0 coupling streams. Demian v3 shows controlled nonlinear perturbation sensitivity inside bounded observer-route dynamics.</div>
+        <div class="log-body">A historical saved run measures the observer response to a small input perturbation across 250 seed-0 coupling streams.</div>
         <div class="log-result">
           <div>recordings: <span>250</span></div>
           <div>positive_growth_fraction: <span>1.0</span></div>
@@ -677,7 +676,7 @@ h2{font-size:1rem;font-weight:400;margin-bottom:.25rem}
           <div>mean_bounded_sep_ratio: <span>0.000105</span></div>
         </div>
         <div class="log-tags">
-          <span class="log-tag">lyapunov</span><span class="log-tag">chaos</span><span class="log-tag">v3</span><span class="log-tag">eeg</span><span class="log-tag">probe</span>
+          <span class="log-tag">perturbation</span><span class="log-tag">v3</span><span class="log-tag">eeg</span><span class="log-tag">probe</span>
         </div>
       </div>
     </div>
@@ -729,13 +728,13 @@ h2{font-size:1rem;font-weight:400;margin-bottom:.25rem}
     <div class="bb-card closed">
       <div class="bb-status closed">current status</div>
       <h3>v3 active · latest public result</h3>
-      <p>Lyapunov-style perturbation probe shows controlled nonlinear sensitivity across 250 seed-0 coupling streams.</p>
+      <p>A historical perturbation probe records the observer response across 250 seed-0 coupling streams.</p>
       <div class="bb-formula">recordings=250 · positive_growth_fraction=1.0 · reconvergent=101/250</div>
     </div>
     <div class="bb-card pending">
       <div class="bb-status pending">automation</div>
       <h3>Draft posts from EEG artifacts</h3>
-      <p>The local Astro helper can read an artifact under /home/xenith/demian_eeg and create an editable Markdown draft with artifact path, tags, and metrics.</p>
+      <p>The local Astro helper can read an artifact from a configured EEG source and create an editable Markdown draft with artifact path, tags, and metrics.</p>
       <div class="bb-formula">npm run draft:post -- --source adaptation_probes/.../report.md --tags eeg,v3,probe</div>
     </div>
     <div class="bb-card pending">
@@ -767,9 +766,9 @@ h2{font-size:1rem;font-weight:400;margin-bottom:.25rem}
     <div class="log-result" style="grid-template-columns:1fr;gap:.35rem">
       <div>title: <span>Lyapunov-style perturbation probe: v3 results</span></div>
       <div>url: <span>https://aeshma-daeva.github.io/Demian-Lab/log/2026-06-23-lyapunov-probe</span></div>
-      <div>tags: <span>lyapunov · chaos · v3 · eeg · probe</span></div>
+      <div>tags: <span>perturbation · v3 · eeg · probe</span></div>
       <div>metrics: <span>recordings=250 · positive_growth_fraction=1.0 · bounded_sensitive_reconvergent=101</span></div>
-      <div>artifacts: <span>lyapunov_style_probe_report.md · lyapunov_style_recording_results.csv</span></div>
+      <div>artifacts: <span>eeg-perturbation-summary.json</span></div>
     </div>
   </div>
 
@@ -779,8 +778,8 @@ h2{font-size:1rem;font-weight:400;margin-bottom:.25rem}
       <div>
         <div class="section-label" style="font-size:9px;margin-bottom:.75rem">can claim</div>
         <div style="font-size:12px;color:var(--muted);line-height:2">
-          <div style="color:var(--green)">Demian v3 shows controlled nonlinear perturbation sensitivity</div>
-          <div style="color:var(--green)">The measured response stays bounded inside observer-route dynamics</div>
+          <div style="color:var(--green)">The saved probe records an observer response to a small input perturbation</div>
+          <div style="color:var(--green)">The recorded response remains bounded within the observer route</div>
           <div style="color:var(--green)">The public site exposes curated posts plus machine-readable feeds</div>
           <div style="color:var(--green)">Discord can organize updates by tags and metrics</div>
         </div>
@@ -790,9 +789,8 @@ h2{font-size:1rem;font-weight:400;margin-bottom:.25rem}
         <div style="font-size:12px;color:var(--muted);line-height:2">
           <div style="color:var(--red)">Brain simulation</div>
           <div style="color:var(--red)">Neural decoding or classification</div>
-          <div style="color:var(--red)">Consciousness modeling</div>
           <div style="color:var(--red)">Clinical biomarkers or medical relevance</div>
-          <div style="color:var(--red)">Mathematical chaos as a proven Lyapunov exponent</div>
+          <div style="color:var(--red)">A formal Lyapunov exponent</div>
         </div>
       </div>
     </div>

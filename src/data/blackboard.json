@@ -1,6 +1,6 @@
 {
   "phase": "v3 active",
-  "latestResult": "Lyapunov-style perturbation probe shows controlled nonlinear sensitivity across 250 seed-0 coupling streams.",
+  "latestResult": "A historical perturbation probe records the observer response across 250 seed-0 coupling streams.",
   "updated": "2026-06-23",
   "status": [
     { "label": "recordings", "value": "250" },
@@ -11,26 +11,17 @@
   "objectives": [
     "Keep public progress legible as narrow, test-backed research notes.",
     "Expose generated feeds for Discord automation.",
-    "Separate real run artifacts from interpretation and claims."
+    "Separate historical aggregates from interpretation and claims."
   ],
   "artifacts": [
     {
-      "label": "Lyapunov-style probe report",
-      "path": "adaptation_probes/eeg_demian_architecture_v3_all3264/lyapunov_style_probe_report.md"
-    },
-    {
-      "label": "Recording results",
-      "path": "adaptation_probes/eeg_demian_architecture_v3_all3264/lyapunov_style_recording_results.csv"
-    },
-    {
-      "label": "Curve points",
-      "path": "adaptation_probes/eeg_demian_architecture_v3_all3264/lyapunov_style_curve_points.csv"
+      "label": "Published aggregate summary",
+      "path": "evidence/eeg-perturbation-summary.json"
     }
   ],
   "claimBoundaries": [
-    "No brain simulation claim.",
-    "No decoding claim.",
-    "No consciousness claim.",
-    "No biomarker or medical claim."
+    "No brain-state decoding claim.",
+    "No clinical or biomarker claim.",
+    "The aggregate is a historical saved-report excerpt, not an independent replication."
   ]
 }

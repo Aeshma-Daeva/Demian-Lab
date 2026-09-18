@@ -45,9 +45,9 @@ This repository is the publication site, not a distribution of every experiment 
 
 - [Case studies](docs/CASE_STUDIES.md)
 - [Research workbench claims](https://github.com/Aeshma-Daeva/Demian-Lab/blob/refactor-current-substrate-workbench/docs/CLAIMS.md)
-- [Public blackboard](/Demian-Lab/blackboard)
-- [JSON updates feed](/Demian-Lab/updates.json)
-- [RSS feed](/Demian-Lab/rss.xml)
+- [Public blackboard](https://aeshma-daeva.github.io/Demian-Lab/blackboard)
+- [JSON updates feed](https://aeshma-daeva.github.io/Demian-Lab/updates.json)
+- [RSS feed](https://aeshma-daeva.github.io/Demian-Lab/rss.xml)
 
 ## Publishing notes
 
