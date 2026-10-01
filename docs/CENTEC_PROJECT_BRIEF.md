@@ -217,14 +217,19 @@ A questão é estritamente sobre **dinâmica recorrente, observabilidade, estado
 
 O projeto é majoritariamente software e não depende de infraestrutura especial para a primeira fase.
 
-### Objetivo institucional
+### Objetivo institucional — CEP&T
 
-Identificar dentro do Centec um pesquisador ou técnico que possa avaliar o desenho experimental e orientar o caminho institucional adequado para:
+Submeter formalmente a linha ao **Programa de submissão de projetos de P&D e C&T do CEP&T**. Pelas regras públicas atuais, o próprio proponente pode indicar-se como coordenador. A submissão exige plano de trabalho e carta de apresentação assinados eletronicamente via Gov.BR, além do formulário e arquivos de apoio.
 
-- acompanhamento técnico-científico;
-- submissão interna a P&D/C&T quando aplicável;
-- participação em eventos e chamadas;
-- eventual colaboração ou bolsa futura quando houver edital compatível.
+Se o projeto for deferido, o Centec informa proponente/coordenador por e-mail e inicia os procedimentos de implementação junto ao(à) orientador(a) indicado(a) para acompanhar o projeto.
+
+Objetivos práticos:
+
+- obter avaliação técnico-científica formal do desenho experimental;
+- iniciar acompanhamento por orientador(a) indicado(a) pelo Centec, caso aprovado;
+- enquadrar a pesquisa como P&D/C&T com entregáveis e cronograma;
+- concorrer a bolsa quando a modalidade/regras aplicáveis permitirem;
+- utilizar resultados para participação em eventos, chamadas e colaborações futuras.
 
 ## Primeira demonstração presencial
 
@@ -256,6 +261,11 @@ perturbation response
 capsule continuity
 ```
 
-## Pedido inicial ao Centec
+## Encaminhamento
 
-**Avaliação do projeto para uso do Centec Labs no CVT Fortaleza e indicação de uma pessoa da área de pesquisa/tecnologia com quem possamos discutir a formalização científica da linha experimental.**
+Executar duas entradas em paralelo:
+
+1. **Centec Labs / CVT Fortaleza:** solicitar uso do espaço como projeto digital de P&D, com o Demian e a bancada experimental como objeto de desenvolvimento e demonstração.
+2. **CEP&T:** submeter o plano de trabalho formal da pesquisa de dinâmica latente, com o protocolo AFP, resultados preliminares/confirmatórios, cronograma e documentação de apoio.
+
+O pedido central ao CEP&T é a **avaliação e implementação institucional da linha de pesquisa com acompanhamento técnico-científico**, mantendo como primeira entrega reproduzível o estudo longitudinal + state surgery do native v9.
