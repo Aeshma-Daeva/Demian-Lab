@@ -40,4 +40,7 @@ def test_small_lineage_probe_is_complete_and_finite() -> None:
             assert math.isfinite(row["surface_rel_velocity"])
             assert math.isfinite(row["latent_rel_velocity"])
             assert 0.0 <= variant[arm]["aggregate"]["strict_afp_fraction"] <= 1.0
-            assert variant[arm]["sensitivity"]
+            assert variant[arm]["relative_sensitivity"]
+            assert variant[arm]["absolute_sensitivity"]
+            assert math.isfinite(row["absolute_latent_surface_delta_ratio"])
+            assert math.isfinite(row["tail_latent_norm_slope"])
