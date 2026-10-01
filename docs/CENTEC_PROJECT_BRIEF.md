@@ -161,9 +161,17 @@ Já há implementação pública/reproduzível para:
 - acoplamento temporal;
 - experimentos históricos de atratores e continuidade.
 
-Resultados exploratórios recentes no Demian v1 mostram forte separação entre similaridade superficial e diferença interna com continuação futura distinta. O v1, porém, não foi classificado como AFP no primeiro protocolo estrito; sua superfície permaneceu dinamicamente ativa. Isso é tratado como resultado negativo/qualificador, não como falha do experimento.
+A primeira auditoria mostrou que o classificador histórico de `accumulating_fixed_point` era amplo demais para sustentar sozinho a interpretação moderna: ele classificava como `FIXED_POINT` superfícies com movimento residual considerável. Por isso foi definida uma medida direta separando movimento RMS da superfície e do estado recorrente completo.
 
-O AFP histórico está sendo reavaliado na própria linhagem arquitetural, especialmente no v9 five-channel e nos ancestrais com maior exposição de estado interno.
+Após uma fase exploratória com seeds 94–101, foi registrado **antes da coleta seguinte** um critério confirmatório de cinco condições: superfície RMS `<= 0.001`, estado latente RMS `>= 0.010`, razão latente/superfície `>= 10`, tendência de movimento superficial não crescente e norma latente crescente.
+
+Em 28 seeds inéditas (102–129), o **native v9 apresentou 4/28 candidatos AFP no braço limpo**, com razões de movimento latente/superficial entre aproximadamente **24x e 107x**. Três desses quatro candidatos permaneceram dentro do critério após a perturbação secundária. O native v3/v8 apresentou um único caso compartilhado; v2, os scaffolds públicos de v9 five-channel e Demian v1 não apresentaram candidatos sob o critério congelado.
+
+O resultado, portanto, restringe a hipótese em vez de tratá-la como propriedade universal: o regime aparece de forma esparsa e dependente da arquitetura no v9 canônico sob a definição operacional atual.
+
+Separadamente, resultados recentes no Demian v1 mostram forte separação entre similaridade superficial e diferença interna com continuação futura distinta, mas sua superfície permanece dinamicamente ativa. O v1 é tratado atualmente como evidência de **dependência de trajetória latente**, não como exemplo confirmado de AFP.
+
+Os candidatos v9 agora entram em uma segunda etapa causal de state surgery: manter exatamente a mesma superfície `fast`, alterar apenas `slow/control` e medir se a continuação futura se modifica.
 
 ## Resultados esperados
 
