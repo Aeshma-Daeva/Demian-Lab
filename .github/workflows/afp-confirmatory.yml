@@ -1,0 +1,41 @@
+name: AFP confirmatory held-out
+
+on:
+  push:
+    branches:
+      - research/afp-lineage-2026-10-01
+    paths:
+      - 'development/afp_lineage_probe.py'
+      - 'docs/AFP_CONFIRMATORY_PREREG_2026-10-01.md'
+      - '.github/workflows/afp-confirmatory.yml'
+  workflow_dispatch:
+
+jobs:
+  confirm:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+      - name: Install
+        run: python -m pip install -e . pytest numpy
+      - name: Verify smoke test
+        run: python -m pytest tests/test_afp_lineage_probe.py -q
+      - name: Run frozen held-out seeds
+        run: |
+          python -m development.afp_lineage_probe \
+            --hidden-size 32 \
+            --steps 384 \
+            --tail-steps 96 \
+            --seeds 102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129 \
+            --perturb-step 192 \
+            --perturb-scale 0.35 \
+            --output-dir outputs/afp-confirmatory
+      - name: Upload held-out results
+        uses: actions/upload-artifact@v4
+        with:
+          name: afp-confirmatory-results
+          path: outputs/afp-confirmatory/
