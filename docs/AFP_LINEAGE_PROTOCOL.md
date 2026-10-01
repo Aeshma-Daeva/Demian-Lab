@@ -32,18 +32,29 @@ classifier, a run could be labelled `accumulating_fixed_point` when the exposed
 trajectory was classified as `FIXED_POINT` while slow/message statistics
 continued to show accumulation.
 
-The new probe records that historical label **and** a stricter direct
-measurement:
+The new probe records that historical label **and** direct measurements:
 
-- exposed-surface RMS velocity;
-- full recurrent-state-tuple RMS velocity;
-- latent/surface velocity ratio;
+- exposed-surface RMS step size;
+- full recurrent-state-tuple RMS step size;
+- relative velocity after dividing movement by state scale;
+- absolute latent/surface RMS movement ratio;
+- surface and latent norm/delta slopes over the tail;
 - surface dimension / recurrent-state dimension;
 - clean and perturbed arms;
-- threshold-sensitivity grid.
+- separate relative and absolute threshold-sensitivity grids.
 
 The two definitions are not forced to agree. Disagreement is useful evidence
 about what the older classifier was actually detecting.
+
+### Exploratory threshold warning
+
+The first lineage batch showed that normalizing latent movement by the latent
+state norm can obscure an accumulating state whose norm has itself become very
+large. A second, absolute-RMS sensitivity view was therefore added **after
+inspection of the first batch**. Its default threshold is exploratory/post-hoc
+and must not be treated as confirmatory evidence. Any publication-grade run
+should preregister the chosen criterion before collecting the confirmation
+seeds.
 
 ## Variants
 
@@ -93,3 +104,21 @@ A useful outcome can be any of the following:
 
 The experiment should report whichever outcome occurs. It should not tune the
 thresholds after seeing the result in order to force an AFP claim.
+
+
+## Historical classifier audit
+
+The older attractor classifier calls a trajectory `FIXED_POINT` when its most
+recent exposed RMS step is below an absolute threshold corresponding to
+`velocity_magnitude < 0.02`. In the current implementation,
+`velocity_magnitude = residual_delta / 3`, so the effective surface threshold
+is approximately `residual_delta < 0.06`.
+
+The historical interior classifier then promotes a fixed-point run to
+`accumulating_fixed_point` when slow/message norms or contraction ratios cross
+additional thresholds.
+
+This is a useful historical heuristic, but it is substantially looser than the
+new direct convergence criterion. The lineage study therefore reports the old
+label as **historical classifier output**, not as proof of a mathematical fixed
+point.
