@@ -35,8 +35,20 @@ jobs:
             --perturb-step 192 \
             --perturb-scale 0.35 \
             --output-dir outputs/afp-lineage
+      - name: Run held-out confirmation
+        run: |
+          python -m development.afp_lineage_probe \
+            --hidden-size 32 \
+            --steps 384 \
+            --tail-steps 96 \
+            --seeds 102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129 \
+            --perturb-step 192 \
+            --perturb-scale 0.35 \
+            --output-dir outputs/afp-confirmatory
       - name: Upload results
         uses: actions/upload-artifact@v4
         with:
           name: afp-lineage-results
-          path: outputs/afp-lineage/
+          path: |
+            outputs/afp-lineage/
+            outputs/afp-confirmatory/
