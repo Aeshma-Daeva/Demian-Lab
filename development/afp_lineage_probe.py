@@ -62,6 +62,9 @@ class LineageConfig:
     surface_rel_epsilon: float = 1e-3
     latent_rel_floor: float = 5e-4
     latent_surface_ratio_floor: float = 5.0
+    exploratory_surface_rms_epsilon: float = 1e-3
+    exploratory_latent_rms_floor: float = 1e-2
+    exploratory_absolute_ratio_floor: float = 5.0
 
 
 @dataclass(frozen=True)
@@ -146,6 +149,17 @@ def _rms(vector: torch.Tensor) -> float:
 
 def _relative_velocity(mean_delta: float, mean_norm: float) -> float:
     return mean_delta / max(mean_norm, 1e-12)
+
+
+def _slope(values: list[float]) -> float:
+    if len(values) < 2:
+        return 0.0
+    n = float(len(values))
+    mean_x = (n - 1.0) / 2.0
+    mean_y = sum(values) / n
+    numerator = sum((idx - mean_x) * (value - mean_y) for idx, value in enumerate(values))
+    denominator = sum((idx - mean_x) ** 2 for idx in range(len(values)))
+    return numerator / max(denominator, 1e-12)
 
 
 def _perturb_state(state: object, *, scale: float, seed: int) -> object:
@@ -242,6 +256,13 @@ def _run_tail_probe(
     surface_rel = _relative_velocity(mean_surface_delta, mean_surface_norm)
     latent_rel = _relative_velocity(mean_latent_delta, mean_latent_norm)
 
+    absolute_ratio = mean_latent_delta / max(mean_surface_delta, 1e-12)
+    exploratory_absolute_candidate = (
+        mean_surface_delta <= config.exploratory_surface_rms_epsilon
+        and mean_latent_delta >= config.exploratory_latent_rms_floor
+        and absolute_ratio >= config.exploratory_absolute_ratio_floor
+    )
+
     return {
         "surface_dim": int(surfaces[-1].numel()),
         "latent_dim": int(latents[-1].numel()),
@@ -253,6 +274,11 @@ def _run_tail_probe(
         "surface_rel_velocity": surface_rel,
         "latent_rel_velocity": latent_rel,
         "latent_surface_velocity_ratio": latent_rel / max(surface_rel, 1e-12),
+        "absolute_latent_surface_delta_ratio": absolute_ratio,
+        "tail_surface_delta_slope": _slope(surface_tail_deltas),
+        "tail_latent_delta_slope": _slope(latent_tail_deltas),
+        "tail_surface_norm_slope": _slope(surface_tail_norms),
+        "tail_latent_norm_slope": _slope(latent_tail_norms),
         "tail_surface_path_length": sum(surface_tail_deltas),
         "tail_latent_path_length": sum(latent_tail_deltas),
         "strict_afp_candidate": _is_afp(
@@ -262,6 +288,7 @@ def _run_tail_probe(
             latent_floor=config.latent_rel_floor,
             ratio_floor=config.latent_surface_ratio_floor,
         ),
+        "exploratory_absolute_candidate": exploratory_absolute_candidate,
     }
 
 
@@ -293,6 +320,28 @@ def _historical_summary(
         "mean_message_contraction": summary.mean_message_contraction,
         "max_message_contraction": summary.max_message_contraction,
     }
+
+
+def _absolute_sensitivity(rows: list[dict[str, Any]], ratio_floor: float) -> list[dict[str, Any]]:
+    output = []
+    for surface_epsilon in (5e-3, 2e-3, 1e-3, 5e-4, 2e-4):
+        for latent_floor in (1e-3, 5e-3, 1e-2, 2e-2, 5e-2):
+            count = sum(
+                row["tail_mean_surface_delta"] <= surface_epsilon
+                and row["tail_mean_latent_delta"] >= latent_floor
+                and row["absolute_latent_surface_delta_ratio"] >= ratio_floor
+                for row in rows
+            )
+            output.append(
+                {
+                    "surface_rms_epsilon": surface_epsilon,
+                    "latent_rms_floor": latent_floor,
+                    "ratio_floor": ratio_floor,
+                    "count": count,
+                    "fraction": count / max(len(rows), 1),
+                }
+            )
+    return output
 
 
 def _sensitivity(rows: list[dict[str, Any]], ratio_floor: float) -> list[dict[str, Any]]:
@@ -368,6 +417,9 @@ def run_experiment(config: LineageConfig) -> dict[str, Any]:
                 )
 
             strict_count = sum(bool(row["strict_afp_candidate"]) for row in rows)
+            exploratory_absolute_count = sum(
+                bool(row["exploratory_absolute_candidate"]) for row in rows
+            )
             historical_accumulating = sum(
                 row["historical"]["interior_class"] == "accumulating_fixed_point"
                 for row in rows
@@ -377,12 +429,26 @@ def run_experiment(config: LineageConfig) -> dict[str, Any]:
                 "aggregate": {
                     "strict_afp_count": strict_count,
                     "strict_afp_fraction": strict_count / len(rows),
+                    "exploratory_absolute_count": exploratory_absolute_count,
+                    "exploratory_absolute_fraction": exploratory_absolute_count / len(rows),
                     "historical_accumulating_count": historical_accumulating,
                     "historical_accumulating_fraction": historical_accumulating / len(rows),
                     "mean_surface_rel_velocity": sum(row["surface_rel_velocity"] for row in rows) / len(rows),
                     "mean_latent_rel_velocity": sum(row["latent_rel_velocity"] for row in rows) / len(rows),
                     "mean_latent_surface_velocity_ratio": sum(
                         row["latent_surface_velocity_ratio"] for row in rows
+                    )
+                    / len(rows),
+                    "mean_absolute_latent_surface_delta_ratio": sum(
+                        row["absolute_latent_surface_delta_ratio"] for row in rows
+                    )
+                    / len(rows),
+                    "mean_tail_latent_norm_slope": sum(
+                        row["tail_latent_norm_slope"] for row in rows
+                    )
+                    / len(rows),
+                    "mean_tail_surface_delta_slope": sum(
+                        row["tail_surface_delta_slope"] for row in rows
                     )
                     / len(rows),
                     "mean_surface_exposure_fraction": sum(
@@ -392,7 +458,10 @@ def run_experiment(config: LineageConfig) -> dict[str, Any]:
                     "attractor_counts": _counts(row["historical"]["attractor_type"] for row in rows),
                     "interior_class_counts": _counts(row["historical"]["interior_class"] for row in rows),
                 },
-                "sensitivity": _sensitivity(rows, config.latent_surface_ratio_floor),
+                "relative_sensitivity": _sensitivity(rows, config.latent_surface_ratio_floor),
+                "absolute_sensitivity": _absolute_sensitivity(
+                    rows, config.exploratory_absolute_ratio_floor
+                ),
             }
 
         payload["variants"][variant.name] = {
@@ -427,11 +496,16 @@ def write_outputs(payload: dict[str, Any], out_dir: Path) -> tuple[Path, Path]:
                 "arm",
                 "strict_afp_count",
                 "strict_afp_fraction",
+                "exploratory_absolute_count",
+                "exploratory_absolute_fraction",
                 "historical_accumulating_count",
                 "historical_accumulating_fraction",
                 "mean_surface_rel_velocity",
                 "mean_latent_rel_velocity",
                 "mean_latent_surface_velocity_ratio",
+                "mean_absolute_latent_surface_delta_ratio",
+                "mean_tail_latent_norm_slope",
+                "mean_tail_surface_delta_slope",
                 "mean_surface_exposure_fraction",
                 "attractor_counts",
                 "interior_class_counts",
