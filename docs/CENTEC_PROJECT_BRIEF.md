@@ -171,7 +171,11 @@ O resultado, portanto, restringe a hipótese em vez de tratá-la como propriedad
 
 Separadamente, resultados recentes no Demian v1 mostram forte separação entre similaridade superficial e diferença interna com continuação futura distinta, mas sua superfície permanece dinamicamente ativa. O v1 é tratado atualmente como evidência de **dependência de trajetória latente**, não como exemplo confirmado de AFP.
 
-Os candidatos v9 agora entram em uma segunda etapa causal de state surgery: manter exatamente a mesma superfície `fast`, alterar apenas `slow/control` e medir se a continuação futura se modifica.
+A segunda etapa causal também foi executada nos quatro candidatos v9. Como no v9 canônico a superfície é exatamente o canal `fast`, foi possível manter a superfície inicial **idêntica** e alterar somente `slow/control`.
+
+O controle de cópia completa permaneceu com gap futuro zero. Ao remover `slow+control`, o gap RMS médio da superfície futura nos candidatos foi aproximadamente **0.102**; ao remover apenas `slow`, aproximadamente **0.097**; ao remover apenas `control`, aproximadamente **0.0034**. Substituir `slow/control` por estados reais da mesma trajetória de 16–96 passos antes também produziu divergência futura mensurável, mesmo mantendo a superfície atual exatamente igual. Aplicar a mesma perturbação externa aos dois braços praticamente não alterou esse efeito.
+
+Isso localiza grande parte da continuidade causal do v9 no canal `slow` e permite separar duas propriedades: a relevância causal do hidden state é geral no v9, enquanto AFP é o subconjunto em que essa relevância persiste simultaneamente com uma superfície operacionalmente quiescente e estado latente acumulando.
 
 ## Resultados esperados
 
