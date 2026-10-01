@@ -7,8 +7,10 @@ on:
   pull_request:
     paths:
       - 'development/afp_lineage_probe.py'
+      - 'development/afp_v9_causal_followup.py'
       - 'tests/test_afp_lineage_probe.py'
-      - 'docs/AFP_LINEAGE_PROTOCOL.md'
+      - 'tests/test_afp_v9_causal_followup.py'
+      - 'docs/AFP_*.md'
       - '.github/workflows/afp-lineage.yml'
 
 jobs:
@@ -23,32 +25,24 @@ jobs:
           cache: 'pip'
       - name: Install
         run: python -m pip install -e . pytest numpy
-      - name: Focused smoke test
-        run: python -m pytest tests/test_afp_lineage_probe.py -q
-      - name: Run lineage batch
+      - name: Focused tests
         run: |
-          python -m development.afp_lineage_probe \
-            --hidden-size 32 \
-            --steps 384 \
-            --tail-steps 96 \
-            --seeds 94,95,96,97,98,99,100,101 \
-            --perturb-step 192 \
-            --perturb-scale 0.35 \
-            --output-dir outputs/afp-lineage
-      - name: Run held-out confirmation
+          python -m pytest \
+            tests/test_afp_lineage_probe.py \
+            tests/test_afp_v9_causal_followup.py -q
+      - name: Run native-v9 AFP causal follow-up
         run: |
-          python -m development.afp_lineage_probe \
+          python -m development.afp_v9_causal_followup \
             --hidden-size 32 \
-            --steps 384 \
-            --tail-steps 96 \
-            --seeds 102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129 \
-            --perturb-step 192 \
-            --perturb-scale 0.35 \
-            --output-dir outputs/afp-confirmatory
-      - name: Upload results
+            --checkpoint-step 384 \
+            --future-steps 64 \
+            --stale-lags 16,32,64,96 \
+            --seeds 102-129 \
+            --candidate-seeds 104,112,123,126 \
+            --impulse-scale 0.15 \
+            --output-dir outputs/v9-afp-causal
+      - name: Upload causal results
         uses: actions/upload-artifact@v4
         with:
-          name: afp-lineage-results
-          path: |
-            outputs/afp-lineage/
-            outputs/afp-confirmatory/
+          name: v9-afp-causal-results
+          path: outputs/v9-afp-causal/
