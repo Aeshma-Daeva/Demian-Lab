@@ -40,6 +40,11 @@ from development.substrate_lab import (
 from development.substrates.legacy import SelfLoopRunner
 
 
+CONFIRMATORY_SURFACE_RMS_MAX = 1e-3
+CONFIRMATORY_LATENT_RMS_MIN = 1e-2
+CONFIRMATORY_ABSOLUTE_RATIO_MIN = 10.0
+
+
 TUNED_V9 = {
     "init_scale": 0.15,
     "state_gain": 1.4,
@@ -262,6 +267,17 @@ def _run_tail_probe(
         and mean_latent_delta >= config.exploratory_latent_rms_floor
         and absolute_ratio >= config.exploratory_absolute_ratio_floor
     )
+    surface_delta_slope = _slope(surface_tail_deltas)
+    latent_delta_slope = _slope(latent_tail_deltas)
+    surface_norm_slope = _slope(surface_tail_norms)
+    latent_norm_slope = _slope(latent_tail_norms)
+    confirmatory_afp_candidate = (
+        mean_surface_delta <= CONFIRMATORY_SURFACE_RMS_MAX
+        and mean_latent_delta >= CONFIRMATORY_LATENT_RMS_MIN
+        and absolute_ratio >= CONFIRMATORY_ABSOLUTE_RATIO_MIN
+        and surface_delta_slope <= 0.0
+        and latent_norm_slope > 0.0
+    )
 
     return {
         "surface_dim": int(surfaces[-1].numel()),
@@ -275,10 +291,10 @@ def _run_tail_probe(
         "latent_rel_velocity": latent_rel,
         "latent_surface_velocity_ratio": latent_rel / max(surface_rel, 1e-12),
         "absolute_latent_surface_delta_ratio": absolute_ratio,
-        "tail_surface_delta_slope": _slope(surface_tail_deltas),
-        "tail_latent_delta_slope": _slope(latent_tail_deltas),
-        "tail_surface_norm_slope": _slope(surface_tail_norms),
-        "tail_latent_norm_slope": _slope(latent_tail_norms),
+        "tail_surface_delta_slope": surface_delta_slope,
+        "tail_latent_delta_slope": latent_delta_slope,
+        "tail_surface_norm_slope": surface_norm_slope,
+        "tail_latent_norm_slope": latent_norm_slope,
         "tail_surface_path_length": sum(surface_tail_deltas),
         "tail_latent_path_length": sum(latent_tail_deltas),
         "strict_afp_candidate": _is_afp(
@@ -289,6 +305,7 @@ def _run_tail_probe(
             ratio_floor=config.latent_surface_ratio_floor,
         ),
         "exploratory_absolute_candidate": exploratory_absolute_candidate,
+        "confirmatory_afp_candidate": confirmatory_afp_candidate,
     }
 
 
@@ -420,6 +437,9 @@ def run_experiment(config: LineageConfig) -> dict[str, Any]:
             exploratory_absolute_count = sum(
                 bool(row["exploratory_absolute_candidate"]) for row in rows
             )
+            confirmatory_count = sum(
+                bool(row["confirmatory_afp_candidate"]) for row in rows
+            )
             historical_accumulating = sum(
                 row["historical"]["interior_class"] == "accumulating_fixed_point"
                 for row in rows
@@ -431,6 +451,8 @@ def run_experiment(config: LineageConfig) -> dict[str, Any]:
                     "strict_afp_fraction": strict_count / len(rows),
                     "exploratory_absolute_count": exploratory_absolute_count,
                     "exploratory_absolute_fraction": exploratory_absolute_count / len(rows),
+                    "confirmatory_afp_count": confirmatory_count,
+                    "confirmatory_afp_fraction": confirmatory_count / len(rows),
                     "historical_accumulating_count": historical_accumulating,
                     "historical_accumulating_fraction": historical_accumulating / len(rows),
                     "mean_surface_rel_velocity": sum(row["surface_rel_velocity"] for row in rows) / len(rows),
@@ -498,6 +520,8 @@ def write_outputs(payload: dict[str, Any], out_dir: Path) -> tuple[Path, Path]:
                 "strict_afp_fraction",
                 "exploratory_absolute_count",
                 "exploratory_absolute_fraction",
+                "confirmatory_afp_count",
+                "confirmatory_afp_fraction",
                 "historical_accumulating_count",
                 "historical_accumulating_fraction",
                 "mean_surface_rel_velocity",
