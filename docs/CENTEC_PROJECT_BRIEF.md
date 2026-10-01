@@ -1,0 +1,249 @@
+# Proposta curta — Instituto Centec / CVT Fortaleza
+
+## Título de trabalho
+
+**Dinâmica latente sob convergência observável em sistemas recorrentes**  
+*Accumulating fixed points, dependência de trajetória e acoplamento temporal no projeto Demian*
+
+## Proponente
+
+Projeto independente de pesquisa e desenvolvimento em redes neurais recorrentes e sistemas dinâmicos.  
+Plataforma experimental: **Demian**.
+
+## Problema
+
+Em sistemas recorrentes, uma saída ou superfície observável pode aparentar estabilidade sem que o estado interno completo tenha necessariamente estabilizado.
+
+A pergunta central é:
+
+> **Quando a convergência observável representa um ponto fixo real do sistema e quando ela esconde dinâmica interna persistente, dependente da história e relevante para trajetórias futuras?**
+
+Formalmente, o projeto investiga regimes em que:
+
+```text
+G(z[t+1]) ~= G(z[t])
+```
+
+enquanto:
+
+```text
+z[t+1] != z[t]
+```
+
+onde `z` representa o estado recorrente e `G` a superfície/readout observável.
+
+O nome de trabalho usado no laboratório para esse regime é **Accumulating Fixed Point (AFP)**. O termo não implica que o estado completo esteja em um ponto fixo matemático; trata-se de um ponto fixo **projetado/observável** com possível dinâmica latente.
+
+## Origem do problema
+
+O fenômeno apareceu durante uma sequência de experimentos que começou com baselines recorrentes convencionais e evoluiu por várias arquiteturas Demian.
+
+A linhagem experimental selecionada para esta investigação é:
+
+```text
+RNN / GRU / LSTM
+        |
+native v2 -> v3 -> v8 -> v9 -> v9 five-channel -> Demian v1
+```
+
+Os experimentos históricos mostraram que classificações de superfície do tipo `FIXED_POINT` podiam coexistir com estrutura interna em canais recorrentes. O v9 five-channel introduziu explicitamente `message` e `carrier`; trabalhos posteriores de ablação e continuidade levaram ao Demian v1, atualmente composto por:
+
+```text
+fast -> message -> carrier -> slow
+          \          /
+           -> gate <-
+              |
+       modulação de rotas
+```
+
+com os canais `fast`, `slow`, `control`, `message`, `carrier` e `gate`.
+
+## Hipóteses testáveis
+
+### H1 — Separação superfície/estado
+
+Existem arquiteturas recorrentes em que a velocidade da superfície observável se aproxima de zero enquanto o estado recorrente completo mantém movimento mensurável.
+
+### H2 — Dependência de trajetória
+
+Estados com superfícies muito semelhantes, mas interiores diferentes, podem produzir continuações diferentes sob o mesmo estímulo futuro.
+
+### H3 — Efeito da arquitetura
+
+A presença, intensidade e forma dessa separação muda sistematicamente quando a arquitetura altera:
+
+- quantidade de canais internos;
+- exposição do hidden state;
+- escalas temporais;
+- roteamento entre canais;
+- mecanismos de gate/controle.
+
+### H4 — Generalização de acoplamento
+
+O mesmo substrato recorrente pode atuar como observador de diferentes sistemas dinâmicos desde que exista uma sequência ordenada de medições:
+
+```text
+observação S(t) -> adaptador phi -> input recorrente x[t] -> trajetória interna z[t]
+```
+
+O índice `t` pode representar tempo físico, frames, janelas de EEG, profundidade em perfil geológico, passos de simulação ou outra ordem temporal/causal apropriada ao domínio.
+
+## Metodologia
+
+### Experimento 1 — Linha arquitetural
+
+Comparar, com protocolo reproduzível:
+
+- RNN;
+- GRU;
+- LSTM;
+- Demian native v2;
+- native v3;
+- native v8;
+- native v9;
+- v9 five-channel;
+- Demian v1.
+
+Métricas principais:
+
+- velocidade RMS da superfície;
+- velocidade RMS do estado recorrente completo;
+- razão movimento latente / movimento superficial;
+- comprimento de trajetória;
+- dimensão da superfície versus dimensão latente;
+- classificação de atrator;
+- sensibilidade a perturbações;
+- prevalência do regime AFP sob critérios definidos previamente.
+
+### Experimento 2 — Consequência causal
+
+Selecionar estados:
+
+```text
+surface(A) ~= surface(B)
+latent(A) != latent(B)
+```
+
+Aplicar a mesma continuação ou perturbação e medir:
+
+```text
+future(A) versus future(B)
+```
+
+No Demian, complementar com:
+
+- state surgery;
+- channel ablation;
+- full capsule resume;
+- surface-only resume.
+
+### Experimento 3 — Acoplamento entre domínios
+
+Usar o mesmo princípio de observador recorrente em pelo menos dois domínios com adaptadores distintos.
+
+Primeira fase sugerida:
+
+1. sistema dinâmico sintético/controlado;
+2. sinal temporal não clínico ou EEG sintético/público.
+
+Aplicações posteriores podem incluir áudio, robótica, sensores ambientais, EEG e séries ordenadas por outra variável, como profundidade.
+
+## Estado atual da evidência
+
+Já há implementação pública/reproduzível para:
+
+- estado recorrente explícito;
+- channels e route modulation;
+- snapshot/capsule;
+- full-state restore;
+- surface-only control;
+- ablações de canais;
+- acoplamento temporal;
+- experimentos históricos de atratores e continuidade.
+
+Resultados exploratórios recentes no Demian v1 mostram forte separação entre similaridade superficial e diferença interna com continuação futura distinta. O v1, porém, não foi classificado como AFP no primeiro protocolo estrito; sua superfície permaneceu dinamicamente ativa. Isso é tratado como resultado negativo/qualificador, não como falha do experimento.
+
+O AFP histórico está sendo reavaliado na própria linhagem arquitetural, especialmente no v9 five-channel e nos ancestrais com maior exposição de estado interno.
+
+## Resultados esperados
+
+O projeto não pressupõe que AFP seja exclusivo do Demian ou que esteja presente em todas as versões.
+
+Entregáveis:
+
+1. protocolo reproduzível e pré-definido para AFP;
+2. mapa longitudinal da dinâmica superfície/latente na linhagem;
+3. conjunto de ablações e controles causais;
+4. figuras e artefatos de resultados;
+5. relatório técnico;
+6. código e configurações reproduzíveis;
+7. resumo/trabalho para evento científico, se os resultados justificarem;
+8. demonstração de acoplamento em outro sistema dinâmico.
+
+## Limites explícitos
+
+O projeto não pretende inferir, a partir desses experimentos:
+
+- consciência;
+- agência;
+- identidade;
+- diagnóstico neurológico;
+- biomarcadores clínicos;
+- superioridade geral do Demian sobre arquiteturas convencionais.
+
+A questão é estritamente sobre **dinâmica recorrente, observabilidade, estado latente, continuidade e consequência causal**.
+
+## O que buscamos no Centec
+
+### Entrada prática — Centec Labs / CVT Fortaleza
+
+- espaço de desenvolvimento e demonstração;
+- inserção em ambiente de inovação;
+- contato com equipe técnica;
+- possibilidade de apresentar protótipos e resultados;
+- acompanhamento para transformar o projeto independente em uma linha tecnicamente estruturada.
+
+O projeto é majoritariamente software e não depende de infraestrutura especial para a primeira fase.
+
+### Objetivo institucional
+
+Identificar dentro do Centec um pesquisador ou técnico que possa avaliar o desenho experimental e orientar o caminho institucional adequado para:
+
+- acompanhamento técnico-científico;
+- submissão interna a P&D/C&T quando aplicável;
+- participação em eventos e chamadas;
+- eventual colaboração ou bolsa futura quando houver edital compatível.
+
+## Primeira demonstração presencial
+
+A demo ideal não é um chatbot.
+
+Ela mostra:
+
+```text
+duas trajetórias
+      |
+surface A ~= surface B
+      |
+latent A != latent B
+      |
+mesmo estímulo futuro
+      |
+future A != future B
+```
+
+junto de uma visualização da linhagem:
+
+```text
+v2 -> v3 -> v8 -> v9 -> v9-5ch -> v1
+ |     |     |     |       |       |
+surface velocity
+latent velocity
+AFP prevalence
+perturbation response
+capsule continuity
+```
+
+## Pedido inicial ao Centec
+
+**Avaliação do projeto para uso do Centec Labs no CVT Fortaleza e indicação de uma pessoa da área de pesquisa/tecnologia com quem possamos discutir a formalização científica da linha experimental.**
