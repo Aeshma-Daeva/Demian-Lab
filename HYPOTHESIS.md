@@ -18,14 +18,17 @@ classifications while measured hidden channels continue to change or separate.
 **Core hypothesis.** A convergent exposed surface can coexist with structured,
 continuation-relevant internal dynamics.
 
-**Operational AFP criterion.** An accumulating fixed point requires
-$\Delta y_t \to 0$ plus persistent structured change in $z_t$. A positive
-classification must exclude floating-point drift, finite transients, and
-unstructured accumulation.
+**AFP-v2 criterion.** An accumulating fixed point requires
+$\Delta y_t \to 0$ plus persistent structured change in $z_t$, after
+excluding floating-point drift, finite transients, and unstructured
+accumulation. Historical `accumulating_fixed_point` labels are AFP-v1
+heuristics triggered by maxima or contraction thresholds; they do not yet
+satisfy AFP-v2.
 
-**Control.** Full-state versus surface-only continuation tests whether $y_t$ is
-a sufficient continuation state. Full restore contains more information, so a
-gap from a surface-only zeroed reconstruction is expected and is not the main
+**Controls.** `full_capsule` versus `body_surface` holds model weights fixed
+and tests whether omitted hidden state changes continuation. `full_capsule`
+versus `surface_only` changes both body and hidden state; it tests the larger
+continuation package, not hidden-state causality. Neither is the main
 discovery.
 
 **Current interpretation.** Surface labels are insufficient. The open target is

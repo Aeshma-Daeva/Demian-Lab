@@ -22,16 +22,16 @@
 Demian is an experimental discrete-time nonlinear recurrent system with full
 state $z_t$ and exposed readout $y_t$. We test the hypothesis that $y_t$ can
 converge while $z_t$ retains structured, continuation-relevant dynamics.
-Dual-GRU experiments show identical fixed-point surface labels with different
-internal regimes, including tight and accumulating classes. We define an
-accumulating fixed point operationally by surface convergence together with
-persistent structured hidden-state change, after excluding numerical drift,
-ordinary transients, and trivial accumulation. Channel ablations and matched
-perturbation baselines bound the interpretation. Full-state versus
-surface-only continuation is used only as a sufficiency control: full restore
-contains more information, and the observed gap establishes that the exposed
-state is not sufficient for continuation. Jacobian and finite-time Lyapunov
-analysis remain future characterization.
+Historical dual-GRU experiments show identical fixed-point surface labels with
+different internal regimes. Their \texttt{accumulating\_fixed\_point} labels are
+AFP-v1 heuristics based on maxima and contraction thresholds, not confirmations
+of the stricter AFP-v2 criterion. AFP-v2 requires persistent structured
+hidden-state change after excluding numerical drift, ordinary transients, and
+trivial accumulation. In a representative continuation probe, the
+\texttt{body\_surface} arm holds weights fixed and shows that omitted hidden
+state changes continuation. The \texttt{surface\_only} arm additionally changes
+the model body and is treated as a body-plus-state package control. Jacobian and
+finite-time Lyapunov analysis remain future characterization.
 \end{abstract}
 
 \noindent\textbf{Keywords:} recurrent neural networks; dynamical systems;
@@ -63,7 +63,7 @@ The contribution is a compact evidence discipline:
   \item separately classify fixed-point interiors;
   \item measure route and channel activity;
   \item perturb or ablate internal state;
-  \item compare full internal-state resume against surface-only resume;
+  \item use fixed-body continuation to test hidden-state relevance and fresh-body continuation as a package control;
   \item demote mechanism names when strict held-out checks fail.
 \end{itemize}
 
@@ -105,15 +105,19 @@ The full recurrent state is $z_t$ and the exposed surface is $y_t=R(z_t)$. A
 surface fixed point satisfies $\Delta y_t \to 0$ under the experiment's
 convergence tolerance. It does not imply $\Delta z_t \to 0$.
 
-An \emph{accumulating fixed point} (AFP) is assigned only when surface
-convergence coexists with persistent structured change in $z_t$. The analysis
-must distinguish that pattern from floating-point drift, a finite transient,
-and trivial unstructured accumulation.
+We distinguish two terms. \emph{AFP-v1} is the repository's historical
+\texttt{accumulating\_fixed\_point} heuristic, triggered by maximum state norms
+or contraction thresholds. It can be satisfied by a transient excursion or a
+stationary high-norm state. \emph{AFP-v2} is the prospective scientific
+criterion: surface convergence plus persistent structured change in $z_t$,
+after excluding floating-point drift, finite transients, and trivial
+unstructured accumulation.
 
-A \emph{channel} is a named component of $z_t$. A \emph{surface-only
-continuation} initializes hidden state to zero or omission while restoring
-$y_t$. A \emph{full-state continuation} restores $z_t$. Their comparison is a
-sufficiency control, not a mechanism discovery test.
+A \emph{channel} is a named component of $z_t$. The
+\texttt{body\_surface} control restores model weights and $y_t$ but omits hidden
+state; comparison with \texttt{full\_capsule} isolates hidden-state relevance.
+The \texttt{surface\_only} arm also uses a fresh model body and therefore tests
+the body-plus-state package, not hidden-state causality.
 
 We use five epistemic labels: \emph{observation} for artifact-backed
 measurements, \emph{hypothesis} for falsifiable relations, \emph{control} for
@@ -131,7 +135,7 @@ The analysis follows this order:
   \item classify surface convergence from $y_t$;
   \item measure persistence and change in the full state $z_t$;
   \item compare internal regimes within the same surface class;
-  \item run full-state versus surface-only continuation as a sufficiency control;
+  \item compare full state with fixed-body \texttt{body\_surface}, then use fresh-body \texttt{surface\_only} as a package control;
   \item restore or ablate channels and components;
   \item measure perturbation response and stability;
   \item reserve Jacobian and finite-time Lyapunov analysis for the next rigorous characterization.
@@ -161,22 +165,18 @@ measurement interface for this substrate family.
 \subsection{Continuation-state sufficiency control}
 
 Capsule continuity asks whether a paused trajectory can be resumed from
-different reconstructions of state. Let $s_t$ be the internal recurrent state
-and $y_t = R(s_t)$ be the exposed surface. The uninterrupted continuation is:
+different reconstructions. Let $z_t$ be the internal state, $y_t=R(z_t)$ the
+surface, and $F$ the paused model body. The uninterrupted continuation is
 \[
-  s_{t+k} = F^k(s_t).
+  z_{t+k}=F^k(z_t).
 \]
-The full capsule control restores $s_t$ and compares its continuation with the
-uninterrupted trajectory. The surface-only control constructs a state
-$\hat{s}_t$ from $y_t$ alone, leaving the non-surface internal state empty or
-zeroed, and compares:
-\[
-  F^k(\hat{s}_t) \quad \textrm{against} \quad F^k(s_t).
-\]
-If full-state continuation matches and surface-only continuation diverges, the
-exposed surface was not sufficient for continuation. The full restore contains
-more information, so this control is expected to favor it and is not treated as
-the main discovery.
+The \texttt{full\_capsule} arm restores $F$ and $z_t$. The
+\texttt{body\_surface} arm restores $F$ and $y_t$ into an otherwise empty state;
+its comparison with \texttt{full\_capsule} holds the dynamics fixed and tests
+whether omitted hidden state changes continuation. The \texttt{surface\_only}
+arm uses a fresh randomly initialized body as well as empty hidden state; it
+tests portability of the whole body-plus-state package and cannot isolate
+hidden-state causality.
 
 \subsection{Claim discipline}
 
@@ -191,15 +191,15 @@ automatically evidence for a named causal mechanism.
 \subsection{Surface convergence and internal-state persistence}
 
 All listed dual-GRU variants converge to the same exposed fixed-point class.
-Their hidden message norms and bottleneck statistics remain differentiated.
+Their AFP-v1 message-norm and bottleneck statistics remain differentiated; this is evidence for a regime split, not AFP-v2 confirmation.
 
 \subsection{Same surface class, different internal regimes}
 
 Table~\ref{tab:dual-gru} shows the central internal-regime result. Every
 listed dual-GRU variant is classified as \texttt{FIXED\_POINT} in 8/8 runs at
 the exposed surface. The internal readings are not identical. Some variants
-split into both tight and accumulating fixed-point interiors, while
-\texttt{dual\_gru\_v3b:current} is entirely accumulating and has much larger
+split into both tight and AFP-v1 accumulating heuristic classes, while
+\texttt{dual\_gru\_v3b:current} is entirely AFP-v1 accumulating and has much larger
 mean message norm and bottleneck entropy.
 
 \begin{table}[H]
@@ -209,13 +209,13 @@ mean message norm and bottleneck entropy.
 \toprule
 Substrate & Surface & Interior counts & Classes & Message norm & Entropy \\
 \midrule
-\texttt{dual\_gru\_v3b:current} & 8/8 fixed & accumulating: 8 & 1 & 23.1086 & 1.7779 \\
-\texttt{dual\_gru\_v3b:tight} & 8/8 fixed & tight: 6; accumulating: 2 & 2 & 0.0624 & 0.3423 \\
-\texttt{dual\_gru\_v3b:threshold} & 8/8 fixed & tight: 5; accumulating: 3 & 2 & 0.0753 & 0.5120 \\
-\texttt{dual\_gru\_v3} & 8/8 fixed & tight: 6; accumulating: 2 & 2 & 0.0624 & 0.5069 \\
+\texttt{dual\_gru\_v3b:current} & 8/8 fixed & AFP-v1 accum.: 8 & 1 & 23.1086 & 1.7779 \\
+\texttt{dual\_gru\_v3b:tight} & 8/8 fixed & tight: 6; AFP-v1: 2 & 2 & 0.0624 & 0.3423 \\
+\texttt{dual\_gru\_v3b:threshold} & 8/8 fixed & tight: 5; AFP-v1: 3 & 2 & 0.0753 & 0.5120 \\
+\texttt{dual\_gru\_v3} & 8/8 fixed & tight: 6; AFP-v1: 2 & 2 & 0.0624 & 0.5069 \\
 \bottomrule
 \end{tabular}
-\caption{Dual-GRU fixed-point surfaces with different basin interiors.
+\caption{Dual-GRU fixed-point surfaces with different historical heuristic interiors.
 All rows share the same exposed surface attractor class, but differ in hidden
 interior class, message-state expression, and bottleneck entropy.}
 \label{tab:dual-gru}
@@ -236,38 +236,42 @@ class count, message norm, and bottleneck entropy differ.}
 
 \subsection{Continuation-state sufficiency control}
 
-Table~\ref{tab:capsule} shows capsule-continuity probes for canonical
-\texttt{demian\_native\_v9} and the v9 five-channel substrate. Across the
-reported sweep, full internal-state resume remains exact or near-exact, while
-surface-only resume remains worse than full capsule resume.
+Table~\ref{tab:capsule} shows the representative seed-94, 24:24
+continuation probe. The fixed-body \texttt{body\_surface} arm differs from
+\texttt{full\_capsule}, showing that omitted hidden state changes continuation
+while model weights are held fixed. The fresh-body \texttt{surface\_only} arm
+tests the larger body-plus-state package.
 
 \begin{table}[H]
 \centering
 \small
 \begin{tabular}{lrrr}
 \toprule
-Substrate & Full capsule min cosine & Full capsule max gap & Surface-only min gap \\
+Substrate & Full gap & Body + surface gap & Surface-only gap \\
 \midrule
-\texttt{demian\_native\_v9} & 0.99999988 & 0.0 & 0.22624873 \\
-\texttt{v9\_five\_channel} & 0.99999988 & 0.0 & 0.27455845 \\
+\texttt{demian\_native\_v9} & 0.0 & 0.10775166 & 0.25749409 \\
+\texttt{v9\_five\_channel} & 0.0 & 0.24032078 & 0.30981059 \\
 \bottomrule
 \end{tabular}
-\caption{Capsule-continuity summary. Full internal-state capsules resume
-the deterministic continuation, while surface-only reconstruction does not.}
+\caption{Representative seed-94, 24:24 continuation controls. Body + surface
+holds model weights fixed and omits hidden state. Surface-only also changes the
+model body.}
 \label{tab:capsule}
 \end{table}
 
-This establishes only that the visible surface is not a sufficient
-continuation state in these probes. Full restore contains more information than
-the surface-only zeroed reconstruction; the comparison does not by itself
-establish an AFP or a novel internal mechanism.
+The fixed-body result supports a bounded claim: omitted hidden state changes
+continuation in this representative probe. The saved sweep does not aggregate
+\texttt{body\_surface}, so sweep-wide confirmation remains open. The
+fresh-body \texttt{surface\_only} result cannot isolate hidden-state causality.
+Neither control establishes AFP-v2 or a novel internal mechanism.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.76\linewidth]{figures/capsule_resume_gap.png}
-\caption{Capsule-continuity control. Full internal-state capsules resume the
-deterministic continuation with zero measured mean gap in these summaries,
-while surface-only reconstruction leaves a continuation gap.}
+\caption{Continuation-control summary. Full-state continuation is exact in
+these summaries. The displayed surface-only gap is a fresh-body package
+comparison; fixed-body hidden-state evidence is reported in
+Table~\ref{tab:capsule}.}
 \label{fig:capsule-gap}
 \end{figure}
 
@@ -335,11 +339,13 @@ not the same as settled causal mechanism naming.
 
 The results support a practical distinction: fixed point is a surface class,
 not a computational verdict. In the dual-GRU family, the same surface label
-contains different interior classes. In the capsule-continuity probes, a
-surface-only reconstruction fails to preserve continuation even when a full
-internal capsule resumes exactly. In the matched baseline comparison, plain
-recurrent models and native substrates behave differently under the same
-pseudo-channel perturbation protocol.
+contains different AFP-v1 heuristic interior classes. In the representative
+capsule probe, fixed-body \texttt{body\_surface} diverges from
+\texttt{full\_capsule}, so omitted hidden state changes continuation while
+$F$ is fixed. The fresh-body \texttt{surface\_only} arm is only a package
+control. In the matched baseline comparison, plain recurrent models and native
+substrates behave differently under the same pseudo-channel perturbation
+protocol.
 
 The broader lesson is methodological. A recurrent system should not be judged
 only by the final or exposed trajectory. Surface labels should be paired with
@@ -348,8 +354,8 @@ ablation response, and resume fidelity.
 
 This is also the design reason Demian v1 makes internal channels explicit. The
 claim is not that v1 is complete. The claim is that the experimental record
-made anonymous hidden state too weak an object of study. If continuation lives
-inside the state, then the state must be named, saved, ablated, and tested.
+made anonymous hidden state too weak an object of study. If hidden state affects continuation under fixed dynamics, it must be named,
+saved, ablated, and tested.
 
 \subsection{Next rigorous characterization}
 
@@ -364,7 +370,7 @@ The evidence is heterogeneous because it comes from a living research
 repository rather than a single polished benchmark suite. Some runs have small
 seed counts. Some metrics are local to Demian's substrate families. The
 Transformer and Mamba reservoir artifacts are architectural context rather
-than central evidence. The continuation control uses full internal-state restore, not a compressed state code, and therefore contains strictly more information than the surface-only arm. Finally, the paper does not prove that
+than central evidence. The continuation control uses full internal-state restore, not a compressed state code. The fixed-body result is representative rather than sweep-wide, and the fresh-body surface-only arm confounds body and state. Finally, the paper does not prove that
 every fixed point is meaningful; it proves that fixed-point surface labels can
 be incomplete.
 
@@ -399,7 +405,7 @@ paper source, figure files, and evidence summaries.
 
 Projected fixed-point behavior is a statement about $y_t$, not necessarily
 about $z_t$. The Demian artifacts show the same convergent surface class
-coexisting with measurably different internal regimes. The main research target
+coexisting with different AFP-v1 heuristic internal regimes; AFP-v2 remains to be tested. The main research target
 is now to test whether those regimes align reproducibly with explicit channels
 and to characterize their stability with Jacobian and finite-time Lyapunov
 analysis. Full-state continuation remains a sufficiency control.

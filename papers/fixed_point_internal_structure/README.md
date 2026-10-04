@@ -6,9 +6,10 @@ Working title:
 
 `Projected Fixed Points and Internal Recurrent Dynamics: A Measurement Protocol in Demian`
 
-Demian is the experimental system. The paper tests whether convergent readouts
-can coexist with structured internal dynamics; capsule continuation is a
-sufficiency control.
+Demian is the experimental system. AFP-v2 is the prospective strict criterion;
+historical accumulating labels are AFP-v1 heuristics. Fixed-body continuation
+tests hidden-state relevance, while fresh-body `surface_only` tests the larger
+body-plus-state package.
 
 ## Build
 
