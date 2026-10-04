@@ -1,16 +1,45 @@
-# Hypothesis Status: Gate-State vs Ordinary Recurrence
+# Hypothesis Status: Projected Convergence and Internal Dynamics
 
 Date: 2026-05-16
 
-## Current Read
+## Scientific Hierarchy
 
-The latest completed truth campaign does not support the strong name "Gate-State Causal Propagation" as a distinct mechanism.
+**Experimental system.** Demian is a discrete-time nonlinear recurrent system:
 
-The better current interpretation is:
+$
+z_{t+1}=F(z_t,x_t), \qquad y_t=R(z_t),
+$
 
-> The system shows structured recurrent history propagation, but the available evidence does not yet distinguish it cleanly from ordinary recurrent-state history or random/default five-channel profiles.
+where $z_t$ is the full recurrent state and $y_t$ is the exposed readout.
 
-This does not mean "nothing is happening." It means the earlier diagnostic gate was too permissive to justify the stronger mechanism claim.
+**Observation.** Several saved runs have convergent or fixed-point surface
+classifications while measured hidden channels continue to change or separate.
+
+**Core hypothesis.** A convergent exposed surface can coexist with structured,
+continuation-relevant internal dynamics.
+
+**Operational AFP criterion.** An accumulating fixed point requires
+$\Delta y_t \to 0$ plus persistent structured change in $z_t$. A positive
+classification must exclude floating-point drift, finite transients, and
+unstructured accumulation.
+
+**Control.** Full-state versus surface-only continuation tests whether $y_t$ is
+a sufficient continuation state. Full restore contains more information, so a
+gap from a surface-only zeroed reconstruction is expected and is not the main
+discovery.
+
+**Current interpretation.** Surface labels are insufficient. The open target is
+whether the same surface class contains reproducibly different internal regimes
+and whether those regimes align with `fast`, `slow`, `control`, `message`,
+`carrier`, and `gate`.
+
+**Untested speculation.** Jacobian spectra and finite-time Lyapunov estimates
+have not yet established the local stability class of the internal dynamics.
+
+The strong “Gate-State Causal Propagation” mechanism is not established. The
+narrower channel-anatomy hypothesis remains testable: structured recurrent
+history may distribute across explicit channels differently from ordinary
+recurrence or random/default five-channel profiles.
 
 ## 2026-05-16 Update: 27 More Track B Candidates Generated
 

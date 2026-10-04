@@ -4,13 +4,13 @@ Last updated: 2026-05-11
 
 ## Purpose
 
-The capsule-continuity thread asks a narrow question:
+This is a continuation-state sufficiency control. It asks whether the exposed
+readout is sufficient to resume a paused deterministic trajectory.
 
-> Can a compact internal substrate state resume a trajectory better than
-> replaying only the exposed surface state?
-
-This is related to, but separate from, the main v9 five-channel evolution work.
-It is a candidate for a future focused repository after Demian is published.
+The full capsule restores the full internal tensor state. The surface-only arm
+starts from a zeroed internal state with only the exposed surface rewritten.
+Because the full restore contains more information, divergence is expected.
+The control does not establish AFP dynamics or a novel mechanism.
 
 ## Current Result
 
@@ -50,13 +50,10 @@ replay is worse than full capsule resume.
 
 ## Interpretation
 
-This supports a narrow operational claim: on canonical v9 and v9 five-channel,
-the exposed surface alone is not sufficient to resume the trajectory, while the
-internal state capsule is sufficient under the deterministic probe setup.
-
-It does not yet prove compressed capsule continuity. The current full capsule
-restores the full internal tensor state. The next question is whether a smaller
-capsule can preserve the same continuation advantage.
+The exposed surface is not a sufficient continuation state in these probes.
+The result is a sanity/control result, not the main discovery. It does not show
+that every hidden variable is meaningful, that the capsule is compressed, or
+that the observed internal dynamics form a distinct stability regime.
 
 ## Next Checks
 

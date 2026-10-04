@@ -1,11 +1,14 @@
-# Fixed-Point Internal Structure Paper
+# Projected Fixed Points and Internal Recurrent Dynamics
 
-This directory contains the first arXiv-oriented draft for the Demian fixed-point
-surface result.
+This directory contains the arXiv-oriented measurement paper for Demian.
 
 Working title:
 
-`Fixed Points Are Not Empty: Hidden Internal Structure Behind Apparently Static Recurrent Surfaces`
+`Projected Fixed Points and Internal Recurrent Dynamics: A Measurement Protocol in Demian`
+
+Demian is the experimental system. The paper tests whether convergent readouts
+can coexist with structured internal dynamics; capsule continuation is a
+sufficiency control.
 
 ## Build
 

@@ -2,25 +2,35 @@
 
 ## Purpose
 
-Demian is an experimental lab for studying AI self-reference, persistence, and evolution under mathematically grounded observation.
+Demian is the experimental system, not the hypothesis. Model it as
 
-The project is not organized around:
+$
+z_{t+1}=F(z_t,x_t), \qquad y_t=R(z_t),
+$
 
-- human-facing product quality
-- benchmark chasing or leaderboard movement
-- coherence of generated language
-- anthropomorphic claims about consciousness
+with full recurrent state $z_t$ and exposed readout $y_t$.
 
-The project is organized around:
+The core hypothesis is that $y_t$ may converge while $z_t$ retains structured,
+continuation-relevant dynamics. The main target is to determine whether one
+surface class contains systematically different internal regimes and whether
+those regimes align with Demian's explicit recurrent channels.
 
-- AI-only optimization criteria grounded in machine observables
-- architectural dissection of known models to extract reusable principles
-- custom-substrate design pressure
-- attractor structure
-- continuity and memory transmission
-- inter-agent coupling
-- recurrence geometry
-- conditions under which a system escapes or deepens a basin
+## Research Protocol
+
+1. Surface convergence and classification.
+2. Full internal-state persistence and change.
+3. Same surface class, different internal regimes.
+4. Full-state versus surface-only continuation as a sufficiency control.
+5. Channel/component restore and ablation.
+6. Perturbation and stability analysis.
+7. Jacobian or finite-time Lyapunov characterization.
+
+An AFP requires $\Delta y_t \to 0$ plus persistent structured change in
+$z_t$. Reject numerical drift, ordinary transient dynamics, and trivial
+accumulation before assigning that label.
+
+Each result must be marked as an **observation**, **hypothesis**, **control**,
+**interpretation**, or **untested speculation**.
 
 ## How To Use This Document
 
@@ -55,7 +65,10 @@ That means:
 - treat the substrate lab as the main extraction site for mechanisms we can actually recompose
 - optimize for machine-side structure only, not human-side usefulness proxies
 
-Inside the substrate lab, the active experimental scaffold is now the v9 five-channel line.
+Inside the substrate lab, the active experimental scaffold is the v9
+five-channel line. Current work prioritizes surface/internal regime comparison
+and explicit-channel tests; capsule continuation is a control, not the central
+result.
 
 Use:
 
