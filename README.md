@@ -26,15 +26,16 @@ in Demian Archive.
 1. Classify surface dynamics from $y_t$.
 2. Measure persistence and change in the full state $z_t$.
 3. Test whether one surface class contains different internal regimes.
-4. Use full-state versus surface-only continuation as a sufficiency control.
+4. Compare full state with fixed-body `body_surface`; use fresh-body `surface_only` only as a package control.
 5. Restore or ablate explicit channels and components.
 6. Measure perturbation response and stability.
 7. Characterize local dynamics with Jacobians or finite-time Lyapunov estimates.
 
-An operational `accumulating fixed point` (AFP) requires surface convergence
-($\Delta y_t \to 0$) together with persistent structured hidden-state change.
-AFP classification must reject numerical drift, ordinary transients, and
-trivial accumulation.
+AFP-v2 is the prospective scientific criterion: surface convergence
+($\Delta y_t \to 0$) plus persistent structured hidden-state change after
+excluding numerical drift, ordinary transients, and trivial accumulation.
+Historical `accumulating_fixed_point` counts are AFP-v1 heuristic labels based
+on maxima and contraction thresholds; they are not AFP-v2 confirmations.
 
 The main target is whether projected fixed-point behavior coexists with
 systematically different internal regimes, and whether those regimes align
@@ -67,7 +68,7 @@ Full version: [Research Lineage](docs/RESEARCH_LINEAGE.md).
 | Plain recurrent baselines matter | Vanilla RNN, GRU, LSTM, diagonal SSM, and selective SSM run through the same self-loop battery. | Native results should be read against simpler recurrent controls, not in isolation. |
 | Fixed point can hide internal structure | GRU/dual-GRU, v8/v9, and v9 five-channel diagnostics expose basin-internal differences. | A flat surface label is not enough to judge a substrate. |
 | v9 is not proven superior to v8 | Saved v9-v8 comparison: both fixed-point in 4/4 seeds; v9 had lower covariance rank and weaker scale-1.0 recovery in that run. | v9 remains a useful simplified scaffold, not a victory claim. |
-| Surface is not a sufficient continuation state | Full-state restore resumes almost exactly; a surface-only zeroed reconstruction does not. | Sufficiency control only: full restore contains more information, so divergence is expected. |
+| Continuation controls separate state from body | With model weights fixed, the representative `body_surface` arm diverges from full-state continuation; the `surface_only` arm also changes the body. | `body_surface` tests hidden-state relevance. `surface_only` tests the larger body-plus-state package and cannot isolate hidden-state causality. |
 | v10.0 predecessor found but did not validate sparse release | 640 candidates across four islands; final winner had `duty=0.171875`, `event=0.7896`, `phase=0.9371`; held-out CPU checks weakened the claim. | Useful predecessor and falsification pressure, not a stable mechanism. |
 | Track B points at structured channel anatomy | Message/carrier/control probes and null checks show real structure but also controls that prevent overclaiming. | Treat gate-state propagation as the current live hypothesis, not settled proof. |
 | Control helps capsule maintenance | Continuous control clamp degrades the capsule more than one-shot control zeroing. | Control is stabilizing; current data do not prove setpoints, selfhood, or narrative integration. |

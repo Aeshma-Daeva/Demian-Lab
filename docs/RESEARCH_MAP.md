@@ -20,14 +20,15 @@ those regimes align with Demian's explicit recurrent channels.
 1. Surface convergence and classification.
 2. Full internal-state persistence and change.
 3. Same surface class, different internal regimes.
-4. Full-state versus surface-only continuation as a sufficiency control.
+4. Fixed-body `body_surface` continuation as the hidden-state control; `surface_only` as a body-plus-state package control.
 5. Channel/component restore and ablation.
 6. Perturbation and stability analysis.
 7. Jacobian or finite-time Lyapunov characterization.
 
-An AFP requires $\Delta y_t \to 0$ plus persistent structured change in
-$z_t$. Reject numerical drift, ordinary transient dynamics, and trivial
-accumulation before assigning that label.
+AFP-v2 requires $\Delta y_t \to 0$ plus persistent structured change in
+$z_t$, after rejecting numerical drift, ordinary transients, and trivial
+accumulation. Historical `accumulating_fixed_point` results are AFP-v1
+heuristic classes and must not be cited as AFP-v2 confirmations.
 
 Each result must be marked as an **observation**, **hypothesis**, **control**,
 **interpretation**, or **untested speculation**.

@@ -4,13 +4,15 @@ Last updated: 2026-05-11
 
 ## Purpose
 
-This is a continuation-state sufficiency control. It asks whether the exposed
-readout is sufficient to resume a paused deterministic trajectory.
+This document records two continuation controls:
 
-The full capsule restores the full internal tensor state. The surface-only arm
-starts from a zeroed internal state with only the exposed surface rewritten.
-Because the full restore contains more information, divergence is expected.
-The control does not establish AFP dynamics or a novel mechanism.
+- `full_capsule` versus `body_surface`: model weights are restored in both
+  arms; the comparison isolates continuation relevance of omitted hidden state.
+- `full_capsule` versus `surface_only`: the latter uses a fresh body and
+  empty hidden state; the comparison tests the body-plus-state package and
+  cannot isolate hidden-state causality.
+
+Neither control establishes AFP-v2 or a novel mechanism.
 
 ## Current Result
 
@@ -23,7 +25,8 @@ The first v9 replication probe is:
 It compares uninterrupted continuation with:
 
 - full capsule: restored model body and full internal state
-- surface-only: empty state with only the exposed surface rewritten
+- body + surface: restored model body, empty hidden state, exposed surface rewritten
+- surface-only: fresh model body, empty hidden state, exposed surface rewritten
 - body-only: restored model body with empty state
 - component-only: one internal component restored into an empty state
 
@@ -31,33 +34,36 @@ It compares uninterrupted continuation with:
 
 ![Capsule continuity sweep](assets/capsule_continuity.svg)
 
-| Substrate | Full capsule cosine | Surface-only cosine | Best component-only read |
-| --- | ---: | ---: | --- |
-| `demian_native_v9` | `0.99999994` | `0.09100710` | `slow_only`: `0.99973315` |
-| `v9_five_channel` | `1.0` | `-0.03007574` | partial continuity spreads across `carrier`, `message`, and `slow` |
+| Substrate | Full capsule cosine | Body + surface cosine | Surface-only cosine |
+| --- | ---: | ---: | ---: |
+| `demian_native_v9` | `0.99999994` | `0.96098512` | `0.09100710` |
+| `v9_five_channel` | `1.0` | `0.75564301` | `-0.03007574` |
 
 Mean trajectory gap also separates the arms:
 
-| Substrate | Full capsule gap | Surface-only gap |
-| --- | ---: | ---: |
-| `demian_native_v9` | `0.0` | `0.25749409` |
-| `v9_five_channel` | `0.0` | `0.30981059` |
+| Substrate | Full capsule gap | Body + surface gap | Surface-only gap |
+| --- | ---: | ---: | ---: |
+| `demian_native_v9` | `0.0` | `0.10775166` | `0.25749409` |
+| `v9_five_channel` | `0.0` | `0.24032078` | `0.30981059` |
 
-The current smoke sweep uses seeds `94,95,96` and pause/resume windows `16:16`
+The tables above are the representative seed-94, 24:24 run. The current smoke sweep uses seeds `94,95,96` and pause/resume windows `16:16`
 and `24:24`. In all 6 runs per substrate, full capsule resume remains exact
 or near-exact (`min cosine > 0.999`, `max mean gap = 0.0`), and surface-only
 replay is worse than full capsule resume.
 
 ## Interpretation
 
-The exposed surface is not a sufficient continuation state in these probes.
-The result is a sanity/control result, not the main discovery. It does not show
-that every hidden variable is meaningful, that the capsule is compressed, or
-that the observed internal dynamics form a distinct stability regime.
+The representative fixed-body comparison shows that omitted hidden state
+changes continuation. The broader `surface_only` comparison also changes the
+model body and therefore tests package portability, not hidden-state causality.
+
+The saved sweep does not aggregate `body_surface`; sweep-wide fixed-body
+confirmation remains open. These controls do not establish AFP-v2, compression,
+or a distinct stability regime.
 
 ## Next Checks
 
-- repeat across seeds and longer pause/resume windows
+- aggregate `body_surface` across seeds and longer pause/resume windows
 - test compressed capsules, not only full internal state restore
 - test whether `slow`, `message`, and `carrier` can be reduced to a small
   structured code while preserving resume quality
