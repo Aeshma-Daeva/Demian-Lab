@@ -9,32 +9,37 @@ Repository:
 
 > <https://github.com/Aeshma-Daeva/Demian-Lab>
 
-## Core Thesis
+## Scientific Hierarchy
 
-Apparently static surface behavior is not enough to diagnose a recurrent
-system. A trajectory can be classified as `FIXED_POINT` at the exposed surface
-while internal state channels continue to accumulate, separate, route, and
-preserve continuation-relevant information.
+**System.** Demian is an experimental discrete-time nonlinear recurrent system:
+$z_{t+1}=F(z_t,x_t)$ with exposed readout $y_t=R(z_t)$.
 
-The paper should not claim that every fixed point is rich. It should claim that
-fixed-point labels are insufficient unless they are paired with internal-state
-measurements, ablations, and resume controls.
+**Observation.** Some runs satisfy surface convergence while measured internal
+channels continue to change or separate.
+
+**Core hypothesis.** A convergent readout can coexist with structured,
+continuation-relevant internal dynamics.
+
+**Operational AFP.** Require $\Delta y_t \to 0$ and persistent structured
+change in $z_t$. Reject numerical drift, ordinary transients, and trivial
+accumulation.
+
+**Control.** Full-state versus surface-only continuation establishes whether
+$y_t$ is a sufficient continuation state. It is expected that a full restore
+contains more information; the control is not the main discovery.
+
+**Interpretation.** A surface fixed point is not necessarily a full-state fixed
+point.
+
+**Untested speculation.** Distinct internal regimes may align with Demian's
+explicit channels and distinct Jacobian or finite-time Lyapunov signatures.
 
 ## Clean Claim
 
-Strong version:
-
-> Across Demian recurrent-substrate experiments and matched baseline probes,
-> surface-level fixed-point behavior repeatedly fails to capture internal-state
-> structure. Interior classifications, message/carrier activity, channel
-> separation, and capsule-resume controls reveal computational differences that
-> are invisible from the surface label alone.
-
-Conservative version for the abstract:
-
-> We show that fixed-point surface classifications can hide nontrivial internal
-> dynamics in recurrent systems, and we provide a measurement protocol for
-> separating true collapse from internally structured fixed-point basins.
+> Projected fixed-point classifications can coexist with measurably different
+> internal recurrent regimes. The paper defines a protocol for separating
+> surface convergence from internal persistence and for testing channel
+> alignment without treating continuation controls as mechanism discovery.
 
 ## What This Is Not
 
@@ -53,9 +58,19 @@ Frame it as:
 - an artifact-backed methodology for asking whether a static surface hides
   active internal state.
 
+## Experiment Order
+
+1. Surface convergence and classification.
+2. Internal-state persistence and change.
+3. Same surface class, different internal regimes.
+4. Full-state versus surface-only continuation as a sanity/sufficiency control.
+5. Channel/component restore and ablation.
+6. Perturbation and stability analysis.
+7. Jacobian and finite-time Lyapunov analysis as the next rigorous step.
+
 ## Evidence Backbone
 
-### 1. Dual-GRU Fixed-Point Interiors
+### 1–3. Surface Convergence, Internal Persistence, And Regime Split
 
 Primary artifact:
 
@@ -74,7 +89,7 @@ Claim supported:
 
 > Same surface attractor class, different internal basin classes.
 
-### 2. Capsule Continuity: Surface-Only Resume Fails
+### 4. Continuation-State Sufficiency Control
 
 Primary artifact:
 
@@ -88,13 +103,20 @@ Compact result:
 | `demian_native_v9` | `0.0` | at least `0.2262` across sweep | full state resumes; surface alone does not. |
 | `v9_five_channel` | `0.0` | at least `0.2746` across sweep | continuity spreads beyond the exposed surface. |
 
-Claim supported:
+Control interpretation:
 
-> If a surface-only reconstruction cannot resume the trajectory but a full
-> internal capsule can, the visible surface is not the full state of the
-> computation.
+> Full restore contains more information than a surface-only zeroed state.
+> Divergence establishes that the exposed state is not sufficient for
+> continuation; it does not by itself establish AFP dynamics or a novel
+> mechanism.
 
-### 3. Plain Recurrent And Native Baselines
+### 5. Channel Restore And Ablation
+
+Use component-only restore and ablation to test whether internal regimes align
+with `slow`, `control`, `message`, `carrier`, or `gate`. Treat
+channel alignment as a hypothesis until replicated against null controls.
+
+### 6. Perturbation And Stability Baselines
 
 Primary artifact:
 
@@ -119,7 +141,7 @@ Use carefully:
 - This is not a superiority claim; it is a comparison showing why matched
   baselines matter.
 
-### 4. Transformer And Mamba Self-Reference Baselines
+### Architecture Context: Transformer And Mamba
 
 Primary artifacts:
 
@@ -136,7 +158,7 @@ Use as broader motivation, not the central proof:
 - These results show that surface recurrence primitives differ by architecture,
   so the paper should not treat all recurrence as one thing.
 
-### 5. Gate-State Truth Campaign As A Negative Control
+### Negative Control: Gate-State Truth Campaign
 
 Primary artifacts:
 
@@ -170,73 +192,30 @@ Use as scientific discipline:
 
 ## Draft Abstract
 
-Recurrent systems are often summarized by their exposed trajectory: fixed
-point, cycle, transient, or chaotic regime. This paper argues that such surface
-labels can be misleading. In Demian, a structured recurrent-substrate research
-program, we repeatedly observe apparently static surface behavior coexisting
-with differentiated internal state. Dual-GRU and native-substrate experiments
-show fixed-point surfaces that split into distinct basin interiors, including
-tight and accumulating fixed-point classes. Capsule-continuity probes further
-show that full internal-state restore can resume trajectories exactly while
-surface-only restore fails, implying that continuation-relevant information is
-not contained in the exposed surface alone. We compare these findings against
-plain RNN, GRU, LSTM, diagonal SSM, Transformer-reservoir, and Mamba-reservoir
-controls, and we use negative gate-state checks to bound mechanism claims. The
-result is not a claim of benchmark superiority or a finished architecture, but
-a measurement protocol: fixed-point behavior should be treated as a hypothesis
-about surface dynamics, not as evidence that the internal computation is empty.
+Demian is an experimental discrete-time nonlinear recurrent system with full
+state $z_t$ and exposed readout $y_t$. We test whether $y_t$ can converge while
+$z_t$ retains structured, continuation-relevant dynamics. Dual-GRU artifacts
+show one fixed-point surface class with different internal regimes. We define
+AFP operationally as surface convergence plus persistent structured hidden-state
+change, excluding drift, transients, and trivial accumulation. Channel
+ablations and perturbation controls bound the interpretation. Full-state versus
+surface-only continuation is a sufficiency control only: full restore contains
+more information, and the observed gap shows that the exposed state is not
+sufficient for continuation. Jacobian and finite-time Lyapunov analysis remain
+future characterization.
 
 ## Section Plan
 
-1. Introduction
-   - Problem: fixed-point labels can collapse meaningful internal differences.
-   - Thesis: evaluate surface and internal state separately.
-   - Contributions: measurement protocol and Demian evidence.
-
-2. Background
-   - Recurrent dynamics and attractor labels.
-   - Why surface readouts are convenient but incomplete.
-   - Relation to RNN mechanistic interpretability and dynamical analysis.
-
-3. Methods
-   - Substrates and baselines.
-   - Surface attractor classification.
-   - Interior class metrics.
-   - Channel/route metrics.
-   - Ablations and perturbations.
-   - Capsule resume protocol.
-
-4. Results A: Fixed-Point Basins With Different Interiors
-   - Dual-GRU family table.
-   - Tight versus accumulating fixed-point classes.
-   - Message norms and bottleneck entropy.
-
-5. Results B: Surface-Only State Is Not Enough
-   - v9 and v9 five-channel capsule continuity.
-   - Full capsule versus surface-only resume.
-   - Component-only readouts.
-
-6. Results C: Matched Baselines
-   - RNN/GRU/LSTM/diag-SSM/native comparison.
-   - Transformer versus Mamba self-reference as architecture-contrast context.
-
-7. Negative Results And Claim Discipline
-   - Gate-state truth-campaign demotion.
-   - Why the paper does not claim solved mechanism or general superiority.
-
-8. Discussion
-   - Fixed point as surface class, not computational verdict.
-   - Implications for recurrent-substrate design.
-   - Why Demian v1 keeps explicit state channels.
-
-9. Limitations
-   - Custom metrics and vocabulary.
-   - Limited seeds in some baselines.
-   - Artifact heterogeneity across historical runs.
-   - Some evidence is diagnostic rather than task-performance evidence.
-
-10. Reproducibility
-   - Link data index, commands, and exact artifacts.
+1. Experimental system and scientific hierarchy.
+2. Surface dynamics and convergence criteria.
+3. Internal-state persistence; AFP operational criteria and exclusions.
+4. Same surface class, different internal regimes.
+5. Continuation-state sufficiency control.
+6. Channel/component restore and ablation.
+7. Perturbation and stability analysis.
+8. Claim boundaries and negative controls.
+9. Next characterization: Jacobians and finite-time Lyapunov estimates.
+10. Limitations and reproducibility.
 
 ## Figure And Table Plan
 

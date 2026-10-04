@@ -1,13 +1,19 @@
 # Demian Lab
 
-Demian Lab studies what happens when AI systems are treated less like text
-generators and more like recurrent dynamical systems: state moves, settles,
-breaks, resumes, and sometimes carries structure forward.
+Demian is an experimental system: a discrete-time nonlinear recurrent
+dynamical system with full state $z_t$, input $x_t$, and exposed readout $y_t$:
 
-The goal is to distill that evidence into Demian, a custom recurrent substrate.
-This repo is the lab: experiments, comparisons, ablations, claims, figures,
-papers, and restart notes. The clean runtime belongs in Demian Substrate; old
-paths and superseded notes belong in Demian Archive.
+$
+z_{t+1}=F(z_t,x_t), \qquad y_t=R(z_t).
+$
+
+The research hypothesis is separate from the system: an exposed recurrent
+surface may converge while the full internal state retains structured,
+continuation-relevant dynamics.
+
+This repository contains experiments, controls, claims, figures, and papers.
+Promoted runtime code belongs in Demian Substrate; superseded material belongs
+in Demian Archive.
 
 [![Release](https://img.shields.io/github/v/release/Aeshma-Daeva/Demian-Lab?include_prereleases&label=release)](https://github.com/Aeshma-Daeva/Demian-Lab/releases)
 [![Tests](https://img.shields.io/badge/tests-pytest%20local-2f6f6a)](#environment)
@@ -15,20 +21,24 @@ paths and superseded notes belong in Demian Archive.
 [![Python](https://img.shields.io/badge/python-3.12%2B-315f8f)](pyproject.toml)
 [![Technical Report](https://img.shields.io/badge/technical%20report-GitHub-3b5f7a)](docs/TECHNICAL_REPORT.md)
 
-## What This Lab Is Asking
+## Research Hierarchy
 
-Most model demos ask, "What did it say?" Demian Lab asks different questions:
+1. Classify surface dynamics from $y_t$.
+2. Measure persistence and change in the full state $z_t$.
+3. Test whether one surface class contains different internal regimes.
+4. Use full-state versus surface-only continuation as a sufficiency control.
+5. Restore or ablate explicit channels and components.
+6. Measure perturbation response and stability.
+7. Characterize local dynamics with Jacobians or finite-time Lyapunov estimates.
 
-- When the system loops through its own state, does it settle, oscillate, or
-  keep moving?
-- If it looks still on the surface, is the inside actually still?
-- Which internal channels matter when a trajectory resumes after interruption?
-- Which mechanisms survive ablations, held-out checks, and failed attempts?
+An operational `accumulating fixed point` (AFP) requires surface convergence
+($\Delta y_t \to 0$) together with persistent structured hidden-state change.
+AFP classification must reject numerical drift, ordinary transients, and
+trivial accumulation.
 
-The current conservative answer is simple: surface behavior is not enough.
-Several experiments look fixed from the outside while internal channels still
-carry structured differences. The work now focuses on message, carrier,
-control, and gate-like state as the route toward Demian v1.
+The main target is whether projected fixed-point behavior coexists with
+systematically different internal regimes, and whether those regimes align
+with Demian's explicit recurrent channels.
 
 ## Experiment Timeline
 
@@ -57,7 +67,7 @@ Full version: [Research Lineage](docs/RESEARCH_LINEAGE.md).
 | Plain recurrent baselines matter | Vanilla RNN, GRU, LSTM, diagonal SSM, and selective SSM run through the same self-loop battery. | Native results should be read against simpler recurrent controls, not in isolation. |
 | Fixed point can hide internal structure | GRU/dual-GRU, v8/v9, and v9 five-channel diagnostics expose basin-internal differences. | A flat surface label is not enough to judge a substrate. |
 | v9 is not proven superior to v8 | Saved v9-v8 comparison: both fixed-point in 4/4 seeds; v9 had lower covariance rank and weaker scale-1.0 recovery in that run. | v9 remains a useful simplified scaffold, not a victory claim. |
-| Capsule resume needs internal state | v9 and v9 five-channel full capsules resume almost exactly; surface-only replay fails. | Continuity lives inside the state, not only in the visible surface. |
+| Surface is not a sufficient continuation state | Full-state restore resumes almost exactly; a surface-only zeroed reconstruction does not. | Sufficiency control only: full restore contains more information, so divergence is expected. |
 | v10.0 predecessor found but did not validate sparse release | 640 candidates across four islands; final winner had `duty=0.171875`, `event=0.7896`, `phase=0.9371`; held-out CPU checks weakened the claim. | Useful predecessor and falsification pressure, not a stable mechanism. |
 | Track B points at structured channel anatomy | Message/carrier/control probes and null checks show real structure but also controls that prevent overclaiming. | Treat gate-state propagation as the current live hypothesis, not settled proof. |
 | Control helps capsule maintenance | Continuous control clamp degrades the capsule more than one-shot control zeroing. | Control is stabilizing; current data do not prove setpoints, selfhood, or narrative integration. |
@@ -95,17 +105,18 @@ Quick links: [Research Lineage](docs/RESEARCH_LINEAGE.md) |
 
 ## Orientation
 
-Read in this order if you want the story rather than the file tree:
+Read in this order if you want the scientific structure:
 
-1. [Research Lineage](docs/RESEARCH_LINEAGE.md): what was tried, what failed,
-   what survived.
-2. [Claims Ledger](docs/CLAIMS.md): what is actually supported, with
-   falsifiers.
-3. [Substrate Anatomy](docs/SUBSTRATE_ANATOMY.md): channel and route names.
-4. [Capsule Continuity](docs/CAPSULE_CONTINUITY.md): why full internal state
-   matters.
-5. [Reproducibility](docs/REPRODUCIBILITY.md): compact checks and artifact
-   inspection.
+1. [Hypothesis Status](HYPOTHESIS.md): system, observation, hypothesis, and
+   unresolved channel question.
+2. [Fixed-Point Paper](papers/fixed_point_internal_structure/README.md):
+   surface/internal protocol and current evidence.
+3. [Claims Ledger](docs/CLAIMS.md): observations, controls, interpretations,
+   and untested speculation.
+4. [Research Map](docs/RESEARCH_MAP.md): experiment order and artifact routing.
+5. [Reproducibility](docs/REPRODUCIBILITY.md): compact checks.
+6. [Capsule Continuity](docs/CAPSULE_CONTINUITY.md): continuation-state
+   sufficiency control.
 
 Use [Repo Inventory](docs/REPO_INVENTORY.md) and
 [Development Script Map](docs/DEVELOPMENT_SCRIPT_MAP.md) only when you need the
