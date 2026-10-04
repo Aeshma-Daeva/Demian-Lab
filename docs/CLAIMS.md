@@ -75,7 +75,7 @@ Promotion rule:
 
 ### C3. `demian_native_v7.4` is the prior active custom architecture line and remains a historical baseline
 
-- Type: `inference`
+- Type: `interpretation`
 - Evidence:
   - [development/substrate_lab.py](/home/xenith/demian/development/substrate_lab.py)
   - [tests/test_substrate_lab.py](/home/xenith/demian/tests/test_substrate_lab.py)
@@ -87,7 +87,7 @@ Promotion rule:
 
 ### C4. `FIXED_POINT` is not failure; interior class structure inside the basin is the main object
 
-- Type: `inference`
+- Type: `interpretation`
 - Evidence:
   - [data/substrate_lab/comparative_class_summary.json](/home/xenith/demian/data/substrate_lab/comparative_class_summary.json)
   - [data/substrate_lab/dual_gru_v3b_class_conditioned/summary.json](/home/xenith/demian/data/substrate_lab/dual_gru_v3b_class_conditioned/summary.json)
@@ -97,7 +97,7 @@ Promotion rule:
 
 ### C5. `demian_native_v6` is the immediate endogenous-controller comparison substrate
 
-- Type: `inference`
+- Type: `interpretation`
 - Evidence:
   - [development/substrate_lab.py](/home/xenith/demian/development/substrate_lab.py)
   - [tests/test_substrate_lab.py](/home/xenith/demian/tests/test_substrate_lab.py)
@@ -108,7 +108,7 @@ Promotion rule:
 
 ### C5b. `demian_native_v7.4` is the promoted historical baseline research substrate
 
-- Type: `inference`
+- Type: `interpretation`
 - Evidence:
   - [docs/WORKING_STATE.md](/home/xenith/demian/docs/WORKING_STATE.md)
   - [README.md](/home/xenith/demian/README.md)
@@ -142,7 +142,7 @@ Promotion rule:
 
 ### C8. `demian_native_v5.2c`, `v3`, `v2`, `v1`, and `v0` are the relevant same-family comparison line for phase, route, and onset analysis
 
-- Type: `inference`
+- Type: `interpretation`
 - Evidence:
   - [development/substrate_lab.py](/home/xenith/demian/development/substrate_lab.py)
   - [tests/test_substrate_lab.py](/home/xenith/demian/tests/test_substrate_lab.py)
@@ -305,7 +305,7 @@ Promotion rule:
 
 ### C20. Track B shows a replicated message/carrier phenotype, but the distinct gate-state mechanism claim is not yet established
 
-- Type: `inference`
+- Type: `interpretation`
 - Evidence:
   - [development/gate_state_propagation_characterization.py](/home/xenith/demian/development/gate_state_propagation_characterization.py)
   - [tests/test_gate_state_propagation_characterization.py](/home/xenith/demian/tests/test_gate_state_propagation_characterization.py)
