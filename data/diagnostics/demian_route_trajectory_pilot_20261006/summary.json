@@ -42,7 +42,9 @@
           "mean_declared_scale_ratio": 0.5444359894414081,
           "mean_l2": 0.3079795040448219,
           "mean_target_state_ratio": 0.17668134902652163,
-          "mean_target_update_ratio": 0.739835828602393
+          "mean_target_update_ratio": 0.739835828602393,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "carrier_candidate": {
           "active_fraction": 1.0,
@@ -50,7 +52,9 @@
           "mean_declared_scale_ratio": 1.882431564708921,
           "mean_l2": 1.0648640996202252,
           "mean_target_state_ratio": 0.21973265811827405,
-          "mean_target_update_ratio": 1.4427662786764166
+          "mean_target_update_ratio": 1.4427662786764166,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "carrier_persistence": {
           "active_fraction": 1.0,
@@ -58,7 +62,9 @@
           "mean_declared_scale_ratio": 12.879191874476902,
           "mean_l2": 7.285571128516241,
           "mean_target_state_ratio": 0.8652887993705394,
-          "mean_target_update_ratio": 8.485166921019891
+          "mean_target_update_ratio": 8.485166921019891,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "carrier_to_fast": {
           "active_fraction": 1.0,
@@ -66,7 +72,9 @@
           "mean_declared_scale_ratio": 0.36179497072870026,
           "mean_l2": 0.204662141761162,
           "mean_target_state_ratio": 0.3675002677058506,
-          "mean_target_update_ratio": 7.7799748161740165
+          "mean_target_update_ratio": 7.7799748161740165,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "carrier_to_gate": {
           "active_fraction": 1.0,
@@ -74,7 +82,9 @@
           "mean_declared_scale_ratio": 3.276574688618127,
           "mean_l2": 1.8535105451088627,
           "mean_target_state_ratio": 0.35624130261305137,
-          "mean_target_update_ratio": 2.010942606848096
+          "mean_target_update_ratio": 2.010942606848096,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "carrier_to_slow": {
           "active_fraction": 1.0,
@@ -82,7 +92,9 @@
           "mean_declared_scale_ratio": 0.3090465723311973,
           "mean_l2": 0.1748231415982788,
           "mean_target_state_ratio": 0.06949335470929403,
-          "mean_target_update_ratio": 0.9162896849751662
+          "mean_target_update_ratio": 0.9162896849751662,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "control_candidate": {
           "active_fraction": 1.0,
@@ -90,7 +102,9 @@
           "mean_declared_scale_ratio": 0.30347556575071627,
           "mean_l2": 0.12139022630028651,
           "mean_target_state_ratio": 0.2275812058809782,
-          "mean_target_update_ratio": 2.7855222238199775
+          "mean_target_update_ratio": 2.7855222238199775,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "control_persistence": {
           "active_fraction": 1.0,
@@ -98,7 +112,9 @@
           "mean_declared_scale_ratio": 0.9857785944222421,
           "mean_l2": 0.3943114377688969,
           "mean_target_state_ratio": 0.6442878748878496,
-          "mean_target_update_ratio": 10.16704731114093
+          "mean_target_update_ratio": 10.16704731114093,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "control_to_fast": {
           "active_fraction": 1.0,
@@ -106,7 +122,9 @@
           "mean_declared_scale_ratio": 0.07475951132019532,
           "mean_l2": 0.04229036593016207,
           "mean_target_state_ratio": 0.08055968732351745,
-          "mean_target_update_ratio": 1.4083440108357697
+          "mean_target_update_ratio": 1.4083440108357697,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "control_to_gate": {
           "active_fraction": 1.0,
@@ -114,7 +132,9 @@
           "mean_declared_scale_ratio": 0.2041148762131154,
           "mean_l2": 0.11546481048907731,
           "mean_target_state_ratio": 0.051009421267967585,
-          "mean_target_update_ratio": 0.2413223153197959
+          "mean_target_update_ratio": 0.2413223153197959,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "fast_candidate": {
           "active_fraction": 1.0,
@@ -122,7 +142,9 @@
           "mean_declared_scale_ratio": 1.0594405623990797,
           "mean_l2": 0.5993100847491832,
           "mean_target_state_ratio": 1.120210950676818,
-          "mean_target_update_ratio": 20.903244874673096
+          "mean_target_update_ratio": 20.903244874673096,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "fast_integrated_update": {
           "active_fraction": 1.0,
@@ -130,7 +152,9 @@
           "mean_declared_scale_ratio": 0.5171398886408547,
           "mean_l2": 0.2925384976640036,
           "mean_target_state_ratio": 0.5446489896676279,
-          "mean_target_update_ratio": 10.382096998492544
+          "mean_target_update_ratio": 10.382096998492544,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "fast_retention": {
           "active_fraction": 1.0,
@@ -138,7 +162,9 @@
           "mean_declared_scale_ratio": 0.4511643603851871,
           "mean_l2": 0.2552171029264458,
           "mean_target_state_ratio": 0.4743441995222313,
-          "mean_target_update_ratio": 9.10856633422362
+          "mean_target_update_ratio": 9.10856633422362,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "fast_slow_to_control": {
           "active_fraction": 1.0,
@@ -146,7 +172,9 @@
           "mean_declared_scale_ratio": 0.3759648655464582,
           "mean_l2": 0.15038594621858328,
           "mean_target_state_ratio": 0.2367025779469262,
-          "mean_target_update_ratio": 3.9113095315192714
+          "mean_target_update_ratio": 3.9113095315192714,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "fast_to_gate": {
           "active_fraction": 1.0,
@@ -154,7 +182,9 @@
           "mean_declared_scale_ratio": 0.24003644627690493,
           "mean_l2": 0.13578511911545593,
           "mean_target_state_ratio": 0.07212156270658451,
-          "mean_target_update_ratio": 0.2973662523422594
+          "mean_target_update_ratio": 0.2973662523422594,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "fast_to_message": {
           "active_fraction": 1.0,
@@ -162,7 +192,9 @@
           "mean_declared_scale_ratio": 0.07005990830483957,
           "mean_l2": 0.039631869001327834,
           "mean_target_state_ratio": 0.02352877464250072,
-          "mean_target_update_ratio": 0.2769400179400963
+          "mean_target_update_ratio": 0.2769400179400963,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "fast_to_slow": {
           "active_fraction": 1.0,
@@ -170,7 +202,9 @@
           "mean_declared_scale_ratio": 0.05942371156614502,
           "mean_l2": 0.0336151275293557,
           "mean_target_state_ratio": 0.01490322350040532,
-          "mean_target_update_ratio": 0.17029143016768794
+          "mean_target_update_ratio": 0.17029143016768794,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "gate_integrated_update": {
           "active_fraction": 1.0,
@@ -178,31 +212,30 @@
           "mean_declared_scale_ratio": 1.7218821711217913,
           "mean_l2": 0.9740436476835472,
           "mean_target_state_ratio": 0.2239975774020575,
-          "mean_target_update_ratio": 1.0615922877782333
+          "mean_target_update_ratio": 1.0615922877782333,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "gate_modulates_carrier_to_slow": {
           "active_fraction": 1.0,
           "longest_active_fraction": 1.0,
-          "mean_declared_scale_ratio": 4.067695434757568,
-          "mean_l2": 2.301036020574911,
-          "mean_target_state_ratio": 1.2291623097751745,
-          "mean_target_update_ratio": 11.17959194676188
+          "mean_l2": 0.9917622128302395,
+          "norm_basis": "deviation_from_neutral",
+          "operation": "multiplicative"
         },
         "gate_modulates_message_to_carrier": {
           "active_fraction": 1.0,
           "longest_active_fraction": 1.0,
-          "mean_declared_scale_ratio": 4.004488423581105,
-          "mean_l2": 2.265280735597782,
-          "mean_target_state_ratio": 1.2000902019865818,
-          "mean_target_update_ratio": 4.489611015682465
+          "mean_l2": 1.123997207326364,
+          "norm_basis": "deviation_from_neutral",
+          "operation": "multiplicative"
         },
         "gate_modulates_surface_routes": {
           "active_fraction": 1.0,
           "longest_active_fraction": 1.0,
-          "mean_declared_scale_ratio": 4.2515197438302845,
-          "mean_l2": 2.4050227529687103,
-          "mean_target_state_ratio": 4.626904949267999,
-          "mean_target_update_ratio": 74.9740609034152
+          "mean_l2": 0.7272923091403407,
+          "norm_basis": "deviation_from_neutral",
+          "operation": "multiplicative"
         },
         "gate_persistence": {
           "active_fraction": 1.0,
@@ -210,7 +243,9 @@
           "mean_declared_scale_ratio": 11.378857693734082,
           "mean_l2": 6.4368539499168715,
           "mean_target_state_ratio": 0.8843939522122715,
-          "mean_target_update_ratio": 5.78757979320596
+          "mean_target_update_ratio": 5.78757979320596,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "message_candidate": {
           "active_fraction": 1.0,
@@ -218,7 +253,9 @@
           "mean_declared_scale_ratio": 0.6074921808662993,
           "mean_l2": 0.3436494724866919,
           "mean_target_state_ratio": 0.19676209377704368,
-          "mean_target_update_ratio": 2.343358454697509
+          "mean_target_update_ratio": 2.343358454697509,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "message_persistence": {
           "active_fraction": 1.0,
@@ -226,7 +263,9 @@
           "mean_declared_scale_ratio": 3.6180376673423558,
           "mean_l2": 2.0466711753329108,
           "mean_target_state_ratio": 0.8488530288659816,
-          "mean_target_update_ratio": 15.887990923135803
+          "mean_target_update_ratio": 15.887990923135803,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "message_to_carrier": {
           "active_fraction": 1.0,
@@ -234,7 +273,9 @@
           "mean_declared_scale_ratio": 0.42723791854608384,
           "mean_l2": 0.24168226350716943,
           "mean_target_state_ratio": 0.06326761587776228,
-          "mean_target_update_ratio": 0.39013103930796283
+          "mean_target_update_ratio": 0.39013103930796283,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "message_to_fast": {
           "active_fraction": 1.0,
@@ -242,7 +283,9 @@
           "mean_declared_scale_ratio": 0.1434840380380164,
           "mean_l2": 0.08116682903096796,
           "mean_target_state_ratio": 0.14764937729931235,
-          "mean_target_update_ratio": 2.939086253039342
+          "mean_target_update_ratio": 2.939086253039342,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "message_to_gate": {
           "active_fraction": 1.0,
@@ -250,7 +293,9 @@
           "mean_declared_scale_ratio": 1.3536337224626074,
           "mean_l2": 0.7657308675168791,
           "mean_target_state_ratio": 0.3027189980758775,
-          "mean_target_update_ratio": 1.4074614617794314
+          "mean_target_update_ratio": 1.4074614617794314,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "slow_candidate": {
           "active_fraction": 1.0,
@@ -258,7 +303,9 @@
           "mean_declared_scale_ratio": 0.7684407963428532,
           "mean_l2": 0.4346957584275379,
           "mean_target_state_ratio": 0.18856972641521885,
-          "mean_target_update_ratio": 2.2369704343193906
+          "mean_target_update_ratio": 2.2369704343193906,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "slow_persistence": {
           "active_fraction": 1.0,
@@ -266,7 +313,9 @@
           "mean_declared_scale_ratio": 4.2900452402277995,
           "mean_l2": 2.426816064769719,
           "mean_target_state_ratio": 0.859554884974439,
-          "mean_target_update_ratio": 13.194725110726504
+          "mean_target_update_ratio": 13.194725110726504,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "slow_to_gate": {
           "active_fraction": 1.0,
@@ -274,7 +323,9 @@
           "mean_declared_scale_ratio": 0.9885292517006978,
           "mean_l2": 0.5591965898230616,
           "mean_target_state_ratio": 0.1730684318604713,
-          "mean_target_update_ratio": 0.8390883089458687
+          "mean_target_update_ratio": 0.8390883089458687,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         }
       },
       "run_id": "demian_v1_route_trajectory:seed=94:active:uninterrupted",
@@ -327,7 +378,9 @@
           "mean_declared_scale_ratio": 0.4054175817252708,
           "mean_l2": 0.2293388170001523,
           "mean_target_state_ratio": 0.03729692850037305,
-          "mean_target_update_ratio": 0.15437953828130374
+          "mean_target_update_ratio": 0.15437953828130374,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "carrier_candidate": {
           "active_fraction": 1.0,
@@ -335,7 +388,9 @@
           "mean_declared_scale_ratio": 1.6583729454073954,
           "mean_l2": 0.9381174043471022,
           "mean_target_state_ratio": 0.1576554002681539,
-          "mean_target_update_ratio": 1.2122919947450568
+          "mean_target_update_ratio": 1.2122919947450568,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "carrier_persistence": {
           "active_fraction": 1.0,
@@ -343,7 +398,9 @@
           "mean_declared_scale_ratio": 15.137532543937663,
           "mean_l2": 8.563081529800298,
           "mean_target_state_ratio": 0.8516501155094159,
-          "mean_target_update_ratio": 10.257742759999418
+          "mean_target_update_ratio": 10.257742759999418,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "carrier_to_fast": {
           "active_fraction": 1.0,
@@ -351,7 +408,9 @@
           "mean_declared_scale_ratio": 0.4827617628057059,
           "mean_l2": 0.27309129294198903,
           "mean_target_state_ratio": 0.4317515551498933,
-          "mean_target_update_ratio": 14.506338764649415
+          "mean_target_update_ratio": 14.506338764649415,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "carrier_to_gate": {
           "active_fraction": 1.0,
@@ -359,7 +418,9 @@
           "mean_declared_scale_ratio": 4.0487675059089545,
           "mean_l2": 2.2903287671007737,
           "mean_target_state_ratio": 0.08838114768882956,
-          "mean_target_update_ratio": 1.113357292751571
+          "mean_target_update_ratio": 1.113357292751571,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "carrier_to_slow": {
           "active_fraction": 1.0,
@@ -367,7 +428,9 @@
           "mean_declared_scale_ratio": 0.8537676695404137,
           "mean_l2": 0.48296392695188967,
           "mean_target_state_ratio": 0.04713845394799329,
-          "mean_target_update_ratio": 0.4872622540546834
+          "mean_target_update_ratio": 0.4872622540546834,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "control_candidate": {
           "active_fraction": 1.0,
@@ -375,7 +438,9 @@
           "mean_declared_scale_ratio": 1.3885202123517473,
           "mean_l2": 0.5554080849406989,
           "mean_target_state_ratio": 0.2748800657957322,
-          "mean_target_update_ratio": 2.58384253577782
+          "mean_target_update_ratio": 2.58384253577782,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "control_persistence": {
           "active_fraction": 1.0,
@@ -383,7 +448,9 @@
           "mean_declared_scale_ratio": 4.690064770516495,
           "mean_l2": 1.876025908206598,
           "mean_target_state_ratio": 0.6345226318163759,
-          "mean_target_update_ratio": 9.245318991866913
+          "mean_target_update_ratio": 9.245318991866913,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "control_to_fast": {
           "active_fraction": 1.0,
@@ -391,7 +458,9 @@
           "mean_declared_scale_ratio": 0.2898169461542466,
           "mean_l2": 0.16394522234275544,
           "mean_target_state_ratio": 0.2605125265074895,
-          "mean_target_update_ratio": 9.013290205675254
+          "mean_target_update_ratio": 9.013290205675254,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "control_to_gate": {
           "active_fraction": 1.0,
@@ -399,7 +468,9 @@
           "mean_declared_scale_ratio": 1.3679128984274675,
           "mean_l2": 0.773808389240486,
           "mean_target_state_ratio": 0.03889723698814086,
-          "mean_target_update_ratio": 0.3872183855528827
+          "mean_target_update_ratio": 0.3872183855528827,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "fast_candidate": {
           "active_fraction": 1.0,
@@ -407,7 +478,9 @@
           "mean_declared_scale_ratio": 1.2226632546023304,
           "mean_l2": 0.6916427827495378,
           "mean_target_state_ratio": 1.0987252304094572,
-          "mean_target_update_ratio": 30.043821117079258
+          "mean_target_update_ratio": 30.043821117079258,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "fast_integrated_update": {
           "active_fraction": 1.0,
@@ -415,7 +488,9 @@
           "mean_declared_scale_ratio": 0.5919520721750717,
           "mean_l2": 0.3348586594979375,
           "mean_target_state_ratio": 0.5313669021808306,
-          "mean_target_update_ratio": 14.241852014044378
+          "mean_target_update_ratio": 14.241852014044378,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "fast_retention": {
           "active_fraction": 1.0,
@@ -423,7 +498,9 @@
           "mean_declared_scale_ratio": 0.5579075875212399,
           "mean_l2": 0.31560019072935686,
           "mean_target_state_ratio": 0.49973569593110667,
-          "mean_target_update_ratio": 14.00905562743218
+          "mean_target_update_ratio": 14.00905562743218,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "fast_slow_to_control": {
           "active_fraction": 1.0,
@@ -431,7 +508,9 @@
           "mean_declared_scale_ratio": 1.7239243206084969,
           "mean_l2": 0.6895697282433988,
           "mean_target_state_ratio": 0.2880886523075689,
-          "mean_target_update_ratio": 3.0702403905287095
+          "mean_target_update_ratio": 3.0702403905287095,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "fast_to_gate": {
           "active_fraction": 1.0,
@@ -439,7 +518,9 @@
           "mean_declared_scale_ratio": 0.40571589467168406,
           "mean_l2": 0.22950756828601193,
           "mean_target_state_ratio": 0.02978619077162433,
-          "mean_target_update_ratio": 0.1425880342038024
+          "mean_target_update_ratio": 0.1425880342038024,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "fast_to_message": {
           "active_fraction": 1.0,
@@ -447,7 +528,9 @@
           "mean_declared_scale_ratio": 0.0689765244020959,
           "mean_l2": 0.039019014517921106,
           "mean_target_state_ratio": 0.019142805861896303,
-          "mean_target_update_ratio": 0.2019746624620084
+          "mean_target_update_ratio": 0.2019746624620084,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "fast_to_slow": {
           "active_fraction": 1.0,
@@ -455,7 +538,9 @@
           "mean_declared_scale_ratio": 0.11752202078572375,
           "mean_l2": 0.06648049426906534,
           "mean_target_state_ratio": 0.010745617275721124,
-          "mean_target_update_ratio": 0.0722102335098406
+          "mean_target_update_ratio": 0.0722102335098406,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "gate_integrated_update": {
           "active_fraction": 1.0,
@@ -463,31 +548,30 @@
           "mean_declared_scale_ratio": 3.935868100536353,
           "mean_l2": 2.2264632189960576,
           "mean_target_state_ratio": 0.16185861188477818,
-          "mean_target_update_ratio": 1.1734488083092662
+          "mean_target_update_ratio": 1.1734488083092662,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "gate_modulates_carrier_to_slow": {
           "active_fraction": 1.0,
           "longest_active_fraction": 1.0,
-          "mean_declared_scale_ratio": 5.026955884410737,
-          "mean_l2": 2.843675675673961,
-          "mean_target_state_ratio": 0.6011526313173184,
-          "mean_target_update_ratio": 3.499974463059784
+          "mean_l2": 1.282294924228738,
+          "norm_basis": "deviation_from_neutral",
+          "operation": "multiplicative"
         },
         "gate_modulates_message_to_carrier": {
           "active_fraction": 1.0,
           "longest_active_fraction": 1.0,
-          "mean_declared_scale_ratio": 5.1123629192379205,
-          "mean_l2": 2.8919891904638306,
-          "mean_target_state_ratio": 0.8800291110691447,
-          "mean_target_update_ratio": 4.465482512684372
+          "mean_l2": 1.4532676148006023,
+          "norm_basis": "deviation_from_neutral",
+          "operation": "multiplicative"
         },
         "gate_modulates_surface_routes": {
           "active_fraction": 1.0,
           "longest_active_fraction": 1.0,
-          "mean_declared_scale_ratio": 4.911275721816006,
-          "mean_l2": 2.7782370937383636,
-          "mean_target_state_ratio": 4.424158201846357,
-          "mean_target_update_ratio": 120.08685170182966
+          "mean_l2": 0.940349610068934,
+          "norm_basis": "deviation_from_neutral",
+          "operation": "multiplicative"
         },
         "gate_persistence": {
           "active_fraction": 1.0,
@@ -495,7 +579,9 @@
           "mean_declared_scale_ratio": 43.13707013748309,
           "mean_l2": 24.40201185178721,
           "mean_target_state_ratio": 0.8493345040206589,
-          "mean_target_update_ratio": 11.610175105941657
+          "mean_target_update_ratio": 11.610175105941657,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "message_candidate": {
           "active_fraction": 1.0,
@@ -503,7 +589,9 @@
           "mean_declared_scale_ratio": 0.698438784379907,
           "mean_l2": 0.395096640542977,
           "mean_target_state_ratio": 0.19973688574857482,
-          "mean_target_update_ratio": 1.9833874818529835
+          "mean_target_update_ratio": 1.9833874818529835,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "message_persistence": {
           "active_fraction": 1.0,
@@ -511,7 +599,9 @@
           "mean_declared_scale_ratio": 3.6874270707594077,
           "mean_l2": 2.08592374949186,
           "mean_target_state_ratio": 0.8565175202262709,
-          "mean_target_update_ratio": 11.456801414343632
+          "mean_target_update_ratio": 11.456801414343632,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "message_to_carrier": {
           "active_fraction": 1.0,
@@ -519,7 +609,9 @@
           "mean_declared_scale_ratio": 0.22814594858560366,
           "mean_l2": 0.12905883787609423,
           "mean_target_state_ratio": 0.04040786506892958,
-          "mean_target_update_ratio": 0.2103769871589795
+          "mean_target_update_ratio": 0.2103769871589795,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "message_to_fast": {
           "active_fraction": 1.0,
@@ -527,7 +619,9 @@
           "mean_declared_scale_ratio": 0.2079519391415365,
           "mean_l2": 0.11763538106229818,
           "mean_target_state_ratio": 0.18499626604363642,
-          "mean_target_update_ratio": 5.6338483789082865
+          "mean_target_update_ratio": 5.6338483789082865,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "message_to_gate": {
           "active_fraction": 1.0,
@@ -535,7 +629,9 @@
           "mean_declared_scale_ratio": 1.0435933398083626,
           "mean_l2": 0.5903455419036883,
           "mean_target_state_ratio": 0.04917575822948848,
-          "mean_target_update_ratio": 0.32533031502011317
+          "mean_target_update_ratio": 0.32533031502011317,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "slow_candidate": {
           "active_fraction": 1.0,
@@ -543,7 +639,9 @@
           "mean_declared_scale_ratio": 3.24846144805131,
           "mean_l2": 1.8376072946721227,
           "mean_target_state_ratio": 0.1700417732533813,
-          "mean_target_update_ratio": 1.828729326483243
+          "mean_target_update_ratio": 1.828729326483243,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "slow_persistence": {
           "active_fraction": 1.0,
@@ -551,7 +649,9 @@
           "mean_declared_scale_ratio": 23.613609969080603,
           "mean_l2": 13.357874989944927,
           "mean_target_state_ratio": 0.8232514212290533,
-          "mean_target_update_ratio": 13.778559945322291
+          "mean_target_update_ratio": 13.778559945322291,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "slow_to_gate": {
           "active_fraction": 1.0,
@@ -559,7 +659,9 @@
           "mean_declared_scale_ratio": 9.76348497419292,
           "mean_l2": 5.523061146611823,
           "mean_target_state_ratio": 0.21520607908984665,
-          "mean_target_update_ratio": 2.6410345625379907
+          "mean_target_update_ratio": 2.6410345625379907,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         }
       },
       "run_id": "demian_v1_route_trajectory:seed=95:active:uninterrupted",
@@ -612,7 +714,9 @@
           "mean_declared_scale_ratio": 0.43304575641519955,
           "mean_l2": 0.24496767274019643,
           "mean_target_state_ratio": 0.06124650868937756,
-          "mean_target_update_ratio": 0.3930526706621227
+          "mean_target_update_ratio": 0.3930526706621227,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "carrier_candidate": {
           "active_fraction": 1.0,
@@ -620,7 +724,9 @@
           "mean_declared_scale_ratio": 1.7716120064231173,
           "mean_l2": 1.0021750906986335,
           "mean_target_state_ratio": 0.14893438692055722,
-          "mean_target_update_ratio": 1.0488379456828427
+          "mean_target_update_ratio": 1.0488379456828427,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "carrier_persistence": {
           "active_fraction": 1.0,
@@ -628,7 +734,9 @@
           "mean_declared_scale_ratio": 19.49680054681568,
           "mean_l2": 11.029055902475967,
           "mean_target_state_ratio": 0.8659178737419494,
-          "mean_target_update_ratio": 11.149129303541613
+          "mean_target_update_ratio": 11.149129303541613,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "carrier_to_fast": {
           "active_fraction": 1.0,
@@ -636,7 +744,9 @@
           "mean_declared_scale_ratio": 0.5043581639492244,
           "mean_l2": 0.28530806230023453,
           "mean_target_state_ratio": 0.4488330550664544,
-          "mean_target_update_ratio": 13.765359432091246
+          "mean_target_update_ratio": 13.765359432091246,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "carrier_to_gate": {
           "active_fraction": 1.0,
@@ -644,7 +754,9 @@
           "mean_declared_scale_ratio": 5.043726456103658,
           "mean_l2": 2.853162543648713,
           "mean_target_state_ratio": 0.19163924505192861,
-          "mean_target_update_ratio": 4.870861614222339
+          "mean_target_update_ratio": 4.870861614222339,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "carrier_to_slow": {
           "active_fraction": 1.0,
@@ -652,7 +764,9 @@
           "mean_declared_scale_ratio": 0.9564658878309779,
           "mean_l2": 0.541058812207117,
           "mean_target_state_ratio": 0.09181750128115689,
-          "mean_target_update_ratio": 1.5619796543793891
+          "mean_target_update_ratio": 1.5619796543793891,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "control_candidate": {
           "active_fraction": 1.0,
@@ -660,7 +774,9 @@
           "mean_declared_scale_ratio": 0.610714071897537,
           "mean_l2": 0.24428562875901483,
           "mean_target_state_ratio": 0.2942043814503153,
-          "mean_target_update_ratio": 2.65443993921327
+          "mean_target_update_ratio": 2.65443993921327,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "control_persistence": {
           "active_fraction": 1.0,
@@ -668,7 +784,9 @@
           "mean_declared_scale_ratio": 1.658232544896049,
           "mean_l2": 0.6632930179584197,
           "mean_target_state_ratio": 0.6533556618953638,
-          "mean_target_update_ratio": 7.914265647540262
+          "mean_target_update_ratio": 7.914265647540262,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "control_to_fast": {
           "active_fraction": 1.0,
@@ -676,7 +794,9 @@
           "mean_declared_scale_ratio": 0.12494406028441936,
           "mean_l2": 0.07067903383687499,
           "mean_target_state_ratio": 0.11222604812817323,
-          "mean_target_update_ratio": 2.7986086055167996
+          "mean_target_update_ratio": 2.7986086055167996,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "control_to_gate": {
           "active_fraction": 1.0,
@@ -684,7 +804,9 @@
           "mean_declared_scale_ratio": 0.37229649090940503,
           "mean_l2": 0.21060269866719694,
           "mean_target_state_ratio": 0.03332094857819989,
-          "mean_target_update_ratio": 0.3133340996735351
+          "mean_target_update_ratio": 0.3133340996735351,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "fast_candidate": {
           "active_fraction": 1.0,
@@ -692,7 +814,9 @@
           "mean_declared_scale_ratio": 1.3281433692498266,
           "mean_l2": 0.751311346227601,
           "mean_target_state_ratio": 1.2054802197246697,
-          "mean_target_update_ratio": 29.365382521482474
+          "mean_target_update_ratio": 29.365382521482474,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "fast_integrated_update": {
           "active_fraction": 1.0,
@@ -700,7 +824,9 @@
           "mean_declared_scale_ratio": 0.5728070063939391,
           "mean_l2": 0.3240285748258564,
           "mean_target_state_ratio": 0.5202622531561982,
-          "mean_target_update_ratio": 12.507192102961666
+          "mean_target_update_ratio": 12.507192102961666,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "fast_retention": {
           "active_fraction": 1.0,
@@ -708,7 +834,9 @@
           "mean_declared_scale_ratio": 0.5564241880275004,
           "mean_l2": 0.3147610532563713,
           "mean_target_state_ratio": 0.5016019010127745,
-          "mean_target_update_ratio": 12.296430147718551
+          "mean_target_update_ratio": 12.296430147718551,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "fast_slow_to_control": {
           "active_fraction": 1.0,
@@ -716,7 +844,9 @@
           "mean_declared_scale_ratio": 1.1419646973741044,
           "mean_l2": 0.4567858789496418,
           "mean_target_state_ratio": 0.4534915746896994,
-          "mean_target_update_ratio": 5.396160093655248
+          "mean_target_update_ratio": 5.396160093655248,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "fast_to_gate": {
           "active_fraction": 1.0,
@@ -724,7 +854,9 @@
           "mean_declared_scale_ratio": 0.2767589766888027,
           "mean_l2": 0.15655851933672166,
           "mean_target_state_ratio": 0.03491351663570049,
-          "mean_target_update_ratio": 0.24049105597198792
+          "mean_target_update_ratio": 0.24049105597198792,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "fast_to_message": {
           "active_fraction": 1.0,
@@ -732,7 +864,9 @@
           "mean_declared_scale_ratio": 0.09273780165571031,
           "mean_l2": 0.05246042273846865,
           "mean_target_state_ratio": 0.011545245864997816,
-          "mean_target_update_ratio": 0.12561564173261353
+          "mean_target_update_ratio": 0.12561564173261353,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "fast_to_slow": {
           "active_fraction": 1.0,
@@ -740,7 +874,9 @@
           "mean_declared_scale_ratio": 0.1331512093237611,
           "mean_l2": 0.07532169842881675,
           "mean_target_state_ratio": 0.017228357937716075,
-          "mean_target_update_ratio": 0.2056677537026094
+          "mean_target_update_ratio": 0.2056677537026094,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "gate_integrated_update": {
           "active_fraction": 1.0,
@@ -748,31 +884,30 @@
           "mean_declared_scale_ratio": 1.7517639011361439,
           "mean_l2": 0.9909473068249347,
           "mean_target_state_ratio": 0.14477612813805593,
-          "mean_target_update_ratio": 1.2194577387416228
+          "mean_target_update_ratio": 1.2194577387416228,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "gate_modulates_carrier_to_slow": {
           "active_fraction": 1.0,
           "longest_active_fraction": 1.0,
-          "mean_declared_scale_ratio": 6.121050706532969,
-          "mean_l2": 3.462589170060937,
-          "mean_target_state_ratio": 0.9238345742088065,
-          "mean_target_update_ratio": 9.335191078131851
+          "mean_l2": 1.3783897572266064,
+          "norm_basis": "deviation_from_neutral",
+          "operation": "multiplicative"
         },
         "gate_modulates_message_to_carrier": {
           "active_fraction": 1.0,
           "longest_active_fraction": 1.0,
-          "mean_declared_scale_ratio": 6.3293454468846235,
-          "mean_l2": 3.5804184687714535,
-          "mean_target_state_ratio": 0.894997838961682,
-          "mean_target_update_ratio": 4.311172158881312
+          "mean_l2": 1.5621751024139232,
+          "norm_basis": "deviation_from_neutral",
+          "operation": "multiplicative"
         },
         "gate_modulates_surface_routes": {
           "active_fraction": 1.0,
           "longest_active_fraction": 1.0,
-          "mean_declared_scale_ratio": 5.738048797468506,
-          "mean_l2": 3.245930572375437,
-          "mean_target_state_ratio": 5.223371478499526,
-          "mean_target_update_ratio": 129.31607638968345
+          "mean_l2": 1.010819180031517,
+          "norm_basis": "deviation_from_neutral",
+          "operation": "multiplicative"
         },
         "gate_persistence": {
           "active_fraction": 1.0,
@@ -780,7 +915,9 @@
           "mean_declared_scale_ratio": 20.199651691170168,
           "mean_l2": 11.426648550746194,
           "mean_target_state_ratio": 0.8793324880635944,
-          "mean_target_update_ratio": 18.097481085413758
+          "mean_target_update_ratio": 18.097481085413758,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "message_candidate": {
           "active_fraction": 1.0,
@@ -788,7 +925,9 @@
           "mean_declared_scale_ratio": 1.9547277740509652,
           "mean_l2": 1.1057610115240986,
           "mean_target_state_ratio": 0.19036881989548074,
-          "mean_target_update_ratio": 2.7026211250071475
+          "mean_target_update_ratio": 2.7026211250071475,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "message_persistence": {
           "active_fraction": 1.0,
@@ -796,7 +935,9 @@
           "mean_declared_scale_ratio": 11.354603322636061,
           "mean_l2": 6.423133605695411,
           "mean_target_state_ratio": 0.8187436432184899,
-          "mean_target_update_ratio": 17.150997286421312
+          "mean_target_update_ratio": 17.150997286421312,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "message_to_carrier": {
           "active_fraction": 1.0,
@@ -804,7 +945,9 @@
           "mean_declared_scale_ratio": 0.9400489255732487,
           "mean_l2": 0.5317719759359779,
           "mean_target_state_ratio": 0.07588285823107907,
-          "mean_target_update_ratio": 0.5604609054620653
+          "mean_target_update_ratio": 0.5604609054620653,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "message_to_fast": {
           "active_fraction": 1.0,
@@ -812,7 +955,9 @@
           "mean_declared_scale_ratio": 0.37037156085494344,
           "mean_l2": 0.20951379379134127,
           "mean_target_state_ratio": 0.3287258344683149,
-          "mean_target_update_ratio": 9.631106823956976
+          "mean_target_update_ratio": 9.631106823956976,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "message_to_gate": {
           "active_fraction": 1.0,
@@ -820,7 +965,9 @@
           "mean_declared_scale_ratio": 2.882187747564009,
           "mean_l2": 1.630411600764234,
           "mean_target_state_ratio": 0.1462554806471102,
-          "mean_target_update_ratio": 2.5167695499455105
+          "mean_target_update_ratio": 2.5167695499455105,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "slow_candidate": {
           "active_fraction": 1.0,
@@ -828,7 +975,9 @@
           "mean_declared_scale_ratio": 1.5465984808051194,
           "mean_l2": 0.87488821884009,
           "mean_target_state_ratio": 0.1856632884704746,
-          "mean_target_update_ratio": 2.4729314809275653
+          "mean_target_update_ratio": 2.4729314809275653,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "slow_persistence": {
           "active_fraction": 1.0,
@@ -836,7 +985,9 @@
           "mean_declared_scale_ratio": 9.656843084153119,
           "mean_l2": 5.462735383727268,
           "mean_target_state_ratio": 0.8459345015086166,
-          "mean_target_update_ratio": 16.173819238183725
+          "mean_target_update_ratio": 16.173819238183725,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         },
         "slow_to_gate": {
           "active_fraction": 1.0,
@@ -844,7 +995,9 @@
           "mean_declared_scale_ratio": 2.5060289979990458,
           "mean_l2": 1.4176240786682035,
           "mean_target_state_ratio": 0.14728859920159293,
-          "mean_target_update_ratio": 2.098104859074199
+          "mean_target_update_ratio": 2.098104859074199,
+          "norm_basis": "contribution_vector",
+          "operation": "additive"
         }
       },
       "run_id": "demian_v1_route_trajectory:seed=96:active:uninterrupted",

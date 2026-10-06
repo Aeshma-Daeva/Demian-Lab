@@ -62,8 +62,13 @@ def test_unselected_pilot_emits_compact_summary_and_timestamped_records() -> Non
     assert payload["runs"][0]["route_steps"][0]["step"] == 1
     assert "fast_to_message" in payload["runs"][0]["route_summary"]
     route = payload["runs"][0]["route_summary"]["fast_to_message"]
+    assert route["norm_basis"] == "contribution_vector"
     assert route["mean_target_update_ratio"] >= 0.0
     assert route["mean_declared_scale_ratio"] >= 0.0
+    modulator = payload["runs"][0]["route_summary"]["gate_modulates_surface_routes"]
+    assert modulator["norm_basis"] == "deviation_from_neutral"
+    assert "mean_target_update_ratio" not in modulator
+    assert "mean_declared_scale_ratio" not in modulator
     assert "fast" in payload["runs"][0]["target_summary"]
     assert payload["evidence_status"]["hypothesis_status"] == "untested"
 

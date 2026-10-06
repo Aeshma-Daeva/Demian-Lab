@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import torch
+import pytest
 
 from development.demian_v1_gate_state import (
     V1_ROUTE_CATALOG,
@@ -60,6 +61,14 @@ def test_route_tracing_does_not_change_trajectory() -> None:
     )
     assert untraced.route_trace() is None
     assert traced.route_trace() is not None
+
+
+@pytest.mark.parametrize("override", ["gate_disabled", "gate_frozen"])
+def test_route_tracing_rejects_discarded_gate_branch(override: str) -> None:
+    kwargs = {override: True}
+
+    with pytest.raises(ValueError, match="active gate update rule"):
+        DemianV1GateState(hidden_size=8, trace_routes=True, **kwargs)
 
 
 def test_recorded_integration_terms_reconstruct_all_six_targets() -> None:

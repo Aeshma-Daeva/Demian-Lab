@@ -166,6 +166,8 @@ class DemianV1GateState(DemianNativeV9Substrate):
         self.binding_start_step = binding_start_step
         self.gate_disabled = gate_disabled
         self.gate_frozen = gate_frozen
+        if trace_routes and (gate_disabled or gate_frozen):
+            raise ValueError("route tracing currently supports only the active gate update rule")
         self.trace_routes = trace_routes
         self._step_index = 0
         self._frozen_gate: torch.Tensor | None = None

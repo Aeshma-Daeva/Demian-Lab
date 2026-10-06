@@ -35,7 +35,7 @@ class V1TraceConfig:
     perturb_scale: float = 0.0
     device: str = "cpu"
     dtype: str = "float32"
-    record_routes: bool = True
+    record_routes: bool = False
 
 
 @dataclass(frozen=True)

@@ -72,6 +72,7 @@
     {"id":"original_contribution_rescue","semantics":"Replay the uninterrupted contribution sequence after targeted removal.","required_controls":["removal_arm","sham","runtime_metadata_match"]}
   ],
   "interpretation_rules": [
+    "Route tracing is defined for the active gate update rule; disabled and frozen overrides require explicit discarded-branch semantics.",
     "A route sequence is descriptive until intervention establishes a delayed downstream effect.",
     "Lagged association is not transmission.",
     "Persistent contributions may cancel and do not establish AFP-v2.",

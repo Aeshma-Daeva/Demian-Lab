@@ -111,11 +111,18 @@ def _cosine(left: list[float], right: list[float]) -> float:
 def _route_summary(
     trace: V1TraceResult,
     protocol: RouteTrajectoryProtocol,
-) -> dict[str, dict[str, float]]:
+) -> dict[str, dict[str, object]]:
     catalog = {route.id: route for route in protocol.route_catalog}
-    summary: dict[str, dict[str, float]] = {}
+    summary: dict[str, dict[str, object]] = {}
     for route_id in catalog:
-        norms = [_l2(step.values[route_id]) for step in trace.route_steps]
+        route = catalog[route_id]
+        if route.operation == "multiplicative":
+            norms = [
+                _l2([value - 1.0 for value in step.values[route_id]])
+                for step in trace.route_steps
+            ]
+        else:
+            norms = [_l2(step.values[route_id]) for step in trace.route_steps]
         target = catalog[route_id].target
         target_norms = [_l2(values) for values in trace.channels[target]]
         target_history = [trace.initial_channels[target], *trace.channels[target]]
@@ -129,20 +136,30 @@ def _route_summary(
         for is_active in active:
             current = current + 1 if is_active else 0
             longest = max(longest, current)
-        summary[route_id] = {
+        route_summary: dict[str, object] = {
+            "operation": route.operation,
+            "norm_basis": (
+                "deviation_from_neutral"
+                if route.operation == "multiplicative"
+                else "contribution_vector"
+            ),
             "mean_l2": mean(norms),
             "active_fraction": mean(float(value) for value in active),
             "longest_active_fraction": longest / len(active),
-            "mean_target_state_ratio": mean(
+        }
+        if route.operation == "additive":
+            route_summary["mean_target_state_ratio"] = mean(
                 value / max(target_norm, 1e-12)
                 for value, target_norm in zip(norms, target_norms, strict=True)
-            ),
-            "mean_target_update_ratio": mean(
+            )
+            route_summary["mean_target_update_ratio"] = mean(
                 value / max(update_norm, 1e-12)
                 for value, update_norm in zip(norms, target_update_norms, strict=True)
-            ),
-            "mean_declared_scale_ratio": mean(norms) / max(declared_scale, 1e-12),
-        }
+            )
+            route_summary["mean_declared_scale_ratio"] = mean(norms) / max(
+                declared_scale, 1e-12
+            )
+        summary[route_id] = route_summary
     return summary
 
 

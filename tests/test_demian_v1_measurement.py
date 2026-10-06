@@ -46,6 +46,19 @@ def test_measurement_can_omit_route_payload() -> None:
     assert result.route_steps == []
 
 
+def test_measurement_rejects_route_trace_for_gate_override() -> None:
+    with pytest.raises(ValueError, match="active gate update rule"):
+        run_v1_measurement(
+            V1TraceConfig(
+                seed=94,
+                hidden_size=8,
+                steps=4,
+                update_mode="gate_disabled",
+                record_routes=True,
+            )
+        )
+
+
 @pytest.mark.parametrize("update_mode", ["gate_disabled", "gate_frozen"])
 def test_update_intervention_differs_from_post_step_gate_clamp(update_mode: str) -> None:
     update = run_v1_measurement(
