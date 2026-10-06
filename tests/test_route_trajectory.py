@@ -10,6 +10,7 @@ from development.route_trajectory import (
     RouteTrajectoryProtocol,
     load_route_protocol,
     run_route_trajectory_pilot,
+    write_route_pilot_artifacts,
 )
 
 
@@ -78,3 +79,21 @@ def test_route_cancellation_is_bounded_and_pilot_is_deterministic() -> None:
     assert first == second
     for target in first["runs"][0]["target_summary"].values():
         assert 0.0 <= target["mean_cancellation"] <= 1.0
+
+
+def test_artifact_writer_separates_raw_route_steps_from_summary(tmp_path: Path) -> None:
+    payload = run_route_trajectory_pilot(
+        seeds=[94], hidden_size=8, steps=6, protocol_path=PROTOCOL_PATH
+    )
+    summary_path = tmp_path / "summary.json"
+
+    parquet_path = write_route_pilot_artifacts(payload, summary_path)
+    written = json.loads(summary_path.read_text())
+
+    assert parquet_path == tmp_path / "route_steps.parquet"
+    assert parquet_path.exists()
+    assert written["runs"][0]["route_steps"] == {
+        "artifact": "route_steps.parquet",
+        "record_count": 180,
+    }
+    assert summary_path.stat().st_size < 100_000

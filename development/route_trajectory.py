@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 from dataclasses import asdict
+import copy
 import json
 import math
 from pathlib import Path
@@ -236,3 +237,46 @@ def run_route_trajectory_pilot(
             "untested_speculation": "Distinct route trajectories may coexist under similar exposed trajectories.",
         },
     }
+
+
+def write_route_pilot_artifacts(payload: dict[str, object], summary_path: Path) -> Path:
+    """Write compact review JSON plus lossless timestamped route vectors."""
+
+    import pyarrow as pa
+    import pyarrow.parquet as pq
+
+    summary = copy.deepcopy(payload)
+    rows: list[dict[str, object]] = []
+    runs = summary["runs"]
+    if not isinstance(runs, list):
+        raise ValueError("pilot payload runs must be a list")
+    for run in runs:
+        if not isinstance(run, dict):
+            raise ValueError("pilot runs must be objects")
+        route_steps = run["route_steps"]
+        if not isinstance(route_steps, list):
+            raise ValueError("pilot route_steps must be a list")
+        record_count = 0
+        for route_step in route_steps:
+            step = int(route_step["step"])
+            for route_id, values in route_step["values"].items():
+                rows.append(
+                    {
+                        "run_id": str(run["run_id"]),
+                        "seed": int(run["seed"]),
+                        "step": step,
+                        "route_id": str(route_id),
+                        "values": [float(value) for value in values],
+                    }
+                )
+                record_count += 1
+        run["route_steps"] = {
+            "artifact": "route_steps.parquet",
+            "record_count": record_count,
+        }
+
+    summary_path.parent.mkdir(parents=True, exist_ok=True)
+    parquet_path = summary_path.with_name("route_steps.parquet")
+    pq.write_table(pa.Table.from_pylist(rows), parquet_path, compression="zstd")
+    summary_path.write_text(json.dumps(summary, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    return parquet_path

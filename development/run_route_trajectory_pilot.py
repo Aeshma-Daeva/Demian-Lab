@@ -4,10 +4,9 @@
 from __future__ import annotations
 
 import argparse
-import json
 from pathlib import Path
 
-from development.route_trajectory import run_route_trajectory_pilot
+from development.route_trajectory import run_route_trajectory_pilot, write_route_pilot_artifacts
 
 
 def main() -> None:
@@ -28,8 +27,7 @@ def main() -> None:
         steps=args.steps,
         protocol_path=args.protocol,
     )
-    args.out.parent.mkdir(parents=True, exist_ok=True)
-    args.out.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    write_route_pilot_artifacts(payload, args.out)
     print(args.out)
 
 

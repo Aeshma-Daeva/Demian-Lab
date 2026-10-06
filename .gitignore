@@ -13,6 +13,7 @@ data/diagnostics/*
 !data/diagnostics/demian_v1_characterization_20261005/summary.json
 !data/diagnostics/demian_route_trajectory_pilot_20261006/
 !data/diagnostics/demian_route_trajectory_pilot_20261006/summary.json
+!data/diagnostics/demian_route_trajectory_pilot_20261006/route_steps.parquet
 .env
 .env.*
 .openrouter/
