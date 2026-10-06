@@ -130,6 +130,8 @@ class ClosedLoopDemianRunner:
         self.decoder = FrozenActionDecoder(symbol_count=3)
 
     def step(self) -> ClosedLoopRecord:
+        if self.world.completed:
+            raise RuntimeError("closed-loop episode is completed")
         acknowledgement = self.connector.advance(self.world)
         observation = self.world.observe()
         frame = InputFrame(observation=observation, acknowledgement=acknowledgement)

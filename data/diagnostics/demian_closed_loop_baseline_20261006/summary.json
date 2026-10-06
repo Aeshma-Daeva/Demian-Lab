@@ -1,0 +1,1257 @@
+{
+  "config": {
+    "hidden_size": 8,
+    "seeds": [
+      94,
+      95,
+      96
+    ],
+    "steps": 8
+  },
+  "evidence_status": {
+    "control": "Exact checkpoint restore and fixed-observation replay are tested separately from closed-loop feedback.",
+    "hypothesis_status": "untested",
+    "interpretation": "Unselected behavior is an interface baseline, not evidence of task competence or route causality.",
+    "observation": "A deterministic external boundary records action proposals, execution acknowledgements, environmental observations, and internal route magnitudes.",
+    "untested_speculation": "Environmental feedback may organize internal route trajectories into reproducible situated regimes."
+  },
+  "experiment": "demian-v1-unselected-closed-loop-baseline",
+  "interface_version": "frozen-fast-input-control-decoder-v1",
+  "protocol_id": "demian-v1-cue-delay-query-v1",
+  "replication_scope": {
+    "dependent_tick_count": 20,
+    "independent_unit": "parameter_seed",
+    "parameter_seed_count": 3,
+    "trajectory_count": 3
+  },
+  "runs": [
+    {
+      "cue_symbol": 1,
+      "final_register": null,
+      "final_score": 0,
+      "run_id": "demian_v1_closed_loop:seed=94:unselected",
+      "seed": 94,
+      "trace": [
+        {
+          "acceptance": {
+            "accepted": true,
+            "reason": "queued"
+          },
+          "executed_acknowledgement": {
+            "answer_correct": null,
+            "executed_operation": "noop",
+            "read_value": null,
+            "register_value": null
+          },
+          "phase": "cue",
+          "proposal": {
+            "operand": 0,
+            "operation": "answer"
+          },
+          "route_l2": {
+            "bias_to_gate": 0.3079795040448219,
+            "carrier_candidate": 0.28083462419015837,
+            "carrier_persistence": 0.41221967756561634,
+            "carrier_to_fast": 0.02162584703324194,
+            "carrier_to_gate": 0.13035675702605182,
+            "carrier_to_slow": 0.022201304870756992,
+            "control_candidate": 0.17891601900079013,
+            "control_persistence": 0.07022151577571079,
+            "control_to_fast": 0.029170190163255026,
+            "control_to_gate": 0.01923442577503464,
+            "fast_candidate": 0.40359173832097817,
+            "fast_integrated_update": 0.18198544424178878,
+            "fast_retention": 0.34459857698583535,
+            "fast_slow_to_control": 0.1147643897516838,
+            "fast_to_gate": 0.21153843275943784,
+            "fast_to_message": 0.05161997782426566,
+            "fast_to_slow": 0.037936408082004686,
+            "gate_integrated_update": 0.3618542640341009,
+            "gate_modulates_carrier_to_slow": 2.825609916380154,
+            "gate_modulates_message_to_carrier": 2.8264271497042874,
+            "gate_modulates_surface_routes": 2.824817348225707,
+            "gate_persistence": 0.6414181099137063,
+            "message_candidate": 0.2717940486896496,
+            "message_persistence": 0.3685566165654614,
+            "message_to_carrier": 0.020849569164671112,
+            "message_to_fast": 0.027213435743022072,
+            "message_to_gate": 0.10030965644796287,
+            "slow_candidate": 0.34280476471357485,
+            "slow_persistence": 0.4931435311022997,
+            "slow_to_gate": 0.1351731618372907
+          },
+          "surface": [
+            0.18409258127212524,
+            -0.05796424299478531,
+            0.13024674355983734,
+            0.009740863926708698,
+            0.13090689480304718,
+            -0.040150463581085205,
+            -0.19070324301719666,
+            0.0502549447119236
+          ],
+          "tick": 0
+        },
+        {
+          "acceptance": {
+            "accepted": true,
+            "reason": "queued"
+          },
+          "executed_acknowledgement": {
+            "answer_correct": null,
+            "executed_operation": "answer",
+            "read_value": null,
+            "register_value": null
+          },
+          "phase": "delay",
+          "proposal": {
+            "operand": 0,
+            "operation": "answer"
+          },
+          "route_l2": {
+            "bias_to_gate": 0.3079795040448219,
+            "carrier_candidate": 0.2836810053570892,
+            "carrier_persistence": 0.3004319557364265,
+            "carrier_to_fast": 0.03644397801272689,
+            "carrier_to_gate": 0.06006456294269107,
+            "carrier_to_slow": 0.037663939306093734,
+            "control_candidate": 0.1688814505430874,
+            "control_persistence": 0.17818567543504787,
+            "control_to_fast": 0.04779289187408888,
+            "control_to_gate": 0.04689704585008389,
+            "fast_candidate": 0.6195596409388829,
+            "fast_integrated_update": 0.2902933084963732,
+            "fast_retention": 0.24361968945180384,
+            "fast_slow_to_control": 0.10638435740004391,
+            "fast_to_gate": 0.0719453204509919,
+            "fast_to_message": 0.05247550861079046,
+            "fast_to_slow": 0.034045596811557936,
+            "gate_integrated_update": 0.3340050337656492,
+            "gate_modulates_carrier_to_slow": 2.7710112110787057,
+            "gate_modulates_message_to_carrier": 2.764904592919642,
+            "gate_modulates_surface_routes": 2.7843328438585018,
+            "gate_persistence": 0.5584546359339203,
+            "message_candidate": 0.2644516864479818,
+            "message_persistence": 0.29644857308609857,
+            "message_to_carrier": 0.05016135413265781,
+            "message_to_fast": 0.031523863302854505,
+            "message_to_gate": 0.1366560585096623,
+            "slow_candidate": 0.3405870755532876,
+            "slow_persistence": 0.5965357367548821,
+            "slow_to_gate": 0.1556480887598976
+          },
+          "surface": [
+            0.07996697723865509,
+            0.1602887660264969,
+            0.20412451028823853,
+            0.23706114292144775,
+            -0.07944511622190475,
+            -0.13648074865341187,
+            -0.19211657345294952,
+            -0.05524268001317978
+          ],
+          "tick": 1
+        },
+        {
+          "acceptance": {
+            "accepted": true,
+            "reason": "queued"
+          },
+          "executed_acknowledgement": {
+            "answer_correct": null,
+            "executed_operation": "answer",
+            "read_value": null,
+            "register_value": null
+          },
+          "phase": "delay",
+          "proposal": {
+            "operand": 0,
+            "operation": "answer"
+          },
+          "route_l2": {
+            "bias_to_gate": 0.3079795040448219,
+            "carrier_candidate": 0.29610373759703146,
+            "carrier_persistence": 0.4172459121712435,
+            "carrier_to_fast": 0.056853297137028753,
+            "carrier_to_gate": 0.11346217762813983,
+            "carrier_to_slow": 0.05531330913903641,
+            "control_candidate": 0.1658880951958806,
+            "control_persistence": 0.2951951122147982,
+            "control_to_fast": 0.056971258001898374,
+            "control_to_gate": 0.0807924514187969,
+            "fast_candidate": 0.7884979602606387,
+            "fast_integrated_update": 0.3831682199613345,
+            "fast_retention": 0.39251129304584553,
+            "fast_slow_to_control": 0.09241069204243207,
+            "fast_to_gate": 0.12221389975329741,
+            "fast_to_message": 0.06972935360477477,
+            "fast_to_slow": 0.048802673933070216,
+            "gate_integrated_update": 0.31294285538270905,
+            "gate_modulates_carrier_to_slow": 2.733089259645636,
+            "gate_modulates_message_to_carrier": 2.7228229280794145,
+            "gate_modulates_surface_routes": 2.7553885579025694,
+            "gate_persistence": 0.6497288717337223,
+            "message_candidate": 0.26385286450146495,
+            "message_persistence": 0.4236035775924235,
+            "message_to_carrier": 0.08326259962278529,
+            "message_to_fast": 0.035743911343387696,
+            "message_to_gate": 0.2099586333883712,
+            "slow_candidate": 0.34310243362741727,
+            "slow_persistence": 0.7977500634195837,
+            "slow_to_gate": 0.19439998947191103
+          },
+          "surface": [
+            0.04461858794093132,
+            0.3073868751525879,
+            0.27309858798980713,
+            0.4097892940044403,
+            -0.23962648212909698,
+            -0.1883811056613922,
+            -0.22203460335731506,
+            -0.14797839522361755
+          ],
+          "tick": 2
+        },
+        {
+          "acceptance": {
+            "accepted": true,
+            "reason": "queued"
+          },
+          "executed_acknowledgement": {
+            "answer_correct": false,
+            "executed_operation": "answer",
+            "read_value": null,
+            "register_value": null
+          },
+          "phase": "complete",
+          "proposal": {
+            "operand": 0,
+            "operation": "answer"
+          },
+          "route_l2": {
+            "bias_to_gate": 0.3079795040448219,
+            "carrier_candidate": 0.319916797187925,
+            "carrier_persistence": 0.6452109304528296,
+            "carrier_to_fast": 0.07953711795780281,
+            "carrier_to_gate": 0.2040868813003706,
+            "carrier_to_slow": 0.07476974592746694,
+            "control_candidate": 0.1665360565432212,
+            "control_persistence": 0.36001915881605606,
+            "control_to_fast": 0.05700609965454749,
+            "control_to_gate": 0.10596742022230524,
+            "fast_candidate": 0.8781827115345554,
+            "fast_integrated_update": 0.4354123440741342,
+            "fast_retention": 0.5529120150026898,
+            "fast_slow_to_control": 0.09537780676398945,
+            "fast_to_gate": 0.23916398455681753,
+            "fast_to_message": 0.11272328235900082,
+            "fast_to_slow": 0.07721442605410031,
+            "gate_integrated_update": 0.27957668076021674,
+            "gate_modulates_carrier_to_slow": 2.716211713267648,
+            "gate_modulates_message_to_carrier": 2.7050684409822363,
+            "gate_modulates_surface_routes": 2.7412668344643083,
+            "gate_persistence": 0.8313594709772384,
+            "message_candidate": 0.2706379673110605,
+            "message_persistence": 0.5947934460181475,
+            "message_to_carrier": 0.11546820748713826,
+            "message_to_fast": 0.04213519543837447,
+            "message_to_gate": 0.29966543282902564,
+            "slow_candidate": 0.3429439996352078,
+            "slow_persistence": 1.0249473702243732,
+            "slow_to_gate": 0.22966426771842133
+          },
+          "surface": [
+            -0.03627964109182358,
+            0.3128345012664795,
+            0.3096888065338135,
+            0.6236599087715149,
+            -0.37339478731155396,
+            -0.15757711231708527,
+            -0.1882960945367813,
+            -0.059649474918842316
+          ],
+          "tick": 3
+        }
+      ]
+    },
+    {
+      "cue_symbol": 2,
+      "final_register": null,
+      "final_score": 0,
+      "run_id": "demian_v1_closed_loop:seed=95:unselected",
+      "seed": 95,
+      "trace": [
+        {
+          "acceptance": {
+            "accepted": true,
+            "reason": "queued"
+          },
+          "executed_acknowledgement": {
+            "answer_correct": null,
+            "executed_operation": "noop",
+            "read_value": null,
+            "register_value": null
+          },
+          "phase": "cue",
+          "proposal": {
+            "operand": 0,
+            "operation": "answer"
+          },
+          "route_l2": {
+            "bias_to_gate": 0.2293388170001523,
+            "carrier_candidate": 0.3211643156659961,
+            "carrier_persistence": 0.2573793045505575,
+            "carrier_to_fast": 0.030270310691177322,
+            "carrier_to_gate": 0.05966146590324828,
+            "carrier_to_slow": 0.038052678878376656,
+            "control_candidate": 0.32368825729280715,
+            "control_persistence": 0.25138026237874495,
+            "control_to_fast": 0.022174710579059287,
+            "control_to_gate": 0.10928710677607481,
+            "fast_candidate": 0.7388790023515965,
+            "fast_integrated_update": 0.3711869230934945,
+            "fast_retention": 0.39839103564131556,
+            "fast_slow_to_control": 0.1204306715350444,
+            "fast_to_gate": 0.22670294967659074,
+            "fast_to_message": 0.05723828336193496,
+            "fast_to_slow": 0.07597652442636699,
+            "gate_integrated_update": 0.4337161150718945,
+            "gate_modulates_carrier_to_slow": 2.769517784949538,
+            "gate_modulates_message_to_carrier": 2.76323287744353,
+            "gate_modulates_surface_routes": 2.7832114855228034,
+            "gate_persistence": 0.3692805196267635,
+            "message_candidate": 0.34194014625738817,
+            "message_persistence": 0.6293220672524196,
+            "message_to_carrier": 0.07933390162139653,
+            "message_to_fast": 0.0414147593631998,
+            "message_to_gate": 0.23059725008585596,
+            "slow_candidate": 0.26028854495377735,
+            "slow_persistence": 0.7002065716776483,
+            "slow_to_gate": 0.24462302230687077
+          },
+          "surface": [
+            0.42489954829216003,
+            -0.3274485468864441,
+            0.1865020990371704,
+            0.03474878519773483,
+            0.04403223097324371,
+            -0.2516578435897827,
+            0.029434386640787125,
+            0.16575999557971954
+          ],
+          "tick": 0
+        },
+        {
+          "acceptance": {
+            "accepted": true,
+            "reason": "queued"
+          },
+          "executed_acknowledgement": {
+            "answer_correct": null,
+            "executed_operation": "answer",
+            "read_value": null,
+            "register_value": null
+          },
+          "phase": "delay",
+          "proposal": {
+            "operand": 0,
+            "operation": "answer"
+          },
+          "route_l2": {
+            "bias_to_gate": 0.2293388170001523,
+            "carrier_candidate": 0.33259295037037917,
+            "carrier_persistence": 0.3938872736854219,
+            "carrier_to_fast": 0.052762504932734,
+            "carrier_to_gate": 0.10456495935643616,
+            "carrier_to_slow": 0.07301126324780752,
+            "control_candidate": 0.29679327667886246,
+            "control_persistence": 0.15946424364592818,
+            "control_to_fast": 0.03291590281793988,
+            "control_to_gate": 0.04968551637811714,
+            "fast_candidate": 0.7319799994214248,
+            "fast_integrated_update": 0.35489452545078237,
+            "fast_retention": 0.2886371685875104,
+            "fast_slow_to_control": 0.15804900460658475,
+            "fast_to_gate": 0.17943808477393577,
+            "fast_to_message": 0.06053641836627472,
+            "fast_to_slow": 0.049385710864210695,
+            "gate_integrated_update": 0.48349367927230313,
+            "gate_modulates_carrier_to_slow": 2.756728377338087,
+            "gate_modulates_message_to_carrier": 2.751217078086513,
+            "gate_modulates_surface_routes": 2.770654127113984,
+            "gate_persistence": 0.6601375715263132,
+            "message_candidate": 0.32805882695527233,
+            "message_persistence": 0.525657936885998,
+            "message_to_carrier": 0.09202021642366265,
+            "message_to_fast": 0.03209657298016843,
+            "message_to_gate": 0.20442410120756901,
+            "slow_candidate": 0.3061984169213794,
+            "slow_persistence": 0.7236636378450397,
+            "slow_to_gate": 0.27160487585887194
+          },
+          "surface": [
+            0.3629254102706909,
+            -0.28514501452445984,
+            0.11443950235843658,
+            0.10979888588190079,
+            0.1458066701889038,
+            -0.2898695468902588,
+            -0.12235558778047562,
+            0.11761143058538437
+          ],
+          "tick": 1
+        },
+        {
+          "acceptance": {
+            "accepted": true,
+            "reason": "queued"
+          },
+          "executed_acknowledgement": {
+            "answer_correct": null,
+            "executed_operation": "answer",
+            "read_value": null,
+            "register_value": null
+          },
+          "phase": "delay",
+          "proposal": {
+            "operand": null,
+            "operation": "noop"
+          },
+          "route_l2": {
+            "bias_to_gate": 0.2293388170001523,
+            "carrier_candidate": 0.345018440987574,
+            "carrier_persistence": 0.6857187064571193,
+            "carrier_to_fast": 0.07718535374152356,
+            "carrier_to_gate": 0.19243382890711958,
+            "carrier_to_slow": 0.10888489187094172,
+            "control_candidate": 0.275112423233221,
+            "control_persistence": 0.2634663511754682,
+            "control_to_fast": 0.04883808962122639,
+            "control_to_gate": 0.10022239575230989,
+            "fast_candidate": 0.7347771509914932,
+            "fast_integrated_update": 0.3517233760010782,
+            "fast_retention": 0.31036729055152895,
+            "fast_slow_to_control": 0.1564297513404374,
+            "fast_to_gate": 0.18596502725887437,
+            "fast_to_message": 0.06568890309108281,
+            "fast_to_slow": 0.04322915746568308,
+            "gate_integrated_update": 0.6255452655775482,
+            "gate_modulates_carrier_to_slow": 2.7463318141753312,
+            "gate_modulates_message_to_carrier": 2.7436352676520834,
+            "gate_modulates_surface_routes": 2.7576384180721734,
+            "gate_persistence": 1.0826634920135014,
+            "message_candidate": 0.32915892099908667,
+            "message_persistence": 0.5897110301979017,
+            "message_to_carrier": 0.10687219432261641,
+            "message_to_fast": 0.03567323775065609,
+            "message_to_gate": 0.22321567297537256,
+            "slow_candidate": 0.3682466516354838,
+            "slow_persistence": 0.8543512815697559,
+            "slow_to_gate": 0.3390296018839034
+          },
+          "surface": [
+            0.37592431902885437,
+            -0.2352859079837799,
+            0.09409331530332565,
+            0.1315556913614273,
+            0.1950654685497284,
+            -0.32954302430152893,
+            -0.20722420513629913,
+            0.057377394288778305
+          ],
+          "tick": 2
+        },
+        {
+          "acceptance": {
+            "accepted": true,
+            "reason": "queued"
+          },
+          "executed_acknowledgement": {
+            "answer_correct": null,
+            "executed_operation": "noop",
+            "read_value": null,
+            "register_value": null
+          },
+          "phase": "query",
+          "proposal": {
+            "operand": null,
+            "operation": "noop"
+          },
+          "route_l2": {
+            "bias_to_gate": 0.2293388170001523,
+            "carrier_candidate": 0.35386537935804024,
+            "carrier_persistence": 1.011924486701933,
+            "carrier_to_fast": 0.09962216480887719,
+            "carrier_to_gate": 0.2948265664461621,
+            "carrier_to_slow": 0.14731813070137603,
+            "control_candidate": 0.266104990846213,
+            "control_persistence": 0.38090088354463636,
+            "control_to_fast": 0.06532543905463922,
+            "control_to_gate": 0.15707264537682283,
+            "fast_candidate": 0.8667364933520412,
+            "fast_integrated_update": 0.4040383357534725,
+            "fast_retention": 0.39772696614284164,
+            "fast_slow_to_control": 0.20212735854975486,
+            "fast_to_gate": 0.2702274990696387,
+            "fast_to_message": 0.09579153483497195,
+            "fast_to_slow": 0.05075708598388091,
+            "gate_integrated_update": 0.8445023923318162,
+            "gate_modulates_carrier_to_slow": 2.760837229512977,
+            "gate_modulates_message_to_carrier": 2.7659435309459535,
+            "gate_modulates_surface_routes": 2.7606623830632473,
+            "gate_persistence": 1.6466453358250142,
+            "message_candidate": 0.3273986770528289,
+            "message_persistence": 0.7214213141492016,
+            "message_to_carrier": 0.12828994393219334,
+            "message_to_fast": 0.0473920579207731,
+            "message_to_gate": 0.25343111091752896,
+            "slow_candidate": 0.4506732855622592,
+            "slow_persistence": 1.087058501514317,
+            "slow_to_gate": 0.45257334320702153
+          },
+          "surface": [
+            0.4799342155456543,
+            -0.37972110509872437,
+            0.15964725613594055,
+            -0.03810366988182068,
+            0.26513829827308655,
+            -0.3852328062057495,
+            -0.1981079876422882,
+            0.21519164741039276
+          ],
+          "tick": 3
+        },
+        {
+          "acceptance": {
+            "accepted": true,
+            "reason": "queued"
+          },
+          "executed_acknowledgement": {
+            "answer_correct": null,
+            "executed_operation": "noop",
+            "read_value": null,
+            "register_value": null
+          },
+          "phase": "query",
+          "proposal": {
+            "operand": null,
+            "operation": "noop"
+          },
+          "route_l2": {
+            "bias_to_gate": 0.2293388170001523,
+            "carrier_candidate": 0.35801887080211153,
+            "carrier_persistence": 1.3503610704365008,
+            "carrier_to_fast": 0.117956214553934,
+            "carrier_to_gate": 0.4049399427366161,
+            "carrier_to_slow": 0.1899624678974352,
+            "control_candidate": 0.27657672476850614,
+            "control_persistence": 0.5091701975923171,
+            "control_to_fast": 0.08268982381633277,
+            "control_to_gate": 0.2136834144961607,
+            "fast_candidate": 0.946315991789235,
+            "fast_integrated_update": 0.43714233594935836,
+            "fast_retention": 0.4823694811939094,
+            "fast_slow_to_control": 0.23160112558153872,
+            "fast_to_gate": 0.33240792637021366,
+            "fast_to_message": 0.10758518813105684,
+            "fast_to_slow": 0.06304579669346665,
+            "gate_integrated_update": 1.1222155427321585,
+            "gate_modulates_carrier_to_slow": 2.797469928327221,
+            "gate_modulates_message_to_carrier": 2.8140889958180546,
+            "gate_modulates_surface_routes": 2.778766200613573,
+            "gate_persistence": 2.419397589842699,
+            "message_candidate": 0.3213315257378217,
+            "message_persistence": 0.8692546150946783,
+            "message_to_carrier": 0.15259255976176087,
+            "message_to_fast": 0.06114779524032362,
+            "message_to_gate": 0.2821080522638347,
+            "slow_candidate": 0.5581486066255771,
+            "slow_persistence": 1.4243188206282165,
+            "slow_to_gate": 0.6165290130517094
+          },
+          "surface": [
+            0.5020300149917603,
+            -0.48752281069755554,
+            0.15834814310073853,
+            -0.15272954106330872,
+            0.3289896845817566,
+            -0.43268710374832153,
+            -0.14294281601905823,
+            0.311198353767395
+          ],
+          "tick": 4
+        },
+        {
+          "acceptance": {
+            "accepted": true,
+            "reason": "queued"
+          },
+          "executed_acknowledgement": {
+            "answer_correct": null,
+            "executed_operation": "noop",
+            "read_value": null,
+            "register_value": null
+          },
+          "phase": "query",
+          "proposal": {
+            "operand": null,
+            "operation": "noop"
+          },
+          "route_l2": {
+            "bias_to_gate": 0.2293388170001523,
+            "carrier_candidate": 0.3618662075095629,
+            "carrier_persistence": 1.6948410442086042,
+            "carrier_to_fast": 0.13197998435035255,
+            "carrier_to_gate": 0.517789806473042,
+            "carrier_to_slow": 0.2371694678739461,
+            "control_candidate": 0.31126991726037745,
+            "control_persistence": 0.6445674356766381,
+            "control_to_fast": 0.0991881732076606,
+            "control_to_gate": 0.2731626368239576,
+            "fast_candidate": 0.9907633510520942,
+            "fast_integrated_update": 0.4612941326464599,
+            "fast_retention": 0.5375396090014469,
+            "fast_slow_to_control": 0.2551463345918697,
+            "fast_to_gate": 0.3688575802930865,
+            "fast_to_message": 0.10796866222735237,
+            "fast_to_slow": 0.0756842601349051,
+            "gate_integrated_update": 1.4087074620031785,
+            "gate_modulates_carrier_to_slow": 2.8459335829603503,
+            "gate_modulates_message_to_carrier": 2.8759485340016084,
+            "gate_modulates_surface_routes": 2.8049482178677003,
+            "gate_persistence": 3.4520769140921863,
+            "message_candidate": 0.3134604837956415,
+            "message_persistence": 0.9996358534846291,
+            "message_to_carrier": 0.17596568928010484,
+            "message_to_fast": 0.07527134602090195,
+            "message_to_gate": 0.2986583409354062,
+            "slow_candidate": 0.6972341056626989,
+            "slow_persistence": 1.8686979831472146,
+            "slow_to_gate": 0.8330053092880597
+          },
+          "surface": [
+            0.4874923825263977,
+            -0.566680908203125,
+            0.13567283749580383,
+            -0.22689644992351532,
+            0.3808547258377075,
+            -0.4650924503803253,
+            -0.07804214954376221,
+            0.3629412055015564
+          ],
+          "tick": 5
+        },
+        {
+          "acceptance": {
+            "accepted": true,
+            "reason": "queued"
+          },
+          "executed_acknowledgement": {
+            "answer_correct": null,
+            "executed_operation": "noop",
+            "read_value": null,
+            "register_value": null
+          },
+          "phase": "query",
+          "proposal": {
+            "operand": null,
+            "operation": "noop"
+          },
+          "route_l2": {
+            "bias_to_gate": 0.2293388170001523,
+            "carrier_candidate": 0.37512654889030816,
+            "carrier_persistence": 2.0457947621557846,
+            "carrier_to_fast": 0.14417430446319526,
+            "carrier_to_gate": 0.6286001557992505,
+            "carrier_to_slow": 0.2869319886684581,
+            "control_candidate": 0.3595826260524022,
+            "control_persistence": 0.777623609664109,
+            "control_to_fast": 0.11329732636084994,
+            "control_to_gate": 0.33180975913662153,
+            "fast_candidate": 1.0176530068240728,
+            "fast_integrated_update": 0.48057791257943344,
+            "fast_retention": 0.5718456752558684,
+            "fast_slow_to_control": 0.28488234478988694,
+            "fast_to_gate": 0.3906536109809409,
+            "fast_to_message": 0.10391401938634562,
+            "fast_to_slow": 0.08807477060782139,
+            "gate_integrated_update": 1.642814889063872,
+            "gate_modulates_carrier_to_slow": 2.8941296478073077,
+            "gate_modulates_message_to_carrier": 2.9375887646706866,
+            "gate_modulates_surface_routes": 2.830656649335231,
+            "gate_persistence": 4.757436571017394,
+            "message_candidate": 0.30629360757235186,
+            "message_persistence": 1.1077346989175891,
+            "message_to_carrier": 0.19487167285630558,
+            "message_to_fast": 0.08874691247743222,
+            "message_to_gate": 0.3025446477106684,
+            "slow_candidate": 0.8743704058380107,
+            "slow_persistence": 2.4381927747019483,
+            "slow_to_gate": 1.1091072826331105
+          },
+          "surface": [
+            0.45726844668388367,
+            -0.6227258443832397,
+            0.10823513567447662,
+            -0.27201876044273376,
+            0.4225479066371918,
+            -0.48186320066452026,
+            -0.022519852966070175,
+            0.38746583461761475
+          ],
+          "tick": 6
+        },
+        {
+          "acceptance": {
+            "accepted": true,
+            "reason": "queued"
+          },
+          "executed_acknowledgement": {
+            "answer_correct": null,
+            "executed_operation": "noop",
+            "read_value": null,
+            "register_value": null
+          },
+          "phase": "query",
+          "proposal": {
+            "operand": null,
+            "operation": "noop"
+          },
+          "route_l2": {
+            "bias_to_gate": 0.2293388170001523,
+            "carrier_candidate": 0.40878800273643817,
+            "carrier_persistence": 2.4086543048278677,
+            "carrier_to_fast": 0.1576388176331961,
+            "carrier_to_gate": 0.7330763205052305,
+            "carrier_to_slow": 0.3365796067886043,
+            "control_candidate": 0.40879909832732936,
+            "control_persistence": 0.8977115225010825,
+            "control_to_fast": 0.12414472470495055,
+            "control_to_gate": 0.3844436021531908,
+            "fast_candidate": 1.0350625029348266,
+            "fast_integrated_update": 0.49515235352082904,
+            "fast_retention": 0.5927909832757812,
+            "fast_slow_to_control": 0.3262659047563796,
+            "fast_to_gate": 0.40445066006035674,
+            "fast_to_message": 0.09899751733029774,
+            "fast_to_slow": 0.10006742606268118,
+            "gate_integrated_update": 1.820655370249974,
+            "gate_modulates_carrier_to_slow": 2.9292937674561683,
+            "gate_modulates_message_to_carrier": 2.9838645837054907,
+            "gate_modulates_surface_routes": 2.847544253701423,
+            "gate_persistence": 6.28842542439623,
+            "message_candidate": 0.3014438244548441,
+            "message_persistence": 1.195099191575353,
+            "message_to_carrier": 0.20719193058221055,
+            "message_to_fast": 0.10062096730736647,
+            "message_to_gate": 0.29597825071848066,
+            "slow_candidate": 1.0891003197178035,
+            "slow_persistence": 3.156206624706745,
+            "slow_to_gate": 1.4533345449446404
+          },
+          "surface": [
+            0.42131316661834717,
+            -0.6605259776115417,
+            0.08090890198945999,
+            -0.2968461215496063,
+            0.45681071281433105,
+            -0.484035462141037,
+            0.017703544348478317,
+            0.39459824562072754
+          ],
+          "tick": 7
+        }
+      ]
+    },
+    {
+      "cue_symbol": 0,
+      "final_register": 2,
+      "final_score": 0,
+      "run_id": "demian_v1_closed_loop:seed=96:unselected",
+      "seed": 96,
+      "trace": [
+        {
+          "acceptance": {
+            "accepted": true,
+            "reason": "queued"
+          },
+          "executed_acknowledgement": {
+            "answer_correct": null,
+            "executed_operation": "noop",
+            "read_value": null,
+            "register_value": null
+          },
+          "phase": "cue",
+          "proposal": {
+            "operand": 2,
+            "operation": "write"
+          },
+          "route_l2": {
+            "bias_to_gate": 0.24496767274019643,
+            "carrier_candidate": 0.3779963599807569,
+            "carrier_persistence": 0.5979228344105183,
+            "carrier_to_fast": 0.055713748426038226,
+            "carrier_to_gate": 0.15563339528938924,
+            "carrier_to_slow": 0.05351679827896987,
+            "control_candidate": 0.24549754781522728,
+            "control_persistence": 0.21214909616638397,
+            "control_to_fast": 0.01868577679121465,
+            "control_to_gate": 0.07279418217566383,
+            "fast_candidate": 0.6786099783382914,
+            "fast_integrated_update": 0.2974215555387512,
+            "fast_retention": 0.40687872254475915,
+            "fast_slow_to_control": 0.1926525877088786,
+            "fast_to_gate": 0.20985153585429403,
+            "fast_to_message": 0.07331700202303693,
+            "fast_to_slow": 0.05619205700095089,
+            "gate_integrated_update": 0.24456115495463077,
+            "gate_modulates_carrier_to_slow": 2.819740030334781,
+            "gate_modulates_message_to_carrier": 2.8198316153623426,
+            "gate_modulates_surface_routes": 2.8204403981704855,
+            "gate_persistence": 0.511919676156533,
+            "message_candidate": 0.3485012802457058,
+            "message_persistence": 0.4595577398892624,
+            "message_to_carrier": 0.07006486842306957,
+            "message_to_fast": 0.03473462794620818,
+            "message_to_gate": 0.0999024514814178,
+            "slow_candidate": 0.34710154187491493,
+            "slow_persistence": 0.5604489290047184,
+            "slow_to_gate": 0.2447997391590642
+          },
+          "surface": [
+            0.30994993448257446,
+            0.17519937455654144,
+            0.31740501523017883,
+            0.08859091252088547,
+            0.009700639173388481,
+            0.06096332147717476,
+            -0.09466158598661423,
+            -0.03795790672302246
+          ],
+          "tick": 0
+        },
+        {
+          "acceptance": {
+            "accepted": true,
+            "reason": "queued"
+          },
+          "executed_acknowledgement": {
+            "answer_correct": null,
+            "executed_operation": "write",
+            "read_value": null,
+            "register_value": 2
+          },
+          "phase": "delay",
+          "proposal": {
+            "operand": null,
+            "operation": "noop"
+          },
+          "route_l2": {
+            "bias_to_gate": 0.24496767274019643,
+            "carrier_candidate": 0.343787724413252,
+            "carrier_persistence": 0.5079076330730281,
+            "carrier_to_fast": 0.04289182676482158,
+            "carrier_to_gate": 0.12994671952356454,
+            "carrier_to_slow": 0.094255872485883,
+            "control_candidate": 0.2724583235428349,
+            "control_persistence": 0.17035314076592242,
+            "control_to_fast": 0.05011442082161164,
+            "control_to_gate": 0.06383598898723197,
+            "fast_candidate": 0.6701397585751449,
+            "fast_integrated_update": 0.2881052424317939,
+            "fast_retention": 0.3779549586234439,
+            "fast_slow_to_control": 0.16651232437119728,
+            "fast_to_gate": 0.16085455362569032,
+            "fast_to_message": 0.06355375510691945,
+            "fast_to_slow": 0.049715647271119816,
+            "gate_integrated_update": 0.2993534185445834,
+            "gate_modulates_carrier_to_slow": 2.8453330946095132,
+            "gate_modulates_message_to_carrier": 2.849704901089688,
+            "gate_modulates_surface_routes": 2.8380754649674755,
+            "gate_persistence": 0.5752474020438549,
+            "message_candidate": 0.4028651334308394,
+            "message_persistence": 0.6479717840985694,
+            "message_to_carrier": 0.09427337256035391,
+            "message_to_fast": 0.04299384331848028,
+            "message_to_gate": 0.14111671276576676,
+            "slow_candidate": 0.38465328078281896,
+            "slow_persistence": 0.6136041386726103,
+            "slow_to_gate": 0.23800289424336152
+          },
+          "surface": [
+            0.13149145245552063,
+            0.40114909410476685,
+            0.332279771566391,
+            -0.05154869705438614,
+            -0.18256273865699768,
+            0.09312597662210464,
+            -0.1965896338224411,
+            -0.052143193781375885
+          ],
+          "tick": 1
+        },
+        {
+          "acceptance": {
+            "accepted": true,
+            "reason": "queued"
+          },
+          "executed_acknowledgement": {
+            "answer_correct": null,
+            "executed_operation": "noop",
+            "read_value": null,
+            "register_value": 2
+          },
+          "phase": "delay",
+          "proposal": {
+            "operand": null,
+            "operation": "noop"
+          },
+          "route_l2": {
+            "bias_to_gate": 0.24496767274019643,
+            "carrier_candidate": 0.3325679404991805,
+            "carrier_persistence": 0.6525667861549428,
+            "carrier_to_fast": 0.03528527671302657,
+            "carrier_to_gate": 0.09889210797347399,
+            "carrier_to_slow": 0.13812343565427934,
+            "control_candidate": 0.2777096312863105,
+            "control_persistence": 0.288299190428527,
+            "control_to_fast": 0.071822159911355,
+            "control_to_gate": 0.11529061676688664,
+            "fast_candidate": 0.7513034363768338,
+            "fast_integrated_update": 0.3277050943454602,
+            "fast_retention": 0.4300762898019943,
+            "fast_slow_to_control": 0.15462493647977257,
+            "fast_to_gate": 0.15861377596400464,
+            "fast_to_message": 0.07117956970077516,
+            "fast_to_slow": 0.05274118823292878,
+            "gate_integrated_update": 0.3535548149982553,
+            "gate_modulates_carrier_to_slow": 2.8801075682826034,
+            "gate_modulates_message_to_carrier": 2.890788354349357,
+            "gate_modulates_surface_routes": 2.861378532837522,
+            "gate_persistence": 0.7637805409667228,
+            "message_candidate": 0.47291758674466844,
+            "message_persistence": 0.9321942383289515,
+            "message_to_carrier": 0.12925687990006446,
+            "message_to_fast": 0.05407770163781642,
+            "message_to_gate": 0.2105904148840325,
+            "slow_candidate": 0.4404922296385227,
+            "slow_persistence": 0.7766298331451668,
+            "slow_to_gate": 0.24538006304046273
+          },
+          "surface": [
+            0.112138532102108,
+            0.5575450658798218,
+            0.2607320547103882,
+            -0.12043216079473495,
+            -0.2997403144836426,
+            0.08234799653291702,
+            -0.2828142046928406,
+            0.02182632125914097
+          ],
+          "tick": 2
+        },
+        {
+          "acceptance": {
+            "accepted": true,
+            "reason": "queued"
+          },
+          "executed_acknowledgement": {
+            "answer_correct": null,
+            "executed_operation": "noop",
+            "read_value": null,
+            "register_value": 2
+          },
+          "phase": "query",
+          "proposal": {
+            "operand": null,
+            "operation": "noop"
+          },
+          "route_l2": {
+            "bias_to_gate": 0.24496767274019643,
+            "carrier_candidate": 0.33733545736308046,
+            "carrier_persistence": 0.9129357400083133,
+            "carrier_to_fast": 0.041515073264106375,
+            "carrier_to_gate": 0.09695425733236686,
+            "carrier_to_slow": 0.17684611914016599,
+            "control_candidate": 0.27696625044679685,
+            "control_persistence": 0.39259021783282,
+            "control_to_fast": 0.07952167712700593,
+            "control_to_gate": 0.1545231391129218,
+            "fast_candidate": 0.812685994376804,
+            "fast_integrated_update": 0.347272178472258,
+            "fast_retention": 0.4503064374182188,
+            "fast_slow_to_control": 0.21439070125156864,
+            "fast_to_gate": 0.24064554018606055,
+            "fast_to_message": 0.07101384773884971,
+            "fast_to_slow": 0.05826816664780904,
+            "gate_integrated_update": 0.4405881233132485,
+            "gate_modulates_carrier_to_slow": 2.8942703334883686,
+            "gate_modulates_message_to_carrier": 2.909623851752923,
+            "gate_modulates_surface_routes": 2.8681036346040134,
+            "gate_persistence": 1.0572540448418206,
+            "message_candidate": 0.5546316871931364,
+            "message_persistence": 1.2656103850761395,
+            "message_to_carrier": 0.17537465747824843,
+            "message_to_fast": 0.06809013616157024,
+            "message_to_gate": 0.2962168907984929,
+            "slow_candidate": 0.5030737213208376,
+            "slow_persistence": 1.0317711042434223,
+            "slow_to_gate": 0.2874139453750561
+          },
+          "surface": [
+            0.11309725791215897,
+            0.5189012885093689,
+            0.359822154045105,
+            -0.20520247519016266,
+            -0.37933093309402466,
+            0.06906421482563019,
+            -0.3065795302391052,
+            0.1780526340007782
+          ],
+          "tick": 3
+        },
+        {
+          "acceptance": {
+            "accepted": true,
+            "reason": "queued"
+          },
+          "executed_acknowledgement": {
+            "answer_correct": null,
+            "executed_operation": "noop",
+            "read_value": null,
+            "register_value": 2
+          },
+          "phase": "query",
+          "proposal": {
+            "operand": null,
+            "operation": "noop"
+          },
+          "route_l2": {
+            "bias_to_gate": 0.24496767274019643,
+            "carrier_candidate": 0.34980368028980996,
+            "carrier_persistence": 1.2381936399520614,
+            "carrier_to_fast": 0.06401881044313606,
+            "carrier_to_gate": 0.15070312315840553,
+            "carrier_to_slow": 0.21144622878938002,
+            "control_candidate": 0.27469933893674925,
+            "control_persistence": 0.4437034195303551,
+            "control_to_fast": 0.07912830682534484,
+            "control_to_gate": 0.17482989504447427,
+            "fast_candidate": 0.8528116592501154,
+            "fast_integrated_update": 0.3657994641656812,
+            "fast_retention": 0.4869870024378893,
+            "fast_slow_to_control": 0.24672963673096923,
+            "fast_to_gate": 0.30115353413697393,
+            "fast_to_message": 0.07846806937192147,
+            "fast_to_slow": 0.0648299433164825,
+            "gate_integrated_update": 0.5169370123689724,
+            "gate_modulates_carrier_to_slow": 2.902576575370726,
+            "gate_modulates_message_to_carrier": 2.9224580360931323,
+            "gate_modulates_surface_routes": 2.8696835768397952,
+            "gate_persistence": 1.4537979532927734,
+            "message_candidate": 0.6467899111749947,
+            "message_persistence": 1.6471661380736056,
+            "message_to_carrier": 0.229929101943674,
+            "message_to_fast": 0.08525238862950309,
+            "message_to_gate": 0.39064181067966186,
+            "slow_candidate": 0.5588636721330537,
+            "slow_persistence": 1.322569460869885,
+            "slow_to_gate": 0.35281343905819956
+          },
+          "surface": [
+            0.11211767047643661,
+            0.5084969401359558,
+            0.4097890853881836,
+            -0.27644872665405273,
+            -0.43382683396339417,
+            0.055230092257261276,
+            -0.30658915638923645,
+            0.2508919835090637
+          ],
+          "tick": 4
+        },
+        {
+          "acceptance": {
+            "accepted": true,
+            "reason": "queued"
+          },
+          "executed_acknowledgement": {
+            "answer_correct": null,
+            "executed_operation": "noop",
+            "read_value": null,
+            "register_value": 2
+          },
+          "phase": "query",
+          "proposal": {
+            "operand": null,
+            "operation": "noop"
+          },
+          "route_l2": {
+            "bias_to_gate": 0.24496767274019643,
+            "carrier_candidate": 0.36559436443106036,
+            "carrier_persistence": 1.621709174219948,
+            "carrier_to_fast": 0.09350913166139642,
+            "carrier_to_gate": 0.23586428746155946,
+            "carrier_to_slow": 0.2443083471032146,
+            "control_candidate": 0.2690899538162717,
+            "control_persistence": 0.45955046993849147,
+            "control_to_fast": 0.07471051777927946,
+            "control_to_gate": 0.18027495699644963,
+            "fast_candidate": 0.8765068138146985,
+            "fast_integrated_update": 0.37844255030828094,
+            "fast_retention": 0.5115182500116221,
+            "fast_slow_to_control": 0.26575742411406567,
+            "fast_to_gate": 0.3320441402701266,
+            "fast_to_message": 0.08371529371256246,
+            "fast_to_slow": 0.06907137059265246,
+            "gate_integrated_update": 0.5921138469509326,
+            "gate_modulates_carrier_to_slow": 2.915977726542257,
+            "gate_modulates_message_to_carrier": 2.9410909673190004,
+            "gate_modulates_surface_routes": 2.87493289237636,
+            "gate_persistence": 1.9152729768252963,
+            "message_candidate": 0.7452572574637045,
+            "message_persistence": 2.0793779798346246,
+            "message_to_carrier": 0.2910263053193874,
+            "message_to_fast": 0.10537162918282433,
+            "message_to_gate": 0.49118485152245717,
+            "slow_candidate": 0.6048757090978756,
+            "slow_persistence": 1.6457098456034593,
+            "slow_to_gate": 0.43391674507025796
+          },
+          "surface": [
+            0.10563923418521881,
+            0.5101580619812012,
+            0.4336274266242981,
+            -0.3305090367794037,
+            -0.4702804982662201,
+            0.04353479668498039,
+            -0.29321664571762085,
+            0.2845335006713867
+          ],
+          "tick": 5
+        },
+        {
+          "acceptance": {
+            "accepted": true,
+            "reason": "queued"
+          },
+          "executed_acknowledgement": {
+            "answer_correct": null,
+            "executed_operation": "noop",
+            "read_value": null,
+            "register_value": 2
+          },
+          "phase": "query",
+          "proposal": {
+            "operand": null,
+            "operation": "noop"
+          },
+          "route_l2": {
+            "bias_to_gate": 0.24496767274019643,
+            "carrier_candidate": 0.386944970313458,
+            "carrier_persistence": 2.063703892831225,
+            "carrier_to_fast": 0.12316180881156658,
+            "carrier_to_gate": 0.3370067143512201,
+            "carrier_to_slow": 0.2778243940175027,
+            "control_candidate": 0.2601888914920307,
+            "control_persistence": 0.4530802159873215,
+            "control_to_fast": 0.06912680596913602,
+            "control_to_gate": 0.1760156392820457,
+            "fast_candidate": 0.8900700924107062,
+            "fast_integrated_update": 0.3857123640416294,
+            "fast_retention": 0.5257208866000558,
+            "fast_slow_to_control": 0.27898159562266334,
+            "fast_to_gate": 0.3465583953279017,
+            "fast_to_message": 0.0864191183402999,
+            "fast_to_slow": 0.07199975633480402,
+            "gate_integrated_update": 0.6759417105553057,
+            "gate_modulates_carrier_to_slow": 2.9425124818372725,
+            "gate_modulates_message_to_carrier": 2.9745680592885604,
+            "gate_modulates_surface_routes": 2.8898016001554403,
+            "gate_persistence": 2.427520575785663,
+            "message_candidate": 0.8446178137774007,
+            "message_persistence": 2.560585780054233,
+            "message_to_carrier": 0.3571790784148342,
+            "message_to_fast": 0.12702432083432438,
+            "message_to_gate": 0.5956246298838523,
+            "slow_candidate": 0.6406378602528128,
+            "slow_persistence": 1.9946989499365373,
+            "slow_to_gate": 0.5247780530067311
+          },
+          "surface": [
+            0.09624702483415604,
+            0.5143886804580688,
+            0.44204622507095337,
+            -0.3693453371524811,
+            -0.4924283027648926,
+            0.03589293733239174,
+            -0.2699747085571289,
+            0.3008001148700714
+          ],
+          "tick": 6
+        },
+        {
+          "acceptance": {
+            "accepted": true,
+            "reason": "queued"
+          },
+          "executed_acknowledgement": {
+            "answer_correct": null,
+            "executed_operation": "noop",
+            "read_value": null,
+            "register_value": 2
+          },
+          "phase": "query",
+          "proposal": {
+            "operand": null,
+            "operation": "noop"
+          },
+          "route_l2": {
+            "bias_to_gate": 0.24496767274019643,
+            "carrier_candidate": 0.42424766599919755,
+            "carrier_persistence": 2.5641745743139412,
+            "carrier_to_fast": 0.15021186466052844,
+            "carrier_to_gate": 0.4512059132259759,
+            "carrier_to_slow": 0.3134115352480645,
+            "control_candidate": 0.24980902841654798,
+            "control_persistence": 0.4342492370703259,
+            "control_to_fast": 0.06409090531862678,
+            "control_to_gate": 0.16615720997992497,
+            "fast_candidate": 0.8975280230013949,
+            "fast_integrated_update": 0.3889168105578901,
+            "fast_retention": 0.5326620803429346,
+            "fast_slow_to_control": 0.2885794431921597,
+            "fast_to_gate": 0.3527959025743209,
+            "fast_to_message": 0.08740340323990194,
+            "fast_to_slow": 0.07421844322335898,
+            "gate_integrated_update": 0.7701109114288635,
+            "gate_modulates_carrier_to_slow": 2.9900800018032725,
+            "gate_modulates_message_to_carrier": 3.0325621997459673,
+            "gate_modulates_surface_routes": 2.919066127472836,
+            "gate_persistence": 2.98814585190969,
+            "message_candidate": 0.9397556769091043,
+            "message_persistence": 3.0831486009848716,
+            "message_to_carrier": 0.42667387656124184,
+            "message_to_fast": 0.14878847872378967,
+            "message_to_gate": 0.7028318809336422,
+            "slow_candidate": 0.6671066234802738,
+            "slow_persistence": 2.3649271266556093,
+            "slow_to_gate": 0.6227224822073598
+          },
+          "surface": [
+            0.08713147044181824,
+            0.5156452059745789,
+            0.4394199550151825,
+            -0.3956664800643921,
+            -0.5023816823959351,
+            0.03294609859585762,
+            -0.2391698807477951,
+            0.3110756278038025
+          ],
+          "tick": 7
+        }
+      ]
+    }
+  ],
+  "schema_version": 1
+}

@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import pytest
+
 from development.closed_loop_demian import (
     ClosedLoopDemianRunner,
     FrozenActionDecoder,
@@ -76,3 +78,13 @@ def test_fixed_observation_replay_is_identical_to_recorded_closed_loop_inputs() 
 
     assert [record.surface for record in replayed] == [record.surface for record in recorded]
     assert [record.proposal for record in replayed] == [record.proposal for record in recorded]
+
+
+def test_terminal_episode_does_not_emit_repeated_complete_ticks() -> None:
+    runner = ClosedLoopDemianRunner(seed=94, hidden_size=8, cue_symbol=1, delay_steps=1)
+
+    while not runner.world.completed:
+        runner.step()
+
+    with pytest.raises(RuntimeError, match="completed"):
+        runner.step()
