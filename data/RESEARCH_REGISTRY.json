@@ -6,7 +6,7 @@
     "generated_on": "2026-10-06",
     "authority": "Demian",
     "source_repository": "https://github.com/Aeshma-Daeva/Demian-Lab",
-    "source_commit": "0f18bb20d32d50e638002465e4100d7f6b0de8b9",
+    "source_commit": "d50ba1e407fd434a61ffa28aeb92f8c3a808e0dc",
     "status_policy": "manual_review_only"
   },
   "hypotheses": [
@@ -461,26 +461,26 @@
     {
       "id": "A-ROUTE-PROTOCOL-001",
       "repository": "Aeshma-Daeva/Demian-Lab",
-      "commit": "0f18bb20d32d50e638002465e4100d7f6b0de8b9",
+      "commit": "d50ba1e407fd434a61ffa28aeb92f8c3a808e0dc",
       "path": "data/ROUTE_TRAJECTORY_PROTOCOL.json",
       "media_type": "application/json",
-      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/0f18bb20d32d50e638002465e4100d7f6b0de8b9/data/ROUTE_TRAJECTORY_PROTOCOL.json"
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/d50ba1e407fd434a61ffa28aeb92f8c3a808e0dc/data/ROUTE_TRAJECTORY_PROTOCOL.json"
     },
     {
       "id": "A-ROUTE-SUMMARY-001",
       "repository": "Aeshma-Daeva/Demian-Lab",
-      "commit": "0f18bb20d32d50e638002465e4100d7f6b0de8b9",
+      "commit": "d50ba1e407fd434a61ffa28aeb92f8c3a808e0dc",
       "path": "data/diagnostics/demian_route_trajectory_pilot_20261006/summary.json",
       "media_type": "application/json",
-      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/0f18bb20d32d50e638002465e4100d7f6b0de8b9/data/diagnostics/demian_route_trajectory_pilot_20261006/summary.json"
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/d50ba1e407fd434a61ffa28aeb92f8c3a808e0dc/data/diagnostics/demian_route_trajectory_pilot_20261006/summary.json"
     },
     {
       "id": "A-ROUTE-TABLE-001",
       "repository": "Aeshma-Daeva/Demian-Lab",
-      "commit": "0f18bb20d32d50e638002465e4100d7f6b0de8b9",
+      "commit": "d50ba1e407fd434a61ffa28aeb92f8c3a808e0dc",
       "path": "data/diagnostics/demian_route_trajectory_pilot_20261006/route_steps.parquet",
       "media_type": "application/vnd.apache.parquet",
-      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/0f18bb20d32d50e638002465e4100d7f6b0de8b9/data/diagnostics/demian_route_trajectory_pilot_20261006/route_steps.parquet"
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/d50ba1e407fd434a61ffa28aeb92f8c3a808e0dc/data/diagnostics/demian_route_trajectory_pilot_20261006/route_steps.parquet"
     }
   ]
 }
