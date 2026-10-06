@@ -22,6 +22,14 @@ Purpose:
 - reduce dependence on memory and prose summaries
 - keep the live epistemic surface tied to result paths
 
+## Route-Trajectory Pilot
+
+- Protocol: [ROUTE_TRAJECTORY_PROTOCOL.json](ROUTE_TRAJECTORY_PROTOCOL.json)
+- Review summary: [diagnostics/demian_route_trajectory_pilot_20261006/summary.json](diagnostics/demian_route_trajectory_pilot_20261006/summary.json)
+- Timestamped vectors: [diagnostics/demian_route_trajectory_pilot_20261006/route_steps.parquet](diagnostics/demian_route_trajectory_pilot_20261006/route_steps.parquet)
+- Scope: 3 parameter seeds, 3 trajectories, 96 dependent route steps.
+- Status: instrumentation validated; route hypotheses untested.
+
 Use with:
 - [docs/CLAIMS.md](/home/xenith/demian/docs/CLAIMS.md)
 - [docs/RESEARCH_LINEAGE.md](/home/xenith/demian/docs/RESEARCH_LINEAGE.md)

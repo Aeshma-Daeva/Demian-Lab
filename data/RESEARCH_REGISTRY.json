@@ -1,12 +1,12 @@
 {
   "metadata": {
     "schema_version": 1,
-    "registry_id": "demian-research-registry-pilot-v1",
-    "protocol_version": "1.0.0",
+    "registry_id": "demian-research-registry-pilot-v2",
+    "protocol_version": "1.1.0",
     "generated_on": "2026-10-06",
     "authority": "Demian",
     "source_repository": "https://github.com/Aeshma-Daeva/Demian-Lab",
-    "source_commit": "d4bcc157e1a68b1ace9789f1d3567f0a7c879418",
+    "source_commit": "0f18bb20d32d50e638002465e4100d7f6b0de8b9",
     "status_policy": "manual_review_only"
   },
   "hypotheses": [
@@ -134,6 +134,72 @@
         "Reachable matched states and zero-hidden reconstructions produce indistinguishable continuation curves."
       ],
       "next_test": "Construct tighter reachable state pairs and model gap as a function of surface residual, hidden distance, and history lag."
+    },
+    {
+      "id": "H-ROUTE-001",
+      "statement": "Matched gate variation changes the timing or strength of specific implemented routes.",
+      "operational_prediction": "Matched acute gate interventions change preregistered downstream route contributions at predicted delays.",
+      "evaluation_conditions": ["matched_route_intervention", "predicted_delay", "held_out_seed", "sham_control"],
+      "evidence_status": "untested",
+      "lifecycle": "active",
+      "status_basis": {
+        "method": "manual_review",
+        "rule": "Instrumentation-only observations cannot support a causal route hypothesis.",
+        "considered_result_ids": ["R-ROUTE-PILOT-001"],
+        "supporting_result_ids": [],
+        "conflicting_result_ids": [],
+        "reviewer": "Astra scientific review",
+        "reviewed_on": "2026-10-06"
+      },
+      "status_history": [{"evidence_status":"untested","lifecycle":"active","changed_on":"2026-10-06","reviewer":"Astra scientific review","basis":"The unselected pilot validates route measurement but contains no matched intervention."}],
+      "result_ids": ["R-ROUTE-PILOT-001"],
+      "alternative_explanations": ["Shared inputs, feedback, scale, saturation, and update ordering can create route associations."],
+      "falsifiers": ["Held-out matched interventions produce no route-specific downstream difference beyond sham variation."],
+      "next_test": "Run preregistered one-step and sustained route removals with sham and untargeted-route controls."
+    },
+    {
+      "id": "H-ROUTE-002",
+      "statement": "Similar exposed trajectories can coexist with systematically different route trajectories.",
+      "operational_prediction": "Readout-matched held-out trajectories separate by preregistered route summaries after residual and history matching.",
+      "evaluation_conditions": ["surface_matched_comparison", "matched_history_lag", "matched_hidden_distance", "held_out_seed"],
+      "evidence_status": "untested",
+      "lifecycle": "active",
+      "status_basis": {
+        "method": "manual_review",
+        "rule": "Unmatched seed differences cannot support surface-equivalent route separation.",
+        "considered_result_ids": ["R-ROUTE-PILOT-001"],
+        "supporting_result_ids": [],
+        "conflicting_result_ids": [],
+        "reviewer": "Astra scientific review",
+        "reviewed_on": "2026-10-06"
+      },
+      "status_history": [{"evidence_status":"untested","lifecycle":"active","changed_on":"2026-10-06","reviewer":"Astra scientific review","basis":"The pilot has no surface-matched trajectory pairs."}],
+      "result_ids": ["R-ROUTE-PILOT-001"],
+      "alternative_explanations": ["Apparent route differences may be explained by exposed residual, hidden distance, reachability, or history lag."],
+      "falsifiers": ["Route differences disappear after exposed-state, hidden-distance, reachability, and history matching."],
+      "next_test": "Construct held-out surface-matched pairs with explicit residual, hidden-distance, and history covariates."
+    },
+    {
+      "id": "H-ROUTE-003",
+      "statement": "Selected route sequences mediate delayed effects on internal state or readout.",
+      "operational_prediction": "Route removal changes a predicted downstream outcome and original-contribution rescue restores it.",
+      "evaluation_conditions": ["removal_rescue_test", "predicted_delay", "matched_future_inputs", "runtime_metadata_match"],
+      "evidence_status": "untested",
+      "lifecycle": "active",
+      "status_basis": {
+        "method": "manual_review",
+        "rule": "A descriptive sequence is not propagation or mediation without removal and rescue.",
+        "considered_result_ids": ["R-ROUTE-PILOT-001"],
+        "supporting_result_ids": [],
+        "conflicting_result_ids": [],
+        "reviewer": "Astra scientific review",
+        "reviewed_on": "2026-10-06"
+      },
+      "status_history": [{"evidence_status":"untested","lifecycle":"active","changed_on":"2026-10-06","reviewer":"Astra scientific review","basis":"The pilot records sequences but does not intervene or rescue."}],
+      "result_ids": ["R-ROUTE-PILOT-001"],
+      "alternative_explanations": ["Lagged association may reflect shared input, feedback, or route cancellation rather than transmission."],
+      "falsifiers": ["Removal and rescue fail to alter or restore the preregistered downstream outcome."],
+      "next_test": "Remove a named contribution at a preregistered time and replay the uninterrupted contribution as rescue."
     }
   ],
   "experiments": [
@@ -177,6 +243,23 @@
         ]
       },
       "artifact_ids": ["A-BASIN-SUMMARY-001", "A-BASIN-TABLE-001"]
+    },
+    {
+      "id": "E-ROUTE-001",
+      "name": "Unselected six-channel route-trajectory pilot",
+      "system": "demian_v1_gate_state",
+      "protocol_version": "demian-v1-route-trajectory-pilot-v1",
+      "replication_scope": {
+        "parameter_seed_count": 3,
+        "initial_state_count": 3,
+        "input_seed_count": 0,
+        "history_condition_count": 1,
+        "trajectory_count": 3,
+        "checkpoint_row_count": 96,
+        "independent_unit": "parameter_seed",
+        "dependent_observations": ["checkpoint_route_steps_within_trajectory", "routes_within_step"]
+      },
+      "artifact_ids": ["A-ROUTE-PROTOCOL-001", "A-ROUTE-SUMMARY-001", "A-ROUTE-TABLE-001"]
     }
   ],
   "controls": [
@@ -221,6 +304,20 @@
       "semantics": "Continues the nearest earlier reachable state under aligned runtime metadata.",
       "limitations": ["Surface match is approximate.", "History lag and hidden distance are not yet matched."],
       "artifact_ids": ["A-BASIN-SUMMARY-001"]
+    },
+    {
+      "id": "C-TRACE-INVARIANCE-001",
+      "name": "Trace/no-trace trajectory identity",
+      "semantics": "Compares identical models and initial states with route tracing disabled and enabled.",
+      "limitations": ["Validates instrumentation noninterference; it is not dynamical evidence."],
+      "artifact_ids": ["A-ROUTE-PROTOCOL-001"]
+    },
+    {
+      "id": "C-ROUTE-RECON-001",
+      "name": "Target-state reconstruction",
+      "semantics": "Sums recorded target-state integration terms and compares them with each implemented next channel state.",
+      "limitations": ["Does not make preactivation terms independently causal."],
+      "artifact_ids": ["A-ROUTE-PROTOCOL-001"]
     }
   ],
   "results": [
@@ -310,6 +407,30 @@
       "exclusions": ["No universal surface-insufficiency claim.", "No reachable-manifold mechanism claim."],
       "control_ids": ["C-EXACT-RESTORE-001", "C-SHAM-RESTORE-001", "C-BODY-SURFACE-001", "C-REACHABLE-SURFACE-001"],
       "artifact_ids": ["A-BASIN-SUMMARY-001"]
+    },
+    {
+      "id": "R-ROUTE-PILOT-001",
+      "hypothesis_ids": ["H-ROUTE-001", "H-ROUTE-002", "H-ROUTE-003"],
+      "experiment_id": "E-ROUTE-001",
+      "evaluable": false,
+      "outcome": "unevaluable",
+      "observation": "Thirty implemented route terms were recorded over 96 dependent time steps across three unselected parameter seeds; tracing preserved trajectories and target-state terms reconstructed all six next-channel states.",
+      "interpretation": "The instrumentation is suitable for descriptive route analysis; the pilot does not establish route causality, surface-equivalent route separation, propagation, mediation, or task utility.",
+      "analysis_scope": {
+        "independent_unit": "parameter_seed",
+        "independent_unit_count": 3,
+        "comparison_count": 96,
+        "comparison_unit": "dependent route-time records",
+        "dependent_observations": ["32 steps repeat within each trajectory", "30 routes repeat within each step"],
+        "scope_note": "The pilot contains three independent parameter seeds and 96 dependent time points; route vectors are technical records, not independent replicates."
+      },
+      "evaluation_conditions_met": ["trace_invariance", "six_channel_coverage", "target_state_reconstruction", "absolute_and_normalized_route_records"],
+      "missing_evaluation_conditions": ["matched_route_intervention", "surface_matched_comparison", "removal_rescue_test"],
+      "effect_summary": {"parameter_seed_count":3,"trajectory_count":3,"route_step_count":96,"route_catalog_size":30,"route_vector_record_count":2880},
+      "uncertainty": ["Three unselected parameter seeds.", "Coordinate-specific route definitions.", "No task-conditioned or surface-matched trajectories."],
+      "exclusions": ["No causal propagation claim.", "No AFP-v2 evidence.", "No route-mediated memory or uncertainty claim."],
+      "control_ids": ["C-TRACE-INVARIANCE-001", "C-ROUTE-RECON-001"],
+      "artifact_ids": ["A-ROUTE-PROTOCOL-001", "A-ROUTE-SUMMARY-001", "A-ROUTE-TABLE-001"]
     }
   ],
   "artifacts": [
@@ -336,6 +457,30 @@
       "path": "data/diagnostics/demian_basin_horizon_pilot_20261005/checkpoints.parquet",
       "media_type": "application/vnd.apache.parquet",
       "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/d4bcc157e1a68b1ace9789f1d3567f0a7c879418/data/diagnostics/demian_basin_horizon_pilot_20261005/checkpoints.parquet"
+    },
+    {
+      "id": "A-ROUTE-PROTOCOL-001",
+      "repository": "Aeshma-Daeva/Demian-Lab",
+      "commit": "0f18bb20d32d50e638002465e4100d7f6b0de8b9",
+      "path": "data/ROUTE_TRAJECTORY_PROTOCOL.json",
+      "media_type": "application/json",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/0f18bb20d32d50e638002465e4100d7f6b0de8b9/data/ROUTE_TRAJECTORY_PROTOCOL.json"
+    },
+    {
+      "id": "A-ROUTE-SUMMARY-001",
+      "repository": "Aeshma-Daeva/Demian-Lab",
+      "commit": "0f18bb20d32d50e638002465e4100d7f6b0de8b9",
+      "path": "data/diagnostics/demian_route_trajectory_pilot_20261006/summary.json",
+      "media_type": "application/json",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/0f18bb20d32d50e638002465e4100d7f6b0de8b9/data/diagnostics/demian_route_trajectory_pilot_20261006/summary.json"
+    },
+    {
+      "id": "A-ROUTE-TABLE-001",
+      "repository": "Aeshma-Daeva/Demian-Lab",
+      "commit": "0f18bb20d32d50e638002465e4100d7f6b0de8b9",
+      "path": "data/diagnostics/demian_route_trajectory_pilot_20261006/route_steps.parquet",
+      "media_type": "application/vnd.apache.parquet",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/0f18bb20d32d50e638002465e4100d7f6b0de8b9/data/diagnostics/demian_route_trajectory_pilot_20261006/route_steps.parquet"
     }
   ]
 }

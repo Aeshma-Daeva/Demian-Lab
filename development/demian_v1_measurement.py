@@ -3,7 +3,7 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Literal
 
 import torch
@@ -47,13 +47,13 @@ class V1RouteStepRecord:
 @dataclass(frozen=True)
 class V1TraceResult:
     config: V1TraceConfig
-    initial_channels: dict[str, list[float]]
-    channel_scales: dict[str, float]
     surfaces: list[list[float]]
     full_states: list[list[float]]
     channels: dict[str, list[list[float]]]
     metrics: list[dict[str, float]]
-    route_steps: list[V1RouteStepRecord]
+    initial_channels: dict[str, list[float]] = field(default_factory=dict)
+    channel_scales: dict[str, float] = field(default_factory=dict)
+    route_steps: list[V1RouteStepRecord] = field(default_factory=list)
 
 
 def _validate_config(config: V1TraceConfig) -> None:

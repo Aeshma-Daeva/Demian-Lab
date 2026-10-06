@@ -26,10 +26,11 @@ in Demian Archive.
 1. Classify surface dynamics from $y_t$.
 2. Measure persistence and change in the full state $z_t$.
 3. Test whether one surface class contains different internal regimes.
-4. Compare full state with fixed-body `body_surface`; use fresh-body `surface_only` only as a package control.
-5. Restore or ablate explicit channels and components.
-6. Measure perturbation response and stability.
-7. Characterize local dynamics with Jacobians or finite-time Lyapunov estimates.
+4. Trace source-to-target contributions through the six recurrent channels.
+5. Compare full state with fixed-body `body_surface`; use fresh-body `surface_only` only as a package control.
+6. Restore, intervene on, or ablate explicit routes and channels.
+7. Measure perturbation response and stability.
+8. Characterize local dynamics with Jacobians or finite-time Lyapunov estimates.
 
 AFP-v2 is the prospective scientific criterion: surface convergence
 ($\Delta y_t \to 0$) plus persistent structured hidden-state change after
@@ -72,6 +73,7 @@ Full version: [Research Lineage](docs/RESEARCH_LINEAGE.md).
 | Continuation controls separate state from body | With model weights fixed, the representative `body_surface` arm diverges from full-state continuation; the `surface_only` arm also changes the body. | `body_surface` tests hidden-state relevance. `surface_only` tests the larger body-plus-state package and cannot isolate hidden-state causality. |
 | v10.0 predecessor found but did not validate sparse release | 640 candidates across four islands; final winner had `duty=0.171875`, `event=0.7896`, `phase=0.9371`; held-out CPU checks weakened the claim. | Useful predecessor and falsification pressure, not a stable mechanism. |
 | Track B points at structured channel anatomy | Message/carrier/control probes and null checks show real structure but also controls that prevent overclaiming. | Treat gate-state propagation as the current live hypothesis, not settled proof. |
+| Route tracing is operational | Thirty implemented terms reconstruct all six target updates; tracing is trajectory-invariant. | The three-seed pilot validates measurement only. Route causality remains untested. |
 | Control helps capsule maintenance | Continuous control clamp degrades the capsule more than one-shot control zeroing. | Control is stabilizing; current data do not prove setpoints, selfhood, or narrative integration. |
 
 Details and falsifiers: [Claims Ledger](docs/CLAIMS.md).
@@ -99,7 +101,7 @@ are useful after the reader knows what question they answer.
 - The strongest stable lesson is methodological: measure internal state,
   ablations, resumes, and held-out behavior before naming a mechanism.
 - The current live target is to turn the message/carrier/control/gate-state
-  evidence into a smaller substrate that survives the same tests.
+  evidence into matched route interventions and surface-matched comparisons.
 
 Quick links: [Research Lineage](docs/RESEARCH_LINEAGE.md) |
 [Claims](docs/CLAIMS.md) | [Reproducibility](docs/REPRODUCIBILITY.md) |
@@ -180,6 +182,13 @@ For the AFP-v2 characterization:
 ```bash
 ./venv/bin/python -m development.afp_v2_characterization --seeds 94,95,96 --hidden-size 16 --steps 512
 ./venv/bin/python -m pytest tests/test_afp_v2_characterization.py tests/test_v9_capsule_continuity.py -q
+```
+
+For route trajectories:
+
+```bash
+./venv/bin/python -m development.run_route_trajectory_pilot --seeds 94,95,96 --hidden-size 8 --steps 32
+./venv/bin/python -m pytest tests/test_route_trajectory.py -q
 ```
 
 ## Environment

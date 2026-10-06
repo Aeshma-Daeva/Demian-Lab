@@ -23,7 +23,7 @@ def _payload() -> dict:
     return json.loads(REGISTRY_PATH.read_text())
 
 
-def test_checked_in_registry_links_three_hypotheses_to_evidence() -> None:
+def test_checked_in_registry_links_hypotheses_to_evidence() -> None:
     registry = load_registry(REGISTRY_PATH)
 
     assert validate_registry(REGISTRY_PATH) == registry
@@ -31,6 +31,9 @@ def test_checked_in_registry_links_three_hypotheses_to_evidence() -> None:
         "H-AFP-002",
         "H-GATE-001",
         "H-CONT-001",
+        "H-ROUTE-001",
+        "H-ROUTE-002",
+        "H-ROUTE-003",
     }
     afp = next(item for item in registry.hypotheses if item.id == "H-AFP-002")
     afp_result = next(item for item in registry.results if item.id in afp.result_ids)
@@ -93,7 +96,7 @@ def test_snapshot_export_is_valid_and_deterministic(tmp_path: Path) -> None:
     snapshot = json.loads(first.read_text())
     assert snapshot["metadata"]["authority"] == "Demian"
     assert snapshot["metadata"]["status_policy"] == "manual_review_only"
-    assert len(snapshot["hypotheses"]) == 3
+    assert len(snapshot["hypotheses"]) == 6
 
 
 def test_invalid_registry_is_not_exported(tmp_path: Path) -> None:
@@ -152,3 +155,23 @@ def test_continuation_result_has_result_specific_scope() -> None:
     assert result.analysis_scope.comparison_count == 6
     assert result.analysis_scope.comparison_unit == "reference controls"
     assert "gate modes share parameter seeds" in result.analysis_scope.dependent_observations
+
+
+def test_route_pilot_remains_unevaluable_for_route_hypotheses() -> None:
+    registry = load_registry(REGISTRY_PATH)
+    result = next(item for item in registry.results if item.id == "R-ROUTE-PILOT-001")
+    route_hypotheses = [
+        item for item in registry.hypotheses if item.id.startswith("H-ROUTE-")
+    ]
+
+    assert result.evaluable is False
+    assert result.outcome == "unevaluable"
+    assert result.analysis_scope.independent_unit_count == 3
+    assert result.analysis_scope.comparison_count == 96
+    assert set(result.missing_evaluation_conditions) == {
+        "matched_route_intervention",
+        "surface_matched_comparison",
+        "removal_rescue_test",
+    }
+    assert all(item.evidence_status == "untested" for item in route_hypotheses)
+    assert all(item.result_ids == [result.id] for item in route_hypotheses)
