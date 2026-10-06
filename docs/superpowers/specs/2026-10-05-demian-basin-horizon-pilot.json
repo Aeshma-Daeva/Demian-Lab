@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "spec_id": "demian-basin-horizon-afpv2-pilot-v1",
+  "status": "pilot",
+  "system": {
+    "name": "Demian v1 gate-state",
+    "hidden_size": 16,
+    "transition": "z[t+1]=F(z[t],x[t])",
+    "readout": "y[t]=R(z[t])",
+    "channels": ["fast", "slow", "control", "message", "carrier", "gate"],
+    "forcing_protocol": "autonomous_after_reference_state",
+    "future_inputs": "none_and_identical_across_paired_arms"
+  },
+  "research_target": "Estimate finite-horizon surface and internal regimes across local perturbation scales, then test continuation relevance without treating surface-only reconstruction as a universal sufficiency test.",
+  "hypothesis": {
+    "id": "AFP_V2",
+    "surface_condition": "operational_surface_convergence_with_dwell",
+    "internal_condition": "structured_internal_change_through_post_settling_persistence_window",
+    "causal_condition": "matched_intervention_changes_continuation",
+    "exclusions": ["numerical_drift", "unfinished_transient", "trivial_accumulation"]
+  },
+  "finite_window_protocol": {
+    "surface_delta_tolerance": 0.01,
+    "surface_drift_tolerance": 0.0001,
+    "surface_escape_tolerance": 0.02,
+    "settling_dwell_steps": 24,
+    "persistence_steps": 48,
+    "checkpoints": [64, 128, 256],
+    "censoring": "right_censored_when_checkpoint_ends_before_required_window",
+    "terminology": "unsettled_is_not_asymptotic_nonconvergence"
+  },
+  "basin_probe": {
+    "reference_steps": 64,
+    "radii": [0.0, 0.001, 0.01, 0.1],
+    "geometry": "sphere",
+    "perturbation_norm": "per_channel_rms_normalized_l2",
+    "channel_scale_floor": 1e-06,
+    "direction_seeds": [7001, 7002, 7003, 7004],
+    "reuse_directions_across_radii": true,
+    "reported_quantity": "empirical_regime_frequency_around_sampled_reference_states"
+  },
+  "replication": {
+    "model_seeds": [94, 95],
+    "reference_states_per_model": 1,
+    "exact_replay_role": "verification_not_independent_replication",
+    "claim_limit": "robustness_under_sampled_initialization_and_protocol"
+  },
+  "conditions": {
+    "architecture_modes": ["active", "gate_disabled", "gate_frozen"],
+    "trajectory_interventions": ["radius_zero", "state_sphere_perturbation"],
+    "continuation_controls": ["full_checkpoint", "sham", "body_surface", "random_norm_matched", "reachable_surface_match", "channel_only"],
+    "baseline_rnn_confirmation": {
+      "status": "deferred_until_pilot_freeze",
+      "matching": ["state_width", "readout_width", "dtype", "step_count", "initialization_scale", "autonomous_forcing", "seed_count"]
+    }
+  },
+  "evidence_separation": {
+    "internal_regime": "finite_window_dynamical_classification",
+    "predictive_information": "not_measured_in_pilot",
+    "continuation_effect": "matched_control_only",
+    "task_utility": "not_measured_in_pilot"
+  },
+  "selection_control": {
+    "pilot_seeds": [94],
+    "held_out_confirmation_seeds": [95],
+    "rule": "freeze_thresholds_and_protocol_after_pilot_seed_before_reading_held_out_confirmation"
+  },
+  "outputs": [
+    "validated_run_record_json",
+    "checkpoint_rows_parquet",
+    "empirical_regime_frequency_by_radius_horizon_mode",
+    "settling_and_censoring_summary",
+    "continuation_control_summary",
+    "null_and_failure_records"
+  ],
+  "claim_boundary": {
+    "induced_result": "existence_under_declared_conditions_not_prevalence",
+    "surface_only_control": "tested_reconstruction_changes_continuation_not_all_surface_reconstructions_are_insufficient",
+    "atlas": "NullFrame_consumes_export_but_Demian_remains_evidence_authority"
+  }
+}

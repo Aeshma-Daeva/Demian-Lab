@@ -36,7 +36,7 @@
         "state_only": {
           "final_cosine_vs_uninterrupted": -0.10986296087503433,
           "final_l2_gap_vs_uninterrupted": 1.241044521331787,
-          "mean_step_gap_vs_uninterrupted": 0.2934050752470891
+          "mean_step_gap_vs_uninterrupted": 0.2934050764888525
         },
         "body_only": {
           "final_cosine_vs_uninterrupted": 0.9654525518417358,
@@ -44,33 +44,39 @@
           "mean_step_gap_vs_uninterrupted": 0.13121654031177363
         },
         "surface_only": {
-          "final_cosine_vs_uninterrupted": 0.09100709855556488,
+          "final_cosine_vs_uninterrupted": 0.09100712835788727,
           "final_l2_gap_vs_uninterrupted": 0.9976807236671448,
-          "mean_step_gap_vs_uninterrupted": 0.25749408826231956
+          "mean_step_gap_vs_uninterrupted": 0.257494089504083
         },
         "body_surface": {
           "final_cosine_vs_uninterrupted": 0.9609851241111755,
-          "final_l2_gap_vs_uninterrupted": 0.2264004796743393,
-          "mean_step_gap_vs_uninterrupted": 0.10775165787587564
+          "final_l2_gap_vs_uninterrupted": 0.2264004945755005,
+          "mean_step_gap_vs_uninterrupted": 0.10775165709977348
         },
         "fast_only": {
           "final_cosine_vs_uninterrupted": 0.9609851241111755,
-          "final_l2_gap_vs_uninterrupted": 0.2264004796743393,
-          "mean_step_gap_vs_uninterrupted": 0.10775165787587564
+          "final_l2_gap_vs_uninterrupted": 0.2264004945755005,
+          "mean_step_gap_vs_uninterrupted": 0.10775165709977348
         },
         "slow_only": {
           "final_cosine_vs_uninterrupted": 0.9997331500053406,
           "final_l2_gap_vs_uninterrupted": 0.019020551815629005,
-          "mean_step_gap_vs_uninterrupted": 0.05160666936232398
+          "mean_step_gap_vs_uninterrupted": 0.051606669187700994
         },
         "control_only": {
           "final_cosine_vs_uninterrupted": 0.9606242775917053,
           "final_l2_gap_vs_uninterrupted": 0.22710731625556946,
-          "mean_step_gap_vs_uninterrupted": 0.11977891468753417
+          "mean_step_gap_vs_uninterrupted": 0.11977891437709332
         }
       },
+      "fixed_body_control": {
+        "arm": "body_surface",
+        "mean_gap_vs_uninterrupted": 0.10775165709977348,
+        "gap_minus_full_capsule": 0.10775165709977348,
+        "surface_is_insufficient_continuation_state": true
+      },
       "continuity_advantage": {
-        "surface_gap_minus_capsule_gap": 0.25749408826231956,
+        "surface_gap_minus_capsule_gap": 0.257494089504083,
         "surface_gap_ratio": null
       },
       "uninterrupted_tail_metrics": {
@@ -140,7 +146,7 @@
         "body_only": {
           "final_cosine_vs_uninterrupted": 0.7796170115470886,
           "final_l2_gap_vs_uninterrupted": 0.6958091259002686,
-          "mean_step_gap_vs_uninterrupted": 0.2682533444215854
+          "mean_step_gap_vs_uninterrupted": 0.26825334193805855
         },
         "surface_only": {
           "final_cosine_vs_uninterrupted": -0.030075743794441223,
@@ -150,17 +156,17 @@
         "body_surface": {
           "final_cosine_vs_uninterrupted": 0.7556430101394653,
           "final_l2_gap_vs_uninterrupted": 0.7155263423919678,
-          "mean_step_gap_vs_uninterrupted": 0.24032077503701052
+          "mean_step_gap_vs_uninterrupted": 0.24032077379524708
         },
         "fast_only": {
           "final_cosine_vs_uninterrupted": 0.7709242105484009,
           "final_l2_gap_vs_uninterrupted": 0.7018306851387024,
-          "mean_step_gap_vs_uninterrupted": 0.24205329703787962
+          "mean_step_gap_vs_uninterrupted": 0.24205329827964306
         },
         "slow_only": {
           "final_cosine_vs_uninterrupted": 0.8130869269371033,
           "final_l2_gap_vs_uninterrupted": 0.6959846019744873,
-          "mean_step_gap_vs_uninterrupted": 0.23207020511229834
+          "mean_step_gap_vs_uninterrupted": 0.2320702044914166
         },
         "control_only": {
           "final_cosine_vs_uninterrupted": 0.7787908315658569,
@@ -175,8 +181,14 @@
         "carrier_only": {
           "final_cosine_vs_uninterrupted": 0.7347927093505859,
           "final_l2_gap_vs_uninterrupted": 0.7291808128356934,
-          "mean_step_gap_vs_uninterrupted": 0.17608232672015825
+          "mean_step_gap_vs_uninterrupted": 0.17608232609927654
         }
+      },
+      "fixed_body_control": {
+        "arm": "body_surface",
+        "mean_gap_vs_uninterrupted": 0.24032077379524708,
+        "gap_minus_full_capsule": 0.24032077379524708,
+        "surface_is_insufficient_continuation_state": true
       },
       "continuity_advantage": {
         "surface_gap_minus_capsule_gap": 0.30981059310336906,
@@ -190,7 +202,7 @@
         "carrier_write_mean": 0.6703485250473022,
         "fast_to_slow_bias_norm": 0.1433342844247818,
         "fast_slow_bias_norm": 1.5283915996551514,
-        "control_bias_norm": 0.3938203752040863,
+        "control_bias_norm": 0.3938204050064087,
         "fast_to_message_norm": 0.11659056693315506,
         "fast_to_carrier_norm": 0.0,
         "message_to_carrier_norm": 1.120794653892517,
@@ -229,20 +241,24 @@
       "demian_native_v9": {
         "n_runs": 6,
         "full_capsule_min_final_cosine": 0.9999998807907104,
-        "surface_only_max_final_cosine": 0.09100709855556488,
+        "surface_only_max_final_cosine": 0.09100712835788727,
         "full_capsule_max_mean_gap": 0.0,
-        "surface_only_min_mean_gap": 0.2262487313710153,
+        "body_surface_min_mean_gap": 0.032383146812208,
+        "surface_only_min_mean_gap": 0.22624873230233788,
         "all_full_capsules_exact_or_near_exact": true,
-        "all_surface_only_worse_than_full_capsule": true
+        "all_surface_only_worse_than_full_capsule": true,
+        "all_body_surface_worse_than_full_capsule": true
       },
       "v9_five_channel": {
         "n_runs": 6,
         "full_capsule_min_final_cosine": 0.9999998807907104,
         "surface_only_max_final_cosine": 0.1752406656742096,
         "full_capsule_max_mean_gap": 0.0,
+        "body_surface_min_mean_gap": 0.09970086603425443,
         "surface_only_min_mean_gap": 0.27455845288932323,
         "all_full_capsules_exact_or_near_exact": true,
-        "all_surface_only_worse_than_full_capsule": true
+        "all_surface_only_worse_than_full_capsule": true,
+        "all_body_surface_worse_than_full_capsule": true
       }
     }
   }

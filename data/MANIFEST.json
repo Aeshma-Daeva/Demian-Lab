@@ -1,12 +1,40 @@
 {
   "schema_version": 1,
-  "updated": "2026-05-15",
+  "updated": "2026-10-05",
   "policy": {
     "raw_data": "Keep raw run directories in place until manifest references and doc links are stable.",
     "status_values": ["active_evidence", "historical", "superseded", "baseline"],
     "promotion_rule": "Promoted claims must point to indexed artifacts or explicitly cite code/test evidence."
   },
   "runs": [
+    {
+      "id": "demian_basin_horizon_pilot_20261005",
+      "program": "demian-v1",
+      "date": "2026-10-05",
+      "family": "six_channel_basin_horizon_afpv2",
+      "status": "active_evidence",
+      "primary_summary": "data/diagnostics/demian_basin_horizon_pilot_20261005/summary.json",
+      "artifacts": [
+        "data/diagnostics/demian_basin_horizon_pilot_20261005/summary.json",
+        "data/diagnostics/demian_basin_horizon_pilot_20261005/checkpoints.parquet",
+        "docs/superpowers/specs/2026-10-05-demian-basin-horizon-pilot.json"
+      ],
+      "claim_ids": [],
+      "interpretation": "Finite-window pilot over 78 paired trajectories and 234 checkpoint classifications. After requiring both small adjacent steps and bounded net surface drift, every checkpoint remained operationally unsettled; no AFP-v2 evaluation window or candidate was produced. Continuation controls are reconstruction-specific and do not establish universal surface insufficiency."
+    },
+    {
+      "id": "demian_v1_characterization_20261005",
+      "program": "demian-v1",
+      "date": "2026-10-05",
+      "family": "six_channel_surface_internal_characterization",
+      "status": "active_evidence",
+      "primary_summary": "data/diagnostics/demian_v1_characterization_20261005/summary.json",
+      "artifacts": [
+        "data/diagnostics/demian_v1_characterization_20261005/summary.json"
+      ],
+      "claim_ids": [],
+      "interpretation": "Unselected six-channel phase-one campaign: none of 18 active, gate-disabled, or gate-frozen traces reached operational surface convergence; independent full-state labels split into 10 transient, 6 structured-persistent, and 2 trivial-accumulation regimes. Continuation gaps establish surface insufficiency only."
+    },
     {
       "id": "v10_0_frozen_evolution_20260510",
       "program": "demian-v1",
@@ -207,6 +235,19 @@
       "interpretation": "Saved comparison did not support behavioral superiority of canonical v9 over v8."
     },
     {
+      "id": "afp_v2_characterization_20261004",
+      "program": "afp-v2",
+      "date": "2026-10-04",
+      "family": "surface_internal_characterization",
+      "status": "active_evidence",
+      "primary_summary": "data/diagnostics/afp_v2_characterization_20261004/summary.json",
+      "artifacts": [
+        "data/diagnostics/afp_v2_characterization_20261004/summary.json"
+      ],
+      "claim_ids": ["C23"],
+      "interpretation": "Operational AFP-v2 sweep over canonical v9, v9 five-channel, and historical dual-GRU v3b. None of nine 512-step baselines pass after adding plateau, transient-stationarity, stochastic-accumulation, and tail-aligned continuation controls."
+    },
+    {
       "id": "v9_capsule_continuity_20260511",
       "date": "2026-05-11",
       "family": "capsule_continuity",
@@ -217,7 +258,7 @@
         "docs/assets/capsule_continuity.svg"
       ],
       "claim_ids": ["C19"],
-      "interpretation": "Canonical v9 and v9 five-channel resume from full internal-state capsules while surface-only replay fails under the deterministic probe; the compact sweep covers seeds 94, 95, and 96 across 16:16 and 24:24 windows."
+      "interpretation": "Canonical v9 and v9 five-channel resume from full internal-state capsules while fixed-body body_surface replay diverges; the compact sweep covers seeds 94, 95, and 96 across 16:16 and 24:24 windows."
     },
     {
       "id": "v8_multi_ablation_20260507",

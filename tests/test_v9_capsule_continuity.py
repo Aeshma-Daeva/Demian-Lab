@@ -67,4 +67,10 @@ def test_capsule_sweep_helpers_parse_and_aggregate():
     aggregate = aggregate_sweep(runs)["demian_native_v9"]
     assert aggregate["n_runs"] == 2
     assert aggregate["all_full_capsules_exact_or_near_exact"] is True
+    assert aggregate["all_body_surface_worse_than_full_capsule"] is True
     assert aggregate["all_surface_only_worse_than_full_capsule"] is True
+    assert aggregate["body_surface_min_mean_gap"] > aggregate["full_capsule_max_mean_gap"]
+
+    control = runs[0]["fixed_body_control"]
+    assert control["arm"] == "body_surface"
+    assert control["mean_gap_vs_uninterrupted"] == runs[0]["arms"]["body_surface"]["mean_step_gap_vs_uninterrupted"]

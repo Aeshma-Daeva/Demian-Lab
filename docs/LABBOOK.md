@@ -806,3 +806,46 @@ Interpretation:
 - Next analysis should inspect the multi-timepoint surgery artifacts by candidate
   and by broad-gate pass/fail status to see whether a weaker channel-anatomy
   subset exists despite strict-profile failure.
+
+## 2026-10-05 - Six-Channel Phase-One Characterization
+
+Command:
+
+```text
+python -m development.run_demian_v1_characterization --seeds 94,95,96 --hidden-size 16 --steps 512 --out data/diagnostics/demian_v1_characterization_20261005/summary.json
+```
+
+Scope:
+
+- unselected `DemianV1GateState` parameters
+- active, gate-disabled, and gate-frozen update modes
+- uninterrupted and surface-perturbed histories
+- five-channel v9 historical control
+- AFP-v2 tail and threshold robustness slices
+
+Observation:
+
+- six-channel runs: 18
+- `surface_nonconvergent`: 12
+- `surface_small_step_drift`: 6
+- operational surface convergence: 0/18
+- independent full-state regimes: 10 transient, 6 structured-persistent, 2
+  trivial-accumulation
+- gate regimes: 12 fixed, 6 transient
+- primary classifications changed under at least one robustness slice: 5/18
+- fixed-body surface continuation gaps were nonzero in all 18 six-channel
+  history/mode conditions
+
+Interpretation:
+
+- This campaign does not test task utility, trained parameters, uncertainty, or
+  selected/evolved regimes.
+- No AFP-v2 conclusion is available because no primary six-channel trajectory
+  reached the surface-convergence gate.
+- Independent internal labels show dynamics that the joint AFP gate would
+  otherwise mask; these labels do not imply task utility.
+- Continuation divergence establishes exposed-state insufficiency only.
+
+Artifact:
+
+- `data/diagnostics/demian_v1_characterization_20261005/summary.json`

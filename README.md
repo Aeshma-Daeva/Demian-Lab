@@ -67,6 +67,7 @@ Full version: [Research Lineage](docs/RESEARCH_LINEAGE.md).
 | Transformer and Mamba self-loops differ | Reservoir summaries compare attractor signatures. | Recurrence behavior depends on architecture; do not assume one universal loop. |
 | Plain recurrent baselines matter | Vanilla RNN, GRU, LSTM, diagonal SSM, and selective SSM run through the same self-loop battery. | Native results should be read against simpler recurrent controls, not in isolation. |
 | Fixed point can hide internal structure | GRU/dual-GRU, v8/v9, and v9 five-channel diagnostics expose basin-internal differences. | A flat surface label is not enough to judge a substrate. |
+| AFP-v2 rejects premature fixed-point claims | At 512 steps, none of nine baselines pass: canonical v9 settles or remains nonconvergent; five-channel remains nonconvergent; dual-GRU retains small-step drift. | AFP-v1 labels do not confirm AFP-v2. |
 | v9 is not proven superior to v8 | Saved v9-v8 comparison: both fixed-point in 4/4 seeds; v9 had lower covariance rank and weaker scale-1.0 recovery in that run. | v9 remains a useful simplified scaffold, not a victory claim. |
 | Continuation controls separate state from body | With model weights fixed, the representative `body_surface` arm diverges from full-state continuation; the `surface_only` arm also changes the body. | `body_surface` tests hidden-state relevance. `surface_only` tests the larger body-plus-state package and cannot isolate hidden-state causality. |
 | v10.0 predecessor found but did not validate sparse release | 640 candidates across four islands; final winner had `duty=0.171875`, `event=0.7896`, `phase=0.9371`; held-out CPU checks weakened the claim. | Useful predecessor and falsification pressure, not a stable mechanism. |
@@ -172,6 +173,13 @@ For the capsule-continuity side thread:
 ```bash
 ./venv/bin/python development/probe_v9_capsule_continuity.py --hidden-size 16 --pause-steps 24 --resume-steps 24 --seeds 94,95,96 --windows 16:16,24:24
 ./venv/bin/python -m pytest tests/test_v9_capsule_continuity.py -q
+```
+
+For the AFP-v2 characterization:
+
+```bash
+./venv/bin/python -m development.afp_v2_characterization --seeds 94,95,96 --hidden-size 16 --steps 512
+./venv/bin/python -m pytest tests/test_afp_v2_characterization.py tests/test_v9_capsule_continuity.py -q
 ```
 
 ## Environment

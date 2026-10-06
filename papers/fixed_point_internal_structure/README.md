@@ -6,10 +6,10 @@ Working title:
 
 `Projected Fixed Points and Internal Recurrent Dynamics: A Measurement Protocol in Demian`
 
-Demian is the experimental system. AFP-v2 is the prospective strict criterion;
-historical accumulating labels are AFP-v1 heuristics. Fixed-body continuation
-tests hidden-state relevance, while fresh-body `surface_only` tests the larger
-body-plus-state package.
+Demian is the experimental system. AFP-v2 is the operational strict criterion.
+None of nine 512-step baselines pass after plateau, transient, stochastic, and
+tail-aligned continuation controls. Fixed-body continuation tests hidden state;
+fresh-body `surface_only` tests the larger body-plus-state package.
 
 ## Build
 

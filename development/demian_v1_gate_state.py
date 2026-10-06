@@ -47,6 +47,13 @@ class V1ResumeResult:
     mean_step_gap: float
 
 
+@dataclass(frozen=True)
+class V1RuntimeSnapshot:
+    state: V1State
+    step_index: int
+    frozen_gate: torch.Tensor | None
+
+
 class DemianV1GateState(DemianNativeV9Substrate):
     """Six-channel substrate with explicit gate-state propagation.
 
@@ -301,6 +308,63 @@ def clone_state(state: V1State) -> V1State:
     """Clone all internal channels for capsule-style continuation."""
 
     return tuple(component.detach().clone() for component in state)  # type: ignore[return-value]
+
+
+def match_v1_surface(
+    model: DemianV1GateState,
+    state: V1State,
+    target_surface: torch.Tensor,
+) -> V1State:
+    """Set fast so the projected surface matches while other channels remain fixed."""
+
+    _, slow, control, message, carrier, gate = state
+    contribution = (
+        model.message_to_fast_scale * torch.tanh(model.message_readout(message))
+        + model.carrier_to_fast_scale * torch.tanh(model.carrier_readout(carrier))
+        + 0.05 * torch.tanh(model.gate_readout(gate))
+    )
+    fast = target_surface.reshape_as(state[0]) - contribution
+    return fast, slow, control, message, carrier, gate
+
+
+def capture_v1_runtime(model: DemianV1GateState, state: V1State) -> V1RuntimeSnapshot:
+    """Capture recurrent state plus model-local continuation metadata."""
+
+    return V1RuntimeSnapshot(
+        state=clone_state(state),
+        step_index=int(model._step_index),
+        frozen_gate=None if model._frozen_gate is None else model._frozen_gate.detach().clone(),
+    )
+
+
+def restore_v1_runtime(model: DemianV1GateState, snapshot: V1RuntimeSnapshot) -> V1State:
+    """Restore continuation metadata and return a cloned six-channel state."""
+
+    if len(snapshot.state) != len(V1_CHANNELS):
+        raise ValueError("v1 runtime snapshot requires six channels")
+    batch_size = snapshot.state[0].shape[0]
+    expected_widths = (
+        model.hidden_size,
+        model.hidden_size,
+        model.control_dim,
+        model.hidden_size,
+        model.hidden_size,
+        model.hidden_size,
+    )
+    if any(
+        component.ndim != 2
+        or component.shape[0] != batch_size
+        or component.shape[1] != width
+        for component, width in zip(snapshot.state, expected_widths, strict=True)
+    ):
+        raise ValueError("v1 runtime snapshot channel shapes do not match the model")
+    if snapshot.frozen_gate is not None and snapshot.frozen_gate.shape != snapshot.state[-1].shape:
+        raise ValueError("frozen gate shape must match state channels")
+    model._step_index = int(snapshot.step_index)
+    model._frozen_gate = (
+        None if snapshot.frozen_gate is None else snapshot.frozen_gate.detach().clone()
+    )
+    return clone_state(snapshot.state)
 
 
 def clamp_v1_channel(state: V1State, channel: str) -> V1State:

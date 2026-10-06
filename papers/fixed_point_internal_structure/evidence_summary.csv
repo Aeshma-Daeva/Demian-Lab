@@ -1,4 +1,7 @@
 claim_group,artifact,substrate_or_family,surface_result,internal_or_control_result,key_metric,value,interpretation
+afp_v2,data/diagnostics/afp_v2_characterization_20261004/summary.json,demian_native_v9,surface converged 2/3,AFP-v2 supported 0/3,baseline_pass_rate,0.0,One seed is internally fixed one is numerical drift and one remains nonconvergent.
+afp_v2,data/diagnostics/afp_v2_characterization_20261004/summary.json,v9_five_channel,surface converged 0/3,AFP-v2 supported 0/3,baseline_pass_rate,0.0,All five-channel baselines remain surface-nonconvergent at 512 steps.
+afp_v2,data/diagnostics/afp_v2_characterization_20261004/summary.json,dual_gru_v3b,surface converged 0/3,AFP-v2 supported 0/3,baseline_pass_rate,0.0,All dual-GRU v3b baselines retain small-step surface drift.
 dual_gru_interiors,data/substrate_lab/dual_gru_family_summary.json,dual_gru_v3b:current,FIXED_POINT 8/8,accumulating_fixed_point 8/8,mean_message_norm,23.108565038979357,Same surface attractor class can hide an accumulating interior.
 dual_gru_interiors,data/substrate_lab/dual_gru_family_summary.json,dual_gru_v3b:current,FIXED_POINT 8/8,accumulating_fixed_point 8/8,mean_bottleneck_code_entropy,1.7778541394614182,Message/bottleneck structure remains active under a fixed surface label.
 dual_gru_interiors,data/substrate_lab/dual_gru_family_summary.json,dual_gru_v3b:tight,FIXED_POINT 8/8,tight_fixed_point 6; accumulating_fixed_point 2,interior_class_count,2,One fixed-point surface class splits into multiple basin interiors.

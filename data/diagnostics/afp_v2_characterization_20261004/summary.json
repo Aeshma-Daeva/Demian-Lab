@@ -1,0 +1,2474 @@
+{
+  "schema_version": 1,
+  "experiment": "afp-v2-characterization",
+  "definition": {
+    "system": "z_(t+1) = F(z_t, x_t); y_t = R(z_t)",
+    "surface_convergence": "delta_y_t -> 0",
+    "afp_v2": "surface convergence plus persistent structured full-state change"
+  },
+  "config": {
+    "tail_steps": 24,
+    "windows": 4,
+    "surface_delta_tol": 0.01,
+    "surface_drift_tol": 0.0001,
+    "hidden_delta_min": 0.001,
+    "numerical_epsilon": 1.1920928955078125e-07,
+    "numerical_drift_multiplier": 64.0,
+    "zero_delta_tol": 1e-15,
+    "hidden_stationarity_min_ratio": 0.8,
+    "hidden_stationarity_max_ratio": 1.25,
+    "min_curvature_ratio": 0.05,
+    "min_velocity_coherence": 0.8,
+    "continuation_gap_min": 0.001
+  },
+  "classification_counts": {
+    "surface_fixed_internal_fixed": 2,
+    "surface_fixed_numerical_drift": 2,
+    "surface_nonconvergent": 7,
+    "surface_small_step_drift": 7
+  },
+  "classification_counts_by_variant": {
+    "baseline": {
+      "surface_fixed_internal_fixed": 1,
+      "surface_fixed_numerical_drift": 1,
+      "surface_nonconvergent": 4,
+      "surface_small_step_drift": 3
+    },
+    "perturbed": {
+      "surface_fixed_internal_fixed": 1,
+      "surface_fixed_numerical_drift": 1,
+      "surface_nonconvergent": 3,
+      "surface_small_step_drift": 4
+    }
+  },
+  "null_controls": {
+    "numerical_drift": {
+      "classification": "surface_fixed_numerical_drift",
+      "surface_converged": true,
+      "persistent_hidden_change": false,
+      "structured_hidden_change": false,
+      "continuation_relevant": null,
+      "metrics": {
+        "surface_max_delta": 0.0,
+        "surface_drift_rate": 0.0,
+        "hidden_max_delta": 7.071107649239716e-13,
+        "hidden_window_medians": [
+          7.071107649239716e-13,
+          7.071107649239716e-13,
+          7.071107649239716e-13,
+          7.071107649239716e-13
+        ],
+        "hidden_stationarity_ratio": 1.0,
+        "numerical_floor": 7.62939453125e-06,
+        "curvature_ratio": 0.0,
+        "velocity_coherence": 0.0,
+        "fixed_body_continuation_gap": null
+      }
+    },
+    "ordinary_transient": {
+      "classification": "surface_fixed_transient_internal",
+      "surface_converged": true,
+      "persistent_hidden_change": false,
+      "structured_hidden_change": false,
+      "continuation_relevant": null,
+      "metrics": {
+        "surface_max_delta": 0.0,
+        "surface_drift_rate": 0.0,
+        "hidden_max_delta": 0.14142135623730964,
+        "hidden_window_medians": [
+          0.14142135623730948,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "hidden_stationarity_ratio": 0.0,
+        "numerical_floor": 1.6184389828183307e-05,
+        "curvature_ratio": 0.0,
+        "velocity_coherence": 0.2727272727272727,
+        "fixed_body_continuation_gap": null
+      }
+    },
+    "trivial_accumulation": {
+      "classification": "surface_fixed_trivial_accumulation",
+      "surface_converged": true,
+      "persistent_hidden_change": true,
+      "structured_hidden_change": false,
+      "continuation_relevant": null,
+      "metrics": {
+        "surface_max_delta": 0.0,
+        "surface_drift_rate": 0.0,
+        "hidden_max_delta": 0.01581138830084191,
+        "hidden_window_medians": [
+          0.01581138830084189,
+          0.01581138830084191,
+          0.01581138830084191,
+          0.01581138830084191
+        ],
+        "hidden_stationarity_ratio": 1.0000000000000013,
+        "numerical_floor": 7.62939453125e-06,
+        "curvature_ratio": 1.3877787807814447e-15,
+        "velocity_coherence": 0.9999999999999999,
+        "fixed_body_continuation_gap": null
+      }
+    },
+    "small_step_surface_drift": {
+      "classification": "surface_small_step_drift",
+      "surface_converged": false,
+      "persistent_hidden_change": true,
+      "structured_hidden_change": true,
+      "continuation_relevant": null,
+      "metrics": {
+        "surface_max_delta": 0.0035355339059327407,
+        "surface_drift_rate": 0.0035355339059327372,
+        "hidden_max_delta": 0.27589937928294334,
+        "hidden_window_medians": [
+          0.275899379282943,
+          0.2758993792829427,
+          0.2758993792829433,
+          0.2758993792829433
+        ],
+        "hidden_stationarity_ratio": 1.000000000000001,
+        "numerical_floor": 7.62939453125e-06,
+        "curvature_ratio": 0.3901806440322561,
+        "velocity_coherence": 0.9238795325112867,
+        "fixed_body_continuation_gap": null
+      }
+    },
+    "stochastic_accumulation": {
+      "classification": "surface_fixed_transient_internal",
+      "surface_converged": true,
+      "persistent_hidden_change": false,
+      "structured_hidden_change": false,
+      "continuation_relevant": null,
+      "metrics": {
+        "surface_max_delta": 0.0,
+        "surface_drift_rate": 0.0,
+        "hidden_max_delta": 0.03435654177249062,
+        "hidden_window_medians": [
+          0.011695129915747176,
+          0.014294604109383212,
+          0.018628157577728163,
+          0.017418511866497927
+        ],
+        "hidden_stationarity_ratio": 1.4893816479152038,
+        "numerical_floor": 7.62939453125e-06,
+        "curvature_ratio": 1.479077031743913,
+        "velocity_coherence": 0.24741908758326966,
+        "fixed_body_continuation_gap": null
+      }
+    }
+  },
+  "surface_matched_regimes": {
+    "surface_nonconvergent": {
+      "classifications": [
+        "surface_nonconvergent",
+        "surface_small_step_drift"
+      ],
+      "run_ids": [
+        "demian_native_v9:seed=94:baseline",
+        "demian_native_v9:seed=94:perturbed",
+        "dual_gru_v3b:seed=94:baseline",
+        "dual_gru_v3b:seed=94:perturbed",
+        "dual_gru_v3b:seed=95:baseline",
+        "dual_gru_v3b:seed=95:perturbed",
+        "dual_gru_v3b:seed=96:baseline",
+        "dual_gru_v3b:seed=96:perturbed",
+        "v9_five_channel:seed=94:baseline",
+        "v9_five_channel:seed=94:perturbed",
+        "v9_five_channel:seed=95:baseline",
+        "v9_five_channel:seed=95:perturbed",
+        "v9_five_channel:seed=96:baseline",
+        "v9_five_channel:seed=96:perturbed"
+      ]
+    },
+    "surface_converged": {
+      "classifications": [
+        "surface_fixed_internal_fixed",
+        "surface_fixed_numerical_drift"
+      ],
+      "run_ids": [
+        "demian_native_v9:seed=95:baseline",
+        "demian_native_v9:seed=95:perturbed",
+        "demian_native_v9:seed=96:baseline",
+        "demian_native_v9:seed=96:perturbed"
+      ]
+    }
+  },
+  "runs": [
+    {
+      "classification": "surface_nonconvergent",
+      "surface_converged": false,
+      "persistent_hidden_change": false,
+      "structured_hidden_change": false,
+      "continuation_relevant": true,
+      "metrics": {
+        "surface_max_delta": 0.015229319868022744,
+        "surface_drift_rate": 0.006108126641051288,
+        "hidden_max_delta": 0.39134083011690535,
+        "hidden_window_medians": [
+          0.20896697761492614,
+          0.2456619075611789,
+          0.28197589233944453,
+          0.37751280884167915
+        ],
+        "hidden_stationarity_ratio": 1.8065668229041472,
+        "numerical_floor": 2.832959768917707e-05,
+        "curvature_ratio": 0.1424834892626,
+        "velocity_coherence": 0.987309045954175,
+        "fixed_body_continuation_gap": 0.051070091780275106
+      },
+      "run_id": "demian_native_v9:seed=94:baseline",
+      "system": "demian_native_v9",
+      "seed": 94,
+      "variant": "baseline",
+      "steps": 512,
+      "channel_regimes": {
+        "fast": {
+          "classification": "surface_nonconvergent",
+          "surface_converged": false,
+          "persistent_hidden_change": false,
+          "structured_hidden_change": false,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 0.015229319868022744,
+            "surface_drift_rate": 0.006108126641051288,
+            "hidden_max_delta": 0.015229319868022744,
+            "hidden_window_medians": [
+              0.004244244199149116,
+              0.0044515723194725205,
+              0.011331266441992359,
+              0.013365811025106464
+            ],
+            "hidden_stationarity_ratio": 3.1491616405545266,
+            "numerical_floor": 7.62939453125e-06,
+            "curvature_ratio": 0.2639364096575132,
+            "velocity_coherence": 0.9777101455336443,
+            "fixed_body_continuation_gap": null
+          }
+        },
+        "slow": {
+          "classification": "surface_nonconvergent",
+          "surface_converged": false,
+          "persistent_hidden_change": false,
+          "structured_hidden_change": false,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 0.015229319868022744,
+            "surface_drift_rate": 0.006108126641051288,
+            "hidden_max_delta": 0.5745743478310437,
+            "hidden_window_medians": [
+              0.31171704207885437,
+              0.359854019399357,
+              0.39871326409608837,
+              0.552117676091642
+            ],
+            "hidden_stationarity_ratio": 1.7712142794938173,
+            "numerical_floor": 4.168411992141108e-05,
+            "curvature_ratio": 0.14725079439877098,
+            "velocity_coherence": 0.9873359010346285,
+            "fixed_body_continuation_gap": null
+          }
+        },
+        "control": {
+          "classification": "surface_nonconvergent",
+          "surface_converged": false,
+          "persistent_hidden_change": false,
+          "structured_hidden_change": false,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 0.015229319868022744,
+            "surface_drift_rate": 0.006108126641051288,
+            "hidden_max_delta": 0.3054949028805317,
+            "hidden_window_medians": [
+              0.06528910994035833,
+              0.1580877784074694,
+              0.2721115135754341,
+              0.2566869939864493
+            ],
+            "hidden_stationarity_ratio": 3.9315437784483986,
+            "numerical_floor": 2.5604732154014235e-05,
+            "curvature_ratio": 0.13473708544326446,
+            "velocity_coherence": 0.9786384381054488,
+            "fixed_body_continuation_gap": null
+          }
+        }
+      },
+      "fixed_body_control": {
+        "arm": "body_surface",
+        "mean_gap_vs_uninterrupted": 0.051070091780275106,
+        "gap_minus_full_capsule": 0.051070091780275106,
+        "surface_is_insufficient_continuation_state": true,
+        "pause_steps": 488,
+        "resume_steps": 24,
+        "classified_steps": [
+          489,
+          512
+        ],
+        "control_steps": [
+          489,
+          512
+        ]
+      },
+      "component_restore_gaps": {
+        "fast": 0.051070091780275106,
+        "slow": 0.03757973432463283,
+        "control": 0.06598310234646003
+      }
+    },
+    {
+      "classification": "surface_nonconvergent",
+      "surface_converged": false,
+      "persistent_hidden_change": false,
+      "structured_hidden_change": false,
+      "continuation_relevant": null,
+      "metrics": {
+        "surface_max_delta": 0.015232880924441469,
+        "surface_drift_rate": 0.006104537326293356,
+        "hidden_max_delta": 0.39136779232592095,
+        "hidden_window_medians": [
+          0.20920601456393956,
+          0.24516461403271905,
+          0.2819008134992521,
+          0.3772749215103527
+        ],
+        "hidden_stationarity_ratio": 1.8033655595262357,
+        "numerical_floor": 2.8330433356394845e-05,
+        "curvature_ratio": 0.14183191422012695,
+        "velocity_coherence": 0.9873093718338354,
+        "fixed_body_continuation_gap": null
+      },
+      "run_id": "demian_native_v9:seed=94:perturbed",
+      "system": "demian_native_v9",
+      "seed": 94,
+      "variant": "perturbed",
+      "steps": 512,
+      "channel_regimes": {
+        "fast": {
+          "classification": "surface_nonconvergent",
+          "surface_converged": false,
+          "persistent_hidden_change": false,
+          "structured_hidden_change": false,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 0.015232880924441469,
+            "surface_drift_rate": 0.006104537326293356,
+            "hidden_max_delta": 0.015232880924441469,
+            "hidden_window_medians": [
+              0.0042673537489804955,
+              0.004436171700245646,
+              0.011284008631582559,
+              0.01339018627486995
+            ],
+            "hidden_stationarity_ratio": 3.1378196096512907,
+            "numerical_floor": 7.62939453125e-06,
+            "curvature_ratio": 0.2649464110736342,
+            "velocity_coherence": 0.9777238267890187,
+            "fixed_body_continuation_gap": null
+          }
+        },
+        "slow": {
+          "classification": "surface_nonconvergent",
+          "surface_converged": false,
+          "persistent_hidden_change": false,
+          "structured_hidden_change": false,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 0.015232880924441469,
+            "surface_drift_rate": 0.006104537326293356,
+            "hidden_max_delta": 0.5745865883935961,
+            "hidden_window_medians": [
+              0.31204694971387753,
+              0.3591778533738656,
+              0.39894852564633365,
+              0.551373634186686
+            ],
+            "hidden_stationarity_ratio": 1.7669572950232397,
+            "numerical_floor": 4.168178006645591e-05,
+            "curvature_ratio": 0.1465135685191558,
+            "velocity_coherence": 0.9873375754279942,
+            "fixed_body_continuation_gap": null
+          }
+        },
+        "control": {
+          "classification": "surface_nonconvergent",
+          "surface_converged": false,
+          "persistent_hidden_change": false,
+          "structured_hidden_change": false,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 0.015232880924441469,
+            "surface_drift_rate": 0.006104537326293356,
+            "hidden_max_delta": 0.3054548946096743,
+            "hidden_window_medians": [
+              0.06586632092753454,
+              0.15728442862874303,
+              0.2716287244600003,
+              0.25693047062821417
+            ],
+            "hidden_stationarity_ratio": 3.9007867300025225,
+            "numerical_floor": 2.557943211327761e-05,
+            "curvature_ratio": 0.1343336015584831,
+            "velocity_coherence": 0.9786046538718867,
+            "fixed_body_continuation_gap": null
+          }
+        }
+      }
+    },
+    {
+      "classification": "surface_fixed_numerical_drift",
+      "surface_converged": true,
+      "persistent_hidden_change": false,
+      "structured_hidden_change": false,
+      "continuation_relevant": true,
+      "metrics": {
+        "surface_max_delta": 2.723896278491333e-07,
+        "surface_drift_rate": 1.7888823728104502e-07,
+        "hidden_max_delta": 8.097088484427842e-06,
+        "hidden_window_medians": [
+          7.492718503122442e-06,
+          5.938517984919392e-06,
+          4.639935966659582e-06,
+          3.6092681390912496e-06
+        ],
+        "hidden_stationarity_ratio": 0.4817034214734156,
+        "numerical_floor": 3.0015695771737333e-05,
+        "curvature_ratio": 0.04946301168380205,
+        "velocity_coherence": 0.999384006497679,
+        "fixed_body_continuation_gap": 0.09192136465571821
+      },
+      "run_id": "demian_native_v9:seed=95:baseline",
+      "system": "demian_native_v9",
+      "seed": 95,
+      "variant": "baseline",
+      "steps": 512,
+      "channel_regimes": {
+        "fast": {
+          "classification": "surface_fixed_numerical_drift",
+          "surface_converged": true,
+          "persistent_hidden_change": false,
+          "structured_hidden_change": false,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 2.723896278491333e-07,
+            "surface_drift_rate": 1.7888823728104502e-07,
+            "hidden_max_delta": 2.723896278491333e-07,
+            "hidden_window_medians": [
+              2.565622814614111e-07,
+              1.9736267162144482e-07,
+              1.5606146899298457e-07,
+              1.218853395320338e-07
+            ],
+            "hidden_stationarity_ratio": 0.4750711555796882,
+            "numerical_floor": 7.62939453125e-06,
+            "curvature_ratio": 0.09621140301876094,
+            "velocity_coherence": 0.9959971331634571,
+            "fixed_body_continuation_gap": null
+          }
+        },
+        "slow": {
+          "classification": "surface_fixed_numerical_drift",
+          "surface_converged": true,
+          "persistent_hidden_change": false,
+          "structured_hidden_change": false,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 2.723896278491333e-07,
+            "surface_drift_rate": 1.7888823728104502e-07,
+            "hidden_max_delta": 1.2004451932951073e-05,
+            "hidden_window_medians": [
+              1.1111582756727835e-05,
+              8.80703442051432e-06,
+              6.88251870024581e-06,
+              5.3549130709921e-06
+            ],
+            "hidden_stationarity_ratio": 0.4819217197252849,
+            "numerical_floor": 4.481162593291954e-05,
+            "curvature_ratio": 0.04979784007263001,
+            "velocity_coherence": 0.9993872124605502,
+            "fixed_body_continuation_gap": null
+          }
+        },
+        "control": {
+          "classification": "surface_fixed_numerical_drift",
+          "surface_converged": true,
+          "persistent_hidden_change": false,
+          "structured_hidden_change": false,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 2.723896278491333e-07,
+            "surface_drift_rate": 1.7888823728104502e-07,
+            "hidden_max_delta": 3.6525782732633644e-06,
+            "hidden_window_medians": [
+              3.3369286548831802e-06,
+              2.6424664631742454e-06,
+              2.0463052202883293e-06,
+              1.5746943529713249e-06
+            ],
+            "hidden_stationarity_ratio": 0.47189931695631415,
+            "numerical_floor": 8.11121687229393e-06,
+            "curvature_ratio": 0.05337728039834036,
+            "velocity_coherence": 0.9998128139019402,
+            "fixed_body_continuation_gap": null
+          }
+        }
+      },
+      "fixed_body_control": {
+        "arm": "body_surface",
+        "mean_gap_vs_uninterrupted": 0.09192136465571821,
+        "gap_minus_full_capsule": 0.09192136465571821,
+        "surface_is_insufficient_continuation_state": true,
+        "pause_steps": 488,
+        "resume_steps": 24,
+        "classified_steps": [
+          489,
+          512
+        ],
+        "control_steps": [
+          489,
+          512
+        ]
+      },
+      "component_restore_gaps": {
+        "fast": 0.09192136465571821,
+        "slow": 0.03192216018032923,
+        "control": 0.10664454009383917
+      }
+    },
+    {
+      "classification": "surface_fixed_numerical_drift",
+      "surface_converged": true,
+      "persistent_hidden_change": false,
+      "structured_hidden_change": false,
+      "continuation_relevant": null,
+      "metrics": {
+        "surface_max_delta": 2.741751279639252e-07,
+        "surface_drift_rate": 1.7932024791168116e-07,
+        "hidden_max_delta": 8.12400127998744e-06,
+        "hidden_window_medians": [
+          7.438363420447484e-06,
+          5.949589226156243e-06,
+          4.639103258717907e-06,
+          3.6528052389925262e-06
+        ],
+        "hidden_stationarity_ratio": 0.4910764683735737,
+        "numerical_floor": 3.001569633501228e-05,
+        "curvature_ratio": 0.05809621911425901,
+        "velocity_coherence": 0.9993195695389772,
+        "fixed_body_continuation_gap": null
+      },
+      "run_id": "demian_native_v9:seed=95:perturbed",
+      "system": "demian_native_v9",
+      "seed": 95,
+      "variant": "perturbed",
+      "steps": 512,
+      "channel_regimes": {
+        "fast": {
+          "classification": "surface_fixed_numerical_drift",
+          "surface_converged": true,
+          "persistent_hidden_change": false,
+          "structured_hidden_change": false,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 2.741751279639252e-07,
+            "surface_drift_rate": 1.7932024791168116e-07,
+            "hidden_max_delta": 2.741751279639252e-07,
+            "hidden_window_medians": [
+              2.5607063238137225e-07,
+              1.9996821074510823e-07,
+              1.5421052794102026e-07,
+              1.2377442338729042e-07
+            ],
+            "hidden_stationarity_ratio": 0.483360478459514,
+            "numerical_floor": 7.62939453125e-06,
+            "curvature_ratio": 0.10526500936638256,
+            "velocity_coherence": 0.9959663553828374,
+            "fixed_body_continuation_gap": null
+          }
+        },
+        "slow": {
+          "classification": "surface_fixed_numerical_drift",
+          "surface_converged": true,
+          "persistent_hidden_change": false,
+          "structured_hidden_change": false,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 2.741751279639252e-07,
+            "surface_drift_rate": 1.7932024791168116e-07,
+            "hidden_max_delta": 1.2045189266681413e-05,
+            "hidden_window_medians": [
+              1.1029119092758581e-05,
+              8.823152353364852e-06,
+              6.8833626618473065e-06,
+              5.418854933538346e-06
+            ],
+            "hidden_stationarity_ratio": 0.49132255150787324,
+            "numerical_floor": 4.481162679182479e-05,
+            "curvature_ratio": 0.05788298903312128,
+            "velocity_coherence": 0.9993205379653628,
+            "fixed_body_continuation_gap": null
+          }
+        },
+        "control": {
+          "classification": "surface_fixed_numerical_drift",
+          "surface_converged": true,
+          "persistent_hidden_change": false,
+          "structured_hidden_change": false,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 2.741751279639252e-07,
+            "surface_drift_rate": 1.7932024791168116e-07,
+            "hidden_max_delta": 3.6534292508892906e-06,
+            "hidden_window_medians": [
+              3.3369286548831802e-06,
+              2.650730979993285e-06,
+              2.018275569335218e-06,
+              1.6029539180121016e-06
+            ],
+            "hidden_stationarity_ratio": 0.4803680521207362,
+            "numerical_floor": 8.111217722885018e-06,
+            "curvature_ratio": 0.05284259275985309,
+            "velocity_coherence": 0.9996187397336392,
+            "fixed_body_continuation_gap": null
+          }
+        }
+      }
+    },
+    {
+      "classification": "surface_fixed_internal_fixed",
+      "surface_converged": true,
+      "persistent_hidden_change": false,
+      "structured_hidden_change": false,
+      "continuation_relevant": true,
+      "metrics": {
+        "surface_max_delta": 0.0,
+        "surface_drift_rate": 0.0,
+        "hidden_max_delta": 0.0,
+        "hidden_window_medians": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "hidden_stationarity_ratio": 0.0,
+        "numerical_floor": 3.8263606839243294e-05,
+        "curvature_ratio": 0.0,
+        "velocity_coherence": 0.0,
+        "fixed_body_continuation_gap": 0.04599377163685858
+      },
+      "run_id": "demian_native_v9:seed=96:baseline",
+      "system": "demian_native_v9",
+      "seed": 96,
+      "variant": "baseline",
+      "steps": 512,
+      "channel_regimes": {
+        "fast": {
+          "classification": "surface_fixed_internal_fixed",
+          "surface_converged": true,
+          "persistent_hidden_change": false,
+          "structured_hidden_change": false,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 0.0,
+            "surface_drift_rate": 0.0,
+            "hidden_max_delta": 0.0,
+            "hidden_window_medians": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "hidden_stationarity_ratio": 0.0,
+            "numerical_floor": 7.62939453125e-06,
+            "curvature_ratio": 0.0,
+            "velocity_coherence": 0.0,
+            "fixed_body_continuation_gap": null
+          }
+        },
+        "slow": {
+          "classification": "surface_fixed_internal_fixed",
+          "surface_converged": true,
+          "persistent_hidden_change": false,
+          "structured_hidden_change": false,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 0.0,
+            "surface_drift_rate": 0.0,
+            "hidden_max_delta": 0.0,
+            "hidden_window_medians": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "hidden_stationarity_ratio": 0.0,
+            "numerical_floor": 5.715607917003489e-05,
+            "curvature_ratio": 0.0,
+            "velocity_coherence": 0.0,
+            "fixed_body_continuation_gap": null
+          }
+        },
+        "control": {
+          "classification": "surface_fixed_internal_fixed",
+          "surface_converged": true,
+          "persistent_hidden_change": false,
+          "structured_hidden_change": false,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 0.0,
+            "surface_drift_rate": 0.0,
+            "hidden_max_delta": 0.0,
+            "hidden_window_medians": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "hidden_stationarity_ratio": 0.0,
+            "numerical_floor": 1.0063608426632111e-05,
+            "curvature_ratio": 0.0,
+            "velocity_coherence": 0.0,
+            "fixed_body_continuation_gap": null
+          }
+        }
+      },
+      "fixed_body_control": {
+        "arm": "body_surface",
+        "mean_gap_vs_uninterrupted": 0.04599377163685858,
+        "gap_minus_full_capsule": 0.04599377163685858,
+        "surface_is_insufficient_continuation_state": true,
+        "pause_steps": 488,
+        "resume_steps": 24,
+        "classified_steps": [
+          489,
+          512
+        ],
+        "control_steps": [
+          489,
+          512
+        ]
+      },
+      "component_restore_gaps": {
+        "fast": 0.04599377163685858,
+        "slow": 0.027661523684704054,
+        "control": 0.05960596539080143
+      }
+    },
+    {
+      "classification": "surface_fixed_internal_fixed",
+      "surface_converged": true,
+      "persistent_hidden_change": false,
+      "structured_hidden_change": false,
+      "continuation_relevant": null,
+      "metrics": {
+        "surface_max_delta": 0.0,
+        "surface_drift_rate": 0.0,
+        "hidden_max_delta": 0.0,
+        "hidden_window_medians": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "hidden_stationarity_ratio": 0.0,
+        "numerical_floor": 3.8263613038692587e-05,
+        "curvature_ratio": 0.0,
+        "velocity_coherence": 0.0,
+        "fixed_body_continuation_gap": null
+      },
+      "run_id": "demian_native_v9:seed=96:perturbed",
+      "system": "demian_native_v9",
+      "seed": 96,
+      "variant": "perturbed",
+      "steps": 512,
+      "channel_regimes": {
+        "fast": {
+          "classification": "surface_fixed_internal_fixed",
+          "surface_converged": true,
+          "persistent_hidden_change": false,
+          "structured_hidden_change": false,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 0.0,
+            "surface_drift_rate": 0.0,
+            "hidden_max_delta": 0.0,
+            "hidden_window_medians": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "hidden_stationarity_ratio": 0.0,
+            "numerical_floor": 7.62939453125e-06,
+            "curvature_ratio": 0.0,
+            "velocity_coherence": 0.0,
+            "fixed_body_continuation_gap": null
+          }
+        },
+        "slow": {
+          "classification": "surface_fixed_internal_fixed",
+          "surface_converged": true,
+          "persistent_hidden_change": false,
+          "structured_hidden_change": false,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 0.0,
+            "surface_drift_rate": 0.0,
+            "hidden_max_delta": 0.0,
+            "hidden_window_medians": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "hidden_stationarity_ratio": 0.0,
+            "numerical_floor": 5.715608845128096e-05,
+            "curvature_ratio": 0.0,
+            "velocity_coherence": 0.0,
+            "fixed_body_continuation_gap": null
+          }
+        },
+        "control": {
+          "classification": "surface_fixed_internal_fixed",
+          "surface_converged": true,
+          "persistent_hidden_change": false,
+          "structured_hidden_change": false,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 0.0,
+            "surface_drift_rate": 0.0,
+            "hidden_max_delta": 0.0,
+            "hidden_window_medians": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "hidden_stationarity_ratio": 0.0,
+            "numerical_floor": 1.00636096364912e-05,
+            "curvature_ratio": 0.0,
+            "velocity_coherence": 0.0,
+            "fixed_body_continuation_gap": null
+          }
+        }
+      }
+    },
+    {
+      "classification": "surface_nonconvergent",
+      "surface_converged": false,
+      "persistent_hidden_change": false,
+      "structured_hidden_change": false,
+      "continuation_relevant": true,
+      "metrics": {
+        "surface_max_delta": 0.023029819811950777,
+        "surface_drift_rate": 0.010478329613980876,
+        "hidden_max_delta": 0.2983088885262791,
+        "hidden_window_medians": [
+          0.28319010730028554,
+          0.2946243941753922,
+          0.2725451893265029,
+          0.22174977708536342
+        ],
+        "hidden_stationarity_ratio": 0.7830421027039168,
+        "numerical_floor": 4.373354080781978e-05,
+        "curvature_ratio": 0.12116406878609762,
+        "velocity_coherence": 0.989787630748842,
+        "fixed_body_continuation_gap": 0.20656303502619267
+      },
+      "run_id": "v9_five_channel:seed=94:baseline",
+      "system": "v9_five_channel",
+      "seed": 94,
+      "variant": "baseline",
+      "steps": 512,
+      "channel_regimes": {
+        "fast": {
+          "classification": "surface_nonconvergent",
+          "surface_converged": false,
+          "persistent_hidden_change": false,
+          "structured_hidden_change": false,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 0.023029819811950777,
+            "surface_drift_rate": 0.010478329613980876,
+            "hidden_max_delta": 0.012665895645137136,
+            "hidden_window_medians": [
+              0.004163156778673391,
+              0.005662901778468837,
+              0.008228023288356834,
+              0.011355450533245444
+            ],
+            "hidden_stationarity_ratio": 2.7276057897737664,
+            "numerical_floor": 7.62939453125e-06,
+            "curvature_ratio": 0.2511742279996737,
+            "velocity_coherence": 0.9675396498746068,
+            "fixed_body_continuation_gap": null
+          }
+        },
+        "slow": {
+          "classification": "surface_nonconvergent",
+          "surface_converged": false,
+          "persistent_hidden_change": false,
+          "structured_hidden_change": false,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 0.023029819811950777,
+            "surface_drift_rate": 0.010478329613980876,
+            "hidden_max_delta": 0.18909012128768068,
+            "hidden_window_medians": [
+              0.17438355861301424,
+              0.13213781582413212,
+              0.11407423894014534,
+              0.1306312755443006
+            ],
+            "hidden_stationarity_ratio": 0.7491031642162599,
+            "numerical_floor": 4.8455160540130976e-05,
+            "curvature_ratio": 0.1144094583870758,
+            "velocity_coherence": 0.9896114202865242,
+            "fixed_body_continuation_gap": null
+          }
+        },
+        "control": {
+          "classification": "surface_nonconvergent",
+          "surface_converged": false,
+          "persistent_hidden_change": false,
+          "structured_hidden_change": false,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 0.023029819811950777,
+            "surface_drift_rate": 0.010478329613980876,
+            "hidden_max_delta": 0.1541075503580641,
+            "hidden_window_medians": [
+              0.12369952153237082,
+              0.15063352772367405,
+              0.11525934765668405,
+              0.09547030157531208
+            ],
+            "hidden_stationarity_ratio": 0.7717920036604874,
+            "numerical_floor": 2.0338742867999463e-05,
+            "curvature_ratio": 0.08679397846783439,
+            "velocity_coherence": 0.9964788854923863,
+            "fixed_body_continuation_gap": null
+          }
+        },
+        "message": {
+          "classification": "surface_nonconvergent",
+          "surface_converged": false,
+          "persistent_hidden_change": false,
+          "structured_hidden_change": false,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 0.023029819811950777,
+            "surface_drift_rate": 0.010478329613980876,
+            "hidden_max_delta": 0.11736349778360922,
+            "hidden_window_medians": [
+              0.05017269314166483,
+              0.050901537649351056,
+              0.0766428124784896,
+              0.10549077954504861
+            ],
+            "hidden_stationarity_ratio": 2.1025536589632674,
+            "numerical_floor": 2.533311858121238e-05,
+            "curvature_ratio": 0.12018699775732096,
+            "velocity_coherence": 0.9940511914499848,
+            "fixed_body_continuation_gap": null
+          }
+        },
+        "carrier": {
+          "classification": "surface_nonconvergent",
+          "surface_converged": false,
+          "persistent_hidden_change": false,
+          "structured_hidden_change": false,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 0.023029819811950777,
+            "surface_drift_rate": 0.010478329613980876,
+            "hidden_max_delta": 0.594280031896978,
+            "hidden_window_medians": [
+              0.5514218505612117,
+              0.5834168732269662,
+              0.5420136175757433,
+              0.4212643665363075
+            ],
+            "hidden_stationarity_ratio": 0.763960234995338,
+            "numerical_floor": 7.25145470374994e-05,
+            "curvature_ratio": 0.12273156524368589,
+            "velocity_coherence": 0.9895388104368739,
+            "fixed_body_continuation_gap": null
+          }
+        }
+      },
+      "fixed_body_control": {
+        "arm": "body_surface",
+        "mean_gap_vs_uninterrupted": 0.20656303502619267,
+        "gap_minus_full_capsule": 0.20656303502619267,
+        "surface_is_insufficient_continuation_state": true,
+        "pause_steps": 488,
+        "resume_steps": 24,
+        "classified_steps": [
+          489,
+          512
+        ],
+        "control_steps": [
+          489,
+          512
+        ]
+      },
+      "component_restore_gaps": {
+        "fast": 0.20891837341090044,
+        "slow": 0.17973553265134493,
+        "control": 0.1827312552680572,
+        "message": 0.20132207373778024,
+        "carrier": 0.15532374071578184
+      }
+    },
+    {
+      "classification": "surface_nonconvergent",
+      "surface_converged": false,
+      "persistent_hidden_change": false,
+      "structured_hidden_change": false,
+      "continuation_relevant": null,
+      "metrics": {
+        "surface_max_delta": 0.02312249173786569,
+        "surface_drift_rate": 0.010492890933079814,
+        "hidden_max_delta": 0.2985083730684421,
+        "hidden_window_medians": [
+          0.28331044207682465,
+          0.29475799707662304,
+          0.27276233601230077,
+          0.22158564812409529
+        ],
+        "hidden_stationarity_ratio": 0.7821301837650178,
+        "numerical_floor": 4.375578830759678e-05,
+        "curvature_ratio": 0.12058396161480726,
+        "velocity_coherence": 0.9898097823276583,
+        "fixed_body_continuation_gap": null
+      },
+      "run_id": "v9_five_channel:seed=94:perturbed",
+      "system": "v9_five_channel",
+      "seed": 94,
+      "variant": "perturbed",
+      "steps": 512,
+      "channel_regimes": {
+        "fast": {
+          "classification": "surface_nonconvergent",
+          "surface_converged": false,
+          "persistent_hidden_change": false,
+          "structured_hidden_change": false,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 0.02312249173786569,
+            "surface_drift_rate": 0.010492890933079814,
+            "hidden_max_delta": 0.012667888811703788,
+            "hidden_window_medians": [
+              0.00410385161814325,
+              0.005703997318253825,
+              0.008201389447579564,
+              0.011379121597690115
+            ],
+            "hidden_stationarity_ratio": 2.772790699201375,
+            "numerical_floor": 7.62939453125e-06,
+            "curvature_ratio": 0.248514931823608,
+            "velocity_coherence": 0.9671724285757904,
+            "fixed_body_continuation_gap": null
+          }
+        },
+        "slow": {
+          "classification": "surface_nonconvergent",
+          "surface_converged": false,
+          "persistent_hidden_change": false,
+          "structured_hidden_change": false,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 0.02312249173786569,
+            "surface_drift_rate": 0.010492890933079814,
+            "hidden_max_delta": 0.1889410121383687,
+            "hidden_window_medians": [
+              0.17429332326695057,
+              0.13223274449933442,
+              0.11403330492263845,
+              0.13062266151620883
+            ],
+            "hidden_stationarity_ratio": 0.7494415682013531,
+            "numerical_floor": 4.846616882064656e-05,
+            "curvature_ratio": 0.11405148918290366,
+            "velocity_coherence": 0.9896152830599807,
+            "fixed_body_continuation_gap": null
+          }
+        },
+        "control": {
+          "classification": "surface_nonconvergent",
+          "surface_converged": false,
+          "persistent_hidden_change": false,
+          "structured_hidden_change": false,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 0.02312249173786569,
+            "surface_drift_rate": 0.010492890933079814,
+            "hidden_max_delta": 0.15414018573168395,
+            "hidden_window_medians": [
+              0.12373902845262086,
+              0.15068136475222543,
+              0.11533859332001364,
+              0.09570895160442627
+            ],
+            "hidden_stationarity_ratio": 0.7734742449596073,
+            "numerical_floor": 2.033311080219067e-05,
+            "curvature_ratio": 0.08660250742115322,
+            "velocity_coherence": 0.9964867880486792,
+            "fixed_body_continuation_gap": null
+          }
+        },
+        "message": {
+          "classification": "surface_nonconvergent",
+          "surface_converged": false,
+          "persistent_hidden_change": false,
+          "structured_hidden_change": false,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 0.02312249173786569,
+            "surface_drift_rate": 0.010492890933079814,
+            "hidden_max_delta": 0.11745880117668599,
+            "hidden_window_medians": [
+              0.05009566703789972,
+              0.05100426282475552,
+              0.07683192165990829,
+              0.1055982383350111
+            ],
+            "hidden_stationarity_ratio": 2.107931575302133,
+            "numerical_floor": 2.5328291164238575e-05,
+            "curvature_ratio": 0.11973094455296551,
+            "velocity_coherence": 0.9940455217069729,
+            "fixed_body_continuation_gap": null
+          }
+        },
+        "carrier": {
+          "classification": "surface_nonconvergent",
+          "surface_converged": false,
+          "persistent_hidden_change": false,
+          "structured_hidden_change": false,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 0.02312249173786569,
+            "surface_drift_rate": 0.010492890933079814,
+            "hidden_max_delta": 0.5946786991040545,
+            "hidden_window_medians": [
+              0.5517182353578605,
+              0.583578808252924,
+              0.5424386509979546,
+              0.42026122717215697
+            ],
+            "hidden_stationarity_ratio": 0.7617316235697074,
+            "numerical_floor": 7.257612947571656e-05,
+            "curvature_ratio": 0.1228151033766751,
+            "velocity_coherence": 0.9895613146074094,
+            "fixed_body_continuation_gap": null
+          }
+        }
+      }
+    },
+    {
+      "classification": "surface_nonconvergent",
+      "surface_converged": false,
+      "persistent_hidden_change": true,
+      "structured_hidden_change": true,
+      "continuation_relevant": true,
+      "metrics": {
+        "surface_max_delta": 0.012406320882826378,
+        "surface_drift_rate": 0.007170003977021238,
+        "hidden_max_delta": 0.214723260189043,
+        "hidden_window_medians": [
+          0.20175009385582057,
+          0.1601849856992466,
+          0.15380269396874297,
+          0.1975278925696186
+        ],
+        "hidden_stationarity_ratio": 0.9790721223197084,
+        "numerical_floor": 4.637148485151216e-05,
+        "curvature_ratio": 0.11936522800489464,
+        "velocity_coherence": 0.9915528967858712,
+        "fixed_body_continuation_gap": 0.1808419699470202
+      },
+      "run_id": "v9_five_channel:seed=95:baseline",
+      "system": "v9_five_channel",
+      "seed": 95,
+      "variant": "baseline",
+      "steps": 512,
+      "channel_regimes": {
+        "fast": {
+          "classification": "surface_nonconvergent",
+          "surface_converged": false,
+          "persistent_hidden_change": true,
+          "structured_hidden_change": true,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 0.012406320882826378,
+            "surface_drift_rate": 0.007170003977021238,
+            "hidden_max_delta": 0.013237750867775124,
+            "hidden_window_medians": [
+              0.011603700755035692,
+              0.008162448405334418,
+              0.01005350298461027,
+              0.012646455987080467
+            ],
+            "hidden_stationarity_ratio": 1.0898640230438765,
+            "numerical_floor": 7.62939453125e-06,
+            "curvature_ratio": 0.17832754278213273,
+            "velocity_coherence": 0.9842414429033848,
+            "fixed_body_continuation_gap": null
+          }
+        },
+        "slow": {
+          "classification": "surface_nonconvergent",
+          "surface_converged": false,
+          "persistent_hidden_change": false,
+          "structured_hidden_change": false,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 0.012406320882826378,
+            "surface_drift_rate": 0.007170003977021238,
+            "hidden_max_delta": 0.31305897039182745,
+            "hidden_window_medians": [
+              0.30875122742043026,
+              0.20563324967709143,
+              0.15792055653170936,
+              0.1408282423005778
+            ],
+            "hidden_stationarity_ratio": 0.4561220484115203,
+            "numerical_floor": 4.2530682185114057e-05,
+            "curvature_ratio": 0.09774355836380023,
+            "velocity_coherence": 0.9938018729502698,
+            "fixed_body_continuation_gap": null
+          }
+        },
+        "control": {
+          "classification": "surface_nonconvergent",
+          "surface_converged": false,
+          "persistent_hidden_change": false,
+          "structured_hidden_change": false,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 0.012406320882826378,
+            "surface_drift_rate": 0.007170003977021238,
+            "hidden_max_delta": 0.1615686273366892,
+            "hidden_window_medians": [
+              0.1331441778414219,
+              0.08791086284751973,
+              0.10213295724126994,
+              0.0530604938660714
+            ],
+            "hidden_stationarity_ratio": 0.39851906952527655,
+            "numerical_floor": 7.899407025617397e-06,
+            "curvature_ratio": 0.12456250662834631,
+            "velocity_coherence": 0.9931758252265476,
+            "fixed_body_continuation_gap": null
+          }
+        },
+        "message": {
+          "classification": "surface_nonconvergent",
+          "surface_converged": false,
+          "persistent_hidden_change": true,
+          "structured_hidden_change": true,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 0.012406320882826378,
+            "surface_drift_rate": 0.007170003977021238,
+            "hidden_max_delta": 0.25216973870949805,
+            "hidden_window_medians": [
+              0.19397994335654267,
+              0.19937449695586384,
+              0.20889060815996638,
+              0.23184375321344391
+            ],
+            "hidden_stationarity_ratio": 1.1951944577450777,
+            "numerical_floor": 2.2503218460211094e-05,
+            "curvature_ratio": 0.13808335112467982,
+            "velocity_coherence": 0.9913956890105718,
+            "fixed_body_continuation_gap": null
+          }
+        },
+        "carrier": {
+          "classification": "surface_nonconvergent",
+          "surface_converged": false,
+          "persistent_hidden_change": false,
+          "structured_hidden_change": false,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 0.012406320882826378,
+            "surface_drift_rate": 0.007170003977021238,
+            "hidden_max_delta": 0.33812835069067326,
+            "hidden_window_medians": [
+              0.18832458369349594,
+              0.15838868470774908,
+              0.17052509315027176,
+              0.30219810366368915
+            ],
+            "hidden_stationarity_ratio": 1.6046662508784613,
+            "numerical_floor": 8.663148663093245e-05,
+            "curvature_ratio": 0.11949337076177731,
+            "velocity_coherence": 0.9925917703817649,
+            "fixed_body_continuation_gap": null
+          }
+        }
+      },
+      "fixed_body_control": {
+        "arm": "body_surface",
+        "mean_gap_vs_uninterrupted": 0.1808419699470202,
+        "gap_minus_full_capsule": 0.1808419699470202,
+        "surface_is_insufficient_continuation_state": true,
+        "pause_steps": 488,
+        "resume_steps": 24,
+        "classified_steps": [
+          489,
+          512
+        ],
+        "control_steps": [
+          489,
+          512
+        ]
+      },
+      "component_restore_gaps": {
+        "fast": 0.1815804367264112,
+        "slow": 0.18245970271527767,
+        "control": 0.18420761078596115,
+        "message": 0.18576869058112302,
+        "carrier": 0.14609474254151186
+      }
+    },
+    {
+      "classification": "surface_nonconvergent",
+      "surface_converged": false,
+      "persistent_hidden_change": true,
+      "structured_hidden_change": true,
+      "continuation_relevant": null,
+      "metrics": {
+        "surface_max_delta": 0.01244607703067805,
+        "surface_drift_rate": 0.0071795346038262845,
+        "hidden_max_delta": 0.2149090308699145,
+        "hidden_window_medians": [
+          0.2017777433304103,
+          0.16011535533343044,
+          0.1539200357842868,
+          0.19766347800945858
+        ],
+        "hidden_stationarity_ratio": 0.9796099150825837,
+        "numerical_floor": 4.6338097616655294e-05,
+        "curvature_ratio": 0.11945134052900692,
+        "velocity_coherence": 0.9915548001703833,
+        "fixed_body_continuation_gap": null
+      },
+      "run_id": "v9_five_channel:seed=95:perturbed",
+      "system": "v9_five_channel",
+      "seed": 95,
+      "variant": "perturbed",
+      "steps": 512,
+      "channel_regimes": {
+        "fast": {
+          "classification": "surface_nonconvergent",
+          "surface_converged": false,
+          "persistent_hidden_change": true,
+          "structured_hidden_change": true,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 0.01244607703067805,
+            "surface_drift_rate": 0.0071795346038262845,
+            "hidden_max_delta": 0.013236290074032903,
+            "hidden_window_medians": [
+              0.011616453004635142,
+              0.008153582008973311,
+              0.010125144879953384,
+              0.012643714587106414
+            ],
+            "hidden_stationarity_ratio": 1.0884316049022347,
+            "numerical_floor": 7.62939453125e-06,
+            "curvature_ratio": 0.17781642655427468,
+            "velocity_coherence": 0.9842008156339115,
+            "fixed_body_continuation_gap": null
+          }
+        },
+        "slow": {
+          "classification": "surface_nonconvergent",
+          "surface_converged": false,
+          "persistent_hidden_change": false,
+          "structured_hidden_change": false,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 0.01244607703067805,
+            "surface_drift_rate": 0.0071795346038262845,
+            "hidden_max_delta": 0.3131886094379414,
+            "hidden_window_medians": [
+              0.3086711495933018,
+              0.20544037573151708,
+              0.15775489623935735,
+              0.14087898852339148
+            ],
+            "hidden_stationarity_ratio": 0.45640478129883694,
+            "numerical_floor": 4.2527408803292366e-05,
+            "curvature_ratio": 0.09776469344357616,
+            "velocity_coherence": 0.993809043786802,
+            "fixed_body_continuation_gap": null
+          }
+        },
+        "control": {
+          "classification": "surface_nonconvergent",
+          "surface_converged": false,
+          "persistent_hidden_change": false,
+          "structured_hidden_change": false,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 0.01244607703067805,
+            "surface_drift_rate": 0.0071795346038262845,
+            "hidden_max_delta": 0.16206324812915446,
+            "hidden_window_medians": [
+              0.1333878480693164,
+              0.08799455201926934,
+              0.10219196562055655,
+              0.05293086779621016
+            ],
+            "hidden_stationarity_ratio": 0.39681926474069873,
+            "numerical_floor": 7.898002719255622e-06,
+            "curvature_ratio": 0.12450315423678215,
+            "velocity_coherence": 0.9931730076356883,
+            "fixed_body_continuation_gap": null
+          }
+        },
+        "message": {
+          "classification": "surface_nonconvergent",
+          "surface_converged": false,
+          "persistent_hidden_change": true,
+          "structured_hidden_change": true,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 0.01244607703067805,
+            "surface_drift_rate": 0.0071795346038262845,
+            "hidden_max_delta": 0.2527264139082697,
+            "hidden_window_medians": [
+              0.19426237174132724,
+              0.1992672705092496,
+              0.20919775415437764,
+              0.23226997838168945
+            ],
+            "hidden_stationarity_ratio": 1.1956508936839902,
+            "numerical_floor": 2.2503263988975436e-05,
+            "curvature_ratio": 0.13814069310812332,
+            "velocity_coherence": 0.9914163636524673,
+            "fixed_body_continuation_gap": null
+          }
+        },
+        "carrier": {
+          "classification": "surface_nonconvergent",
+          "surface_converged": false,
+          "persistent_hidden_change": false,
+          "structured_hidden_change": false,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 0.01244607703067805,
+            "surface_drift_rate": 0.0071795346038262845,
+            "hidden_max_delta": 0.3381581369470342,
+            "hidden_window_medians": [
+              0.188246716015351,
+              0.15846094452795018,
+              0.17074160930044402,
+              0.3022314961951978
+            ],
+            "hidden_stationarity_ratio": 1.6055074032237122,
+            "numerical_floor": 8.652105339863861e-05,
+            "curvature_ratio": 0.11981638476806401,
+            "velocity_coherence": 0.9925574620761387,
+            "fixed_body_continuation_gap": null
+          }
+        }
+      }
+    },
+    {
+      "classification": "surface_nonconvergent",
+      "surface_converged": false,
+      "persistent_hidden_change": true,
+      "structured_hidden_change": true,
+      "continuation_relevant": true,
+      "metrics": {
+        "surface_max_delta": 0.018680575993657095,
+        "surface_drift_rate": 0.0013966872733495973,
+        "hidden_max_delta": 0.22098681802045317,
+        "hidden_window_medians": [
+          0.20323906426897118,
+          0.14355035772446767,
+          0.1389873475919818,
+          0.1739185090688344
+        ],
+        "hidden_stationarity_ratio": 0.8557336636753391,
+        "numerical_floor": 7.901135321488328e-05,
+        "curvature_ratio": 0.17088484579162566,
+        "velocity_coherence": 0.9855161038201175,
+        "fixed_body_continuation_gap": 0.15635320295890173
+      },
+      "run_id": "v9_five_channel:seed=96:baseline",
+      "system": "v9_five_channel",
+      "seed": 96,
+      "variant": "baseline",
+      "steps": 512,
+      "channel_regimes": {
+        "fast": {
+          "classification": "surface_nonconvergent",
+          "surface_converged": false,
+          "persistent_hidden_change": false,
+          "structured_hidden_change": false,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 0.018680575993657095,
+            "surface_drift_rate": 0.0013966872733495973,
+            "hidden_max_delta": 0.018709165877544263,
+            "hidden_window_medians": [
+              0.0038100013663326113,
+              0.012164785209575042,
+              0.009467233312843505,
+              0.015098174872940635
+            ],
+            "hidden_stationarity_ratio": 3.962774136082179,
+            "numerical_floor": 7.62939453125e-06,
+            "curvature_ratio": 0.3277962224976917,
+            "velocity_coherence": 0.9499512543874871,
+            "fixed_body_continuation_gap": null
+          }
+        },
+        "slow": {
+          "classification": "surface_nonconvergent",
+          "surface_converged": false,
+          "persistent_hidden_change": false,
+          "structured_hidden_change": false,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 0.018680575993657095,
+            "surface_drift_rate": 0.0013966872733495973,
+            "hidden_max_delta": 0.45273344690926404,
+            "hidden_window_medians": [
+              0.4104528131761522,
+              0.24033085698047252,
+              0.2779030094355646,
+              0.3194945500613803
+            ],
+            "hidden_stationarity_ratio": 0.7783953229339039,
+            "numerical_floor": 3.918174466557699e-05,
+            "curvature_ratio": 0.15293914219716548,
+            "velocity_coherence": 0.9894212847640799,
+            "fixed_body_continuation_gap": null
+          }
+        },
+        "control": {
+          "classification": "surface_nonconvergent",
+          "surface_converged": false,
+          "persistent_hidden_change": false,
+          "structured_hidden_change": false,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 0.018680575993657095,
+            "surface_drift_rate": 0.0013966872733495973,
+            "hidden_max_delta": 0.3610818507844151,
+            "hidden_window_medians": [
+              0.16751937384689272,
+              0.31953954131669526,
+              0.1705196902782925,
+              0.2829490691490121
+            ],
+            "hidden_stationarity_ratio": 1.6890528101401474,
+            "numerical_floor": 1.6607055458541156e-05,
+            "curvature_ratio": 0.3008169343268951,
+            "velocity_coherence": 0.9688441105232761,
+            "fixed_body_continuation_gap": null
+          }
+        },
+        "message": {
+          "classification": "surface_nonconvergent",
+          "surface_converged": false,
+          "persistent_hidden_change": false,
+          "structured_hidden_change": false,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 0.018680575993657095,
+            "surface_drift_rate": 0.0013966872733495973,
+            "hidden_max_delta": 0.005446853722298078,
+            "hidden_window_medians": [
+              0.0015524939095806279,
+              0.0017597381310562811,
+              0.005175623793982634,
+              0.003654362448408004
+            ],
+            "hidden_stationarity_ratio": 2.3538658836962196,
+            "numerical_floor": 1.6961022023327117e-05,
+            "curvature_ratio": 0.2198011605284764,
+            "velocity_coherence": 0.974495909888222,
+            "fixed_body_continuation_gap": null
+          }
+        },
+        "carrier": {
+          "classification": "surface_nonconvergent",
+          "surface_converged": false,
+          "persistent_hidden_change": true,
+          "structured_hidden_change": true,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 0.018680575993657095,
+            "surface_drift_rate": 0.0013966872733495973,
+            "hidden_max_delta": 0.008040458213782086,
+            "hidden_window_medians": [
+              0.006846527985625965,
+              0.007570206169797405,
+              0.007941883742457276,
+              0.0076060660742427125
+            ],
+            "hidden_stationarity_ratio": 1.1109377030534848,
+            "numerical_floor": 0.0001570652891643334,
+            "curvature_ratio": 0.0797543214746697,
+            "velocity_coherence": 0.9970768887812921,
+            "fixed_body_continuation_gap": null
+          }
+        }
+      },
+      "fixed_body_control": {
+        "arm": "body_surface",
+        "mean_gap_vs_uninterrupted": 0.15635320295890173,
+        "gap_minus_full_capsule": 0.15635320295890173,
+        "surface_is_insufficient_continuation_state": true,
+        "pause_steps": 488,
+        "resume_steps": 24,
+        "classified_steps": [
+          489,
+          512
+        ],
+        "control_steps": [
+          489,
+          512
+        ]
+      },
+      "component_restore_gaps": {
+        "fast": 0.16573621705174446,
+        "slow": 0.17866585155328116,
+        "control": 0.17351710454871258,
+        "message": 0.19342826244731745,
+        "carrier": 0.1489688027650118
+      }
+    },
+    {
+      "classification": "surface_small_step_drift",
+      "surface_converged": false,
+      "persistent_hidden_change": true,
+      "structured_hidden_change": true,
+      "continuation_relevant": null,
+      "metrics": {
+        "surface_max_delta": 0.003869748139857277,
+        "surface_drift_rate": 0.0010973420399999468,
+        "hidden_max_delta": 0.1642291716181551,
+        "hidden_window_medians": [
+          0.15998433923757605,
+          0.14289723795761117,
+          0.12821225832661864,
+          0.15240178883546784
+        ],
+        "hidden_stationarity_ratio": 0.9526044209186741,
+        "numerical_floor": 8.005127621195858e-05,
+        "curvature_ratio": 0.192350200384154,
+        "velocity_coherence": 0.9797929114323632,
+        "fixed_body_continuation_gap": null
+      },
+      "run_id": "v9_five_channel:seed=96:perturbed",
+      "system": "v9_five_channel",
+      "seed": 96,
+      "variant": "perturbed",
+      "steps": 512,
+      "channel_regimes": {
+        "fast": {
+          "classification": "surface_small_step_drift",
+          "surface_converged": false,
+          "persistent_hidden_change": true,
+          "structured_hidden_change": true,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 0.003869748139857277,
+            "surface_drift_rate": 0.0010973420399999468,
+            "hidden_max_delta": 0.003849872767212603,
+            "hidden_window_medians": [
+              0.0028845367161919105,
+              0.001293293526091449,
+              0.002810901615198521,
+              0.0027841034104924512
+            ],
+            "hidden_stationarity_ratio": 0.9651821711487699,
+            "numerical_floor": 7.62939453125e-06,
+            "curvature_ratio": 0.19181945905187464,
+            "velocity_coherence": 0.977408858892398,
+            "fixed_body_continuation_gap": null
+          }
+        },
+        "slow": {
+          "classification": "surface_small_step_drift",
+          "surface_converged": false,
+          "persistent_hidden_change": true,
+          "structured_hidden_change": true,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 0.003869748139857277,
+            "surface_drift_rate": 0.0010973420399999468,
+            "hidden_max_delta": 0.33797569545698974,
+            "hidden_window_medians": [
+              0.3273294201902234,
+              0.2943665873638886,
+              0.2628903075702975,
+              0.31329308648826365
+            ],
+            "hidden_stationarity_ratio": 0.9571186308465561,
+            "numerical_floor": 4.670589940202054e-05,
+            "curvature_ratio": 0.19194192804272725,
+            "velocity_coherence": 0.9797868159549558,
+            "fixed_body_continuation_gap": null
+          }
+        },
+        "control": {
+          "classification": "surface_small_step_drift",
+          "surface_converged": false,
+          "persistent_hidden_change": false,
+          "structured_hidden_change": false,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 0.003869748139857277,
+            "surface_drift_rate": 0.0010973420399999468,
+            "hidden_max_delta": 0.09247882036980191,
+            "hidden_window_medians": [
+              0.08040756428147211,
+              0.026689262116665946,
+              0.054269329925751224,
+              0.046217856347717995
+            ],
+            "hidden_stationarity_ratio": 0.5747948810627974,
+            "numerical_floor": 1.3586989522129054e-05,
+            "curvature_ratio": 0.2226223840527594,
+            "velocity_coherence": 0.9742829014576599,
+            "fixed_body_continuation_gap": null
+          }
+        },
+        "message": {
+          "classification": "surface_small_step_drift",
+          "surface_converged": false,
+          "persistent_hidden_change": true,
+          "structured_hidden_change": true,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 0.003869748139857277,
+            "surface_drift_rate": 0.0010973420399999468,
+            "hidden_max_delta": 0.0022658823155363196,
+            "hidden_window_medians": [
+              0.0022206519416762714,
+              0.0016494406691822659,
+              0.0018730674295557876,
+              0.0021149773107358005
+            ],
+            "hidden_stationarity_ratio": 0.9524127897050351,
+            "numerical_floor": 1.7000659660997613e-05,
+            "curvature_ratio": 0.1715273992807888,
+            "velocity_coherence": 0.9841083702186663,
+            "fixed_body_continuation_gap": null
+          }
+        },
+        "carrier": {
+          "classification": "surface_small_step_drift",
+          "surface_converged": false,
+          "persistent_hidden_change": true,
+          "structured_hidden_change": true,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 0.003869748139857277,
+            "surface_drift_rate": 0.0010973420399999468,
+            "hidden_max_delta": 0.002516194176397504,
+            "hidden_window_medians": [
+              0.0021347453842299764,
+              0.002455699453749424,
+              0.0017651096660818255,
+              0.0022009362284719117
+            ],
+            "hidden_stationarity_ratio": 1.0310064351144204,
+            "numerical_floor": 0.000157217734817268,
+            "curvature_ratio": 0.1910156287293592,
+            "velocity_coherence": 0.9815965589171672,
+            "fixed_body_continuation_gap": null
+          }
+        }
+      }
+    },
+    {
+      "classification": "surface_small_step_drift",
+      "surface_converged": false,
+      "persistent_hidden_change": true,
+      "structured_hidden_change": false,
+      "continuation_relevant": true,
+      "metrics": {
+        "surface_max_delta": 0.0006292273270941308,
+        "surface_drift_rate": 0.0005915721786755923,
+        "hidden_max_delta": 0.0024693952624499226,
+        "hidden_window_medians": [
+          0.002346601521299718,
+          0.0023921920826885613,
+          0.0024319027631669126,
+          0.0024606215421707003
+        ],
+        "hidden_stationarity_ratio": 1.048589425957514,
+        "numerical_floor": 9.204650276338416e-06,
+        "curvature_ratio": 0.006911031412629574,
+        "velocity_coherence": 0.9999801803201986,
+        "fixed_body_continuation_gap": 0.2713632384936015
+      },
+      "run_id": "dual_gru_v3b:seed=94:baseline",
+      "system": "dual_gru_v3b",
+      "seed": 94,
+      "variant": "baseline",
+      "steps": 512,
+      "channel_regimes": {
+        "fast": {
+          "classification": "surface_small_step_drift",
+          "surface_converged": false,
+          "persistent_hidden_change": false,
+          "structured_hidden_change": false,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 0.0006292273270941308,
+            "surface_drift_rate": 0.0005915721786755923,
+            "hidden_max_delta": 0.0010087325043438172,
+            "hidden_window_medians": [
+              0.0008495943866672497,
+              0.0008948888828545307,
+              0.0009439709355642859,
+              0.0009905579772750343
+            ],
+            "hidden_stationarity_ratio": 1.1659186934611823,
+            "numerical_floor": 7.62939453125e-06,
+            "curvature_ratio": 0.012225370745206523,
+            "velocity_coherence": 0.9999646260260119,
+            "fixed_body_continuation_gap": null
+          }
+        },
+        "slow": {
+          "classification": "surface_small_step_drift",
+          "surface_converged": false,
+          "persistent_hidden_change": true,
+          "structured_hidden_change": false,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 0.0006292273270941308,
+            "surface_drift_rate": 0.0005915721786755923,
+            "hidden_max_delta": 0.0035319406447073994,
+            "hidden_window_medians": [
+              0.003402841745132393,
+              0.003459931407674876,
+              0.003503364492706707,
+              0.0035272741997038753
+            ],
+            "hidden_stationarity_ratio": 1.0365672176055432,
+            "numerical_floor": 1.274036077072291e-05,
+            "curvature_ratio": 0.0038690992201731453,
+            "velocity_coherence": 0.9999947287170666,
+            "fixed_body_continuation_gap": null
+          }
+        },
+        "message": {
+          "classification": "surface_small_step_drift",
+          "surface_converged": false,
+          "persistent_hidden_change": false,
+          "structured_hidden_change": false,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 0.0006292273270941308,
+            "surface_drift_rate": 0.0005915721786755923,
+            "hidden_max_delta": 0.0009553181290374517,
+            "hidden_window_medians": [
+              0.0005952126013507082,
+              0.0006444933722683625,
+              0.0007540840907285602,
+              0.000894581406014304
+            ],
+            "hidden_stationarity_ratio": 1.5029611335247979,
+            "numerical_floor": 7.62939453125e-06,
+            "curvature_ratio": 0.050432335810417915,
+            "velocity_coherence": 0.9990121972102893,
+            "fixed_body_continuation_gap": null
+          }
+        }
+      },
+      "fixed_body_control": {
+        "arm": "body_surface",
+        "mean_gap_vs_uninterrupted": 0.2713632384936015,
+        "gap_minus_full_capsule": 0.2713632384936015,
+        "surface_is_insufficient_continuation_state": true,
+        "pause_steps": 488,
+        "resume_steps": 24,
+        "classified_steps": [
+          489,
+          512
+        ],
+        "control_steps": [
+          489,
+          512
+        ]
+      },
+      "component_restore_gaps": {
+        "fast": 0.26727224824329215,
+        "slow": 0.17956145418186983,
+        "message": 0.26745421315232915
+      }
+    },
+    {
+      "classification": "surface_small_step_drift",
+      "surface_converged": false,
+      "persistent_hidden_change": true,
+      "structured_hidden_change": false,
+      "continuation_relevant": null,
+      "metrics": {
+        "surface_max_delta": 0.0008013811864450213,
+        "surface_drift_rate": 0.0007617942837398685,
+        "hidden_max_delta": 0.0027792645029738098,
+        "hidden_window_medians": [
+          0.002750880401797697,
+          0.0027749367444989577,
+          0.0027771395912544283,
+          0.0027554289888529534
+        ],
+        "hidden_stationarity_ratio": 1.0016535022941324,
+        "numerical_floor": 9.227869211299606e-06,
+        "curvature_ratio": 0.013889584248563597,
+        "velocity_coherence": 0.9999054104525772,
+        "fixed_body_continuation_gap": null
+      },
+      "run_id": "dual_gru_v3b:seed=94:perturbed",
+      "system": "dual_gru_v3b",
+      "seed": 94,
+      "variant": "perturbed",
+      "steps": 512,
+      "channel_regimes": {
+        "fast": {
+          "classification": "surface_small_step_drift",
+          "surface_converged": false,
+          "persistent_hidden_change": true,
+          "structured_hidden_change": false,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 0.0008013811864450213,
+            "surface_drift_rate": 0.0007617942837398685,
+            "hidden_max_delta": 0.0012884620831950062,
+            "hidden_window_medians": [
+              0.0010544778413702019,
+              0.0011354219712019363,
+              0.0012121469012436954,
+              0.0012705864070563862
+            ],
+            "hidden_stationarity_ratio": 1.2049436765834454,
+            "numerical_floor": 7.62939453125e-06,
+            "curvature_ratio": 0.01645880583032886,
+            "velocity_coherence": 0.999913377807664,
+            "fixed_body_continuation_gap": null
+          }
+        },
+        "slow": {
+          "classification": "surface_small_step_drift",
+          "surface_converged": false,
+          "persistent_hidden_change": true,
+          "structured_hidden_change": false,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 0.0008013811864450213,
+            "surface_drift_rate": 0.0007617942837398685,
+            "hidden_max_delta": 0.003969540989292631,
+            "hidden_window_medians": [
+              0.003967139895378336,
+              0.003959030025628417,
+              0.0039024335182600983,
+              0.0038078699594574156
+            ],
+            "hidden_stationarity_ratio": 0.9598527049407892,
+            "numerical_floor": 1.2769257204670108e-05,
+            "curvature_ratio": 0.009472556867350662,
+            "velocity_coherence": 0.9999580273835386,
+            "fixed_body_continuation_gap": null
+          }
+        },
+        "message": {
+          "classification": "surface_small_step_drift",
+          "surface_converged": false,
+          "persistent_hidden_change": false,
+          "structured_hidden_change": false,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 0.0008013811864450213,
+            "surface_drift_rate": 0.0007617942837398685,
+            "hidden_max_delta": 0.0020858246514705394,
+            "hidden_window_medians": [
+              0.0008399982114142484,
+              0.0012035735084587442,
+              0.001618035026003491,
+              0.001968116374471865
+            ],
+            "hidden_stationarity_ratio": 2.343000672773196,
+            "numerical_floor": 7.62939453125e-06,
+            "curvature_ratio": 0.05443971880759038,
+            "velocity_coherence": 0.998856717593566,
+            "fixed_body_continuation_gap": null
+          }
+        }
+      }
+    },
+    {
+      "classification": "surface_small_step_drift",
+      "surface_converged": false,
+      "persistent_hidden_change": true,
+      "structured_hidden_change": false,
+      "continuation_relevant": true,
+      "metrics": {
+        "surface_max_delta": 0.00017901596651353731,
+        "surface_drift_rate": 0.0001690355830766299,
+        "hidden_max_delta": 0.18384217407314862,
+        "hidden_window_medians": [
+          0.1836837705182697,
+          0.18321948312148734,
+          0.18269212606290403,
+          0.18215800350200748
+        ],
+        "hidden_stationarity_ratio": 0.9916935121053034,
+        "numerical_floor": 0.00027498769060066,
+        "curvature_ratio": 0.0011860009787107429,
+        "velocity_coherence": 0.9999994112277393,
+        "fixed_body_continuation_gap": 0.45544976244370144
+      },
+      "run_id": "dual_gru_v3b:seed=95:baseline",
+      "system": "dual_gru_v3b",
+      "seed": 95,
+      "variant": "baseline",
+      "steps": 512,
+      "channel_regimes": {
+        "fast": {
+          "classification": "surface_small_step_drift",
+          "surface_converged": false,
+          "persistent_hidden_change": false,
+          "structured_hidden_change": false,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 0.00017901596651353731,
+            "surface_drift_rate": 0.0001690355830766299,
+            "hidden_max_delta": 0.00031339718300450617,
+            "hidden_window_medians": [
+              0.0002851004442153952,
+              0.00028744114255477423,
+              0.0002958761492116744,
+              0.0003078321233133586
+            ],
+            "hidden_stationarity_ratio": 1.0797321770596382,
+            "numerical_floor": 7.62939453125e-06,
+            "curvature_ratio": 0.009129200911788257,
+            "velocity_coherence": 0.9999714207217022,
+            "fixed_body_continuation_gap": null
+          }
+        },
+        "slow": {
+          "classification": "surface_small_step_drift",
+          "surface_converged": false,
+          "persistent_hidden_change": true,
+          "structured_hidden_change": false,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 0.00017901596651353731,
+            "surface_drift_rate": 0.0001690355830766299,
+            "hidden_max_delta": 0.05152799303507599,
+            "hidden_window_medians": [
+              0.05130997187995423,
+              0.05137299533283231,
+              0.05144235977832734,
+              0.05150448083790989
+            ],
+            "hidden_stationarity_ratio": 1.0037908607397161,
+            "numerical_floor": 0.00010072279899341084,
+            "curvature_ratio": 0.0013511057472993457,
+            "velocity_coherence": 0.9999985340092583,
+            "fixed_body_continuation_gap": null
+          }
+        },
+        "message": {
+          "classification": "surface_small_step_drift",
+          "surface_converged": false,
+          "persistent_hidden_change": true,
+          "structured_hidden_change": false,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 0.00017901596651353731,
+            "surface_drift_rate": 0.0001690355830766299,
+            "hidden_max_delta": 0.5419025710554487,
+            "hidden_window_medians": [
+              0.5414114612081695,
+              0.5399697588504131,
+              0.538332703140454,
+              0.5366773870075048
+            ],
+            "hidden_stationarity_ratio": 0.9912560510076743,
+            "numerical_floor": 0.0007999127377141788,
+            "curvature_ratio": 0.001164997558635434,
+            "velocity_coherence": 0.9999994516587924,
+            "fixed_body_continuation_gap": null
+          }
+        }
+      },
+      "fixed_body_control": {
+        "arm": "body_surface",
+        "mean_gap_vs_uninterrupted": 0.45544976244370144,
+        "gap_minus_full_capsule": 0.45544976244370144,
+        "surface_is_insufficient_continuation_state": true,
+        "pause_steps": 488,
+        "resume_steps": 24,
+        "classified_steps": [
+          489,
+          512
+        ],
+        "control_steps": [
+          489,
+          512
+        ]
+      },
+      "component_restore_gaps": {
+        "fast": 0.45144783208767575,
+        "slow": 0.5101867703100046,
+        "message": 0.4039490508536498
+      }
+    },
+    {
+      "classification": "surface_small_step_drift",
+      "surface_converged": false,
+      "persistent_hidden_change": true,
+      "structured_hidden_change": false,
+      "continuation_relevant": null,
+      "metrics": {
+        "surface_max_delta": 0.00019820100052105066,
+        "surface_drift_rate": 0.00019037848445705723,
+        "hidden_max_delta": 0.18376450251923704,
+        "hidden_window_medians": [
+          0.18361108816053118,
+          0.18317366560585374,
+          0.18266472579520254,
+          0.18215113676241135
+        ],
+        "hidden_stationarity_ratio": 0.9920486752039539,
+        "numerical_floor": 0.00027169696125081217,
+        "curvature_ratio": 0.0012032000456782088,
+        "velocity_coherence": 0.9999993334699824,
+        "fixed_body_continuation_gap": null
+      },
+      "run_id": "dual_gru_v3b:seed=95:perturbed",
+      "system": "dual_gru_v3b",
+      "seed": 95,
+      "variant": "perturbed",
+      "steps": 512,
+      "channel_regimes": {
+        "fast": {
+          "classification": "surface_small_step_drift",
+          "surface_converged": false,
+          "persistent_hidden_change": false,
+          "structured_hidden_change": false,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 0.00019820100052105066,
+            "surface_drift_rate": 0.00019037848445705723,
+            "hidden_max_delta": 0.00033702160786619034,
+            "hidden_window_medians": [
+              0.0003319569078302282,
+              0.000325070303086847,
+              0.00032569710992523163,
+              0.0003315177792065225
+            ],
+            "hidden_stationarity_ratio": 0.9986771517225655,
+            "numerical_floor": 7.62939453125e-06,
+            "curvature_ratio": 0.00630951080854101,
+            "velocity_coherence": 0.9999692847469983,
+            "fixed_body_continuation_gap": null
+          }
+        },
+        "slow": {
+          "classification": "surface_small_step_drift",
+          "surface_converged": false,
+          "persistent_hidden_change": true,
+          "structured_hidden_change": false,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 0.00019820100052105066,
+            "surface_drift_rate": 0.00019037848445705723,
+            "hidden_max_delta": 0.051534034582083,
+            "hidden_window_medians": [
+              0.051333829639158966,
+              0.051373812853231025,
+              0.05144129197261995,
+              0.051508221895012446
+            ],
+            "hidden_stationarity_ratio": 1.0033972188920899,
+            "numerical_floor": 0.00010021994259510358,
+            "curvature_ratio": 0.0019063908364188448,
+            "velocity_coherence": 0.9999960666143686,
+            "fixed_body_continuation_gap": null
+          }
+        },
+        "message": {
+          "classification": "surface_small_step_drift",
+          "surface_converged": false,
+          "persistent_hidden_change": true,
+          "structured_hidden_change": false,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 0.00019820100052105066,
+            "surface_drift_rate": 0.00019037848445705723,
+            "hidden_max_delta": 0.541648805850561,
+            "hidden_window_medians": [
+              0.54118065104734,
+              0.5398294429974652,
+              0.5382493537179356,
+              0.536654918060961
+            ],
+            "hidden_stationarity_ratio": 0.9916372971250534,
+            "numerical_floor": 0.0007899849853616978,
+            "curvature_ratio": 0.0011460239000947701,
+            "velocity_coherence": 0.9999994590746041,
+            "fixed_body_continuation_gap": null
+          }
+        }
+      }
+    },
+    {
+      "classification": "surface_small_step_drift",
+      "surface_converged": false,
+      "persistent_hidden_change": true,
+      "structured_hidden_change": false,
+      "continuation_relevant": true,
+      "metrics": {
+        "surface_max_delta": 0.0002855624558901428,
+        "surface_drift_rate": 0.0002838987969800426,
+        "hidden_max_delta": 0.0024528988189234423,
+        "hidden_window_medians": [
+          0.0023721793398755846,
+          0.0023940720567081487,
+          0.002418185523838798,
+          0.002442617771145387
+        ],
+        "hidden_stationarity_ratio": 1.0296935522899786,
+        "numerical_floor": 1.5909601890218163e-05,
+        "curvature_ratio": 0.0023666459649689464,
+        "velocity_coherence": 0.9999985919750402,
+        "fixed_body_continuation_gap": 0.32805932871997356
+      },
+      "run_id": "dual_gru_v3b:seed=96:baseline",
+      "system": "dual_gru_v3b",
+      "seed": 96,
+      "variant": "baseline",
+      "steps": 512,
+      "channel_regimes": {
+        "fast": {
+          "classification": "surface_small_step_drift",
+          "surface_converged": false,
+          "persistent_hidden_change": false,
+          "structured_hidden_change": false,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 0.0002855624558901428,
+            "surface_drift_rate": 0.0002838987969800426,
+            "hidden_max_delta": 0.0004123657246026987,
+            "hidden_window_medians": [
+              0.00040985711104740246,
+              0.0004102686664420025,
+              0.0004109444982375878,
+              0.0004118722300353237
+            ],
+            "hidden_stationarity_ratio": 1.0049166378564753,
+            "numerical_floor": 7.62939453125e-06,
+            "curvature_ratio": 0.0039061546365389646,
+            "velocity_coherence": 0.9999923975630165,
+            "fixed_body_continuation_gap": null
+          }
+        },
+        "slow": {
+          "classification": "surface_small_step_drift",
+          "surface_converged": false,
+          "persistent_hidden_change": true,
+          "structured_hidden_change": false,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 0.0002855624558901428,
+            "surface_drift_rate": 0.0002838987969800426,
+            "hidden_max_delta": 0.0036422437384778794,
+            "hidden_window_medians": [
+              0.0035199372388621496,
+              0.0035531524490553905,
+              0.003589704684441887,
+              0.00362669444005708
+            ],
+            "hidden_stationarity_ratio": 1.0303292911067472,
+            "numerical_floor": 2.3140682379018165e-05,
+            "curvature_ratio": 0.0023422238565026293,
+            "velocity_coherence": 0.9999987078552546,
+            "fixed_body_continuation_gap": null
+          }
+        },
+        "message": {
+          "classification": "surface_small_step_drift",
+          "surface_converged": false,
+          "persistent_hidden_change": false,
+          "structured_hidden_change": false,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 0.0002855624558901428,
+            "surface_drift_rate": 0.0002838987969800426,
+            "hidden_max_delta": 0.0006434965111475524,
+            "hidden_window_medians": [
+              0.0006429224811550875,
+              0.0006413871292737104,
+              0.0006396638781144361,
+              0.0006381444124288917
+            ],
+            "hidden_stationarity_ratio": 0.9925682039962089,
+            "numerical_floor": 7.62939453125e-06,
+            "curvature_ratio": 0.001943125180627915,
+            "velocity_coherence": 0.9999982117221652,
+            "fixed_body_continuation_gap": null
+          }
+        }
+      },
+      "fixed_body_control": {
+        "arm": "body_surface",
+        "mean_gap_vs_uninterrupted": 0.32805932871997356,
+        "gap_minus_full_capsule": 0.32805932871997356,
+        "surface_is_insufficient_continuation_state": true,
+        "pause_steps": 488,
+        "resume_steps": 24,
+        "classified_steps": [
+          489,
+          512
+        ],
+        "control_steps": [
+          489,
+          512
+        ]
+      },
+      "component_restore_gaps": {
+        "fast": 0.3266037330031395,
+        "slow": 0.0658791297270606,
+        "message": 0.3290487465759118
+      }
+    },
+    {
+      "classification": "surface_small_step_drift",
+      "surface_converged": false,
+      "persistent_hidden_change": true,
+      "structured_hidden_change": false,
+      "continuation_relevant": null,
+      "metrics": {
+        "surface_max_delta": 0.0002851270938114677,
+        "surface_drift_rate": 0.0002834647204426402,
+        "hidden_max_delta": 0.002440968321566588,
+        "hidden_window_medians": [
+          0.002362518792755232,
+          0.0023837566017457035,
+          0.002407254026102099,
+          0.0024310122545349246
+        ],
+        "hidden_stationarity_ratio": 1.0289917108764302,
+        "numerical_floor": 1.591311722281463e-05,
+        "curvature_ratio": 0.0023252374380092126,
+        "velocity_coherence": 0.9999986205181725,
+        "fixed_body_continuation_gap": null
+      },
+      "run_id": "dual_gru_v3b:seed=96:perturbed",
+      "system": "dual_gru_v3b",
+      "seed": 96,
+      "variant": "perturbed",
+      "steps": 512,
+      "channel_regimes": {
+        "fast": {
+          "classification": "surface_small_step_drift",
+          "surface_converged": false,
+          "persistent_hidden_change": false,
+          "structured_hidden_change": false,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 0.0002851270938114677,
+            "surface_drift_rate": 0.0002834647204426402,
+            "hidden_max_delta": 0.0004108176192722673,
+            "hidden_window_medians": [
+              0.0004086445887961598,
+              0.0004089795880052804,
+              0.00040956425348506373,
+              0.0004103858601740999
+            ],
+            "hidden_stationarity_ratio": 1.004261090017293,
+            "numerical_floor": 7.62939453125e-06,
+            "curvature_ratio": 0.003807132383533379,
+            "velocity_coherence": 0.9999927925583787,
+            "fixed_body_continuation_gap": null
+          }
+        },
+        "slow": {
+          "classification": "surface_small_step_drift",
+          "surface_converged": false,
+          "persistent_hidden_change": true,
+          "structured_hidden_change": false,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 0.0002851270938114677,
+            "surface_drift_rate": 0.0002834647204426402,
+            "hidden_max_delta": 0.0036243668012031416,
+            "hidden_window_medians": [
+              0.0035054487261897372,
+              0.003537679893369015,
+              0.0035733122175138706,
+              0.00360929963060307
+            ],
+            "hidden_stationarity_ratio": 1.0296255665180458,
+            "numerical_floor": 2.314711786619703e-05,
+            "curvature_ratio": 0.00230231569208677,
+            "velocity_coherence": 0.9999987295824357,
+            "fixed_body_continuation_gap": null
+          }
+        },
+        "message": {
+          "classification": "surface_small_step_drift",
+          "surface_converged": false,
+          "persistent_hidden_change": false,
+          "structured_hidden_change": false,
+          "continuation_relevant": null,
+          "metrics": {
+            "surface_max_delta": 0.0002851270938114677,
+            "surface_drift_rate": 0.0002834647204426402,
+            "hidden_max_delta": 0.0006431835129586816,
+            "hidden_window_medians": [
+              0.0006425034844296249,
+              0.0006410036842710034,
+              0.0006392451746688059,
+              0.0006376072663283557
+            ],
+            "hidden_stationarity_ratio": 0.9923794684076839,
+            "numerical_floor": 7.62939453125e-06,
+            "curvature_ratio": 0.0017969505023193322,
+            "velocity_coherence": 0.9999984825018919,
+            "fixed_body_continuation_gap": null
+          }
+        }
+      }
+    }
+  ],
+  "evidence_status": {
+    "observation": "0/9 baseline runs satisfy the operational AFP-v2 definition and fixed-body control.",
+    "hypothesis": "A converged readout can coexist with continuation-relevant full-state dynamics.",
+    "control": "body_surface restores model weights and exposed state while zeroing other recurrent channels.",
+    "interpretation": "No tested baseline passes; a nonzero body_surface gap only establishes exposed-state insufficiency.",
+    "untested_speculation": "Distinct regimes have reproducible Jacobian or finite-time Lyapunov signatures and semantic function."
+  },
+  "campaign": {
+    "systems": [
+      "demian_native_v9",
+      "v9_five_channel",
+      "dual_gru_v3b"
+    ],
+    "seeds": [
+      94,
+      95,
+      96
+    ],
+    "hidden_size": 16,
+    "steps": 512,
+    "perturb_scale": 0.05
+  }
+}

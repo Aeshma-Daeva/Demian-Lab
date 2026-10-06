@@ -22,16 +22,12 @@
 Demian is an experimental discrete-time nonlinear recurrent system with full
 state $z_t$ and exposed readout $y_t$. We test the hypothesis that $y_t$ can
 converge while $z_t$ retains structured, continuation-relevant dynamics.
-Historical dual-GRU experiments show identical fixed-point surface labels with
-different internal regimes. Their \texttt{accumulating\_fixed\_point} labels are
-AFP-v1 heuristics based on maxima and contraction thresholds, not confirmations
-of the stricter AFP-v2 criterion. AFP-v2 requires persistent structured
-hidden-state change after excluding numerical drift, ordinary transients, and
-trivial accumulation. In a representative continuation probe, the
-\texttt{body\_surface} arm holds weights fixed and shows that omitted hidden
-state changes continuation. The \texttt{surface\_only} arm additionally changes
-the model body and is treated as a body-plus-state package control. Jacobian and
-finite-time Lyapunov analysis remain future characterization.
+AFP-v2 requires a settled surface plus persistent, coherent hidden-state change
+after excluding drift, transients, and stochastic or linear accumulation. None
+of nine 512-step baselines pass the operational rule. Canonical v9 either
+settles fully, reaches numerical drift, or remains nonconvergent; the
+five-channel system remains nonconvergent; dual-GRU v3b retains small-step
+surface drift. Fixed-body continuation is measured over the classified tail.
 \end{abstract}
 
 \noindent\textbf{Keywords:} recurrent neural networks; dynamical systems;
@@ -108,7 +104,7 @@ convergence tolerance. It does not imply $\Delta z_t \to 0$.
 We distinguish two terms. \emph{AFP-v1} is the repository's historical
 \texttt{accumulating\_fixed\_point} heuristic, triggered by maximum state norms
 or contraction thresholds. It can be satisfied by a transient excursion or a
-stationary high-norm state. \emph{AFP-v2} is the prospective scientific
+stationary high-norm state. \emph{AFP-v2} is the operational scientific
 criterion: surface convergence plus persistent structured change in $z_t$,
 after excluding floating-point drift, finite transients, and trivial
 unstructured accumulation.
@@ -150,8 +146,22 @@ The experiments were not designed as a single benchmark suite. They are a
 curated set of diagnostic artifacts from the same research line. The seed
 counts are therefore reported with each result rather than hidden behind a
 single aggregate. Dual-GRU interior maps use eight runs per listed variant.
-Matched perturbation baselines use three runs per architecture. The capsule table reports the representative seed-94, 24:24 run; the saved
-sweep does not aggregate the fixed-body \texttt{body\_surface} arm.
+Matched perturbation baselines use three runs per architecture. The AFP-v2
+sweep uses seeds 94--96. The capsule table reports seed 94 at 24:24; the compact
+capsule sweep covers seeds 94--96 at 16:16 and 24:24.
+
+\subsection{Operational AFP-v2 rule}
+
+The final 24 states are divided into four windows. Surface convergence requires
+maximum RMS $\Delta y_t \leq 0.01$ and endpoint drift rate $\leq 10^{-4}$.
+Persistent full-state change requires every window median RMS
+$\Delta z_t \geq 0.001$, above $64\epsilon$ times state scale, with final/first
+window ratio in $[0.8,1.25]$. Structured change requires curvature ratio
+$\geq 0.05$ and maximum absolute mean velocity cosine over lags 1--4
+$\geq 0.8$. Fixed-body
+continuation relevance requires mean \texttt{body\_surface} gap $\geq 0.001$
+over the same 24-step tail. Linear drift, damped transients, and seeded Gaussian
+random walks are explicit nulls.
 
 \subsection{Surface and interior measurements}
 
@@ -190,8 +200,24 @@ automatically evidence for a named causal mechanism.
 
 \subsection{Surface convergence and internal-state persistence}
 
-All listed dual-GRU variants converge to the same exposed fixed-point class.
-Their AFP-v1 message-norm and bottleneck statistics remain differentiated; this is evidence for a regime split, not AFP-v2 confirmation.
+Historical dual-GRU AFP-v1 statistics remain differentiated. Under the AFP-v2
+rule, dual-GRU v3b retains small-step surface drift in 3/3 seeds at 512 steps.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{lrrl}
+\toprule
+System & Surface-converged & AFP-v2 supported & Other result \\
+\midrule
+\texttt{demian\_native\_v9} & 2/3 & 0/3 & fixed: 1; drift: 1; nonconv.: 1 \\
+\texttt{v9\_five\_channel} & 0/3 & 0/3 & nonconvergent: 3 \\
+\texttt{dual\_gru\_v3b} & 0/3 & 0/3 & small-step drift: 3 \\
+\bottomrule
+\end{tabular}
+\caption{AFP-v2 baseline classification at seeds 94--96, 512 steps.}
+\label{tab:afp-v2}
+\end{table}
 
 \subsection{Same surface class, different internal regimes}
 
@@ -260,10 +286,10 @@ model body.}
 \end{table}
 
 The fixed-body result supports a bounded claim: omitted hidden state changes
-continuation in this representative probe. The saved sweep does not aggregate
-\texttt{body\_surface}, so sweep-wide confirmation remains open. The
+continuation. Across both substrates, three seeds, and two pause/resume windows,
+all \texttt{body\_surface} arms are worse than full-state continuation. The
 fresh-body \texttt{surface\_only} result cannot isolate hidden-state causality.
-Neither control establishes AFP-v2 or a novel internal mechanism.
+The control alone does not establish a novel mechanism.
 
 \begin{figure}[H]
 \centering
@@ -338,9 +364,8 @@ not the same as settled causal mechanism naming.
 \section{Discussion}
 
 The results support a practical distinction: fixed point is a surface class,
-not a computational verdict. In the dual-GRU family, the same surface label
-contains different AFP-v1 heuristic interior classes. In the representative
-capsule probe, fixed-body \texttt{body\_surface} diverges from
+not a computational verdict. None of the nine baselines meets the operational
+AFP-v2 rule. In the capsule sweep, fixed-body \texttt{body\_surface} diverges from
 \texttt{full\_capsule}, so omitted hidden state changes continuation while
 $F$ is fixed. The fresh-body \texttt{surface\_only} arm is only a package
 control. In the matched baseline comparison, plain recurrent models and native
@@ -370,7 +395,7 @@ The evidence is heterogeneous because it comes from a living research
 repository rather than a single polished benchmark suite. Some runs have small
 seed counts. Some metrics are local to Demian's substrate families. The
 Transformer and Mamba reservoir artifacts are architectural context rather
-than central evidence. The continuation control uses full internal-state restore, not a compressed state code. The fixed-body result is representative rather than sweep-wide, and the fresh-body surface-only arm confounds body and state. Finally, the paper does not prove that
+than central evidence. The continuation control uses full internal-state restore, not a compressed state code. AFP-v2 thresholds require longer-run and sensitivity checks, and the fresh-body surface-only arm confounds body and state. Finally, the paper does not prove that
 every fixed point is meaningful; it proves that fixed-point surface labels can
 be incomplete.
 
@@ -381,6 +406,7 @@ artifact files used in this draft are:
 
 \begin{itemize}
   \item \path{data/substrate_lab/dual_gru_family_summary.json}
+  \item \path{data/diagnostics/afp_v2_characterization_20261004/summary.json}
   \item \path{data/substrate_lab/v9_capsule_continuity_20260511/summary.json}
   \item gate-state truth campaign multisurgery baseline-comparison summary
   \item gate-state truth campaign multisurgery campaign summary
@@ -404,11 +430,10 @@ paper source, figure files, and evidence summaries.
 \section{Conclusion}
 
 Projected fixed-point behavior is a statement about $y_t$, not necessarily
-about $z_t$. The Demian artifacts show the same convergent surface class
-coexisting with different AFP-v1 heuristic internal regimes; AFP-v2 remains to be tested. The main research target
-is now to test whether those regimes align reproducibly with explicit channels
-and to characterize their stability with Jacobian and finite-time Lyapunov
-analysis. Full-state continuation remains a sufficiency control.
+about $z_t$. The stricter campaign finds no AFP-v2 confirmation in nine
+baselines. The next target is longer-horizon sensitivity, explicit-channel
+alignment, and Jacobian or finite-time Lyapunov characterization. Full-state
+continuation remains a sufficiency control.
 
 \appendix
 

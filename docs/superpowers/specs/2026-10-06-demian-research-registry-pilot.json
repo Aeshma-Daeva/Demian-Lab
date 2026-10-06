@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "spec_id": "demian-research-registry-pilot-v1",
+  "authority": "Demian",
+  "presentation_consumer": "NullFrame",
+  "record_types": ["hypothesis", "experiment", "control", "result", "artifact"],
+  "hypothesis_evidence_statuses": [
+    "untested",
+    "inconclusive",
+    "preliminary_support",
+    "supported",
+    "conflicting",
+    "contradicted"
+  ],
+  "hypothesis_lifecycles": ["active", "superseded", "retired"],
+  "result_outcomes": ["observed", "null", "mixed", "unevaluable"],
+  "semantic_rules": [
+    "null_is_a_result_outcome_not_a_hypothesis_status",
+    "unevaluable_results_must_state_missing_evaluation_conditions",
+    "status_promotion_requires_manual_review_basis",
+    "replication_axes_are_recorded_separately_from_support",
+    "superseded_lifecycle_does_not_erase_evidence_status",
+    "all_cross_record_references_must_resolve",
+    "artifacts_use_immutable_repository_commit_references",
+    "NullFrame_must_render_status_without_deriving_or_promoting_it"
+  ],
+  "pilot_hypothesis_ids": ["H-AFP-002", "H-GATE-001", "H-CONT-001"],
+  "required_hypothesis_fields": [
+    "id",
+    "statement",
+    "operational_prediction",
+    "evaluation_conditions",
+    "evidence_status",
+    "lifecycle",
+    "status_basis",
+    "result_ids",
+    "alternative_explanations",
+    "falsifiers",
+    "next_test"
+  ],
+  "required_result_fields": [
+    "id",
+    "hypothesis_ids",
+    "experiment_id",
+    "evaluable",
+    "outcome",
+    "effect_summary",
+    "uncertainty",
+    "exclusions",
+    "control_ids",
+    "artifact_ids"
+  ]
+}

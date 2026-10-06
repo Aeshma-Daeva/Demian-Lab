@@ -192,6 +192,7 @@ def run_capsule_probe(
 
     capsule_gap = arms["full_capsule"]["mean_step_gap_vs_uninterrupted"]
     surface_gap = arms["surface_only"]["mean_step_gap_vs_uninterrupted"]
+    body_surface_gap = arms["body_surface"]["mean_step_gap_vs_uninterrupted"]
     surface_gap_ratio = None
     if capsule_gap > 1e-9:
         surface_gap_ratio = float(surface_gap / capsule_gap)
@@ -210,6 +211,12 @@ def run_capsule_probe(
             "last_route_metrics": pre_metrics[-1] if pre_metrics else {},
         },
         "arms": arms,
+        "fixed_body_control": {
+            "arm": "body_surface",
+            "mean_gap_vs_uninterrupted": body_surface_gap,
+            "gap_minus_full_capsule": float(body_surface_gap - capsule_gap),
+            "surface_is_insufficient_continuation_state": body_surface_gap > capsule_gap + 1e-6,
+        },
         "continuity_advantage": {
             "surface_gap_minus_capsule_gap": float(surface_gap - capsule_gap),
             "surface_gap_ratio": surface_gap_ratio,
@@ -292,17 +299,25 @@ def aggregate_sweep(sweep_runs: list[dict[str, Any]]) -> dict[str, Any]:
             run["arms"]["surface_only"]["mean_step_gap_vs_uninterrupted"]
             for run in runs
         ]
+        body_surface_gaps = [
+            run["arms"]["body_surface"]["mean_step_gap_vs_uninterrupted"]
+            for run in runs
+        ]
         aggregate[label] = {
             "n_runs": len(runs),
             "full_capsule_min_final_cosine": float(np.min(full_cosines)),
             "surface_only_max_final_cosine": float(np.max(surface_cosines)),
             "full_capsule_max_mean_gap": float(np.max(full_gaps)),
+            "body_surface_min_mean_gap": float(np.min(body_surface_gaps)),
             "surface_only_min_mean_gap": float(np.min(surface_gaps)),
             "all_full_capsules_exact_or_near_exact": bool(
                 np.min(full_cosines) > 0.999 and np.max(full_gaps) < 1e-6
             ),
             "all_surface_only_worse_than_full_capsule": bool(
                 all(surface > full for surface, full in zip(surface_gaps, full_gaps))
+            ),
+            "all_body_surface_worse_than_full_capsule": bool(
+                all(surface > full for surface, full in zip(body_surface_gaps, full_gaps))
             ),
         }
     return aggregate

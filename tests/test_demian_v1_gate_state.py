@@ -7,11 +7,45 @@ import torch
 from development.demian_v1_gate_state import (
     V1_CHANNELS,
     DemianV1GateState,
+    V1RuntimeSnapshot,
+    capture_v1_runtime,
     clamp_v1_channel,
     compare_v1_resume,
+    match_v1_surface,
+    restore_v1_runtime,
     run_v1_trace,
     surface_only_resume_state,
 )
+
+
+def test_surface_match_preserves_internal_channels() -> None:
+    torch.manual_seed(91)
+    model = DemianV1GateState(hidden_size=8)
+    state = model.initial_state(1, torch.device("cpu"))
+    target = model.state_vector(state) + 0.125
+
+    matched = match_v1_surface(model, state, target)
+
+    assert torch.allclose(model.state_vector(matched), target, atol=1e-6, rtol=1e-6)
+    assert all(torch.equal(matched[i], state[i]) for i in range(1, 6))
+
+
+def test_runtime_snapshot_restores_cloned_state_and_metadata() -> None:
+    torch.manual_seed(92)
+    model = DemianV1GateState(hidden_size=8, gate_frozen=True)
+    state = model.initial_state(1, torch.device("cpu"))
+    state = model.step(state)
+    snapshot = capture_v1_runtime(model, state)
+    model._step_index = 99
+    model._frozen_gate = None
+
+    restored = restore_v1_runtime(model, snapshot)
+
+    assert isinstance(snapshot, V1RuntimeSnapshot)
+    assert model._step_index == 1
+    assert torch.equal(model._frozen_gate, snapshot.frozen_gate)
+    assert all(torch.equal(left, right) for left, right in zip(restored, snapshot.state))
+    assert all(left.data_ptr() != right.data_ptr() for left, right in zip(restored, snapshot.state))
 
 
 def test_v1_state_has_explicit_gate_channel() -> None:
