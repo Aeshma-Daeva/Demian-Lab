@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "protocol_id": "demian-v1-cue-delay-query-v1",
+  "demian_state_channels": ["fast", "slow", "control", "message", "carrier", "gate"],
+  "connector_is_external": true,
+  "update_order": [
+    "execute_pending_connector_action",
+    "observe_world_and_acknowledgement",
+    "encode_observation_into_fast",
+    "advance_demian_state",
+    "decode_bounded_action_proposal",
+    "validate_and_queue_action",
+    "advance_world_tick"
+  ],
+  "checkpoint_owners": [
+    "demian_runtime",
+    "world_register",
+    "connector_queue",
+    "interface_configuration"
+  ],
+  "action_operations": ["noop", "read", "write", "answer"],
+  "storage_capacity": 1,
+  "action_latency_ticks": 1,
+  "controls": [
+    "static_null_world",
+    "fixed_observation_replay",
+    "storage_disabled",
+    "storage_read_only",
+    "storage_reset",
+    "storage_shuffle",
+    "scripted_action_baseline",
+    "sham_internal_intervention"
+  ],
+  "score_visibility": "episode_end_only"
+}
