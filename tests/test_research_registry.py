@@ -34,6 +34,7 @@ def test_checked_in_registry_links_hypotheses_to_evidence() -> None:
         "H-ROUTE-001",
         "H-ROUTE-002",
         "H-ROUTE-003",
+        "H-LOOP-001",
     }
     afp = next(item for item in registry.hypotheses if item.id == "H-AFP-002")
     afp_result = next(item for item in registry.results if item.id in afp.result_ids)
@@ -96,7 +97,7 @@ def test_snapshot_export_is_valid_and_deterministic(tmp_path: Path) -> None:
     snapshot = json.loads(first.read_text())
     assert snapshot["metadata"]["authority"] == "Demian"
     assert snapshot["metadata"]["status_policy"] == "manual_review_only"
-    assert len(snapshot["hypotheses"]) == 6
+    assert len(snapshot["hypotheses"]) == 7
 
 
 def test_invalid_registry_is_not_exported(tmp_path: Path) -> None:
@@ -175,3 +176,14 @@ def test_route_pilot_remains_unevaluable_for_route_hypotheses() -> None:
     }
     assert all(item.evidence_status == "untested" for item in route_hypotheses)
     assert all(item.result_ids == [result.id] for item in route_hypotheses)
+
+
+def test_closed_loop_boundary_is_preliminarily_validated_without_capability_claim() -> None:
+    registry = load_registry(REGISTRY_PATH)
+    hypothesis = next(item for item in registry.hypotheses if item.id == "H-LOOP-001")
+    result = next(item for item in registry.results if item.id == "R-LOOP-BASELINE-001")
+
+    assert hypothesis.evidence_status == "preliminary_support"
+    assert result.evaluable is True
+    assert result.outcome == "observed"
+    assert any(item.startswith("No task competence claim") for item in result.exclusions)

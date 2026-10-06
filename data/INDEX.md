@@ -30,6 +30,13 @@ Purpose:
 - Scope: 3 parameter seeds, 3 trajectories, 96 dependent route steps.
 - Status: instrumentation validated; route hypotheses untested.
 
+## Closed-Loop Baseline
+
+- Protocol: [CLOSED_LOOP_PROTOCOL.json](CLOSED_LOOP_PROTOCOL.json)
+- Summary: [diagnostics/demian_closed_loop_baseline_20261006/summary.json](diagnostics/demian_closed_loop_baseline_20261006/summary.json)
+- Scope: 3 parameter seeds, 3 trajectories, 20 dependent ticks.
+- Status: deterministic interface validation only; no capability claim.
+
 Use with:
 - [docs/CLAIMS.md](/home/xenith/demian/docs/CLAIMS.md)
 - [docs/RESEARCH_LINEAGE.md](/home/xenith/demian/docs/RESEARCH_LINEAGE.md)

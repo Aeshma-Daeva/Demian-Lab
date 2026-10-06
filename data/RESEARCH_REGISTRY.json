@@ -6,7 +6,7 @@
     "generated_on": "2026-10-06",
     "authority": "Demian",
     "source_repository": "https://github.com/Aeshma-Daeva/Demian-Lab",
-    "source_commit": "d50ba1e407fd434a61ffa28aeb92f8c3a808e0dc",
+    "source_commit": "d888bbee828310a1202e13a831373eeb62ad95e1",
     "status_policy": "manual_review_only"
   },
   "hypotheses": [
@@ -200,6 +200,28 @@
       "alternative_explanations": ["Lagged association may reflect shared input, feedback, or route cancellation rather than transmission."],
       "falsifiers": ["Removal and rescue fail to alter or restore the preregistered downstream outcome."],
       "next_test": "Remove a named contribution at a preregistered time and replay the uninterrupted contribution as rescue."
+    },
+    {
+      "id": "H-LOOP-001",
+      "statement": "A declared external cue-delay-query interface can couple to the six-channel Demian state while preserving deterministic continuation and observation-replay controls.",
+      "operational_prediction": "Matched checkpoints replay exact future closed-loop traces; fixed recorded observation frames reproduce internal surface and action trajectories.",
+      "evaluation_conditions": ["external_connector_state_checkpointed", "bounded_action_schema", "exact_checkpoint_restore", "fixed_observation_replay"],
+      "evidence_status": "preliminary_support",
+      "lifecycle": "active",
+      "status_basis": {
+        "method": "manual_review",
+        "rule": "Preliminary support validates the deterministic interface contract only; it does not establish competence, memory, adaptation, or route causality.",
+        "considered_result_ids": ["R-LOOP-BASELINE-001"],
+        "supporting_result_ids": ["R-LOOP-BASELINE-001"],
+        "conflicting_result_ids": [],
+        "reviewer": "Codex implementation review",
+        "reviewed_on": "2026-10-06"
+      },
+      "status_history": [{"evidence_status":"preliminary_support","lifecycle":"active","changed_on":"2026-10-06","reviewer":"Codex implementation review","basis":"Three unselected baseline seeds exercised declared action and acknowledgement paths; exact checkpoint restore and fixed-observation replay are covered by tests."}],
+      "result_ids": ["R-LOOP-BASELINE-001"],
+      "alternative_explanations": ["The frozen encoder and decoder can induce interface behavior without learned environmental adaptation.", "Unselected action patterns do not indicate task-directed behavior."],
+      "falsifiers": ["Restored checkpoints diverge under identical world, connector, and interface state.", "Fixed input replay fails to reproduce the recorded internal trajectory."],
+      "next_test": "Run scripted and storage-capability controls, then introduce a separately declared training or selection procedure with held-out worlds."
     }
   ],
   "experiments": [
@@ -260,6 +282,23 @@
         "dependent_observations": ["checkpoint_route_steps_within_trajectory", "routes_within_step"]
       },
       "artifact_ids": ["A-ROUTE-PROTOCOL-001", "A-ROUTE-SUMMARY-001", "A-ROUTE-TABLE-001"]
+    },
+    {
+      "id": "E-LOOP-001",
+      "name": "Unselected deterministic closed-loop baseline",
+      "system": "demian_v1_gate_state_with_external_cue_delay_query_adapter",
+      "protocol_version": "demian-v1-cue-delay-query-v1",
+      "replication_scope": {
+        "parameter_seed_count": 3,
+        "initial_state_count": 3,
+        "input_seed_count": 0,
+        "history_condition_count": 1,
+        "trajectory_count": 3,
+        "checkpoint_row_count": 20,
+        "independent_unit": "parameter_seed",
+        "dependent_observations": ["checkpoint ticks within trajectory", "actions and route terms within tick"]
+      },
+      "artifact_ids": ["A-LOOP-PROTOCOL-001", "A-LOOP-SUMMARY-001"]
     }
   ],
   "controls": [
@@ -318,6 +357,20 @@
       "semantics": "Sums recorded target-state integration terms and compares them with each implemented next channel state.",
       "limitations": ["Does not make preactivation terms independently causal."],
       "artifact_ids": ["A-ROUTE-PROTOCOL-001"]
+    },
+    {
+      "id": "C-LOOP-CHECKPOINT-001",
+      "name": "Exact closed-loop runtime restore",
+      "semantics": "Restores six-channel runtime, world register, connector queue, and acknowledgement state.",
+      "limitations": ["Validates the continuation interface only."],
+      "artifact_ids": ["A-LOOP-PROTOCOL-001"]
+    },
+    {
+      "id": "C-LOOP-REPLAY-001",
+      "name": "Fixed-observation replay",
+      "semantics": "Replays recorded observation frames without world action feedback.",
+      "limitations": ["Measures conditional internal response, not total closed-loop effect."],
+      "artifact_ids": ["A-LOOP-PROTOCOL-001"]
     }
   ],
   "results": [
@@ -431,6 +484,30 @@
       "exclusions": ["No causal propagation claim.", "No AFP-v2 evidence.", "No route-mediated memory or uncertainty claim."],
       "control_ids": ["C-TRACE-INVARIANCE-001", "C-ROUTE-RECON-001"],
       "artifact_ids": ["A-ROUTE-PROTOCOL-001", "A-ROUTE-SUMMARY-001", "A-ROUTE-TABLE-001"]
+    },
+    {
+      "id": "R-LOOP-BASELINE-001",
+      "hypothesis_ids": ["H-LOOP-001"],
+      "experiment_id": "E-LOOP-001",
+      "evaluable": true,
+      "outcome": "observed",
+      "observation": "Three unselected parameter seeds produced valid bounded action proposals and connector acknowledgements across 20 dependent ticks; exact closed-loop checkpoint restore and fixed-observation replay were test-verified.",
+      "interpretation": "The declared external boundary is deterministic and inspectable under this fixed interface; this is not task competence or a route mechanism.",
+      "analysis_scope": {
+        "independent_unit": "parameter_seed",
+        "independent_unit_count": 3,
+        "comparison_count": 20,
+        "comparison_unit": "dependent closed-loop ticks",
+        "dependent_observations": ["ticks repeat within each seed trajectory", "route terms and action fields repeat within tick"],
+        "scope_note": "Three independent parameter seeds generated three baseline trajectories; the 20 ticks are dependent observations within those trajectories."
+      },
+      "evaluation_conditions_met": ["bounded_action_schema", "external_connector_state_checkpointed", "exact_checkpoint_restore", "fixed_observation_replay"],
+      "missing_evaluation_conditions": [],
+      "effect_summary": {"parameter_seed_count":3,"trajectory_count":3,"dependent_tick_count":20,"action_latency_ticks":1,"storage_capacity":1},
+      "uncertainty": ["The interface uses a frozen encoder and decoder.", "No training or selection procedure was applied.", "Three parameter seeds."],
+      "exclusions": ["No task competence claim.", "No memory claim.", "No adaptive environmental behavior claim.", "No route causality claim."],
+      "control_ids": ["C-LOOP-CHECKPOINT-001", "C-LOOP-REPLAY-001"],
+      "artifact_ids": ["A-LOOP-PROTOCOL-001", "A-LOOP-SUMMARY-001"]
     }
   ],
   "artifacts": [
@@ -481,6 +558,22 @@
       "path": "data/diagnostics/demian_route_trajectory_pilot_20261006/route_steps.parquet",
       "media_type": "application/vnd.apache.parquet",
       "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/d50ba1e407fd434a61ffa28aeb92f8c3a808e0dc/data/diagnostics/demian_route_trajectory_pilot_20261006/route_steps.parquet"
+    },
+    {
+      "id": "A-LOOP-PROTOCOL-001",
+      "repository": "Aeshma-Daeva/Demian-Lab",
+      "commit": "cc20cb3d6cf78b398a92e038b3fa3ef232e51859",
+      "path": "data/CLOSED_LOOP_PROTOCOL.json",
+      "media_type": "application/json",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/cc20cb3d6cf78b398a92e038b3fa3ef232e51859/data/CLOSED_LOOP_PROTOCOL.json"
+    },
+    {
+      "id": "A-LOOP-SUMMARY-001",
+      "repository": "Aeshma-Daeva/Demian-Lab",
+      "commit": "d888bbee828310a1202e13a831373eeb62ad95e1",
+      "path": "data/diagnostics/demian_closed_loop_baseline_20261006/summary.json",
+      "media_type": "application/json",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/d888bbee828310a1202e13a831373eeb62ad95e1/data/diagnostics/demian_closed_loop_baseline_20261006/summary.json"
     }
   ]
 }

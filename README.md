@@ -29,8 +29,9 @@ in Demian Archive.
 4. Trace source-to-target contributions through the six recurrent channels.
 5. Compare full state with fixed-body `body_surface`; use fresh-body `surface_only` only as a package control.
 6. Restore, intervene on, or ablate explicit routes and channels.
-7. Measure perturbation response and stability.
-8. Characterize local dynamics with Jacobians or finite-time Lyapunov estimates.
+7. Couple declared observation/action interfaces to persistent external state.
+8. Measure perturbation response and stability.
+9. Characterize local dynamics with Jacobians or finite-time Lyapunov estimates.
 
 AFP-v2 is the prospective scientific criterion: surface convergence
 ($\Delta y_t \to 0$) plus persistent structured hidden-state change after
@@ -74,6 +75,7 @@ Full version: [Research Lineage](docs/RESEARCH_LINEAGE.md).
 | v10.0 predecessor found but did not validate sparse release | 640 candidates across four islands; final winner had `duty=0.171875`, `event=0.7896`, `phase=0.9371`; held-out CPU checks weakened the claim. | Useful predecessor and falsification pressure, not a stable mechanism. |
 | Track B points at structured channel anatomy | Message/carrier/control probes and null checks show real structure but also controls that prevent overclaiming. | Treat gate-state propagation as the current live hypothesis, not settled proof. |
 | Route tracing is operational | Thirty implemented terms reconstruct all six target updates; tracing is trajectory-invariant. | The three-seed pilot validates measurement only. Route causality remains untested. |
+| Closed-loop boundary is validated | Deterministic cue-delay-query world, bounded register, checkpoint/replay controls. | Interface validation only; no task ability or adaptive behavior claim. |
 | Control helps capsule maintenance | Continuous control clamp degrades the capsule more than one-shot control zeroing. | Control is stabilizing; current data do not prove setpoints, selfhood, or narrative integration. |
 
 Details and falsifiers: [Claims Ledger](docs/CLAIMS.md).
@@ -189,6 +191,13 @@ For route trajectories:
 ```bash
 ./venv/bin/python -m development.run_route_trajectory_pilot --seeds 94,95,96 --hidden-size 8 --steps 32
 ./venv/bin/python -m pytest tests/test_route_trajectory.py -q
+```
+
+For the deterministic closed-loop baseline:
+
+```bash
+./venv/bin/python -m development.run_closed_loop_baseline --seeds 94,95,96 --hidden-size 8 --steps 8
+./venv/bin/python -m pytest tests/test_closed_loop_world.py tests/test_closed_loop_demian.py tests/test_closed_loop_baseline.py -q
 ```
 
 ## Environment
