@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "protocol_id": "demian-v1-route-trajectory-pilot-v1",
+  "system": "demian_v1_gate_state",
+  "route_catalog_version": "demian-v1-routes-1.0.0",
+  "route_catalog": [
+    {"id":"gate_persistence","sources":["gate"],"target":"gate","operation":"additive","injection_point":"target_state"},
+    {"id":"gate_integrated_update","sources":["gate","fast","slow","control","message","carrier"],"target":"gate","operation":"additive","injection_point":"target_state"},
+    {"id":"fast_to_gate","sources":["fast"],"target":"gate","operation":"additive","injection_point":"gate_context_preactivation"},
+    {"id":"slow_to_gate","sources":["slow"],"target":"gate","operation":"additive","injection_point":"gate_context_preactivation"},
+    {"id":"control_to_gate","sources":["control"],"target":"gate","operation":"additive","injection_point":"gate_context_preactivation"},
+    {"id":"message_to_gate","sources":["message"],"target":"gate","operation":"additive","injection_point":"gate_context_preactivation"},
+    {"id":"carrier_to_gate","sources":["carrier"],"target":"gate","operation":"additive","injection_point":"gate_context_preactivation"},
+    {"id":"bias_to_gate","sources":["bias"],"target":"gate","operation":"additive","injection_point":"gate_context_preactivation"},
+    {"id":"message_persistence","sources":["message"],"target":"message","operation":"additive","injection_point":"target_state"},
+    {"id":"message_candidate","sources":["message"],"target":"message","operation":"additive","injection_point":"target_state"},
+    {"id":"fast_to_message","sources":["fast"],"target":"message","operation":"additive","injection_point":"target_state"},
+    {"id":"carrier_persistence","sources":["carrier"],"target":"carrier","operation":"additive","injection_point":"target_state"},
+    {"id":"carrier_candidate","sources":["carrier"],"target":"carrier","operation":"additive","injection_point":"target_state"},
+    {"id":"message_to_carrier","sources":["message"],"target":"carrier","operation":"additive","injection_point":"target_state"},
+    {"id":"gate_modulates_message_to_carrier","sources":["gate"],"target":"carrier","operation":"multiplicative","injection_point":"multiplicative_modulator"},
+    {"id":"slow_persistence","sources":["slow"],"target":"slow","operation":"additive","injection_point":"target_state"},
+    {"id":"slow_candidate","sources":["slow"],"target":"slow","operation":"additive","injection_point":"target_state"},
+    {"id":"fast_to_slow","sources":["fast"],"target":"slow","operation":"additive","injection_point":"target_state"},
+    {"id":"carrier_to_slow","sources":["carrier"],"target":"slow","operation":"additive","injection_point":"target_state"},
+    {"id":"gate_modulates_carrier_to_slow","sources":["gate"],"target":"slow","operation":"multiplicative","injection_point":"multiplicative_modulator"},
+    {"id":"control_persistence","sources":["control"],"target":"control","operation":"additive","injection_point":"target_state"},
+    {"id":"control_candidate","sources":["control"],"target":"control","operation":"additive","injection_point":"target_state"},
+    {"id":"fast_slow_to_control","sources":["fast","slow"],"target":"control","operation":"additive","injection_point":"target_state"},
+    {"id":"fast_retention","sources":["fast"],"target":"fast","operation":"additive","injection_point":"target_state"},
+    {"id":"fast_integrated_update","sources":["fast","control","message","carrier","gate"],"target":"fast","operation":"additive","injection_point":"target_state"},
+    {"id":"fast_candidate","sources":["fast"],"target":"fast","operation":"additive","injection_point":"fast_preactivation"},
+    {"id":"control_to_fast","sources":["control"],"target":"fast","operation":"additive","injection_point":"fast_preactivation"},
+    {"id":"message_to_fast","sources":["message"],"target":"fast","operation":"additive","injection_point":"fast_preactivation"},
+    {"id":"carrier_to_fast","sources":["carrier"],"target":"fast","operation":"additive","injection_point":"fast_preactivation"},
+    {"id":"gate_modulates_surface_routes","sources":["gate"],"target":"fast","operation":"multiplicative","injection_point":"multiplicative_modulator"}
+  ],
+  "hypotheses": [
+    {
+      "id": "H-ROUTE-001",
+      "statement": "Matched gate variation changes the timing or strength of specific implemented routes.",
+      "operational_prediction": "Matched acute gate interventions change preregistered downstream route contributions at predicted delays.",
+      "evidence_status": "untested",
+      "falsifier": "Held-out matched interventions produce no route-specific downstream difference beyond sham variation."
+    },
+    {
+      "id": "H-ROUTE-002",
+      "statement": "Similar exposed trajectories can coexist with systematically different route trajectories.",
+      "operational_prediction": "Readout-matched held-out trajectories separate by preregistered route summaries after residual and history matching.",
+      "evidence_status": "untested",
+      "falsifier": "Route differences disappear after readout, hidden-distance, reachability, and history matching."
+    },
+    {
+      "id": "H-ROUTE-003",
+      "statement": "Selected route sequences mediate delayed effects on internal state or readout.",
+      "operational_prediction": "Route removal changes the predicted downstream outcome and original-contribution rescue restores it.",
+      "evidence_status": "untested",
+      "falsifier": "Removal and rescue fail to alter or restore the preregistered downstream outcome."
+    }
+  ],
+  "recording": {
+    "retain_absolute_l2": true,
+    "normalizations": ["target_state_l2", "target_update_l2", "declared_channel_scale"],
+    "temporal_summaries": ["activation", "persistence", "alignment", "cancellation", "dominant_route_sequence"],
+    "active_l2_epsilon": 1e-09
+  },
+  "interventions": [
+    {"id":"one_step_removal","semantics":"Zero one named route contribution for one transition.","required_controls":["sham","matched_untargeted_route","held_out_seed"]},
+    {"id":"sustained_removal","semantics":"Zero one named route contribution over a preregistered window.","required_controls":["sham","matched_untargeted_route","held_out_seed"]},
+    {"id":"frozen_modulation","semantics":"Hold one multiplicative modulator at its intervention-time value.","required_controls":["sham","matched_intervention_time","held_out_seed"]},
+    {"id":"contribution_replacement","semantics":"Replace one named contribution with a matched control contribution.","required_controls":["sham","amplitude_match","held_out_seed"]},
+    {"id":"original_contribution_rescue","semantics":"Replay the uninterrupted contribution sequence after targeted removal.","required_controls":["removal_arm","sham","runtime_metadata_match"]}
+  ],
+  "interpretation_rules": [
+    "A route sequence is descriptive until intervention establishes a delayed downstream effect.",
+    "Lagged association is not transmission.",
+    "Persistent contributions may cancel and do not establish AFP-v2.",
+    "Route attribution is implementation-coordinate dependent.",
+    "Surface, full-state, and route regimes are reported separately."
+  ]
+}

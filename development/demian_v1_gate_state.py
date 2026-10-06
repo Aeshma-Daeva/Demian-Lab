@@ -40,6 +40,61 @@ V1Ablation = Literal[
 
 
 @dataclass(frozen=True)
+class V1RouteDefinition:
+    id: str
+    sources: tuple[str, ...]
+    target: str
+    operation: Literal["additive", "multiplicative"]
+    injection_point: Literal[
+        "target_state",
+        "gate_context_preactivation",
+        "fast_preactivation",
+        "multiplicative_modulator",
+    ]
+
+
+V1_ROUTE_CATALOG = (
+    V1RouteDefinition("gate_persistence", ("gate",), "gate", "additive", "target_state"),
+    V1RouteDefinition("gate_integrated_update", ("gate", "fast", "slow", "control", "message", "carrier"), "gate", "additive", "target_state"),
+    V1RouteDefinition("fast_to_gate", ("fast",), "gate", "additive", "gate_context_preactivation"),
+    V1RouteDefinition("slow_to_gate", ("slow",), "gate", "additive", "gate_context_preactivation"),
+    V1RouteDefinition("control_to_gate", ("control",), "gate", "additive", "gate_context_preactivation"),
+    V1RouteDefinition("message_to_gate", ("message",), "gate", "additive", "gate_context_preactivation"),
+    V1RouteDefinition("carrier_to_gate", ("carrier",), "gate", "additive", "gate_context_preactivation"),
+    V1RouteDefinition("bias_to_gate", ("bias",), "gate", "additive", "gate_context_preactivation"),
+    V1RouteDefinition("message_persistence", ("message",), "message", "additive", "target_state"),
+    V1RouteDefinition("message_candidate", ("message",), "message", "additive", "target_state"),
+    V1RouteDefinition("fast_to_message", ("fast",), "message", "additive", "target_state"),
+    V1RouteDefinition("carrier_persistence", ("carrier",), "carrier", "additive", "target_state"),
+    V1RouteDefinition("carrier_candidate", ("carrier",), "carrier", "additive", "target_state"),
+    V1RouteDefinition("message_to_carrier", ("message",), "carrier", "additive", "target_state"),
+    V1RouteDefinition("gate_modulates_message_to_carrier", ("gate",), "carrier", "multiplicative", "multiplicative_modulator"),
+    V1RouteDefinition("slow_persistence", ("slow",), "slow", "additive", "target_state"),
+    V1RouteDefinition("slow_candidate", ("slow",), "slow", "additive", "target_state"),
+    V1RouteDefinition("fast_to_slow", ("fast",), "slow", "additive", "target_state"),
+    V1RouteDefinition("carrier_to_slow", ("carrier",), "slow", "additive", "target_state"),
+    V1RouteDefinition("gate_modulates_carrier_to_slow", ("gate",), "slow", "multiplicative", "multiplicative_modulator"),
+    V1RouteDefinition("control_persistence", ("control",), "control", "additive", "target_state"),
+    V1RouteDefinition("control_candidate", ("control",), "control", "additive", "target_state"),
+    V1RouteDefinition("fast_slow_to_control", ("fast", "slow"), "control", "additive", "target_state"),
+    V1RouteDefinition("fast_retention", ("fast",), "fast", "additive", "target_state"),
+    V1RouteDefinition("fast_integrated_update", ("fast", "control", "message", "carrier", "gate"), "fast", "additive", "target_state"),
+    V1RouteDefinition("fast_candidate", ("fast",), "fast", "additive", "fast_preactivation"),
+    V1RouteDefinition("control_to_fast", ("control",), "fast", "additive", "fast_preactivation"),
+    V1RouteDefinition("message_to_fast", ("message",), "fast", "additive", "fast_preactivation"),
+    V1RouteDefinition("carrier_to_fast", ("carrier",), "fast", "additive", "fast_preactivation"),
+    V1RouteDefinition("gate_modulates_surface_routes", ("gate",), "fast", "multiplicative", "multiplicative_modulator"),
+)
+
+
+@dataclass(frozen=True)
+class V1RouteTrace:
+    step: int
+    catalog: dict[str, V1RouteDefinition]
+    values: dict[str, torch.Tensor]
+
+
+@dataclass(frozen=True)
 class V1ResumeResult:
     """Summary of a short continuation comparison."""
 
@@ -89,6 +144,7 @@ class DemianV1GateState(DemianNativeV9Substrate):
         binding_start_step: int = 1,
         gate_disabled: bool = False,
         gate_frozen: bool = False,
+        trace_routes: bool = False,
         **kwargs: float,
     ):
         super().__init__(hidden_size, **kwargs)
@@ -110,8 +166,10 @@ class DemianV1GateState(DemianNativeV9Substrate):
         self.binding_start_step = binding_start_step
         self.gate_disabled = gate_disabled
         self.gate_frozen = gate_frozen
+        self.trace_routes = trace_routes
         self._step_index = 0
         self._frozen_gate: torch.Tensor | None = None
+        self._route_trace: V1RouteTrace | None = None
 
         self.message_gate = nn.Linear(hidden_size, hidden_size)
         self.message_mix = nn.Linear(hidden_size, hidden_size)
@@ -134,6 +192,7 @@ class DemianV1GateState(DemianNativeV9Substrate):
         fast, slow, control = super().initial_state(batch_size, device)
         self._step_index = 0
         self._frozen_gate = None
+        self._route_trace = None
         message = torch.randn(batch_size, self.hidden_size, device=device) * self.initial_message_scale
         carrier = torch.randn(batch_size, self.hidden_size, device=device) * self.initial_carrier_scale
         gate = torch.randn(batch_size, self.hidden_size, device=device) * self.initial_gate_scale
@@ -168,6 +227,7 @@ class DemianV1GateState(DemianNativeV9Substrate):
 
     def step(self, state: V1State) -> V1State:
         self._step_index += 1
+        self._route_trace = None
         fast, slow, control, message, carrier, gate = state
 
         if self._step_index < self.binding_start_step:
@@ -233,6 +293,39 @@ class DemianV1GateState(DemianNativeV9Substrate):
             fast_candidate + control_bias + message_fast_bias + carrier_fast_bias
         )
 
+        if self.trace_routes:
+            self._route_trace = self._capture_route_trace(
+                fast=fast,
+                slow=slow,
+                control=control,
+                message=message,
+                carrier=carrier,
+                gate=gate,
+                new_gate=new_gate,
+                gate_pressure=gate_pressure,
+                message_carrier_mod=message_carrier_mod,
+                carrier_slow_mod=carrier_slow_mod,
+                surface_mod=surface_mod,
+                message_write=message_write,
+                message_candidate=message_candidate,
+                fast_to_message=fast_to_message,
+                carrier_write=carrier_write,
+                carrier_candidate=carrier_candidate,
+                gated_message_to_carrier=gated_message_to_carrier,
+                slow_gate=slow_gate,
+                slow_candidate=slow_candidate,
+                fast_to_slow_bias=fast_to_slow_bias,
+                gated_carrier_to_slow=gated_carrier_to_slow,
+                control_gate=control_gate,
+                control_candidate=control_candidate,
+                fast_slow_bias=fast_slow_bias,
+                fast_gate=fast_gate,
+                fast_candidate=fast_candidate,
+                control_bias=control_bias,
+                message_fast_bias=message_fast_bias,
+                carrier_fast_bias=carrier_fast_bias,
+            )
+
         gate_delta = new_gate - gate
         gate_change = (torch.abs(gate_delta) > self.gate_change_threshold).float()
         self._step_aux = {
@@ -262,6 +355,97 @@ class DemianV1GateState(DemianNativeV9Substrate):
             "gate_frozen": float(self.gate_frozen),
         }
         return new_fast, new_slow, new_control, new_message, new_carrier, new_gate
+
+    def route_trace(self) -> V1RouteTrace | None:
+        return self._route_trace
+
+    def _capture_route_trace(
+        self,
+        *,
+        fast: torch.Tensor,
+        slow: torch.Tensor,
+        control: torch.Tensor,
+        message: torch.Tensor,
+        carrier: torch.Tensor,
+        gate: torch.Tensor,
+        new_gate: torch.Tensor,
+        gate_pressure: torch.Tensor,
+        message_carrier_mod: torch.Tensor,
+        carrier_slow_mod: torch.Tensor,
+        surface_mod: torch.Tensor,
+        message_write: torch.Tensor,
+        message_candidate: torch.Tensor,
+        fast_to_message: torch.Tensor,
+        carrier_write: torch.Tensor,
+        carrier_candidate: torch.Tensor,
+        gated_message_to_carrier: torch.Tensor,
+        slow_gate: torch.Tensor,
+        slow_candidate: torch.Tensor,
+        fast_to_slow_bias: torch.Tensor,
+        gated_carrier_to_slow: torch.Tensor,
+        control_gate: torch.Tensor,
+        control_candidate: torch.Tensor,
+        fast_slow_bias: torch.Tensor,
+        fast_gate: torch.Tensor,
+        fast_candidate: torch.Tensor,
+        control_bias: torch.Tensor,
+        message_fast_bias: torch.Tensor,
+        carrier_fast_bias: torch.Tensor,
+    ) -> V1RouteTrace:
+        widths = (
+            self.hidden_size,
+            self.hidden_size,
+            self.control_dim,
+            self.hidden_size,
+            self.hidden_size,
+        )
+        sources = (fast, slow, control, message, carrier)
+        source_names = ("fast", "slow", "control", "message", "carrier")
+        offset = 0
+        gate_context_terms: dict[str, torch.Tensor] = {}
+        for name, source, width in zip(source_names, sources, widths, strict=True):
+            weight = self.gate_input.weight[:, offset : offset + width]
+            gate_context_terms[f"{name}_to_gate"] = torch.nn.functional.linear(source, weight)
+            offset += width
+        gate_context_terms["bias_to_gate"] = self.gate_input.bias.unsqueeze(0).expand_as(gate)
+
+        gate_write = torch.sigmoid(self.gate_gate(gate))
+        gate_candidate = torch.tanh(self.gate_mix(gate))
+        values = {
+            "gate_persistence": self.gate_decay * gate,
+            "gate_integrated_update": new_gate - self.gate_decay * gate,
+            **gate_context_terms,
+            "message_persistence": self.message_decay * message,
+            "message_candidate": message_write * message_candidate,
+            "fast_to_message": message_write * fast_to_message,
+            "carrier_persistence": self.carrier_decay * carrier,
+            "carrier_candidate": carrier_write * carrier_candidate,
+            "message_to_carrier": carrier_write * gated_message_to_carrier,
+            "gate_modulates_message_to_carrier": message_carrier_mod,
+            "slow_persistence": self.slow_decay * slow,
+            "slow_candidate": slow_gate * slow_candidate,
+            "fast_to_slow": slow_gate * fast_to_slow_bias,
+            "carrier_to_slow": slow_gate * gated_carrier_to_slow,
+            "gate_modulates_carrier_to_slow": carrier_slow_mod,
+            "control_persistence": self.control_decay * control,
+            "control_candidate": control_gate * control_candidate,
+            "fast_slow_to_control": control_gate * fast_slow_bias,
+            "fast_retention": (1.0 - fast_gate) * fast,
+            "fast_integrated_update": fast_gate
+            * self.state_gain
+            * torch.tanh(fast_candidate + control_bias + message_fast_bias + carrier_fast_bias),
+            "fast_candidate": fast_candidate,
+            "control_to_fast": control_bias,
+            "message_to_fast": message_fast_bias,
+            "carrier_to_fast": carrier_fast_bias,
+            "gate_modulates_surface_routes": surface_mod,
+        }
+        catalog = {route.id: route for route in V1_ROUTE_CATALOG}
+        return V1RouteTrace(
+            step=self._step_index,
+            catalog=catalog,
+            values={name: value.detach().clone() for name, value in values.items()},
+        )
 
     def _next_gate(
         self,

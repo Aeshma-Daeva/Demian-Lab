@@ -5,6 +5,7 @@ from __future__ import annotations
 import torch
 
 from development.demian_v1_gate_state import (
+    V1_ROUTE_CATALOG,
     V1_CHANNELS,
     DemianV1GateState,
     V1RuntimeSnapshot,
@@ -16,6 +17,71 @@ from development.demian_v1_gate_state import (
     run_v1_trace,
     surface_only_resume_state,
 )
+
+
+def test_route_catalog_covers_six_channels_and_explicit_cross_channel_paths() -> None:
+    route_ids = {route.id for route in V1_ROUTE_CATALOG}
+    participating_channels = {
+        channel
+        for route in V1_ROUTE_CATALOG
+        for channel in (*route.sources, route.target)
+        if channel in V1_CHANNELS
+    }
+
+    assert participating_channels == set(V1_CHANNELS)
+    assert {
+        "fast_to_message",
+        "message_to_carrier",
+        "carrier_to_slow",
+        "control_to_fast",
+        "message_to_fast",
+        "carrier_to_fast",
+        "gate_modulates_message_to_carrier",
+        "gate_modulates_carrier_to_slow",
+        "gate_modulates_surface_routes",
+    } <= route_ids
+
+
+def test_route_tracing_does_not_change_trajectory() -> None:
+    torch.manual_seed(90)
+    untraced = DemianV1GateState(hidden_size=8, trace_routes=False)
+    traced = DemianV1GateState(hidden_size=8, trace_routes=True)
+    traced.load_state_dict(untraced.state_dict())
+    torch.manual_seed(91)
+    initial = untraced.initial_state(1, torch.device("cpu"))
+    traced_initial = tuple(component.clone() for component in initial)
+
+    untraced_next = untraced.step(initial)
+    traced_next = traced.step(traced_initial)
+
+    assert all(
+        torch.equal(left, right)
+        for left, right in zip(untraced_next, traced_next, strict=True)
+    )
+    assert untraced.route_trace() is None
+    assert traced.route_trace() is not None
+
+
+def test_recorded_integration_terms_reconstruct_all_six_targets() -> None:
+    torch.manual_seed(92)
+    model = DemianV1GateState(hidden_size=8, trace_routes=True)
+    state = model.initial_state(1, torch.device("cpu"))
+
+    next_state = model.step(state)
+    trace = model.route_trace()
+
+    assert trace is not None
+    assert trace.step == 1
+    for channel, expected in zip(V1_CHANNELS, next_state, strict=True):
+        terms = [
+            value
+            for route_id, value in trace.values.items()
+            if trace.catalog[route_id].target == channel
+            and trace.catalog[route_id].injection_point == "target_state"
+        ]
+        assert terms
+        reconstructed = torch.stack(terms).sum(dim=0)
+        assert torch.allclose(reconstructed, expected, atol=1e-7, rtol=1e-7)
 
 
 def test_surface_match_preserves_internal_channels() -> None:

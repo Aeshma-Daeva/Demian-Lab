@@ -35,15 +35,25 @@ class V1TraceConfig:
     perturb_scale: float = 0.0
     device: str = "cpu"
     dtype: str = "float32"
+    record_routes: bool = True
+
+
+@dataclass(frozen=True)
+class V1RouteStepRecord:
+    step: int
+    values: dict[str, list[float]]
 
 
 @dataclass(frozen=True)
 class V1TraceResult:
     config: V1TraceConfig
+    initial_channels: dict[str, list[float]]
+    channel_scales: dict[str, float]
     surfaces: list[list[float]]
     full_states: list[list[float]]
     channels: dict[str, list[list[float]]]
     metrics: list[dict[str, float]]
+    route_steps: list[V1RouteStepRecord]
 
 
 def _validate_config(config: V1TraceConfig) -> None:
@@ -73,12 +83,26 @@ def run_v1_measurement(config: V1TraceConfig) -> V1TraceResult:
         config.hidden_size,
         gate_disabled=config.update_mode == "gate_disabled",
         gate_frozen=config.update_mode == "gate_frozen",
+        trace_routes=config.record_routes,
     ).to(device=device, dtype=torch.float32)
     state = model.initial_state(1, device)
+    initial_channels = {
+        name: values.reshape(-1).detach().cpu().tolist()
+        for name, values in model.state_components(state).items()
+    }
+    channel_scales = {
+        "fast": float(model.init_scale),
+        "slow": float(model.init_scale),
+        "control": float(model.init_scale),
+        "message": float(model.initial_message_scale),
+        "carrier": float(model.initial_carrier_scale),
+        "gate": float(model.initial_gate_scale),
+    }
     surfaces: list[list[float]] = []
     full_states: list[list[float]] = []
     channels: dict[str, list[list[float]]] = {name: [] for name in V1_CHANNELS}
     metrics: list[dict[str, float]] = []
+    route_steps: list[V1RouteStepRecord] = []
 
     with torch.no_grad():
         for step in range(1, config.steps + 1):
@@ -110,5 +134,25 @@ def run_v1_measurement(config: V1TraceConfig) -> V1TraceResult:
             row = dict(model.step_aux())
             row["surface_reconstruction_error"] = reconstruction_error
             metrics.append(row)
+            route_trace = model.route_trace()
+            if route_trace is not None:
+                route_steps.append(
+                    V1RouteStepRecord(
+                        step=route_trace.step,
+                        values={
+                            route_id: value.reshape(-1).detach().cpu().tolist()
+                            for route_id, value in route_trace.values.items()
+                        },
+                    )
+                )
 
-    return V1TraceResult(config, surfaces, full_states, channels, metrics)
+    return V1TraceResult(
+        config=config,
+        initial_channels=initial_channels,
+        channel_scales=channel_scales,
+        surfaces=surfaces,
+        full_states=full_states,
+        channels=channels,
+        metrics=metrics,
+        route_steps=route_steps,
+    )

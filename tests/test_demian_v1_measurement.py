@@ -19,6 +19,31 @@ def test_measurement_records_complete_six_channel_trace() -> None:
     assert all(len(result.channels[name]) == 4 for name in V1_CHANNELS)
     assert len(result.metrics) == 4
     assert result.config == config
+    assert set(result.initial_channels) == set(V1_CHANNELS)
+    assert set(result.channel_scales) == set(V1_CHANNELS)
+    assert all(scale > 0.0 for scale in result.channel_scales.values())
+
+
+def test_measurement_records_timestamped_route_contributions() -> None:
+    result = run_v1_measurement(
+        V1TraceConfig(seed=94, hidden_size=8, steps=4, record_routes=True)
+    )
+
+    assert len(result.route_steps) == 4
+    assert result.route_steps[0].step == 1
+    assert result.route_steps[-1].step == 4
+    assert "fast_to_message" in result.route_steps[0].values
+    assert "gate_modulates_surface_routes" in result.route_steps[0].values
+    assert len(result.route_steps[0].values["fast_to_message"]) == 8
+    assert all(values for values in result.route_steps[0].values.values())
+
+
+def test_measurement_can_omit_route_payload() -> None:
+    result = run_v1_measurement(
+        V1TraceConfig(seed=94, hidden_size=8, steps=4, record_routes=False)
+    )
+
+    assert result.route_steps == []
 
 
 @pytest.mark.parametrize("update_mode", ["gate_disabled", "gate_frozen"])
