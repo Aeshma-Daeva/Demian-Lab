@@ -133,6 +133,24 @@ def test_forced_read_exposure_marks_environment_disturbances_observed() -> None:
     assert result["metrics"]["observed_environment_events"] == 1
 
 
+def test_comparator_condition_samples_full_state_without_dropping_tick_metrics() -> None:
+    result = run_comparator_condition(
+        architecture="gru",
+        condition="baseline",
+        seeds=[94],
+        hidden_size=8,
+        steps=8,
+        delay_steps=7,
+        sample_every=4,
+    )
+
+    run = result["runs"][0]
+    assert len(run["trace"]) == 8
+    assert [sample["tick"] for sample in run["state_samples"]] == [0, 4, 7]
+    assert all("full_state" not in step for step in run["trace"])
+    assert all("full_state" in sample for sample in run["state_samples"])
+
+
 def test_budget_tracks_are_deterministic_and_separate_state_from_parameters() -> None:
     first = build_budget_tracks(reference_hidden_size=8, seed=94)
     second = build_budget_tracks(reference_hidden_size=8, seed=94)

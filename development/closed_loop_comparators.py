@@ -271,12 +271,15 @@ def run_comparator_condition(
     steps: int,
     delay_steps: int,
     environment_exposure: EnvironmentExposure = "natural",
+    sample_every: int = 1,
 ) -> dict[str, object]:
     """Run one matched intervention condition with a declared comparator."""
     if not seeds:
         raise ValueError("at least one seed is required")
     if steps < 1:
         raise ValueError("steps must be positive")
+    if sample_every < 1:
+        raise ValueError("sample_every must be positive")
     if environment_exposure not in {"natural", "forced_read"}:
         raise ValueError("unknown environment exposure mode")
     include_internal = condition in {"internal", "both"}
@@ -303,6 +306,7 @@ def run_comparator_condition(
         environment_mode = "clear" if position % 2 == 0 else "replace"
         events: list[dict[str, object]] = []
         trace: list[dict[str, object]] = []
+        state_samples: list[dict[str, object]] = []
         submitted_storage_operations = 0
         executed_storage_operations = 0
         invalid_actions = 0
@@ -345,22 +349,30 @@ def run_comparator_condition(
                 {
                     "tick": record.observation.tick,
                     "phase": record.observation.phase,
-                    "surface": record.surface,
+                    "surface_l2": math.sqrt(sum(value * value for value in record.surface)),
                     "state_l2": _state_l2(runner.adapter),
                     "state_component_l2": [
                         math.sqrt(value.square().sum().item()) for value in runner.adapter.state
                     ],
-                    "full_state": [value.detach().reshape(-1).cpu().tolist() for value in runner.adapter.state],
                     "proposal": asdict(record.proposal),
                     "acceptance": asdict(record.acceptance),
                     "executed_acknowledgement": asdict(record.executed_acknowledgement),
                 }
             )
+            if step_index % sample_every == 0 or step_index == steps - 1 or runner.world.completed:
+                state_samples.append(
+                    {
+                        "tick": record.observation.tick,
+                        "surface": record.surface,
+                        "full_state": [value.detach().reshape(-1).cpu().tolist() for value in runner.adapter.state],
+                    }
+                )
         runs.append(
             {
                 "seed": seed,
                 "cue_symbol": seed % 3,
                 "trace": trace,
+                "state_samples": state_samples,
                 "events": events,
                 "executed_tick_count": len(trace),
                 "final_register": runner.world.register,
@@ -386,6 +398,7 @@ def run_comparator_condition(
             "internal_amplitude": INTERNAL_AMPLITUDE,
             "perturbation_rate": PERTURBATION_RATE,
             "environment_exposure": environment_exposure,
+            "sample_every": sample_every,
         },
         "runs": runs,
         "metrics": {
@@ -473,21 +486,15 @@ def _build_budget_track(
                 "target_value": target,
             }
             continue
-        candidates = [
-            ClosedLoopModelAdapter(architecture=architecture, seed=seed, hidden_size=hidden_size)
-            for hidden_size in range(1, reference_hidden_size * 8 + 1)
-        ]
-        selected = min(
-            candidates,
-            key=lambda adapter: (
-                abs(getattr(adapter, metric) - target),
-                abs(adapter.hidden_size - reference_hidden_size),
-                adapter.hidden_size,
-            ),
+        selected_hidden_size, value = _nearest_budget_width(
+            architecture=architecture,
+            metric=metric,
+            target=target,
+            maximum_hidden_size=reference_hidden_size * 8,
+            seed=seed,
         )
-        value = getattr(selected, metric)
         specifications[architecture] = {
-            "hidden_size": selected.hidden_size,
+            "hidden_size": selected_hidden_size,
             "eligible": True,
             "matched_value": value,
             "target_value": target,
@@ -495,3 +502,35 @@ def _build_budget_track(
         }
     target_specification = specifications["demian"]
     return {"metric": metric, "target": target_specification, "specifications": specifications}
+
+
+def _nearest_budget_width(
+    *,
+    architecture: Architecture,
+    metric: Literal["state_bytes", "parameter_count"],
+    target: int,
+    maximum_hidden_size: int,
+    seed: int,
+) -> tuple[int, int]:
+    """Find the nearest monotonic width without materializing every candidate model."""
+    values: dict[int, int] = {}
+
+    def value_at(hidden_size: int) -> int:
+        if hidden_size not in values:
+            adapter = ClosedLoopModelAdapter(architecture=architecture, seed=seed, hidden_size=hidden_size)
+            values[hidden_size] = getattr(adapter, metric)
+        return values[hidden_size]
+
+    low, high = 1, maximum_hidden_size
+    while low < high:
+        middle = (low + high) // 2
+        if value_at(middle) < target:
+            low = middle + 1
+        else:
+            high = middle
+    candidates = {max(1, low - 1), low}
+    selected = min(
+        candidates,
+        key=lambda hidden_size: (abs(value_at(hidden_size) - target), hidden_size),
+    )
+    return selected, value_at(selected)
