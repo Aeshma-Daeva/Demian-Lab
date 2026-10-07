@@ -10,8 +10,18 @@ from typing import Literal
 import torch
 from torch import nn
 
-from development.closed_loop_demian import FrozenObservationEncoder
-from development.closed_loop_world import ActionAcknowledgement, ActionProposal, WorldObservation
+from development.closed_loop_demian import FrozenObservationEncoder, InputFrame
+from development.closed_loop_world import (
+    ActionAcceptance,
+    ActionAcknowledgement,
+    ActionProposal,
+    CueDelayQueryWorld,
+    WorldConnector,
+    WorldObservation,
+    WorldRuntimeSnapshot,
+    capture_world_runtime,
+    restore_world_runtime,
+)
 from development.demian_v1_gate_state import DemianV1GateState, V1State
 
 
@@ -27,6 +37,23 @@ class AdapterStep:
 @dataclass(frozen=True)
 class ModelRuntimeSnapshot:
     state: tuple[torch.Tensor, ...]
+    configuration_fingerprint: str
+
+
+@dataclass(frozen=True)
+class ComparatorRecord:
+    observation: WorldObservation
+    executed_acknowledgement: ActionAcknowledgement
+    input_frame: InputFrame
+    proposal: ActionProposal
+    acceptance: ActionAcceptance
+    surface: list[float]
+
+
+@dataclass(frozen=True)
+class ComparatorRuntimeSnapshot:
+    adapter: ModelRuntimeSnapshot
+    world: WorldRuntimeSnapshot
     configuration_fingerprint: str
 
 
@@ -73,6 +100,12 @@ class ClosedLoopModelAdapter:
 
     def advance(self, observation: WorldObservation, acknowledgement: ActionAcknowledgement | None) -> AdapterStep:
         encoded = self.encoder.encode(observation, acknowledgement)
+        return self._advance_encoded(encoded)
+
+    def advance_autonomous(self) -> AdapterStep:
+        return self._advance_encoded(torch.zeros((1, self.hidden_size), dtype=torch.float32))
+
+    def _advance_encoded(self, encoded: torch.Tensor) -> AdapterStep:
         if self.architecture == "mlp":
             surface = self.model(encoded)
         elif self.architecture in {"rnn", "gru"}:
@@ -125,3 +158,73 @@ class ClosedLoopModelAdapter:
             digest.update(str(tuple(value.shape)).encode("utf-8"))
             digest.update(repr(value.detach().cpu().tolist()).encode("utf-8"))
         return digest.hexdigest()
+
+
+class ComparatorRunner:
+    """Common world ordering for a declared comparator adapter."""
+
+    def __init__(
+        self,
+        *,
+        architecture: Architecture,
+        seed: int,
+        hidden_size: int,
+        cue_symbol: int,
+        delay_steps: int,
+    ) -> None:
+        self.adapter = ClosedLoopModelAdapter(architecture=architecture, seed=seed, hidden_size=hidden_size)
+        self.world = CueDelayQueryWorld(symbol_count=3, cue_symbol=cue_symbol, delay_steps=delay_steps)
+        self.connector = WorldConnector(symbol_count=3)
+
+    def step(self) -> ComparatorRecord:
+        if self.world.completed:
+            raise RuntimeError("closed-loop episode is completed")
+        acknowledgement = self.connector.advance(self.world)
+        observation = self.world.observe()
+        input_frame = InputFrame(observation=observation, acknowledgement=acknowledgement)
+        step = self.adapter.advance(observation, acknowledgement)
+        acceptance = self.connector.submit(step.proposal)
+        self.world.advance_time()
+        return ComparatorRecord(
+            observation=observation,
+            executed_acknowledgement=acknowledgement,
+            input_frame=input_frame,
+            proposal=step.proposal,
+            acceptance=acceptance,
+            surface=step.surface,
+        )
+
+
+def capture_comparator_runtime(runner: ComparatorRunner) -> ComparatorRuntimeSnapshot:
+    return ComparatorRuntimeSnapshot(
+        adapter=runner.adapter.capture_runtime(),
+        world=capture_world_runtime(runner.world, runner.connector),
+        configuration_fingerprint=_runner_fingerprint(runner),
+    )
+
+
+def restore_comparator_runtime(runner: ComparatorRunner, snapshot: ComparatorRuntimeSnapshot) -> None:
+    if snapshot.configuration_fingerprint != _runner_fingerprint(runner):
+        raise ValueError("comparator runner configuration mismatch")
+    runner.adapter.restore_runtime(snapshot.adapter)
+    restore_world_runtime(runner.world, runner.connector, snapshot.world)
+
+
+def replay_comparator_frames(
+    *, architecture: Architecture, seed: int, hidden_size: int, frames: list[InputFrame]
+) -> list[tuple[list[float], ActionProposal]]:
+    adapter = ClosedLoopModelAdapter(architecture=architecture, seed=seed, hidden_size=hidden_size)
+    return [
+        (step.surface, step.proposal)
+        for frame in frames
+        for step in [adapter.advance(frame.observation, frame.acknowledgement)]
+    ]
+
+
+def _runner_fingerprint(runner: ComparatorRunner) -> str:
+    payload = {
+        "adapter": runner.adapter._configuration_fingerprint(),
+        "world": (runner.world.symbol_count, runner.world.cue_symbol, runner.world.delay_steps),
+        "connector": (runner.connector.symbol_count, runner.connector.storage_enabled, runner.connector.storage_read_only),
+    }
+    return sha256(json.dumps(payload, sort_keys=True).encode("utf-8")).hexdigest()

@@ -4,7 +4,13 @@ from __future__ import annotations
 
 import pytest
 
-from development.closed_loop_comparators import ClosedLoopModelAdapter
+from development.closed_loop_comparators import (
+    ClosedLoopModelAdapter,
+    ComparatorRunner,
+    capture_comparator_runtime,
+    replay_comparator_frames,
+    restore_comparator_runtime,
+)
 from development.closed_loop_world import WorldObservation
 
 
@@ -41,3 +47,37 @@ def test_checkpoint_restore_rejects_different_configuration() -> None:
 
     with pytest.raises(ValueError, match="configuration mismatch"):
         mismatch.restore_runtime(snapshot)
+
+
+def test_comparator_runner_preserves_world_action_order() -> None:
+    runner = ComparatorRunner(architecture="gru", seed=94, hidden_size=8, cue_symbol=1, delay_steps=2)
+
+    record = runner.step()
+
+    assert record.observation.phase == "cue"
+    assert record.executed_acknowledgement.executed_operation == "noop"
+    assert record.acceptance.accepted is True
+    assert runner.world.tick == 1
+
+
+def test_comparator_runtime_restores_into_fresh_matching_runner() -> None:
+    runner = ComparatorRunner(architecture="rnn", seed=95, hidden_size=8, cue_symbol=2, delay_steps=3)
+    runner.step()
+    snapshot = capture_comparator_runtime(runner)
+    first = [runner.step(), runner.step()]
+
+    restored = ComparatorRunner(architecture="rnn", seed=95, hidden_size=8, cue_symbol=2, delay_steps=3)
+    restore_comparator_runtime(restored, snapshot)
+
+    assert [restored.step(), restored.step()] == first
+
+
+def test_fixed_observation_replay_matches_comparator_records() -> None:
+    runner = ComparatorRunner(architecture="gru", seed=96, hidden_size=8, cue_symbol=0, delay_steps=3)
+    records = [runner.step() for _ in range(4)]
+
+    replayed = replay_comparator_frames(
+        architecture="gru", seed=96, hidden_size=8, frames=[record.input_frame for record in records]
+    )
+
+    assert replayed == [(record.surface, record.proposal) for record in records]
