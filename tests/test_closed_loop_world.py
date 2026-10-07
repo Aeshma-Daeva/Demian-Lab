@@ -69,6 +69,16 @@ def test_connector_rejects_invalid_or_competing_action_without_mutating_world() 
     assert world.register is None
 
 
+@pytest.mark.parametrize("operand", [1.5, True])
+def test_connector_rejects_non_integer_storage_symbols(operand: object) -> None:
+    connector = WorldConnector(symbol_count=3)
+
+    result = connector.submit(ActionProposal(operation="write", operand=operand))  # type: ignore[arg-type]
+
+    assert result.accepted is False
+    assert result.reason == "operand_not_integer"
+
+
 def test_storage_capabilities_and_reset_are_explicit_controls() -> None:
     world = CueDelayQueryWorld(symbol_count=3, cue_symbol=1, delay_steps=1)
     disabled = WorldConnector(symbol_count=3, storage_enabled=False)

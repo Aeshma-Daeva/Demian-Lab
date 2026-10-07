@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from hashlib import sha256
+import json
 
 import torch
 
@@ -54,6 +56,7 @@ class ReplayRecord:
 class ClosedLoopRuntimeSnapshot:
     demian: V1RuntimeSnapshot
     world: WorldRuntimeSnapshot
+    configuration_fingerprint: str
 
 
 class FrozenObservationEncoder:
@@ -169,6 +172,7 @@ def capture_closed_loop_runtime(runner: ClosedLoopDemianRunner) -> ClosedLoopRun
     return ClosedLoopRuntimeSnapshot(
         demian=capture_v1_runtime(runner.model, runner.state),
         world=capture_world_runtime(runner.world, runner.connector),
+        configuration_fingerprint=_configuration_fingerprint(runner),
     )
 
 
@@ -176,8 +180,43 @@ def restore_closed_loop_runtime(
     runner: ClosedLoopDemianRunner,
     snapshot: ClosedLoopRuntimeSnapshot,
 ) -> None:
+    if _configuration_fingerprint(runner) != snapshot.configuration_fingerprint:
+        raise ValueError("closed-loop configuration mismatch")
     runner.state = restore_v1_runtime(runner.model, snapshot.demian)
     restore_world_runtime(runner.world, runner.connector, snapshot.world)
+
+
+def _configuration_fingerprint(runner: ClosedLoopDemianRunner) -> str:
+    """Bind a runtime snapshot to immutable model, interface, and world configuration."""
+    configuration = {
+        "model": {
+            "hidden_size": runner.model.hidden_size,
+            "trace_routes": runner.model.trace_routes,
+        },
+        "encoder": {
+            "hidden_size": runner.encoder.hidden_size,
+            "symbol_count": runner.encoder.symbol_count,
+            "scale": runner.encoder.scale,
+        },
+        "decoder": {"symbol_count": runner.decoder.symbol_count},
+        "world": {
+            "symbol_count": runner.world.symbol_count,
+            "cue_symbol": runner.world.cue_symbol,
+            "delay_steps": runner.world.delay_steps,
+        },
+        "connector": {
+            "symbol_count": runner.connector.symbol_count,
+            "storage_enabled": runner.connector.storage_enabled,
+            "storage_read_only": runner.connector.storage_read_only,
+        },
+    }
+    digest = sha256(json.dumps(configuration, sort_keys=True).encode("utf-8"))
+    for name, value in runner.model.state_dict().items():
+        digest.update(name.encode("utf-8"))
+        digest.update(str(value.dtype).encode("utf-8"))
+        digest.update(str(tuple(value.shape)).encode("utf-8"))
+        digest.update(repr(value.detach().cpu().tolist()).encode("utf-8"))
+    return digest.hexdigest()
 
 
 def replay_observation_frames(

@@ -171,6 +171,8 @@ class WorldConnector:
         if proposal.operation in {"write", "answer"}:
             if proposal.operand is None:
                 return "missing_operand"
+            if isinstance(proposal.operand, bool) or not isinstance(proposal.operand, int):
+                return "operand_not_integer"
             if not 0 <= proposal.operand < self.symbol_count:
                 return "operand_out_of_range"
         elif proposal.operand is not None:

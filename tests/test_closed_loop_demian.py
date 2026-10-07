@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import pytest
+import torch
 
 from development.closed_loop_demian import (
     ClosedLoopDemianRunner,
@@ -64,6 +65,38 @@ def test_closed_loop_checkpoint_restores_exact_future_trace() -> None:
     second = [runner.step(), runner.step()]
 
     assert first == second
+
+
+def test_closed_loop_checkpoint_restores_into_fresh_matching_runner() -> None:
+    runner = ClosedLoopDemianRunner(seed=95, hidden_size=8, cue_symbol=2, delay_steps=2)
+    runner.step()
+    snapshot = capture_closed_loop_runtime(runner)
+    first = [runner.step(), runner.step()]
+
+    restored = ClosedLoopDemianRunner(seed=95, hidden_size=8, cue_symbol=2, delay_steps=2)
+    restore_closed_loop_runtime(restored, snapshot)
+
+    assert [restored.step(), restored.step()] == first
+
+
+@pytest.mark.parametrize("mismatch", ["weight", "encoder", "world", "capability"])
+def test_closed_loop_checkpoint_rejects_configuration_mismatch(mismatch: str) -> None:
+    source = ClosedLoopDemianRunner(seed=95, hidden_size=8, cue_symbol=2, delay_steps=2)
+    snapshot = capture_closed_loop_runtime(source)
+    target = ClosedLoopDemianRunner(seed=95, hidden_size=8, cue_symbol=2, delay_steps=2)
+
+    if mismatch == "weight":
+        with torch.no_grad():
+            next(target.model.parameters()).add_(1.0)
+    elif mismatch == "encoder":
+        target.encoder.scale = 0.5
+    elif mismatch == "world":
+        target.world.delay_steps = 3
+    else:
+        target.connector.storage_enabled = False
+
+    with pytest.raises(ValueError, match="configuration mismatch"):
+        restore_closed_loop_runtime(target, snapshot)
 
 
 def test_fixed_observation_replay_is_identical_to_recorded_closed_loop_inputs() -> None:
