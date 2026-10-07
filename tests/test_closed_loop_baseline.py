@@ -21,3 +21,15 @@ def test_unselected_closed_loop_baseline_is_deterministic_and_explicitly_unevalu
     )
     assert len(first["runs"][0]["trace"][0]["route_l2"]) == 30
     assert first["evidence_status"]["hypothesis_status"] == "untested"
+
+
+def test_baseline_sampling_bounds_trace_storage_without_changing_tick_summary() -> None:
+    result = run_closed_loop_baseline(
+        seeds=[94], hidden_size=8, steps=8, delay_steps=7, sample_every=3
+    )
+
+    run = result["runs"][0]
+    assert result["replication_scope"]["executed_tick_count"] == 8
+    assert result["replication_scope"]["sampled_tick_count"] == 4
+    assert [record["tick"] for record in run["trace"]] == [0, 3, 6, 7]
+    assert len(run["route_l2_mean"]) == 30

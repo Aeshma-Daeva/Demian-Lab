@@ -15,6 +15,8 @@ def main() -> None:
     parser.add_argument("--seeds", default="94,95,96")
     parser.add_argument("--hidden-size", type=int, default=8)
     parser.add_argument("--steps", type=int, default=8)
+    parser.add_argument("--delay-steps", type=int, default=2)
+    parser.add_argument("--sample-every", type=int, default=1)
     parser.add_argument(
         "--out",
         type=Path,
@@ -25,6 +27,8 @@ def main() -> None:
         seeds=[int(value) for value in args.seeds.split(",") if value.strip()],
         hidden_size=args.hidden_size,
         steps=args.steps,
+        delay_steps=args.delay_steps,
+        sample_every=args.sample_every,
     )
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
