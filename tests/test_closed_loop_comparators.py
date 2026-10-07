@@ -151,6 +151,25 @@ def test_comparator_condition_samples_full_state_without_dropping_tick_metrics()
     assert all("full_state" in sample for sample in run["state_samples"])
 
 
+def test_comparator_condition_decimates_stored_trace_but_preserves_run_metrics() -> None:
+    result = run_comparator_condition(
+        architecture="gru",
+        condition="baseline",
+        seeds=[94],
+        hidden_size=8,
+        steps=8,
+        delay_steps=7,
+        sample_every=4,
+        trace_every=4,
+        record_full_state=False,
+    )
+
+    run = result["runs"][0]
+    assert run["executed_tick_count"] == 8
+    assert [step["tick"] for step in run["trace"]] == [0, 4, 7]
+    assert all("full_state" not in sample for sample in run["state_samples"])
+
+
 def test_budget_tracks_are_deterministic_and_separate_state_from_parameters() -> None:
     first = build_budget_tracks(reference_hidden_size=8, seed=94)
     second = build_budget_tracks(reference_hidden_size=8, seed=94)

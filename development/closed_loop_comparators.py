@@ -8,7 +8,7 @@ import json
 import math
 import random
 from time import perf_counter
-from typing import Literal, Sequence
+from typing import Collection, Literal, Sequence
 
 import torch
 from torch import nn
@@ -272,6 +272,9 @@ def run_comparator_condition(
     delay_steps: int,
     environment_exposure: EnvironmentExposure = "natural",
     sample_every: int = 1,
+    trace_every: int = 1,
+    record_full_state: bool = True,
+    record_full_state_seeds: Collection[int] | None = None,
 ) -> dict[str, object]:
     """Run one matched intervention condition with a declared comparator."""
     if not seeds:
@@ -280,6 +283,8 @@ def run_comparator_condition(
         raise ValueError("steps must be positive")
     if sample_every < 1:
         raise ValueError("sample_every must be positive")
+    if trace_every < 1:
+        raise ValueError("trace_every must be positive")
     if environment_exposure not in {"natural", "forced_read"}:
         raise ValueError("unknown environment exposure mode")
     include_internal = condition in {"internal", "both"}
@@ -311,6 +316,7 @@ def run_comparator_condition(
         executed_storage_operations = 0
         invalid_actions = 0
         answer_tick: int | None = None
+        executed_tick_count = 0
         started = perf_counter()
         for step_index in range(steps):
             if runner.world.completed:
@@ -329,6 +335,7 @@ def run_comparator_condition(
                     runner.connector.pending = ActionProposal("read")
                 events.append(disturbance)
             record = runner.step()
+            executed_tick_count += 1
             for event in events:
                 if (
                     event.get("tick") == step_index
@@ -345,8 +352,7 @@ def run_comparator_condition(
                 invalid_actions += 1
             if record.executed_acknowledgement.answer_correct is not None:
                 answer_tick = record.observation.tick
-            trace.append(
-                {
+            trace_entry = {
                     "tick": record.observation.tick,
                     "phase": record.observation.phase,
                     "surface_l2": math.sqrt(sum(value * value for value in record.surface)),
@@ -358,15 +364,17 @@ def run_comparator_condition(
                     "acceptance": asdict(record.acceptance),
                     "executed_acknowledgement": asdict(record.executed_acknowledgement),
                 }
-            )
-            if step_index % sample_every == 0 or step_index == steps - 1 or runner.world.completed:
-                state_samples.append(
-                    {
+            event_tick = any(event.get("tick") == step_index for event in events)
+            if step_index % trace_every == 0 or step_index == steps - 1 or runner.world.completed or event_tick:
+                trace.append(trace_entry)
+            if step_index % sample_every == 0 or step_index == steps - 1 or runner.world.completed or event_tick:
+                sample = {
                         "tick": record.observation.tick,
                         "surface": record.surface,
-                        "full_state": [value.detach().reshape(-1).cpu().tolist() for value in runner.adapter.state],
                     }
-                )
+                if record_full_state and (record_full_state_seeds is None or seed in record_full_state_seeds):
+                    sample["full_state"] = [value.detach().reshape(-1).cpu().tolist() for value in runner.adapter.state]
+                state_samples.append(sample)
         runs.append(
             {
                 "seed": seed,
@@ -374,7 +382,7 @@ def run_comparator_condition(
                 "trace": trace,
                 "state_samples": state_samples,
                 "events": events,
-                "executed_tick_count": len(trace),
+                "executed_tick_count": executed_tick_count,
                 "final_register": runner.world.register,
                 "final_score": runner.world.score,
                 "answer_tick": answer_tick,
@@ -399,6 +407,9 @@ def run_comparator_condition(
             "perturbation_rate": PERTURBATION_RATE,
             "environment_exposure": environment_exposure,
             "sample_every": sample_every,
+            "trace_every": trace_every,
+            "record_full_state": record_full_state,
+            "record_full_state_seeds": sorted(record_full_state_seeds) if record_full_state_seeds is not None else None,
         },
         "runs": runs,
         "metrics": {

@@ -17,11 +17,14 @@ def main() -> None:
     parser.add_argument("--steps", type=int, default=32)
     parser.add_argument("--delay-steps", type=int, default=31)
     parser.add_argument("--sample-every", type=int, default=1)
+    parser.add_argument("--trace-every", type=int, default=1)
+    parser.add_argument("--full-state-seeds", default=None, help="Comma-separated parameter seeds retaining complete state samples.")
     parser.add_argument("--track", choices=("state", "parameters"), default="state")
     parser.add_argument("--environment-exposure", choices=("natural", "forced_read"), default="natural")
     parser.add_argument("--out", type=Path, default=Path("data/diagnostics/closed_loop_comparator_pilot/summary.json"))
     args = parser.parse_args()
     seeds = [int(value) for value in args.seeds.split(",")]
+    full_state_seeds = set(seeds if args.full_state_seeds is None else (int(value) for value in args.full_state_seeds.split(",")))
     tracks = build_budget_tracks(reference_hidden_size=args.reference_hidden_size, seed=seeds[0])
     selected_track = tracks[args.track]
     specifications = selected_track["specifications"]
@@ -40,6 +43,8 @@ def main() -> None:
                     delay_steps=args.delay_steps,
                     environment_exposure=args.environment_exposure,
                     sample_every=args.sample_every,
+                    trace_every=args.trace_every,
+                    record_full_state_seeds=full_state_seeds,
                 )
             )
     payload = {
