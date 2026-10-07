@@ -2,7 +2,12 @@
 
 from __future__ import annotations
 
-from development.closed_loop_perturbation import build_four_group_conditions, run_perturbation_campaign
+from development.closed_loop_perturbation import (
+    build_four_group_conditions,
+    build_matched_conditions,
+    run_matched_perturbation_campaign,
+    run_perturbation_campaign,
+)
 
 
 def test_four_group_conditions_are_disjoint_and_deterministic() -> None:
@@ -38,3 +43,16 @@ def test_campaign_records_scheduled_internal_and_environment_disturbances() -> N
     assert result["groups"][2]["scheduled_environment_events"] == 2
     assert result["groups"][3]["scheduled_internal_events"] == 2
     assert result["groups"][3]["scheduled_environment_events"] == 2
+
+
+def test_matched_conditions_share_every_parameter_seed_across_groups() -> None:
+    conditions = build_matched_conditions([94, 95, 96, 97], steps=100)
+
+    assert [condition.name for condition in conditions] == ["baseline", "internal", "environment", "both"]
+    assert all(condition.seeds == (94, 95, 96, 97) for condition in conditions)
+
+    result = run_matched_perturbation_campaign(
+        seeds=[94, 95, 96, 97], hidden_size=8, steps=16, delay_steps=15, sample_every=8
+    )
+    assert result["replication_scope"]["trajectory_count"] == 16
+    assert result["replication_scope"]["independent_unit"] == "parameter_seed_matched_across_condition"

@@ -7,7 +7,7 @@ import argparse
 import json
 from pathlib import Path
 
-from development.closed_loop_perturbation import run_perturbation_campaign
+from development.closed_loop_perturbation import run_matched_perturbation_campaign, run_perturbation_campaign
 
 
 def main() -> None:
@@ -17,6 +17,7 @@ def main() -> None:
     parser.add_argument("--steps", type=int, default=2048)
     parser.add_argument("--delay-steps", type=int, default=2046)
     parser.add_argument("--sample-every", type=int, default=32)
+    parser.add_argument("--matched", action="store_true")
     parser.add_argument(
         "--out",
         type=Path,
@@ -24,7 +25,8 @@ def main() -> None:
     )
     args = parser.parse_args()
     start, end = (int(value) for value in args.seeds.split("-", maxsplit=1))
-    payload = run_perturbation_campaign(
+    runner = run_matched_perturbation_campaign if args.matched else run_perturbation_campaign
+    payload = runner(
         seeds=list(range(start, end + 1)),
         hidden_size=args.hidden_size,
         steps=args.steps,

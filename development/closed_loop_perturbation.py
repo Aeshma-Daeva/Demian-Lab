@@ -87,6 +87,65 @@ def run_perturbation_campaign(
     }
 
 
+def build_matched_conditions(seeds: Sequence[int], *, steps: int) -> list[PerturbationCondition]:
+    if not seeds:
+        raise ValueError("at least one seed is required")
+    if steps < 1:
+        raise ValueError("steps must be positive")
+    shared_seeds = tuple(seeds)
+
+    def ticks(*, salt: int) -> dict[int, tuple[int, ...]]:
+        return {seed: _scheduled_ticks(seed, steps=steps, salt=salt) for seed in shared_seeds}
+
+    empty = {seed: () for seed in shared_seeds}
+    internal_ticks = ticks(salt=11)
+    environment_ticks = ticks(salt=17)
+    return [
+        PerturbationCondition("baseline", shared_seeds, 0.0, "none", empty, empty),
+        PerturbationCondition("internal", shared_seeds, INTERNAL_AMPLITUDE, "none", internal_ticks, empty),
+        PerturbationCondition("environment", shared_seeds, 0.0, "mixed", empty, environment_ticks),
+        PerturbationCondition("both", shared_seeds, INTERNAL_AMPLITUDE, "mixed", internal_ticks, environment_ticks),
+    ]
+
+
+def run_matched_perturbation_campaign(
+    *,
+    seeds: Sequence[int],
+    hidden_size: int,
+    steps: int,
+    delay_steps: int,
+    sample_every: int,
+) -> dict[str, object]:
+    if sample_every < 1:
+        raise ValueError("sample_every must be positive")
+    conditions = build_matched_conditions(seeds, steps=steps)
+    groups = [_run_condition(condition, hidden_size, steps, delay_steps, sample_every) for condition in conditions]
+    return {
+        "schema_version": 1,
+        "experiment": "demian-v1-four-condition-matched-perturbation-pilot",
+        "config": {
+            "hidden_size": hidden_size,
+            "steps": steps,
+            "delay_steps": delay_steps,
+            "sample_every": sample_every,
+            "internal_amplitude": INTERNAL_AMPLITUDE,
+            "perturbation_rate": PERTURBATION_RATE,
+        },
+        "replication_scope": {
+            "parameter_seed_count": len(seeds),
+            "trajectory_count": len(seeds) * len(conditions),
+            "independent_unit": "parameter_seed_matched_across_condition",
+            "dependent_observations": ["four conditions share each parameter seed"],
+        },
+        "groups": groups,
+        "evidence_status": {
+            "observation": "Each parameter seed receives every declared perturbation condition with matched schedules by perturbation type.",
+            "hypothesis_status": "untested",
+            "interpretation": "Matched condition differences can be estimated within parameter seed; this still does not establish a route mechanism.",
+        },
+    }
+
+
 def _run_condition(
     condition: PerturbationCondition,
     hidden_size: int,
