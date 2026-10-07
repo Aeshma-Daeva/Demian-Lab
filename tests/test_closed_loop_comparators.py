@@ -116,6 +116,23 @@ def test_comparator_condition_records_action_and_storage_metrics() -> None:
     assert len(result["runs"]) == 2
 
 
+def test_forced_read_exposure_marks_environment_disturbances_observed() -> None:
+    result = run_comparator_condition(
+        architecture="rnn",
+        condition="environment",
+        seeds=[94],
+        hidden_size=8,
+        steps=16,
+        delay_steps=15,
+        environment_exposure="forced_read",
+    )
+
+    event = result["runs"][0]["events"][0]
+    assert event["observed"] is True
+    assert event["read_tick"] == event["tick"]
+    assert result["metrics"]["observed_environment_events"] == 1
+
+
 def test_budget_tracks_are_deterministic_and_separate_state_from_parameters() -> None:
     first = build_budget_tracks(reference_hidden_size=8, seed=94)
     second = build_budget_tracks(reference_hidden_size=8, seed=94)

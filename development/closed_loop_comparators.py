@@ -30,6 +30,7 @@ from development.demian_v1_gate_state import DemianV1GateState, V1State
 
 Architecture = Literal["mlp", "rnn", "gru", "demian", "demian_route_ablation"]
 Condition = Literal["baseline", "internal", "environment", "both"]
+EnvironmentExposure = Literal["natural", "forced_read"]
 
 PERTURBATION_RATE = 0.01
 INTERNAL_AMPLITUDE = 0.01
@@ -269,12 +270,15 @@ def run_comparator_condition(
     hidden_size: int,
     steps: int,
     delay_steps: int,
+    environment_exposure: EnvironmentExposure = "natural",
 ) -> dict[str, object]:
     """Run one matched intervention condition with a declared comparator."""
     if not seeds:
         raise ValueError("at least one seed is required")
     if steps < 1:
         raise ValueError("steps must be positive")
+    if environment_exposure not in {"natural", "forced_read"}:
+        raise ValueError("unknown environment exposure mode")
     include_internal = condition in {"internal", "both"}
     include_environment = condition in {"environment", "both"}
     runs: list[dict[str, object]] = []
@@ -311,8 +315,24 @@ def run_comparator_condition(
                 apply_relative_pulse(runner.adapter, amplitude=INTERNAL_AMPLITUDE, seed=seed, tick=step_index)
                 events.append({"tick": step_index, "kind": "internal_pulse", "amplitude": INTERNAL_AMPLITUDE})
             if step_index in environment_ticks:
-                events.append(_apply_register_disturbance(runner, mode=environment_mode, seed=seed, tick=step_index))
+                disturbance = _apply_register_disturbance(runner, mode=environment_mode, seed=seed, tick=step_index)
+                disturbance["observed"] = False
+                disturbance["read_tick"] = None
+                if environment_exposure == "forced_read":
+                    disturbance["replaced_pending_action"] = (
+                        asdict(runner.connector.pending) if runner.connector.pending is not None else None
+                    )
+                    runner.connector.pending = ActionProposal("read")
+                events.append(disturbance)
             record = runner.step()
+            for event in events:
+                if (
+                    event.get("tick") == step_index
+                    and str(event.get("kind")).startswith("register_")
+                    and record.executed_acknowledgement.executed_operation == "read"
+                ):
+                    event["observed"] = record.executed_acknowledgement.read_value == event["after"]
+                    event["read_tick"] = record.observation.tick
             if record.proposal.operation in {"read", "write"}:
                 submitted_storage_operations += 1
             if record.executed_acknowledgement.executed_operation in {"read", "write"}:
@@ -365,6 +385,7 @@ def run_comparator_condition(
             "delay_steps": delay_steps,
             "internal_amplitude": INTERNAL_AMPLITUDE,
             "perturbation_rate": PERTURBATION_RATE,
+            "environment_exposure": environment_exposure,
         },
         "runs": runs,
         "metrics": {
@@ -374,6 +395,9 @@ def run_comparator_condition(
             ),
             "scheduled_environment_events": sum(
                 sum(str(event["kind"]).startswith("register_") for event in run["events"]) for run in runs
+            ),
+            "observed_environment_events": sum(
+                sum(event.get("observed") is True for event in run["events"]) for run in runs
             ),
             "correct_answers": sum(run["final_score"] for run in runs),
             "answered": sum(run["answer_tick"] is not None for run in runs),

@@ -17,6 +17,7 @@ def main() -> None:
     parser.add_argument("--steps", type=int, default=32)
     parser.add_argument("--delay-steps", type=int, default=31)
     parser.add_argument("--track", choices=("state", "parameters"), default="state")
+    parser.add_argument("--environment-exposure", choices=("natural", "forced_read"), default="natural")
     parser.add_argument("--out", type=Path, default=Path("data/diagnostics/closed_loop_comparator_pilot/summary.json"))
     args = parser.parse_args()
     seeds = [int(value) for value in args.seeds.split(",")]
@@ -36,6 +37,7 @@ def main() -> None:
                     hidden_size=specification["hidden_size"],  # type: ignore[arg-type]
                     steps=args.steps,
                     delay_steps=args.delay_steps,
+                    environment_exposure=args.environment_exposure,
                 )
             )
     payload = {

@@ -205,6 +205,7 @@ interface behavior only):
 
 ```bash
 ./venv/bin/python -m development.run_closed_loop_comparator_pilot --reference-hidden-size 8 --steps 32 --delay-steps 31 --track state
+./venv/bin/python -m development.run_closed_loop_comparator_pilot --reference-hidden-size 8 --steps 32 --delay-steps 31 --track state --environment-exposure forced_read
 ./venv/bin/python -m pytest tests/test_closed_loop_comparators.py -q
 ```
 
