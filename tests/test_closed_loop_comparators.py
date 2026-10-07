@@ -10,6 +10,8 @@ from development.closed_loop_comparators import (
     capture_comparator_runtime,
     replay_comparator_frames,
     restore_comparator_runtime,
+    apply_relative_pulse,
+    matched_perturbation_ticks,
 )
 from development.closed_loop_world import WorldObservation
 
@@ -81,3 +83,20 @@ def test_fixed_observation_replay_matches_comparator_records() -> None:
     )
 
     assert replayed == [(record.surface, record.proposal) for record in records]
+
+
+def test_matched_perturbation_ticks_are_seed_deterministic() -> None:
+    assert matched_perturbation_ticks(seed=94, steps=100, rate=0.01, salt=11) == matched_perturbation_ticks(
+        seed=94, steps=100, rate=0.01, salt=11
+    )
+
+
+def test_relative_pulse_scales_to_complete_state_norm() -> None:
+    adapter = ClosedLoopModelAdapter(architecture="gru", seed=94, hidden_size=8)
+    before = adapter.capture_runtime().state
+    apply_relative_pulse(adapter, amplitude=0.01, seed=94, tick=3)
+    after = adapter.capture_runtime().state
+
+    before_norm = sum(value.square().sum().item() for value in before) ** 0.5
+    pulse_norm = sum((new - old).square().sum().item() for old, new in zip(before, after)) ** 0.5
+    assert pulse_norm == pytest.approx(before_norm * 0.01)

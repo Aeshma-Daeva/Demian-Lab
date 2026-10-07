@@ -5,6 +5,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from hashlib import sha256
 import json
+import random
 from typing import Literal
 
 import torch
@@ -228,3 +229,27 @@ def _runner_fingerprint(runner: ComparatorRunner) -> str:
         "connector": (runner.connector.symbol_count, runner.connector.storage_enabled, runner.connector.storage_read_only),
     }
     return sha256(json.dumps(payload, sort_keys=True).encode("utf-8")).hexdigest()
+
+
+def matched_perturbation_ticks(*, seed: int, steps: int, rate: float, salt: int) -> tuple[int, ...]:
+    if steps < 1 or not 0 < rate <= 1:
+        raise ValueError("steps and rate must be positive")
+    count = max(1, round(steps * rate))
+    return tuple(sorted(random.Random(f"{seed}:{salt}").sample(range(steps), count)))
+
+
+def apply_relative_pulse(adapter: ClosedLoopModelAdapter, *, amplitude: float, seed: int, tick: int) -> None:
+    if not adapter.state or amplitude == 0.0:
+        return
+    state_norm = sum(value.square().sum().item() for value in adapter.state) ** 0.5
+    if state_norm == 0.0:
+        return
+    directions = []
+    for index, value in enumerate(adapter.state):
+        generator = torch.Generator(device=value.device).manual_seed(seed * 100_000 + tick * 10 + index)
+        directions.append(torch.randn(value.shape, generator=generator, device=value.device, dtype=value.dtype))
+    direction_norm = sum(value.square().sum().item() for value in directions) ** 0.5
+    adapter.state = tuple(
+        state + direction * (state_norm * amplitude / direction_norm)
+        for state, direction in zip(adapter.state, directions)
+    )
