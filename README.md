@@ -200,6 +200,14 @@ For the deterministic closed-loop baseline:
 ./venv/bin/python -m pytest tests/test_closed_loop_world.py tests/test_closed_loop_demian.py tests/test_closed_loop_baseline.py -q
 ```
 
+For the untrained closed-loop comparator pilot (initialized dynamics and
+interface behavior only):
+
+```bash
+./venv/bin/python -m development.run_closed_loop_comparator_pilot --reference-hidden-size 8 --steps 32 --delay-steps 31 --track state
+./venv/bin/python -m pytest tests/test_closed_loop_comparators.py -q
+```
+
 ## Environment
 
 The local `venv` has the research runtime more reliably than the system interpreter.

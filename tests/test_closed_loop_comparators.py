@@ -11,6 +11,7 @@ from development.closed_loop_comparators import (
     replay_comparator_frames,
     restore_comparator_runtime,
     apply_relative_pulse,
+    build_budget_tracks,
     matched_perturbation_ticks,
     run_comparator_condition,
 )
@@ -113,3 +114,14 @@ def test_comparator_condition_records_action_and_storage_metrics() -> None:
     assert result["metrics"]["scheduled_internal_events"] == 2
     assert result["metrics"]["scheduled_environment_events"] == 2
     assert len(result["runs"]) == 2
+
+
+def test_budget_tracks_are_deterministic_and_separate_state_from_parameters() -> None:
+    first = build_budget_tracks(reference_hidden_size=8, seed=94)
+    second = build_budget_tracks(reference_hidden_size=8, seed=94)
+
+    assert first == second
+    assert first["state"]["target"] == first["state"]["specifications"]["demian"]
+    assert first["parameters"]["target"] == first["parameters"]["specifications"]["demian"]
+    assert first["state"]["specifications"]["mlp"]["eligible"] is False
+    assert first["state"]["specifications"]["gru"]["hidden_size"] != first["parameters"]["specifications"]["gru"]["hidden_size"]

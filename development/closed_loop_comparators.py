@@ -404,3 +404,70 @@ def _apply_register_disturbance(
         candidates = [value for value in range(runner.world.symbol_count) if value != before]
         runner.world.register = random.Random(f"register:{seed}:{tick}").choice(candidates)
     return {"tick": tick, "kind": f"register_{mode}", "before": before, "after": runner.world.register}
+
+
+def build_budget_tracks(*, reference_hidden_size: int, seed: int) -> dict[str, object]:
+    """Select deterministic nearest-width specifications for separate budget tracks."""
+    if reference_hidden_size < 1:
+        raise ValueError("reference_hidden_size must be positive")
+    reference = ClosedLoopModelAdapter(architecture="demian", seed=seed, hidden_size=reference_hidden_size)
+    architectures: tuple[Architecture, ...] = ("mlp", "rnn", "gru", "demian_route_ablation", "demian")
+    return {
+        "state": _build_budget_track(
+            architectures=architectures,
+            target=reference.state_bytes,
+            metric="state_bytes",
+            reference_hidden_size=reference_hidden_size,
+            seed=seed,
+        ),
+        "parameters": _build_budget_track(
+            architectures=architectures,
+            target=reference.parameter_count,
+            metric="parameter_count",
+            reference_hidden_size=reference_hidden_size,
+            seed=seed,
+        ),
+    }
+
+
+def _build_budget_track(
+    *,
+    architectures: tuple[Architecture, ...],
+    target: int,
+    metric: Literal["state_bytes", "parameter_count"],
+    reference_hidden_size: int,
+    seed: int,
+) -> dict[str, object]:
+    specifications: dict[str, dict[str, object]] = {}
+    for architecture in architectures:
+        if metric == "state_bytes" and architecture == "mlp":
+            specifications[architecture] = {
+                "hidden_size": reference_hidden_size,
+                "eligible": False,
+                "reason": "memoryless_control_has_zero_persistent_state",
+                "matched_value": 0,
+                "target_value": target,
+            }
+            continue
+        candidates = [
+            ClosedLoopModelAdapter(architecture=architecture, seed=seed, hidden_size=hidden_size)
+            for hidden_size in range(1, reference_hidden_size * 8 + 1)
+        ]
+        selected = min(
+            candidates,
+            key=lambda adapter: (
+                abs(getattr(adapter, metric) - target),
+                abs(adapter.hidden_size - reference_hidden_size),
+                adapter.hidden_size,
+            ),
+        )
+        value = getattr(selected, metric)
+        specifications[architecture] = {
+            "hidden_size": selected.hidden_size,
+            "eligible": True,
+            "matched_value": value,
+            "target_value": target,
+            "absolute_error": abs(value - target),
+        }
+    target_specification = specifications["demian"]
+    return {"metric": metric, "target": target_specification, "specifications": specifications}
