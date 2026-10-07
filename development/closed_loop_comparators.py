@@ -2,11 +2,13 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import asdict, dataclass
 from hashlib import sha256
 import json
+import math
 import random
-from typing import Literal
+from time import perf_counter
+from typing import Literal, Sequence
 
 import torch
 from torch import nn
@@ -27,6 +29,10 @@ from development.demian_v1_gate_state import DemianV1GateState, V1State
 
 
 Architecture = Literal["mlp", "rnn", "gru", "demian", "demian_route_ablation"]
+Condition = Literal["baseline", "internal", "environment", "both"]
+
+PERTURBATION_RATE = 0.01
+INTERNAL_AMPLITUDE = 0.01
 
 
 @dataclass(frozen=True)
@@ -253,3 +259,148 @@ def apply_relative_pulse(adapter: ClosedLoopModelAdapter, *, amplitude: float, s
         state + direction * (state_norm * amplitude / direction_norm)
         for state, direction in zip(adapter.state, directions)
     )
+
+
+def run_comparator_condition(
+    *,
+    architecture: Architecture,
+    condition: Condition,
+    seeds: Sequence[int],
+    hidden_size: int,
+    steps: int,
+    delay_steps: int,
+) -> dict[str, object]:
+    """Run one matched intervention condition with a declared comparator."""
+    if not seeds:
+        raise ValueError("at least one seed is required")
+    if steps < 1:
+        raise ValueError("steps must be positive")
+    include_internal = condition in {"internal", "both"}
+    include_environment = condition in {"environment", "both"}
+    runs: list[dict[str, object]] = []
+    for position, seed in enumerate(seeds):
+        runner = ComparatorRunner(
+            architecture=architecture,
+            seed=seed,
+            hidden_size=hidden_size,
+            cue_symbol=seed % 3,
+            delay_steps=delay_steps,
+        )
+        internal_ticks = set(
+            matched_perturbation_ticks(seed=seed, steps=steps, rate=PERTURBATION_RATE, salt=11)
+            if include_internal
+            else ()
+        )
+        environment_ticks = set(
+            matched_perturbation_ticks(seed=seed, steps=steps, rate=PERTURBATION_RATE, salt=17)
+            if include_environment
+            else ()
+        )
+        environment_mode = "clear" if position % 2 == 0 else "replace"
+        events: list[dict[str, object]] = []
+        trace: list[dict[str, object]] = []
+        submitted_storage_operations = 0
+        executed_storage_operations = 0
+        invalid_actions = 0
+        answer_tick: int | None = None
+        started = perf_counter()
+        for step_index in range(steps):
+            if runner.world.completed:
+                break
+            if step_index in internal_ticks:
+                apply_relative_pulse(runner.adapter, amplitude=INTERNAL_AMPLITUDE, seed=seed, tick=step_index)
+                events.append({"tick": step_index, "kind": "internal_pulse", "amplitude": INTERNAL_AMPLITUDE})
+            if step_index in environment_ticks:
+                events.append(_apply_register_disturbance(runner, mode=environment_mode, seed=seed, tick=step_index))
+            record = runner.step()
+            if record.proposal.operation in {"read", "write"}:
+                submitted_storage_operations += 1
+            if record.executed_acknowledgement.executed_operation in {"read", "write"}:
+                executed_storage_operations += 1
+            if not record.acceptance.accepted:
+                invalid_actions += 1
+            if record.executed_acknowledgement.answer_correct is not None:
+                answer_tick = record.observation.tick
+            trace.append(
+                {
+                    "tick": record.observation.tick,
+                    "phase": record.observation.phase,
+                    "surface": record.surface,
+                    "state_l2": _state_l2(runner.adapter),
+                    "state_component_l2": [
+                        math.sqrt(value.square().sum().item()) for value in runner.adapter.state
+                    ],
+                    "full_state": [value.detach().reshape(-1).cpu().tolist() for value in runner.adapter.state],
+                    "proposal": asdict(record.proposal),
+                    "acceptance": asdict(record.acceptance),
+                    "executed_acknowledgement": asdict(record.executed_acknowledgement),
+                }
+            )
+        runs.append(
+            {
+                "seed": seed,
+                "cue_symbol": seed % 3,
+                "trace": trace,
+                "events": events,
+                "executed_tick_count": len(trace),
+                "final_register": runner.world.register,
+                "final_score": runner.world.score,
+                "answer_tick": answer_tick,
+                "state_bytes": runner.adapter.state_bytes,
+                "parameter_count": runner.adapter.parameter_count,
+                "submitted_storage_operations": submitted_storage_operations,
+                "executed_storage_operations": executed_storage_operations,
+                "invalid_actions": invalid_actions,
+                "wall_seconds": perf_counter() - started,
+            }
+        )
+    return {
+        "schema_version": 1,
+        "experiment": "closed-loop-comparator-condition",
+        "architecture": architecture,
+        "condition": condition,
+        "config": {
+            "hidden_size": hidden_size,
+            "steps": steps,
+            "delay_steps": delay_steps,
+            "internal_amplitude": INTERNAL_AMPLITUDE,
+            "perturbation_rate": PERTURBATION_RATE,
+        },
+        "runs": runs,
+        "metrics": {
+            "trajectory_count": len(runs),
+            "scheduled_internal_events": sum(
+                sum(event["kind"] == "internal_pulse" for event in run["events"]) for run in runs
+            ),
+            "scheduled_environment_events": sum(
+                sum(str(event["kind"]).startswith("register_") for event in run["events"]) for run in runs
+            ),
+            "correct_answers": sum(run["final_score"] for run in runs),
+            "answered": sum(run["answer_tick"] is not None for run in runs),
+            "wrong_answers": sum(run["answer_tick"] is not None and run["final_score"] == 0 for run in runs),
+            "no_answers": sum(run["answer_tick"] is None for run in runs),
+            "submitted_storage_operations": sum(run["submitted_storage_operations"] for run in runs),
+            "executed_storage_operations": sum(run["executed_storage_operations"] for run in runs),
+            "invalid_actions": sum(run["invalid_actions"] for run in runs),
+        },
+    }
+
+
+def _state_l2(adapter: ClosedLoopModelAdapter) -> float:
+    return math.sqrt(sum(value.square().sum().item() for value in adapter.state))
+
+
+def _apply_register_disturbance(
+    runner: ComparatorRunner,
+    *,
+    mode: Literal["clear", "replace"],
+    seed: int,
+    tick: int,
+) -> dict[str, object]:
+    before = runner.world.register
+    if mode == "clear":
+        runner.world.reset_storage()
+    else:
+        candidates = [value for value in range(runner.world.symbol_count) if value != before]
+        runner.world.register = random.Random(f"register:{seed}:{tick}").choice(candidates)
+    return {"tick": tick, "kind": f"register_{mode}", "before": before, "after": runner.world.register}

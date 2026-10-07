@@ -12,6 +12,7 @@ from development.closed_loop_comparators import (
     restore_comparator_runtime,
     apply_relative_pulse,
     matched_perturbation_ticks,
+    run_comparator_condition,
 )
 from development.closed_loop_world import WorldObservation
 
@@ -100,3 +101,15 @@ def test_relative_pulse_scales_to_complete_state_norm() -> None:
     before_norm = sum(value.square().sum().item() for value in before) ** 0.5
     pulse_norm = sum((new - old).square().sum().item() for old, new in zip(before, after)) ** 0.5
     assert pulse_norm == pytest.approx(before_norm * 0.01)
+
+
+def test_comparator_condition_records_action_and_storage_metrics() -> None:
+    result = run_comparator_condition(
+        architecture="rnn", condition="both", seeds=[94, 95], hidden_size=8, steps=16, delay_steps=15
+    )
+
+    assert result["condition"] == "both"
+    assert result["metrics"]["trajectory_count"] == 2
+    assert result["metrics"]["scheduled_internal_events"] == 2
+    assert result["metrics"]["scheduled_environment_events"] == 2
+    assert len(result["runs"]) == 2
