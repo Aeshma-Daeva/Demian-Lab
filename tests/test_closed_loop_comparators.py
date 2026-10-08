@@ -16,6 +16,7 @@ from development.closed_loop_comparators import (
     run_comparator_condition,
 )
 from development.closed_loop_world import WorldObservation
+from development.closed_loop_stability import run_fixed_input_recovery, run_stability_panel
 
 
 def test_memoryless_mlp_retains_no_runtime_state() -> None:
@@ -168,6 +169,31 @@ def test_comparator_condition_decimates_stored_trace_but_preserves_run_metrics()
     assert run["executed_tick_count"] == 8
     assert [step["tick"] for step in run["trace"]] == [0, 4, 7]
     assert all("full_state" not in sample for sample in run["state_samples"])
+
+
+def test_fixed_input_recovery_has_identity_sham_and_declared_pulse_gain() -> None:
+    sham = run_fixed_input_recovery(
+        architecture="gru", seed=94, hidden_size=8, steps=16, delay_steps=15, intervention_tick=4, amplitude=0.0
+    )
+    pulsed = run_fixed_input_recovery(
+        architecture="gru", seed=94, hidden_size=8, steps=16, delay_steps=15, intervention_tick=4, amplitude=0.01
+    )
+
+    assert sham["metrics"]["initial_separation"] == 0.0
+    assert sham["metrics"]["peak_gain"] == 0.0
+    assert pulsed["metrics"]["initial_separation"] > 0.0
+    assert pulsed["metrics"]["peak_gain"] > 0.0
+    assert all(point["input_replay"] is True for point in pulsed["trajectory"])
+
+
+def test_stability_panel_covers_declared_amplitudes_and_times() -> None:
+    panel = run_stability_panel(
+        architectures=["rnn"], seeds=[94], hidden_sizes={"rnn": 8}, steps=16, delay_steps=15, amplitudes=[0.001, 0.01], intervention_ticks=[4, 8]
+    )
+
+    assert len(panel["runs"]) == 4
+    assert {run["config"]["amplitude"] for run in panel["runs"]} == {0.001, 0.01}
+    assert {run["config"]["intervention_tick"] for run in panel["runs"]} == {4, 8}
 
 
 def test_budget_tracks_are_deterministic_and_separate_state_from_parameters() -> None:
