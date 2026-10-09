@@ -31,12 +31,18 @@ def sha256(value: bytes) -> str:
 
 
 def source_hashes() -> dict[str, str]:
-    return {name: sha256((ROOT / name).read_bytes()) for name in SOURCE_FILES}
+    return {name: sha256((ROOT / name).read_bytes()) for name in _source_files()}
+
+
+def _source_files() -> list[str]:
+    # Freeze all local runtime sources, including package import/re-export boundaries.
+    # A new or unrelated edited module conservatively invalidates the decision too.
+    return sorted(set(SOURCE_FILES) | {str(path.relative_to(ROOT)) for path in (ROOT / "development").rglob("*.py")})
 
 
 def snapshot_sources(out: Path) -> dict[str, str]:
     hashes = {}
-    for name in SOURCE_FILES:
+    for name in _source_files():
         contents = (ROOT / name).read_bytes()
         target = out / "sources" / name
         target.parent.mkdir(parents=True, exist_ok=True)

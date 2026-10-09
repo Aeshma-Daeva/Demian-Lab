@@ -66,6 +66,8 @@ admits confirmation seeds 194–293 only with a valid decision. Direction/horizo
 development-calibrated and frozen before confirmation. Changed source, protocol, evidence or
 confirmation settings invalidate the gate. Later phases remain unauthorized.
 Outputs: streamed JSONL, exact source snapshots, frozen protocol, test log, hashed decision and status.
+Snapshots include all local `development/**/*.py` sources and the measurement/gate tests;
+import-boundary changes, added modules and unrelated source edits conservatively invalidate the gate.
 Each worker uses one CPU thread; campaign concurrency is capped at two workers.
 
 Development reproduction (fresh output directory):

@@ -305,3 +305,36 @@ def test_campaign_validation_only_never_runs_fresh_seeds(tmp_path):
     assert status["stage"] == "development_validated"
     assert not list(out.glob("confirmation_*"))
     assert json.loads((out / "decision.json").read_text())["approved"]
+
+
+def test_local_import_boundary_change_invalidates_existing_decision(tmp_path, monkeypatch):
+    # A different exported base class must not reuse earlier regime evidence.
+    root = tmp_path / "repo"
+    for name in validation.SOURCE_FILES:
+        path = root / name
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text("# source fixture\n")
+    boundary = root / "development/substrates/legacy.py"
+    boundary.parent.mkdir(parents=True)
+    boundary.write_text("from .model_a import DemianNativeV9Substrate\n")
+    monkeypatch.setattr(validation, "ROOT", root)
+    before = validation.source_hashes()
+    assert "development/substrates/legacy.py" in before
+    raw, hashes, dirs = _panel(tmp_path)
+    for directory in dirs:
+        manifest = json.loads((directory / "manifest.json").read_text())
+        manifest["implementation_hashes"] = before
+        (directory / "manifest.json").write_text(json.dumps(manifest))
+        for name in before:
+            target = directory / "sources" / name
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_bytes((root / name).read_bytes())
+    decision = _audit(dirs, raw, before)
+    validation.validate_confirmation(raw, decision, before, steps=12, width=8, burn_in=2, seeds=list(range(194, 294)))
+    boundary.write_text("from .model_b import DemianNativeV9Substrate\n")
+    after = validation.source_hashes()
+    assert before != after
+    with pytest.raises(ValueError, match="mismatch"):
+        validation.validate_confirmation(
+            raw, decision, after, steps=12, width=8, burn_in=2, seeds=list(range(194, 294))
+        )
