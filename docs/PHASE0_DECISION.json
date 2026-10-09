@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "status": "confirmation_audited",
+  "audit_passed": true,
+  "unique_measurements": 2400,
+  "independent_model_seeds_per_architecture": 100,
+  "campaign_id": "regime_phase0_frozen_h256_s100_20261008_v2",
+  "campaign_source_commit": "d6f5016730326436f8088580889c45642188f83f",
+  "full_audit_file": "data/diagnostics/regime_phase0_postrun_audit_20261009.json",
+  "full_audit_sha256": "e04717184f27f7f7f5ed28c1c2acf0da4993db11b1caf5df7f62aae2c9298537",
+  "admitted_stage": "phase0b_development_calibration",
+  "matching_margin_per_tick": 0.01,
+  "AFP_v2_confirmed": false,
+  "architecture_equivalence_established": false,
+  "plasticity_admitted": false
+}

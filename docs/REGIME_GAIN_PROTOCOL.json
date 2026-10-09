@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "stage": "phase0b_development_calibration",
+  "grid": [0.5, 0.8, 0.95, 1.0, 1.05, 1.2, 1.5, 2.0],
+  "seeds": [94, 95, 96],
+  "directions": [1701, 1702, 1703],
+  "horizons": [512, 2048],
+  "matching_tolerance": 0.01,
+  "direction_tolerance": 0.01,
+  "horizon_tolerance": 0.01,
+  "selection_rule": "minimize_maximum_absolute_development_cohort_mean_gap_over_horizons; ties_choose_smaller_multiplier",
+  "target": "Demian development cohort only",
+  "reference_hidden_size": 256,
+  "state_elements": 1312,
+  "burn_in": 128,
+  "parameter_changed": "RNNCell.weight_hh only",
+  "dtype": "float64",
+  "fresh_confirmation_seed_range": [294, 393],
+  "fresh_confirmation_required": true,
+  "pulse_comparison_authorized": false,
+  "H0_H1_decision_authorized": false,
+  "later_phases_authorized": false
+}

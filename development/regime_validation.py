@@ -23,6 +23,7 @@ SOURCE_FILES = (
     "development/substrate_lab.py",
     "tests/test_regime_characterization.py",
     "tests/test_regime_validation.py",
+    "tests/test_regime_gain_calibration.py",
 )
 
 
@@ -83,12 +84,32 @@ def _operation_names(architecture: str) -> set[str]:
 
 
 def audit_development(
-    run_dirs: list[Path], protocol_bytes: bytes, hashes: dict[str, str], *, test_verification: dict | None = None
+    run_dirs: list[Path],
+    protocol_bytes: bytes,
+    hashes: dict[str, str],
+    *,
+    test_verification: dict | None = None,
+    panel: str = "development",
+    decision_sha256: str | None = None,
 ) -> dict:
     """Audit exact cells; tolerances are development-calibrated, frozen before confirmation."""
     protocol = json.loads(protocol_bytes)
+    if panel not in {"development", "confirmation"}:
+        raise ValueError("unknown panel")
+    seeds = (
+        protocol["development_seeds"]
+        if panel == "development"
+        else list(
+            range(
+                protocol["confirmation_seed_range"][0],
+                protocol["confirmation_seed_range"][1] + 1,
+            )
+        )
+    )
     digest = sha256(protocol_bytes)
     reasons, records, evidence = [], {}, {}
+    if panel == "confirmation" and not decision_sha256:
+        reasons.append("confirmation requires original decision digest")
     if (
         not test_verification
         or test_verification.get("returncode") != 0
@@ -100,7 +121,7 @@ def audit_development(
         itertools.product(
             protocol["horizons"],
             protocol["architectures"],
-            protocol["development_seeds"],
+            seeds,
             protocol["direction_seeds"],
         )
     )
@@ -120,8 +141,9 @@ def audit_development(
                 or manifest["threads"] != 1
                 or config["reference_hidden_size"] != protocol["reference_hidden_size"]
                 or config["burn_in"] != protocol["burn_in"]
-                or config["seeds"] != protocol["development_seeds"]
+                or config["seeds"] != seeds
                 or horizon not in protocol["horizons"]
+                or (panel == "confirmation" and manifest.get("decision_sha256") != decision_sha256)
             ):
                 reasons.append(f"manifest mismatch: {path}")
             for name, source_digest in hashes.items():
@@ -135,7 +157,7 @@ def audit_development(
                     key = (horizon, record["architecture"], record["seed"], result["direction_seed"])
                     if key in records:
                         reasons.append(f"duplicate cell: {key}")
-                    records[key] = record
+                    records[key] = {"result": {"rate": result.get("rate")}}
                     count += 1
                     if key not in expected or record["protocol_sha256"] != digest:
                         reasons.append(f"unexpected cell or protocol: {key}")
@@ -209,7 +231,7 @@ def audit_development(
         )
     audits = []
     if not reasons:
-        for architecture, seed in itertools.product(protocol["architectures"], protocol["development_seeds"]):
+        for architecture, seed in itertools.product(protocol["architectures"], seeds):
             horizon_means, labels = [], set()
             for horizon in protocol["horizons"]:
                 rates = [
@@ -244,7 +266,9 @@ def audit_development(
         "run_dirs": [str(Path(p).resolve()) for p in run_dirs],
         "audit": audits,
         "test_verification": test_verification,
-        "authorized_stage": "phase0_fresh_seed_directional_confirmation",
+        "authorized_stage": "phase0_fresh_seed_directional_confirmation"
+        if panel == "development"
+        else "phase0b_development_calibration",
         "confirmed_scientific_claims": [],
     }
 

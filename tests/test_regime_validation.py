@@ -338,3 +338,45 @@ def test_local_import_boundary_change_invalidates_existing_decision(tmp_path, mo
         validation.validate_confirmation(
             raw, decision, after, steps=12, width=8, burn_in=2, seeds=list(range(194, 294))
         )
+
+
+@pytest.mark.parametrize("bad_decision", [False, True])
+def test_postrun_audit_requires_full_fresh_seed_panel_and_original_decision(tmp_path, bad_decision):
+    raw, hashes, dirs = _panel(tmp_path)
+    protocol = json.loads(raw)
+    protocol["confirmation_seed_range"] = [194, 195]
+    raw = json.dumps(protocol).encode()
+    digest = validation.sha256(raw)
+    for directory in dirs:
+        manifest = json.loads((directory / "manifest.json").read_text())
+        manifest.update(
+            protocol=protocol, protocol_sha256=digest, decision_sha256="wrong" if bad_decision else "original"
+        )
+        manifest["actual_config"]["seeds"] = [194, 195]
+        (directory / "manifest.json").write_text(json.dumps(manifest))
+        records = [json.loads(line) for line in (directory / "records.jsonl").read_text().splitlines()]
+        expanded = []
+        for seed in [194, 195]:
+            for record in records:
+                cell = copy.deepcopy(record)
+                cell.update(seed=seed, protocol_sha256=digest)
+                expanded.append(cell)
+        (directory / "records.jsonl").write_text("".join(json.dumps(r) + "\n" for r in expanded))
+        (directory / "summary.json").write_text(
+            json.dumps({"all_passed": True, "records": 4, "precision_and_finiteness_passed": 4})
+        )
+    decision = validation.audit_development(
+        dirs,
+        raw,
+        hashes,
+        panel="confirmation",
+        decision_sha256="original",
+        test_verification={
+            "returncode": 0,
+            "implementation_hashes": hashes,
+            "command": ["pytest", "tests/test_regime_characterization.py"],
+        },
+    )
+    assert decision["approved"] is not bad_decision
+    assert decision["records_checked"] == 8
+    assert decision["authorized_stage"] == "phase0b_development_calibration"

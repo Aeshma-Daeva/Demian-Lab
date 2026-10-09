@@ -1,6 +1,7 @@
 # Regime-matched characterization
 
-Status: Phase 0 instrumentation validation. Later phases are gated; plasticity is deferred.
+Status: [Phase 0 confirmation audited](PHASE0_CONFIRMATION_RESULTS.md).
+Phase 0b development calibration admitted; later phases and plasticity remain gated.
 Existing 94–193 comparator seeds and 94–96 recovery cells are development evidence.
 
 ## Corrected definitions
@@ -79,6 +80,16 @@ Development reproduction (fresh output directory):
 ```
 
 Use `--validation-only` for development without automatic confirmation. Never reuse an output directory.
+
+Phase 0b: [frozen development protocol](REGIME_GAIN_PROTOCOL.json). Scale only `weight_hh`;
+select against Demian development means at both horizons, with precision and stability checks.
+The 0.01/tick margin admits a candidate, not distributional equivalence or H0.
+No passing candidate means no match; do not force the nearest grid point into the control.
+Use fresh seeds 294–393 for subsequent confirmation before any matched pulse comparison.
+
+```bash
+./venv/bin/python -m development.run_regime_gain_calibration --audit data/diagnostics/regime_phase0_postrun_audit_20261009.json --out data/diagnostics/regime_gain_development
+```
 
 References: [Lyapunov algorithms](https://www.scholarpedia.org/article/Lyapunov_exponent),
 [empirical Gramians](https://arxiv.org/abs/1611.00675).
