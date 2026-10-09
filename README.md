@@ -98,7 +98,8 @@ are useful after the reader knows what question they answer.
 ## Current Status
 
 Current protocol: [regime-matched characterization](docs/REGIME_MATCHED_CHARACTERIZATION.md).
-Phase 0 tangent instrumentation is under validation; gain-matched controls and plasticity remain gated.
+Phase 0 uses a frozen development/audit/confirmation campaign; gain-matched controls and plasticity remain gated.
+Three-seed [development observations](docs/PHASE0_DEVELOPMENT_RESULTS.md) show sampled regime separation at both horizons.
 
 - This is an active research notebook, not a finished architecture announcement.
 - Demian v1 is a prototype/design consequence of the lineage, not a completed

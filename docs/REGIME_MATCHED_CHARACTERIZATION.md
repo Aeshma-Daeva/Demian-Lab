@@ -23,8 +23,9 @@ Demian's exposed vector is lower-dimensional than its complete state.
   Gramian-column norms do not define visibility time.
 - Saturation is an operation-specific derivative measurement, not a large-state-value threshold.
   Gated/additive retention can preserve state even when candidate nonlinearities saturate.
-  Current instrumentation covers named Demian gate/candidate operations and RNN tanh;
-  fused GRU gates, cross-route operations and any projected-unsaturated tangent experiment remain pending.
+  Instrumentation covers RNN tanh, fused GRU reset/update/candidate, Demian gates,
+  cross-routes, compound fast update and exposed-readout operations. Reconstructed operations
+  are checked against the actual transition. A projected-unsaturated state experiment remains pending.
 
 ## Gates
 
@@ -59,16 +60,23 @@ Cliff's delta 0.33, decoder accuracy 80%, and a 10-point advantage are proposed 
 not universal scientific thresholds. Later-phase margins must be calibrated on development data
 and hashed before confirmation. Channel names remain code identifiers; functional claims require evidence.
 
-Phase 0 settings: [protocol](REGIME_MATCHED_PROTOCOL.json). Full confirmation remains gated until
-precision/horizon/direction validation completes. Output is streamed JSONL; each record embeds protocol
-and implementation hashes. Existing raw data need not be loaded to estimate tangent dynamics.
+Phase 0 settings: [protocol](REGIME_MATCHED_PROTOCOL.json); [development observations](PHASE0_DEVELOPMENT_RESULTS.md).
+The campaign verifies known maps, reruns both development horizons, audits complete cells, and
+admits confirmation seeds 194–293 only with a valid decision. Direction/horizon tolerances were
+development-calibrated and frozen before confirmation. Changed source, protocol, evidence or
+confirmation settings invalidate the gate. Later phases remain unauthorized.
+Outputs: streamed JSONL, exact source snapshots, frozen protocol, test log, hashed decision and status.
+Each worker uses one CPU thread; campaign concurrency is capped at two workers.
 
 Development reproduction (fresh output directory):
 
 ```bash
 ./venv/bin/python -m development.run_regime_characterization --reference-hidden-size 256 --steps 512 --burn-in 128 --out data/diagnostics/regime_phase0_development_512
 ./venv/bin/python -m pytest tests/test_regime_characterization.py -q
+./venv/bin/python -m development.run_regime_campaign --out data/diagnostics/regime_phase0_frozen_campaign
 ```
+
+Use `--validation-only` for development without automatic confirmation. Never reuse an output directory.
 
 References: [Lyapunov algorithms](https://www.scholarpedia.org/article/Lyapunov_exponent),
 [empirical Gramians](https://arxiv.org/abs/1611.00675).
