@@ -137,6 +137,8 @@ Demian local visibility pilot (fresh output directory):
 ```
 
 This is a paired local-sensitivity measurement, not evidence of adaptation or memory.
+Latest [pilot result](docs/DEMIAN_CHANNEL_VISIBILITY_RESULTS.md): direct visibility for
+`fast`, `message`, `carrier`, `gate`; one-transition visibility for `slow`, `control`.
 
 Quick links: [Research Lineage](docs/RESEARCH_LINEAGE.md) |
 [Claims](docs/CLAIMS.md) | [Reproducibility](docs/REPRODUCIBILITY.md) |

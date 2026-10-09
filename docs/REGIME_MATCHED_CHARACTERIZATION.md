@@ -37,7 +37,8 @@ Demian's exposed vector is lower-dimensional than its complete state.
 0b. Scale only vanilla RNN `weight_hh` by a declared multiplier. Measure resulting rates;
     multiplier is not spectral radius. Calibrate on development seeds; confirm on fresh seeds.
     Gain matching addresses one confound and does not establish architectural equivalence.
-1. Measure immediate and delayed visibility under varied fixed input streams.
+1. Measure immediate and delayed visibility under varied fixed input streams. Initial
+   Demian-only pilot: [result](DEMIAN_CHANNEL_VISIBILITY_RESULTS.md); descriptive only.
    Finite-horizon readout invisibility is not proof of a permanent symmetry or a null space for all inputs.
 2. Channel/route interventions with matched subspace and alignment controls.
    Input/output freezing distinguishes interventions, but does not alone identify storage versus transit.
