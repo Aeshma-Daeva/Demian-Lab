@@ -24,11 +24,12 @@ def main() -> None:
     audit = json.loads(audit_bytes)
     campaign = Path(audit["campaign"])
     fresh = audit_campaign(campaign)
-    if not audit["approved"] or not fresh["approved"] or fresh["evidence_hashes"] != audit["evidence_hashes"]:
+    if not fresh["approved"] or audit != fresh:
         parser.error("completed Phase 0 audit is invalid or stale")
     raw = args.protocol.read_bytes()
     protocol = json.loads(raw)
     base = json.loads((campaign / "protocol.json").read_bytes())
+    decision = json.loads((ROOT / "docs/PHASE0_DECISION.json").read_bytes())
     if (
         protocol["seeds"] != base["development_seeds"]
         or protocol["directions"] != base["direction_seeds"]
@@ -37,11 +38,14 @@ def main() -> None:
         or protocol["state_elements"] != base["state_budget_elements"]
         or protocol["burn_in"] != base["burn_in"]
         or protocol["reference_hidden_size"] != base["reference_hidden_size"]
+        or protocol["matching_tolerance"] != decision["matching_margin_per_tick"]
+        or protocol["direction_tolerance"] != base["direction_spread_tolerance_per_tick"]
+        or protocol["horizon_tolerance"] != base["horizon_difference_tolerance_per_tick"]
     ):
         parser.error("calibration changes the original development/budget protocol")
     hashes = source_hashes()
     # Historical archives remain auditable after adding a new runner; active dynamics must not change.
-    for name, digest in audit["implementation_hashes"].items():
+    for name, digest in fresh["implementation_hashes"].items():
         if name.startswith("development/") and name not in {
             "development/regime_validation.py",
             "development/run_regime_characterization.py",

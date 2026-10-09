@@ -1,6 +1,9 @@
 """Recurrent-only scaling and conservative development selection."""
 
 import math
+import copy
+import json
+import sys
 
 import pytest
 import torch
@@ -89,4 +92,79 @@ def test_gain_runner_requires_a_completed_phase0_audit(tmp_path):
         text=True,
     )
     assert result.returncode != 0
+    assert not out.exists()
+
+
+@pytest.fixture
+def gain_cli(tmp_path, monkeypatch):
+    from development import run_regime_gain_calibration as runner
+
+    protocol = json.loads((runner.ROOT / "docs/REGIME_GAIN_PROTOCOL.json").read_text())
+    campaign = tmp_path / "campaign"
+    campaign.mkdir()
+    base = {
+        "development_seeds": protocol["seeds"],
+        "direction_seeds": protocol["directions"],
+        "horizons": protocol["horizons"],
+        "rnn_weight_hh_multiplier_grid": protocol["grid"],
+        "state_budget_elements": protocol["state_elements"],
+        "burn_in": protocol["burn_in"],
+        "reference_hidden_size": protocol["reference_hidden_size"],
+        "direction_spread_tolerance_per_tick": 0.01,
+        "horizon_difference_tolerance_per_tick": 0.01,
+    }
+    (campaign / "protocol.json").write_text(json.dumps(base))
+    fresh = {
+        "approved": True,
+        "audit": [],
+        "authorized_stage": "phase0b_development_calibration",
+        "campaign": str(campaign),
+        "confirmed_scientific_claims": [],
+        "evidence_hashes": {"records.jsonl": "frozen-records"},
+        "implementation_hashes": {"development/closed_loop_comparators.py": "frozen-source"},
+        "original_decision_sha256": "frozen-decision",
+        "protocol_sha256": "frozen-protocol",
+        "reasons": [],
+        "records_checked": 2400,
+        "run_dirs": [],
+        "schema_version": 1,
+        "test_verification": {"returncode": 0},
+    }
+    # Isolate the CLI boundary from the expensive historical 2400-cell audit.
+    monkeypatch.setattr(runner, "audit_campaign", lambda path: copy.deepcopy(fresh))
+    audit_path, protocol_path, out = (tmp_path / name for name in ("audit.json", "protocol.json", "out"))
+    monkeypatch.setattr(
+        sys, "argv", ["calibration", "--audit", str(audit_path), "--protocol", str(protocol_path), "--out", str(out)]
+    )
+    return runner, copy.deepcopy(fresh), protocol, audit_path, protocol_path, out
+
+
+@pytest.mark.parametrize("fault", ["empty", "altered", "missing"])
+def test_gain_cli_rejects_unbound_source_hashes(gain_cli, capsys, fault):
+    runner, audit, protocol, audit_path, protocol_path, out = gain_cli
+    if fault == "missing":
+        del audit["implementation_hashes"]
+    else:
+        audit["implementation_hashes"] = (
+            {} if fault == "empty" else {"development/closed_loop_comparators.py": "altered"}
+        )
+    audit_path.write_text(json.dumps(audit))
+    protocol_path.write_text(json.dumps(protocol))
+    with pytest.raises(SystemExit) as error:
+        runner.main()
+    assert error.value.code == 2
+    assert "audit is invalid or stale" in capsys.readouterr().err
+    assert not out.exists()
+
+
+@pytest.mark.parametrize("field", ["matching_tolerance", "direction_tolerance", "horizon_tolerance"])
+def test_gain_cli_rejects_relaxed_selection_tolerances(gain_cli, capsys, field):
+    runner, audit, protocol, audit_path, protocol_path, out = gain_cli
+    protocol[field] = 1.0
+    audit_path.write_text(json.dumps(audit))
+    protocol_path.write_text(json.dumps(protocol))
+    with pytest.raises(SystemExit) as error:
+        runner.main()
+    assert error.value.code == 2
+    assert "calibration changes" in capsys.readouterr().err
     assert not out.exists()

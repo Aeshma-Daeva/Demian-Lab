@@ -86,6 +86,13 @@ select against Demian development means at both horizons, with precision and sta
 The 0.01/tick margin admits a candidate, not distributional equivalence or H0.
 No passing candidate means no match; do not force the nearest grid point into the control.
 Use fresh seeds 294–393 for subsequent confirmation before any matched pulse comparison.
+The CLI binds the saved audit to a complete recomputation, checks active dynamics against
+recomputed source hashes, and rejects altered matching/direction/horizon tolerances.
+
+Prelaunch verification: Astra review resolved; 61 focused tests passed.
+Full suite: 428 passed, four pre-existing missing archived-v10 artifact failures:
+`test_current_artifact_loaders`, `test_manifest_validation_runs`,
+`test_v10_summary_contract_digest`, `test_rebuild_v10_summary_core_fields`.
 
 ```bash
 ./venv/bin/python -m development.run_regime_gain_calibration --audit data/diagnostics/regime_phase0_postrun_audit_20261009.json --out data/diagnostics/regime_gain_development
