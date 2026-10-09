@@ -6,6 +6,7 @@ import torch
 from development.closed_loop_comparators import ComparatorRunner
 from development.demian_v1_gate_state import V1_CHANNELS
 from development.demian_channel_visibility import channel_pulse, first_visibility_tick, run_channel_visibility_cell
+from development.run_demian_channel_visibility import run_visibility_protocol, write_visibility_artifacts
 
 
 def test_channel_pulse_changes_only_selected_channel_at_declared_relative_norm():
@@ -48,3 +49,39 @@ def test_visibility_cell_retains_opposite_paired_arms_under_identical_inputs():
     assert result["trajectory"][4]["plus_surface_separation"] > 0
     assert result["trajectory"][4]["minus_surface_separation"] > 0
     assert result["trajectory"][4]["paired_surface_separation"] > 0
+
+
+def test_visibility_protocol_covers_each_declared_seed_channel_and_direction(tmp_path):
+    protocol = {
+        "schema_version": 1,
+        "protocol_id": "test",
+        "seeds": [94, 95],
+        "channels": list(V1_CHANNELS),
+        "direction_seeds": [1701, 1702],
+        "hidden_size": 8,
+        "steps": 16,
+        "intervention_tick": 4,
+        "amplitude": 0.05,
+        "visibility_threshold": 1e-12,
+    }
+
+    payload = run_visibility_protocol(protocol)
+    write_visibility_artifacts(tmp_path / "run", protocol, payload)
+
+    assert len(payload["cells"]) == 2 * len(V1_CHANNELS) * 2
+    assert {(cell["seed"], cell["channel"], cell["direction_seed"]) for cell in payload["cells"]} == {
+        (seed, channel, direction)
+        for seed in protocol["seeds"]
+        for channel in V1_CHANNELS
+        for direction in protocol["direction_seeds"]
+    }
+
+
+def test_visibility_artifact_writer_rejects_existing_directory(tmp_path):
+    protocol = {"protocol_id": "test"}
+    payload = {"cells": [], "channel_summary": {}}
+    out = tmp_path / "run"
+
+    write_visibility_artifacts(out, protocol, payload)
+    with pytest.raises(FileExistsError):
+        write_visibility_artifacts(out, protocol, payload)

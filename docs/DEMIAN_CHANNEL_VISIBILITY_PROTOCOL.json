@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "protocol_id": "demian-channel-visibility-v1",
+  "system": "demian_v1_gate_state",
+  "claim_boundary": "paired local sensitivity and surface visibility only; not adaptation, learning, memory, AFP-v2, or chaos",
+  "seeds": [294, 295, 296],
+  "channels": ["fast", "slow", "control", "message", "carrier", "gate"],
+  "direction_seeds": [1701, 1702, 1703],
+  "hidden_size": 256,
+  "steps": 128,
+  "intervention_tick": 32,
+  "amplitude": 0.01,
+  "visibility_threshold": 0.000001,
+  "input_stream": "fixed_cue_delay_query_with_noop_acknowledgements"
+}
