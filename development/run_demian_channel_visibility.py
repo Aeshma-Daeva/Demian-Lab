@@ -74,10 +74,12 @@ def _compact_cell(result: dict[str, object]) -> dict[str, object]:
         "direction_seed": result["config"]["direction_seed"],  # type: ignore[index]
         "initial_channel_pulse_norm": result["initial_channel_pulse_norm"],
         "visibility_tick": result["visibility_tick"],
+        "visibility_transition": result["visibility_transition"],
         "visibility_delay": result["visibility_delay"],
         "peak_paired_surface_separation": max(point["paired_surface_separation"] for point in trajectory),  # type: ignore[index]
         "final_paired_surface_separation": trajectory[-1]["paired_surface_separation"],  # type: ignore[index]
         "peak_pair_asymmetry": max(point["pair_asymmetry"] for point in trajectory),  # type: ignore[index]
+        "trajectory": trajectory,
     }
 
 

@@ -42,6 +42,38 @@ def first_visibility_tick(surface_separations: Sequence[float], *, threshold: fl
     return next((index for index, separation in enumerate(surface_separations) if separation >= threshold), None)
 
 
+def _state_vector(adapter: ClosedLoopModelAdapter) -> torch.Tensor:
+    return torch.cat([component.detach().reshape(-1) for component in adapter.state])
+
+
+def _surface_vector(adapter: ClosedLoopModelAdapter) -> torch.Tensor:
+    return adapter.model.state_vector(adapter.state).detach().reshape(-1)
+
+
+def _measurement(
+    *,
+    tick: int,
+    transitions_after_pulse: int | None,
+    baseline: ClosedLoopModelAdapter,
+    plus: ClosedLoopModelAdapter,
+    minus: ClosedLoopModelAdapter,
+) -> dict[str, object]:
+    base_surface, plus_surface, minus_surface = (_surface_vector(adapter) for adapter in (baseline, plus, minus))
+    base_state, plus_state, minus_state = (_state_vector(adapter) for adapter in (baseline, plus, minus))
+    return {
+        "tick": tick,
+        "transitions_after_pulse": transitions_after_pulse,
+        "input_replay": True,
+        "plus_surface_separation": float((plus_surface - base_surface).norm()),
+        "minus_surface_separation": float((minus_surface - base_surface).norm()),
+        "paired_surface_separation": float((plus_surface - minus_surface).norm() / 2),
+        "pair_asymmetry": float((plus_surface + minus_surface - 2 * base_surface).norm()),
+        "plus_state_separation": float((plus_state - base_state).norm()),
+        "minus_state_separation": float((minus_state - base_state).norm()),
+        "paired_state_separation": float((plus_state - minus_state).norm() / 2),
+    }
+
+
 def run_channel_visibility_cell(
     *,
     seed: int,
@@ -62,7 +94,6 @@ def run_channel_visibility_cell(
     plus = ClosedLoopModelAdapter(architecture="demian", seed=seed, hidden_size=hidden_size)
     minus = ClosedLoopModelAdapter(architecture="demian", seed=seed, hidden_size=hidden_size)
     trajectory: list[dict[str, object]] = []
-    paired_separations: list[float] = []
     initial_channel_pulse_norm = None
     for tick, frame in enumerate(frames):
         if tick == intervention_tick:
@@ -74,27 +105,36 @@ def run_channel_visibility_cell(
             )
             index = V1_CHANNELS.index(channel)
             initial_channel_pulse_norm = float((plus.state[index] - baseline.state[index]).norm())
-        base_step = baseline.advance(frame.observation, frame.acknowledgement)
-        plus_step = plus.advance(frame.observation, frame.acknowledgement)
-        minus_step = minus.advance(frame.observation, frame.acknowledgement)
-        base_surface = torch.tensor(base_step.surface)
-        plus_surface = torch.tensor(plus_step.surface)
-        minus_surface = torch.tensor(minus_step.surface)
-        plus_separation = float((plus_surface - base_surface).norm())
-        minus_separation = float((minus_surface - base_surface).norm())
-        paired_separation = float((plus_surface - minus_surface).norm() / 2)
-        paired_separations.append(paired_separation)
+            trajectory.append(
+                _measurement(
+                    tick=tick,
+                    transitions_after_pulse=0,
+                    baseline=baseline,
+                    plus=plus,
+                    minus=minus,
+                )
+            )
+        baseline.advance(frame.observation, frame.acknowledgement)
+        plus.advance(frame.observation, frame.acknowledgement)
+        minus.advance(frame.observation, frame.acknowledgement)
         trajectory.append(
-            {
-                "tick": tick,
-                "input_replay": True,
-                "plus_surface_separation": plus_separation,
-                "minus_surface_separation": minus_separation,
-                "paired_surface_separation": paired_separation,
-                "pair_asymmetry": float((plus_surface + minus_surface - 2 * base_surface).norm()),
-            }
+            _measurement(
+                tick=tick,
+                transitions_after_pulse=tick - intervention_tick + 1 if tick >= intervention_tick else None,
+                baseline=baseline,
+                plus=plus,
+                minus=minus,
+            )
         )
-    visible_index = first_visibility_tick(paired_separations, threshold=visibility_threshold)
+    visible = next(
+        (
+            point
+            for point in trajectory
+            if point["transitions_after_pulse"] is not None
+            and point["paired_surface_separation"] >= visibility_threshold
+        ),
+        None,
+    )
     return {
         "schema_version": 1,
         "experiment": "demian-channel-visibility",
@@ -108,7 +148,8 @@ def run_channel_visibility_cell(
             "visibility_threshold": visibility_threshold,
         },
         "initial_channel_pulse_norm": initial_channel_pulse_norm,
-        "visibility_tick": visible_index,
-        "visibility_delay": None if visible_index is None else visible_index - intervention_tick,
+        "visibility_tick": None if visible is None else visible["tick"],
+        "visibility_transition": None if visible is None else visible["transitions_after_pulse"],
+        "visibility_delay": None if visible is None else visible["transitions_after_pulse"],
         "trajectory": trajectory,
     }
