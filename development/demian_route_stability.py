@@ -166,6 +166,7 @@ def run_route_stability_cell(
     route_multiplier: float = 0.0,
     include_random_route_interaction: bool = False,
     random_pulse_scope: str = "channel",
+    history_pulses: Sequence[dict[str, object]] = (),
 ) -> dict[str, object]:
     """Replay one stream across a targeted lesion and two matched pulse controls."""
     if not frames:
@@ -186,6 +187,19 @@ def run_route_stability_cell(
         raise ValueError("route multiplier must be finite and nonnegative")
     if random_pulse_scope not in {"channel", "full_state"}:
         raise ValueError("random pulse scope must be 'channel' or 'full_state'")
+    normalized_history: list[dict[str, object]] = []
+    for pulse in history_pulses:
+        tick = pulse.get("tick")
+        history_channel = pulse.get("channel")
+        history_amplitude = pulse.get("amplitude")
+        history_direction_seed = pulse.get("direction_seed")
+        if not isinstance(tick, int) or not 0 <= tick < intervention_tick:
+            raise ValueError("history pulse tick must precede intervention")
+        if history_channel not in V1_CHANNELS or not isinstance(history_direction_seed, int):
+            raise ValueError("history pulse must specify an implemented channel and direction seed")
+        if not isinstance(history_amplitude, (int, float)) or not math.isfinite(history_amplitude) or history_amplitude <= 0:
+            raise ValueError("history pulse amplitude must be finite and positive")
+        normalized_history.append({"tick": tick, "channel": history_channel, "amplitude": float(history_amplitude), "direction_seed": history_direction_seed})
 
     baseline = ClosedLoopModelAdapter(architecture="demian", seed=seed, hidden_size=hidden_size)
     arms = {
@@ -215,6 +229,16 @@ def run_route_stability_cell(
     pre_pulse_features: dict[str, float | None] | None = None
 
     for tick, frame in enumerate(frames):
+        for history_pulse in normalized_history:
+            if tick == history_pulse["tick"]:
+                for adapter in (baseline, *arms.values()):
+                    adapter.state = channel_pulse(
+                        adapter.state,
+                        channel=str(history_pulse["channel"]),
+                        amplitude=float(history_pulse["amplitude"]),
+                        direction_seed=int(history_pulse["direction_seed"]),
+                        sign=1,
+                    )
         if tick == intervention_tick:
             pre_pulse_features = _pre_pulse_features(baseline, prior_baseline_state)
             _set_route_multiplier(arms["lesion_only"], route_id=route_id, multiplier=route_multiplier)
@@ -354,6 +378,7 @@ def run_route_stability_cell(
         "seed": seed,
         "channel": channel,
         "route_id": route_id,
+        "history_pulses": normalized_history,
         "config": {
             "hidden_size": hidden_size,
             "intervention_tick": intervention_tick,

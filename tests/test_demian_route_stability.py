@@ -161,3 +161,21 @@ def test_route_stability_protocol_crosses_declared_histories_and_random_pulse_sc
     assert {cell["history"]["cue_symbol"] for cell in payload["cells"]} == {0, 1}
     assert {cell["config"]["random_pulse_scope"] for cell in payload["cells"]} == {"channel", "full_state"}
     assert {group["analysis_window_transitions"] for group in payload["summary"].values()} == {3}
+
+
+def test_route_stability_cell_applies_a_matched_prepulse_history_to_all_arms() -> None:
+    runner = ComparatorRunner(architecture="demian", seed=94, hidden_size=8, cue_symbol=1, delay_steps=15)
+    frames = [runner.step().input_frame for _ in range(16)]
+    common = dict(
+        seed=94, hidden_size=8, frames=frames, channel="carrier", route_id="carrier_to_slow",
+        intervention_tick=8, amplitude=0.01, direction_seed=1701, random_direction_seed=2701,
+        recovery_threshold=1e-6, recovery_dwell=2, route_multiplier=0.5,
+    )
+    baseline = run_route_stability_cell(**common)
+    with_history = run_route_stability_cell(
+        **common,
+        history_pulses=[{"tick": 6, "channel": "gate", "amplitude": 0.1, "direction_seed": 91}],
+    )
+
+    assert with_history["history_pulses"]
+    assert with_history["pre_pulse_features"]["gate_norm"] != pytest.approx(baseline["pre_pulse_features"]["gate_norm"])

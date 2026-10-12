@@ -91,6 +91,9 @@ def _validate(protocol: dict) -> None:
     histories = protocol.get("history_cue_symbols")
     if histories is not None and (not histories or any(not isinstance(value, int) for value in histories)):
         raise ValueError("history cue symbols must be a nonempty integer list")
+    history_conditions = protocol.get("history_conditions")
+    if history_conditions is not None and (not history_conditions or any(not isinstance(item, dict) for item in history_conditions)):
+        raise ValueError("history conditions must be a nonempty object list")
     window = protocol.get("response_window_transitions")
     if window is not None and (not isinstance(window, int) or window < 1):
         raise ValueError("response window transitions must be a positive integer")
@@ -102,7 +105,13 @@ def run_route_stability_protocol(protocol: dict) -> dict[str, object]:
     cells: list[dict[str, object]] = []
     for split, seeds in (("development", protocol["development_seeds"]), ("heldout", protocol["heldout_seeds"])):
         for seed in seeds:
-            for history_index, cue_symbol in enumerate(protocol.get("history_cue_symbols", [seed % 3])):
+            history_conditions = protocol.get(
+                "history_conditions",
+                [{"id": f"cue-{index}", "cue_symbol": cue_symbol, "pulses": []} for index, cue_symbol in enumerate(protocol.get("history_cue_symbols", [seed % 3]))],
+            )
+            for history_index, history in enumerate(history_conditions):
+                cue_symbol = history.get("cue_symbol", seed % 3)
+                pulses = history.get("pulses", [])
                 frames = _frames(seed=seed, steps=protocol["steps"], cue_symbol=cue_symbol)
                 for channel in protocol["channels"]:
                     for intervention_tick in protocol["intervention_ticks"]:
@@ -125,9 +134,10 @@ def run_route_stability_protocol(protocol: dict) -> dict[str, object]:
                                             route_multiplier=route_multiplier,
                                             include_random_route_interaction=protocol.get("include_random_route_interaction", False),
                                             random_pulse_scope=random_pulse_scope,
+                                            history_pulses=pulses,
                                         )
                                         cells.append(
-                                            {"split": split, "history": {"id": history_index, "cue_symbol": cue_symbol}, **cell}
+                                            {"split": split, "history": {"id": history.get("id", history_index), "cue_symbol": cue_symbol, "pulses": pulses}, **cell}
                                         )
     return {"cells": cells, "summary": _summarize(cells, response_window_transitions=protocol.get("response_window_transitions"))}
 
