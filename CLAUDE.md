@@ -1,4 +1,20 @@
-# Demian OpenClaude Instructions
+# Legacy OpenClaude Instructions
+
+> **Archived compatibility note — not the current Demian research entrypoint.**
+>
+> This file describes a superseded v7.4–v9 substrate workflow and contains
+> obsolete paths. Do not use it to orient, run, or interpret current Demian
+> research.
+>
+> Current sources of truth are:
+> - `data/RESEARCH_REGISTRY.json` — hypotheses, controls, results, artifacts
+> - `docs/EXPERIMENT_RULES.md` — evidence and claim discipline
+> - `docs/WORKING_STATE.md` and `docs/RESEARCH_MAP.md` — current orientation
+> - `data/INDEX.md` and `data/MANIFEST.json` — artifact inventory
+>
+> Kept only for historical OpenClaude workflow reference.
+
+# Superseded v7.4–v9 Workflow
 
 ## Start Here
 
