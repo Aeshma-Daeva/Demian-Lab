@@ -287,6 +287,10 @@ def run_route_stability_cell(
                     )
                 )
 
+        prior_baseline_state = tuple(value.detach().clone() for value in baseline.state)
+        prior_arm_states = {
+            name: tuple(value.detach().clone() for value in adapter.state) for name, adapter in arms.items()
+        }
         baseline.advance(frame.observation, frame.acknowledgement)
         for name, adapter in arms.items():
             adapter.advance(frame.observation, frame.acknowledgement)
@@ -304,7 +308,7 @@ def run_route_stability_cell(
                         initial_pulse_norm=None if name == "lesion_only" else normalization_pulse_norm,
                     )
                 )
-            prior_states[name] = tuple(value.detach().clone() for value in adapter.state)
+            prior_states[name] = prior_arm_states[name]
         if tick >= intervention_tick:
             baseline_trajectory = results["baseline"]["trajectory"]
             assert isinstance(baseline_trajectory, list)
@@ -339,7 +343,6 @@ def run_route_stability_cell(
                         pulse_sham=arms["random_direction"],
                     )
                 )
-        prior_baseline_state = tuple(value.detach().clone() for value in baseline.state)
 
     for name in arms:
         trajectory = results[name]["trajectory"]

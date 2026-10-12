@@ -126,6 +126,7 @@ def test_route_stability_cell_records_pre_pulse_features_and_matches_full_state_
 
     features = result["pre_pulse_features"]
     assert {"carrier_norm", "slow_norm", "gate_pressure_mean", "state_velocity", "carrier_slow_alignment"} <= set(features)
+    assert features["state_velocity"] > 0
     assert result["config"]["random_pulse_scope"] == "full_state"
     assert result["arms"]["random_direction"]["initial_pulse_norm"] == pytest.approx(
         result["arms"]["sham"]["initial_pulse_norm"]
