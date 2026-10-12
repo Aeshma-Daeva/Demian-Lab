@@ -1,0 +1,28 @@
+{
+  "protocol_id": "demian-route-history-audit-v1",
+  "purpose": "discovery-only test of matched reachable prepulse histories as within-seed route-response conditions",
+  "claim_boundary": "controlled state characterization only; not a predictor, mechanism, controllability, regulation, learning, adaptation, memory, task competence, AFP-v2, or chaos",
+  "development_seeds": [294, 295, 296, 297],
+  "heldout_seeds": [394, 395, 396, 397],
+  "hidden_size": 256,
+  "steps": 96,
+  "channels": ["carrier"],
+  "route_id": "carrier_to_slow",
+  "route_multipliers": [0.5],
+  "intervention_ticks": [48],
+  "amplitudes": [0.01],
+  "direction_seeds": [1701, 1702, 1703],
+  "random_direction_seed_offset": 1000,
+  "random_pulse_scopes": ["channel", "full_state"],
+  "history_conditions": [
+    {"id": "quiet", "cue_symbol": 0, "pulses": []},
+    {"id": "gate_pulse", "cue_symbol": 0, "pulses": [{"tick": 44, "channel": "gate", "amplitude": 0.25, "direction_seed": 91}]},
+    {"id": "carrier_pulse", "cue_symbol": 0, "pulses": [{"tick": 44, "channel": "carrier", "amplitude": 0.25, "direction_seed": 91}]}
+  ],
+  "response_window_transitions": 16,
+  "include_random_route_interaction": true,
+  "recovery_threshold": 0.000001,
+  "recovery_dwell": 4,
+  "primary_outcome": "time-aligned peak carrier pulse-route interaction minus matched random pulse-route interaction within transitions 1..16",
+  "analysis_status": "exploratory discovery; hold out whole fresh seeds for any frozen predictor confirmation"
+}
