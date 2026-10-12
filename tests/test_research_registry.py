@@ -38,6 +38,7 @@ def test_checked_in_registry_links_hypotheses_to_evidence() -> None:
         "H-ROUTE-002",
         "H-ROUTE-003",
         "H-ROUTE-004",
+        "H-ROUTE-005",
         "H-LOOP-001",
     }
     afp = next(item for item in registry.hypotheses if item.id == "H-AFP-002")
@@ -49,12 +50,18 @@ def test_checked_in_registry_links_hypotheses_to_evidence() -> None:
     route_interaction = next(item for item in registry.hypotheses if item.id == "H-ROUTE-004")
     assert route_interaction.evidence_status == "preliminary_support"
     assert route_interaction.status_basis.supporting_result_ids == ["R-ROUTE-INTERACTION-001"]
+    route_selectivity = next(item for item in registry.hypotheses if item.id == "H-ROUTE-005")
+    assert route_selectivity.evidence_status == "conflicting"
+    assert route_selectivity.status_basis.conflicting_result_ids == ["R-ROUTE-SELECTIVITY-001"]
     stability = next(item for item in registry.experiments if item.id == "E-ROUTE-002")
     interaction = next(item for item in registry.experiments if item.id == "E-ROUTE-003")
     assert stability.replication_scope.trajectory_count == 576
     assert stability.replication_scope.checkpoint_row_count == 37440
     assert interaction.replication_scope.trajectory_count == 480
     assert interaction.replication_scope.checkpoint_row_count == 31200
+    selectivity = next(item for item in registry.experiments if item.id == "E-ROUTE-004")
+    assert selectivity.replication_scope.trajectory_count == 576
+    assert selectivity.replication_scope.checkpoint_row_count == 55872
 
 
 def test_registry_rejects_null_as_hypothesis_status() -> None:
@@ -110,7 +117,7 @@ def test_snapshot_export_is_valid_and_deterministic(tmp_path: Path) -> None:
     snapshot = json.loads(first.read_text())
     assert snapshot["metadata"]["authority"] == "Demian"
     assert snapshot["metadata"]["status_policy"] == "manual_review_only"
-    assert len(snapshot["hypotheses"]) == 8
+    assert len(snapshot["hypotheses"]) == 9
 
 
 def test_invalid_registry_is_not_exported(tmp_path: Path) -> None:

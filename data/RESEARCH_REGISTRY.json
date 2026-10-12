@@ -6,7 +6,7 @@
     "generated_on": "2026-10-12",
     "authority": "Demian",
     "source_repository": "https://github.com/Aeshma-Daeva/Demian-Lab",
-    "source_commit": "e2ab885ae2e57f1688233aa86f0f664fe41d9f51",
+    "source_commit": "313ce6ff75c68ae48e6a01a69f93ae8199821db3",
     "status_policy": "manual_review_only"
   },
   "hypotheses": [
@@ -244,6 +244,28 @@
       "alternative_explanations": ["A generic directional perturbation may show the same gain dependence; a matched random-direction gain sweep is the discriminator.", "The result does not establish route-mediated retention beyond the fixed-forcing horizon."],
       "falsifiers": ["Held-out reduced multipliers fail to produce the preregistered nonzero difference-of-differences norm."],
       "next_test": "Run the same multiplier sweep with matched random-direction pulses, then compare interaction profiles."
+    },
+    {
+      "id": "H-ROUTE-005",
+      "statement": "carrier_to_slow mediates carrier perturbations differently from matched random-direction perturbations under fixed forcing.",
+      "operational_prediction": "The signed carrier-minus-random pulse-route interaction is directionally consistent across development and held-out parameter seeds at reduced route multipliers.",
+      "evaluation_conditions": ["matched_pulse_magnitude", "graded_route_intervention", "route_only_subtraction", "held_out_seed"],
+      "evidence_status": "conflicting",
+      "lifecycle": "active",
+      "status_basis": {
+        "method": "manual_review",
+        "rule": "A sign reversal between development and held-out splits prevents a direction-selective conclusion.",
+        "considered_result_ids": ["R-ROUTE-SELECTIVITY-001"],
+        "supporting_result_ids": [],
+        "conflicting_result_ids": ["R-ROUTE-SELECTIVITY-001"],
+        "reviewer": "Codex evidence review (user-authorized)",
+        "reviewed_on": "2026-10-12"
+      },
+      "status_history": [{"evidence_status":"conflicting","lifecycle":"active","changed_on":"2026-10-12","reviewer":"Codex evidence review (user-authorized)","basis":"Carrier-minus-random interaction signs reversed between development and held-out seed splits at every reduced multiplier."}],
+      "result_ids": ["R-ROUTE-SELECTIVITY-001"],
+      "alternative_explanations": ["The route is generally direction-sensitive rather than carrier-selective.", "The contrast is parameter-seed specific under fixed forcing."],
+      "falsifiers": ["A fresh preregistered seed split shows no stable carrier-minus-random interaction direction."],
+      "next_test": "Characterize seed-level route and state features, then preregister a confirmation or revised selectivity criterion."
     }
   ],
   "experiments": [
@@ -355,6 +377,23 @@
         "dependent_observations": ["multipliers, intervention times, branches, and checkpoints repeat within parameter seeds"]
       },
       "artifact_ids": ["A-ROUTE-INTERACTION-PROTOCOL-001", "A-ROUTE-INTERACTION-SUMMARY-001", "A-ROUTE-INTERACTION-RESULTS-001"]
+    },
+    {
+      "id": "E-ROUTE-004",
+      "name": "Fixed-forcing matched carrier/random-direction route selectivity",
+      "system": "demian_v1_gate_state",
+      "protocol_version": "demian-fixed-forcing-route-selectivity-v1",
+      "replication_scope": {
+        "parameter_seed_count": 8,
+        "initial_state_count": 8,
+        "input_seed_count": 0,
+        "history_condition_count": 1,
+        "trajectory_count": 576,
+        "checkpoint_row_count": 55872,
+        "independent_unit": "parameter_seed",
+        "dependent_observations": ["multipliers, intervention times, branches, and checkpoints repeat within parameter seeds"]
+      },
+      "artifact_ids": ["A-ROUTE-SELECTIVITY-PROTOCOL-001", "A-ROUTE-SELECTIVITY-SUMMARY-001", "A-ROUTE-SELECTIVITY-RESULTS-001"]
     }
   ],
   "controls": [
@@ -448,6 +487,13 @@
       "semantics": "Compares a random full-state perturbation at the tested pulse magnitude.",
       "limitations": ["The current run does not sweep route gain for this control."],
       "artifact_ids": ["A-ROUTE-STABILITY-PROTOCOL-001", "A-ROUTE-INTERACTION-PROTOCOL-001"]
+    },
+    {
+      "id": "C-MATCHED-RANDOM-GAIN-001",
+      "name": "Matched random-direction gain sweep",
+      "semantics": "Applies matched-magnitude random-direction pulses across the carrier_to_slow multiplier sweep with route-only subtraction.",
+      "limitations": ["One random direction per parameter seed and fixed-forcing regime."],
+      "artifact_ids": ["A-ROUTE-SELECTIVITY-PROTOCOL-001", "A-ROUTE-SELECTIVITY-SUMMARY-001"]
     }
   ],
   "results": [
@@ -633,6 +679,30 @@
       "exclusions": ["No direction-specific mechanism claim.", "No memory, AFP-v2, learning, adaptation, or chaos claim."],
       "control_ids": ["C-ROUTE-ONLY-001", "C-ROUTE-SHAM-001"],
       "artifact_ids": ["A-ROUTE-INTERACTION-PROTOCOL-001", "A-ROUTE-INTERACTION-SUMMARY-001", "A-ROUTE-INTERACTION-RESULTS-001"]
+    },
+    {
+      "id": "R-ROUTE-SELECTIVITY-001",
+      "hypothesis_ids": ["H-ROUTE-005"],
+      "experiment_id": "E-ROUTE-004",
+      "evaluable": true,
+      "outcome": "mixed",
+      "observation": "Carrier-minus-random pulse-route interactions were negative at every reduced multiplier in development seeds and positive at every reduced multiplier in held-out seeds; intact interactions were zero by construction.",
+      "interpretation": "The fixed-forcing response is direction-sensitive and seed-dependent, but the split reversal does not support reproducible carrier-specific propagation.",
+      "analysis_scope": {
+        "independent_unit": "parameter_seed",
+        "independent_unit_count": 8,
+        "comparison_count": 96,
+        "comparison_unit": "declared multiplier-by-seed cells",
+        "dependent_observations": ["multipliers and intervention ticks repeat within parameter seeds"],
+        "scope_note": "Four development and four held-out parameter seeds underlie 96 intervention cells, 576 stored branch trajectories, and 55,872 dependent checkpoint rows across six multipliers."
+      },
+      "evaluation_conditions_met": ["matched_pulse_magnitude", "graded_route_intervention", "route_only_subtraction", "held_out_seed"],
+      "missing_evaluation_conditions": [],
+      "effect_summary": {"development_reduced_multiplier_selectivity_gap_range": [-46.452257096767426, -21.214368872344494], "heldout_reduced_multiplier_selectivity_gap_range": [6.031961157917976, 18.206292003393173], "intact_multiplier_selectivity_gap": 0.0},
+      "uncertainty": ["Four development and four held-out parameter seeds.", "One matched random direction per seed.", "Fixed forcing only."],
+      "exclusions": ["No direction-specific mechanism claim.", "No memory, AFP-v2, learning, adaptation, task competence, or chaos claim."],
+      "control_ids": ["C-ROUTE-ONLY-001", "C-ROUTE-SHAM-001", "C-MATCHED-RANDOM-GAIN-001"],
+      "artifact_ids": ["A-ROUTE-SELECTIVITY-PROTOCOL-001", "A-ROUTE-SELECTIVITY-SUMMARY-001", "A-ROUTE-SELECTIVITY-RESULTS-001"]
     }
   ],
   "artifacts": [
@@ -747,6 +817,30 @@
       "path": "docs/DEMIAN_ROUTE_INTERACTION_RESULTS.md",
       "media_type": "text/markdown",
       "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/e2ab885ae2e57f1688233aa86f0f664fe41d9f51/docs/DEMIAN_ROUTE_INTERACTION_RESULTS.md"
+    },
+    {
+      "id": "A-ROUTE-SELECTIVITY-PROTOCOL-001",
+      "repository": "Aeshma-Daeva/Demian-Lab",
+      "commit": "45d6f2f40052c9409f62fda7a0dd4de38d234a7c",
+      "path": "docs/DEMIAN_ROUTE_SELECTIVITY_PROTOCOL.json",
+      "media_type": "application/json",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/45d6f2f40052c9409f62fda7a0dd4de38d234a7c/docs/DEMIAN_ROUTE_SELECTIVITY_PROTOCOL.json"
+    },
+    {
+      "id": "A-ROUTE-SELECTIVITY-SUMMARY-001",
+      "repository": "Aeshma-Daeva/Demian-Lab",
+      "commit": "313ce6ff75c68ae48e6a01a69f93ae8199821db3",
+      "path": "data/diagnostics/demian_route_selectivity_v1_20261012/summary.json",
+      "media_type": "application/json",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/313ce6ff75c68ae48e6a01a69f93ae8199821db3/data/diagnostics/demian_route_selectivity_v1_20261012/summary.json"
+    },
+    {
+      "id": "A-ROUTE-SELECTIVITY-RESULTS-001",
+      "repository": "Aeshma-Daeva/Demian-Lab",
+      "commit": "313ce6ff75c68ae48e6a01a69f93ae8199821db3",
+      "path": "docs/DEMIAN_ROUTE_SELECTIVITY_RESULTS.md",
+      "media_type": "text/markdown",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/313ce6ff75c68ae48e6a01a69f93ae8199821db3/docs/DEMIAN_ROUTE_SELECTIVITY_RESULTS.md"
     }
   ]
 }
