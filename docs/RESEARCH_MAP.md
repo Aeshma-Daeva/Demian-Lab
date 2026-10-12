@@ -33,6 +33,22 @@ heuristic classes and must not be cited as AFP-v2 confirmations.
 Each result must be marked as an **observation**, **hypothesis**, **control**,
 **interpretation**, or **untested speculation**.
 
+## Current Route Dynamics Program
+
+The active sequential program is in
+[DEMIAN_ROUTE_DYNAMICS_PROGRAM.md](DEMIAN_ROUTE_DYNAMICS_PROGRAM.md).
+
+1. E1 route selectivity: matched random-direction gain sweep.
+2. E2 temporal causal mediation: early `carrier_to_slow` transfer versus
+   downstream amplification.
+3. E3 endogenous gate regulation: dynamic versus static/yoked gate controls.
+4. E4 competitive routing: first architecture extension with a finite budget.
+5. E5 functional adaptation: task/world tests only after a separately declared
+   adaptation mechanism.
+
+E1–E3 characterize the existing architecture. E4 changes architecture. E5
+does not permit a learning claim without a separately tested learning rule.
+
 ## How To Use This Document
 
 Read order:

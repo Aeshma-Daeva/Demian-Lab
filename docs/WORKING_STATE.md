@@ -14,9 +14,10 @@ Last updated: 2026-10-12
   norm across development and held-out seeds.
 - Boundary: this is not direction specificity, memory, learning, adaptation,
   task competence, chaos, or AFP-v2 evidence.
-- Next discriminator: matched random-direction route-multiplier sweep.
-- Next program: a separately declared adaptive-environment protocol after the
-  fixed-forcing route discriminator.
+- Next discriminator: E1 matched random-direction route-multiplier sweep.
+- Next stages: E2 temporal mediation, E3 endogenous gate regulation, then E4
+  finite-budget routing and E5 functional adaptation. See
+  `docs/DEMIAN_ROUTE_DYNAMICS_PROGRAM.md`.
 
 Primary records:
 
