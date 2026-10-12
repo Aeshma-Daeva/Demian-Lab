@@ -19,14 +19,14 @@ from development.demian_v1_gate_state import V1_CHANNELS
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def _frames(*, seed: int, steps: int) -> list[InputFrame]:
+def _frames(*, seed: int, steps: int, cue_symbol: int | None = None) -> list[InputFrame]:
     acknowledgement = ActionAcknowledgement("noop", None, None, None)
     return [
         InputFrame(
             observation=WorldObservation(
                 tick=tick,
                 phase="cue" if tick == 0 else "query" if tick == steps - 1 else "delay",
-                cue_symbol=seed % 3 if tick == 0 else None,
+                cue_symbol=(seed % 3 if cue_symbol is None else cue_symbol) if tick == 0 else None,
                 query=tick == steps - 1,
             ),
             acknowledgement=acknowledgement,
@@ -85,6 +85,15 @@ def _validate(protocol: dict) -> None:
         raise ValueError("recovery dwell must be positive")
     if not isinstance(protocol.get("include_random_route_interaction", False), bool):
         raise ValueError("include_random_route_interaction must be boolean")
+    scopes = protocol.get("random_pulse_scopes", ["channel"])
+    if not scopes or any(scope not in {"channel", "full_state"} for scope in scopes):
+        raise ValueError("random pulse scopes must be nonempty and implemented")
+    histories = protocol.get("history_cue_symbols")
+    if histories is not None and (not histories or any(not isinstance(value, int) for value in histories)):
+        raise ValueError("history cue symbols must be a nonempty integer list")
+    window = protocol.get("response_window_transitions")
+    if window is not None and (not isinstance(window, int) or window < 1):
+        raise ValueError("response window transitions must be a positive integer")
 
 
 def run_route_stability_protocol(protocol: dict) -> dict[str, object]:
@@ -93,39 +102,52 @@ def run_route_stability_protocol(protocol: dict) -> dict[str, object]:
     cells: list[dict[str, object]] = []
     for split, seeds in (("development", protocol["development_seeds"]), ("heldout", protocol["heldout_seeds"])):
         for seed in seeds:
-            frames = _frames(seed=seed, steps=protocol["steps"])
-            for channel in protocol["channels"]:
-                for intervention_tick in protocol["intervention_ticks"]:
-                    for amplitude in protocol["amplitudes"]:
-                        for route_multiplier in protocol.get("route_multipliers", [0.0]):
-                            for direction_seed in protocol["direction_seeds"]:
-                                cell = run_route_stability_cell(
-                                    seed=seed,
-                                    hidden_size=protocol["hidden_size"],
-                                    frames=frames,
-                                    channel=channel,
-                                    route_id=protocol["route_id"],
-                                    intervention_tick=intervention_tick,
-                                    amplitude=amplitude,
-                                    direction_seed=direction_seed,
-                                    random_direction_seed=direction_seed + protocol["random_direction_seed_offset"],
-                                    recovery_threshold=protocol["recovery_threshold"],
-                                    recovery_dwell=protocol["recovery_dwell"],
-                                    route_multiplier=route_multiplier,
-                                    include_random_route_interaction=protocol.get("include_random_route_interaction", False),
-                                )
-                                cells.append({"split": split, **cell})
-    return {"cells": cells, "summary": _summarize(cells)}
+            for history_index, cue_symbol in enumerate(protocol.get("history_cue_symbols", [seed % 3])):
+                frames = _frames(seed=seed, steps=protocol["steps"], cue_symbol=cue_symbol)
+                for channel in protocol["channels"]:
+                    for intervention_tick in protocol["intervention_ticks"]:
+                        for amplitude in protocol["amplitudes"]:
+                            for route_multiplier in protocol.get("route_multipliers", [0.0]):
+                                for direction_seed in protocol["direction_seeds"]:
+                                    for random_pulse_scope in protocol.get("random_pulse_scopes", ["channel"]):
+                                        cell = run_route_stability_cell(
+                                            seed=seed,
+                                            hidden_size=protocol["hidden_size"],
+                                            frames=frames,
+                                            channel=channel,
+                                            route_id=protocol["route_id"],
+                                            intervention_tick=intervention_tick,
+                                            amplitude=amplitude,
+                                            direction_seed=direction_seed,
+                                            random_direction_seed=direction_seed + protocol["random_direction_seed_offset"],
+                                            recovery_threshold=protocol["recovery_threshold"],
+                                            recovery_dwell=protocol["recovery_dwell"],
+                                            route_multiplier=route_multiplier,
+                                            include_random_route_interaction=protocol.get("include_random_route_interaction", False),
+                                            random_pulse_scope=random_pulse_scope,
+                                        )
+                                        cells.append(
+                                            {"split": split, "history": {"id": history_index, "cue_symbol": cue_symbol}, **cell}
+                                        )
+    return {"cells": cells, "summary": _summarize(cells, response_window_transitions=protocol.get("response_window_transitions"))}
 
 
-def _summarize(cells: list[dict[str, object]]) -> dict[str, object]:
-    groups: dict[tuple[str, str, float], list[dict[str, object]]] = defaultdict(list)
+def _summarize(cells: list[dict[str, object]], *, response_window_transitions: int | None = None) -> dict[str, object]:
+    groups: dict[tuple[str, str, float, int | None, str], list[dict[str, object]]] = defaultdict(list)
     for cell in cells:
         config = cell["config"]
         assert isinstance(config, dict)
-        groups[(str(cell["split"]), str(cell["channel"]), float(config["route_multiplier"]))].append(cell)
+        history = cell.get("history", {})
+        assert isinstance(history, dict)
+        groups[(
+            str(cell["split"]),
+            str(cell["channel"]),
+            float(config["route_multiplier"]),
+            history.get("cue_symbol"),
+            str(config.get("random_pulse_scope", "channel")),
+        )].append(cell)
     summary = {}
-    for (split, channel, route_multiplier), rows in groups.items():
+    for (split, channel, route_multiplier, cue_symbol, random_pulse_scope), rows in groups.items():
         arm_summary = {}
         for arm_name in ("lesion_only", "targeted_lesion", "sham", "random_direction"):
             peaks: list[float] = []
@@ -149,16 +171,24 @@ def _summarize(cells: list[dict[str, object]]) -> dict[str, object]:
                 "recovered_cells": recovered,
                 "censored_cells": len(rows) - recovered,
             }
-        interaction_peaks = [
-            max(float(point["state_interaction_norm"]) for point in row["interaction_trajectory"])
-            for row in rows
-        ]
+        def interaction_peak(row: dict[str, object], key: str) -> float:
+            trajectory = row[key]
+            assert isinstance(trajectory, list)
+            points = [
+                point for point in trajectory
+                if response_window_transitions is None
+                or 1 <= int(point["transitions_after_pulse"]) <= response_window_transitions
+            ]
+            return max(float(point["state_interaction_norm"]) for point in points)
+
+        interaction_peaks = [interaction_peak(row, "interaction_trajectory") for row in rows]
         group_summary = {
             "arms": arm_summary,
             "mean_peak_state_interaction_norm": mean(interaction_peaks),
+            "analysis_window_transitions": response_window_transitions,
         }
         random_interaction_peaks = [
-            max(float(point["state_interaction_norm"]) for point in row["random_interaction_trajectory"])
+            interaction_peak(row, "random_interaction_trajectory")
             for row in rows
             if "random_interaction_trajectory" in row
         ]
@@ -167,7 +197,9 @@ def _summarize(cells: list[dict[str, object]]) -> dict[str, object]:
             group_summary["mean_peak_selectivity_gap"] = (
                 group_summary["mean_peak_state_interaction_norm"] - group_summary["mean_peak_random_state_interaction_norm"]
             )
-        summary[f"{split}:{channel}:route_multiplier={route_multiplier:g}"] = group_summary
+        summary[
+            f"{split}:{channel}:route_multiplier={route_multiplier:g}:cue={cue_symbol}:random_scope={random_pulse_scope}"
+        ] = group_summary
     return summary
 
 

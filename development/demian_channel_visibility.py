@@ -35,6 +35,30 @@ def channel_pulse(
     return tuple(result)
 
 
+def full_state_pulse(
+    state: tuple[torch.Tensor, ...], *, amplitude: float, reference_norm: torch.Tensor, direction_seed: int, sign: int
+) -> tuple[torch.Tensor, ...]:
+    """Apply a full-state pulse with norm matched to a declared reference."""
+    if not math.isfinite(amplitude) or amplitude <= 0:
+        raise ValueError("amplitude must be finite and positive")
+    if sign not in {-1, 1}:
+        raise ValueError("sign must be -1 or 1")
+    if reference_norm.ndim != 0 or reference_norm <= 0:
+        raise ValueError("reference norm must be a positive scalar tensor")
+    generator = torch.Generator(device=state[0].device).manual_seed(direction_seed)
+    width = sum(component.numel() for component in state)
+    direction = torch.randn(width, generator=generator, dtype=state[0].dtype, device=state[0].device)
+    direction = direction / direction.norm()
+    offset = sign * amplitude * reference_norm * direction
+    result = []
+    cursor = 0
+    for component in state:
+        component_width = component.numel()
+        result.append(component + offset[cursor : cursor + component_width].reshape_as(component))
+        cursor += component_width
+    return tuple(result)
+
+
 def first_visibility_tick(surface_separations: Sequence[float], *, threshold: float) -> int | None:
     """Return first sampled index crossing a finite positive visibility threshold."""
     if not math.isfinite(threshold) or threshold <= 0:

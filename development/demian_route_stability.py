@@ -9,7 +9,7 @@ import torch
 
 from development.closed_loop_comparators import ClosedLoopModelAdapter
 from development.closed_loop_demian import InputFrame
-from development.demian_channel_visibility import channel_pulse
+from development.demian_channel_visibility import channel_pulse, full_state_pulse
 from development.demian_v1_gate_state import DemianV1GateState, V1_CHANNELS
 
 
@@ -39,6 +39,43 @@ def _channel_metrics(adapter: ClosedLoopModelAdapter, previous: tuple[torch.Tens
             for channel, component, prior in zip(V1_CHANNELS, adapter.state, previous, strict=True)
         },
     }
+
+
+def _pre_pulse_features(adapter: ClosedLoopModelAdapter, previous: tuple[torch.Tensor, ...]) -> dict[str, float | None]:
+    """State features available before the perturbation is applied."""
+    _, slow, _, _, carrier, gate = adapter.state
+    carrier_norm = carrier.norm()
+    slow_norm = slow.norm()
+    denominator = carrier_norm * slow_norm
+    model = adapter.model
+    assert isinstance(model, DemianV1GateState)
+    return {
+        "carrier_norm": float(carrier_norm),
+        "slow_norm": float(slow_norm),
+        "gate_norm": float(gate.norm()),
+        "gate_pressure_mean": float(torch.sigmoid(gate).mean()),
+        "state_velocity": float((_state_vector(adapter) - torch.cat([value.reshape(-1) for value in previous])).norm()),
+        "carrier_slow_alignment": 0.0 if denominator == 0 else float(torch.dot(carrier.reshape(-1), slow.reshape(-1)) / denominator),
+        "previous_transition_carrier_to_slow_norm": None
+        if model._step_aux.get("carrier_to_slow_norm") is None
+        else float(model._step_aux["carrier_to_slow_norm"]),
+    }
+
+
+def _pulse_state(
+    state: tuple[torch.Tensor, ...], *, channel: str, amplitude: float, direction_seed: int, scope: str
+) -> tuple[torch.Tensor, ...]:
+    if scope == "channel":
+        return channel_pulse(state, channel=channel, amplitude=amplitude, direction_seed=direction_seed, sign=1)
+    if scope == "full_state":
+        return full_state_pulse(
+            state,
+            amplitude=amplitude,
+            reference_norm=state[V1_CHANNELS.index(channel)].norm(),
+            direction_seed=direction_seed,
+            sign=1,
+        )
+    raise ValueError("random pulse scope must be 'channel' or 'full_state'")
 
 
 def _set_route_multiplier(adapter: ClosedLoopModelAdapter, *, route_id: str, multiplier: float) -> None:
@@ -128,6 +165,7 @@ def run_route_stability_cell(
     recovery_dwell: int,
     route_multiplier: float = 0.0,
     include_random_route_interaction: bool = False,
+    random_pulse_scope: str = "channel",
 ) -> dict[str, object]:
     """Replay one stream across a targeted lesion and two matched pulse controls."""
     if not frames:
@@ -146,6 +184,8 @@ def run_route_stability_cell(
         raise ValueError("recovery dwell must be positive")
     if not math.isfinite(route_multiplier) or route_multiplier < 0:
         raise ValueError("route multiplier must be finite and nonnegative")
+    if random_pulse_scope not in {"channel", "full_state"}:
+        raise ValueError("random pulse scope must be 'channel' or 'full_state'")
 
     baseline = ClosedLoopModelAdapter(architecture="demian", seed=seed, hidden_size=hidden_size)
     arms = {
@@ -172,9 +212,11 @@ def run_route_stability_cell(
     normalization_pulse_norm: float | None = None
     interaction_trajectory: list[dict[str, object]] = []
     random_interaction_trajectory: list[dict[str, object]] = []
+    pre_pulse_features: dict[str, float | None] | None = None
 
     for tick, frame in enumerate(frames):
         if tick == intervention_tick:
+            pre_pulse_features = _pre_pulse_features(baseline, prior_baseline_state)
             _set_route_multiplier(arms["lesion_only"], route_id=route_id, multiplier=route_multiplier)
             _set_route_multiplier(arms["targeted_lesion"], route_id=route_id, multiplier=route_multiplier)
             _set_route_multiplier(arms["sham"], route_id=route_id, multiplier=1.0)
@@ -184,15 +226,15 @@ def run_route_stability_cell(
                 )
             normalization_pulse_norm = None
             for name, adapter in arms.items():
-                index = V1_CHANNELS.index(channel)
                 if name == "lesion_only":
                     initial_norm = 0.0
                 else:
                     pulse_seed = random_direction_seed if name.startswith("random_") else direction_seed
-                    adapter.state = channel_pulse(
-                        adapter.state, channel=channel, amplitude=amplitude, direction_seed=pulse_seed, sign=1
+                    pulse_scope = random_pulse_scope if name.startswith("random_") else "channel"
+                    adapter.state = _pulse_state(
+                        adapter.state, channel=channel, amplitude=amplitude, direction_seed=pulse_seed, scope=pulse_scope
                     )
-                    initial_norm = float((adapter.state[index] - baseline.state[index]).norm())
+                    initial_norm = float((_state_vector(adapter) - _state_vector(baseline)).norm())
                     if name == "sham":
                         normalization_pulse_norm = initial_norm
                 results[name]["initial_pulse_norm"] = initial_norm
@@ -318,7 +360,9 @@ def run_route_stability_cell(
             "recovery_threshold": recovery_threshold,
             "recovery_dwell": recovery_dwell,
             "route_multiplier": route_multiplier,
+            "random_pulse_scope": random_pulse_scope,
         },
+        "pre_pulse_features": pre_pulse_features,
         "arms": results,
         "interaction_trajectory": interaction_trajectory,
     }
