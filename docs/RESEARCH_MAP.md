@@ -38,7 +38,8 @@ Each result must be marked as an **observation**, **hypothesis**, **control**,
 The active sequential program is in
 [DEMIAN_ROUTE_DYNAMICS_PROGRAM.md](DEMIAN_ROUTE_DYNAMICS_PROGRAM.md).
 
-1. E1 route selectivity: matched random-direction gain sweep.
+1. E1 route selectivity: completed; split-inconsistent, requiring seed-level
+   characterization and preregistered confirmation before advancement.
 2. E2 temporal causal mediation: early `carrier_to_slow` transfer versus
    downstream amplification.
 3. E3 endogenous gate regulation: dynamic versus static/yoked gate controls.

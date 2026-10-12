@@ -878,3 +878,25 @@ Interpretation:
 Next check:
 
 - Matched random-direction gain sweep for direction specificity.
+
+## 2026-10-12 - Matched Route Selectivity
+
+Purpose:
+
+- Test whether `carrier_to_slow` distinguishes carrier pulses from matched
+  random-direction pulses across the same route-multiplier sweep.
+
+Observation:
+
+- Carrier-minus-random interaction is negative for every reduced multiplier in
+  development seeds and positive for every reduced multiplier in held-out seeds.
+
+Interpretation:
+
+- The fixed-forcing response is seed-sensitive and direction-dependent, but
+  not reproducibly carrier-selective.
+
+Next:
+
+- Characterize seed-level route/state features and preregister a confirmation
+  or revised selectivity criterion before temporal mediation.

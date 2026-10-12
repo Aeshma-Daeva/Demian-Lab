@@ -33,8 +33,10 @@ The authoritative status and review basis live in `data/RESEARCH_REGISTRY.json`.
 - **Preliminary support:** graded `carrier_to_slow` reduction produces a
   nonzero carrier-pulse difference-of-differences norm in development and
   held-out seeds.
-- **Interpretation:** route-sensitive propagation under this fixed-forcing
-  regime is plausible; direction specificity remains untested.
+- **Control result:** the matched random-direction gain sweep reverses the
+  carrier-minus-random contrast between development and held-out seeds.
+- **Interpretation:** route-sensitive propagation remains bounded to the
+  carrier-only result; direction specificity is not reproducibly supported.
 - **Untested:** AFP-v2, memory, learning, adaptation, task competence, and
   chaos.
 

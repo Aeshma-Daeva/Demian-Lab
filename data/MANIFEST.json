@@ -8,6 +8,21 @@
   },
   "runs": [
     {
+      "id": "demian_route_selectivity_v1_20261012",
+      "program": "demian-v1",
+      "date": "2026-10-12",
+      "family": "six_channel_fixed_forcing_matched_route_selectivity",
+      "status": "active_evidence",
+      "primary_summary": "data/diagnostics/demian_route_selectivity_v1_20261012/summary.json",
+      "artifacts": [
+        "data/diagnostics/demian_route_selectivity_v1_20261012/summary.json",
+        "docs/DEMIAN_ROUTE_SELECTIVITY_PROTOCOL.json",
+        "docs/DEMIAN_ROUTE_SELECTIVITY_RESULTS.md"
+      ],
+      "claim_ids": [],
+      "interpretation": "Matched carrier and random-direction pulse-route interactions reverse their carrier-minus-random ordering between development and held-out seed sets. This is mixed selectivity evidence, not a reproducible direction-specific mechanism claim."
+    },
+    {
       "id": "demian_route_interaction_v1_20261011",
       "program": "demian-v1",
       "date": "2026-10-11",

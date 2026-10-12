@@ -45,6 +45,13 @@ Purpose:
   response after route-only subtraction; matched random-direction gain sweeps
   remain required for direction specificity.
 
+## Matched Route Selectivity
+
+- Protocol: [../docs/DEMIAN_ROUTE_SELECTIVITY_PROTOCOL.json](../docs/DEMIAN_ROUTE_SELECTIVITY_PROTOCOL.json)
+- Summary: [diagnostics/demian_route_selectivity_v1_20261012/summary.json](diagnostics/demian_route_selectivity_v1_20261012/summary.json)
+- Interpretation: carrier-minus-random interaction reverses sign between
+  development and held-out seeds; no reproducible direction-selective claim.
+
 ## Closed-Loop Baseline
 
 - Protocol: [CLOSED_LOOP_PROTOCOL.json](CLOSED_LOOP_PROTOCOL.json)

@@ -14,9 +14,11 @@ Last updated: 2026-10-12
   norm across development and held-out seeds.
 - Boundary: this is not direction specificity, memory, learning, adaptation,
   task competence, chaos, or AFP-v2 evidence.
-- Next discriminator: E1 matched random-direction route-multiplier sweep.
-- Next stages: E2 temporal mediation, E3 endogenous gate regulation, then E4
-  finite-budget routing and E5 functional adaptation. See
+- Selectivity control: E1 matched random-direction route-multiplier sweep is
+  mixed: the direction contrast reverses across development and held-out seeds.
+- Next: characterize seed-level route/state features and preregister a
+  confirmation or revised criterion before E2 temporal mediation. E3–E5 remain
+  conditional downstream stages. See
   `docs/DEMIAN_ROUTE_DYNAMICS_PROGRAM.md`.
 
 Primary records:
@@ -25,6 +27,7 @@ Primary records:
 - `docs/EXPERIMENT_RULES.md`
 - `data/INDEX.md`
 - `docs/DEMIAN_ROUTE_INTERACTION_RESULTS.md`
+- `docs/DEMIAN_ROUTE_SELECTIVITY_RESULTS.md`
 
 ## Historical v7–v10 Working Notes
 

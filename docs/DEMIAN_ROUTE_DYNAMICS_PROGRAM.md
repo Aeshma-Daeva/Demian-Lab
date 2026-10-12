@@ -16,7 +16,10 @@ Progression:
 - Outcome: compare normalized pulse × gain interaction curves by channel/time.
 - Alternative: curves are equivalent; current evidence is generic gain
   sensitivity.
-- Registry link: `H-ROUTE-004`; this is the immediate next experiment.
+- Registry link: `H-ROUTE-005`; completed with mixed evidence. The interaction
+  difference reverses sign across development and held-out seeds, so E2 is
+  gated on seed-level characterization and a preregistered confirmation or
+  revised criterion.
 
 ## E2 — Temporal Causal Mediation
 
