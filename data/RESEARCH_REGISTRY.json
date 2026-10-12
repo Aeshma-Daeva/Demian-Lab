@@ -241,8 +241,8 @@
       },
       "status_history": [{"evidence_status":"preliminary_support","lifecycle":"active","changed_on":"2026-10-12","reviewer":"Codex evidence review (user-authorized)","basis":"The interaction was positive for every reduced multiplier across development and held-out seeds."}],
       "result_ids": ["R-ROUTE-INTERACTION-001"],
-      "alternative_explanations": ["A generic directional perturbation may show the same gain dependence.", "The result does not establish route-mediated retention beyond the fixed-forcing horizon."],
-      "falsifiers": ["A matched random-direction gain sweep produces indistinguishable interaction profiles.", "Held-out reduced multipliers fail to produce the preregistered positive interaction."],
+      "alternative_explanations": ["A generic directional perturbation may show the same gain dependence; a matched random-direction gain sweep is the discriminator.", "The result does not establish route-mediated retention beyond the fixed-forcing horizon."],
+      "falsifiers": ["Held-out reduced multipliers fail to produce the preregistered nonzero difference-of-differences norm."],
       "next_test": "Run the same multiplier sweep with matched random-direction pulses, then compare interaction profiles."
     }
   ],
@@ -332,8 +332,8 @@
         "initial_state_count": 8,
         "input_seed_count": 0,
         "history_condition_count": 1,
-        "trajectory_count": 144,
-        "checkpoint_row_count": 18432,
+        "trajectory_count": 576,
+        "checkpoint_row_count": 37440,
         "independent_unit": "parameter_seed",
         "dependent_observations": ["intervention times, amplitudes, directions, and checkpoints repeat within parameter seeds"]
       },
@@ -349,8 +349,8 @@
         "initial_state_count": 8,
         "input_seed_count": 0,
         "history_condition_count": 1,
-        "trajectory_count": 96,
-        "checkpoint_row_count": 12288,
+        "trajectory_count": 480,
+        "checkpoint_row_count": 31200,
         "independent_unit": "parameter_seed",
         "dependent_observations": ["multipliers, intervention times, branches, and checkpoints repeat within parameter seeds"]
       },
@@ -600,7 +600,7 @@
         "comparison_count": 144,
         "comparison_unit": "declared intervention cells",
         "dependent_observations": ["cells share parameter seeds across timing, amplitude, and direction"],
-        "scope_note": "Four development and four held-out parameter seeds underlie 144 dependent intervention cells."
+        "scope_note": "Four development and four held-out parameter seeds underlie 144 intervention cells, 576 stored branch trajectories, and 37,440 dependent checkpoint rows."
       },
       "evaluation_conditions_met": ["matched_route_intervention", "predicted_delay", "held_out_seed", "lesion_only_control", "sham_control"],
       "missing_evaluation_conditions": ["removal_rescue_test"],
@@ -624,7 +624,7 @@
         "comparison_count": 96,
         "comparison_unit": "declared multiplier-by-seed cells",
         "dependent_observations": ["multipliers and intervention ticks repeat within parameter seeds"],
-        "scope_note": "Four development and four held-out parameter seeds underlie 96 dependent cells across six multipliers."
+        "scope_note": "Four development and four held-out parameter seeds underlie 96 intervention cells, 480 stored branch trajectories, and 31,200 dependent checkpoint rows across six multipliers."
       },
       "evaluation_conditions_met": ["graded_route_intervention", "route_only_control", "pulse_route_interaction", "held_out_seed"],
       "missing_evaluation_conditions": [],

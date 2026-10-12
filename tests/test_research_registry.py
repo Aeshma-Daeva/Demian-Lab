@@ -14,6 +14,7 @@ from development.research_registry import (
     ResearchRegistry,
     export_registry_snapshot,
     load_registry,
+    validate_registry_artifact_provenance,
     validate_registry,
 )
 
@@ -48,6 +49,12 @@ def test_checked_in_registry_links_hypotheses_to_evidence() -> None:
     route_interaction = next(item for item in registry.hypotheses if item.id == "H-ROUTE-004")
     assert route_interaction.evidence_status == "preliminary_support"
     assert route_interaction.status_basis.supporting_result_ids == ["R-ROUTE-INTERACTION-001"]
+    stability = next(item for item in registry.experiments if item.id == "E-ROUTE-002")
+    interaction = next(item for item in registry.experiments if item.id == "E-ROUTE-003")
+    assert stability.replication_scope.trajectory_count == 576
+    assert stability.replication_scope.checkpoint_row_count == 37440
+    assert interaction.replication_scope.trajectory_count == 480
+    assert interaction.replication_scope.checkpoint_row_count == 31200
 
 
 def test_registry_rejects_null_as_hypothesis_status() -> None:
@@ -133,6 +140,28 @@ def test_registry_rejects_duplicate_ids_within_a_collection() -> None:
 
     with pytest.raises(ValidationError, match="globally unique"):
         ResearchRegistry.model_validate(payload)
+
+
+def test_checked_in_registry_artifacts_resolve_to_paths_and_commits() -> None:
+    registry = validate_registry_artifact_provenance(REGISTRY_PATH, Path("."))
+
+    assert registry.metadata.authority == "Demian"
+
+
+def test_registry_provenance_rejects_missing_path_and_unknown_commit(tmp_path: Path) -> None:
+    payload = _payload()
+    source = tmp_path / "invalid-provenance.json"
+
+    payload["artifacts"][0]["path"] = "data/does-not-exist.json"
+    source.write_text(json.dumps(payload))
+    with pytest.raises(ValueError, match="artifact path does not exist"):
+        validate_registry_artifact_provenance(source, Path("."))
+
+    payload = _payload()
+    payload["artifacts"][0]["commit"] = "0" * 40
+    source.write_text(json.dumps(payload))
+    with pytest.raises(ValueError, match="artifact commit does not resolve"):
+        validate_registry_artifact_provenance(source, Path("."))
 
 
 def test_status_evidence_must_be_considered_and_linked() -> None:

@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import json
 import argparse
+import subprocess
 import sys
 from pathlib import Path
 from typing import Any, Literal
@@ -221,6 +222,26 @@ def validate_registry(path: Path) -> ResearchRegistry:
     return load_registry(path)
 
 
+def validate_registry_artifact_provenance(source: Path, repository_root: Path) -> ResearchRegistry:
+    """Validate registry records and require every pinned artifact locally resolves."""
+    registry = validate_registry(source)
+    root = repository_root.resolve()
+    for artifact in registry.artifacts:
+        artifact_path = root / artifact.path
+        if not artifact_path.is_file():
+            raise ValueError(f"artifact path does not exist: {artifact.path}")
+        revision = subprocess.run(
+            ["git", "cat-file", "-e", f"{artifact.commit}^{{commit}}"],
+            cwd=root,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        if revision.returncode != 0:
+            raise ValueError(f"artifact commit does not resolve: {artifact.commit}")
+    return registry
+
+
 def export_registry_snapshot(source: Path, destination: Path) -> Path:
     """Validate and write a deterministic public registry snapshot."""
     registry = load_registry(source)
@@ -236,6 +257,9 @@ def main(argv: list[str] | None = None) -> int:
     commands = parser.add_subparsers(dest="command", required=True)
     validate = commands.add_parser("validate", help="validate a registry")
     validate.add_argument("source", type=Path)
+    provenance = commands.add_parser("validate-artifacts", help="validate registry artifact paths and pinned commits")
+    provenance.add_argument("source", type=Path)
+    provenance.add_argument("--repository-root", type=Path, default=Path("."))
     export = commands.add_parser("export", help="validate and export a registry snapshot")
     export.add_argument("source", type=Path)
     export.add_argument("destination", type=Path)
@@ -245,6 +269,9 @@ def main(argv: list[str] | None = None) -> int:
         if args.command == "validate":
             validate_registry(args.source)
             print(f"valid: {args.source}")
+        elif args.command == "validate-artifacts":
+            validate_registry_artifact_provenance(args.source, args.repository_root)
+            print(f"artifacts valid: {args.source}")
         else:
             export_registry_snapshot(args.source, args.destination)
             print(f"exported: {args.destination}")
