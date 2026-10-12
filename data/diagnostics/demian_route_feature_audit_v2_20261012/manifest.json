@@ -1,0 +1,75 @@
+{
+  "cell_count": 144,
+  "claim_boundary": "pre-pulse feature characterization only; not regime prediction, mechanism, controllability, regulation, learning, adaptation, memory, task competence, AFP-v2, or chaos",
+  "protocol": {
+    "amplitudes": [
+      0.01
+    ],
+    "analysis_status": "exploratory discovery; no predictor or regime claim is confirmed by this run",
+    "channels": [
+      "carrier"
+    ],
+    "claim_boundary": "pre-pulse feature characterization only; not regime prediction, mechanism, controllability, regulation, learning, adaptation, memory, task competence, AFP-v2, or chaos",
+    "controls": [
+      "route_only",
+      "intact_route_sham",
+      "matched within-carrier random direction",
+      "matched full-state random direction"
+    ],
+    "development_seeds": [
+      294,
+      295,
+      296,
+      297
+    ],
+    "direction_seeds": [
+      1701,
+      1702,
+      1703
+    ],
+    "heldout_seeds": [
+      394,
+      395,
+      396,
+      397
+    ],
+    "hidden_size": 256,
+    "history_cue_symbols": [
+      0,
+      1,
+      2
+    ],
+    "include_random_route_interaction": true,
+    "intervention_ticks": [
+      48
+    ],
+    "next_gate": "freeze a compact pre-pulse predictor and test it on fresh parameter seeds and reachable histories",
+    "pre_pulse_features": [
+      "carrier_norm",
+      "slow_norm",
+      "gate_norm",
+      "gate_pressure_mean",
+      "state_velocity",
+      "carrier_slow_alignment",
+      "previous_transition_carrier_to_slow_norm"
+    ],
+    "primary_outcome": "time-aligned peak carrier pulse-route interaction minus matched random pulse-route interaction within transitions 1..16",
+    "protocol_id": "demian-route-feature-audit-v1",
+    "purpose": "discovery-only audit of pre-pulse features against matched route-response ordering",
+    "random_direction_seed_offset": 1000,
+    "random_pulse_scopes": [
+      "channel",
+      "full_state"
+    ],
+    "recovery_dwell": 4,
+    "recovery_threshold": 1e-06,
+    "response_window_transitions": 16,
+    "route_id": "carrier_to_slow",
+    "route_multipliers": [
+      0.5
+    ],
+    "steps": 96
+  },
+  "protocol_sha256": "7396b3b7ca81de8dc881124565466e1ed1623857e5a5b53f50e4e00ee1ff0da1",
+  "schema_version": 1
+}

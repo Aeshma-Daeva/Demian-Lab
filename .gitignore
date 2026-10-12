@@ -23,6 +23,8 @@ data/diagnostics/*
 !data/diagnostics/demian_route_interaction_v1_20261011/summary.json
 !data/diagnostics/demian_route_selectivity_v1_20261012/
 !data/diagnostics/demian_route_selectivity_v1_20261012/summary.json
+!data/diagnostics/demian_route_feature_audit_v2_20261012/
+!data/diagnostics/demian_route_feature_audit_v2_20261012/summary.json
 .env
 .env.*
 .openrouter/

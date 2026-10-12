@@ -900,3 +900,21 @@ Next:
 
 - Characterize seed-level route/state features and preregister a confirmation
   or revised selectivity criterion before temporal mediation.
+
+## 2026-10-12 - Route Feature Audit
+
+Observation:
+
+- Pre-pulse features were recorded across 8 seeds, 3 cue histories, 3
+  directions, and within-carrier/full-state random controls.
+- Features vary across seeds; late cue histories weakly alter them.
+
+Interpretation:
+
+- Discovery only. Pooled feature associations do not distinguish parameter
+  identity from state-conditioned route response.
+
+Next:
+
+- Freeze a compact rule after a richer-history discovery design; confirm on
+  fresh parameter seeds.

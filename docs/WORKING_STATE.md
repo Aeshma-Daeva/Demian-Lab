@@ -17,7 +17,9 @@ Last updated: 2026-10-12
 - Selectivity control: E1 matched random-direction route-multiplier sweep is
   mixed: the direction contrast reverses across development and held-out seeds.
 - Next: characterize seed-level route/state features and preregister a
-  confirmation or revised criterion before E2 temporal mediation. E3–E5 remain
+  confirmation or revised criterion before E2 temporal mediation. A first
+  feature audit is discovery-only: late cue histories weakly alter state, so it
+  does not separate seed identity from state dependence. E3–E5 remain
   conditional downstream stages. See
   `docs/DEMIAN_ROUTE_DYNAMICS_PROGRAM.md`.
 
@@ -28,6 +30,7 @@ Primary records:
 - `data/INDEX.md`
 - `docs/DEMIAN_ROUTE_INTERACTION_RESULTS.md`
 - `docs/DEMIAN_ROUTE_SELECTIVITY_RESULTS.md`
+- `docs/DEMIAN_ROUTE_FEATURE_AUDIT_RESULTS.md`
 
 ## Historical v7–v10 Working Notes
 

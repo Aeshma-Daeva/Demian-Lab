@@ -52,6 +52,13 @@ Purpose:
 - Interpretation: carrier-minus-random interaction reverses sign between
   development and held-out seeds; no reproducible direction-selective claim.
 
+## Route Feature Audit
+
+- Protocol: [../docs/DEMIAN_ROUTE_FEATURE_AUDIT_PROTOCOL.json](../docs/DEMIAN_ROUTE_FEATURE_AUDIT_PROTOCOL.json)
+- Summary: [diagnostics/demian_route_feature_audit_v2_20261012/summary.json](diagnostics/demian_route_feature_audit_v2_20261012/summary.json)
+- Interpretation: discovery-only pre-pulse audit; pooled associations do not
+  separate seed identity from state-dependent response.
+
 ## Closed-Loop Baseline
 
 - Protocol: [CLOSED_LOOP_PROTOCOL.json](CLOSED_LOOP_PROTOCOL.json)
