@@ -3,10 +3,10 @@
     "schema_version": 1,
     "registry_id": "demian-research-registry-pilot-v2",
     "protocol_version": "1.1.0",
-    "generated_on": "2026-10-06",
+    "generated_on": "2026-10-12",
     "authority": "Demian",
     "source_repository": "https://github.com/Aeshma-Daeva/Demian-Lab",
-    "source_commit": "d888bbee828310a1202e13a831373eeb62ad95e1",
+    "source_commit": "e2ab885ae2e57f1688233aa86f0f664fe41d9f51",
     "status_policy": "manual_review_only"
   },
   "hypotheses": [
@@ -189,14 +189,14 @@
       "status_basis": {
         "method": "manual_review",
         "rule": "A descriptive sequence is not propagation or mediation without removal and rescue.",
-        "considered_result_ids": ["R-ROUTE-PILOT-001"],
+        "considered_result_ids": ["R-ROUTE-PILOT-001", "R-ROUTE-STABILITY-001"],
         "supporting_result_ids": [],
         "conflicting_result_ids": [],
-        "reviewer": "Astra scientific review",
-        "reviewed_on": "2026-10-06"
+        "reviewer": "Codex evidence review (user-authorized)",
+        "reviewed_on": "2026-10-12"
       },
-      "status_history": [{"evidence_status":"untested","lifecycle":"active","changed_on":"2026-10-06","reviewer":"Astra scientific review","basis":"The pilot records sequences but does not intervene or rescue."}],
-      "result_ids": ["R-ROUTE-PILOT-001"],
+      "status_history": [{"evidence_status":"untested","lifecycle":"active","changed_on":"2026-10-06","reviewer":"Astra scientific review","basis":"The pilot records sequences but does not intervene or rescue."},{"evidence_status":"untested","lifecycle":"active","changed_on":"2026-10-12","reviewer":"Codex evidence review (user-authorized)","basis":"A gain-zero lesion shows route consequence but lacks the required contribution rescue."}],
+      "result_ids": ["R-ROUTE-PILOT-001", "R-ROUTE-STABILITY-001"],
       "alternative_explanations": ["Lagged association may reflect shared input, feedback, or route cancellation rather than transmission."],
       "falsifiers": ["Removal and rescue fail to alter or restore the preregistered downstream outcome."],
       "next_test": "Remove a named contribution at a preregistered time and replay the uninterrupted contribution as rescue."
@@ -222,6 +222,28 @@
       "alternative_explanations": ["The frozen encoder and decoder can induce interface behavior without learned environmental adaptation.", "Unselected action patterns do not indicate task-directed behavior."],
       "falsifiers": ["Restored checkpoints diverge under identical world, connector, and interface state.", "Fixed input replay fails to reproduce the recorded internal trajectory."],
       "next_test": "Run scripted and storage-capability controls, then introduce a separately declared training or selection procedure with held-out worlds."
+    },
+    {
+      "id": "H-ROUTE-004",
+      "statement": "Graded reduction of carrier_to_slow systematically changes the response to a carrier-channel perturbation under fixed forcing.",
+      "operational_prediction": "The preregistered pulse-route interaction remains positive in held-out parameter seeds for reduced route multipliers after route-only subtraction.",
+      "evaluation_conditions": ["graded_route_intervention", "route_only_control", "pulse_route_interaction", "held_out_seed"],
+      "evidence_status": "preliminary_support",
+      "lifecycle": "active",
+      "status_basis": {
+        "method": "manual_review",
+        "rule": "Preliminary support requires the preregistered interaction in development and held-out seeds; it does not establish direction specificity or a memory mechanism.",
+        "considered_result_ids": ["R-ROUTE-INTERACTION-001"],
+        "supporting_result_ids": ["R-ROUTE-INTERACTION-001"],
+        "conflicting_result_ids": [],
+        "reviewer": "Codex evidence review (user-authorized)",
+        "reviewed_on": "2026-10-12"
+      },
+      "status_history": [{"evidence_status":"preliminary_support","lifecycle":"active","changed_on":"2026-10-12","reviewer":"Codex evidence review (user-authorized)","basis":"The interaction was positive for every reduced multiplier across development and held-out seeds."}],
+      "result_ids": ["R-ROUTE-INTERACTION-001"],
+      "alternative_explanations": ["A generic directional perturbation may show the same gain dependence.", "The result does not establish route-mediated retention beyond the fixed-forcing horizon."],
+      "falsifiers": ["A matched random-direction gain sweep produces indistinguishable interaction profiles.", "Held-out reduced multipliers fail to produce the preregistered positive interaction."],
+      "next_test": "Run the same multiplier sweep with matched random-direction pulses, then compare interaction profiles."
     }
   ],
   "experiments": [
@@ -299,6 +321,40 @@
         "dependent_observations": ["checkpoint ticks within trajectory", "actions and route terms within tick"]
       },
       "artifact_ids": ["A-LOOP-PROTOCOL-001", "A-LOOP-SUMMARY-001"]
+    },
+    {
+      "id": "E-ROUTE-002",
+      "name": "Fixed-forcing carrier pulse and gain-zero route lesion",
+      "system": "demian_v1_gate_state",
+      "protocol_version": "demian-fixed-forcing-route-stability-v1",
+      "replication_scope": {
+        "parameter_seed_count": 8,
+        "initial_state_count": 8,
+        "input_seed_count": 0,
+        "history_condition_count": 1,
+        "trajectory_count": 144,
+        "checkpoint_row_count": 18432,
+        "independent_unit": "parameter_seed",
+        "dependent_observations": ["intervention times, amplitudes, directions, and checkpoints repeat within parameter seeds"]
+      },
+      "artifact_ids": ["A-ROUTE-STABILITY-PROTOCOL-001", "A-ROUTE-STABILITY-SUMMARY-001", "A-ROUTE-STABILITY-RESULTS-001"]
+    },
+    {
+      "id": "E-ROUTE-003",
+      "name": "Fixed-forcing graded carrier_to_slow interaction",
+      "system": "demian_v1_gate_state",
+      "protocol_version": "demian-fixed-forcing-route-interaction-v1",
+      "replication_scope": {
+        "parameter_seed_count": 8,
+        "initial_state_count": 8,
+        "input_seed_count": 0,
+        "history_condition_count": 1,
+        "trajectory_count": 96,
+        "checkpoint_row_count": 12288,
+        "independent_unit": "parameter_seed",
+        "dependent_observations": ["multipliers, intervention times, branches, and checkpoints repeat within parameter seeds"]
+      },
+      "artifact_ids": ["A-ROUTE-INTERACTION-PROTOCOL-001", "A-ROUTE-INTERACTION-SUMMARY-001", "A-ROUTE-INTERACTION-RESULTS-001"]
     }
   ],
   "controls": [
@@ -371,6 +427,27 @@
       "semantics": "Replays recorded observation frames without world action feedback.",
       "limitations": ["Measures conditional internal response, not total closed-loop effect."],
       "artifact_ids": ["A-LOOP-PROTOCOL-001"]
+    },
+    {
+      "id": "C-ROUTE-ONLY-001",
+      "name": "Route-only intervention branch",
+      "semantics": "Changes carrier_to_slow with no pulse, isolating generic route trajectory change.",
+      "limitations": ["Does not rescue the removed contribution."],
+      "artifact_ids": ["A-ROUTE-STABILITY-PROTOCOL-001", "A-ROUTE-INTERACTION-PROTOCOL-001"]
+    },
+    {
+      "id": "C-ROUTE-SHAM-001",
+      "name": "Intact-route pulse branch",
+      "semantics": "Applies the pulse while leaving carrier_to_slow intact.",
+      "limitations": ["Does not test direction specificity across route gains."],
+      "artifact_ids": ["A-ROUTE-STABILITY-PROTOCOL-001", "A-ROUTE-INTERACTION-PROTOCOL-001"]
+    },
+    {
+      "id": "C-RANDOM-DIRECTION-001",
+      "name": "Same-magnitude random-direction pulse",
+      "semantics": "Compares a random full-state perturbation at the tested pulse magnitude.",
+      "limitations": ["The current run does not sweep route gain for this control."],
+      "artifact_ids": ["A-ROUTE-STABILITY-PROTOCOL-001", "A-ROUTE-INTERACTION-PROTOCOL-001"]
     }
   ],
   "results": [
@@ -508,6 +585,54 @@
       "exclusions": ["No task competence claim.", "No memory claim.", "No adaptive environmental behavior claim.", "No route causality claim."],
       "control_ids": ["C-LOOP-CHECKPOINT-001", "C-LOOP-REPLAY-001"],
       "artifact_ids": ["A-LOOP-PROTOCOL-001", "A-LOOP-SUMMARY-001"]
+    },
+    {
+      "id": "R-ROUTE-STABILITY-001",
+      "hypothesis_ids": ["H-ROUTE-003"],
+      "experiment_id": "E-ROUTE-002",
+      "evaluable": false,
+      "outcome": "unevaluable",
+      "observation": "Gain-zero carrier_to_slow lesions produced large subsequent full-state separation in development and held-out seeds; lesion-only branches were already close to pulse-plus-lesion branches.",
+      "interpretation": "carrier_to_slow is dynamically consequential in the tested fixed-forcing regime, but the result does not evaluate route-mediated carrier-pulse transmission because no contribution rescue was performed.",
+      "analysis_scope": {
+        "independent_unit": "parameter_seed",
+        "independent_unit_count": 8,
+        "comparison_count": 144,
+        "comparison_unit": "declared intervention cells",
+        "dependent_observations": ["cells share parameter seeds across timing, amplitude, and direction"],
+        "scope_note": "Four development and four held-out parameter seeds underlie 144 dependent intervention cells."
+      },
+      "evaluation_conditions_met": ["matched_route_intervention", "predicted_delay", "held_out_seed", "lesion_only_control", "sham_control"],
+      "missing_evaluation_conditions": ["removal_rescue_test"],
+      "effect_summary": {"development_lesion_only_final_state_separation": 264.97, "heldout_lesion_only_final_state_separation": 254.23, "development_pulse_lesion_final_state_separation": 268.05, "heldout_pulse_lesion_final_state_separation": 258.71},
+      "uncertainty": ["The gain-zero lesion is a large intervention.", "No contribution rescue.", "No task-conditioned behavior."],
+      "exclusions": ["No route-mediated pulse claim.", "No memory, AFP-v2, learning, adaptation, or chaos claim."],
+      "control_ids": ["C-ROUTE-ONLY-001", "C-ROUTE-SHAM-001", "C-RANDOM-DIRECTION-001"],
+      "artifact_ids": ["A-ROUTE-STABILITY-PROTOCOL-001", "A-ROUTE-STABILITY-SUMMARY-001", "A-ROUTE-STABILITY-RESULTS-001"]
+    },
+    {
+      "id": "R-ROUTE-INTERACTION-001",
+      "hypothesis_ids": ["H-ROUTE-004"],
+      "experiment_id": "E-ROUTE-003",
+      "evaluable": true,
+      "outcome": "observed",
+      "observation": "The pulse-route difference-of-differences was positive for every reduced carrier_to_slow multiplier in both development and held-out seed sets, while the intact route interaction was zero by construction.",
+      "interpretation": "The tested route changes carrier-pulse propagation after generic route-only trajectory change is subtracted. This is preliminary route-sensitive propagation evidence under fixed forcing, not direction-specific or retention evidence.",
+      "analysis_scope": {
+        "independent_unit": "parameter_seed",
+        "independent_unit_count": 8,
+        "comparison_count": 96,
+        "comparison_unit": "declared multiplier-by-seed cells",
+        "dependent_observations": ["multipliers and intervention ticks repeat within parameter seeds"],
+        "scope_note": "Four development and four held-out parameter seeds underlie 96 dependent cells across six multipliers."
+      },
+      "evaluation_conditions_met": ["graded_route_intervention", "route_only_control", "pulse_route_interaction", "held_out_seed"],
+      "missing_evaluation_conditions": [],
+      "effect_summary": {"development_reduced_multiplier_interaction_range": [30.81216152012348, 55.805632412433624], "heldout_reduced_multiplier_interaction_range": [56.64182795584202, 71.50374785065651], "intact_multiplier_interaction": 0.0},
+      "uncertainty": ["No matched random-direction gain sweep.", "Fixed forcing only.", "No task-conditioned behavior."],
+      "exclusions": ["No direction-specific mechanism claim.", "No memory, AFP-v2, learning, adaptation, or chaos claim."],
+      "control_ids": ["C-ROUTE-ONLY-001", "C-ROUTE-SHAM-001"],
+      "artifact_ids": ["A-ROUTE-INTERACTION-PROTOCOL-001", "A-ROUTE-INTERACTION-SUMMARY-001", "A-ROUTE-INTERACTION-RESULTS-001"]
     }
   ],
   "artifacts": [
@@ -574,6 +699,54 @@
       "path": "data/diagnostics/demian_closed_loop_baseline_20261006/summary.json",
       "media_type": "application/json",
       "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/d888bbee828310a1202e13a831373eeb62ad95e1/data/diagnostics/demian_closed_loop_baseline_20261006/summary.json"
+    },
+    {
+      "id": "A-ROUTE-STABILITY-PROTOCOL-001",
+      "repository": "Aeshma-Daeva/Demian-Lab",
+      "commit": "e2ab885ae2e57f1688233aa86f0f664fe41d9f51",
+      "path": "docs/DEMIAN_ROUTE_STABILITY_PROTOCOL.json",
+      "media_type": "application/json",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/e2ab885ae2e57f1688233aa86f0f664fe41d9f51/docs/DEMIAN_ROUTE_STABILITY_PROTOCOL.json"
+    },
+    {
+      "id": "A-ROUTE-STABILITY-SUMMARY-001",
+      "repository": "Aeshma-Daeva/Demian-Lab",
+      "commit": "e2ab885ae2e57f1688233aa86f0f664fe41d9f51",
+      "path": "data/diagnostics/demian_route_stability_v1_20261011/summary.json",
+      "media_type": "application/json",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/e2ab885ae2e57f1688233aa86f0f664fe41d9f51/data/diagnostics/demian_route_stability_v1_20261011/summary.json"
+    },
+    {
+      "id": "A-ROUTE-STABILITY-RESULTS-001",
+      "repository": "Aeshma-Daeva/Demian-Lab",
+      "commit": "e2ab885ae2e57f1688233aa86f0f664fe41d9f51",
+      "path": "docs/DEMIAN_ROUTE_STABILITY_RESULTS.md",
+      "media_type": "text/markdown",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/e2ab885ae2e57f1688233aa86f0f664fe41d9f51/docs/DEMIAN_ROUTE_STABILITY_RESULTS.md"
+    },
+    {
+      "id": "A-ROUTE-INTERACTION-PROTOCOL-001",
+      "repository": "Aeshma-Daeva/Demian-Lab",
+      "commit": "e2ab885ae2e57f1688233aa86f0f664fe41d9f51",
+      "path": "docs/DEMIAN_ROUTE_INTERACTION_PROTOCOL.json",
+      "media_type": "application/json",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/e2ab885ae2e57f1688233aa86f0f664fe41d9f51/docs/DEMIAN_ROUTE_INTERACTION_PROTOCOL.json"
+    },
+    {
+      "id": "A-ROUTE-INTERACTION-SUMMARY-001",
+      "repository": "Aeshma-Daeva/Demian-Lab",
+      "commit": "e2ab885ae2e57f1688233aa86f0f664fe41d9f51",
+      "path": "data/diagnostics/demian_route_interaction_v1_20261011/summary.json",
+      "media_type": "application/json",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/e2ab885ae2e57f1688233aa86f0f664fe41d9f51/data/diagnostics/demian_route_interaction_v1_20261011/summary.json"
+    },
+    {
+      "id": "A-ROUTE-INTERACTION-RESULTS-001",
+      "repository": "Aeshma-Daeva/Demian-Lab",
+      "commit": "e2ab885ae2e57f1688233aa86f0f664fe41d9f51",
+      "path": "docs/DEMIAN_ROUTE_INTERACTION_RESULTS.md",
+      "media_type": "text/markdown",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/e2ab885ae2e57f1688233aa86f0f664fe41d9f51/docs/DEMIAN_ROUTE_INTERACTION_RESULTS.md"
     }
   ]
 }

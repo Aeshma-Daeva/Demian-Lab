@@ -5,6 +5,27 @@ Purpose:
 - keep live docs tied to artifacts
 - stop best-run storytelling from becoming working truth
 
+## Evidence Authority
+
+- `data/RESEARCH_REGISTRY.json` is authoritative for reviewed hypothesis status,
+  result evaluability, and evidence links.
+- Versioned artifacts are authoritative for measurements; code establishes the
+  executed implementation, not an observed result.
+- `LABBOOK.md`, `CLAIMS.md`, and `WORKING_STATE.md` are linked prose summaries,
+  not competing evidence stores.
+- Registry coverage may be incomplete. Record pending registration explicitly;
+  do not treat an absent record as negative evidence.
+
+## Review Authority
+
+Scientific promotion, demotion, evaluability, causal interpretation, and
+replication scope require explicit reviewer identity, date, evidence IDs, and
+rationale in the registry status basis/history. Passing validation checks
+integrity only; it never approves a scientific claim.
+
+Corrections supersede or demote records through status history. Do not delete
+the earlier result or silently rewrite its interpretation.
+
 ## Claim Discipline
 
 Every nontrivial live claim should have:
