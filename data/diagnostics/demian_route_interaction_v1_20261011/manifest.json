@@ -1,0 +1,59 @@
+{
+  "cell_count": 96,
+  "claim_boundary": "fixed-forcing graded route intervention only; not memory, AFP-v2, adaptation, learning, or chaos",
+  "protocol": {
+    "amplitudes": [
+      0.01
+    ],
+    "channels": [
+      "carrier"
+    ],
+    "claim_boundary": "fixed-forcing graded route intervention only; not memory, AFP-v2, adaptation, learning, or chaos",
+    "controls": [
+      "unperturbed baseline replay",
+      "route-only branch at each gain",
+      "same-channel pulse plus each route gain",
+      "same-channel pulse with intact route",
+      "same-magnitude random-direction pulse"
+    ],
+    "development_seeds": [
+      294,
+      295,
+      296,
+      297
+    ],
+    "direction_seeds": [
+      1701
+    ],
+    "heldout_seeds": [
+      394,
+      395,
+      396,
+      397
+    ],
+    "hidden_size": 256,
+    "input_stream": "fixed_cue_delay_query_with_noop_acknowledgements",
+    "intervention_ticks": [
+      32,
+      96
+    ],
+    "protocol_id": "demian-fixed-forcing-route-interaction-v1",
+    "random_direction_seed_offset": 1000,
+    "recovery_dwell": 4,
+    "recovery_threshold": 1e-06,
+    "route_id": "carrier_to_slow",
+    "route_multipliers": [
+      1.0,
+      0.9,
+      0.75,
+      0.5,
+      0.25,
+      0.0
+    ],
+    "schema_version": 1,
+    "steps": 128,
+    "system": "demian_v1_gate_state"
+  },
+  "protocol_sha256": "6f9086cc9152284efa7d966a9b854816aa95b2db8e921ba5cfea748f028c51ae",
+  "schema_version": 1
+}

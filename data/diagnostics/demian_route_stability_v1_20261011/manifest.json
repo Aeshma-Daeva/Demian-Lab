@@ -1,0 +1,54 @@
+{
+  "cell_count": 144,
+  "claim_boundary": "fixed-forcing channel-pulse and route-lesion characterization only; not memory, AFP-v2, adaptation, learning, or chaos",
+  "protocol": {
+    "amplitudes": [
+      0.003,
+      0.01,
+      0.03
+    ],
+    "channels": [
+      "carrier"
+    ],
+    "claim_boundary": "fixed-forcing channel-pulse and route-lesion characterization only; not memory, AFP-v2, adaptation, learning, or chaos",
+    "controls": [
+      "unperturbed baseline replay",
+      "same-channel sham route operation",
+      "same-magnitude random-direction pulse",
+      "targeted carrier_to_slow gain-zero lesion"
+    ],
+    "development_seeds": [
+      294,
+      295,
+      296,
+      297
+    ],
+    "direction_seeds": [
+      1701,
+      1702,
+      1703
+    ],
+    "heldout_seeds": [
+      394,
+      395,
+      396,
+      397
+    ],
+    "hidden_size": 256,
+    "input_stream": "fixed_cue_delay_query_with_noop_acknowledgements",
+    "intervention_ticks": [
+      32,
+      96
+    ],
+    "protocol_id": "demian-fixed-forcing-route-stability-v1",
+    "random_direction_seed_offset": 1000,
+    "recovery_dwell": 4,
+    "recovery_threshold": 1e-06,
+    "route_id": "carrier_to_slow",
+    "schema_version": 1,
+    "steps": 128,
+    "system": "demian_v1_gate_state"
+  },
+  "protocol_sha256": "7a2214080d605c0dd2708ee3c1abac027d1be209d99f03c50d9161c1a816dee6",
+  "schema_version": 1
+}

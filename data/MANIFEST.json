@@ -1,12 +1,42 @@
 {
   "schema_version": 1,
-  "updated": "2026-10-05",
+  "updated": "2026-10-11",
   "policy": {
     "raw_data": "Keep raw run directories in place until manifest references and doc links are stable.",
     "status_values": ["active_evidence", "historical", "superseded", "baseline"],
     "promotion_rule": "Promoted claims must point to indexed artifacts or explicitly cite code/test evidence."
   },
   "runs": [
+    {
+      "id": "demian_route_interaction_v1_20261011",
+      "program": "demian-v1",
+      "date": "2026-10-11",
+      "family": "six_channel_fixed_forcing_graded_route_intervention",
+      "status": "active_evidence",
+      "primary_summary": "data/diagnostics/demian_route_interaction_v1_20261011/summary.json",
+      "artifacts": [
+        "data/diagnostics/demian_route_interaction_v1_20261011/summary.json",
+        "docs/DEMIAN_ROUTE_INTERACTION_PROTOCOL.json",
+        "docs/DEMIAN_ROUTE_INTERACTION_RESULTS.md"
+      ],
+      "claim_ids": [],
+      "interpretation": "Graded carrier_to_slow reduction changes the targeted carrier-pulse response after route-only subtraction across development and held-out seeds. This supports route-sensitive propagation under fixed forcing, not direction specificity, memory, AFP-v2, adaptation, learning, or chaos."
+    },
+    {
+      "id": "demian_route_stability_v1_20261011",
+      "program": "demian-v1",
+      "date": "2026-10-11",
+      "family": "six_channel_fixed_forcing_route_intervention",
+      "status": "active_evidence",
+      "primary_summary": "data/diagnostics/demian_route_stability_v1_20261011/summary.json",
+      "artifacts": [
+        "data/diagnostics/demian_route_stability_v1_20261011/summary.json",
+        "docs/DEMIAN_ROUTE_STABILITY_PROTOCOL.json",
+        "docs/DEMIAN_ROUTE_STABILITY_RESULTS.md"
+      ],
+      "claim_ids": [],
+      "interpretation": "Fixed-forcing carrier pulses and a gain-zero carrier_to_slow lesion over development and held-out parameter seeds. The lesion changes the trajectory strongly by itself; pulse-plus-lesion remains close to lesion-only. This supports route consequence, not carrier-pulse mediation, memory, or AFP-v2."
+    },
     {
       "id": "demian_basin_horizon_pilot_20261005",
       "program": "demian-v1",

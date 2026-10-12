@@ -30,6 +30,21 @@ Purpose:
 - Scope: 3 parameter seeds, 3 trajectories, 96 dependent route steps.
 - Status: instrumentation validated; route hypotheses untested.
 
+## Fixed-Forcing Route Stability
+
+- Protocol: [../docs/DEMIAN_ROUTE_STABILITY_PROTOCOL.json](../docs/DEMIAN_ROUTE_STABILITY_PROTOCOL.json)
+- Summary: [diagnostics/demian_route_stability_v1_20261011/summary.json](diagnostics/demian_route_stability_v1_20261011/summary.json)
+- Interpretation: gain-zero `carrier_to_slow` lesion changes the trajectory strongly by itself;
+  this does not isolate carrier-pulse mediation.
+
+## Fixed-Forcing Route Interaction
+
+- Protocol: [../docs/DEMIAN_ROUTE_INTERACTION_PROTOCOL.json](../docs/DEMIAN_ROUTE_INTERACTION_PROTOCOL.json)
+- Summary: [diagnostics/demian_route_interaction_v1_20261011/summary.json](diagnostics/demian_route_interaction_v1_20261011/summary.json)
+- Interpretation: graded `carrier_to_slow` reduction changes the carrier-pulse
+  response after route-only subtraction; matched random-direction gain sweeps
+  remain required for direction specificity.
+
 ## Closed-Loop Baseline
 
 - Protocol: [CLOSED_LOOP_PROTOCOL.json](CLOSED_LOOP_PROTOCOL.json)

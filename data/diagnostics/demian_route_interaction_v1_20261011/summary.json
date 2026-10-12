@@ -1,0 +1,356 @@
+{
+  "cell_count": 96,
+  "claim_boundary": "fixed-forcing graded route intervention only; not memory, AFP-v2, adaptation, learning, or chaos",
+  "experiment": "demian-fixed-forcing-route-stability",
+  "schema_version": 1,
+  "summary": {
+    "development:carrier:route_multiplier=0": {
+      "arms": {
+        "lesion_only": {
+          "cell_count": 8,
+          "censored_cells": 8,
+          "mean_peak_finite_time_state_gain": null,
+          "recovered_cells": 0
+        },
+        "random_direction": {
+          "cell_count": 8,
+          "censored_cells": 8,
+          "mean_peak_finite_time_state_gain": 63.423176984479795,
+          "recovered_cells": 0
+        },
+        "sham": {
+          "cell_count": 8,
+          "censored_cells": 8,
+          "mean_peak_finite_time_state_gain": 31.705140343433076,
+          "recovered_cells": 0
+        },
+        "targeted_lesion": {
+          "cell_count": 8,
+          "censored_cells": 8,
+          "mean_peak_finite_time_state_gain": 197.67005217774187,
+          "recovered_cells": 0
+        }
+      },
+      "mean_peak_state_interaction_norm": 48.59024015069008
+    },
+    "development:carrier:route_multiplier=0.25": {
+      "arms": {
+        "lesion_only": {
+          "cell_count": 8,
+          "censored_cells": 8,
+          "mean_peak_finite_time_state_gain": null,
+          "recovered_cells": 0
+        },
+        "random_direction": {
+          "cell_count": 8,
+          "censored_cells": 8,
+          "mean_peak_finite_time_state_gain": 63.423176984479795,
+          "recovered_cells": 0
+        },
+        "sham": {
+          "cell_count": 8,
+          "censored_cells": 8,
+          "mean_peak_finite_time_state_gain": 31.705140343433076,
+          "recovered_cells": 0
+        },
+        "targeted_lesion": {
+          "cell_count": 8,
+          "censored_cells": 8,
+          "mean_peak_finite_time_state_gain": 177.20655792491567,
+          "recovered_cells": 0
+        }
+      },
+      "mean_peak_state_interaction_norm": 55.805632412433624
+    },
+    "development:carrier:route_multiplier=0.5": {
+      "arms": {
+        "lesion_only": {
+          "cell_count": 8,
+          "censored_cells": 8,
+          "mean_peak_finite_time_state_gain": null,
+          "recovered_cells": 0
+        },
+        "random_direction": {
+          "cell_count": 8,
+          "censored_cells": 8,
+          "mean_peak_finite_time_state_gain": 63.423176984479795,
+          "recovered_cells": 0
+        },
+        "sham": {
+          "cell_count": 8,
+          "censored_cells": 8,
+          "mean_peak_finite_time_state_gain": 31.705140343433076,
+          "recovered_cells": 0
+        },
+        "targeted_lesion": {
+          "cell_count": 8,
+          "censored_cells": 8,
+          "mean_peak_finite_time_state_gain": 144.0139398485654,
+          "recovered_cells": 0
+        }
+      },
+      "mean_peak_state_interaction_norm": 49.244975090026855
+    },
+    "development:carrier:route_multiplier=0.75": {
+      "arms": {
+        "lesion_only": {
+          "cell_count": 8,
+          "censored_cells": 8,
+          "mean_peak_finite_time_state_gain": null,
+          "recovered_cells": 0
+        },
+        "random_direction": {
+          "cell_count": 8,
+          "censored_cells": 8,
+          "mean_peak_finite_time_state_gain": 63.423176984479795,
+          "recovered_cells": 0
+        },
+        "sham": {
+          "cell_count": 8,
+          "censored_cells": 8,
+          "mean_peak_finite_time_state_gain": 31.705140343433076,
+          "recovered_cells": 0
+        },
+        "targeted_lesion": {
+          "cell_count": 8,
+          "censored_cells": 8,
+          "mean_peak_finite_time_state_gain": 102.51091943238511,
+          "recovered_cells": 0
+        }
+      },
+      "mean_peak_state_interaction_norm": 44.94496179372072
+    },
+    "development:carrier:route_multiplier=0.9": {
+      "arms": {
+        "lesion_only": {
+          "cell_count": 8,
+          "censored_cells": 8,
+          "mean_peak_finite_time_state_gain": null,
+          "recovered_cells": 0
+        },
+        "random_direction": {
+          "cell_count": 8,
+          "censored_cells": 8,
+          "mean_peak_finite_time_state_gain": 63.423176984479795,
+          "recovered_cells": 0
+        },
+        "sham": {
+          "cell_count": 8,
+          "censored_cells": 8,
+          "mean_peak_finite_time_state_gain": 31.705140343433076,
+          "recovered_cells": 0
+        },
+        "targeted_lesion": {
+          "cell_count": 8,
+          "censored_cells": 8,
+          "mean_peak_finite_time_state_gain": 64.34629473069616,
+          "recovered_cells": 0
+        }
+      },
+      "mean_peak_state_interaction_norm": 30.81216152012348
+    },
+    "development:carrier:route_multiplier=1": {
+      "arms": {
+        "lesion_only": {
+          "cell_count": 8,
+          "censored_cells": 0,
+          "mean_peak_finite_time_state_gain": null,
+          "recovered_cells": 8
+        },
+        "random_direction": {
+          "cell_count": 8,
+          "censored_cells": 8,
+          "mean_peak_finite_time_state_gain": 63.423176984479795,
+          "recovered_cells": 0
+        },
+        "sham": {
+          "cell_count": 8,
+          "censored_cells": 8,
+          "mean_peak_finite_time_state_gain": 31.705140343433076,
+          "recovered_cells": 0
+        },
+        "targeted_lesion": {
+          "cell_count": 8,
+          "censored_cells": 8,
+          "mean_peak_finite_time_state_gain": 31.705140343433076,
+          "recovered_cells": 0
+        }
+      },
+      "mean_peak_state_interaction_norm": 0.0
+    },
+    "heldout:carrier:route_multiplier=0": {
+      "arms": {
+        "lesion_only": {
+          "cell_count": 8,
+          "censored_cells": 8,
+          "mean_peak_finite_time_state_gain": null,
+          "recovered_cells": 0
+        },
+        "random_direction": {
+          "cell_count": 8,
+          "censored_cells": 8,
+          "mean_peak_finite_time_state_gain": 34.25997306032701,
+          "recovered_cells": 0
+        },
+        "sham": {
+          "cell_count": 8,
+          "censored_cells": 8,
+          "mean_peak_finite_time_state_gain": 48.41365113228712,
+          "recovered_cells": 0
+        },
+        "targeted_lesion": {
+          "cell_count": 8,
+          "censored_cells": 8,
+          "mean_peak_finite_time_state_gain": 178.69052259053703,
+          "recovered_cells": 0
+        }
+      },
+      "mean_peak_state_interaction_norm": 71.50374785065651
+    },
+    "heldout:carrier:route_multiplier=0.25": {
+      "arms": {
+        "lesion_only": {
+          "cell_count": 8,
+          "censored_cells": 8,
+          "mean_peak_finite_time_state_gain": null,
+          "recovered_cells": 0
+        },
+        "random_direction": {
+          "cell_count": 8,
+          "censored_cells": 8,
+          "mean_peak_finite_time_state_gain": 34.25997306032701,
+          "recovered_cells": 0
+        },
+        "sham": {
+          "cell_count": 8,
+          "censored_cells": 8,
+          "mean_peak_finite_time_state_gain": 48.41365113228712,
+          "recovered_cells": 0
+        },
+        "targeted_lesion": {
+          "cell_count": 8,
+          "censored_cells": 8,
+          "mean_peak_finite_time_state_gain": 160.70793762534458,
+          "recovered_cells": 0
+        }
+      },
+      "mean_peak_state_interaction_norm": 69.85812240839005
+    },
+    "heldout:carrier:route_multiplier=0.5": {
+      "arms": {
+        "lesion_only": {
+          "cell_count": 8,
+          "censored_cells": 8,
+          "mean_peak_finite_time_state_gain": null,
+          "recovered_cells": 0
+        },
+        "random_direction": {
+          "cell_count": 8,
+          "censored_cells": 8,
+          "mean_peak_finite_time_state_gain": 34.25997306032701,
+          "recovered_cells": 0
+        },
+        "sham": {
+          "cell_count": 8,
+          "censored_cells": 8,
+          "mean_peak_finite_time_state_gain": 48.41365113228712,
+          "recovered_cells": 0
+        },
+        "targeted_lesion": {
+          "cell_count": 8,
+          "censored_cells": 8,
+          "mean_peak_finite_time_state_gain": 142.93628994041455,
+          "recovered_cells": 0
+        }
+      },
+      "mean_peak_state_interaction_norm": 69.09325420856476
+    },
+    "heldout:carrier:route_multiplier=0.75": {
+      "arms": {
+        "lesion_only": {
+          "cell_count": 8,
+          "censored_cells": 8,
+          "mean_peak_finite_time_state_gain": null,
+          "recovered_cells": 0
+        },
+        "random_direction": {
+          "cell_count": 8,
+          "censored_cells": 8,
+          "mean_peak_finite_time_state_gain": 34.25997306032701,
+          "recovered_cells": 0
+        },
+        "sham": {
+          "cell_count": 8,
+          "censored_cells": 8,
+          "mean_peak_finite_time_state_gain": 48.41365113228712,
+          "recovered_cells": 0
+        },
+        "targeted_lesion": {
+          "cell_count": 8,
+          "censored_cells": 8,
+          "mean_peak_finite_time_state_gain": 115.64125882735641,
+          "recovered_cells": 0
+        }
+      },
+      "mean_peak_state_interaction_norm": 62.978779181838036
+    },
+    "heldout:carrier:route_multiplier=0.9": {
+      "arms": {
+        "lesion_only": {
+          "cell_count": 8,
+          "censored_cells": 8,
+          "mean_peak_finite_time_state_gain": null,
+          "recovered_cells": 0
+        },
+        "random_direction": {
+          "cell_count": 8,
+          "censored_cells": 8,
+          "mean_peak_finite_time_state_gain": 34.25997306032701,
+          "recovered_cells": 0
+        },
+        "sham": {
+          "cell_count": 8,
+          "censored_cells": 8,
+          "mean_peak_finite_time_state_gain": 48.41365113228712,
+          "recovered_cells": 0
+        },
+        "targeted_lesion": {
+          "cell_count": 8,
+          "censored_cells": 8,
+          "mean_peak_finite_time_state_gain": 76.77763547347097,
+          "recovered_cells": 0
+        }
+      },
+      "mean_peak_state_interaction_norm": 56.64182795584202
+    },
+    "heldout:carrier:route_multiplier=1": {
+      "arms": {
+        "lesion_only": {
+          "cell_count": 8,
+          "censored_cells": 0,
+          "mean_peak_finite_time_state_gain": null,
+          "recovered_cells": 8
+        },
+        "random_direction": {
+          "cell_count": 8,
+          "censored_cells": 8,
+          "mean_peak_finite_time_state_gain": 34.25997306032701,
+          "recovered_cells": 0
+        },
+        "sham": {
+          "cell_count": 8,
+          "censored_cells": 8,
+          "mean_peak_finite_time_state_gain": 48.41365113228712,
+          "recovered_cells": 0
+        },
+        "targeted_lesion": {
+          "cell_count": 8,
+          "censored_cells": 8,
+          "mean_peak_finite_time_state_gain": 48.41365113228712,
+          "recovered_cells": 0
+        }
+      },
+      "mean_peak_state_interaction_norm": 0.0
+    }
+  }
+}

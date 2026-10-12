@@ -1,0 +1,60 @@
+{
+  "cell_count": 144,
+  "claim_boundary": "fixed-forcing channel-pulse and route-lesion characterization only; not memory, AFP-v2, adaptation, learning, or chaos",
+  "experiment": "demian-fixed-forcing-route-stability",
+  "schema_version": 1,
+  "summary": {
+    "development:carrier": {
+      "lesion_only": {
+        "cell_count": 72,
+        "censored_cells": 72,
+        "mean_peak_finite_time_state_gain": null,
+        "recovered_cells": 0
+      },
+      "random_direction": {
+        "cell_count": 72,
+        "censored_cells": 72,
+        "mean_peak_finite_time_state_gain": 50.200188468006935,
+        "recovered_cells": 0
+      },
+      "sham": {
+        "cell_count": 72,
+        "censored_cells": 72,
+        "mean_peak_finite_time_state_gain": 44.82069367617758,
+        "recovered_cells": 0
+      },
+      "targeted_lesion": {
+        "cell_count": 72,
+        "censored_cells": 72,
+        "mean_peak_finite_time_state_gain": 304.32324301102585,
+        "recovered_cells": 0
+      }
+    },
+    "heldout:carrier": {
+      "lesion_only": {
+        "cell_count": 72,
+        "censored_cells": 72,
+        "mean_peak_finite_time_state_gain": null,
+        "recovered_cells": 0
+      },
+      "random_direction": {
+        "cell_count": 72,
+        "censored_cells": 72,
+        "mean_peak_finite_time_state_gain": 37.625356626960325,
+        "recovered_cells": 0
+      },
+      "sham": {
+        "cell_count": 72,
+        "censored_cells": 72,
+        "mean_peak_finite_time_state_gain": 39.844881267557305,
+        "recovered_cells": 0
+      },
+      "targeted_lesion": {
+        "cell_count": 72,
+        "censored_cells": 72,
+        "mean_peak_finite_time_state_gain": 277.4733431401419,
+        "recovered_cells": 0
+      }
+    }
+  }
+}
