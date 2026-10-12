@@ -62,6 +62,7 @@ def test_route_stability_protocol_keeps_development_and_heldout_seed_splits_expl
         "amplitudes": [0.003, 0.01, 0.03],
         "direction_seeds": [1701],
         "random_direction_seed_offset": 1000,
+        "include_random_route_interaction": True,
         "recovery_threshold": 1e-6,
         "recovery_dwell": 2,
     }
@@ -73,3 +74,30 @@ def test_route_stability_protocol_keeps_development_and_heldout_seed_splits_expl
     assert {cell["config"]["amplitude"] for cell in payload["cells"]} == {0.003, 0.01, 0.03}
     assert {cell["config"]["intervention_tick"] for cell in payload["cells"]} == {4, 8}
     assert {cell["config"]["route_multiplier"] for cell in payload["cells"]} == {1.0, 0.5, 0.0}
+    assert all("mean_peak_random_state_interaction_norm" in group for group in payload["summary"].values())
+
+
+def test_route_selectivity_cell_adds_matched_random_direction_gain_interaction() -> None:
+    runner = ComparatorRunner(architecture="demian", seed=94, hidden_size=8, cue_symbol=1, delay_steps=15)
+    frames = [runner.step().input_frame for _ in range(16)]
+
+    result = run_route_stability_cell(
+        seed=94,
+        hidden_size=8,
+        frames=frames,
+        channel="carrier",
+        route_id="carrier_to_slow",
+        intervention_tick=4,
+        amplitude=0.01,
+        direction_seed=1701,
+        random_direction_seed=2701,
+        recovery_threshold=1e-6,
+        recovery_dwell=2,
+        route_multiplier=0.5,
+        include_random_route_interaction=True,
+    )
+
+    assert "random_targeted_lesion" in result["arms"]
+    assert result["arms"]["random_targeted_lesion"]["route_multiplier"] == 0.5
+    assert len(result["random_interaction_trajectory"]) == len(frames) - 4 + 1
+    assert all("state_interaction_norm" in point for point in result["random_interaction_trajectory"])

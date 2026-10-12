@@ -127,6 +127,7 @@ def run_route_stability_cell(
     recovery_threshold: float,
     recovery_dwell: int,
     route_multiplier: float = 0.0,
+    include_random_route_interaction: bool = False,
 ) -> dict[str, object]:
     """Replay one stream across a targeted lesion and two matched pulse controls."""
     if not frames:
@@ -153,6 +154,10 @@ def run_route_stability_cell(
         "sham": ClosedLoopModelAdapter(architecture="demian", seed=seed, hidden_size=hidden_size),
         "random_direction": ClosedLoopModelAdapter(architecture="demian", seed=seed, hidden_size=hidden_size),
     }
+    if include_random_route_interaction:
+        arms["random_targeted_lesion"] = ClosedLoopModelAdapter(
+            architecture="demian", seed=seed, hidden_size=hidden_size
+        )
     results: dict[str, dict[str, object]] = {
         "baseline": {"route_multiplier": 1.0, "trajectory": []},
         "lesion_only": {"route_multiplier": route_multiplier, "trajectory": []},
@@ -160,23 +165,30 @@ def run_route_stability_cell(
         "sham": {"route_multiplier": 1.0, "trajectory": []},
         "random_direction": {"route_multiplier": 1.0, "trajectory": []},
     }
+    if include_random_route_interaction:
+        results["random_targeted_lesion"] = {"route_multiplier": route_multiplier, "trajectory": []}
     prior_states = {name: tuple(value.detach().clone() for value in adapter.state) for name, adapter in arms.items()}
     prior_baseline_state = tuple(value.detach().clone() for value in baseline.state)
     normalization_pulse_norm: float | None = None
     interaction_trajectory: list[dict[str, object]] = []
+    random_interaction_trajectory: list[dict[str, object]] = []
 
     for tick, frame in enumerate(frames):
         if tick == intervention_tick:
             _set_route_multiplier(arms["lesion_only"], route_id=route_id, multiplier=route_multiplier)
             _set_route_multiplier(arms["targeted_lesion"], route_id=route_id, multiplier=route_multiplier)
             _set_route_multiplier(arms["sham"], route_id=route_id, multiplier=1.0)
+            if include_random_route_interaction:
+                _set_route_multiplier(
+                    arms["random_targeted_lesion"], route_id=route_id, multiplier=route_multiplier
+                )
             normalization_pulse_norm = None
             for name, adapter in arms.items():
                 index = V1_CHANNELS.index(channel)
                 if name == "lesion_only":
                     initial_norm = 0.0
                 else:
-                    pulse_seed = random_direction_seed if name == "random_direction" else direction_seed
+                    pulse_seed = random_direction_seed if name.startswith("random_") else direction_seed
                     adapter.state = channel_pulse(
                         adapter.state, channel=channel, amplitude=amplitude, direction_seed=pulse_seed, sign=1
                     )
@@ -221,6 +233,17 @@ def run_route_stability_cell(
                     pulse_sham=arms["sham"],
                 )
             )
+            if include_random_route_interaction:
+                random_interaction_trajectory.append(
+                    _interaction_measurement(
+                        tick=tick,
+                        transitions_after_pulse=0,
+                        baseline=baseline,
+                        route_only=arms["lesion_only"],
+                        pulse_route=arms["random_targeted_lesion"],
+                        pulse_sham=arms["random_direction"],
+                    )
+                )
 
         baseline.advance(frame.observation, frame.acknowledgement)
         for name, adapter in arms.items():
@@ -263,13 +286,24 @@ def run_route_stability_cell(
                     pulse_sham=arms["sham"],
                 )
             )
+            if include_random_route_interaction:
+                random_interaction_trajectory.append(
+                    _interaction_measurement(
+                        tick=tick,
+                        transitions_after_pulse=tick - intervention_tick + 1,
+                        baseline=baseline,
+                        route_only=arms["lesion_only"],
+                        pulse_route=arms["random_targeted_lesion"],
+                        pulse_sham=arms["random_direction"],
+                    )
+                )
         prior_baseline_state = tuple(value.detach().clone() for value in baseline.state)
 
     for name in arms:
         trajectory = results[name]["trajectory"]
         assert isinstance(trajectory, list)
         results[name]["recovery"] = _recovery(trajectory, threshold=recovery_threshold, dwell=recovery_dwell)
-    return {
+    payload = {
         "schema_version": 1,
         "experiment": "demian-fixed-forcing-route-stability",
         "seed": seed,
@@ -288,3 +322,6 @@ def run_route_stability_cell(
         "arms": results,
         "interaction_trajectory": interaction_trajectory,
     }
+    if include_random_route_interaction:
+        payload["random_interaction_trajectory"] = random_interaction_trajectory
+    return payload

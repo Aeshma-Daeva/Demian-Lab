@@ -83,6 +83,8 @@ def _validate(protocol: dict) -> None:
         raise ValueError("recovery threshold must be finite and positive")
     if protocol["recovery_dwell"] < 1:
         raise ValueError("recovery dwell must be positive")
+    if not isinstance(protocol.get("include_random_route_interaction", False), bool):
+        raise ValueError("include_random_route_interaction must be boolean")
 
 
 def run_route_stability_protocol(protocol: dict) -> dict[str, object]:
@@ -110,6 +112,7 @@ def run_route_stability_protocol(protocol: dict) -> dict[str, object]:
                                     recovery_threshold=protocol["recovery_threshold"],
                                     recovery_dwell=protocol["recovery_dwell"],
                                     route_multiplier=route_multiplier,
+                                    include_random_route_interaction=protocol.get("include_random_route_interaction", False),
                                 )
                                 cells.append({"split": split, **cell})
     return {"cells": cells, "summary": _summarize(cells)}
@@ -150,10 +153,21 @@ def _summarize(cells: list[dict[str, object]]) -> dict[str, object]:
             max(float(point["state_interaction_norm"]) for point in row["interaction_trajectory"])
             for row in rows
         ]
-        summary[f"{split}:{channel}:route_multiplier={route_multiplier:g}"] = {
+        group_summary = {
             "arms": arm_summary,
             "mean_peak_state_interaction_norm": mean(interaction_peaks),
         }
+        random_interaction_peaks = [
+            max(float(point["state_interaction_norm"]) for point in row["random_interaction_trajectory"])
+            for row in rows
+            if "random_interaction_trajectory" in row
+        ]
+        if random_interaction_peaks:
+            group_summary["mean_peak_random_state_interaction_norm"] = mean(random_interaction_peaks)
+            group_summary["mean_peak_selectivity_gap"] = (
+                group_summary["mean_peak_state_interaction_norm"] - group_summary["mean_peak_random_state_interaction_norm"]
+            )
+        summary[f"{split}:{channel}:route_multiplier={route_multiplier:g}"] = group_summary
     return summary
 
 
