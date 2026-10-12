@@ -1,6 +1,6 @@
 # Labbook
 
-Last updated: 2026-05-16
+Last updated: 2026-10-12
 
 ## Purpose
 
@@ -849,3 +849,32 @@ Interpretation:
 Artifact:
 
 - `data/diagnostics/demian_v1_characterization_20261005/summary.json`
+
+## 2026-10-11 - Fixed-Forcing Route Interventions
+
+Purpose:
+
+- Test whether `carrier_to_slow` is dynamically consequential and whether its
+  graded strength changes the response to a carrier pulse.
+
+Artifacts:
+
+- `data/diagnostics/demian_route_stability_v1_20261011/summary.json`
+- `data/diagnostics/demian_route_interaction_v1_20261011/summary.json`
+- `docs/DEMIAN_ROUTE_STABILITY_RESULTS.md`
+- `docs/DEMIAN_ROUTE_INTERACTION_RESULTS.md`
+
+Result:
+
+- Gain-zero route lesions strongly alter the trajectory alone; this does not
+  isolate pulse mediation.
+- Reduced route multipliers produce nonzero carrier-pulse
+  difference-of-differences norms in development and held-out seeds.
+
+Interpretation:
+
+- Preliminary fixed-forcing route-sensitive propagation evidence only.
+
+Next check:
+
+- Matched random-direction gain sweep for direction specificity.
