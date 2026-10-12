@@ -239,6 +239,15 @@ def validate_registry_artifact_provenance(source: Path, repository_root: Path) -
         )
         if revision.returncode != 0:
             raise ValueError(f"artifact commit does not resolve: {artifact.commit}")
+        pinned_path = subprocess.run(
+            ["git", "cat-file", "-e", f"{artifact.commit}:{artifact.path}"],
+            cwd=root,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        if pinned_path.returncode != 0:
+            raise ValueError(f"artifact path is absent at pinned commit: {artifact.commit}:{artifact.path}")
     return registry
 
 

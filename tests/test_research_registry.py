@@ -163,6 +163,13 @@ def test_registry_provenance_rejects_missing_path_and_unknown_commit(tmp_path: P
     with pytest.raises(ValueError, match="artifact commit does not resolve"):
         validate_registry_artifact_provenance(source, Path("."))
 
+    payload = _payload()
+    route_artifact = next(item for item in payload["artifacts"] if item["id"] == "A-ROUTE-STABILITY-SUMMARY-001")
+    route_artifact["commit"] = "c822bfdb2acbd3db2a57760282983d607f65f9c8"
+    source.write_text(json.dumps(payload))
+    with pytest.raises(ValueError, match="artifact path is absent at pinned commit"):
+        validate_registry_artifact_provenance(source, Path("."))
+
 
 def test_status_evidence_must_be_considered_and_linked() -> None:
     payload = _payload()
