@@ -1,0 +1,28 @@
+name: Research Registry
+
+on:
+  pull_request:
+    paths:
+      - "data/RESEARCH_REGISTRY.json"
+      - "development/research_registry.py"
+      - "tests/test_research_registry.py"
+      - ".github/workflows/research-registry.yml"
+  push:
+    branches: [main]
+    paths:
+      - "data/RESEARCH_REGISTRY.json"
+      - "development/research_registry.py"
+      - "tests/test_research_registry.py"
+      - ".github/workflows/research-registry.yml"
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install "pydantic>=2.13.0" pytest
+      - run: python -m pytest tests/test_research_registry.py -q
+      - run: python -m development.research_registry validate data/RESEARCH_REGISTRY.json

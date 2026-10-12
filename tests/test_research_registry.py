@@ -4,6 +4,8 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+import subprocess
+import sys
 
 import pytest
 from pydantic import ValidationError
@@ -156,6 +158,55 @@ def test_continuation_result_has_result_specific_scope() -> None:
     assert result.analysis_scope.comparison_count == 6
     assert result.analysis_scope.comparison_unit == "reference controls"
     assert "gate modes share parameter seeds" in result.analysis_scope.dependent_observations
+
+
+def test_registry_cli_validates_checked_in_registry() -> None:
+    completed = subprocess.run(
+        [sys.executable, "-m", "development.research_registry", "validate", str(REGISTRY_PATH)],
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+
+    assert completed.returncode == 0
+    assert completed.stdout.strip() == f"valid: {REGISTRY_PATH}"
+    assert completed.stderr == ""
+
+
+def test_registry_cli_rejects_invalid_input_and_does_not_export(tmp_path: Path) -> None:
+    payload = _payload()
+    payload["hypotheses"][0]["result_ids"].append("R-MISSING")
+    source = tmp_path / "invalid.json"
+    destination = tmp_path / "snapshot.json"
+    source.write_text(json.dumps(payload))
+
+    completed = subprocess.run(
+        [sys.executable, "-m", "development.research_registry", "export", str(source), str(destination)],
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+
+    assert completed.returncode == 2
+    assert completed.stdout == ""
+    assert "validation failed:" in completed.stderr
+    assert not destination.exists()
+
+
+def test_registry_cli_exports_deterministic_snapshot(tmp_path: Path) -> None:
+    destination = tmp_path / "snapshot.json"
+
+    completed = subprocess.run(
+        [sys.executable, "-m", "development.research_registry", "export", str(REGISTRY_PATH), str(destination)],
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+
+    assert completed.returncode == 0
+    assert completed.stdout.strip() == f"exported: {destination}"
+    assert completed.stderr == ""
+    assert destination.read_text() == json.dumps(_payload(), indent=2, sort_keys=True) + "\n"
 
 
 def test_route_pilot_remains_unevaluable_for_route_hypotheses() -> None:

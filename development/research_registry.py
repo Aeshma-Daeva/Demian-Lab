@@ -4,6 +4,8 @@
 from __future__ import annotations
 
 import json
+import argparse
+import sys
 from pathlib import Path
 from typing import Any, Literal
 
@@ -226,3 +228,31 @@ def export_registry_snapshot(source: Path, destination: Path) -> Path:
     destination.parent.mkdir(parents=True, exist_ok=True)
     destination.write_text(payload, encoding="utf-8")
     return destination
+
+
+def main(argv: list[str] | None = None) -> int:
+    """Validate or export a concise research registry snapshot."""
+    parser = argparse.ArgumentParser(description="Validate a Demian research registry.")
+    commands = parser.add_subparsers(dest="command", required=True)
+    validate = commands.add_parser("validate", help="validate a registry")
+    validate.add_argument("source", type=Path)
+    export = commands.add_parser("export", help="validate and export a registry snapshot")
+    export.add_argument("source", type=Path)
+    export.add_argument("destination", type=Path)
+    args = parser.parse_args(argv)
+
+    try:
+        if args.command == "validate":
+            validate_registry(args.source)
+            print(f"valid: {args.source}")
+        else:
+            export_registry_snapshot(args.source, args.destination)
+            print(f"exported: {args.destination}")
+    except (OSError, ValueError) as error:
+        print(f"validation failed: {error}", file=sys.stderr)
+        return 2
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
