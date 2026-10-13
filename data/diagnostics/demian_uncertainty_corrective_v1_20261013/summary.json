@@ -1,0 +1,46 @@
+{
+  "claim_boundary": "corrective held-out probe only; no retained-evidence, uncertainty, causal, routing, utility, learning, or adaptation claim without review",
+  "experiment": "demian-uncertainty-corrective",
+  "integrity": {
+    "all_finite": true,
+    "probe_scope": "per-model-seed, schedule-target-stratified complete episodes"
+  },
+  "row_count": 4096,
+  "schema_version": 1,
+  "score_count": 880,
+  "summary": {
+    "carrier": {
+      "mean_r2": 0.9848816795741613
+    },
+    "control": {
+      "mean_r2": 0.7849637779505118
+    },
+    "current_observation": {
+      "mean_r2": -0.03913696740312531
+    },
+    "fast": {
+      "mean_r2": 0.9803146734141149
+    },
+    "full_state": {
+      "mean_r2": 0.9975087594597294
+    },
+    "full_state_shuffled_label": {
+      "mean_r2": -0.5654397505196653
+    },
+    "gate": {
+      "mean_r2": 0.9884164225508876
+    },
+    "latest_observation": {
+      "mean_r2": 0.07013967742424676
+    },
+    "message": {
+      "mean_r2": 0.9791994445005319
+    },
+    "schedule_only": {
+      "mean_r2": -0.10662797640747539
+    },
+    "slow": {
+      "mean_r2": 0.9857945317679612
+    }
+  }
+}

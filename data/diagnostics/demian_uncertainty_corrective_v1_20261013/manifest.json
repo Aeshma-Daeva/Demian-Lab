@@ -1,0 +1,79 @@
+{
+  "protocol": {
+    "allocation_seed": 20261013,
+    "analysis_scope": "per-model-seed and delay; five schedule-target-stratified split sensitivities are dependent within seed",
+    "checkpoint": "post-transition final delay frame; no resolution frame is supplied to Demian",
+    "claim_boundary": "corrective held-out probe only; no representation, causal, routing, utility, learning, or adaptation claim without manual review",
+    "controls": [
+      "current_observation",
+      "latest_observation",
+      "schedule_only",
+      "full_state_shuffled_label"
+    ],
+    "corpus": "every binary symbol history exactly once per reliability permutation; independent balanced hidden target allocation per schedule",
+    "delay_steps": [
+      8,
+      32
+    ],
+    "falsifier": "full-state decoding does not exceed current, latest, schedule-only, and shuffled-label controls across the fixed parameter seeds",
+    "heldout_fraction": 0.3125,
+    "hidden_size": 256,
+    "model_seeds": [
+      294,
+      295,
+      296,
+      297,
+      394,
+      395,
+      396,
+      397
+    ],
+    "primary_target": "public-evidence log_odds",
+    "protocol_id": "demian-uncertainty-corrective-v1",
+    "reliability_schedules": [
+      [
+        0.95,
+        0.75,
+        0.5,
+        0.75,
+        0.95,
+        0.5
+      ],
+      [
+        0.5,
+        0.95,
+        0.75,
+        0.5,
+        0.75,
+        0.95
+      ],
+      [
+        0.75,
+        0.95,
+        0.5,
+        0.95,
+        0.75,
+        0.5
+      ],
+      [
+        0.5,
+        0.75,
+        0.95,
+        0.75,
+        0.5,
+        0.95
+      ]
+    ],
+    "ridge_alpha": 0.001,
+    "split_seeds": [
+      101,
+      211,
+      307,
+      401,
+      503
+    ]
+  },
+  "protocol_sha256": "c2fbc4b74c839dc4d81b64082d9c019ecdbac5c3a9d00621917b19463f8cb8a5",
+  "row_count": 4096,
+  "score_count": 880
+}
