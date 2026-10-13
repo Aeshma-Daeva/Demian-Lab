@@ -1,0 +1,14 @@
+{
+  "protocol_id": "demian-uncertainty-geometry-v1",
+  "claim_boundary": "label-free paired state-geometry description only; no retained-evidence, causal-channel, routing, utility, learning, or adaptation claim",
+  "hidden_size": 256,
+  "model_seeds": [294, 295, 296, 297, 394, 395, 396, 397],
+  "base_delay_steps": 32,
+  "train_reliability_schedules": [[0.95, 0.75, 0.5, 0.75, 0.95, 0.5], [0.5, 0.95, 0.75, 0.5, 0.75, 0.95]],
+  "heldout_reliability_schedules": [[0.75, 0.95, 0.5, 0.95, 0.75, 0.5]],
+  "allocation_seed": 20261013,
+  "comparisons": ["base to two-extra-delay", "base to each two-symbol reliability-0.5 suffix"],
+  "measurements": ["full-state and channel norm ratio", "full-state and channel cosine", "paired displacement", "pairwise-distance correlation", "pairwise-distance ratio"],
+  "independent_unit": "model seed; histories and neutral suffixes are dependent paired observations",
+  "falsifier": "not applicable: descriptive measurement used only to nominate one subsequent predeclared transform"
+}
