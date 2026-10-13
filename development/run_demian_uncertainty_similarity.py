@@ -88,7 +88,7 @@ def collect_clouds(protocol: dict[str, Any]) -> tuple[dict[tuple[int, str, str],
     for seed in protocol['model_seeds']:
         for family in ('train', 'heldout'):
             specs = _base_specs([protocol[f'{family}_reliability_schedule']], family=family, allocation_seed=int(protocol['allocation_seed']) + (family == 'heldout'), offset=0)
-            for variant in VARIANTS:
+            for variant in protocol.get('variants', VARIANTS):
                 collected = []
                 for spec in specs:
                     evidence = spec['base_evidence']
@@ -154,6 +154,8 @@ def write_artifacts(out: Path, protocol: dict[str, Any], payload: dict[str, Any]
     out.mkdir(parents=True, exist_ok=False)
     np.savez_compressed(out / 'states.npz', states=payload['states'])
     np.savez_compressed(out / 'transforms.npz', **payload['transforms'])
+    if 'predictions' in payload:
+        np.savez_compressed(out / 'predictions.npz', **payload['predictions'])
     for filename, rows in (('metrics.jsonl', payload['metrics']), ('state_metadata.jsonl', payload['state_metadata'])):
         with (out / filename).open('x') as stream:
             for row in rows:
