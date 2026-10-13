@@ -1,0 +1,18 @@
+{
+  "protocol_id": "demian-uncertainty-corrective-v1",
+  "claim_boundary": "corrective held-out probe only; no representation, causal, routing, utility, learning, or adaptation claim without manual review",
+  "hidden_size": 256,
+  "model_seeds": [294, 295, 296, 297, 394, 395, 396, 397],
+  "delay_steps": [8, 32],
+  "reliability_schedules": [[0.95, 0.75, 0.5, 0.75, 0.95, 0.5], [0.5, 0.95, 0.75, 0.5, 0.75, 0.95], [0.75, 0.95, 0.5, 0.95, 0.75, 0.5], [0.5, 0.75, 0.95, 0.75, 0.5, 0.95]],
+  "corpus": "every binary symbol history exactly once per reliability permutation; independent balanced hidden target allocation per schedule",
+  "allocation_seed": 20261013,
+  "split_seeds": [101, 211, 307, 401, 503],
+  "heldout_fraction": 0.3125,
+  "ridge_alpha": 0.001,
+  "checkpoint": "post-transition final delay frame; no resolution frame is supplied to Demian",
+  "primary_target": "public-evidence log_odds",
+  "controls": ["current_observation", "latest_observation", "schedule_only", "full_state_shuffled_label"],
+  "analysis_scope": "per-model-seed and delay; five schedule-target-stratified split sensitivities are dependent within seed",
+  "falsifier": "full-state decoding does not exceed current, latest, schedule-only, and shuffled-label controls across the fixed parameter seeds"
+}

@@ -43,7 +43,7 @@ def resolve_episode_specs(protocol: dict[str, Any]) -> list[dict[str, Any]]:
     while len(specs) < episode_count:
         episode_id = len(specs)
         target = episode_id % 2
-        schedule = schedules[episode_id % len(schedules)]
+        schedule = schedules[(episode_id // 2) % len(schedules)]
         evidence = sample_evidence(hidden_target=target, reliabilities=schedule, seed=next_seed)
         next_seed += 1
         attempts += 1

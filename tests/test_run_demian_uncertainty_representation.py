@@ -46,3 +46,5 @@ def test_resolved_episode_specs_have_unique_public_histories() -> None:
     assert len(specs) == 12
     assert len({spec["public_history"] for spec in specs}) == 12
     assert {spec["target"] for spec in specs} == {0, 1}
+    for schedule in {tuple(spec["schedule"]) for spec in specs}:
+        assert {spec["target"] for spec in specs if tuple(spec["schedule"]) == schedule} == {0, 1}
