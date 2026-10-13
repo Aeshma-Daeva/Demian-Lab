@@ -1,0 +1,81 @@
+{
+  "protocol": {
+    "acceptance_criterion": "for every seed, B, every C suffix, and every fixed projection sensitivity, L2-normalized projected state exceeds every matched control; this supports only scale-normalized transfer",
+    "allocation_seed": 20261013,
+    "base_delay_steps": 32,
+    "claim_boundary": "paired scale-normalized frozen-probe measurement only; no causal, routing, utility, learning, adaptation, calibrated-belief, or general capability claim without manual review",
+    "conditions": {
+      "base": "six evidence plus D delay",
+      "delay_plus_two": "same six evidence plus D+2 delay",
+      "neutral_cue_plus_two": "same six evidence plus each reliability-0.5 two-symbol suffix plus D delay"
+    },
+    "controls": [
+      "untransformed frozen full-state",
+      "current delay observation",
+      "latest informative sixth observation",
+      "literal latest observation",
+      "padded reliability plus length",
+      "conditional label shuffle",
+      "constant"
+    ],
+    "falsifier": "any B or C failure under the fixed L2 transform; no causal channel intervention follows failure",
+    "fit_scope": "fit coefficients and feature standardization on transformed train-family base rows only; apply the exact frozen probe to heldout A/B/C rows",
+    "heldout_reliability_schedules": [
+      [
+        0.75,
+        0.95,
+        0.5,
+        0.95,
+        0.75,
+        0.5
+      ]
+    ],
+    "hidden_size": 256,
+    "independent_unit": "model seed; neutral suffixes and projection settings are dependent sensitivity conditions",
+    "model_seeds": [
+      294,
+      295,
+      296,
+      297,
+      394,
+      395,
+      396,
+      397
+    ],
+    "primary_target": "six-event public-evidence log_odds, identical across paired variants",
+    "primary_transform": "divide each complete full-state vector by its own pre-resolution global L2 norm before fixed projection; no condition-wide, corpus-wide, or label-dependent statistics",
+    "projection_dimensions": [
+      8,
+      16,
+      32
+    ],
+    "projection_seeds": [
+      17,
+      29,
+      43
+    ],
+    "protocol_id": "demian-uncertainty-l2-invariance-v1",
+    "ridge_alpha": 1.0,
+    "train_reliability_schedules": [
+      [
+        0.95,
+        0.75,
+        0.5,
+        0.75,
+        0.95,
+        0.5
+      ],
+      [
+        0.5,
+        0.95,
+        0.75,
+        0.5,
+        0.75,
+        0.95
+      ]
+    ]
+  },
+  "protocol_sha256": "33c590688d0014ac14aa13b582b36e36d404a51093e485c6befb449e37bc2bc4",
+  "row_count": 4096,
+  "score_count": 1920
+}
