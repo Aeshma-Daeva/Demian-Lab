@@ -23,3 +23,7 @@ def test_partition_preserves_every_array_row_and_original_hash(tmp_path):
         assert restored.dtype == expected.dtype
         np.testing.assert_array_equal(restored, expected)
     assert manifest['reconstruction_verified']
+    assert hasattr(module, 'validate_reconstruction'), 'canonical array-byte verification missing'
+    validation = module.validate_reconstruction(source, tmp_path/'parts')
+    assert validation['array_sha256']['x'] == hashlib.sha256(x.tobytes()).hexdigest()
+    assert validation['array_sha256']['y'] == hashlib.sha256(y.tobytes()).hexdigest()

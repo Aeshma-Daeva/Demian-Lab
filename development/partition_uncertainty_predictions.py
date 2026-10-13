@@ -9,6 +9,37 @@ from pathlib import Path
 import numpy as np
 
 
+def validate_reconstruction(source: Path, parts_directory: Path) -> dict:
+    """Verify canonical raw array bytes, including signed-zero representation."""
+    manifest = json.loads((parts_directory/'partition_manifest.json').read_text())
+    if hashlib.sha256(source.read_bytes()).hexdigest() != manifest['source_sha256']:
+        raise RuntimeError('original source hash mismatch')
+    hashes = {key: hashlib.sha256() for key in manifest['arrays']}
+    next_row = 0
+    for part in manifest['parts']:
+        path = parts_directory/part['file']
+        if part['row_start'] != next_row or hashlib.sha256(path.read_bytes()).hexdigest() != part['sha256']:
+            raise RuntimeError('partition ordering or file hash mismatch')
+        with np.load(path, allow_pickle=False) as saved:
+            if set(saved.files) != set(hashes):
+                raise RuntimeError('partition array names mismatch')
+            for key, digest in hashes.items():
+                value = saved[key]
+                schema = manifest['arrays'][key]
+                if list(value.shape) != [part['row_stop']-part['row_start'], *schema['shape'][1:]] or str(value.dtype) != schema['dtype']:
+                    raise RuntimeError('partition shape or dtype mismatch')
+                digest.update(value.tobytes(order='C'))
+        next_row = part['row_stop']
+    if next_row != manifest['case_count']:
+        raise RuntimeError('incomplete partition case coverage')
+    with np.load(source, allow_pickle=False) as original:
+        if set(original.files) != set(hashes) or any(hashes[key].hexdigest() != hashlib.sha256(original[key].tobytes(order='C')).hexdigest() for key in hashes):
+            raise RuntimeError('reconstructed raw array byte hash mismatch')
+    return {'original_sha256': manifest['source_sha256'], 'case_count': next_row,
+            'array_sha256': {key: digest.hexdigest() for key, digest in hashes.items()},
+            'canonical_array_bytes_verified': True}
+
+
 def partition_predictions(source: Path, out: Path, *, rows_per_part: int = 1024) -> dict:
     if rows_per_part <= 0:
         raise ValueError('rows_per_part must be positive')
