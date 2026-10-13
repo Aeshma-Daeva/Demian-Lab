@@ -1,7 +1,8 @@
 # Uncertainty geometry: measurement record
 
-Registry promotion pending. Completed artifacts remain immutable; hypothesis
-status remains the reviewed narrow `H-UNC-001` preliminary support.
+Fresh channelwise gate registered as `R-UNC-CHANNEL-001` following Astra review.
+Earlier paired/L2/geometry entries remain pending. Hypothesis status remains
+the reviewed narrow `H-UNC-001` preliminary support.
 
 State dimension at hidden width 256 is 1,312: five 256-coordinate channels
 and a 32-coordinate control channel. Prior 1,536-coordinate prose was wrong;

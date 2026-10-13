@@ -999,3 +999,5 @@ Next:
 - Review: sent to Astra; formal registration pending review. No causal work.
 - Record correction: actual width 1,312 and corrective train split 176;
   executed scores unchanged.
+- Review complete: Astra confirms evaluability and per-seed gate failure;
+  registered `R-UNC-CHANNEL-001` without promoting `H-UNC-001`.

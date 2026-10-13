@@ -13,8 +13,8 @@
       "family": "fresh_channelwise_radial_confirmation", "status": "active_evidence",
       "primary_summary": "data/diagnostics/demian_uncertainty_channel_invariance_v1_20261013/summary.json",
       "artifacts": ["data/diagnostics/demian_uncertainty_channel_invariance_v1_20261013/summary.json", "data/diagnostics/demian_uncertainty_channel_invariance_v1_20261013/manifest.json", "data/diagnostics/demian_uncertainty_channel_invariance_v1_20261013/scores.jsonl", "docs/DEMIAN_UNCERTAINTY_CHANNEL_INVARIANCE_PROTOCOL.json"],
-      "claim_ids": [],
-      "interpretation": "Fresh seeds/order fail prescribed channelwise radial frozen-transfer criterion. Sent for independent review; registry entry pending."
+      "claim_ids": ["H-UNC-001"],
+      "interpretation": "Astra-reviewed evaluable failed radial frozen-transfer criterion; registered as R-UNC-CHANNEL-001. No causal escalation."
     },
     {
       "id": "demian_uncertainty_length_invariance_v1_20261013",

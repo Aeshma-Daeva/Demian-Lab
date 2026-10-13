@@ -252,12 +252,12 @@
       "evaluation_conditions": ["target_private_interface", "frozen_probe", "heldout_public_sequences", "time_and_current_observation_controls"],
       "evidence_status": "preliminary_support",
       "lifecycle": "active",
-      "status_basis": {"method": "manual_review", "rule": "Preliminary support requires label-balanced held-out decoding beyond current, latest-observation, schedule-only, and shuffled-label controls; it does not establish calibrated uncertainty or causal use.", "considered_result_ids": ["R-UNC-HARNESS-001", "R-UNC-REP-001", "R-UNC-CORR-001", "R-UNC-TRANSFER-001"], "supporting_result_ids": ["R-UNC-CORR-001"], "conflicting_result_ids": ["R-UNC-TRANSFER-001"], "reviewer": "Astra scientific review", "reviewed_on": "2026-10-13"},
-      "status_history": [{"evidence_status": "untested", "lifecycle": "active", "changed_on": "2026-10-12", "reviewer": "Codex implementation review", "basis": "The discovery harness records traces but no frozen transfer probe or intervention."},{"evidence_status": "preliminary_support", "lifecycle": "active", "changed_on": "2026-10-12", "reviewer": "Astra scientific review", "basis": "Initially reviewed as held-out decoding support."},{"evidence_status": "untested", "lifecycle": "active", "changed_on": "2026-10-13", "reviewer": "Astra scientific review", "basis": "Correction: schedule index and target parity were deterministically paired, leaving a schedule-to-label confound. The result is unevaluable for retained evidence."},{"evidence_status": "preliminary_support", "lifecycle": "active", "changed_on": "2026-10-13", "reviewer": "Astra scientific review", "basis": "Corrective exhaustive corpus balances labels across reliability orders; held-out full-state decoding exceeds current, latest, schedule-only, and shuffled-label controls."},{"evidence_status": "preliminary_support", "lifecycle": "active", "changed_on": "2026-10-13", "reviewer": "Astra scientific review", "basis": "Low-capacity decoding transfers to one unseen six-event reliability order but fails the preregistered frozen six-to-eight-event criterion due a major length-conditioned state scale shift; the within-length claim remains preliminary only."}],
-      "result_ids": ["R-UNC-HARNESS-001", "R-UNC-REP-001", "R-UNC-CORR-001", "R-UNC-TRANSFER-001"],
+      "status_basis": {"method":"manual_review","rule":"Preliminary support requires label-balanced held-out decoding beyond current, latest-observation, schedule-only, and shuffled-label controls; it does not establish calibrated uncertainty or causal use.","considered_result_ids":["R-UNC-HARNESS-001","R-UNC-REP-001","R-UNC-CORR-001","R-UNC-TRANSFER-001","R-UNC-CHANNEL-001"],"supporting_result_ids":["R-UNC-CORR-001"],"conflicting_result_ids":["R-UNC-TRANSFER-001","R-UNC-CHANNEL-001"],"reviewer":"Astra scientific review","reviewed_on":"2026-10-13"},
+      "status_history": [{"evidence_status":"untested","lifecycle":"active","changed_on":"2026-10-12","reviewer":"Codex implementation review","basis":"The discovery harness records traces but no frozen transfer probe or intervention."},{"evidence_status":"preliminary_support","lifecycle":"active","changed_on":"2026-10-12","reviewer":"Astra scientific review","basis":"Initially reviewed as held-out decoding support."},{"evidence_status":"untested","lifecycle":"active","changed_on":"2026-10-13","reviewer":"Astra scientific review","basis":"Correction: schedule index and target parity were deterministically paired, leaving a schedule-to-label confound. The result is unevaluable for retained evidence."},{"evidence_status":"preliminary_support","lifecycle":"active","changed_on":"2026-10-13","reviewer":"Astra scientific review","basis":"Corrective exhaustive corpus balances labels across reliability orders; held-out full-state decoding exceeds current, latest, schedule-only, and shuffled-label controls."},{"evidence_status":"preliminary_support","lifecycle":"active","changed_on":"2026-10-13","reviewer":"Astra scientific review","basis":"Low-capacity decoding transfers to one unseen six-event reliability order but fails the preregistered frozen six-to-eight-event criterion due a major length-conditioned state scale shift; the within-length claim remains preliminary only."},{"evidence_status":"preliminary_support","lifecycle":"active","changed_on":"2026-10-13","reviewer":"Astra scientific review","basis":"Fresh-seed channelwise radial normalization fails the frozen paired transfer gate in every seed. The earlier within-corpus evidence remains preliminary; neither global nor independent channel radial rescaling suffices for calibrated temporal transfer."}],
+      "result_ids": ["R-UNC-HARNESS-001","R-UNC-REP-001","R-UNC-CORR-001","R-UNC-TRANSFER-001","R-UNC-CHANNEL-001"],
       "alternative_explanations": ["A probe may recover time, current cue, generic state magnitude, or evaluator-side schedule structure rather than retained evidence."],
       "falsifiers": ["Held-out probe performance does not exceed time and current-observation controls."],
-      "next_test": "Run a preregistered neutral-cue length-invariance and calibration gate before any matched channel reset/restore."
+      "next_test": "Preregister label-free cross-validated similarity geometry to distinguish shared translation/rotation/scale from history-dependent deformation. No causal escalation."
     },
     {
       "id": "H-ROUTE-005",
@@ -283,6 +283,29 @@
     }
   ],
   "experiments": [
+    {
+      "id": "E-UNC-005",
+      "name": "Fresh channelwise radial paired evidence transfer",
+      "system": "demian_v1_gate_state_with_stateless_public_evidence_encoder",
+      "protocol_version": "demian-uncertainty-channel-invariance-v1",
+      "replication_scope": {
+        "parameter_seed_count": 8,
+        "initial_state_count": 8,
+        "input_seed_count": 192,
+        "history_condition_count": 6,
+        "trajectory_count": 4096,
+        "checkpoint_row_count": 4096,
+        "independent_unit": "parameter_seed",
+        "dependent_observations": [
+          "histories, projection settings and suffixes repeat within parameter seeds"
+        ]
+      },
+      "artifact_ids": [
+        "A-UNC-CHANNEL-PROTOCOL-001",
+        "A-UNC-CHANNEL-SUMMARY-001",
+        "A-UNC-CHANNEL-SCORES-001"
+      ]
+    },
     {
       "id": "E-CHAR-001",
       "name": "Six-channel surface/internal characterization",
@@ -444,6 +467,20 @@
   ],
   "controls": [
     {
+      "id": "C-UNC-CHANNEL-001",
+      "name": "Matched channel-normalized shuffled-label and observation controls",
+      "semantics": "Uses the same row-local channel transform and fixed projection for conditional shuffled training labels; compares matched current/latest informative/latest observation, schedule-only and training-mean constant predictions.",
+      "limitations": [
+        "One fixed conditional-label shuffle per seed.",
+        "No native calibration or causal channel claim."
+      ],
+      "artifact_ids": [
+        "A-UNC-CHANNEL-PROTOCOL-001",
+        "A-UNC-CHANNEL-SUMMARY-001",
+        "A-UNC-CHANNEL-SCORES-001"
+      ]
+    },
+    {
       "id": "C-GATE-DISABLED-001",
       "name": "Gate-disabled transition rule",
       "semantics": "Changes the architecture update rule so gate modulation is disabled.",
@@ -564,6 +601,63 @@
     }
   ],
   "results": [
+    {
+      "id": "R-UNC-CHANNEL-001",
+      "hypothesis_ids": [
+        "H-UNC-001"
+      ],
+      "experiment_id": "E-UNC-005",
+      "evaluable": true,
+      "outcome": "observed",
+      "observation": "Fresh-seed channelwise L2 normalization fails prescribed frozen temporal transfer in every model seed. Extra-delay median R2 is -36.560 with median correlation 0.746; neutral-suffix median R2 is -33.766 with median correlation 0.734. Heldout base also has projection sensitivity failures.",
+      "interpretation": "Neither global magnitude nor independent radial rescaling of explicit channels suffices for calibrated frozen transfer in the tested finite designs. This does not prove loss of all evidence information or identify a causal carrier.",
+      "analysis_scope": {
+        "independent_unit": "parameter_seed",
+        "independent_unit_count": 8,
+        "comparison_count": 48,
+        "comparison_unit": "parameter-seed by heldout A, B and four C suffixes",
+        "dependent_observations": [
+          "three projection dimensions and three projection seeds are sensitivities within each seed and condition"
+        ],
+        "scope_note": "Sensitivity win counts are not independent replication counts."
+      },
+      "evaluation_conditions_met": [
+        "target_private_interface",
+        "fresh_parameter_seeds",
+        "fresh_heldout_order",
+        "row_local_transform",
+        "train_only_frozen_fit",
+        "matched_normalized_shuffle_control"
+      ],
+      "missing_evaluation_conditions": [
+        "robust_calibrated_temporal_transfer",
+        "causal_channel_intervention"
+      ],
+      "effect_summary": {
+        "base_median_r2": 0.4835566244,
+        "extra_delay_median_r2": -36.5602326722,
+        "neutral_suffix_median_r2": -33.7658648759,
+        "extra_delay_median_pearson_r": 0.7460939861,
+        "neutral_suffix_median_pearson_r": 0.7337564872
+      },
+      "uncertainty": [
+        "Eight parameter seeds and one heldout reliability order.",
+        "All conditions are finite-horizon measurements.",
+        "Pairwise-distance preservation permits common translation or rotation."
+      ],
+      "exclusions": [
+        "No scale-invariant native evidence code.",
+        "No causal channel, functional memory, learning or adaptation claim."
+      ],
+      "control_ids": [
+        "C-UNC-CHANNEL-001"
+      ],
+      "artifact_ids": [
+        "A-UNC-CHANNEL-PROTOCOL-001",
+        "A-UNC-CHANNEL-SUMMARY-001",
+        "A-UNC-CHANNEL-SCORES-001"
+      ]
+    },
     {
       "id": "R-AFP-BASIN-001",
       "hypothesis_ids": ["H-AFP-002"],
@@ -841,6 +935,30 @@
     }
   ],
   "artifacts": [
+    {
+      "id": "A-UNC-CHANNEL-PROTOCOL-001",
+      "repository": "Aeshma-Daeva/Demian-Lab",
+      "commit": "d40eba32eb68751b0c947dbc04db9be6fa87ab1b",
+      "path": "docs/DEMIAN_UNCERTAINTY_CHANNEL_INVARIANCE_PROTOCOL.json",
+      "media_type": "application/json",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/d40eba32eb68751b0c947dbc04db9be6fa87ab1b/docs/DEMIAN_UNCERTAINTY_CHANNEL_INVARIANCE_PROTOCOL.json"
+    },
+    {
+      "id": "A-UNC-CHANNEL-SUMMARY-001",
+      "repository": "Aeshma-Daeva/Demian-Lab",
+      "commit": "dafaca1528c71c4a66f88d22311809a55b115b37",
+      "path": "data/diagnostics/demian_uncertainty_channel_invariance_v1_20261013/summary.json",
+      "media_type": "application/json",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/dafaca1528c71c4a66f88d22311809a55b115b37/data/diagnostics/demian_uncertainty_channel_invariance_v1_20261013/summary.json"
+    },
+    {
+      "id": "A-UNC-CHANNEL-SCORES-001",
+      "repository": "Aeshma-Daeva/Demian-Lab",
+      "commit": "dafaca1528c71c4a66f88d22311809a55b115b37",
+      "path": "data/diagnostics/demian_uncertainty_channel_invariance_v1_20261013/scores.jsonl",
+      "media_type": "application/x-ndjson",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/dafaca1528c71c4a66f88d22311809a55b115b37/data/diagnostics/demian_uncertainty_channel_invariance_v1_20261013/scores.jsonl"
+    },
     {
       "id": "A-UNC-PROTOCOL-001",
       "repository": "Aeshma-Daeva/Demian-Lab",
