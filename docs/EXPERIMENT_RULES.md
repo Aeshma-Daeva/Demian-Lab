@@ -42,6 +42,19 @@ When comparing two mechanisms, regimes, or substrates:
 - explicitly state the mismatch when not possible
 - do not narrate over setup differences as if they were mechanism differences
 
+## Relational Mechanism Tests
+
+- Include channel interactions and route timing as candidate explanations,
+  alongside individual-channel effects.
+- Measure cross-channel alignment in a common projected target space;
+  cross-covariance and lagged prediction are descriptive, not causal evidence.
+- Test paired interventions against singles and sham under matched state,
+  input, amplitude, gain, seed, and horizon. Declare the interaction scale.
+- Distinguish gate-mediated effects using dynamic, frozen, and replayed/yoked
+  gate controls; use early windows before global divergence.
+- Confirm candidate relations on fresh histories/seeds. Full-state Jacobian
+  blocks provide a local sensitivity baseline, not a causal verdict.
+
 ## Best-Run Discipline
 
 Always separate:
