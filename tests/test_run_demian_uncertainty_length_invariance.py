@@ -41,7 +41,7 @@ def test_length_invariance_protocol_scores_all_paired_conditions(tmp_path) -> No
     assert payload["integrity"]["all_finite"] is True
     assert {row["evaluation_condition"] for row in payload["scores"]} == {"base", "delay_plus_two", "neutral_cue_plus_two"}
     assert {row["feature_set"] for row in payload["scores"]} >= {
-        "projected_full_state", "projected_full_state_condition_normalized", "current_observation", "latest_observation", "schedule_only", "full_state_conditional_shuffle"
+        "projected_full_state", "projected_full_state_l2_normalized", "projected_full_state_condition_normalized", "current_observation", "latest_observation", "schedule_only", "full_state_conditional_shuffle"
     }
     out = tmp_path / "length"
     run_demian_uncertainty_length_invariance.write_artifacts(out, {"protocol_id": "test"}, payload)
