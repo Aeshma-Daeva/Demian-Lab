@@ -935,19 +935,16 @@ Interpretation:
 
 Observation:
 
-- Per-seed full-state ridge probes decoded public-evidence log odds from held-out
-  pre-resolution histories after 8 and 32 delay steps (mean R² 0.964 and 0.901;
-  8 / 8 positive at each delay).
-- Current-observation, latest-observation, and shuffled-label controls were
-  negative. Linear entropy probes were negative.
+- Per-seed full-state ridge probes produced positive held-out log-odds scores.
+- Astra review found that schedule index was paired with target parity.
 
 Interpretation:
 
-- Preliminary retained public-evidence support only. This does not establish a
-  calibrated uncertainty code, a causal channel, routing utility, learning, or
-  adaptation.
+- Unevaluable for retained evidence: schedule-associated evaluator labels can
+  explain the apparent decoding.
 
 Next:
 
-- Repeat across randomized episode splits, schedule/length transfer, and probe
-  capacity settings before matched channel reset/restore.
+- Run the balanced corrective corpus: each reliability permutation receives all
+  64 symbol histories, independent balanced targets, schedule-only controls,
+  and stratified complete-episode splits.

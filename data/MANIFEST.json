@@ -21,7 +21,7 @@
         "docs/DEMIAN_UNCERTAINTY_REPRESENTATION_RESULTS.md"
       ],
       "claim_ids": ["H-UNC-001"],
-      "interpretation": "Held-out full-state probes decode public-evidence log odds after 8 and 32 delay steps across eight fixed parameter seeds. No calibrated uncertainty, causal, routing, utility, learning, or adaptation claim."
+      "interpretation": "Superseded as unevaluable: schedule index was paired with target parity, so schedule-associated label structure can explain apparent decoding."
     },
     {
       "id": "demian_uncertainty_discovery_v1_20261012_retry",

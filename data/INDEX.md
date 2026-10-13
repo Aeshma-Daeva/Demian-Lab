@@ -69,8 +69,8 @@ Purpose:
 
 - Protocol: [../docs/DEMIAN_UNCERTAINTY_REPRESENTATION_PROTOCOL.json](../docs/DEMIAN_UNCERTAINTY_REPRESENTATION_PROTOCOL.json)
 - Summary: [diagnostics/demian_uncertainty_representation_v1_20261012/summary.json](diagnostics/demian_uncertainty_representation_v1_20261012/summary.json)
-- Status: preliminary held-out decoding support for public-evidence log odds;
-  no calibrated uncertainty, causal, routing, utility, learning, or adaptation claim.
+- Status: superseded as unevaluable because schedule index was paired with
+  target parity; retained-evidence conclusion withdrawn pending correction.
 
 ## Closed-Loop Baseline
 

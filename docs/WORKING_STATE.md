@@ -22,11 +22,10 @@ Last updated: 2026-10-12
   does not separate seed identity from state dependence. E3–E5 remain
   conditional downstream stages. See
   `docs/DEMIAN_ROUTE_DYNAMICS_PROGRAM.md`.
-- Uncertainty branch: held-out per-seed full-state probes decode public-evidence
-  log odds after 8 and 32 delay steps across 8 fixed parameter seeds. This is
-  preliminary retained-evidence support, not calibrated uncertainty, causal use,
-  routing utility, learning, or adaptation. Next: split/schedule/length transfer
-  and capacity sensitivity before channel intervention.
+- Uncertainty branch: the first held-out probe is unevaluable because schedule
+  index was paired with target parity. Next: a schedule-target-balanced
+  corrective corpus with schedule-only controls and stratified episode splits;
+  no retained-evidence claim is active.
 
 Primary records:
 

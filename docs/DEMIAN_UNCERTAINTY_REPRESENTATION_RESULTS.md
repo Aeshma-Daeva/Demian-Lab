@@ -1,7 +1,7 @@
 # Uncertainty Representation Probe Results
 
-Status: preliminary support after Astra scientific review, 2026-10-12. This is not a causal,
-routing, utility, learning, or adaptation result.
+Status: superseded as unevaluable, 2026-10-13. This is not retained-evidence,
+uncertainty, causal, routing, utility, learning, or adaptation evidence.
 
 ## Observation
 
@@ -19,19 +19,14 @@ linear entropy probe was negative for every model seed at both delays.
 
 Artifact: `data/diagnostics/demian_uncertainty_representation_v1_20261012/`.
 
-## Interpretation
+## Correction
 
-This supports held-out decodability of accumulated public-evidence log odds
-from the full state after delay in these fixed model realizations. It does not
-establish a calibrated internal belief, an uncertainty code, causal channel
-contribution, routing utility, learning, or adaptation.
+The generator paired schedule index with hidden-target parity. Since schedule
+can therefore carry evaluator-side label structure, the held-out probe cannot
+distinguish schedule association from retained accumulated evidence. Preserve
+the artifact as a measurement record; do not interpret its scores as support.
 
 ## Limits
 
-- This is a discovery split over fresh public histories, not a fresh model-seed
-  confirmation.
-- Full state has substantially more probe features than individual channels.
-- Entropy is nonlinear in log odds; its linear-probe failure is not evidence of
-  absent information.
-- The next gate is repeated randomized episode splits, schedule/length transfer,
-  probe-capacity sensitivity, then matched channel reset/restore.
+- The corrective gate balances target within every reliability schedule,
+  audits schedule-only prediction, and uses stratified complete-episode splits.
