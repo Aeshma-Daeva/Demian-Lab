@@ -65,6 +65,13 @@ Purpose:
 - Summary: [diagnostics/demian_uncertainty_discovery_v1_20261012_retry/summary.json](diagnostics/demian_uncertainty_discovery_v1_20261012_retry/summary.json)
 - Status: deterministic public-evidence instrumentation; no representation or capability claim.
 
+## Uncertainty Representation Probe
+
+- Protocol: [../docs/DEMIAN_UNCERTAINTY_REPRESENTATION_PROTOCOL.json](../docs/DEMIAN_UNCERTAINTY_REPRESENTATION_PROTOCOL.json)
+- Summary: [diagnostics/demian_uncertainty_representation_v1_20261012/summary.json](diagnostics/demian_uncertainty_representation_v1_20261012/summary.json)
+- Status: preliminary held-out decoding support for public-evidence log odds;
+  no calibrated uncertainty, causal, routing, utility, learning, or adaptation claim.
+
 ## Closed-Loop Baseline
 
 - Protocol: [CLOSED_LOOP_PROTOCOL.json](CLOSED_LOOP_PROTOCOL.json)

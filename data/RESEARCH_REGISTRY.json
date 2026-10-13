@@ -250,14 +250,14 @@
       "statement": "Demian internal state can preserve public evidence relevant to unresolved alternatives across a delay.",
       "operational_prediction": "Frozen probes transfer across held-out public sequences after controlling for time and current observation.",
       "evaluation_conditions": ["target_private_interface", "frozen_probe", "heldout_public_sequences", "time_and_current_observation_controls"],
-      "evidence_status": "untested",
+      "evidence_status": "preliminary_support",
       "lifecycle": "active",
-      "status_basis": {"method": "manual_review", "rule": "Harness validity alone does not evaluate internal representation.", "considered_result_ids": ["R-UNC-HARNESS-001"], "supporting_result_ids": [], "conflicting_result_ids": [], "reviewer": "Codex implementation review", "reviewed_on": "2026-10-12"},
-      "status_history": [{"evidence_status": "untested", "lifecycle": "active", "changed_on": "2026-10-12", "reviewer": "Codex implementation review", "basis": "The discovery harness records traces but no frozen transfer probe or intervention."}],
-      "result_ids": ["R-UNC-HARNESS-001"],
-      "alternative_explanations": ["A probe may recover time, current cue, or generic state magnitude rather than retained evidence."],
+      "status_basis": {"method": "manual_review", "rule": "Preliminary support requires held-out public-sequence decoding beyond current-observation and shuffled-label controls; it does not establish calibrated uncertainty, causal use, or utility.", "considered_result_ids": ["R-UNC-HARNESS-001", "R-UNC-REP-001"], "supporting_result_ids": ["R-UNC-REP-001"], "conflicting_result_ids": [], "reviewer": "Astra scientific review", "reviewed_on": "2026-10-12"},
+      "status_history": [{"evidence_status": "untested", "lifecycle": "active", "changed_on": "2026-10-12", "reviewer": "Codex implementation review", "basis": "The discovery harness records traces but no frozen transfer probe or intervention."},{"evidence_status": "preliminary_support", "lifecycle": "active", "changed_on": "2026-10-12", "reviewer": "Astra scientific review", "basis": "Per-seed frozen linear probes decoded public-evidence log odds from held-out pre-resolution full states after both 8- and 32-step delays beyond current-observation and shuffled-label controls."}],
+      "result_ids": ["R-UNC-HARNESS-001", "R-UNC-REP-001"],
+      "alternative_explanations": ["A probe may recover time, current cue, or generic state magnitude rather than retained evidence.", "High-dimensional ridge fit with one deterministic episode split may overstate distributional generality."],
       "falsifiers": ["Held-out probe performance does not exceed time and current-observation controls."],
-      "next_test": "Freeze a probe on discovery traces and evaluate held-out public-sequence transfer per model seed."
+      "next_test": "Repeat across randomized episode splits and held-out schedule/length transfer with probe-capacity sensitivity, then test matched channel reset/restore against the validated log-odds readout."
     },
     {
       "id": "H-ROUTE-005",
@@ -401,6 +401,14 @@
       "artifact_ids": ["A-UNC-PROTOCOL-001", "A-UNC-SUMMARY-001", "A-UNC-RESULTS-001"]
     },
     {
+      "id": "E-UNC-002",
+      "name": "Held-out ambiguous-evidence representation probe",
+      "system": "demian_v1_gate_state_with_stateless_public_evidence_encoder",
+      "protocol_version": "demian-uncertainty-representation-v1",
+      "replication_scope": {"parameter_seed_count": 8, "initial_state_count": 8, "input_seed_count": 96, "history_condition_count": 4, "trajectory_count": 1536, "checkpoint_row_count": 3072, "independent_unit": "parameter_seed", "dependent_observations": ["episodes, delays, targets, and checkpoints repeat within parameter seeds"]},
+      "artifact_ids": ["A-UNC-REP-PROTOCOL-001", "A-UNC-REP-SUMMARY-001", "A-UNC-REP-SCORES-001", "A-UNC-REP-RESULTS-001"]
+    },
+    {
       "id": "E-ROUTE-004",
       "name": "Fixed-forcing matched carrier/random-direction route selectivity",
       "system": "demian_v1_gate_state",
@@ -516,6 +524,13 @@
       "semantics": "Runs only public evidence frames through a stateless encoder and restores the full model runtime exactly.",
       "limitations": ["Validates interface integrity only; it does not establish uncertainty representation."],
       "artifact_ids": ["A-UNC-PROTOCOL-001", "A-UNC-SUMMARY-001"]
+    },
+    {
+      "id": "C-UNC-PROBE-001",
+      "name": "Held-out current-observation, recency, and shuffled-label probe controls",
+      "semantics": "Scores frozen linear probes at matched pre-resolution delay checkpoints against current observation, latest evidence observation, and a deterministically shuffled full-state label fit.",
+      "limitations": ["Does not establish channel causality, calibrated belief, or generalization beyond the frozen public-history distribution."],
+      "artifact_ids": ["A-UNC-REP-PROTOCOL-001", "A-UNC-REP-SCORES-001"]
     },
     {
       "id": "C-MATCHED-RANDOM-GAIN-001",
@@ -749,6 +764,23 @@
       "exclusions": ["No uncertainty representation claim.", "No routing, utility, learning, or adaptation claim."],
       "control_ids": ["C-UNC-REPLAY-001"],
       "artifact_ids": ["A-UNC-PROTOCOL-001", "A-UNC-SUMMARY-001", "A-UNC-RESULTS-001"]
+    },
+    {
+      "id": "R-UNC-REP-001",
+      "hypothesis_ids": ["H-UNC-001"],
+      "experiment_id": "E-UNC-002",
+      "evaluable": true,
+      "outcome": "observed",
+      "observation": "Per-model-seed frozen linear probes decoded public-evidence log odds from held-out pre-resolution full state after 8 delay steps (mean R² 0.964; 8/8 positive) and 32 delay steps (mean R² 0.901; 8/8 positive). Matched current-observation, latest-observation, and shuffled-label controls were negative.",
+      "interpretation": "Across the sampled fixed parameter realizations, full internal state retains linearly decodable public-evidence log odds through the tested delays. The secondary linear entropy probe was negative and does not support a calibrated uncertainty representation.",
+      "analysis_scope": {"independent_unit": "parameter_seed", "independent_unit_count": 8, "comparison_count": 16, "comparison_unit": "parameter-seed by delay cells", "dependent_observations": ["96 public episodes and complete-episode train/test splits repeat within parameter seeds"], "scope_note": "R² summaries are per seed and delay; they are not pooled independent episode-level inference."},
+      "evaluation_conditions_met": ["target_private_interface", "frozen_probe", "heldout_public_sequences", "time_and_current_observation_controls"],
+      "missing_evaluation_conditions": ["fresh_parameter_seed_confirmation", "randomized_split_and_schedule_transfer", "causal_channel_intervention"],
+      "effect_summary": {"full_state_log_odds_mean_r2_delay_8": 0.9639, "full_state_log_odds_mean_r2_delay_32": 0.9007, "positive_seed_count_delay_8": 8, "positive_seed_count_delay_32": 8, "entropy_probe_mean_r2_delay_8": -0.2893, "entropy_probe_mean_r2_delay_32": -0.9571},
+      "uncertainty": ["Full-state ridge has 1536 features and 64 training episodes per seed-delay cell.", "One deterministic contiguous episode split was used.", "Four fixed reliability schedules and six-event histories limit distributional generality.", "Full-state decoding does not localize a contributing channel or mechanism."],
+      "exclusions": ["No calibrated uncertainty or entropy representation claim.", "No causal retention, routing, utility, learning, adaptation, or general-intelligence claim."],
+      "control_ids": ["C-UNC-REPLAY-001", "C-UNC-PROBE-001"],
+      "artifact_ids": ["A-UNC-REP-PROTOCOL-001", "A-UNC-REP-SUMMARY-001", "A-UNC-REP-SCORES-001", "A-UNC-REP-RESULTS-001"]
     }
   ],
   "artifacts": [
@@ -775,6 +807,38 @@
       "path": "docs/DEMIAN_UNCERTAINTY_DISCOVERY_RESULTS.md",
       "media_type": "text/markdown",
       "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/2893e1287bb1cac5fd604446311dc73a071c9364/docs/DEMIAN_UNCERTAINTY_DISCOVERY_RESULTS.md"
+    },
+    {
+      "id": "A-UNC-REP-PROTOCOL-001",
+      "repository": "Aeshma-Daeva/Demian-Lab",
+      "commit": "0ff0ecf633da96ceb8f052750346034bc40d3140",
+      "path": "docs/DEMIAN_UNCERTAINTY_REPRESENTATION_PROTOCOL.json",
+      "media_type": "application/json",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/0ff0ecf633da96ceb8f052750346034bc40d3140/docs/DEMIAN_UNCERTAINTY_REPRESENTATION_PROTOCOL.json"
+    },
+    {
+      "id": "A-UNC-REP-SUMMARY-001",
+      "repository": "Aeshma-Daeva/Demian-Lab",
+      "commit": "0ff0ecf633da96ceb8f052750346034bc40d3140",
+      "path": "data/diagnostics/demian_uncertainty_representation_v1_20261012/summary.json",
+      "media_type": "application/json",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/0ff0ecf633da96ceb8f052750346034bc40d3140/data/diagnostics/demian_uncertainty_representation_v1_20261012/summary.json"
+    },
+    {
+      "id": "A-UNC-REP-SCORES-001",
+      "repository": "Aeshma-Daeva/Demian-Lab",
+      "commit": "0ff0ecf633da96ceb8f052750346034bc40d3140",
+      "path": "data/diagnostics/demian_uncertainty_representation_v1_20261012/scores.jsonl",
+      "media_type": "application/x-ndjson",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/0ff0ecf633da96ceb8f052750346034bc40d3140/data/diagnostics/demian_uncertainty_representation_v1_20261012/scores.jsonl"
+    },
+    {
+      "id": "A-UNC-REP-RESULTS-001",
+      "repository": "Aeshma-Daeva/Demian-Lab",
+      "commit": "eaa8d42abb4bacc978b13c17adba13eb4e8f0da8",
+      "path": "docs/DEMIAN_UNCERTAINTY_REPRESENTATION_RESULTS.md",
+      "media_type": "text/markdown",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/eaa8d42abb4bacc978b13c17adba13eb4e8f0da8/docs/DEMIAN_UNCERTAINTY_REPRESENTATION_RESULTS.md"
     },
     {
       "id": "A-CHAR-SUMMARY-001",

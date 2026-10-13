@@ -930,3 +930,24 @@ Interpretation:
 
 - Instrumentation only. No internal uncertainty representation, routing, or
   functional-use conclusion.
+
+## 2026-10-12 - Held-Out Uncertainty Representation Probe
+
+Observation:
+
+- Per-seed full-state ridge probes decoded public-evidence log odds from held-out
+  pre-resolution histories after 8 and 32 delay steps (mean R² 0.964 and 0.901;
+  8 / 8 positive at each delay).
+- Current-observation, latest-observation, and shuffled-label controls were
+  negative. Linear entropy probes were negative.
+
+Interpretation:
+
+- Preliminary retained public-evidence support only. This does not establish a
+  calibrated uncertainty code, a causal channel, routing utility, learning, or
+  adaptation.
+
+Next:
+
+- Repeat across randomized episode splits, schedule/length transfer, and probe
+  capacity settings before matched channel reset/restore.
