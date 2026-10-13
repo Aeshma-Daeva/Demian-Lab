@@ -6,6 +6,7 @@ import argparse
 import itertools
 import json
 import subprocess
+from collections import defaultdict
 from pathlib import Path
 
 import numpy as np
@@ -104,9 +105,39 @@ def _shuffled_labels(rows, seed):
     return labels
 
 
+def _history_index(row):
+    return sum(int(symbol) << (len(row['symbols'])-1-position) for position, symbol in enumerate(row['symbols']))
+
+
+def split_histories(rows, seed):
+    groups = defaultdict(list)
+    for row in rows:
+        label_sign = int(np.sign(row['target_value'])) if abs(row['target_value']) > 1e-12 else 0
+        groups[(row['symbols'][-1], label_sign)].append(_history_index(row))
+    rng = np.random.default_rng(seed)
+    training, evaluation = [], []
+    for key in sorted(groups):
+        indexes = rng.permutation(sorted(groups[key])).tolist()
+        if len(indexes) % 2:
+            raise ValueError('history split strata require even support')
+        training.extend(indexes[:len(indexes)//2])
+        evaluation.extend(indexes[len(indexes)//2:])
+    if set(training) & set(evaluation):
+        raise RuntimeError('history allocation overlap')
+    return {'seed': int(seed), 'train_history_indices': sorted(training),
+            'evaluation_history_indices': sorted(evaluation),
+            'strata': 'train-order final symbol and public log-odds sign, zero tolerance1e-12; paired allocation fixed across orders, times and parameter seeds'}
+
+
 def run_protocol(protocol):
     source_commit = subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip()
     rows = collect_rows(protocol)
+    allocation = None
+    if 'history_split_seed' in protocol:
+        if any(point['evidence_count'] != len(protocol['train_order']) for point in protocol['checkpoints']):
+            raise ValueError('heldout-history matrix requires full-history checkpoints')
+        reference_rows = [row for row in rows if row['model_seed']==int(protocol['model_seeds'][0]) and row['order']=='train' and row['checkpoint_id']==protocol['frozen_reference_checkpoint']]
+        allocation = split_histories(reference_rows, int(protocol['history_split_seed']))
     metrics, shifts, transforms, prediction_rows = [], [], {}, []
     dimension = int(protocol['projection_dimension'])
     neural = ('full_state', *V1_CHANNELS)
@@ -114,10 +145,14 @@ def run_protocol(protocol):
     for seed in protocol['model_seeds']:
         cells = {(point['id'], order): [r for r in rows if r['model_seed']==int(seed) and r['checkpoint_id']==point['id'] and r['order']==order]
                  for point in protocol['checkpoints'] for order in ('train', 'heldout')}
+        def evaluation_rows(cp, order):
+            return [r for r in cells[(cp, order)] if allocation is None or _history_index(r) in allocation['evaluation_history_indices']]
+        def family(order):
+            return ('within_order_heldout_history' if order=='train' else 'cross_order_heldout_history') if allocation is not None else order
         for point in protocol['checkpoints']:
             cp = point['id']
             for order in ('train', 'heldout'):
-                evaluate = cells[(cp, order)]
+                evaluate = evaluation_rows(cp, order)
                 y = np.asarray([r['target_value'] for r in evaluate])
                 for feature in ('current_semantic_log_odds', 'latest_semantic_log_odds'):
                     prediction = np.asarray([r[feature] for r in evaluate])
@@ -125,6 +160,7 @@ def run_protocol(protocol):
                     prediction_rows.extend([[score_index, i, float(truth), float(pred)] for i, (truth, pred) in enumerate(zip(y, prediction, strict=True))])
                     metrics.append({'score_index': score_index, 'model_seed': int(seed), 'checkpoint_id': cp,
                         'fit_checkpoint_id': None, 'fit_mode': 'analytic_public_baseline', 'evaluation_order': order,
+                        'evaluation_family': family(order),
                         'feature': feature, 'label_kind': 'known_public_semantics', 'projection_seed': None,
                         'projection_dimension_actual': None, 'shuffle_seed': None, 'shuffled_label_changed_count': None,
                         'current_and_latest_identical': int(point['delay_steps']) == 0,
@@ -145,7 +181,7 @@ def run_protocol(protocol):
                 if mode == 'cue_end_frozen' and int(point['evidence_count']) != len(protocol['train_order']):
                     continue
                 fit_cp = cp if mode=='time_refit' else protocol['frozen_reference_checkpoint']
-                train_rows = cells[(fit_cp, 'train')]
+                train_rows = [r for r in cells[(fit_cp, 'train')] if allocation is None or _history_index(r) in allocation['train_history_indices']]
                 labels = np.asarray([r['target_value'] for r in train_rows])
                 for feature in (*neural, *controls):
                     projection_seeds = protocol['projection_seeds'] if feature in neural else [None]
@@ -165,8 +201,8 @@ def run_protocol(protocol):
                                 transforms[fit_id+'_'+name] = value
                             if basis is not None:
                                 transforms[fit_id+'_projection'] = basis
-                            for order in (('heldout',) if mode=='time_refit' else ('train', 'heldout')):
-                                evaluate = cells[(cp, order)]
+                            for order in (('heldout',) if mode=='time_refit' and allocation is None else ('train', 'heldout')):
+                                evaluate = evaluation_rows(cp, order)
                                 features = np.vstack([r['features'][feature] for r in evaluate]).astype(np.float64)
                                 if basis is not None:
                                     features = features@basis
@@ -177,6 +213,7 @@ def run_protocol(protocol):
                                 prediction_rows.extend([[score_index, i, float(truth), float(pred)] for i, (truth, pred) in enumerate(zip(y, prediction, strict=True))])
                                 metrics.append({'score_index': score_index, 'model_seed': int(seed), 'checkpoint_id': cp,
                                     'fit_checkpoint_id': fit_cp, 'fit_mode': mode, 'evaluation_order': order,
+                                    'evaluation_family': family(order),
                                     'feature': feature, 'label_kind': label_kind, 'projection_seed': projection_seed,
                                     'projection_dimension_actual': x.shape[1], 'train_unique_prefixes': len(train_rows),
                                     'evaluation_unique_prefixes': len(evaluate), 'shuffle_seed': shuffle_seed if label_kind=='conditional_shuffle' else None,
@@ -191,6 +228,7 @@ def run_protocol(protocol):
         'state_metadata': metadata, 'metrics': metrics, 'transforms': transforms,
         'predictions': {'score_and_prefix_target_prediction': np.asarray(prediction_rows)},
         'integrity': {'all_finite': bool(all(np.isfinite(v) for row in metrics for v in row.values() if isinstance(v, float))),
+                      **({'history_split': allocation} if allocation is not None else {}),
                       'unique_prefixes_deduplicated': True, 'suffix_invariance_checked': True,
                       'state_shift_rows': shifts, 'scope': 'train-only frozen coefficients and scale; early checkpoints descriptive; no erasure or causal interpretation'}}
 

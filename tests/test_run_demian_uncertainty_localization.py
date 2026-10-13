@@ -68,3 +68,36 @@ def test_small_localization_run_has_time_refit_and_cue_end_frozen_controls(tmp_p
     assert all(r['prediction_std'] == 0. and r['r2'] == 0. for r in current_delay)
     module.write_artifacts(tmp_path/'out', protocol, payload)
     assert (tmp_path/'out'/'predictions.npz').is_file()
+
+
+def test_heldout_history_matrix_never_fits_evaluation_histories():
+    module = localization_module()
+    protocol = {
+        'protocol_id': 'test-matrix', 'claim_boundary': 'decoding only',
+        'hidden_size': 16, 'model_seeds': [94],
+        'train_order': [.95, .75, .75, .5], 'evaluation_order': [.75, .95, .5, .75],
+        'checkpoints': [{'id': 'cue4', 'evidence_count': 4, 'delay_steps': 0},
+                        {'id': 'delay2', 'evidence_count': 4, 'delay_steps': 2}],
+        'frozen_reference_checkpoint': 'cue4', 'projection_dimension': 2,
+        'projection_seeds': [17], 'ridge_alpha': 1., 'history_split_seed': 71,
+    }
+    payload = module.run_protocol(protocol)
+    assert 'history_split' in payload['integrity'], 'heldout-history allocation absent'
+    allocation = payload['integrity']['history_split']
+    assert len(allocation['train_history_indices']) == 8
+    assert len(allocation['evaluation_history_indices']) == 8
+    assert not set(allocation['train_history_indices']) & set(allocation['evaluation_history_indices'])
+    assert set(allocation['train_history_indices']) | set(allocation['evaluation_history_indices']) == set(range(16))
+    assert all(r['evaluation_unique_prefixes'] == 8 for r in payload['metrics'])
+    fitted = [r for r in payload['metrics'] if r['fit_mode'] != 'analytic_public_baseline']
+    assert all(r['train_unique_prefixes'] == 8 for r in fitted)
+    assert {r['evaluation_family'] for r in fitted} == {'within_order_heldout_history', 'cross_order_heldout_history'}
+
+
+def test_history_split_treats_roundoff_near_zero_as_one_public_label_stratum():
+    module = localization_module()
+    rows = [{'symbols': bits, 'target_value': value} for bits, value in
+            [((0, 0), 1e-16), ((1, 0), -1e-16), ((0, 1), 1e-16), ((1, 1), -1e-16)]]
+    allocation = module.split_histories(rows, 71)
+    assert len(allocation['train_history_indices']) == 2
+    assert len(allocation['evaluation_history_indices']) == 2
