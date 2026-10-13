@@ -47,6 +47,8 @@ def build_neutral_cue_corpus(protocol: dict[str, Any]) -> list[dict[str, Any]]:
     for spec in train + heldout:
         base = spec["base_evidence"]
         rows.append({**spec, "condition": "base", "suffix": None, "evidence": base, "delay_steps": int(protocol["base_delay_steps"])})
+        if spec["family"] == "train":
+            continue
         rows.append({**spec, "condition": "delay_plus_two", "suffix": None, "evidence": base, "delay_steps": int(protocol["base_delay_steps"]) + 2})
         for suffix in itertools.product((0, 1), repeat=2):
             rows.append({**spec, "condition": "neutral_cue_plus_two", "suffix": "".join(map(str, suffix)), "evidence": base + tuple((symbol, 0.5) for symbol in suffix), "delay_steps": int(protocol["base_delay_steps"])})

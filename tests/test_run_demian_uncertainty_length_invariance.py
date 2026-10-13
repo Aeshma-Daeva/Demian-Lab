@@ -13,11 +13,13 @@ def test_neutral_cue_corpus_preserves_public_log_odds_and_has_paired_conditions(
     grouped = {}
     for row in corpus:
         grouped.setdefault(row["episode_id"], []).append(row)
-    assert {len(rows) for rows in grouped.values()} == {6}
+    assert {len(rows) for rows in grouped.values()} == {1, 6}
+    assert {len(rows) for rows in grouped.values() if rows[0]["family"] == "train"} == {1}
     for rows in grouped.values():
         assert {row["target_value"] for row in rows}
         assert len({row["target_value"] for row in rows}) == 1
-        assert sorted(len(row["evidence"]) for row in rows) == [2, 2, 4, 4, 4, 4]
+        if rows[0]["family"] == "heldout":
+            assert sorted(len(row["evidence"]) for row in rows) == [2, 2, 4, 4, 4, 4]
 
 
 def test_length_invariance_protocol_scores_all_paired_conditions(tmp_path) -> None:
