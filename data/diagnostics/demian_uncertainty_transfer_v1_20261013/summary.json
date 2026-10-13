@@ -1,0 +1,43 @@
+{
+  "claim_boundary": "low-capacity held-out transfer probe only; no causal, routing, utility, learning, or adaptation claim without review",
+  "experiment": "demian-uncertainty-transfer",
+  "integrity": {
+    "all_finite": true,
+    "probe_scope": "train-only frozen coefficients, projection, and standardization per model seed and delay"
+  },
+  "row_count": 4096,
+  "schema_version": 1,
+  "score_count": 672,
+  "summary": {
+    "unseen_length/current_observation": {
+      "mean_r2": -0.03981453262578749
+    },
+    "unseen_length/full_state_conditional_shuffle": {
+      "mean_r2": -7789.01676381895
+    },
+    "unseen_length/latest_observation": {
+      "mean_r2": -0.1919454037773649
+    },
+    "unseen_length/projected_full_state": {
+      "mean_r2": -8587.511697881411
+    },
+    "unseen_length/schedule_only": {
+      "mean_r2": -0.03981453262578749
+    },
+    "unseen_order/current_observation": {
+      "mean_r2": 0.0
+    },
+    "unseen_order/full_state_conditional_shuffle": {
+      "mean_r2": -0.3127368642629828
+    },
+    "unseen_order/latest_observation": {
+      "mean_r2": -0.10887252027119865
+    },
+    "unseen_order/projected_full_state": {
+      "mean_r2": 0.24181927672283873
+    },
+    "unseen_order/schedule_only": {
+      "mean_r2": 0.0
+    }
+  }
+}
