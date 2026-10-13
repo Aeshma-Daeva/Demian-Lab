@@ -988,3 +988,14 @@ Next:
   pending. The prior hypothesis status is unchanged.
 - Next: fixed channelwise radial normalization on fresh model seeds and a new
   heldout reliability order, with matched transformed shuffle control.
+
+## 2026-10-13 - Fresh channelwise radial confirmation
+
+- Artifact: `data/diagnostics/demian_uncertainty_channel_invariance_v1_20261013/`.
+- Observation: B median R2 -36.56, C -33.77; matched-control wins 5/72 and
+  14/288 dependent settings. Every model seed fails at least one sensitivity.
+- Boundary: A is also imperfect (51/72 wins). Positive B/C correlations do not
+  imply calibrated frozen transfer. Global/channelwise radial search ends.
+- Review: sent to Astra; formal registration pending review. No causal work.
+- Record correction: actual width 1,312 and corrective train split 176;
+  executed scores unchanged.

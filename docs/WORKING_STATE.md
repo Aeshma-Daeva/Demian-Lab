@@ -27,8 +27,9 @@ Last updated: 2026-10-12
   order is partial; frozen six-to-eight transfer fails under a length-dependent
   state scale shift. Paired delay, global L2, and geometry gates are completed
   with registry entries pending; see `DEMIAN_UNCERTAINTY_GEOMETRY_RESULTS.md`.
-  Current gate: channelwise radial normalization on fresh seeds/order. No
-  causal-channel claim is active.
+  Fresh channelwise radial gate also fails; see the linked measurement record.
+  Next question: shared translation/rotation versus history-dependent
+  deformation. No causal-channel claim is active.
 
 Primary records:
 

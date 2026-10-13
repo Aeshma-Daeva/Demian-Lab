@@ -8,6 +8,15 @@
   },
   "runs": [
     {
+      "id": "demian_uncertainty_channel_invariance_v1_20261013",
+      "program": "demian-v1", "date": "2026-10-13",
+      "family": "fresh_channelwise_radial_confirmation", "status": "active_evidence",
+      "primary_summary": "data/diagnostics/demian_uncertainty_channel_invariance_v1_20261013/summary.json",
+      "artifacts": ["data/diagnostics/demian_uncertainty_channel_invariance_v1_20261013/summary.json", "data/diagnostics/demian_uncertainty_channel_invariance_v1_20261013/manifest.json", "data/diagnostics/demian_uncertainty_channel_invariance_v1_20261013/scores.jsonl", "docs/DEMIAN_UNCERTAINTY_CHANNEL_INVARIANCE_PROTOCOL.json"],
+      "claim_ids": [],
+      "interpretation": "Fresh seeds/order fail prescribed channelwise radial frozen-transfer criterion. Sent for independent review; registry entry pending."
+    },
+    {
       "id": "demian_uncertainty_length_invariance_v1_20261013",
       "program": "demian-v1", "date": "2026-10-13",
       "family": "paired_uncertainty_calibration", "status": "active_evidence",

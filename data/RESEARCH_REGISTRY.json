@@ -817,7 +817,7 @@
       "evaluation_conditions_met": ["target_private_interface", "frozen_probe", "heldout_public_sequences", "time_and_current_observation_controls", "schedule_target_balance", "schedule_only_control"],
       "missing_evaluation_conditions": ["low_capacity_confirmation", "unseen_schedule_and_length_transfer", "causal_channel_intervention"],
       "effect_summary": {"full_state_mean_r2_delay_8": 0.9987, "full_state_mean_r2_delay_32": 0.9963, "positive_seed_split_cells_per_delay": 40, "schedule_only_mean_r2": -0.1066},
-      "uncertainty": ["Within-corpus transfer only.", "Eight fixed parameter seeds.", "1536 full-state features and 88 training episodes per split.", "Five splits are dependent sensitivity analyses."],
+      "uncertainty": ["Within-corpus transfer only.", "Eight fixed parameter seeds.", "1312 full-state features and 176 training episodes per split; corrected descriptive counts on 2026-10-13, without changing scores or reviewed status.", "Five splits are dependent sensitivity analyses."],
       "exclusions": ["No calibrated uncertainty or belief claim.", "No specific channel, causal mechanism, routing utility, learning, adaptation, or OOD retention claim."],
       "control_ids": ["C-UNC-REPLAY-001", "C-UNC-PROBE-001"],
       "artifact_ids": ["A-UNC-CORR-PROTOCOL-001", "A-UNC-CORR-SUMMARY-001", "A-UNC-CORR-SCORES-001"]
