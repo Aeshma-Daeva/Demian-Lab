@@ -1,0 +1,10 @@
+{
+  "claim_boundary": "label-free heldout geometry measurement only; no decoder recovery, evidence-code, causal channel, utility, learning or adaptation claim",
+  "experiment": "demian-uncertainty-similarity-v1",
+  "integrity": {
+    "all_finite": true,
+    "scope": "paired training-state fit; heldout-order scoring; no evidence labels used"
+  },
+  "metric_count": 80,
+  "state_count": 3072
+}

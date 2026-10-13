@@ -1,0 +1,62 @@
+{
+  "file_sha256": {
+    "metrics.jsonl": "e38fed14ffc786addc466ad1d9ed1171d15296c8e28821ccc7b41c57aa28706f",
+    "state_metadata.jsonl": "50ffced65fe19c50ac9b8d040922163c78f7c0ad5e442b2f49f6d658bd0e349b",
+    "states.npz": "2d012989e4784e9d7fc7c978bc10321e46c78dc6b92ccb608c5e775756ebd84e",
+    "summary.json": "823c73b8aff67a90d6877bf856545497ca23c6a628354c6dcc420366b67da9f0",
+    "transforms.npz": "084223f4ab28d884ea3b80a5bc4ca69bd5bd92d68f7bbb8814fce2478d2bbef2"
+  },
+  "protocol": {
+    "allocation_seed": 20261015,
+    "artifact_directory": "data/diagnostics/demian_uncertainty_similarity_v1_20261013",
+    "base_delay_steps": 32,
+    "basis_fit": "one rank8 SVD basis per parameter seed from concatenated within-condition-centered training clouds; no heldout states or evidence labels",
+    "claim_boundary": "label-free heldout geometry measurement only; no decoder recovery, evidence-code, causal channel, utility, learning or adaptation claim",
+    "controls": [
+      "identity",
+      "train-mean full-space translation",
+      "pair-permuted similarity with identical basis"
+    ],
+    "corpus": "all 64 binary base histories per order; targets independently balanced; A, B, all four C suffixes paired by history index; no resolution frame",
+    "coverage_condition": "excluded fraction of centered source and target cloud variance <=0.01 in heldout conditions",
+    "descriptive_threshold": "full-space heldout similarity residual <=0.1 of heldout A-cloud RMS at every seed/condition, conditional on adequate coverage; this is approximate geometry support only",
+    "evaluation": "fresh heldout order; denominator fixed as heldout A-cloud RMS about its centroid for every map/condition; separate centroid and centered residuals plus in/out-of-subspace residuals",
+    "falsifier": "large residual rejects this training-derived shared map; insufficient coverage or shared order-dependent residual offsets make a deformation conclusion inconclusive",
+    "heldout_reliability_schedule": [
+      0.5,
+      0.95,
+      0.5,
+      0.75,
+      0.95,
+      0.75
+    ],
+    "hidden_size": 256,
+    "hypothesis_id": "H-UNC-001",
+    "independent_unit": "model seed; histories and variants are dependent paired observations",
+    "model_seeds": [
+      694,
+      695,
+      794,
+      795
+    ],
+    "permutation_seed": 41,
+    "protocol_id": "demian-uncertainty-similarity-v1",
+    "similarity_fit": "paired training histories only; proper orthogonal rotation, nonnegative uniform scale, full-space translation; unchanged source fluctuations outside basis. Means are stored explicitly and prediction equals mu_target + centered_source + (scale*projected_centered_source*rotation - projected_centered_source)*basis_transpose, retaining translation rather than deleting it",
+    "subspace_rank": 8,
+    "train_reliability_schedule": [
+      0.95,
+      0.75,
+      0.5,
+      0.75,
+      0.95,
+      0.5
+    ],
+    "variants": {
+      "00/01/10/11": "same evidence plus corresponding two-symbol reliability-0.5 suffix plus 32 blanks",
+      "base": "six evidence plus 32 blanks",
+      "extra_delay": "same evidence plus 34 blanks"
+    }
+  },
+  "protocol_sha256": "c51bf7fd00c5197d0433385a0b8f0c55ece21b8c5aac8e8c3aef9420e0d76720",
+  "source_commit": "e41fff6911914c8d0f84334ae63c75cdec5ddf3f"
+}
