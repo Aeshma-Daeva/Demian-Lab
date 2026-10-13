@@ -1,7 +1,7 @@
 {
-  "protocol_id": "demian-uncertainty-representation-relations-v2",
+  "protocol_id": "demian-uncertainty-representation-relations-v3",
   "claim_boundary": "analysis of existing fixed-weight state traces; descriptive geometry and channel relations only, with no causal, routing, memory-use, learning, adaptation, or architecture claim",
-  "source_commit": "545ec84aababfaa6a0e08966e2c0b20f3b5d41bc",
+  "source_commit": "01497f9",
   "state_source": "E-UNC-013 and E-UNC-014 immutable matrix artifacts; no trajectories are newly generated",
   "architecture_and_weights": "unchanged",
   "subspace_rank": 8,
@@ -45,5 +45,5 @@
       "checkpoints": [{"id": "cue6"}, {"id": "delay2"}, {"id": "delay8"}, {"id": "delay32"}, {"id": "delay64"}]
     }
   ],
-  "artifact_directory": "data/diagnostics/demian_uncertainty_representation_relations_v2_20261013"
+  "artifact_directory": "data/diagnostics/demian_uncertainty_representation_relations_v3_20261013"
 }
