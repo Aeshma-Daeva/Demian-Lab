@@ -1113,3 +1113,6 @@ Next:
 - Replication Astra review complete: registered `R-UNC-MATRIX-REP-001`.
   Eight parameter seeds across two independent batches; status remains preliminary.
   No routine measurement control remains for the bounded availability claim.
+- Independent package code review: no findings;41 focused tests and all new
+  artifact pins verified. Reconstructed matrix fits/predictions and publication
+  arrays match records. Full-suite historical failures remain explicitly excluded.
