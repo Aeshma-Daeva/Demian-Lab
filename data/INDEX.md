@@ -91,6 +91,8 @@ Purpose:
 - Horizon/curvature: [record](../docs/DEMIAN_UNCERTAINTY_LOCAL_MODELS_RESULTS.md), [horizon summary](diagnostics/demian_uncertainty_horizon_v1_20261013/summary.json), [curvature summary](diagnostics/demian_uncertainty_curvature_v1_20261013/summary.json).
 - Reachable-anchor radius: [record](../docs/DEMIAN_UNCERTAINTY_RADIUS_RESULTS.md), [summary](diagnostics/demian_uncertainty_radius_v1_20261013/summary.json).
 - Natural-history chords: [record](../docs/DEMIAN_UNCERTAINTY_CHORD_RESULTS.md), [summary](diagnostics/demian_uncertainty_chord_v1_20261013/summary.json), [lossless prediction parts](diagnostics/demian_uncertainty_chord_v1_20261013/prediction_parts/partition_manifest.json).
+- Order/time calibration: [record](../docs/DEMIAN_UNCERTAINTY_CALIBRATION_RESULTS.md), [summary](diagnostics/demian_uncertainty_localization_v1_20261013/summary.json).
+- Heldout-history decoding: [record](../docs/DEMIAN_UNCERTAINTY_HISTORY_MATRIX_RESULTS.md), [first matrix](diagnostics/demian_uncertainty_history_matrix_v1_20261013/summary.json), [independent replication](diagnostics/demian_uncertainty_history_matrix_replication_v1_20261013/summary.json).
 - Formal registry entries pending; no additional hypothesis promotion.
 
 ## Closed-Loop Baseline

@@ -1,6 +1,6 @@
 # Claims Ledger
 
-Last updated: 2026-10-12
+Last updated: 2026-10-13
 
 ## Scientific Hierarchy
 
@@ -37,11 +37,23 @@ The authoritative status and review basis live in `data/RESEARCH_REGISTRY.json`.
   carrier-minus-random contrast between development and held-out seeds.
 - **Interpretation:** route-sensitive propagation remains bounded to the
   carrier-only result; direction specificity is not reproducibly supported.
-- **Untested:** AFP-v2, memory, learning, adaptation, task competence, and
+- **Untested:** AFP-v2, functional memory use, learning, adaptation, task competence, and
   chaos.
 
 Evidence: `H-ROUTE-003`, `H-ROUTE-004`, `R-ROUTE-STABILITY-001`, and
 `R-ROUTE-INTERACTION-001` in the registry.
+
+### Public-evidence availability
+
+- Observation: `R-UNC-MATRIX-001` and independent `R-UNC-MATRIX-REP-001`
+  decode accumulated public log odds from
+  disjoint heldout histories at matched times through64 blank ticks, beyond
+  analytic latest and matched shuffle controls.
+- Interpretation: within-order availability is not portable frozen calibration,
+  calibrated uncertainty or autonomous memory use. `H-UNC-001` remains preliminary.
+- Evidence: `DEMIAN_UNCERTAINTY_HISTORY_MATRIX_RESULTS.md` and registry artifact pins.
+- Falsifier: independently allocated matched-time histories fail fair controls.
+- Boundary: no architecture superiority, channel ownership, learning or AFP claim.
 
 ## Historical Claims
 

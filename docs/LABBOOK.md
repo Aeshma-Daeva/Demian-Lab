@@ -1078,3 +1078,38 @@ Next:
   learned latest trained on a neutral final cue lacks informative-cue support.
 - Plan: fresh seeds, time-refitted versus cue6-frozen projections, channel probes,
   conditional-shuffle and public controls. No erasure or causal-channel claim.
+
+## 2026-10-13 - Calibration localization result
+
+- Artifact: `data/diagnostics/demian_uncertainty_localization_v1_20261013/`.
+- Observation: cue6 cross-order full-state projections all negative R²;
+  cue6-frozen calibration fails after2 blanks even within the original order.
+- Interpretation: order and temporal calibration failures are separate;
+  neither establishes information erasure.
+- Astra review: evaluable; entry pending. Record:
+  `DEMIAN_UNCERTAINTY_CALIBRATION_RESULTS.md`.
+- Continue: fresh heldout-history × order × time matrix, disjoint32/32 allocation.
+  In-sample source reconstruction is not retention evidence.
+- Verification:493 passed; same4 historical artifact/manifest failures.
+- Registered `R-UNC-LOCALIZATION-001` after Astra review; status unchanged.
+- History-matrix pre-run audit passed: split fixed on base-order labels only;
+  cross-order heldout target distribution need not match base-order distribution.
+
+## 2026-10-13 - Heldout availability and independent replication
+
+- Artifacts: history-matrix and history-matrix-replication diagnostics directories.
+- Observation: both separately allocated batches satisfy all within-order
+  matched-time projected-state comparisons through64 blank ticks.
+- Controls: disjoint32/32 histories; analytic latest and matched conditional
+  shuffle. New seeds, split83 and second schedule pair in replication.
+- Portability: cross-order improvements remain partial; cue6-frozen decoding
+  fails across delays in both batches.
+- Astra: matrix evaluable/supportive, registered `R-UNC-MATRIX-001`;
+  replication review pending. No stronger evidence-status promotion.
+- Record: `DEMIAN_UNCERTAINTY_HISTORY_MATRIX_RESULTS.md`.
+- Verification:495 passed; same4 historical artifact/manifest failures.
+- Remaining work is a research-objective fork, not another geometry sweep:
+  dissect existing code versus pursue portability under a declared objective.
+- Replication Astra review complete: registered `R-UNC-MATRIX-REP-001`.
+  Eight parameter seeds across two independent batches; status remains preliminary.
+  No routine measurement control remains for the bounded availability claim.

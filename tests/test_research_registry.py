@@ -56,7 +56,8 @@ def test_checked_in_registry_links_hypotheses_to_evidence() -> None:
     assert route_selectivity.status_basis.conflicting_result_ids == ["R-ROUTE-SELECTIVITY-001"]
     uncertainty = next(item for item in registry.hypotheses if item.id == "H-UNC-001")
     assert uncertainty.evidence_status == "preliminary_support"
-    assert uncertainty.status_basis.supporting_result_ids == ["R-UNC-CORR-001"]
+    assert "R-UNC-CORR-001" in uncertainty.status_basis.supporting_result_ids
+    assert "R-UNC-REP-001" not in uncertainty.status_basis.supporting_result_ids
     stability = next(item for item in registry.experiments if item.id == "E-ROUTE-002")
     interaction = next(item for item in registry.experiments if item.id == "E-ROUTE-003")
     assert stability.replication_scope.trajectory_count == 576

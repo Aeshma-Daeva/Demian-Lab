@@ -8,6 +8,70 @@
   },
   "runs": [
     {
+      "id": "demian_uncertainty_history_matrix_replication_v1_20261013",
+      "program": "demian-v1",
+      "date": "2026-10-13",
+      "family": "independent_heldout_history_matrix_replication",
+      "status": "active_evidence",
+      "primary_summary": "data/diagnostics/demian_uncertainty_history_matrix_replication_v1_20261013/summary.json",
+      "artifacts": [
+        "docs/DEMIAN_UNCERTAINTY_HISTORY_MATRIX_REPLICATION_PROTOCOL.json",
+        "data/diagnostics/demian_uncertainty_history_matrix_replication_v1_20261013/summary.json",
+        "data/diagnostics/demian_uncertainty_history_matrix_replication_v1_20261013/metrics.jsonl",
+        "data/diagnostics/demian_uncertainty_history_matrix_replication_v1_20261013/manifest.json",
+        "data/diagnostics/demian_uncertainty_history_matrix_replication_v1_20261013/states.npz",
+        "data/diagnostics/demian_uncertainty_history_matrix_replication_v1_20261013/transforms.npz",
+        "data/diagnostics/demian_uncertainty_history_matrix_replication_v1_20261013/predictions.npz",
+        "data/diagnostics/demian_uncertainty_history_matrix_replication_v1_20261013/state_metadata.jsonl"
+      ],
+      "claim_ids": [
+        "H-UNC-001"
+      ],
+      "interpretation": "Astra-reviewed R-UNC-MATRIX-REP-001: independent within-order availability replication; frozen-time coordinates fail and all-cell order portability remains unestablished."
+    },
+    {
+      "id": "demian_uncertainty_history_matrix_v1_20261013",
+      "program": "demian-v1",
+      "date": "2026-10-13",
+      "family": "heldout_history_order_time",
+      "status": "active_evidence",
+      "primary_summary": "data/diagnostics/demian_uncertainty_history_matrix_v1_20261013/summary.json",
+      "artifacts": [
+        "docs/DEMIAN_UNCERTAINTY_HISTORY_MATRIX_PROTOCOL.json",
+        "data/diagnostics/demian_uncertainty_history_matrix_v1_20261013/summary.json",
+        "data/diagnostics/demian_uncertainty_history_matrix_v1_20261013/metrics.jsonl",
+        "data/diagnostics/demian_uncertainty_history_matrix_v1_20261013/manifest.json",
+        "data/diagnostics/demian_uncertainty_history_matrix_v1_20261013/states.npz",
+        "data/diagnostics/demian_uncertainty_history_matrix_v1_20261013/transforms.npz",
+        "data/diagnostics/demian_uncertainty_history_matrix_v1_20261013/predictions.npz",
+        "data/diagnostics/demian_uncertainty_history_matrix_v1_20261013/state_metadata.jsonl"
+      ],
+      "claim_ids": [
+        "H-UNC-001"
+      ],
+      "interpretation": "Astra-reviewed R-UNC-MATRIX-001: matched-time within-order availability supported on heldout histories; order portability mixed and frozen temporal calibration fails."
+    },
+    {
+      "id": "demian_uncertainty_localization_v1_20261013",
+      "program": "demian-v1",
+      "date": "2026-10-13",
+      "family": "time_resolved_frozen_calibration",
+      "status": "active_evidence",
+      "primary_summary": "data/diagnostics/demian_uncertainty_localization_v1_20261013/summary.json",
+      "artifacts": [
+        "docs/DEMIAN_UNCERTAINTY_LOCALIZATION_PROTOCOL.json",
+        "data/diagnostics/demian_uncertainty_localization_v1_20261013/summary.json",
+        "data/diagnostics/demian_uncertainty_localization_v1_20261013/metrics.jsonl",
+        "data/diagnostics/demian_uncertainty_localization_v1_20261013/manifest.json",
+        "data/diagnostics/demian_uncertainty_localization_v1_20261013/states.npz",
+        "data/diagnostics/demian_uncertainty_localization_v1_20261013/transforms.npz",
+        "data/diagnostics/demian_uncertainty_localization_v1_20261013/predictions.npz",
+        "data/diagnostics/demian_uncertainty_localization_v1_20261013/state_metadata.jsonl"
+      ],
+      "claim_ids": [],
+      "interpretation": "Astra-reviewed R-UNC-LOCALIZATION-001: order transfer and frozen temporal calibration fail; within-order unseen-history availability remains untested."
+    },
+    {
       "id": "demian_uncertainty_chord_v1_20261013",
       "program": "demian-v1",
       "date": "2026-10-13",

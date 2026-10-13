@@ -39,8 +39,15 @@ Last updated: 2026-10-13
   Natural-history chord gate completed: finite local-linearity failures and
   seed-dependent contrasts against norm-matched disturbances; Astra-reviewed.
   See `DEMIAN_UNCERTAINTY_CHORD_RESULTS.md`.
-  Current work: fresh time-resolved frozen-calibration localization; no further
-  local-geometry tuning or architecture modification.
+  Time-resolved localization: immediate cross-order calibration and cue6-frozen
+  temporal calibration fail; no erasure conclusion. See
+  `DEMIAN_UNCERTAINTY_CALIBRATION_RESULTS.md`.
+  Heldout-history matrix and independent replication completed: within-order
+  matched-time decoding succeeds through64 blank ticks; order portability remains
+  partial and cue6-frozen temporal calibration fails. See
+  `DEMIAN_UNCERTAINTY_HISTORY_MATRIX_RESULTS.md`.
+  Next requires research direction: dissect current condition-specific coding
+  versus pursue portability under a declared objective. No geometry tuning.
   No causal-channel claim is active.
 
 Primary records:

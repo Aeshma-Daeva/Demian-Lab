@@ -3,10 +3,10 @@
     "schema_version": 1,
     "registry_id": "demian-research-registry-pilot-v2",
     "protocol_version": "1.1.0",
-    "generated_on": "2026-10-12",
+    "generated_on": "2026-10-13",
     "authority": "Demian",
     "source_repository": "https://github.com/Aeshma-Daeva/Demian-Lab",
-    "source_commit": "313ce6ff75c68ae48e6a01a69f93ae8199821db3",
+    "source_commit": "b0b9353390171d8bc0d33e6e1e39a9903c8b5905",
     "status_policy": "manual_review_only"
   },
   "hypotheses": [
@@ -252,12 +252,12 @@
       "evaluation_conditions": ["target_private_interface", "frozen_probe", "heldout_public_sequences", "time_and_current_observation_controls"],
       "evidence_status": "preliminary_support",
       "lifecycle": "active",
-      "status_basis": {"method":"manual_review","rule":"Preliminary support requires label-balanced held-out decoding beyond current, latest-observation, schedule-only, and shuffled-label controls; it does not establish calibrated uncertainty or causal use.","considered_result_ids":["R-UNC-HARNESS-001","R-UNC-REP-001","R-UNC-CORR-001","R-UNC-TRANSFER-001","R-UNC-CHANNEL-001","R-UNC-SIMILARITY-001","R-UNC-JACOBIAN-001","R-UNC-HORIZON-001","R-UNC-CURVATURE-001","R-UNC-RADIUS-001","R-UNC-CHORD-001"],"supporting_result_ids":["R-UNC-CORR-001"],"conflicting_result_ids":["R-UNC-TRANSFER-001","R-UNC-CHANNEL-001"],"reviewer":"Astra scientific review","reviewed_on":"2026-10-13"},
-      "status_history": [{"evidence_status":"untested","lifecycle":"active","changed_on":"2026-10-12","reviewer":"Codex implementation review","basis":"The discovery harness records traces but no frozen transfer probe or intervention."},{"evidence_status":"preliminary_support","lifecycle":"active","changed_on":"2026-10-12","reviewer":"Astra scientific review","basis":"Initially reviewed as held-out decoding support."},{"evidence_status":"untested","lifecycle":"active","changed_on":"2026-10-13","reviewer":"Astra scientific review","basis":"Correction: schedule index and target parity were deterministically paired, leaving a schedule-to-label confound. The result is unevaluable for retained evidence."},{"evidence_status":"preliminary_support","lifecycle":"active","changed_on":"2026-10-13","reviewer":"Astra scientific review","basis":"Corrective exhaustive corpus balances labels across reliability orders; held-out full-state decoding exceeds current, latest, schedule-only, and shuffled-label controls."},{"evidence_status":"preliminary_support","lifecycle":"active","changed_on":"2026-10-13","reviewer":"Astra scientific review","basis":"Low-capacity decoding transfers to one unseen six-event reliability order but fails the preregistered frozen six-to-eight-event criterion due a major length-conditioned state scale shift; the within-length claim remains preliminary only."},{"evidence_status":"preliminary_support","lifecycle":"active","changed_on":"2026-10-13","reviewer":"Astra scientific review","basis":"Fresh-seed channelwise radial normalization fails the frozen paired transfer gate in every seed. The earlier within-corpus evidence remains preliminary; neither global nor independent channel radial rescaling suffices for calibrated temporal transfer."},{"evidence_status":"preliminary_support","lifecycle":"active","changed_on":"2026-10-13","reviewer":"Astra scientific review","basis":"Label-free similarity diagnostics approximate centered geometry but fail absolute placement across the new order. This does not test evidence decoding or change the existing narrow hypothesis status."},{"evidence_status":"preliminary_support","lifecycle":"active","changed_on":"2026-10-13","reviewer":"Astra scientific review","basis":"R-UNC-JACOBIAN-001, R-UNC-HORIZON-001, R-UNC-CURVATURE-001 and R-UNC-RADIUS-001 are evaluable local-flow diagnostics. Short-window adequacy, limited fixed-centroid forecasts and precision-limited tiny responses do not change delayed evidence-decoding status."},{"evidence_status":"preliminary_support","lifecycle":"active","changed_on":"2026-10-13","reviewer":"Astra scientific review","basis":"R-UNC-CHORD-001 is evaluable, with seed-specific curvature and no replicated natural-direction exception. Stop local-geometry gates; characterize when frozen evidence calibration fails. H-UNC-001 decoding status unchanged."}],
-      "result_ids": ["R-UNC-HARNESS-001","R-UNC-REP-001","R-UNC-CORR-001","R-UNC-TRANSFER-001","R-UNC-CHANNEL-001","R-UNC-SIMILARITY-001","R-UNC-JACOBIAN-001","R-UNC-HORIZON-001","R-UNC-CURVATURE-001","R-UNC-RADIUS-001","R-UNC-CHORD-001"],
+      "status_basis": {"method":"manual_review","rule":"Preliminary support requires label-balanced held-out decoding beyond current, latest-observation, schedule-only, and shuffled-label controls; it does not establish calibrated uncertainty or causal use.","considered_result_ids":["R-UNC-HARNESS-001","R-UNC-REP-001","R-UNC-CORR-001","R-UNC-TRANSFER-001","R-UNC-CHANNEL-001","R-UNC-SIMILARITY-001","R-UNC-JACOBIAN-001","R-UNC-HORIZON-001","R-UNC-CURVATURE-001","R-UNC-RADIUS-001","R-UNC-CHORD-001","R-UNC-LOCALIZATION-001","R-UNC-MATRIX-001","R-UNC-MATRIX-REP-001"],"supporting_result_ids":["R-UNC-CORR-001","R-UNC-MATRIX-001","R-UNC-MATRIX-REP-001"],"conflicting_result_ids":["R-UNC-TRANSFER-001","R-UNC-CHANNEL-001"],"reviewer":"Astra scientific review","reviewed_on":"2026-10-13"},
+      "status_history": [{"evidence_status":"untested","lifecycle":"active","changed_on":"2026-10-12","reviewer":"Codex implementation review","basis":"The discovery harness records traces but no frozen transfer probe or intervention."},{"evidence_status":"preliminary_support","lifecycle":"active","changed_on":"2026-10-12","reviewer":"Astra scientific review","basis":"Initially reviewed as held-out decoding support."},{"evidence_status":"untested","lifecycle":"active","changed_on":"2026-10-13","reviewer":"Astra scientific review","basis":"Correction: schedule index and target parity were deterministically paired, leaving a schedule-to-label confound. The result is unevaluable for retained evidence."},{"evidence_status":"preliminary_support","lifecycle":"active","changed_on":"2026-10-13","reviewer":"Astra scientific review","basis":"Corrective exhaustive corpus balances labels across reliability orders; held-out full-state decoding exceeds current, latest, schedule-only, and shuffled-label controls."},{"evidence_status":"preliminary_support","lifecycle":"active","changed_on":"2026-10-13","reviewer":"Astra scientific review","basis":"Low-capacity decoding transfers to one unseen six-event reliability order but fails the preregistered frozen six-to-eight-event criterion due a major length-conditioned state scale shift; the within-length claim remains preliminary only."},{"evidence_status":"preliminary_support","lifecycle":"active","changed_on":"2026-10-13","reviewer":"Astra scientific review","basis":"Fresh-seed channelwise radial normalization fails the frozen paired transfer gate in every seed. The earlier within-corpus evidence remains preliminary; neither global nor independent channel radial rescaling suffices for calibrated temporal transfer."},{"evidence_status":"preliminary_support","lifecycle":"active","changed_on":"2026-10-13","reviewer":"Astra scientific review","basis":"Label-free similarity diagnostics approximate centered geometry but fail absolute placement across the new order. This does not test evidence decoding or change the existing narrow hypothesis status."},{"evidence_status":"preliminary_support","lifecycle":"active","changed_on":"2026-10-13","reviewer":"Astra scientific review","basis":"R-UNC-JACOBIAN-001, R-UNC-HORIZON-001, R-UNC-CURVATURE-001 and R-UNC-RADIUS-001 are evaluable local-flow diagnostics. Short-window adequacy, limited fixed-centroid forecasts and precision-limited tiny responses do not change delayed evidence-decoding status."},{"evidence_status":"preliminary_support","lifecycle":"active","changed_on":"2026-10-13","reviewer":"Astra scientific review","basis":"R-UNC-CHORD-001 is evaluable, with seed-specific curvature and no replicated natural-direction exception. Stop local-geometry gates; characterize when frozen evidence calibration fails. H-UNC-001 decoding status unchanged."},{"evidence_status":"preliminary_support","lifecycle":"active","changed_on":"2026-10-13","reviewer":"Astra scientific review","basis":"R-UNC-LOCALIZATION-001 establishes fresh order and temporal calibration failures, not erasure or unseen-history retention. Existing narrow within-corpus status unchanged; next gate separates heldout-history availability from order/time calibration."},{"evidence_status":"preliminary_support","lifecycle":"active","changed_on":"2026-10-13","reviewer":"Astra scientific review","basis":"R-UNC-MATRIX-001 supports matched-time within-order delayed decoding on unseen histories across four fresh seeds and three fixed low-capacity projections. Order portability and cue6-frozen time coordinates fail; status remains narrow preliminary support pending independent split/schedule replication."},{"evidence_status":"preliminary_support","lifecycle":"active","changed_on":"2026-10-13","reviewer":"Astra scientific review","basis":"R-UNC-MATRIX-001 and R-UNC-MATRIX-REP-001 provide bounded replicated support: two independently allocated four-seed batches show matched-time within-order low-capacity heldout decoding through delay64 beyond fair latest/shuffle controls. Common frozen temporal coordinates and all-cell order portability were not established. Status remains preliminary."}],
+      "result_ids": ["R-UNC-HARNESS-001","R-UNC-REP-001","R-UNC-CORR-001","R-UNC-TRANSFER-001","R-UNC-CHANNEL-001","R-UNC-SIMILARITY-001","R-UNC-JACOBIAN-001","R-UNC-HORIZON-001","R-UNC-CURVATURE-001","R-UNC-RADIUS-001","R-UNC-CHORD-001","R-UNC-LOCALIZATION-001","R-UNC-MATRIX-001","R-UNC-MATRIX-REP-001"],
       "alternative_explanations": ["A probe may recover time, current cue, generic state magnitude, or evaluator-side schedule structure rather than retained evidence."],
       "falsifiers": ["Held-out probe performance does not exceed time and current-observation controls."],
-      "next_test": "Fresh-seed time-resolved frozen-calibration localization across event boundaries and delays, with disjoint reliability orders and public/conditional-shuffle controls."
+      "next_test": "Research-direction choice required: characterize the existing order/time-dependent code and late transfer improvement, or declare an invariance objective before intervention/training/architecture changes. No routine control remains for the bounded availability claim."
     },
     {
       "id": "H-ROUTE-005",
@@ -284,6 +284,84 @@
   ],
   "experiments": [
     {
+      "id": "E-UNC-014",
+      "name": "Independent schedule/split replication of heldout decoding matrix",
+      "system": "demian_v1_gate_state_with_stateless_public_evidence_encoder",
+      "protocol_version": "demian-uncertainty-history-matrix-replication-v1",
+      "replication_scope": {
+        "parameter_seed_count": 4,
+        "initial_state_count": 4,
+        "input_seed_count": 0,
+        "history_condition_count": 128,
+        "trajectory_count": 512,
+        "checkpoint_row_count": 2560,
+        "independent_unit": "parameter_seed",
+        "dependent_observations": [
+          "Five checkpoints, three projections, orders, channels and fit modes dependent within each of four new parameter seeds; new split83 and second reliability-order pair, independent of E-UNC-013."
+        ]
+      },
+      "artifact_ids": [
+        "A-UNC-MATRIX-REP-PROTOCOL-001",
+        "A-UNC-MATRIX-REP-SUMMARY-001",
+        "A-UNC-MATRIX-REP-METRICS-001",
+        "A-UNC-MATRIX-REP-MANIFEST-001",
+        "A-UNC-MATRIX-REP-STATES-001",
+        "A-UNC-MATRIX-REP-FITS-001"
+      ]
+    },
+    {
+      "id": "E-UNC-013",
+      "name": "Fresh heldout history-order-time decoding matrix",
+      "system": "demian_v1_gate_state_with_stateless_public_evidence_encoder",
+      "protocol_version": "demian-uncertainty-history-matrix-v1",
+      "replication_scope": {
+        "parameter_seed_count": 4,
+        "initial_state_count": 4,
+        "input_seed_count": 0,
+        "history_condition_count": 128,
+        "trajectory_count": 512,
+        "checkpoint_row_count": 2560,
+        "independent_unit": "parameter_seed",
+        "dependent_observations": [
+          "Five checkpoint rows per history, three projection seeds, two orders, channels and fit modes dependent within each parameter seed; one fixed disjoint32/32 history split."
+        ]
+      },
+      "artifact_ids": [
+        "A-UNC-MATRIX-PROTOCOL-001",
+        "A-UNC-MATRIX-SUMMARY-001",
+        "A-UNC-MATRIX-METRICS-001",
+        "A-UNC-MATRIX-MANIFEST-001",
+        "A-UNC-MATRIX-STATES-001",
+        "A-UNC-MATRIX-FITS-001"
+      ]
+    },
+    {
+      "id": "E-UNC-012",
+      "name": "Fresh time-resolved frozen calibration localization",
+      "system": "demian_v1_gate_state_with_stateless_public_evidence_encoder",
+      "protocol_version": "demian-uncertainty-localization-v1",
+      "replication_scope": {
+        "parameter_seed_count": 4,
+        "initial_state_count": 4,
+        "input_seed_count": 0,
+        "history_condition_count": 128,
+        "trajectory_count": 512,
+        "checkpoint_row_count": 2720,
+        "independent_unit": "parameter_seed",
+        "dependent_observations": [
+          "Repeated checkpoint rows, unique-prefix histories, channels, projection seeds and fit modes dependent within seed; cue2/4 descriptive only."
+        ]
+      },
+      "artifact_ids": [
+        "A-UNC-LOCALIZATION-PROTOCOL-001",
+        "A-UNC-LOCALIZATION-SUMMARY-001",
+        "A-UNC-LOCALIZATION-METRICS-001",
+        "A-UNC-LOCALIZATION-MANIFEST-001",
+        "A-UNC-LOCALIZATION-STATES-001",
+        "A-UNC-LOCALIZATION-FITS-001"
+      ]
+    },
+    {
       "id": "E-UNC-011",
       "name": "Exhaustive natural-history chord response",
       "system": "demian_v1_gate_state_with_stateless_public_evidence_encoder",
@@ -306,7 +384,8 @@
         "A-UNC-CHORD-METRICS-001",
         "A-UNC-CHORD-MANIFEST-001",
         "A-UNC-CHORD-PAIRED-001",
-        "A-UNC-CHORD-PARTITIONS-001"
+        "A-UNC-CHORD-PARTITIONS-001",
+        "A-UNC-CHORD-BYTES-001"
       ]
     },
     {
@@ -612,6 +691,60 @@
   ],
   "controls": [
     {
+      "id": "C-UNC-MATRIX-REP-001",
+      "name": "Disjoint history allocation and fair public/shuffle controls",
+      "semantics": "Base-order final-symbol/log-odds-sign split fixed across orders, times and seeds; only train32 fit coefficients/scale. Same heldout32 IDs evaluate both orders, with analytic latest/current and projection-matched conditional train-label shuffle.",
+      "limitations": [
+        "One new fixed split and second schedule pair; not a population-wide invariance test.",
+        "Cross-order target distributions need not match base-order stratified targets.",
+        "Channel decoding is descriptive, not causal."
+      ],
+      "artifact_ids": [
+        "A-UNC-MATRIX-REP-PROTOCOL-001",
+        "A-UNC-MATRIX-REP-SUMMARY-001",
+        "A-UNC-MATRIX-REP-METRICS-001",
+        "A-UNC-MATRIX-REP-MANIFEST-001",
+        "A-UNC-MATRIX-REP-STATES-001",
+        "A-UNC-MATRIX-REP-FITS-001"
+      ]
+    },
+    {
+      "id": "C-UNC-MATRIX-001",
+      "name": "Disjoint history allocation and fair public/shuffle controls",
+      "semantics": "Base-order final-symbol/log-odds-sign split fixed across orders, times and seeds; only train32 fit coefficients/scale. Same heldout32 IDs evaluate both orders, with analytic latest/current and projection-matched conditional train-label shuffle.",
+      "limitations": [
+        "One fixed split and one schedule pair.",
+        "Cross-order target distributions need not match base-order stratified targets.",
+        "Channel decoding is descriptive, not causal."
+      ],
+      "artifact_ids": [
+        "A-UNC-MATRIX-PROTOCOL-001",
+        "A-UNC-MATRIX-SUMMARY-001",
+        "A-UNC-MATRIX-METRICS-001",
+        "A-UNC-MATRIX-MANIFEST-001",
+        "A-UNC-MATRIX-STATES-001",
+        "A-UNC-MATRIX-FITS-001"
+      ]
+    },
+    {
+      "id": "C-UNC-LOCALIZATION-001",
+      "name": "Analytic public, fitted public and conditional-shuffle controls",
+      "semantics": "Current/latest single-cue semantic log odds scored without fitting, latest/current encodings fitted on training order only, train-label shuffle within latest-symbol strata matched by projection seed, schedule-only sanity.",
+      "limitations": [
+        "One-order schedule-only features constant, not substantive schedule-exploitation exclusion.",
+        "All64 train-order histories fitted; own-order reconstruction is in-sample.",
+        "Learned latest support limited by neutral terminal training cue."
+      ],
+      "artifact_ids": [
+        "A-UNC-LOCALIZATION-PROTOCOL-001",
+        "A-UNC-LOCALIZATION-SUMMARY-001",
+        "A-UNC-LOCALIZATION-METRICS-001",
+        "A-UNC-LOCALIZATION-MANIFEST-001",
+        "A-UNC-LOCALIZATION-STATES-001",
+        "A-UNC-LOCALIZATION-FITS-001"
+      ]
+    },
+    {
       "id": "C-UNC-CHORD-001",
       "name": "Norm-matched isotropic response and natural endpoint replay",
       "semantics": "Two fixed isotropic directions match each chord requested L2 norm at the same source. Actual q32 deltas retained. Every source and natural f1 endpoint exactly replays its public history.",
@@ -626,7 +759,8 @@
         "A-UNC-CHORD-METRICS-001",
         "A-UNC-CHORD-MANIFEST-001",
         "A-UNC-CHORD-PAIRED-001",
-        "A-UNC-CHORD-PARTITIONS-001"
+        "A-UNC-CHORD-PARTITIONS-001",
+        "A-UNC-CHORD-BYTES-001"
       ]
     },
     {
@@ -839,6 +973,201 @@
   ],
   "results": [
     {
+      "id": "R-UNC-MATRIX-REP-001",
+      "hypothesis_ids": [
+        "H-UNC-001"
+      ],
+      "experiment_id": "E-UNC-014",
+      "evaluable": true,
+      "outcome": "mixed",
+      "observation": "Independent fresh-seed/split/schedule batch again beats analytic latest and matched shuffle in60/60 within-order primary cells. Median R2 cue6/d2/d8/d32/d64=.895/.852/.767/.734/.668. Cross-order wins2/12,2/12,8/12,11/12,11/12; strict all-cell criterion still fails. Cue6-frozen delayed within-order calibration fails in every delayed cell.",
+      "interpretation": "Replicates bounded delayed within-order evidence availability across a second separately allocated batch, not a common frozen time coordinate system or robust order portability. Further work requires a research-objective choice.",
+      "analysis_scope": {
+        "independent_unit": "parameter_seed",
+        "independent_unit_count": 4,
+        "comparison_count": 120,
+        "comparison_unit": "four seeds by five checkpoints by three projections by two primary order families",
+        "dependent_observations": [
+          "Frozen cue6 transfer, channels and control comparisons repeat the same heldout history IDs."
+        ],
+        "scope_note": "Astra scientific review2026-10-13: evaluable independent replication; preserve four seeds per batch, eight total across two batches, not pooled metric-row replication."
+      },
+      "evaluation_conditions_met": [
+        "fresh_seeds",
+        "disjoint_heldout_histories",
+        "train_only_fitting",
+        "fair_analytic_latest",
+        "matched_conditional_shuffle",
+        "declared_capacity_and_all_cell_rule",
+        "immutable_states_and_fits"
+      ],
+      "missing_evaluation_conditions": [
+        "seed_projection_robust_order_portability",
+        "frozen_temporal_calibration"
+      ],
+      "effect_summary": {
+        "within_order_control_wins": 60,
+        "within_order_primary_cells": 60,
+        "within_order_cue6_median_r2": 0.895234,
+        "within_order_delay64_median_r2": 0.667512,
+        "within_order_delay64_min_r2": 0.650227,
+        "cross_order_wins_by_checkpoint": [
+          2,
+          2,
+          8,
+          11,
+          11
+        ],
+        "cross_order_cells_per_checkpoint": 12
+      },
+      "uncertainty": [
+        "Four new seeds and a second fixed pair/split; projection/time cells dependent.",
+        "Stronger late cross-order decoding remains descriptive; one failing cell prevents the declared all-cell claim."
+      ],
+      "exclusions": [
+        "No belief, uncertainty regulation, information erasure, causal channel ownership, functional memory use, architecture advantage, learning or adaptation claim."
+      ],
+      "control_ids": [
+        "C-UNC-MATRIX-REP-001"
+      ],
+      "artifact_ids": [
+        "A-UNC-MATRIX-REP-PROTOCOL-001",
+        "A-UNC-MATRIX-REP-SUMMARY-001",
+        "A-UNC-MATRIX-REP-METRICS-001",
+        "A-UNC-MATRIX-REP-MANIFEST-001",
+        "A-UNC-MATRIX-REP-STATES-001",
+        "A-UNC-MATRIX-REP-FITS-001"
+      ]
+    },
+    {
+      "id": "R-UNC-MATRIX-001",
+      "hypothesis_ids": [
+        "H-UNC-001"
+      ],
+      "experiment_id": "E-UNC-013",
+      "evaluable": true,
+      "outcome": "mixed",
+      "observation": "Within-order time-refitted full-state projections beat analytic latest and matched shuffle in60/60 primary cells through delay64; median R2 cue6/d2/d8/d32/d64=.886/.695/.634/.507/.342. Cross-order wins0/12,0/12,2/12,1/12,8/12 respectively; no all-cell criterion. Cue6-frozen within-order probes fail every delayed comparison.",
+      "interpretation": "Accumulated public evidence remains low-capacity decodable on unseen histories at matched times in one fixed order. This code is not established as order-portable or a single stable frozen-time coordinate system.",
+      "analysis_scope": {
+        "independent_unit": "parameter_seed",
+        "independent_unit_count": 4,
+        "comparison_count": 120,
+        "comparison_unit": "four seeds by five checkpoints by three projections by two primary order families",
+        "dependent_observations": [
+          "Frozen cue6 transfer, channels and control comparisons repeat the same heldout history IDs."
+        ],
+        "scope_note": "Astra scientific review2026-10-13: narrow within-order availability strengthens preliminary support without promotion."
+      },
+      "evaluation_conditions_met": [
+        "fresh_seeds",
+        "disjoint_heldout_histories",
+        "train_only_fitting",
+        "fair_analytic_latest",
+        "matched_conditional_shuffle",
+        "declared_capacity_and_all_cell_rule",
+        "immutable_states_and_fits"
+      ],
+      "missing_evaluation_conditions": [
+        "independent_split_schedule_replication",
+        "seed_projection_robust_order_portability",
+        "frozen_temporal_calibration"
+      ],
+      "effect_summary": {
+        "within_order_control_wins": 60,
+        "within_order_primary_cells": 60,
+        "within_order_cue6_median_r2": 0.885576,
+        "within_order_delay64_median_r2": 0.342491,
+        "cross_order_wins_by_checkpoint": [
+          0,
+          0,
+          2,
+          1,
+          8
+        ],
+        "cross_order_cells_per_checkpoint": 12
+      },
+      "uncertainty": [
+        "Four parameter seeds; projections/checkpoints are sensitivity conditions, not independent replications.",
+        "One fixed schedule pair and history allocation."
+      ],
+      "exclusions": [
+        "No belief, uncertainty regulation, information erasure, causal channel ownership, functional memory use, architecture advantage, learning or adaptation claim."
+      ],
+      "control_ids": [
+        "C-UNC-MATRIX-001"
+      ],
+      "artifact_ids": [
+        "A-UNC-MATRIX-PROTOCOL-001",
+        "A-UNC-MATRIX-SUMMARY-001",
+        "A-UNC-MATRIX-METRICS-001",
+        "A-UNC-MATRIX-MANIFEST-001",
+        "A-UNC-MATRIX-STATES-001",
+        "A-UNC-MATRIX-FITS-001"
+      ]
+    },
+    {
+      "id": "R-UNC-LOCALIZATION-001",
+      "hypothesis_ids": [
+        "H-UNC-001"
+      ],
+      "experiment_id": "E-UNC-012",
+      "evaluable": true,
+      "outcome": "observed",
+      "observation": "All12 cue6 heldout-order full-state projections have negative R2 (median-0.610), versus analytic latest-only0.439. Cue6-frozen calibration fails after2 blanks even in original order (medianR2 about-23492). Time-refitted heldout medians improve to0.275/0.137 at delays32/64 but fail the seed/projection-robust comparator criterion.",
+      "interpretation": "Immediate order transfer and temporal frozen-coordinate calibration fail separately. Neither establishes information erasure; unseen-history availability within an order was not evaluated here.",
+      "analysis_scope": {
+        "independent_unit": "parameter_seed",
+        "independent_unit_count": 4,
+        "comparison_count": 60,
+        "comparison_unit": "four parameter seeds by five primary checkpoints by three full-state projections",
+        "dependent_observations": [
+          "Orders, channels, controls, fit modes and early descriptive checkpoints within seeds."
+        ],
+        "scope_note": "Astra scientific review2026-10-13: evaluable, no new retention or causal-channel claim."
+      },
+      "evaluation_conditions_met": [
+        "fresh_seeds",
+        "disjoint_orders",
+        "prefix_multiset_match",
+        "unique_prefix_deduplication",
+        "train_only_scale_and_fit",
+        "analytic_public_baselines",
+        "matched_conditional_shuffle",
+        "saved_coefficients_and_states"
+      ],
+      "missing_evaluation_conditions": [
+        "within_order_heldout_histories",
+        "seed_projection_robust_advantage"
+      ],
+      "effect_summary": {
+        "cue6_heldout_median_r2": -0.609527,
+        "analytic_latest_heldout_r2": 0.438899,
+        "time_refit_delay32_median_r2": 0.274695,
+        "time_refit_delay64_median_r2": 0.137294
+      },
+      "uncertainty": [
+        "Four seeds and one reliability-order pair.",
+        "Cue2/4 support4/16 unique prefixes: descriptive only.",
+        "Raw norm/centroid shifts are not a causal explanation or proof translation corrects decoding."
+      ],
+      "exclusions": [
+        "No information erasure, calibrated uncertainty, causal channel, routing utility, learning or adaptation claim.",
+        "Cue6 original-order fit is in-sample, not independent retention evidence."
+      ],
+      "control_ids": [
+        "C-UNC-LOCALIZATION-001"
+      ],
+      "artifact_ids": [
+        "A-UNC-LOCALIZATION-PROTOCOL-001",
+        "A-UNC-LOCALIZATION-SUMMARY-001",
+        "A-UNC-LOCALIZATION-METRICS-001",
+        "A-UNC-LOCALIZATION-MANIFEST-001",
+        "A-UNC-LOCALIZATION-STATES-001",
+        "A-UNC-LOCALIZATION-FITS-001"
+      ]
+    },
+    {
       "id": "R-UNC-CHORD-001",
       "hypothesis_ids": [
         "H-UNC-001"
@@ -897,7 +1226,8 @@
         "A-UNC-CHORD-METRICS-001",
         "A-UNC-CHORD-MANIFEST-001",
         "A-UNC-CHORD-PAIRED-001",
-        "A-UNC-CHORD-PARTITIONS-001"
+        "A-UNC-CHORD-PARTITIONS-001",
+        "A-UNC-CHORD-BYTES-001"
       ]
     },
     {
@@ -1498,6 +1828,158 @@
     }
   ],
   "artifacts": [
+    {
+      "id": "A-UNC-CHORD-BYTES-001",
+      "repository": "https://github.com/Aeshma-Daeva/Demian-Lab",
+      "commit": "db13bb1782a576447f7a95b9b7cb278add8f1dd4",
+      "path": "data/diagnostics/demian_uncertainty_chord_v1_20261013/prediction_parts/reconstruction_validation.json",
+      "media_type": "application/json",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/db13bb1782a576447f7a95b9b7cb278add8f1dd4/data/diagnostics/demian_uncertainty_chord_v1_20261013/prediction_parts/reconstruction_validation.json"
+    },
+    {
+      "id": "A-UNC-MATRIX-REP-PROTOCOL-001",
+      "repository": "https://github.com/Aeshma-Daeva/Demian-Lab",
+      "commit": "15113ac87607798dac29f7f340828efeb70eb112",
+      "path": "docs/DEMIAN_UNCERTAINTY_HISTORY_MATRIX_REPLICATION_PROTOCOL.json",
+      "media_type": "application/json",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/15113ac87607798dac29f7f340828efeb70eb112/docs/DEMIAN_UNCERTAINTY_HISTORY_MATRIX_REPLICATION_PROTOCOL.json"
+    },
+    {
+      "id": "A-UNC-MATRIX-REP-SUMMARY-001",
+      "repository": "https://github.com/Aeshma-Daeva/Demian-Lab",
+      "commit": "b0b9353390171d8bc0d33e6e1e39a9903c8b5905",
+      "path": "data/diagnostics/demian_uncertainty_history_matrix_replication_v1_20261013/summary.json",
+      "media_type": "application/json",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/b0b9353390171d8bc0d33e6e1e39a9903c8b5905/data/diagnostics/demian_uncertainty_history_matrix_replication_v1_20261013/summary.json"
+    },
+    {
+      "id": "A-UNC-MATRIX-REP-METRICS-001",
+      "repository": "https://github.com/Aeshma-Daeva/Demian-Lab",
+      "commit": "b0b9353390171d8bc0d33e6e1e39a9903c8b5905",
+      "path": "data/diagnostics/demian_uncertainty_history_matrix_replication_v1_20261013/metrics.jsonl",
+      "media_type": "application/x-ndjson",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/b0b9353390171d8bc0d33e6e1e39a9903c8b5905/data/diagnostics/demian_uncertainty_history_matrix_replication_v1_20261013/metrics.jsonl"
+    },
+    {
+      "id": "A-UNC-MATRIX-REP-MANIFEST-001",
+      "repository": "https://github.com/Aeshma-Daeva/Demian-Lab",
+      "commit": "b0b9353390171d8bc0d33e6e1e39a9903c8b5905",
+      "path": "data/diagnostics/demian_uncertainty_history_matrix_replication_v1_20261013/manifest.json",
+      "media_type": "application/json",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/b0b9353390171d8bc0d33e6e1e39a9903c8b5905/data/diagnostics/demian_uncertainty_history_matrix_replication_v1_20261013/manifest.json"
+    },
+    {
+      "id": "A-UNC-MATRIX-REP-STATES-001",
+      "repository": "https://github.com/Aeshma-Daeva/Demian-Lab",
+      "commit": "b0b9353390171d8bc0d33e6e1e39a9903c8b5905",
+      "path": "data/diagnostics/demian_uncertainty_history_matrix_replication_v1_20261013/states.npz",
+      "media_type": "application/octet-stream",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/b0b9353390171d8bc0d33e6e1e39a9903c8b5905/data/diagnostics/demian_uncertainty_history_matrix_replication_v1_20261013/states.npz"
+    },
+    {
+      "id": "A-UNC-MATRIX-REP-FITS-001",
+      "repository": "https://github.com/Aeshma-Daeva/Demian-Lab",
+      "commit": "b0b9353390171d8bc0d33e6e1e39a9903c8b5905",
+      "path": "data/diagnostics/demian_uncertainty_history_matrix_replication_v1_20261013/transforms.npz",
+      "media_type": "application/octet-stream",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/b0b9353390171d8bc0d33e6e1e39a9903c8b5905/data/diagnostics/demian_uncertainty_history_matrix_replication_v1_20261013/transforms.npz"
+    },
+    {
+      "id": "A-UNC-MATRIX-PROTOCOL-001",
+      "repository": "https://github.com/Aeshma-Daeva/Demian-Lab",
+      "commit": "63746d2ed39147605c1a4696a7152d610338b010",
+      "path": "docs/DEMIAN_UNCERTAINTY_HISTORY_MATRIX_PROTOCOL.json",
+      "media_type": "application/json",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/63746d2ed39147605c1a4696a7152d610338b010/docs/DEMIAN_UNCERTAINTY_HISTORY_MATRIX_PROTOCOL.json"
+    },
+    {
+      "id": "A-UNC-MATRIX-SUMMARY-001",
+      "repository": "https://github.com/Aeshma-Daeva/Demian-Lab",
+      "commit": "535a6994340a8377f1599f7903434c0c5acd34c7",
+      "path": "data/diagnostics/demian_uncertainty_history_matrix_v1_20261013/summary.json",
+      "media_type": "application/json",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/535a6994340a8377f1599f7903434c0c5acd34c7/data/diagnostics/demian_uncertainty_history_matrix_v1_20261013/summary.json"
+    },
+    {
+      "id": "A-UNC-MATRIX-METRICS-001",
+      "repository": "https://github.com/Aeshma-Daeva/Demian-Lab",
+      "commit": "535a6994340a8377f1599f7903434c0c5acd34c7",
+      "path": "data/diagnostics/demian_uncertainty_history_matrix_v1_20261013/metrics.jsonl",
+      "media_type": "application/x-ndjson",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/535a6994340a8377f1599f7903434c0c5acd34c7/data/diagnostics/demian_uncertainty_history_matrix_v1_20261013/metrics.jsonl"
+    },
+    {
+      "id": "A-UNC-MATRIX-MANIFEST-001",
+      "repository": "https://github.com/Aeshma-Daeva/Demian-Lab",
+      "commit": "535a6994340a8377f1599f7903434c0c5acd34c7",
+      "path": "data/diagnostics/demian_uncertainty_history_matrix_v1_20261013/manifest.json",
+      "media_type": "application/json",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/535a6994340a8377f1599f7903434c0c5acd34c7/data/diagnostics/demian_uncertainty_history_matrix_v1_20261013/manifest.json"
+    },
+    {
+      "id": "A-UNC-MATRIX-STATES-001",
+      "repository": "https://github.com/Aeshma-Daeva/Demian-Lab",
+      "commit": "535a6994340a8377f1599f7903434c0c5acd34c7",
+      "path": "data/diagnostics/demian_uncertainty_history_matrix_v1_20261013/states.npz",
+      "media_type": "application/octet-stream",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/535a6994340a8377f1599f7903434c0c5acd34c7/data/diagnostics/demian_uncertainty_history_matrix_v1_20261013/states.npz"
+    },
+    {
+      "id": "A-UNC-MATRIX-FITS-001",
+      "repository": "https://github.com/Aeshma-Daeva/Demian-Lab",
+      "commit": "535a6994340a8377f1599f7903434c0c5acd34c7",
+      "path": "data/diagnostics/demian_uncertainty_history_matrix_v1_20261013/transforms.npz",
+      "media_type": "application/octet-stream",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/535a6994340a8377f1599f7903434c0c5acd34c7/data/diagnostics/demian_uncertainty_history_matrix_v1_20261013/transforms.npz"
+    },
+    {
+      "id": "A-UNC-LOCALIZATION-PROTOCOL-001",
+      "repository": "https://github.com/Aeshma-Daeva/Demian-Lab",
+      "commit": "073d7dbe51d9a1c426ada399c0f83f7b26bdc3c2",
+      "path": "docs/DEMIAN_UNCERTAINTY_LOCALIZATION_PROTOCOL.json",
+      "media_type": "application/json",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/073d7dbe51d9a1c426ada399c0f83f7b26bdc3c2/docs/DEMIAN_UNCERTAINTY_LOCALIZATION_PROTOCOL.json"
+    },
+    {
+      "id": "A-UNC-LOCALIZATION-SUMMARY-001",
+      "repository": "https://github.com/Aeshma-Daeva/Demian-Lab",
+      "commit": "d0d5aef32198034d5a4d64dc65ff2455291fff12",
+      "path": "data/diagnostics/demian_uncertainty_localization_v1_20261013/summary.json",
+      "media_type": "application/json",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/d0d5aef32198034d5a4d64dc65ff2455291fff12/data/diagnostics/demian_uncertainty_localization_v1_20261013/summary.json"
+    },
+    {
+      "id": "A-UNC-LOCALIZATION-METRICS-001",
+      "repository": "https://github.com/Aeshma-Daeva/Demian-Lab",
+      "commit": "d0d5aef32198034d5a4d64dc65ff2455291fff12",
+      "path": "data/diagnostics/demian_uncertainty_localization_v1_20261013/metrics.jsonl",
+      "media_type": "application/x-ndjson",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/d0d5aef32198034d5a4d64dc65ff2455291fff12/data/diagnostics/demian_uncertainty_localization_v1_20261013/metrics.jsonl"
+    },
+    {
+      "id": "A-UNC-LOCALIZATION-MANIFEST-001",
+      "repository": "https://github.com/Aeshma-Daeva/Demian-Lab",
+      "commit": "d0d5aef32198034d5a4d64dc65ff2455291fff12",
+      "path": "data/diagnostics/demian_uncertainty_localization_v1_20261013/manifest.json",
+      "media_type": "application/json",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/d0d5aef32198034d5a4d64dc65ff2455291fff12/data/diagnostics/demian_uncertainty_localization_v1_20261013/manifest.json"
+    },
+    {
+      "id": "A-UNC-LOCALIZATION-STATES-001",
+      "repository": "https://github.com/Aeshma-Daeva/Demian-Lab",
+      "commit": "d0d5aef32198034d5a4d64dc65ff2455291fff12",
+      "path": "data/diagnostics/demian_uncertainty_localization_v1_20261013/states.npz",
+      "media_type": "application/octet-stream",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/d0d5aef32198034d5a4d64dc65ff2455291fff12/data/diagnostics/demian_uncertainty_localization_v1_20261013/states.npz"
+    },
+    {
+      "id": "A-UNC-LOCALIZATION-FITS-001",
+      "repository": "https://github.com/Aeshma-Daeva/Demian-Lab",
+      "commit": "d0d5aef32198034d5a4d64dc65ff2455291fff12",
+      "path": "data/diagnostics/demian_uncertainty_localization_v1_20261013/transforms.npz",
+      "media_type": "application/octet-stream",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/d0d5aef32198034d5a4d64dc65ff2455291fff12/data/diagnostics/demian_uncertainty_localization_v1_20261013/transforms.npz"
+    },
     {
       "id": "A-UNC-CHORD-PROTOCOL-001",
       "repository": "https://github.com/Aeshma-Daeva/Demian-Lab",
