@@ -34,3 +34,15 @@ def test_representation_protocol_scores_heldout_sequences_per_model_seed() -> No
     assert payload["integrity"]["all_finite"] is True
     assert {row["feature_set"] for row in payload["scores"]} >= {"full_state", "current_observation", "latest_observation"}
     assert {row["model_seed"] for row in payload["scores"]} == {94}
+
+
+def test_resolved_episode_specs_have_unique_public_histories() -> None:
+    specs = run_demian_uncertainty_representation.resolve_episode_specs({
+        "episode_count": 12,
+        "episode_seed_start": 100,
+        "reliability_schedules": [[0.75, 0.5, 0.95], [0.95, 0.5, 0.75]],
+    })
+
+    assert len(specs) == 12
+    assert len({spec["public_history"] for spec in specs}) == 12
+    assert {spec["target"] for spec in specs} == {0, 1}

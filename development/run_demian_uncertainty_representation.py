@@ -22,6 +22,47 @@ def _flatten(parts: tuple[object, ...]) -> np.ndarray:
     return np.concatenate([part.detach().cpu().numpy().reshape(-1) for part in parts]).astype(np.float64)
 
 
+def resolve_episode_specs(protocol: dict[str, Any]) -> list[dict[str, Any]]:
+    """Resolve an explicitly unique set of public histories before probe fitting."""
+    schedules = [list(schedule) for schedule in protocol["reliability_schedules"]]
+    if "episode_seeds" in protocol:
+        return [
+            {
+                "episode_id": episode_id,
+                "target": int(episode_seed) % 2,
+                "evidence_seed": int(episode_seed),
+                "schedule": schedules[episode_id % len(schedules)],
+            }
+            for episode_id, episode_seed in enumerate(protocol["episode_seeds"])
+        ]
+    episode_count = int(protocol["episode_count"])
+    next_seed = int(protocol["episode_seed_start"])
+    specs: list[dict[str, Any]] = []
+    histories: set[tuple[tuple[int, float], ...]] = set()
+    attempts = 0
+    while len(specs) < episode_count:
+        episode_id = len(specs)
+        target = episode_id % 2
+        schedule = schedules[episode_id % len(schedules)]
+        evidence = sample_evidence(hidden_target=target, reliabilities=schedule, seed=next_seed)
+        next_seed += 1
+        attempts += 1
+        history = tuple(evidence)
+        if history in histories:
+            if attempts > episode_count * 10_000:
+                raise ValueError("could not resolve enough unique public histories")
+            continue
+        histories.add(history)
+        specs.append({
+            "episode_id": episode_id,
+            "target": target,
+            "evidence_seed": next_seed - 1,
+            "schedule": schedule,
+            "public_history": history,
+        })
+    return specs
+
+
 def collect_pre_resolution_rows(protocol: dict[str, Any]) -> list[dict[str, Any]]:
     """Capture final-delay internal state and evaluator-only public-evidence labels."""
     hidden_size = int(protocol["hidden_size"])
@@ -30,13 +71,15 @@ def collect_pre_resolution_rows(protocol: dict[str, Any]) -> list[dict[str, Any]
     if hidden_size < 10 or not schedules or any(not schedule for schedule in schedules):
         raise ValueError("positive schedules and encoder-compatible hidden size are required")
     for model_seed in protocol["model_seeds"]:
-        for episode_id, episode_seed in enumerate(protocol["episode_seeds"]):
-            target = int(episode_seed) % 2
-            schedule = schedules[episode_id % len(schedules)]
+        for spec in resolve_episode_specs(protocol):
+            episode_id = int(spec["episode_id"])
+            target = int(spec["target"])
+            schedule = list(spec["schedule"])
+            evidence_seed = int(spec["evidence_seed"])
             evidence = sample_evidence(
                 hidden_target=target,
                 reliabilities=schedule,
-                seed=int(episode_seed),
+                seed=evidence_seed,
             )
             for delay_steps in protocol["delay_steps"]:
                 if int(delay_steps) <= 0:
@@ -60,7 +103,7 @@ def collect_pre_resolution_rows(protocol: dict[str, Any]) -> list[dict[str, Any]
                 base = {
                     "model_seed": int(model_seed),
                     "episode_id": episode_id,
-                    "episode_seed": int(episode_seed),
+                    "episode_seed": evidence_seed,
                     "delay_steps": int(delay_steps),
                     "checkpoint_phase": "delay",
                     "features": {
