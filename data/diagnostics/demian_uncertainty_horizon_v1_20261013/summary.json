@@ -1,0 +1,14 @@
+{
+  "claim_boundary": "descriptive horizon scope of fixed-centroid local-linear geometry; reused cases, not independent replication; no evidence-code, memory-use, causal-channel, AFP or chaos claim",
+  "experiment": "demian-uncertainty-horizon-v1",
+  "integrity": {
+    "all_finite": true,
+    "anchor_count": 384,
+    "double_rollout_max_norm_error": 0.0004319307205216746,
+    "exact_two_step_anchor": true,
+    "scope": "same cached cases; fixed source-centroid local-linear models across horizons; no independent replication",
+    "source_hashes_verified": true
+  },
+  "metric_count": 120,
+  "state_count": 1920
+}

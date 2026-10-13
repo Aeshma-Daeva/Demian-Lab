@@ -1,0 +1,50 @@
+{
+  "file_sha256": {
+    "metrics.jsonl": "f7ff19db3606f22a19ceb7d86cc9197c9615e93afe2dbf439614a6e82a572044",
+    "predictions.npz": "164216c53472dcbde87c7c9968eb99b0df5bd0b7219663ca2ac377c88775158d",
+    "state_metadata.jsonl": "ccc2b1f1d0333181bc0f14f93e628226e36ca4e89f0c313010c65d560e3588fa",
+    "states.npz": "a0fb68648e8e0a50cd8f36a40101a7392e93784c6005a1db17c24ebbb62f5c00",
+    "summary.json": "af2b14447d37fdd2c510c581c168bc13b65ec193d0f040db44ad0077e6d1d483",
+    "transforms.npz": "724188b5f2ab70f5d46c869b4d13e944ab128e67f68d618c1c6c085e6e4ad5c0"
+  },
+  "protocol": {
+    "G_h": "h identical blank-input injections and recurrent steps from runtime index38, reset inside every evaluation; identical seed weights; no relinearization at evaluation or target states",
+    "artifact_directory": "data/diagnostics/demian_uncertainty_horizon_v1_20261013",
+    "axes": [
+      "same_order_histories",
+      "unseen_order"
+    ],
+    "claim_boundary": "descriptive horizon scope of fixed-centroid local-linear geometry; reused cases, not independent replication; no evidence-code, memory-use, causal-channel, AFP or chaos claim",
+    "controls": [
+      "identity",
+      "model-derived centroid translation G_h(mu_A_train)-mu_A_train"
+    ],
+    "coverage": "report both cloud-centered variance excluded from rank8 and train-reference-centered evaluation-direction/centroid displacement excluded from rank8; do not conflate them",
+    "denominator": "fixed evaluation A-cloud RMS for all horizons; no target-time normalization",
+    "descriptive_threshold": "relative full residual <=0.1 at every seed and both axes at a horizon; first sampled failure reported descriptively only",
+    "falsifier": "large heldout residual bounds the horizon where the fixed local-linear description is useful; no selected-horizon hypothesis inference",
+    "horizons": [
+      2,
+      4,
+      8,
+      16,
+      32
+    ],
+    "independent_unit": "existing four parameter seeds; horizons and histories are dependent extensions of the same cases",
+    "metrics": "full/centered/centroid and in/out subspace residuals; displacement fraction explained; every seed-axis-horizon cell retained",
+    "model_seeds": [
+      894,
+      895,
+      994,
+      995
+    ],
+    "primary_prediction": "G_h(mu_A_train)+DG_h(mu_A_train)*(z_A-mu_A_train) via full-state JVP",
+    "protocol_id": "demian-uncertainty-horizon-v1",
+    "source": "reuse exact captured A states, training32 history indices, evaluation axes and rank8 basis from the hash-verified source artifact; centroid remains the training A mean",
+    "source_artifact_commit": "a6638b87fb305633503ab665184b6f55f43afbe8",
+    "source_artifact_directory": "data/diagnostics/demian_uncertainty_jacobian_v1_20261013",
+    "targets": "float32 nonlinear continuations are measured targets; h2 must exactly match existing independently collected B checkpoints; float64 discrepancy reported"
+  },
+  "protocol_sha256": "de697323d2783f05d66608e211f84882ed8e22ced968fd9062471dbaacf3136a",
+  "source_commit": "eaf5d6bb5e6792e0e574d0d5802fd975cc848860"
+}
