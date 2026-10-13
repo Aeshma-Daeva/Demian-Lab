@@ -1001,3 +1001,15 @@ Next:
   executed scores unchanged.
 - Review complete: Astra confirms evaluability and per-seed gate failure;
   registered `R-UNC-CHANNEL-001` without promoting `H-UNC-001`.
+
+## 2026-10-13 - Heldout similarity geometry
+
+- Artifact: `data/diagnostics/demian_uncertainty_similarity_v1_20261013/`.
+- Observation: full similarity residual 0.111–0.271 relative to A-cloud RMS;
+  centered residual 0.038–0.064; heldout excluded variance <0.006.
+- Boundary: strict full-map criterion fails. Remaining error is mostly a shared
+  centroid offset; this does not establish history-dependent deformation.
+- Record: `docs/DEMIAN_UNCERTAINTY_SIMILARITY_RESULTS.md`.
+- Review/registry pending. Exact states/transforms and hashes preserved.
+- Review complete: Astra confirms evaluability; registered
+  `R-UNC-SIMILARITY-001` as geometry diagnostics, with no hypothesis promotion.

@@ -28,8 +28,10 @@ Last updated: 2026-10-12
   state scale shift. Paired delay, global L2, and geometry gates are completed
   with registry entries pending; see `DEMIAN_UNCERTAINTY_GEOMETRY_RESULTS.md`.
   Fresh channelwise radial gate also fails; see the linked measurement record.
-  Next question: shared translation/rotation versus history-dependent
-  deformation. No causal-channel claim is active.
+  Similarity geometry preserves centered arrangement approximately but misses
+  absolute placement on a new order; see `DEMIAN_UNCERTAINTY_SIMILARITY_RESULTS.md`.
+  Next: same-order heldout histories versus unseen order, with a fixed two-delay
+  Jacobian baseline. No causal-channel claim is active.
 
 Primary records:
 

@@ -86,6 +86,7 @@ Purpose:
 - Global L2: [diagnostics/demian_uncertainty_l2_invariance_v1_20261013/summary.json](diagnostics/demian_uncertainty_l2_invariance_v1_20261013/summary.json)
 - Geometry: [diagnostics/demian_uncertainty_geometry_v1_20261013/summary.json](diagnostics/demian_uncertainty_geometry_v1_20261013/summary.json)
 - Fresh channelwise gate: [diagnostics/demian_uncertainty_channel_invariance_v1_20261013/summary.json](diagnostics/demian_uncertainty_channel_invariance_v1_20261013/summary.json)
+- Heldout similarity: [diagnostics/demian_uncertainty_similarity_v1_20261013/summary.json](diagnostics/demian_uncertainty_similarity_v1_20261013/summary.json); [record](../docs/DEMIAN_UNCERTAINTY_SIMILARITY_RESULTS.md).
 - Formal registry entries pending; no additional hypothesis promotion.
 
 ## Closed-Loop Baseline

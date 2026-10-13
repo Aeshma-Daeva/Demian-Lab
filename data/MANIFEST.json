@@ -8,6 +8,15 @@
   },
   "runs": [
     {
+      "id": "demian_uncertainty_similarity_v1_20261013",
+      "program": "demian-v1", "date": "2026-10-13",
+      "family": "heldout_label_free_similarity_geometry", "status": "active_evidence",
+      "primary_summary": "data/diagnostics/demian_uncertainty_similarity_v1_20261013/summary.json",
+      "artifacts": ["data/diagnostics/demian_uncertainty_similarity_v1_20261013/summary.json", "data/diagnostics/demian_uncertainty_similarity_v1_20261013/manifest.json", "data/diagnostics/demian_uncertainty_similarity_v1_20261013/metrics.jsonl", "data/diagnostics/demian_uncertainty_similarity_v1_20261013/states.npz", "data/diagnostics/demian_uncertainty_similarity_v1_20261013/state_metadata.jsonl", "data/diagnostics/demian_uncertainty_similarity_v1_20261013/transforms.npz", "docs/DEMIAN_UNCERTAINTY_SIMILARITY_PROTOCOL.json"],
+      "claim_ids": [],
+      "interpretation": "Astra-reviewed evaluable diagnostics registered as R-UNC-SIMILARITY-001. Centered geometry approximately transfers; absolute placement misses threshold. H-UNC-001 unchanged."
+    },
+    {
       "id": "demian_uncertainty_channel_invariance_v1_20261013",
       "program": "demian-v1", "date": "2026-10-13",
       "family": "fresh_channelwise_radial_confirmation", "status": "active_evidence",

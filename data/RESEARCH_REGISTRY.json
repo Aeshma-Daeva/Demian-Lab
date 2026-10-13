@@ -252,12 +252,12 @@
       "evaluation_conditions": ["target_private_interface", "frozen_probe", "heldout_public_sequences", "time_and_current_observation_controls"],
       "evidence_status": "preliminary_support",
       "lifecycle": "active",
-      "status_basis": {"method":"manual_review","rule":"Preliminary support requires label-balanced held-out decoding beyond current, latest-observation, schedule-only, and shuffled-label controls; it does not establish calibrated uncertainty or causal use.","considered_result_ids":["R-UNC-HARNESS-001","R-UNC-REP-001","R-UNC-CORR-001","R-UNC-TRANSFER-001","R-UNC-CHANNEL-001"],"supporting_result_ids":["R-UNC-CORR-001"],"conflicting_result_ids":["R-UNC-TRANSFER-001","R-UNC-CHANNEL-001"],"reviewer":"Astra scientific review","reviewed_on":"2026-10-13"},
-      "status_history": [{"evidence_status":"untested","lifecycle":"active","changed_on":"2026-10-12","reviewer":"Codex implementation review","basis":"The discovery harness records traces but no frozen transfer probe or intervention."},{"evidence_status":"preliminary_support","lifecycle":"active","changed_on":"2026-10-12","reviewer":"Astra scientific review","basis":"Initially reviewed as held-out decoding support."},{"evidence_status":"untested","lifecycle":"active","changed_on":"2026-10-13","reviewer":"Astra scientific review","basis":"Correction: schedule index and target parity were deterministically paired, leaving a schedule-to-label confound. The result is unevaluable for retained evidence."},{"evidence_status":"preliminary_support","lifecycle":"active","changed_on":"2026-10-13","reviewer":"Astra scientific review","basis":"Corrective exhaustive corpus balances labels across reliability orders; held-out full-state decoding exceeds current, latest, schedule-only, and shuffled-label controls."},{"evidence_status":"preliminary_support","lifecycle":"active","changed_on":"2026-10-13","reviewer":"Astra scientific review","basis":"Low-capacity decoding transfers to one unseen six-event reliability order but fails the preregistered frozen six-to-eight-event criterion due a major length-conditioned state scale shift; the within-length claim remains preliminary only."},{"evidence_status":"preliminary_support","lifecycle":"active","changed_on":"2026-10-13","reviewer":"Astra scientific review","basis":"Fresh-seed channelwise radial normalization fails the frozen paired transfer gate in every seed. The earlier within-corpus evidence remains preliminary; neither global nor independent channel radial rescaling suffices for calibrated temporal transfer."}],
-      "result_ids": ["R-UNC-HARNESS-001","R-UNC-REP-001","R-UNC-CORR-001","R-UNC-TRANSFER-001","R-UNC-CHANNEL-001"],
+      "status_basis": {"method":"manual_review","rule":"Preliminary support requires label-balanced held-out decoding beyond current, latest-observation, schedule-only, and shuffled-label controls; it does not establish calibrated uncertainty or causal use.","considered_result_ids":["R-UNC-HARNESS-001","R-UNC-REP-001","R-UNC-CORR-001","R-UNC-TRANSFER-001","R-UNC-CHANNEL-001","R-UNC-SIMILARITY-001"],"supporting_result_ids":["R-UNC-CORR-001"],"conflicting_result_ids":["R-UNC-TRANSFER-001","R-UNC-CHANNEL-001"],"reviewer":"Astra scientific review","reviewed_on":"2026-10-13"},
+      "status_history": [{"evidence_status":"untested","lifecycle":"active","changed_on":"2026-10-12","reviewer":"Codex implementation review","basis":"The discovery harness records traces but no frozen transfer probe or intervention."},{"evidence_status":"preliminary_support","lifecycle":"active","changed_on":"2026-10-12","reviewer":"Astra scientific review","basis":"Initially reviewed as held-out decoding support."},{"evidence_status":"untested","lifecycle":"active","changed_on":"2026-10-13","reviewer":"Astra scientific review","basis":"Correction: schedule index and target parity were deterministically paired, leaving a schedule-to-label confound. The result is unevaluable for retained evidence."},{"evidence_status":"preliminary_support","lifecycle":"active","changed_on":"2026-10-13","reviewer":"Astra scientific review","basis":"Corrective exhaustive corpus balances labels across reliability orders; held-out full-state decoding exceeds current, latest, schedule-only, and shuffled-label controls."},{"evidence_status":"preliminary_support","lifecycle":"active","changed_on":"2026-10-13","reviewer":"Astra scientific review","basis":"Low-capacity decoding transfers to one unseen six-event reliability order but fails the preregistered frozen six-to-eight-event criterion due a major length-conditioned state scale shift; the within-length claim remains preliminary only."},{"evidence_status":"preliminary_support","lifecycle":"active","changed_on":"2026-10-13","reviewer":"Astra scientific review","basis":"Fresh-seed channelwise radial normalization fails the frozen paired transfer gate in every seed. The earlier within-corpus evidence remains preliminary; neither global nor independent channel radial rescaling suffices for calibrated temporal transfer."},{"evidence_status":"preliminary_support","lifecycle":"active","changed_on":"2026-10-13","reviewer":"Astra scientific review","basis":"Label-free similarity diagnostics approximate centered geometry but fail absolute placement across the new order. This does not test evidence decoding or change the existing narrow hypothesis status."}],
+      "result_ids": ["R-UNC-HARNESS-001","R-UNC-REP-001","R-UNC-CORR-001","R-UNC-TRANSFER-001","R-UNC-CHANNEL-001","R-UNC-SIMILARITY-001"],
       "alternative_explanations": ["A probe may recover time, current cue, generic state magnitude, or evaluator-side schedule structure rather than retained evidence."],
       "falsifiers": ["Held-out probe performance does not exceed time and current-observation controls."],
-      "next_test": "Preregister label-free cross-validated similarity geometry to distinguish shared translation/rotation/scale from history-dependent deformation. No causal escalation."
+      "next_test": "Fresh B-only two-axis geometry gate: same-order heldout histories versus unseen order, with fixed model-derived two-delay Jacobian baseline."
     },
     {
       "id": "H-ROUTE-005",
@@ -283,6 +283,29 @@
     }
   ],
   "experiments": [
+    {
+      "id": "E-UNC-006",
+      "name": "Fresh heldout-order paired similarity geometry",
+      "system": "demian_v1_gate_state_with_stateless_public_evidence_encoder",
+      "protocol_version": "demian-uncertainty-similarity-v1",
+      "replication_scope": {
+        "parameter_seed_count": 4,
+        "initial_state_count": 4,
+        "input_seed_count": 128,
+        "history_condition_count": 6,
+        "trajectory_count": 3072,
+        "checkpoint_row_count": 3072,
+        "independent_unit": "parameter_seed",
+        "dependent_observations": [
+          "histories, variants and geometric controls repeat within parameter seeds"
+        ]
+      },
+      "artifact_ids": [
+        "A-UNC-SIM-PROTOCOL-001",
+        "A-UNC-SIM-SUMMARY-001",
+        "A-UNC-SIM-METRICS-001"
+      ]
+    },
     {
       "id": "E-UNC-005",
       "name": "Fresh channelwise radial paired evidence transfer",
@@ -467,6 +490,20 @@
   ],
   "controls": [
     {
+      "id": "C-UNC-SIMILARITY-001",
+      "name": "Identity, training-mean translation and randomized pairing",
+      "semantics": "Fits geometric maps only on paired training states; randomized-pair map uses the identical training basis; all errors use heldout A-cloud scatter.",
+      "limitations": [
+        "A random permutation may retain fixed points.",
+        "One heldout reliability order and four seeds."
+      ],
+      "artifact_ids": [
+        "A-UNC-SIM-PROTOCOL-001",
+        "A-UNC-SIM-SUMMARY-001",
+        "A-UNC-SIM-METRICS-001"
+      ]
+    },
+    {
       "id": "C-UNC-CHANNEL-001",
       "name": "Matched channel-normalized shuffled-label and observation controls",
       "semantics": "Uses the same row-local channel transform and fixed projection for conditional shuffled training labels; compares matched current/latest informative/latest observation, schedule-only and training-mean constant predictions.",
@@ -601,6 +638,60 @@
     }
   ],
   "results": [
+    {
+      "id": "R-UNC-SIMILARITY-001",
+      "hypothesis_ids": [
+        "H-UNC-001"
+      ],
+      "experiment_id": "E-UNC-006",
+      "evaluable": true,
+      "outcome": "observed",
+      "observation": "Training-derived rank8 similarity maps have full heldout residual 0.111–0.271 relative to A-cloud RMS and centered residual 0.038–0.064. All full-map cells miss the predeclared 0.1 threshold despite excluded heldout variance below 0.006. Extra-delay median full/centroid/centered residuals are 0.144/0.135/0.048; randomized-pair maps have much larger errors.",
+      "interpretation": "The sampled centered arrangement is approximately preserved under the fitted shared map; absolute placement does not transfer across the new reliability order. Shared centroid error dominates remaining residual. This does not establish wholesale history-dependent deformation or an evidence code.",
+      "analysis_scope": {
+        "independent_unit": "parameter_seed",
+        "independent_unit_count": 4,
+        "comparison_count": 20,
+        "comparison_unit": "parameter-seed by B and four neutral suffixes",
+        "dependent_observations": [
+          "64 paired histories per order and map controls within each seed"
+        ],
+        "scope_note": "Only parameter seeds are independent; geometry has no evidence-label analysis."
+      },
+      "evaluation_conditions_met": [
+        "fresh_seeds_and_order",
+        "train_only_subspace_and_maps",
+        "adequate_heldout_subspace_coverage",
+        "saved_exact_states_and_transform_provenance"
+      ],
+      "missing_evaluation_conditions": [
+        "full_shared_map_transfer",
+        "same_order_history_generalization",
+        "local_jacobian_comparison"
+      ],
+      "effect_summary": {
+        "full_relative_residual_min": 0.110971,
+        "full_relative_residual_max": 0.271439,
+        "centered_relative_residual_min": 0.03838,
+        "centered_relative_residual_max": 0.063899
+      },
+      "uncertainty": [
+        "Four seeds and one heldout reliability order.",
+        "Map errors may reflect order-conditioned coordinate placement.",
+        "Generic smooth local recurrent dynamics remain an alternative."
+      ],
+      "exclusions": [
+        "No decoding, calibrated belief, causal evidence carrier, learning or adaptation claim."
+      ],
+      "control_ids": [
+        "C-UNC-SIMILARITY-001"
+      ],
+      "artifact_ids": [
+        "A-UNC-SIM-PROTOCOL-001",
+        "A-UNC-SIM-SUMMARY-001",
+        "A-UNC-SIM-METRICS-001"
+      ]
+    },
     {
       "id": "R-UNC-CHANNEL-001",
       "hypothesis_ids": [
@@ -935,6 +1026,30 @@
     }
   ],
   "artifacts": [
+    {
+      "id": "A-UNC-SIM-PROTOCOL-001",
+      "commit": "e41fff6911914c8d0f84334ae63c75cdec5ddf3f",
+      "path": "docs/DEMIAN_UNCERTAINTY_SIMILARITY_PROTOCOL.json",
+      "media_type": "application/json",
+      "repository": "Aeshma-Daeva/Demian-Lab",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/e41fff6911914c8d0f84334ae63c75cdec5ddf3f/docs/DEMIAN_UNCERTAINTY_SIMILARITY_PROTOCOL.json"
+    },
+    {
+      "id": "A-UNC-SIM-SUMMARY-001",
+      "commit": "d31a90af67cbbfc6823afdc82cc8af421b39e89b",
+      "path": "data/diagnostics/demian_uncertainty_similarity_v1_20261013/summary.json",
+      "media_type": "application/json",
+      "repository": "Aeshma-Daeva/Demian-Lab",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/d31a90af67cbbfc6823afdc82cc8af421b39e89b/data/diagnostics/demian_uncertainty_similarity_v1_20261013/summary.json"
+    },
+    {
+      "id": "A-UNC-SIM-METRICS-001",
+      "commit": "d31a90af67cbbfc6823afdc82cc8af421b39e89b",
+      "path": "data/diagnostics/demian_uncertainty_similarity_v1_20261013/metrics.jsonl",
+      "media_type": "application/x-ndjson",
+      "repository": "Aeshma-Daeva/Demian-Lab",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/d31a90af67cbbfc6823afdc82cc8af421b39e89b/data/diagnostics/demian_uncertainty_similarity_v1_20261013/metrics.jsonl"
+    },
     {
       "id": "A-UNC-CHANNEL-PROTOCOL-001",
       "repository": "Aeshma-Daeva/Demian-Lab",
