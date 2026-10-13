@@ -64,6 +64,11 @@ def _l2_normalize(vector: np.ndarray) -> np.ndarray:
     return vector / norm if norm > 1e-12 else vector.copy()
 
 
+def _channel_l2_normalize(parts: tuple[np.ndarray, ...]) -> np.ndarray:
+    """Normalize each explicit channel using only this trajectory's state."""
+    return np.concatenate([_l2_normalize(np.asarray(part, dtype=np.float64).reshape(-1)) for part in parts])
+
+
 def _schedule_only(row: dict[str, Any], *, width: int) -> np.ndarray:
     schedule = [reliability for _, reliability in row["evidence"]]
     return np.asarray([len(row["evidence"]), *schedule, *([0.0] * (width - len(schedule)))], dtype=np.float64)
@@ -85,6 +90,9 @@ def collect_rows(protocol: dict[str, Any]) -> list[dict[str, Any]]:
             rows.append({**spec, "model_seed": int(model_seed), "features": {
                 "full_state": state,
                 "full_state_l2_normalized": _l2_normalize(state),
+                "full_state_channel_l2_normalized": _channel_l2_normalize(tuple(
+                    part.detach().cpu().numpy() for part in checkpoint.state
+                )),
                 "current_observation": encode_evidence(frames[count - 1], int(protocol["hidden_size"])).detach().cpu().numpy().reshape(-1).astype(np.float64),
                 "latest_informative_observation": encode_evidence(informative, int(protocol["hidden_size"])).detach().cpu().numpy().reshape(-1).astype(np.float64),
                 "latest_observation": encode_evidence(frames[len(spec["evidence"]) - 1], int(protocol["hidden_size"])).detach().cpu().numpy().reshape(-1).astype(np.float64),
@@ -147,6 +155,8 @@ def run_protocol(protocol: dict[str, Any]) -> dict[str, Any]:
                         common = {"model_seed": int(model_seed), "evaluation_condition": condition, "suffix": suffix, "projection_dimension": int(dimension), "projection_seed": int(projection_seed)}
                         scores.append({**common, "feature_set": "projected_full_state", **_score(train, evaluate, feature="full_state", alpha=float(protocol["ridge_alpha"]), dimension=int(dimension), projection_seed=int(projection_seed))})
                         scores.append({**common, "feature_set": "projected_full_state_l2_normalized", **_score(train, evaluate, feature="full_state_l2_normalized", alpha=float(protocol["ridge_alpha"]), dimension=int(dimension), projection_seed=int(projection_seed))})
+                        scores.append({**common, "feature_set": "projected_full_state_channel_l2_normalized", **_score(train, evaluate, feature="full_state_channel_l2_normalized", alpha=float(protocol["ridge_alpha"]), dimension=int(dimension), projection_seed=int(projection_seed))})
+                        scores.append({**common, "feature_set": "channel_l2_conditional_shuffle", **_score(train, evaluate, feature="full_state_channel_l2_normalized", alpha=float(protocol["ridge_alpha"]), dimension=int(dimension), projection_seed=int(projection_seed), shuffle=shuffle)})
                         scores.append({**common, "feature_set": "projected_full_state_condition_normalized", **_score(train, evaluate, feature="full_state", alpha=float(protocol["ridge_alpha"]), dimension=int(dimension), projection_seed=int(projection_seed), condition_normalized=True)})
                         scores.append({**common, "feature_set": "full_state_conditional_shuffle", **_score(train, evaluate, feature="full_state", alpha=float(protocol["ridge_alpha"]), dimension=int(dimension), projection_seed=int(projection_seed), shuffle=shuffle)})
                 for feature in ("current_observation", "latest_informative_observation", "latest_observation", "schedule_only"):

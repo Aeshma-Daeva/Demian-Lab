@@ -1,6 +1,16 @@
 import json
+import numpy as np
 
 from development import run_demian_uncertainty_length_invariance
+
+
+def test_channel_normalization_removes_independent_radial_scales_and_handles_zero():
+    state = np.asarray([3., 4., 0., 0., 0., 2., 1., 0., 2., 2., -3., 0.])
+    scaled = state * np.repeat([2., 3., 4., 5., 6., 7.], 2)
+    transform = run_demian_uncertainty_length_invariance._channel_l2_normalize
+    result = transform(tuple(state.reshape(6, 2)))
+    np.testing.assert_allclose(result, transform(tuple(scaled.reshape(6, 2))))
+    np.testing.assert_allclose(np.linalg.norm(result.reshape(6, 2), axis=1), [1., 0., 1., 1., 1., 1.])
 
 
 def test_neutral_cue_corpus_preserves_public_log_odds_and_has_paired_conditions() -> None:
@@ -44,6 +54,9 @@ def test_length_invariance_protocol_scores_all_paired_conditions(tmp_path) -> No
     assert {row["evaluation_condition"] for row in payload["scores"]} == {"base", "delay_plus_two", "neutral_cue_plus_two"}
     assert {row["feature_set"] for row in payload["scores"]} >= {
         "projected_full_state", "projected_full_state_l2_normalized", "projected_full_state_condition_normalized", "current_observation", "latest_observation", "schedule_only", "full_state_conditional_shuffle"
+    }
+    assert {row["feature_set"] for row in payload["scores"]} >= {
+        "projected_full_state_channel_l2_normalized", "channel_l2_conditional_shuffle"
     }
     out = tmp_path / "length"
     run_demian_uncertainty_length_invariance.write_artifacts(out, {"protocol_id": "test", "claim_boundary": "test boundary"}, payload)
