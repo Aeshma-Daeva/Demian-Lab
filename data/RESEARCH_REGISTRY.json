@@ -250,14 +250,14 @@
       "statement": "Demian internal state can preserve public evidence relevant to unresolved alternatives across a delay.",
       "operational_prediction": "Frozen probes transfer across held-out public sequences after controlling for time and current observation.",
       "evaluation_conditions": ["target_private_interface", "frozen_probe", "heldout_public_sequences", "time_and_current_observation_controls"],
-      "evidence_status": "untested",
+      "evidence_status": "preliminary_support",
       "lifecycle": "active",
-      "status_basis": {"method": "manual_review", "rule": "A representation result requires schedule-target independence and controls before held-out decoding can support retained evidence.", "considered_result_ids": ["R-UNC-HARNESS-001", "R-UNC-REP-001"], "supporting_result_ids": [], "conflicting_result_ids": [], "reviewer": "Astra scientific review", "reviewed_on": "2026-10-13"},
-      "status_history": [{"evidence_status": "untested", "lifecycle": "active", "changed_on": "2026-10-12", "reviewer": "Codex implementation review", "basis": "The discovery harness records traces but no frozen transfer probe or intervention."},{"evidence_status": "preliminary_support", "lifecycle": "active", "changed_on": "2026-10-12", "reviewer": "Astra scientific review", "basis": "Initially reviewed as held-out decoding support."},{"evidence_status": "untested", "lifecycle": "active", "changed_on": "2026-10-13", "reviewer": "Astra scientific review", "basis": "Correction: schedule index and target parity were deterministically paired, leaving a schedule-to-label confound. The result is unevaluable for retained evidence."}],
-      "result_ids": ["R-UNC-HARNESS-001", "R-UNC-REP-001"],
+      "status_basis": {"method": "manual_review", "rule": "Preliminary support requires label-balanced held-out decoding beyond current, latest-observation, schedule-only, and shuffled-label controls; it does not establish calibrated uncertainty or causal use.", "considered_result_ids": ["R-UNC-HARNESS-001", "R-UNC-REP-001", "R-UNC-CORR-001"], "supporting_result_ids": ["R-UNC-CORR-001"], "conflicting_result_ids": [], "reviewer": "Astra scientific review", "reviewed_on": "2026-10-13"},
+      "status_history": [{"evidence_status": "untested", "lifecycle": "active", "changed_on": "2026-10-12", "reviewer": "Codex implementation review", "basis": "The discovery harness records traces but no frozen transfer probe or intervention."},{"evidence_status": "preliminary_support", "lifecycle": "active", "changed_on": "2026-10-12", "reviewer": "Astra scientific review", "basis": "Initially reviewed as held-out decoding support."},{"evidence_status": "untested", "lifecycle": "active", "changed_on": "2026-10-13", "reviewer": "Astra scientific review", "basis": "Correction: schedule index and target parity were deterministically paired, leaving a schedule-to-label confound. The result is unevaluable for retained evidence."},{"evidence_status": "preliminary_support", "lifecycle": "active", "changed_on": "2026-10-13", "reviewer": "Astra scientific review", "basis": "Corrective exhaustive corpus balances labels across reliability orders; held-out full-state decoding exceeds current, latest, schedule-only, and shuffled-label controls."}],
+      "result_ids": ["R-UNC-HARNESS-001", "R-UNC-REP-001", "R-UNC-CORR-001"],
       "alternative_explanations": ["A probe may recover time, current cue, generic state magnitude, or evaluator-side schedule structure rather than retained evidence."],
       "falsifiers": ["Held-out probe performance does not exceed time and current-observation controls."],
-      "next_test": "Run a schedule-target-balanced, stratified corrective probe with schedule-only and evidence-order-only controls before any causal channel test."
+      "next_test": "Run a preregistered low-capacity probe on a new corpus with held-out reliability-order and history-length transfer before matched channel reset/restore."
     },
     {
       "id": "H-ROUTE-005",
@@ -407,6 +407,14 @@
       "protocol_version": "demian-uncertainty-representation-v1",
       "replication_scope": {"parameter_seed_count": 8, "initial_state_count": 8, "input_seed_count": 96, "history_condition_count": 4, "trajectory_count": 1536, "checkpoint_row_count": 3072, "independent_unit": "parameter_seed", "dependent_observations": ["episodes, delays, targets, and checkpoints repeat within parameter seeds"]},
       "artifact_ids": ["A-UNC-REP-PROTOCOL-001", "A-UNC-REP-SUMMARY-001", "A-UNC-REP-SCORES-001", "A-UNC-REP-RESULTS-001"]
+    },
+    {
+      "id": "E-UNC-003",
+      "name": "Schedule-balanced held-out evidence representation correction",
+      "system": "demian_v1_gate_state_with_stateless_public_evidence_encoder",
+      "protocol_version": "demian-uncertainty-corrective-v1",
+      "replication_scope": {"parameter_seed_count": 8, "initial_state_count": 8, "input_seed_count": 256, "history_condition_count": 4, "trajectory_count": 4096, "checkpoint_row_count": 4096, "independent_unit": "parameter_seed", "dependent_observations": ["episodes, delays, and five split sensitivities repeat within parameter seeds"]},
+      "artifact_ids": ["A-UNC-CORR-PROTOCOL-001", "A-UNC-CORR-SUMMARY-001", "A-UNC-CORR-SCORES-001"]
     },
     {
       "id": "E-ROUTE-004",
@@ -781,6 +789,23 @@
       "exclusions": ["No retained-evidence, calibrated uncertainty, causal, routing, utility, learning, adaptation, or general-intelligence claim."],
       "control_ids": ["C-UNC-REPLAY-001", "C-UNC-PROBE-001"],
       "artifact_ids": ["A-UNC-REP-PROTOCOL-001", "A-UNC-REP-SUMMARY-001", "A-UNC-REP-SCORES-001", "A-UNC-REP-RESULTS-001"]
+    },
+    {
+      "id": "R-UNC-CORR-001",
+      "hypothesis_ids": ["H-UNC-001"],
+      "experiment_id": "E-UNC-003",
+      "evaluable": true,
+      "outcome": "observed",
+      "observation": "Frozen full-state probes decoded public-evidence log odds at the final pre-resolution delay frame after 8 steps (mean R² 0.999) and 32 steps (mean R² 0.996) across eight fixed parameter seeds and five dependent stratified splits. Current, schedule-only, and shuffled-label controls were negative; latest-observation control was weak.",
+      "interpretation": "For the fixed public encoder and exhaustive finite six-event corpus, Demian full state contains linearly decodable accumulated public-evidence log odds through the tested delays.",
+      "analysis_scope": {"independent_unit": "parameter_seed", "independent_unit_count": 8, "comparison_count": 16, "comparison_unit": "parameter-seed by delay cells", "dependent_observations": ["five split sensitivities and 256 corpus episodes repeat within parameter seeds"], "scope_note": "Split cells are sensitivity analyses, not independent replications."},
+      "evaluation_conditions_met": ["target_private_interface", "frozen_probe", "heldout_public_sequences", "time_and_current_observation_controls", "schedule_target_balance", "schedule_only_control"],
+      "missing_evaluation_conditions": ["low_capacity_confirmation", "unseen_schedule_and_length_transfer", "causal_channel_intervention"],
+      "effect_summary": {"full_state_mean_r2_delay_8": 0.9987, "full_state_mean_r2_delay_32": 0.9963, "positive_seed_split_cells_per_delay": 40, "schedule_only_mean_r2": -0.1066},
+      "uncertainty": ["Within-corpus transfer only.", "Eight fixed parameter seeds.", "1536 full-state features and 88 training episodes per split.", "Five splits are dependent sensitivity analyses."],
+      "exclusions": ["No calibrated uncertainty or belief claim.", "No specific channel, causal mechanism, routing utility, learning, adaptation, or OOD retention claim."],
+      "control_ids": ["C-UNC-REPLAY-001", "C-UNC-PROBE-001"],
+      "artifact_ids": ["A-UNC-CORR-PROTOCOL-001", "A-UNC-CORR-SUMMARY-001", "A-UNC-CORR-SCORES-001"]
     }
   ],
   "artifacts": [
@@ -839,6 +864,30 @@
       "path": "docs/DEMIAN_UNCERTAINTY_REPRESENTATION_RESULTS.md",
       "media_type": "text/markdown",
       "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/eaa8d42abb4bacc978b13c17adba13eb4e8f0da8/docs/DEMIAN_UNCERTAINTY_REPRESENTATION_RESULTS.md"
+    },
+    {
+      "id": "A-UNC-CORR-PROTOCOL-001",
+      "repository": "Aeshma-Daeva/Demian-Lab",
+      "commit": "bb17c33ae69d86e63a80d668dbfc25623ba69d3f",
+      "path": "docs/DEMIAN_UNCERTAINTY_CORRECTIVE_PROTOCOL.json",
+      "media_type": "application/json",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/bb17c33ae69d86e63a80d668dbfc25623ba69d3f/docs/DEMIAN_UNCERTAINTY_CORRECTIVE_PROTOCOL.json"
+    },
+    {
+      "id": "A-UNC-CORR-SUMMARY-001",
+      "repository": "Aeshma-Daeva/Demian-Lab",
+      "commit": "bb17c33ae69d86e63a80d668dbfc25623ba69d3f",
+      "path": "data/diagnostics/demian_uncertainty_corrective_v1_20261013/summary.json",
+      "media_type": "application/json",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/bb17c33ae69d86e63a80d668dbfc25623ba69d3f/data/diagnostics/demian_uncertainty_corrective_v1_20261013/summary.json"
+    },
+    {
+      "id": "A-UNC-CORR-SCORES-001",
+      "repository": "Aeshma-Daeva/Demian-Lab",
+      "commit": "bb17c33ae69d86e63a80d668dbfc25623ba69d3f",
+      "path": "data/diagnostics/demian_uncertainty_corrective_v1_20261013/scores.jsonl",
+      "media_type": "application/x-ndjson",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/bb17c33ae69d86e63a80d668dbfc25623ba69d3f/data/diagnostics/demian_uncertainty_corrective_v1_20261013/scores.jsonl"
     },
     {
       "id": "A-CHAR-SUMMARY-001",
