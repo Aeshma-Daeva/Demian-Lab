@@ -918,3 +918,15 @@ Next:
 
 - Freeze a compact rule after a richer-history discovery design; confirm on
   fresh parameter seeds.
+
+## 2026-10-12 - Uncertainty Discovery Harness
+
+Observation:
+
+- 256 scripted public-evidence traces across 8 fixed model seeds, 4 episode
+  seeds, 2 delays, and 4 evidence conditions were finite and replay-exact.
+
+Interpretation:
+
+- Instrumentation only. No internal uncertainty representation, routing, or
+  functional-use conclusion.

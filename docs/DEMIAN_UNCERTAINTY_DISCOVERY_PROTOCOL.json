@@ -1,0 +1,11 @@
+{
+  "protocol_id": "demian-uncertainty-discovery-v1",
+  "claim_boundary": "instrumentation and discovery traces only; no uncertainty representation, routing utility, learning, or adaptation claim",
+  "hidden_size": 256,
+  "model_seeds": [294, 295, 296, 297, 394, 395, 396, 397],
+  "episode_seeds": [101, 102, 103, 104],
+  "delay_steps": [8, 32],
+  "post_resolution_steps": 3,
+  "encoder": {"scale": 0.25, "slots": "phase[0:4], symbol[4:6], reliability[6:9], observed[9]"},
+  "sampling": "scripted discovery controls"
+}

@@ -1,0 +1,10 @@
+{
+  "cell_count": 256,
+  "claim_boundary": "harness and discovery trace only; not uncertainty representation, routing utility, learning, or adaptation",
+  "experiment": "demian-uncertainty-discovery",
+  "integrity": {
+    "all_finite": true,
+    "all_replay_exact": true
+  },
+  "schema_version": 1
+}

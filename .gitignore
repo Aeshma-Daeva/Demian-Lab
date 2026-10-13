@@ -25,6 +25,10 @@ data/diagnostics/*
 !data/diagnostics/demian_route_selectivity_v1_20261012/summary.json
 !data/diagnostics/demian_route_feature_audit_v2_20261012/
 !data/diagnostics/demian_route_feature_audit_v2_20261012/summary.json
+!data/diagnostics/demian_uncertainty_discovery_v1_20261012_retry/
+!data/diagnostics/demian_uncertainty_discovery_v1_20261012_retry/summary.json
+!data/diagnostics/demian_uncertainty_discovery_v1_20261012_retry/manifest.json
+!data/diagnostics/demian_uncertainty_discovery_v1_20261012_retry/cells.jsonl
 .env
 .env.*
 .openrouter/

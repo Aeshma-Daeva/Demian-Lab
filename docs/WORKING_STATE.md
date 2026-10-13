@@ -22,6 +22,9 @@ Last updated: 2026-10-12
   does not separate seed identity from state dependence. E3–E5 remain
   conditional downstream stages. See
   `docs/DEMIAN_ROUTE_DYNAMICS_PROGRAM.md`.
+- Uncertainty branch: a target-private ambiguous-evidence harness has completed
+  256 finite, replay-exact discovery traces. Probe transfer is the next gate;
+  this is not uncertainty representation or capability evidence.
 
 Primary records:
 

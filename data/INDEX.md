@@ -59,6 +59,12 @@ Purpose:
 - Interpretation: discovery-only pre-pulse audit; pooled associations do not
   separate seed identity from state-dependent response.
 
+## Uncertainty Discovery Harness
+
+- Protocol: [../docs/DEMIAN_UNCERTAINTY_DISCOVERY_PROTOCOL.json](../docs/DEMIAN_UNCERTAINTY_DISCOVERY_PROTOCOL.json)
+- Summary: [diagnostics/demian_uncertainty_discovery_v1_20261012_retry/summary.json](diagnostics/demian_uncertainty_discovery_v1_20261012_retry/summary.json)
+- Status: deterministic public-evidence instrumentation; no representation or capability claim.
+
 ## Closed-Loop Baseline
 
 - Protocol: [CLOSED_LOOP_PROTOCOL.json](CLOSED_LOOP_PROTOCOL.json)
