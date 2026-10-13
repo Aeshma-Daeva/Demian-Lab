@@ -1,0 +1,100 @@
+{
+  "file_sha256": {
+    "metrics.jsonl": "0c385b7112d961ba204d558c42bfcda14ead5607c4b3be8136edce1fa332febb",
+    "relation_metrics.jsonl": "29678e2596017c6fc334befb4c2e1b26b7679eb2859fc9751b2c2b35852d541d",
+    "summary.json": "47e0e54a25d4b650c57859b7143d7f9ab4687f44f653245a8c61bfda752344c8"
+  },
+  "protocol": {
+    "architecture_and_weights": "unchanged",
+    "artifact_directory": "data/diagnostics/demian_uncertainty_representation_relations_v3_20261013",
+    "batches": [
+      {
+        "artifact_directory": "data/diagnostics/demian_uncertainty_history_matrix_v1_20261013",
+        "checkpoints": [
+          {
+            "id": "cue6"
+          },
+          {
+            "id": "delay2"
+          },
+          {
+            "id": "delay8"
+          },
+          {
+            "id": "delay32"
+          },
+          {
+            "id": "delay64"
+          }
+        ],
+        "id": "matrix",
+        "model_seeds": [
+          1694,
+          1695,
+          1794,
+          1795
+        ],
+        "source_manifest_sha256": "c75befcf4555f07a1af6cf85c88048a9729e467999038e3897ba5eababe84489"
+      },
+      {
+        "artifact_directory": "data/diagnostics/demian_uncertainty_history_matrix_replication_v1_20261013",
+        "checkpoints": [
+          {
+            "id": "cue6"
+          },
+          {
+            "id": "delay2"
+          },
+          {
+            "id": "delay8"
+          },
+          {
+            "id": "delay32"
+          },
+          {
+            "id": "delay64"
+          }
+        ],
+        "id": "replication",
+        "model_seeds": [
+          1894,
+          1895,
+          1994,
+          1995
+        ],
+        "source_manifest_sha256": "1f21f1e277e090b47ac28646e18038574faff82f6977251c2651794ca995f1ff"
+      }
+    ],
+    "claim_boundary": "analysis of existing fixed-weight state traces; descriptive geometry and channel relations only, with no causal, routing, memory-use, learning, adaptation, or architecture claim",
+    "comparison_families": [
+      "within-order cue6 to delay2/delay8/delay32/delay64 for train and heldout orders",
+      "cross-order train to heldout at matched checkpoints"
+    ],
+    "controls_and_limits": [
+      "The same full history identities are paired in every reported comparison.",
+      "Cross-channel change-norm correlations are descriptive co-change statistics, not directional or causal effects.",
+      "Eight parameter seeds are the independent units across two separately allocated four-seed batches; timepoints, orders, and channel pairs are dependent within a seed.",
+      "No threshold promotes H-UNC-001. Candidate patterns require a fresh preregistered confirmation before causal interpretation."
+    ],
+    "falsifier": "No reproducible candidate pattern appears across both batches; report heterogeneity rather than selecting a best seed or timepoint.",
+    "history_pairing": "Within each seed/order/checkpoint cell, sort all 64 full histories by public binary symbols. Require identical history lists in every paired comparison.",
+    "primary_measurements": {
+      "geometry": [
+        "centroid shift",
+        "RMS spread and scale ratio",
+        "rank-8 centered history-space subspace overlap",
+        "scale-normalized orthogonal Procrustes residual",
+        "pairwise-distance geometry alignment"
+      ],
+      "relations": [
+        "per-history gate-state change norm correlated with each non-gate channel change norm over each cue6-to-delay interval"
+      ]
+    },
+    "protocol_id": "demian-uncertainty-representation-relations-v3",
+    "source_commit": "01497f9",
+    "state_source": "E-UNC-013 and E-UNC-014 immutable matrix artifacts; no trajectories are newly generated",
+    "subspace_rank": 8
+  },
+  "protocol_sha256": "f846bdf833984061fac87f6db55a77a947aa6721ccd29f2f1c002c13307f0601",
+  "source_commit": "01497f9"
+}

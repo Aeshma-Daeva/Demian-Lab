@@ -1,0 +1,17 @@
+{
+  "claim_boundary": "analysis of existing fixed-weight state traces; descriptive geometry and channel relations only, with no causal, routing, memory-use, learning, adaptation, or architecture claim",
+  "experiment": "demian-uncertainty-representation-relations-v3",
+  "integrity": {
+    "analysis_only": true,
+    "architecture_changed": false,
+    "metric_count": 104,
+    "relation_metric_count": 320,
+    "source_manifest_sha256": {
+      "matrix": "c75befcf4555f07a1af6cf85c88048a9729e467999038e3897ba5eababe84489",
+      "replication": "1f21f1e277e090b47ac28646e18038574faff82f6977251c2651794ca995f1ff"
+    },
+    "weights_changed": false
+  },
+  "metric_count": 104,
+  "relation_metric_count": 320
+}
