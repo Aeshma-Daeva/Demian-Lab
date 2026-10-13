@@ -25,7 +25,9 @@ Last updated: 2026-10-12
 - Uncertainty branch: the balanced six-event corpus supports a narrow delayed
   public-evidence decoding claim. Low-capacity transfer to one unseen six-event
   order is partial; frozen six-to-eight transfer fails under a length-dependent
-  state scale shift. Next: neutral-cue length-invariance/calibration gate; no
+  state scale shift. Paired delay, global L2, and geometry gates are completed
+  with registry entries pending; see `DEMIAN_UNCERTAINTY_GEOMETRY_RESULTS.md`.
+  Current gate: channelwise radial normalization on fresh seeds/order. No
   causal-channel claim is active.
 
 Primary records:

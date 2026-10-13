@@ -8,6 +8,33 @@
   },
   "runs": [
     {
+      "id": "demian_uncertainty_length_invariance_v1_20261013",
+      "program": "demian-v1", "date": "2026-10-13",
+      "family": "paired_uncertainty_calibration", "status": "active_evidence",
+      "primary_summary": "data/diagnostics/demian_uncertainty_length_invariance_v1_20261013/summary.json",
+      "artifacts": ["data/diagnostics/demian_uncertainty_length_invariance_v1_20261013/summary.json", "data/diagnostics/demian_uncertainty_length_invariance_v1_20261013/manifest.json", "data/diagnostics/demian_uncertainty_length_invariance_v1_20261013/scores.jsonl"],
+      "claim_ids": [],
+      "interpretation": "Formal registry entry pending. Extra blank delay suffices for frozen calibration failure."
+    },
+    {
+      "id": "demian_uncertainty_l2_invariance_v1_20261013",
+      "program": "demian-v1", "date": "2026-10-13",
+      "family": "global_radial_uncertainty_calibration", "status": "active_evidence",
+      "primary_summary": "data/diagnostics/demian_uncertainty_l2_invariance_v1_20261013/summary.json",
+      "artifacts": ["data/diagnostics/demian_uncertainty_l2_invariance_v1_20261013/summary.json", "data/diagnostics/demian_uncertainty_l2_invariance_v1_20261013/manifest.json", "data/diagnostics/demian_uncertainty_l2_invariance_v1_20261013/scores.jsonl"],
+      "claim_ids": [],
+      "interpretation": "Formal registry entry pending. Global L2 attenuates but does not repair frozen calibration failure. Summary metadata corrected at 7cbc0e5."
+    },
+    {
+      "id": "demian_uncertainty_geometry_v1_20261013",
+      "program": "demian-v1", "date": "2026-10-13",
+      "family": "paired_state_geometry", "status": "active_evidence",
+      "primary_summary": "data/diagnostics/demian_uncertainty_geometry_v1_20261013/summary.json",
+      "artifacts": ["data/diagnostics/demian_uncertainty_geometry_v1_20261013/summary.json", "data/diagnostics/demian_uncertainty_geometry_v1_20261013/pair_metrics.jsonl", "data/diagnostics/demian_uncertainty_geometry_v1_20261013/channel_metrics.jsonl", "docs/DEMIAN_UNCERTAINTY_GEOMETRY_PROTOCOL.json"],
+      "claim_ids": [],
+      "interpretation": "Descriptive diagnostics; formal registry entry pending. Preserved pairwise distances permit shared translation/rotation. Original run lacks manifest hash."
+    },
+    {
       "id": "demian_uncertainty_transfer_v1_20261013",
       "program": "demian-v1",
       "date": "2026-10-13",

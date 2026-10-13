@@ -79,6 +79,14 @@ Purpose:
 - Status: evaluable. Six-event order transfer is partial; frozen six-to-eight
   calibrated transfer fails under a large length-conditioned state-scale shift.
 
+## Paired uncertainty calibration and geometry
+
+- Record: [../docs/DEMIAN_UNCERTAINTY_GEOMETRY_RESULTS.md](../docs/DEMIAN_UNCERTAINTY_GEOMETRY_RESULTS.md)
+- Delay: [diagnostics/demian_uncertainty_length_invariance_v1_20261013/summary.json](diagnostics/demian_uncertainty_length_invariance_v1_20261013/summary.json)
+- Global L2: [diagnostics/demian_uncertainty_l2_invariance_v1_20261013/summary.json](diagnostics/demian_uncertainty_l2_invariance_v1_20261013/summary.json)
+- Geometry: [diagnostics/demian_uncertainty_geometry_v1_20261013/summary.json](diagnostics/demian_uncertainty_geometry_v1_20261013/summary.json)
+- Formal registry entries pending; no additional hypothesis promotion.
+
 ## Closed-Loop Baseline
 
 - Protocol: [CLOSED_LOOP_PROTOCOL.json](CLOSED_LOOP_PROTOCOL.json)

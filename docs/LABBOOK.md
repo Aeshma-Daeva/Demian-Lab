@@ -977,3 +977,14 @@ Next:
 
 - Test two appended reliability-0.5 cues, which leave public log odds unchanged,
   with predeclared length-aware controls before causal channel interventions.
+
+## 2026-10-13 - Paired calibration and geometry gates
+
+- Observation: extra delay alone fails frozen calibration; global L2 attenuates
+  but does not repair it. Between-history distances remain highly correlated.
+- Interpretation: shared translation/rotation remains possible; raw cosine and
+  distance preservation do not establish a stable evidence axis.
+- Record: `docs/DEMIAN_UNCERTAINTY_GEOMETRY_RESULTS.md`; formal registry entries
+  pending. The prior hypothesis status is unchanged.
+- Next: fixed channelwise radial normalization on fresh model seeds and a new
+  heldout reliability order, with matched transformed shuffle control.
