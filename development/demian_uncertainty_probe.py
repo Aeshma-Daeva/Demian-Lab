@@ -41,6 +41,7 @@ def _state_hash(state: tuple[torch.Tensor, ...]) -> str:
     return digest.hexdigest()
 
 
+@torch.no_grad()
 def run_uncertainty_episode(
     *,
     model_seed: int,
