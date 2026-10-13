@@ -7,6 +7,18 @@ from typing import Any, Sequence
 import numpy as np
 
 
+def fixed_random_projection(features: np.ndarray, *, output_dim: int, seed: int) -> np.ndarray:
+    """Project features through a deterministic, label-independent orthonormal map."""
+    matrix = np.asarray(features, dtype=np.float64)
+    if matrix.ndim != 2 or not np.isfinite(matrix).all():
+        raise ValueError("projection features must be a finite two-dimensional array")
+    if not 0 < output_dim <= matrix.shape[1]:
+        raise ValueError("projection output_dim must be positive and no wider than the features")
+    generator = np.random.default_rng(seed)
+    basis, _ = np.linalg.qr(generator.normal(size=(matrix.shape[1], output_dim)))
+    return matrix @ basis[:, :output_dim]
+
+
 def split_episode_rows(rows: Sequence[dict[str, Any]], *, heldout_fraction: float) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     """Split complete public episodes, never individual timepoint rows."""
     if not 0.0 < heldout_fraction < 1.0:
@@ -59,8 +71,16 @@ def evaluate_ridge_probe(
     weights = np.linalg.solve(augmented_train.T @ augmented_train + regularizer, augmented_train.T @ train_target)
     prediction = augmented_eval @ weights
     constant_prediction = np.full_like(eval_target, train_target.mean())
+    eval_standard_deviation = float(np.std(eval_target))
+    if eval_standard_deviation <= 1e-12 or float(np.std(prediction)) <= 1e-12:
+        pearson_r = 0.0
+    else:
+        pearson_r = float(np.corrcoef(eval_target, prediction)[0, 1])
+    mae = float(np.mean(np.abs(eval_target - prediction)))
     return {
         "r2": _r2(eval_target, prediction),
         "constant_r2": _r2(eval_target, constant_prediction),
-        "mae": float(np.mean(np.abs(eval_target - prediction))),
+        "mae": mae,
+        "pearson_r": pearson_r,
+        "normalized_mae": mae / eval_standard_deviation if eval_standard_deviation > 1e-12 else 0.0,
     }

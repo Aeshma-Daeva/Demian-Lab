@@ -22,6 +22,8 @@ def test_ridge_probe_beats_constant_on_linearly_encoded_heldout_signal() -> None
 
     assert result["r2"] > 0.99
     assert result["constant_r2"] < 0.0
+    assert result["pearson_r"] > 0.99
+    assert result["normalized_mae"] < 0.01
 
 
 def test_ridge_probe_rejects_nonfinite_features() -> None:
@@ -32,3 +34,14 @@ def test_ridge_probe_rejects_nonfinite_features() -> None:
             np.asarray([[2.0]]),
             np.asarray([2.0]),
         )
+
+
+def test_fixed_random_projection_is_deterministic_and_has_requested_width() -> None:
+    features = np.arange(24, dtype=np.float64).reshape(4, 6)
+
+    first = demian_uncertainty_representation.fixed_random_projection(features, output_dim=3, seed=17)
+    second = demian_uncertainty_representation.fixed_random_projection(features, output_dim=3, seed=17)
+
+    assert first.shape == (4, 3)
+    assert np.allclose(first, second)
+    assert not np.allclose(first, demian_uncertainty_representation.fixed_random_projection(features, output_dim=3, seed=29))
