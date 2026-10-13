@@ -1,0 +1,21 @@
+{
+  "protocol_id": "demian-uncertainty-horizon-v1",
+  "claim_boundary": "descriptive horizon scope of fixed-centroid local-linear geometry; reused cases, not independent replication; no evidence-code, memory-use, causal-channel, AFP or chaos claim",
+  "source_artifact_directory": "data/diagnostics/demian_uncertainty_jacobian_v1_20261013",
+  "source_artifact_commit": "a6638b87fb305633503ab665184b6f55f43afbe8",
+  "model_seeds": [894, 895, 994, 995],
+  "horizons": [2, 4, 8, 16, 32],
+  "source": "reuse exact captured A states, training32 history indices, evaluation axes and rank8 basis from the hash-verified source artifact; centroid remains the training A mean",
+  "G_h": "h identical blank-input injections and recurrent steps from runtime index38, reset inside every evaluation; identical seed weights; no relinearization at evaluation or target states",
+  "primary_prediction": "G_h(mu_A_train)+DG_h(mu_A_train)*(z_A-mu_A_train) via full-state JVP",
+  "controls": ["identity", "model-derived centroid translation G_h(mu_A_train)-mu_A_train"],
+  "targets": "float32 nonlinear continuations are measured targets; h2 must exactly match existing independently collected B checkpoints; float64 discrepancy reported",
+  "axes": ["same_order_histories", "unseen_order"],
+  "denominator": "fixed evaluation A-cloud RMS for all horizons; no target-time normalization",
+  "coverage": "report both cloud-centered variance excluded from rank8 and train-reference-centered evaluation-direction/centroid displacement excluded from rank8; do not conflate them",
+  "metrics": "full/centered/centroid and in/out subspace residuals; displacement fraction explained; every seed-axis-horizon cell retained",
+  "descriptive_threshold": "relative full residual <=0.1 at every seed and both axes at a horizon; first sampled failure reported descriptively only",
+  "falsifier": "large heldout residual bounds the horizon where the fixed local-linear description is useful; no selected-horizon hypothesis inference",
+  "independent_unit": "existing four parameter seeds; horizons and histories are dependent extensions of the same cases",
+  "artifact_directory": "data/diagnostics/demian_uncertainty_horizon_v1_20261013"
+}

@@ -33,7 +33,9 @@ def split_history_indices(*, history_length: int, seed: int) -> tuple[list[int],
     return sorted(train), sorted(heldout)
 
 
-def make_transition(*, seed: int, hidden_size: int, step_index: int, dtype: torch.dtype) -> Callable[[torch.Tensor], torch.Tensor]:
+def make_transition(*, seed: int, hidden_size: int, step_index: int, dtype: torch.dtype, steps: int = 2) -> Callable[[torch.Tensor], torch.Tensor]:
+    if steps < 1:
+        raise ValueError('transition steps must be positive')
     torch.manual_seed(seed)
     model = DemianV1GateState(hidden_size, trace_routes=False)
     initial = model.initial_state(1, torch.device('cpu'))
@@ -48,7 +50,7 @@ def make_transition(*, seed: int, hidden_size: int, step_index: int, dtype: torc
         model._frozen_gate = None
         model._route_trace = None
         state = tuple(part.reshape(1, -1) for part in torch.split(vector, widths))
-        for _ in range(2):
+        for _ in range(steps):
             state = (state[0] + delay, *state[1:])
             state = model.step(state)
         return torch.cat([part.reshape(-1) for part in state])
