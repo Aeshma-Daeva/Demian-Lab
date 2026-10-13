@@ -1,0 +1,74 @@
+{
+  "file_sha256": {
+    "metrics.jsonl": "970e5e2953e043d07bf984cb6dfe819732f5f3c52bc8365302a53cb442b233e0",
+    "predictions.npz": "665e1dbf569d12269b3ebcf1ea21359d64f7405360aab619db7a1681108d8b62",
+    "state_metadata.jsonl": "4a58e1ac6074d315a4850610114e5e44fe6439f3e802de0aef94fd451a9dc569",
+    "states.npz": "0950004a0c736f4bfc5a0fa6176e97a33a301a62a8a8d7eb331cfaa732f71e9e",
+    "summary.json": "cdea1fdd399927d2c1bd23f4ecc04fa497849ce57d187bdbb50cf96e443a5ca6",
+    "transforms.npz": "647ac6618eed8bb8c205240335a478bf4f71a48cea607d2112a4c128acc83a4d"
+  },
+  "protocol": {
+    "artifact_directory": "data/diagnostics/demian_uncertainty_radius_v1_20261013",
+    "base_delay_steps": 32,
+    "claim_boundary": "sampled local-linear response radius at fresh reachable states with native precision controls; no universal stability ball, chaos, evidence-code, memory-use or causal-channel claim",
+    "comparison": "all signed direction/radius/horizon cells retained; summarize precision-valid fraction and local-linearity error within each seed/radius/horizon; no selected-radius inference",
+    "curvature_error": "norm(G64(xpert)-G64(x)-J64(x)*delta_eff), relative to induced float64 response norm",
+    "direction_construction": "float64 isotropic normal vector from RNG(model_seed*10000+direction_seed), normalized once to global L2=1; same directions across anchors/horizons; both signs",
+    "direction_seeds": [
+      17,
+      29
+    ],
+    "falsifier": "precision-valid cells exceed0.1 relative curvature error; precision-limited cells do not establish nonlinear fragility",
+    "hidden_size": 256,
+    "history_indices": [
+      0,
+      1,
+      62,
+      63
+    ],
+    "horizons": [
+      2,
+      4,
+      8
+    ],
+    "independent_unit": "four fresh parameter seeds; fixed anchors/directions/signs/radii/horizons dependent within seed",
+    "input_representability": "effective L2 radius/requested radius and fraction of native32 coordinates actually changed",
+    "model_seeds": [
+      1094,
+      1095,
+      1194,
+      1195
+    ],
+    "native_error": "norm(G32(xpert)-G32(x)-J64(x)*delta_eff), with identical float64-response denominator",
+    "perturbation": "x_pert=q32(float64(x)+sign*r*direction); delta_eff=float64(x_pert)-float64(x); never renormalize delta_eff",
+    "precision_floor": "max(norm(G32(xpert)-q32(G64(xpert))), norm(G32(x)-q32(G64(x))), 1e-12); conservative absolute arithmetic floor",
+    "precision_floor_multiple": 10.0,
+    "protocol_id": "demian-uncertainty-radius-v1",
+    "radii": [
+      0.0001,
+      0.001,
+      0.01,
+      0.1,
+      1.0
+    ],
+    "reference": "local full-state JVP at each predeclared reachable A anchor, not at mixed-history centroid; this is a new radius question, not recovery of earlier fixed-centroid gates",
+    "relative_linearity_threshold": 0.1,
+    "reliability_schedule": [
+      0.95,
+      0.75,
+      0.5,
+      0.75,
+      0.95,
+      0.5
+    ],
+    "response_validity": "effective perturbation nonzero and norm(G64(xpert)-G64(x)) >=10*precision_floor; otherwise precision-limited/inconclusive",
+    "sanity": "native32 baseline G_h(x) must exactly match independently replayed full public history for each anchor/horizon",
+    "signs": [
+      -1,
+      1
+    ],
+    "transition": "identical model seed weights and blank-input sequence; reset runtime index38 and frozen/trace state inside every native32/float64/JVP evaluation"
+  },
+  "protocol_sha256": "df9da3814b7df2b94fc328366093d02523c6c8b01dc4843174f0ec254f46c2e8",
+  "source_commit": "8f9f67ea5c9345e68af356d24663f97cf6138162"
+}

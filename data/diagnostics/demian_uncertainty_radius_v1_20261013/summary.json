@@ -1,0 +1,12 @@
+{
+  "claim_boundary": "sampled local-linear response radius at fresh reachable states with native precision controls; no universal stability ball, chaos, evidence-code, memory-use or causal-channel claim",
+  "experiment": "demian-uncertainty-radius-v1",
+  "integrity": {
+    "all_finite": true,
+    "baseline_check_count": 48,
+    "exact_baseline_continuation": true,
+    "scope": "fresh reachable anchors; two signed sampled directions; precision-limited cells remain inconclusive"
+  },
+  "metric_count": 960,
+  "state_count": 16
+}
