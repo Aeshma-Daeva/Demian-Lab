@@ -1116,3 +1116,16 @@ Next:
 - Independent package code review: no findings;41 focused tests and all new
   artifact pins verified. Reconstructed matrix fits/predictions and publication
   arrays match records. Full-suite historical failures remain explicitly excluded.
+
+## 2026-10-13 - Representation geometry and channel relations
+
+- Artifact: `data/diagnostics/demian_uncertainty_representation_relations_v3_20261013/`.
+- Observation: within-order blank delay expands the state cloud while history
+  geometry partly deforms; matched-time order clouds remain near-isometric only
+  up to translation, scaling and orthogonal alignment.
+- Relation audit: gate-to-channel change-norm correlations vary in sign across
+  seed, interval and order; no reproducible directional relation.
+- Astra review: source manifest, states and metadata hashes must be pinned;
+  implemented. No hypothesis-status change or causal interpretation.
+- Next: if descriptive work continues, preregister a single identity-versus-
+  alignment decoder-transfer test rather than another broad geometry sweep.

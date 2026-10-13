@@ -8,6 +8,24 @@
   },
   "runs": [
     {
+      "id": "demian_uncertainty_representation_relations_v3_20261013",
+      "program": "demian-v1",
+      "date": "2026-10-13",
+      "family": "analysis_only_representation_geometry_and_channel_relations",
+      "status": "active_evidence",
+      "primary_summary": "data/diagnostics/demian_uncertainty_representation_relations_v3_20261013/summary.json",
+      "artifacts": [
+        "docs/DEMIAN_UNCERTAINTY_REPRESENTATION_RELATIONS_PROTOCOL.json",
+        "docs/DEMIAN_UNCERTAINTY_REPRESENTATION_RELATIONS_RESULTS.md",
+        "data/diagnostics/demian_uncertainty_representation_relations_v3_20261013/summary.json",
+        "data/diagnostics/demian_uncertainty_representation_relations_v3_20261013/metrics.jsonl",
+        "data/diagnostics/demian_uncertainty_representation_relations_v3_20261013/relation_metrics.jsonl",
+        "data/diagnostics/demian_uncertainty_representation_relations_v3_20261013/manifest.json"
+      ],
+      "claim_ids": [],
+      "interpretation": "Astra-reviewed descriptive analysis: cross-order relational geometry is near-isometric only after alignment; within-order blank-delay geometry expands and partially deforms; gate co-change signs are heterogeneous."
+    },
+    {
       "id": "demian_uncertainty_history_matrix_replication_v1_20261013",
       "program": "demian-v1",
       "date": "2026-10-13",

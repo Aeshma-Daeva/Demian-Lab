@@ -284,6 +284,25 @@
   ],
   "experiments": [
     {
+      "id": "E-UNC-015",
+      "name": "Analysis-only representation geometry and channel co-change",
+      "system": "demian_v1_gate_state_existing_history_matrix_states",
+      "protocol_version": "demian-uncertainty-representation-relations-v3",
+      "replication_scope": {
+        "parameter_seed_count": 8,
+        "initial_state_count": 8,
+        "input_seed_count": 0,
+        "history_condition_count": 128,
+        "trajectory_count": 1024,
+        "checkpoint_row_count": 5120,
+        "independent_unit": "parameter_seed",
+        "dependent_observations": [
+          "No new trajectories were generated. checkpoint rows, orders, channel pairs and metrics reuse E-UNC-013 and E-UNC-014 states and are dependent within each of eight parameter seeds."
+        ]
+      },
+      "artifact_ids": ["A-UNC-REL-PROTOCOL-001", "A-UNC-REL-SUMMARY-001", "A-UNC-REL-METRICS-001", "A-UNC-REL-CHANNEL-METRICS-001", "A-UNC-REL-MANIFEST-001"]
+    },
+    {
       "id": "E-UNC-014",
       "name": "Independent schedule/split replication of heldout decoding matrix",
       "system": "demian_v1_gate_state_with_stateless_public_evidence_encoder",
@@ -691,6 +710,13 @@
   ],
   "controls": [
     {
+      "id": "C-UNC-REL-001",
+      "name": "Hash-pinned paired history geometry",
+      "semantics": "Verifies source manifest, state and metadata hashes, then pairs identical public history identities across time or reliability order before geometric comparison.",
+      "limitations": ["Pairing and hash verification establish provenance and correspondence, not causal mechanism or decoder equivalence."],
+      "artifact_ids": ["A-UNC-REL-PROTOCOL-001", "A-UNC-REL-MANIFEST-001"]
+    },
+    {
       "id": "C-UNC-MATRIX-REP-001",
       "name": "Disjoint history allocation and fair public/shuffle controls",
       "semantics": "Base-order final-symbol/log-odds-sign split fixed across orders, times and seeds; only train32 fit coefficients/scale. Same heldout32 IDs evaluate both orders, with analytic latest/current and projection-matched conditional train-label shuffle.",
@@ -972,6 +998,30 @@
     }
   ],
   "results": [
+    {
+      "id": "R-UNC-REL-001",
+      "hypothesis_ids": [],
+      "experiment_id": "E-UNC-015",
+      "evaluable": true,
+      "outcome": "observed",
+      "observation": "Across two existing four-seed batches, within-order cue6-to-delay clouds expand strongly while history pairwise geometry and rank-8 history-space overlap decline. Matched-time cross-order clouds remain near-isometric only after translation, scaling and unconstrained orthogonal alignment. Gate-to-channel change-norm correlations vary in sign across seed, order and interval.",
+      "interpretation": "The existing traces support a descriptive moving representation with partial within-order deformation and cross-order relational similarity. The result does not identify a raw shared coordinate system, a cause of decoder portability, or a channel mechanism.",
+      "analysis_scope": {
+        "independent_unit": "parameter_seed",
+        "independent_unit_count": 8,
+        "comparison_count": 424,
+        "comparison_unit": "104 paired geometry comparisons and 320 dependent gate-channel co-change statistics across the eight source parameter seeds",
+        "dependent_observations": ["Orders, checkpoints, channel pairs and geometry metrics reuse the same state traces within each parameter seed."],
+        "scope_note": "Astra scientific review2026-10-13: source manifests and loaded files are hash-pinned; geometry is relational up to an orthogonal map; co-change is descriptive and sign-heterogeneous."
+      },
+      "evaluation_conditions_met": ["hash_pinned_source_states", "identical_history_pairing", "two_existing_seed_batches", "declared_geometry_metrics"],
+      "missing_evaluation_conditions": ["fresh_preregistered_confirmation", "decoder_identity_vs_alignment_test", "causal_intervention"],
+      "effect_summary": {"source_parameter_seed_count": 8, "geometry_metric_count": 104, "gate_channel_relation_count": 320, "cross_order_pairwise_alignment_minimum": 0.9992, "within_order_delay64_history_subspace_overlap_median_approximately": 0.45},
+      "uncertainty": ["This reuses the source batches and is not an independent replication.", "A fixed decoder may fail under transformations that pairwise geometry cannot see.", "Co-change signs are heterogeneous across seeds."],
+      "exclusions": ["No H-UNC-001 status change.", "No raw-coordinate equivalence, rotation cause, gate directionality, causal channel, memory-use, routing, learning or adaptation claim."],
+      "control_ids": ["C-UNC-REL-001"],
+      "artifact_ids": ["A-UNC-REL-PROTOCOL-001", "A-UNC-REL-SUMMARY-001", "A-UNC-REL-METRICS-001", "A-UNC-REL-CHANNEL-METRICS-001", "A-UNC-REL-MANIFEST-001"]
+    },
     {
       "id": "R-UNC-MATRIX-REP-001",
       "hypothesis_ids": [
@@ -1828,6 +1878,46 @@
     }
   ],
   "artifacts": [
+    {
+      "id": "A-UNC-REL-PROTOCOL-001",
+      "repository": "https://github.com/Aeshma-Daeva/Demian-Lab",
+      "commit": "6e45fb9c4d807981286f91a54565cb9cfbf5dbf5",
+      "path": "docs/DEMIAN_UNCERTAINTY_REPRESENTATION_RELATIONS_PROTOCOL.json",
+      "media_type": "application/json",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/6e45fb9c4d807981286f91a54565cb9cfbf5dbf5/docs/DEMIAN_UNCERTAINTY_REPRESENTATION_RELATIONS_PROTOCOL.json"
+    },
+    {
+      "id": "A-UNC-REL-SUMMARY-001",
+      "repository": "https://github.com/Aeshma-Daeva/Demian-Lab",
+      "commit": "fae847a691d7da3a1660be2b1d553d7a93ac3eb3",
+      "path": "data/diagnostics/demian_uncertainty_representation_relations_v3_20261013/summary.json",
+      "media_type": "application/json",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/fae847a691d7da3a1660be2b1d553d7a93ac3eb3/data/diagnostics/demian_uncertainty_representation_relations_v3_20261013/summary.json"
+    },
+    {
+      "id": "A-UNC-REL-METRICS-001",
+      "repository": "https://github.com/Aeshma-Daeva/Demian-Lab",
+      "commit": "fae847a691d7da3a1660be2b1d553d7a93ac3eb3",
+      "path": "data/diagnostics/demian_uncertainty_representation_relations_v3_20261013/metrics.jsonl",
+      "media_type": "application/x-ndjson",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/fae847a691d7da3a1660be2b1d553d7a93ac3eb3/data/diagnostics/demian_uncertainty_representation_relations_v3_20261013/metrics.jsonl"
+    },
+    {
+      "id": "A-UNC-REL-CHANNEL-METRICS-001",
+      "repository": "https://github.com/Aeshma-Daeva/Demian-Lab",
+      "commit": "fae847a691d7da3a1660be2b1d553d7a93ac3eb3",
+      "path": "data/diagnostics/demian_uncertainty_representation_relations_v3_20261013/relation_metrics.jsonl",
+      "media_type": "application/x-ndjson",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/fae847a691d7da3a1660be2b1d553d7a93ac3eb3/data/diagnostics/demian_uncertainty_representation_relations_v3_20261013/relation_metrics.jsonl"
+    },
+    {
+      "id": "A-UNC-REL-MANIFEST-001",
+      "repository": "https://github.com/Aeshma-Daeva/Demian-Lab",
+      "commit": "fae847a691d7da3a1660be2b1d553d7a93ac3eb3",
+      "path": "data/diagnostics/demian_uncertainty_representation_relations_v3_20261013/manifest.json",
+      "media_type": "application/json",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/fae847a691d7da3a1660be2b1d553d7a93ac3eb3/data/diagnostics/demian_uncertainty_representation_relations_v3_20261013/manifest.json"
+    },
     {
       "id": "A-UNC-CHORD-BYTES-001",
       "repository": "https://github.com/Aeshma-Daeva/Demian-Lab",

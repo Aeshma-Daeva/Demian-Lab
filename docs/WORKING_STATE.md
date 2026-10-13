@@ -46,6 +46,10 @@ Last updated: 2026-10-13
   matched-time decoding succeeds through64 blank ticks; order portability remains
   partial and cue6-frozen temporal calibration fails. See
   `DEMIAN_UNCERTAINTY_HISTORY_MATRIX_RESULTS.md`.
+  Hash-pinned analysis of those states finds cross-order relational geometry
+  near-isometric only up to alignment, and within-order delay expansion with
+  partial deformation; gate co-change is seed-heterogeneous. See
+  `DEMIAN_UNCERTAINTY_REPRESENTATION_RELATIONS_RESULTS.md`.
   Next requires research direction: dissect current condition-specific coding
   versus pursue portability under a declared objective. No geometry tuning.
   No causal-channel claim is active.

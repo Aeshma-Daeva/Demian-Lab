@@ -61,6 +61,14 @@ Purpose:
 
 ## Uncertainty Discovery Harness
 
+## Representation geometry and channel relations
+
+- Protocol: [../docs/DEMIAN_UNCERTAINTY_REPRESENTATION_RELATIONS_PROTOCOL.json](../docs/DEMIAN_UNCERTAINTY_REPRESENTATION_RELATIONS_PROTOCOL.json)
+- Record: [../docs/DEMIAN_UNCERTAINTY_REPRESENTATION_RELATIONS_RESULTS.md](../docs/DEMIAN_UNCERTAINTY_REPRESENTATION_RELATIONS_RESULTS.md)
+- Summary: [diagnostics/demian_uncertainty_representation_relations_v3_20261013/summary.json](diagnostics/demian_uncertainty_representation_relations_v3_20261013/summary.json)
+- Status: hash-pinned analysis of existing matrix states. Cross-order relational
+  geometry is near-isometric up to alignment; gate co-change is seed-heterogeneous.
+
 - Protocol: [../docs/DEMIAN_UNCERTAINTY_DISCOVERY_PROTOCOL.json](../docs/DEMIAN_UNCERTAINTY_DISCOVERY_PROTOCOL.json)
 - Summary: [diagnostics/demian_uncertainty_discovery_v1_20261012_retry/summary.json](diagnostics/demian_uncertainty_discovery_v1_20261012_retry/summary.json)
 - Status: deterministic public-evidence instrumentation; no representation or capability claim.
