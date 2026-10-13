@@ -246,6 +246,20 @@
       "next_test": "Run the same multiplier sweep with matched random-direction pulses, then compare interaction profiles."
     },
     {
+      "id": "H-UNC-001",
+      "statement": "Demian internal state can preserve public evidence relevant to unresolved alternatives across a delay.",
+      "operational_prediction": "Frozen probes transfer across held-out public sequences after controlling for time and current observation.",
+      "evaluation_conditions": ["target_private_interface", "frozen_probe", "heldout_public_sequences", "time_and_current_observation_controls"],
+      "evidence_status": "untested",
+      "lifecycle": "active",
+      "status_basis": {"method": "manual_review", "rule": "Harness validity alone does not evaluate internal representation.", "considered_result_ids": ["R-UNC-HARNESS-001"], "supporting_result_ids": [], "conflicting_result_ids": [], "reviewer": "Codex implementation review", "reviewed_on": "2026-10-12"},
+      "status_history": [{"evidence_status": "untested", "lifecycle": "active", "changed_on": "2026-10-12", "reviewer": "Codex implementation review", "basis": "The discovery harness records traces but no frozen transfer probe or intervention."}],
+      "result_ids": ["R-UNC-HARNESS-001"],
+      "alternative_explanations": ["A probe may recover time, current cue, or generic state magnitude rather than retained evidence."],
+      "falsifiers": ["Held-out probe performance does not exceed time and current-observation controls."],
+      "next_test": "Freeze a probe on discovery traces and evaluate held-out public-sequence transfer per model seed."
+    },
+    {
       "id": "H-ROUTE-005",
       "statement": "carrier_to_slow mediates carrier perturbations differently from matched random-direction perturbations under fixed forcing.",
       "operational_prediction": "The signed carrier-minus-random pulse-route interaction is directionally consistent across development and held-out parameter seeds at reduced route multipliers.",
@@ -379,6 +393,14 @@
       "artifact_ids": ["A-ROUTE-INTERACTION-PROTOCOL-001", "A-ROUTE-INTERACTION-SUMMARY-001", "A-ROUTE-INTERACTION-RESULTS-001"]
     },
     {
+      "id": "E-UNC-001",
+      "name": "Ambiguous-evidence discovery harness",
+      "system": "demian_v1_gate_state_with_stateless_public_evidence_encoder",
+      "protocol_version": "demian-uncertainty-discovery-v1",
+      "replication_scope": {"parameter_seed_count": 8, "initial_state_count": 8, "input_seed_count": 4, "history_condition_count": 8, "trajectory_count": 256, "checkpoint_row_count": 2560, "independent_unit": "parameter_seed", "dependent_observations": ["episodes, conditions, delays, and checkpoints repeat within parameter seeds"]},
+      "artifact_ids": ["A-UNC-PROTOCOL-001", "A-UNC-SUMMARY-001", "A-UNC-RESULTS-001"]
+    },
+    {
       "id": "E-ROUTE-004",
       "name": "Fixed-forcing matched carrier/random-direction route selectivity",
       "system": "demian_v1_gate_state",
@@ -487,6 +509,13 @@
       "semantics": "Compares a random full-state perturbation at the tested pulse magnitude.",
       "limitations": ["The current run does not sweep route gain for this control."],
       "artifact_ids": ["A-ROUTE-STABILITY-PROTOCOL-001", "A-ROUTE-INTERACTION-PROTOCOL-001"]
+    },
+    {
+      "id": "C-UNC-REPLAY-001",
+      "name": "Target-private public-frame replay",
+      "semantics": "Runs only public evidence frames through a stateless encoder and restores the full model runtime exactly.",
+      "limitations": ["Validates interface integrity only; it does not establish uncertainty representation."],
+      "artifact_ids": ["A-UNC-PROTOCOL-001", "A-UNC-SUMMARY-001"]
     },
     {
       "id": "C-MATCHED-RANDOM-GAIN-001",
@@ -703,9 +732,50 @@
       "exclusions": ["No direction-specific mechanism claim.", "No memory, AFP-v2, learning, adaptation, task competence, or chaos claim."],
       "control_ids": ["C-ROUTE-ONLY-001", "C-ROUTE-SHAM-001", "C-MATCHED-RANDOM-GAIN-001"],
       "artifact_ids": ["A-ROUTE-SELECTIVITY-PROTOCOL-001", "A-ROUTE-SELECTIVITY-SUMMARY-001", "A-ROUTE-SELECTIVITY-RESULTS-001"]
+    },
+    {
+      "id": "R-UNC-HARNESS-001",
+      "hypothesis_ids": ["H-UNC-001"],
+      "experiment_id": "E-UNC-001",
+      "evaluable": false,
+      "outcome": "unevaluable",
+      "observation": "Two hundred fifty-six scripted public-evidence traces were finite and final runtime restoration was exact across eight fixed model seeds.",
+      "interpretation": "The target-private encoder and replay harness are suitable for discovery traces; no uncertainty representation, routing, utility, learning, or adaptation result is evaluated.",
+      "analysis_scope": {"independent_unit": "parameter_seed", "independent_unit_count": 8, "comparison_count": 256, "comparison_unit": "scripted model-seed by episode cells", "dependent_observations": ["episodes, conditions, delays, and checkpoints repeat within model seeds"], "scope_note": "Model seeds are independent parameter realizations; scripted episodes are repeated observations within them."},
+      "evaluation_conditions_met": ["target_private_interface", "exact_runtime_restore", "finite_trace"],
+      "missing_evaluation_conditions": ["frozen_probe", "heldout_public_sequences", "time_and_current_observation_controls"],
+      "effect_summary": {"model_seed_count": 8, "episode_seed_count": 4, "condition_count": 4, "delay_count": 2, "cell_count": 256},
+      "uncertainty": ["All episodes are scripted discovery controls.", "No probe or causal intervention is included."],
+      "exclusions": ["No uncertainty representation claim.", "No routing, utility, learning, or adaptation claim."],
+      "control_ids": ["C-UNC-REPLAY-001"],
+      "artifact_ids": ["A-UNC-PROTOCOL-001", "A-UNC-SUMMARY-001", "A-UNC-RESULTS-001"]
     }
   ],
   "artifacts": [
+    {
+      "id": "A-UNC-PROTOCOL-001",
+      "repository": "Aeshma-Daeva/Demian-Lab",
+      "commit": "2893e1287bb1cac5fd604446311dc73a071c9364",
+      "path": "docs/DEMIAN_UNCERTAINTY_DISCOVERY_PROTOCOL.json",
+      "media_type": "application/json",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/2893e1287bb1cac5fd604446311dc73a071c9364/docs/DEMIAN_UNCERTAINTY_DISCOVERY_PROTOCOL.json"
+    },
+    {
+      "id": "A-UNC-SUMMARY-001",
+      "repository": "Aeshma-Daeva/Demian-Lab",
+      "commit": "2893e1287bb1cac5fd604446311dc73a071c9364",
+      "path": "data/diagnostics/demian_uncertainty_discovery_v1_20261012_retry/summary.json",
+      "media_type": "application/json",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/2893e1287bb1cac5fd604446311dc73a071c9364/data/diagnostics/demian_uncertainty_discovery_v1_20261012_retry/summary.json"
+    },
+    {
+      "id": "A-UNC-RESULTS-001",
+      "repository": "Aeshma-Daeva/Demian-Lab",
+      "commit": "2893e1287bb1cac5fd604446311dc73a071c9364",
+      "path": "docs/DEMIAN_UNCERTAINTY_DISCOVERY_RESULTS.md",
+      "media_type": "text/markdown",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/2893e1287bb1cac5fd604446311dc73a071c9364/docs/DEMIAN_UNCERTAINTY_DISCOVERY_RESULTS.md"
+    },
     {
       "id": "A-CHAR-SUMMARY-001",
       "repository": "Aeshma-Daeva/Demian-Lab",

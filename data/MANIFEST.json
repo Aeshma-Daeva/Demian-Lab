@@ -8,6 +8,21 @@
   },
   "runs": [
     {
+      "id": "demian_uncertainty_discovery_v1_20261012_retry",
+      "program": "demian-v1",
+      "date": "2026-10-12",
+      "family": "six_channel_ambiguous_evidence_discovery",
+      "status": "active_evidence",
+      "primary_summary": "data/diagnostics/demian_uncertainty_discovery_v1_20261012_retry/summary.json",
+      "artifacts": [
+        "data/diagnostics/demian_uncertainty_discovery_v1_20261012_retry/summary.json",
+        "docs/DEMIAN_UNCERTAINTY_DISCOVERY_PROTOCOL.json",
+        "docs/DEMIAN_UNCERTAINTY_DISCOVERY_RESULTS.md"
+      ],
+      "claim_ids": [],
+      "interpretation": "Target-private, stateless-encoder discovery harness with finite traces and exact runtime restoration. No internal uncertainty representation, routing, utility, learning, or adaptation claim."
+    },
+    {
       "id": "demian_route_feature_audit_v2_20261012",
       "program": "demian-v1",
       "date": "2026-10-12",
