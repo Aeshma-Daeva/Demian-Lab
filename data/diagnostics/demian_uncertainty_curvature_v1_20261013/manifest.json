@@ -1,0 +1,45 @@
+{
+  "file_sha256": {
+    "metrics.jsonl": "5cea1f916aafbd17673a0c01d60d0c402780bf1d3d11584ddae32bdd252427a9",
+    "predictions.npz": "faf1a7914cacc6806edd8e6a037ffd3f61c703917f800fe0838f01421f1e54ce",
+    "state_metadata.jsonl": "cde593d267df32b2e8b8ee1bc4e89b10cd80d01222d045f4dd56dec6bba93bde",
+    "states.npz": "fb8d8e0832c283680b67eff1110c8e4027246b0b4791ffb81174c7fa19428100",
+    "summary.json": "a02d3d93ad131d377b740c9ce56d562eb1326d79ff347563238251b23123d3e4",
+    "transforms.npz": "4c052c87036d86ef454994eb2c59a3d29520310a86198fbd0fc7ccf78cde5fe8"
+  },
+  "protocol": {
+    "artifact_directory": "data/diagnostics/demian_uncertainty_curvature_v1_20261013",
+    "axes": [
+      "same_order_histories",
+      "unseen_order"
+    ],
+    "base_artifact_commit": "a6638b87fb305633503ab665184b6f55f43afbe8",
+    "base_artifact_directory": "data/diagnostics/demian_uncertainty_jacobian_v1_20261013",
+    "claim_boundary": "second-order local model-check on reused horizon cases; no independent replication, evidence-code, functional memory, causal-channel or chaos claim",
+    "comparison": "report sign and size of incremental residual reduction in every seed-axis-horizon cell; stable reduction supports ordinary local curvature as part of the first-order error",
+    "controls": [
+      "cached full-state first-order Jacobian prediction"
+    ],
+    "denominator": "same evaluation A-cloud RMS as earlier gates",
+    "derivative_validation": "one predeclared first same-order heldout direction per seed/horizon, central second difference; fail run if relative Hessian discrepancy exceeds tolerance",
+    "descriptive_threshold": "<=0.1 relative full residual across every seed/axis at a horizon; h16 is extrapolative stress, not a selected success condition",
+    "falsifier": "second order fails to consistently reduce the first-order error or misses threshold; no third/higher-order search follows failure",
+    "finite_difference_epsilon": 0.01,
+    "finite_difference_tolerance": 0.001,
+    "horizons": [
+      4,
+      8,
+      16
+    ],
+    "independent_unit": "same four parameter realizations; reused histories/horizons are dependent scope characterization",
+    "prediction": "G_h(mu)+DG_h(mu)*d+0.5*D2G_h(mu)[d,d] using float64 directional autodiff; coefficient0.5 fixed by Taylor formula",
+    "protocol_id": "demian-uncertainty-curvature-v1",
+    "reference": "identical fixed training A centroid and source cases; no relinearization, fitted correction or target-state information",
+    "source_artifact_commit": "3e3ef54b8271cb18dea726510043c1a6e52d57d8",
+    "source_artifact_directory": "data/diagnostics/demian_uncertainty_horizon_v1_20261013",
+    "stress_horizon": 16,
+    "targets": "hash-verified cached nonlinear float32 continuations; exact history index pairing verified"
+  },
+  "protocol_sha256": "f4518953644c39804b8675100c58605d035b6923094b00a4598bbf5718d31598",
+  "source_commit": "2fa9bbc12fe41415c509e9b257992495aa9b8caf"
+}

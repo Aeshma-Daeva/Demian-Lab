@@ -1,0 +1,12 @@
+{
+  "claim_boundary": "second-order local model-check on reused horizon cases; no independent replication, evidence-code, functional memory, causal-channel or chaos claim",
+  "experiment": "demian-uncertainty-curvature-v1",
+  "integrity": {
+    "all_finite": true,
+    "directional_hessian_fd_max_relative_error": 0.00019069662681672815,
+    "scope": "fixed-centroid second-order model-check on reused cases; cached nonlinear targets unchanged",
+    "source_hashes_verified": true
+  },
+  "metric_count": 48,
+  "state_count": 1152
+}
