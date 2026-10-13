@@ -36,7 +36,11 @@ Last updated: 2026-10-13
   Fresh reachable-anchor radius gate supports sampled local linearity; smallest
   responses are precision-limited. Reviewed diagnostics are registered; see
   `DEMIAN_UNCERTAINTY_RADIUS_RESULTS.md`.
-  Current gate: balanced natural-history chords versus norm-matched disturbances.
+  Natural-history chord gate completed: finite local-linearity failures and
+  seed-dependent contrasts against norm-matched disturbances; Astra-reviewed.
+  See `DEMIAN_UNCERTAINTY_CHORD_RESULTS.md`.
+  Current work: fresh time-resolved frozen-calibration localization; no further
+  local-geometry tuning or architecture modification.
   No causal-channel claim is active.
 
 Primary records:

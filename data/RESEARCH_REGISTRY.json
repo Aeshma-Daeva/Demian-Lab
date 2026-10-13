@@ -252,12 +252,12 @@
       "evaluation_conditions": ["target_private_interface", "frozen_probe", "heldout_public_sequences", "time_and_current_observation_controls"],
       "evidence_status": "preliminary_support",
       "lifecycle": "active",
-      "status_basis": {"method":"manual_review","rule":"Preliminary support requires label-balanced held-out decoding beyond current, latest-observation, schedule-only, and shuffled-label controls; it does not establish calibrated uncertainty or causal use.","considered_result_ids":["R-UNC-HARNESS-001","R-UNC-REP-001","R-UNC-CORR-001","R-UNC-TRANSFER-001","R-UNC-CHANNEL-001","R-UNC-SIMILARITY-001","R-UNC-JACOBIAN-001","R-UNC-HORIZON-001","R-UNC-CURVATURE-001","R-UNC-RADIUS-001"],"supporting_result_ids":["R-UNC-CORR-001"],"conflicting_result_ids":["R-UNC-TRANSFER-001","R-UNC-CHANNEL-001"],"reviewer":"Astra scientific review","reviewed_on":"2026-10-13"},
-      "status_history": [{"evidence_status":"untested","lifecycle":"active","changed_on":"2026-10-12","reviewer":"Codex implementation review","basis":"The discovery harness records traces but no frozen transfer probe or intervention."},{"evidence_status":"preliminary_support","lifecycle":"active","changed_on":"2026-10-12","reviewer":"Astra scientific review","basis":"Initially reviewed as held-out decoding support."},{"evidence_status":"untested","lifecycle":"active","changed_on":"2026-10-13","reviewer":"Astra scientific review","basis":"Correction: schedule index and target parity were deterministically paired, leaving a schedule-to-label confound. The result is unevaluable for retained evidence."},{"evidence_status":"preliminary_support","lifecycle":"active","changed_on":"2026-10-13","reviewer":"Astra scientific review","basis":"Corrective exhaustive corpus balances labels across reliability orders; held-out full-state decoding exceeds current, latest, schedule-only, and shuffled-label controls."},{"evidence_status":"preliminary_support","lifecycle":"active","changed_on":"2026-10-13","reviewer":"Astra scientific review","basis":"Low-capacity decoding transfers to one unseen six-event reliability order but fails the preregistered frozen six-to-eight-event criterion due a major length-conditioned state scale shift; the within-length claim remains preliminary only."},{"evidence_status":"preliminary_support","lifecycle":"active","changed_on":"2026-10-13","reviewer":"Astra scientific review","basis":"Fresh-seed channelwise radial normalization fails the frozen paired transfer gate in every seed. The earlier within-corpus evidence remains preliminary; neither global nor independent channel radial rescaling suffices for calibrated temporal transfer."},{"evidence_status":"preliminary_support","lifecycle":"active","changed_on":"2026-10-13","reviewer":"Astra scientific review","basis":"Label-free similarity diagnostics approximate centered geometry but fail absolute placement across the new order. This does not test evidence decoding or change the existing narrow hypothesis status."},{"evidence_status":"preliminary_support","lifecycle":"active","changed_on":"2026-10-13","reviewer":"Astra scientific review","basis":"R-UNC-JACOBIAN-001, R-UNC-HORIZON-001, R-UNC-CURVATURE-001 and R-UNC-RADIUS-001 are evaluable local-flow diagnostics. Short-window adequacy, limited fixed-centroid forecasts and precision-limited tiny responses do not change delayed evidence-decoding status."}],
-      "result_ids": ["R-UNC-HARNESS-001","R-UNC-REP-001","R-UNC-CORR-001","R-UNC-TRANSFER-001","R-UNC-CHANNEL-001","R-UNC-SIMILARITY-001","R-UNC-JACOBIAN-001","R-UNC-HORIZON-001","R-UNC-CURVATURE-001","R-UNC-RADIUS-001"],
+      "status_basis": {"method":"manual_review","rule":"Preliminary support requires label-balanced held-out decoding beyond current, latest-observation, schedule-only, and shuffled-label controls; it does not establish calibrated uncertainty or causal use.","considered_result_ids":["R-UNC-HARNESS-001","R-UNC-REP-001","R-UNC-CORR-001","R-UNC-TRANSFER-001","R-UNC-CHANNEL-001","R-UNC-SIMILARITY-001","R-UNC-JACOBIAN-001","R-UNC-HORIZON-001","R-UNC-CURVATURE-001","R-UNC-RADIUS-001","R-UNC-CHORD-001"],"supporting_result_ids":["R-UNC-CORR-001"],"conflicting_result_ids":["R-UNC-TRANSFER-001","R-UNC-CHANNEL-001"],"reviewer":"Astra scientific review","reviewed_on":"2026-10-13"},
+      "status_history": [{"evidence_status":"untested","lifecycle":"active","changed_on":"2026-10-12","reviewer":"Codex implementation review","basis":"The discovery harness records traces but no frozen transfer probe or intervention."},{"evidence_status":"preliminary_support","lifecycle":"active","changed_on":"2026-10-12","reviewer":"Astra scientific review","basis":"Initially reviewed as held-out decoding support."},{"evidence_status":"untested","lifecycle":"active","changed_on":"2026-10-13","reviewer":"Astra scientific review","basis":"Correction: schedule index and target parity were deterministically paired, leaving a schedule-to-label confound. The result is unevaluable for retained evidence."},{"evidence_status":"preliminary_support","lifecycle":"active","changed_on":"2026-10-13","reviewer":"Astra scientific review","basis":"Corrective exhaustive corpus balances labels across reliability orders; held-out full-state decoding exceeds current, latest, schedule-only, and shuffled-label controls."},{"evidence_status":"preliminary_support","lifecycle":"active","changed_on":"2026-10-13","reviewer":"Astra scientific review","basis":"Low-capacity decoding transfers to one unseen six-event reliability order but fails the preregistered frozen six-to-eight-event criterion due a major length-conditioned state scale shift; the within-length claim remains preliminary only."},{"evidence_status":"preliminary_support","lifecycle":"active","changed_on":"2026-10-13","reviewer":"Astra scientific review","basis":"Fresh-seed channelwise radial normalization fails the frozen paired transfer gate in every seed. The earlier within-corpus evidence remains preliminary; neither global nor independent channel radial rescaling suffices for calibrated temporal transfer."},{"evidence_status":"preliminary_support","lifecycle":"active","changed_on":"2026-10-13","reviewer":"Astra scientific review","basis":"Label-free similarity diagnostics approximate centered geometry but fail absolute placement across the new order. This does not test evidence decoding or change the existing narrow hypothesis status."},{"evidence_status":"preliminary_support","lifecycle":"active","changed_on":"2026-10-13","reviewer":"Astra scientific review","basis":"R-UNC-JACOBIAN-001, R-UNC-HORIZON-001, R-UNC-CURVATURE-001 and R-UNC-RADIUS-001 are evaluable local-flow diagnostics. Short-window adequacy, limited fixed-centroid forecasts and precision-limited tiny responses do not change delayed evidence-decoding status."},{"evidence_status":"preliminary_support","lifecycle":"active","changed_on":"2026-10-13","reviewer":"Astra scientific review","basis":"R-UNC-CHORD-001 is evaluable, with seed-specific curvature and no replicated natural-direction exception. Stop local-geometry gates; characterize when frozen evidence calibration fails. H-UNC-001 decoding status unchanged."}],
+      "result_ids": ["R-UNC-HARNESS-001","R-UNC-REP-001","R-UNC-CORR-001","R-UNC-TRANSFER-001","R-UNC-CHANNEL-001","R-UNC-SIMILARITY-001","R-UNC-JACOBIAN-001","R-UNC-HORIZON-001","R-UNC-CURVATURE-001","R-UNC-RADIUS-001","R-UNC-CHORD-001"],
       "alternative_explanations": ["A probe may recover time, current cue, generic state magnitude, or evaluator-side schedule structure rather than retained evidence."],
       "falsifiers": ["Held-out probe performance does not exceed time and current-observation controls."],
-      "next_test": "Balanced natural-history chord linearity versus norm-matched isotropic directions at fresh reachable anchors; if no directional exception, stop local-geometry tuning and inspect upstream representation formation."
+      "next_test": "Fresh-seed time-resolved frozen-calibration localization across event boundaries and delays, with disjoint reliability orders and public/conditional-shuffle controls."
     },
     {
       "id": "H-ROUTE-005",
@@ -283,6 +283,32 @@
     }
   ],
   "experiments": [
+    {
+      "id": "E-UNC-011",
+      "name": "Exhaustive natural-history chord response",
+      "system": "demian_v1_gate_state_with_stateless_public_evidence_encoder",
+      "protocol_version": "demian-uncertainty-chord-v1",
+      "replication_scope": {
+        "parameter_seed_count": 4,
+        "initial_state_count": 4,
+        "input_seed_count": 0,
+        "history_condition_count": 64,
+        "trajectory_count": 256,
+        "checkpoint_row_count": 256,
+        "independent_unit": "parameter_seed",
+        "dependent_observations": [
+          "All32 one-cue pairs in both orientations, two flip positions, fractions, horizons and controls dependent within seed;13824 perturbation cases and replay continuations are not independent replications."
+        ]
+      },
+      "artifact_ids": [
+        "A-UNC-CHORD-PROTOCOL-001",
+        "A-UNC-CHORD-SUMMARY-001",
+        "A-UNC-CHORD-METRICS-001",
+        "A-UNC-CHORD-MANIFEST-001",
+        "A-UNC-CHORD-PAIRED-001",
+        "A-UNC-CHORD-PARTITIONS-001"
+      ]
+    },
     {
       "id": "E-UNC-007",
       "name": "Two-axis fixed-centroid Jacobian geometry",
@@ -586,6 +612,24 @@
   ],
   "controls": [
     {
+      "id": "C-UNC-CHORD-001",
+      "name": "Norm-matched isotropic response and natural endpoint replay",
+      "semantics": "Two fixed isotropic directions match each chord requested L2 norm at the same source. Actual q32 deltas retained. Every source and natural f1 endpoint exactly replays its public history.",
+      "limitations": [
+        "Two control directions do not sample a broad isotropic distribution.",
+        "Early95% and final50% cue flips confound position and reliability.",
+        "Interpolants need not be reachable."
+      ],
+      "artifact_ids": [
+        "A-UNC-CHORD-PROTOCOL-001",
+        "A-UNC-CHORD-SUMMARY-001",
+        "A-UNC-CHORD-METRICS-001",
+        "A-UNC-CHORD-MANIFEST-001",
+        "A-UNC-CHORD-PAIRED-001",
+        "A-UNC-CHORD-PARTITIONS-001"
+      ]
+    },
+    {
       "id": "C-UNC-JACOBIAN-001",
       "name": "Two-axis fixed-centroid Jacobian geometry controls",
       "semantics": "Identity, fitted translation/similarity, randomized training pairing, and rank8 JVP are matched to full JVP on the same heldout states.",
@@ -794,6 +838,68 @@
     }
   ],
   "results": [
+    {
+      "id": "R-UNC-CHORD-001",
+      "hypothesis_ids": [
+        "H-UNC-001"
+      ],
+      "experiment_id": "E-UNC-011",
+      "evaluable": true,
+      "outcome": "mixed",
+      "observation": "All13824 cases precision-valid;768 source and1536 full-chord endpoint checks exact. Quarter chords pass through h8. Natural-only h4/full and h8/half failures concentrate in seed1295 early flip. Across all dependent cells,183/4608 natural versus130/9216 control cases fail0.1 bound; paired natural-minus-control contrast reverses in seed1395.",
+      "interpretation": "Finite history-created displacement response has seed/direction/amplitude-dependent curvature. No replicated natural-direction exception supports another geometry gate; move upstream to time-resolved frozen-calibration localization.",
+      "analysis_scope": {
+        "independent_unit": "parameter_seed",
+        "independent_unit_count": 4,
+        "comparison_count": 72,
+        "comparison_unit": "seed by cue flip, horizon and chord fraction",
+        "dependent_observations": [
+          "64 oriented sources and two fixed control directions per cell."
+        ],
+        "scope_note": "Astra scientific review2026-10-13: evaluable; concentrated seed-specific failures, not generalized memory geometry."
+      },
+      "evaluation_conditions_met": [
+        "fresh_seeds",
+        "exhaustive_history_pairs",
+        "both_natural_orientations",
+        "norm_matched_controls",
+        "precision_margin",
+        "exact_endpoint_replay",
+        "saved_exact_state_and_lossless_predictions"
+      ],
+      "missing_evaluation_conditions": [
+        "seed_general_directional_exception",
+        "causal_channel_intervention"
+      ],
+      "effect_summary": {
+        "precision_valid_cases": 13824,
+        "natural_threshold_failures": 183,
+        "natural_cases": 4608,
+        "control_threshold_failures": 130,
+        "control_cases": 9216,
+        "natural_only_h4_full_failures_seed1295": 44,
+        "natural_only_h8_half_failures_seed1295": 51
+      },
+      "uncertainty": [
+        "Four seeds and two fixed random directions.",
+        "Requested radii span0.18–4.47% of source norm.",
+        "Failure of a local approximation is not chaos or erasure."
+      ],
+      "exclusions": [
+        "No calibrated uncertainty, causal channel, functional memory use, learning or adaptation claim."
+      ],
+      "control_ids": [
+        "C-UNC-CHORD-001"
+      ],
+      "artifact_ids": [
+        "A-UNC-CHORD-PROTOCOL-001",
+        "A-UNC-CHORD-SUMMARY-001",
+        "A-UNC-CHORD-METRICS-001",
+        "A-UNC-CHORD-MANIFEST-001",
+        "A-UNC-CHORD-PAIRED-001",
+        "A-UNC-CHORD-PARTITIONS-001"
+      ]
+    },
     {
       "id": "R-UNC-JACOBIAN-001",
       "hypothesis_ids": [
@@ -1392,6 +1498,54 @@
     }
   ],
   "artifacts": [
+    {
+      "id": "A-UNC-CHORD-PROTOCOL-001",
+      "repository": "https://github.com/Aeshma-Daeva/Demian-Lab",
+      "commit": "b2ede51e8bc0660895e8aa46e72b1690903900ad",
+      "path": "docs/DEMIAN_UNCERTAINTY_CHORD_PROTOCOL.json",
+      "media_type": "application/json",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/b2ede51e8bc0660895e8aa46e72b1690903900ad/docs/DEMIAN_UNCERTAINTY_CHORD_PROTOCOL.json"
+    },
+    {
+      "id": "A-UNC-CHORD-SUMMARY-001",
+      "repository": "https://github.com/Aeshma-Daeva/Demian-Lab",
+      "commit": "b3677ed1813e39ce14293c639da66b1a9fc1b7eb",
+      "path": "data/diagnostics/demian_uncertainty_chord_v1_20261013/summary.json",
+      "media_type": "application/json",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/b3677ed1813e39ce14293c639da66b1a9fc1b7eb/data/diagnostics/demian_uncertainty_chord_v1_20261013/summary.json"
+    },
+    {
+      "id": "A-UNC-CHORD-METRICS-001",
+      "repository": "https://github.com/Aeshma-Daeva/Demian-Lab",
+      "commit": "b3677ed1813e39ce14293c639da66b1a9fc1b7eb",
+      "path": "data/diagnostics/demian_uncertainty_chord_v1_20261013/metrics.jsonl",
+      "media_type": "application/x-ndjson",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/b3677ed1813e39ce14293c639da66b1a9fc1b7eb/data/diagnostics/demian_uncertainty_chord_v1_20261013/metrics.jsonl"
+    },
+    {
+      "id": "A-UNC-CHORD-MANIFEST-001",
+      "repository": "https://github.com/Aeshma-Daeva/Demian-Lab",
+      "commit": "b3677ed1813e39ce14293c639da66b1a9fc1b7eb",
+      "path": "data/diagnostics/demian_uncertainty_chord_v1_20261013/manifest.json",
+      "media_type": "application/json",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/b3677ed1813e39ce14293c639da66b1a9fc1b7eb/data/diagnostics/demian_uncertainty_chord_v1_20261013/manifest.json"
+    },
+    {
+      "id": "A-UNC-CHORD-PAIRED-001",
+      "repository": "https://github.com/Aeshma-Daeva/Demian-Lab",
+      "commit": "b3677ed1813e39ce14293c639da66b1a9fc1b7eb",
+      "path": "data/diagnostics/demian_uncertainty_chord_v1_20261013/paired_analysis.json",
+      "media_type": "application/json",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/b3677ed1813e39ce14293c639da66b1a9fc1b7eb/data/diagnostics/demian_uncertainty_chord_v1_20261013/paired_analysis.json"
+    },
+    {
+      "id": "A-UNC-CHORD-PARTITIONS-001",
+      "repository": "https://github.com/Aeshma-Daeva/Demian-Lab",
+      "commit": "b3677ed1813e39ce14293c639da66b1a9fc1b7eb",
+      "path": "data/diagnostics/demian_uncertainty_chord_v1_20261013/prediction_parts/partition_manifest.json",
+      "media_type": "application/json",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/b3677ed1813e39ce14293c639da66b1a9fc1b7eb/data/diagnostics/demian_uncertainty_chord_v1_20261013/prediction_parts/partition_manifest.json"
+    },
     {
       "id": "A-UNC-JACOBIAN-PROTOCOL-001",
       "repository": "https://github.com/Aeshma-Daeva/Demian-Lab",

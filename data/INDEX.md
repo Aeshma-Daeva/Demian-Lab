@@ -90,6 +90,7 @@ Purpose:
 - Two-axis Jacobian: [diagnostics/demian_uncertainty_jacobian_v1_20261013/summary.json](diagnostics/demian_uncertainty_jacobian_v1_20261013/summary.json); [record](../docs/DEMIAN_UNCERTAINTY_JACOBIAN_RESULTS.md).
 - Horizon/curvature: [record](../docs/DEMIAN_UNCERTAINTY_LOCAL_MODELS_RESULTS.md), [horizon summary](diagnostics/demian_uncertainty_horizon_v1_20261013/summary.json), [curvature summary](diagnostics/demian_uncertainty_curvature_v1_20261013/summary.json).
 - Reachable-anchor radius: [record](../docs/DEMIAN_UNCERTAINTY_RADIUS_RESULTS.md), [summary](diagnostics/demian_uncertainty_radius_v1_20261013/summary.json).
+- Natural-history chords: [record](../docs/DEMIAN_UNCERTAINTY_CHORD_RESULTS.md), [summary](diagnostics/demian_uncertainty_chord_v1_20261013/summary.json), [lossless prediction parts](diagnostics/demian_uncertainty_chord_v1_20261013/prediction_parts/partition_manifest.json).
 - Formal registry entries pending; no additional hypothesis promotion.
 
 ## Closed-Loop Baseline

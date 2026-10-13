@@ -8,6 +8,27 @@
   },
   "runs": [
     {
+      "id": "demian_uncertainty_chord_v1_20261013",
+      "program": "demian-v1",
+      "date": "2026-10-13",
+      "family": "exhaustive_natural_history_chords",
+      "status": "active_evidence",
+      "primary_summary": "data/diagnostics/demian_uncertainty_chord_v1_20261013/summary.json",
+      "artifacts": [
+        "docs/DEMIAN_UNCERTAINTY_CHORD_PROTOCOL.json",
+        "data/diagnostics/demian_uncertainty_chord_v1_20261013/summary.json",
+        "data/diagnostics/demian_uncertainty_chord_v1_20261013/metrics.jsonl",
+        "data/diagnostics/demian_uncertainty_chord_v1_20261013/manifest.json",
+        "data/diagnostics/demian_uncertainty_chord_v1_20261013/paired_analysis.json",
+        "data/diagnostics/demian_uncertainty_chord_v1_20261013/prediction_parts/partition_manifest.json",
+        "data/diagnostics/demian_uncertainty_chord_v1_20261013/states.npz",
+        "data/diagnostics/demian_uncertainty_chord_v1_20261013/state_metadata.jsonl",
+        "data/diagnostics/demian_uncertainty_chord_v1_20261013/transforms.npz"
+      ],
+      "claim_ids": [],
+      "interpretation": "Astra-reviewed R-UNC-CHORD-001: seed-specific finite curvature, no replicated natural-direction exception. Original large NPZ local; versioned lossless parts reconstruct arrays."
+    },
+    {
       "id": "demian_uncertainty_radius_v1_20261013",
       "program": "demian-v1",
       "date": "2026-10-13",

@@ -1051,3 +1051,30 @@ Next:
   selected backgrounds; additional compute buys complete finite-history coverage.
 - Continue: fresh natural-history chord gate; all64 histories, two cue positions,
   norm-matched controls and exact native endpoint replay.
+
+## 2026-10-13 - Exhaustive natural-history chords
+
+- Artifact: `data/diagnostics/demian_uncertainty_chord_v1_20261013/`.
+- Observation: all13,824 responses precision-valid; all baseline/endpoint replay
+  checks exact. Quarter chords pass through h8; some larger chords fail.
+- Control: natural-minus-random error contrast reverses in seed1395.
+- Interpretation: seed/direction/amplitude-dependent finite curvature; no
+  seed-general special memory geometry or causal localization.
+- Review pending; record: `DEMIAN_UNCERTAINTY_CHORD_RESULTS.md`.
+- Packaging: original393MiB prediction NPZ retained locally;14 row parts
+  verified lossless and each below50MB. No measurement or original hash changed.
+- Final suite:490 passed; same4 historical artifact/manifest failures listed above.
+- Astra review complete: registered `R-UNC-CHORD-001`; narrow evidence status
+  unchanged. Natural-only failures concentrate in seed1295.
+- Decision: stop local-geometry gates; move upstream to time-resolved calibration
+  across cue boundaries/delay. Descriptive channel decomposition is non-causal.
+
+## 2026-10-13 - Time-resolved calibration protocol
+
+- Protocol: `DEMIAN_UNCERTAINTY_LOCALIZATION_PROTOCOL.json`.
+- Astra pre-run audit complete: unique prefixes deduplicated; cue2/4 descriptive,
+  cue6/delays primary; same prefix reliability histograms across orders.
+- Ruling: add analytic single-current/latest-cue controls before full run;
+  learned latest trained on a neutral final cue lacks informative-cue support.
+- Plan: fresh seeds, time-refitted versus cue6-frozen projections, channel probes,
+  conditional-shuffle and public controls. No erasure or causal-channel claim.
