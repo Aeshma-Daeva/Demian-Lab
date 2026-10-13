@@ -1,6 +1,6 @@
 # Working State
 
-Last updated: 2026-10-12
+Last updated: 2026-10-13
 
 ## Demian v1 Current State
 
@@ -30,8 +30,14 @@ Last updated: 2026-10-12
   Fresh channelwise radial gate also fails; see the linked measurement record.
   Similarity geometry preserves centered arrangement approximately but misses
   absolute placement on a new order; see `DEMIAN_UNCERTAINTY_SIMILARITY_RESULTS.md`.
-  Next: same-order heldout histories versus unseen order, with a fixed two-delay
-  Jacobian baseline. No causal-channel claim is active.
+  Fixed full-state Jacobian explains sampled two-step geometry across both
+  history/order axes; longer fixed-centroid forecasts and quadratic corrections
+  remain limited. See `DEMIAN_UNCERTAINTY_LOCAL_MODELS_RESULTS.md`.
+  Fresh reachable-anchor radius gate supports sampled local linearity; smallest
+  responses are precision-limited. Reviewed diagnostics are registered; see
+  `DEMIAN_UNCERTAINTY_RADIUS_RESULTS.md`.
+  Current gate: balanced natural-history chords versus norm-matched disturbances.
+  No causal-channel claim is active.
 
 Primary records:
 

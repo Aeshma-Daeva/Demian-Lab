@@ -252,12 +252,12 @@
       "evaluation_conditions": ["target_private_interface", "frozen_probe", "heldout_public_sequences", "time_and_current_observation_controls"],
       "evidence_status": "preliminary_support",
       "lifecycle": "active",
-      "status_basis": {"method":"manual_review","rule":"Preliminary support requires label-balanced held-out decoding beyond current, latest-observation, schedule-only, and shuffled-label controls; it does not establish calibrated uncertainty or causal use.","considered_result_ids":["R-UNC-HARNESS-001","R-UNC-REP-001","R-UNC-CORR-001","R-UNC-TRANSFER-001","R-UNC-CHANNEL-001","R-UNC-SIMILARITY-001"],"supporting_result_ids":["R-UNC-CORR-001"],"conflicting_result_ids":["R-UNC-TRANSFER-001","R-UNC-CHANNEL-001"],"reviewer":"Astra scientific review","reviewed_on":"2026-10-13"},
-      "status_history": [{"evidence_status":"untested","lifecycle":"active","changed_on":"2026-10-12","reviewer":"Codex implementation review","basis":"The discovery harness records traces but no frozen transfer probe or intervention."},{"evidence_status":"preliminary_support","lifecycle":"active","changed_on":"2026-10-12","reviewer":"Astra scientific review","basis":"Initially reviewed as held-out decoding support."},{"evidence_status":"untested","lifecycle":"active","changed_on":"2026-10-13","reviewer":"Astra scientific review","basis":"Correction: schedule index and target parity were deterministically paired, leaving a schedule-to-label confound. The result is unevaluable for retained evidence."},{"evidence_status":"preliminary_support","lifecycle":"active","changed_on":"2026-10-13","reviewer":"Astra scientific review","basis":"Corrective exhaustive corpus balances labels across reliability orders; held-out full-state decoding exceeds current, latest, schedule-only, and shuffled-label controls."},{"evidence_status":"preliminary_support","lifecycle":"active","changed_on":"2026-10-13","reviewer":"Astra scientific review","basis":"Low-capacity decoding transfers to one unseen six-event reliability order but fails the preregistered frozen six-to-eight-event criterion due a major length-conditioned state scale shift; the within-length claim remains preliminary only."},{"evidence_status":"preliminary_support","lifecycle":"active","changed_on":"2026-10-13","reviewer":"Astra scientific review","basis":"Fresh-seed channelwise radial normalization fails the frozen paired transfer gate in every seed. The earlier within-corpus evidence remains preliminary; neither global nor independent channel radial rescaling suffices for calibrated temporal transfer."},{"evidence_status":"preliminary_support","lifecycle":"active","changed_on":"2026-10-13","reviewer":"Astra scientific review","basis":"Label-free similarity diagnostics approximate centered geometry but fail absolute placement across the new order. This does not test evidence decoding or change the existing narrow hypothesis status."}],
-      "result_ids": ["R-UNC-HARNESS-001","R-UNC-REP-001","R-UNC-CORR-001","R-UNC-TRANSFER-001","R-UNC-CHANNEL-001","R-UNC-SIMILARITY-001"],
+      "status_basis": {"method":"manual_review","rule":"Preliminary support requires label-balanced held-out decoding beyond current, latest-observation, schedule-only, and shuffled-label controls; it does not establish calibrated uncertainty or causal use.","considered_result_ids":["R-UNC-HARNESS-001","R-UNC-REP-001","R-UNC-CORR-001","R-UNC-TRANSFER-001","R-UNC-CHANNEL-001","R-UNC-SIMILARITY-001","R-UNC-JACOBIAN-001","R-UNC-HORIZON-001","R-UNC-CURVATURE-001","R-UNC-RADIUS-001"],"supporting_result_ids":["R-UNC-CORR-001"],"conflicting_result_ids":["R-UNC-TRANSFER-001","R-UNC-CHANNEL-001"],"reviewer":"Astra scientific review","reviewed_on":"2026-10-13"},
+      "status_history": [{"evidence_status":"untested","lifecycle":"active","changed_on":"2026-10-12","reviewer":"Codex implementation review","basis":"The discovery harness records traces but no frozen transfer probe or intervention."},{"evidence_status":"preliminary_support","lifecycle":"active","changed_on":"2026-10-12","reviewer":"Astra scientific review","basis":"Initially reviewed as held-out decoding support."},{"evidence_status":"untested","lifecycle":"active","changed_on":"2026-10-13","reviewer":"Astra scientific review","basis":"Correction: schedule index and target parity were deterministically paired, leaving a schedule-to-label confound. The result is unevaluable for retained evidence."},{"evidence_status":"preliminary_support","lifecycle":"active","changed_on":"2026-10-13","reviewer":"Astra scientific review","basis":"Corrective exhaustive corpus balances labels across reliability orders; held-out full-state decoding exceeds current, latest, schedule-only, and shuffled-label controls."},{"evidence_status":"preliminary_support","lifecycle":"active","changed_on":"2026-10-13","reviewer":"Astra scientific review","basis":"Low-capacity decoding transfers to one unseen six-event reliability order but fails the preregistered frozen six-to-eight-event criterion due a major length-conditioned state scale shift; the within-length claim remains preliminary only."},{"evidence_status":"preliminary_support","lifecycle":"active","changed_on":"2026-10-13","reviewer":"Astra scientific review","basis":"Fresh-seed channelwise radial normalization fails the frozen paired transfer gate in every seed. The earlier within-corpus evidence remains preliminary; neither global nor independent channel radial rescaling suffices for calibrated temporal transfer."},{"evidence_status":"preliminary_support","lifecycle":"active","changed_on":"2026-10-13","reviewer":"Astra scientific review","basis":"Label-free similarity diagnostics approximate centered geometry but fail absolute placement across the new order. This does not test evidence decoding or change the existing narrow hypothesis status."},{"evidence_status":"preliminary_support","lifecycle":"active","changed_on":"2026-10-13","reviewer":"Astra scientific review","basis":"R-UNC-JACOBIAN-001, R-UNC-HORIZON-001, R-UNC-CURVATURE-001 and R-UNC-RADIUS-001 are evaluable local-flow diagnostics. Short-window adequacy, limited fixed-centroid forecasts and precision-limited tiny responses do not change delayed evidence-decoding status."}],
+      "result_ids": ["R-UNC-HARNESS-001","R-UNC-REP-001","R-UNC-CORR-001","R-UNC-TRANSFER-001","R-UNC-CHANNEL-001","R-UNC-SIMILARITY-001","R-UNC-JACOBIAN-001","R-UNC-HORIZON-001","R-UNC-CURVATURE-001","R-UNC-RADIUS-001"],
       "alternative_explanations": ["A probe may recover time, current cue, generic state magnitude, or evaluator-side schedule structure rather than retained evidence."],
       "falsifiers": ["Held-out probe performance does not exceed time and current-observation controls."],
-      "next_test": "Fresh B-only two-axis geometry gate: same-order heldout histories versus unseen order, with fixed model-derived two-delay Jacobian baseline."
+      "next_test": "Balanced natural-history chord linearity versus norm-matched isotropic directions at fresh reachable anchors; if no directional exception, stop local-geometry tuning and inspect upstream representation formation."
     },
     {
       "id": "H-ROUTE-005",
@@ -283,6 +283,102 @@
     }
   ],
   "experiments": [
+    {
+      "id": "E-UNC-007",
+      "name": "Two-axis fixed-centroid Jacobian geometry",
+      "system": "demian_v1_gate_state_with_stateless_public_evidence_encoder",
+      "protocol_version": "demian-uncertainty-jacobian-v1",
+      "replication_scope": {
+        "parameter_seed_count": 4,
+        "initial_state_count": 4,
+        "input_seed_count": 0,
+        "history_condition_count": 4,
+        "trajectory_count": 512,
+        "checkpoint_row_count": 1024,
+        "independent_unit": "parameter_seed",
+        "dependent_observations": [
+          "Histories, checkpoints, geometric directions and horizons are dependent within seed; cached horizon/curvature cases reuse E-UNC-007."
+        ]
+      },
+      "artifact_ids": [
+        "A-UNC-JACOBIAN-PROTOCOL-001",
+        "A-UNC-JACOBIAN-SUMMARY-001",
+        "A-UNC-JACOBIAN-METRICS-001",
+        "A-UNC-JACOBIAN-MANIFEST-001"
+      ]
+    },
+    {
+      "id": "E-UNC-008",
+      "name": "Cached fixed-centroid horizon scope",
+      "system": "demian_v1_gate_state_with_stateless_public_evidence_encoder",
+      "protocol_version": "demian-uncertainty-horizon-v1",
+      "replication_scope": {
+        "parameter_seed_count": 4,
+        "initial_state_count": 4,
+        "input_seed_count": 0,
+        "history_condition_count": 10,
+        "trajectory_count": 384,
+        "checkpoint_row_count": 1920,
+        "independent_unit": "parameter_seed",
+        "dependent_observations": [
+          "Histories, checkpoints, geometric directions and horizons are dependent within seed; cached horizon/curvature cases reuse E-UNC-007."
+        ]
+      },
+      "artifact_ids": [
+        "A-UNC-HORIZON-PROTOCOL-001",
+        "A-UNC-HORIZON-SUMMARY-001",
+        "A-UNC-HORIZON-METRICS-001",
+        "A-UNC-HORIZON-MANIFEST-001"
+      ]
+    },
+    {
+      "id": "E-UNC-009",
+      "name": "Cached directional second-order model check",
+      "system": "demian_v1_gate_state_with_stateless_public_evidence_encoder",
+      "protocol_version": "demian-uncertainty-curvature-v1",
+      "replication_scope": {
+        "parameter_seed_count": 4,
+        "initial_state_count": 4,
+        "input_seed_count": 0,
+        "history_condition_count": 6,
+        "trajectory_count": 384,
+        "checkpoint_row_count": 1152,
+        "independent_unit": "parameter_seed",
+        "dependent_observations": [
+          "Histories, checkpoints, geometric directions and horizons are dependent within seed; cached horizon/curvature cases reuse E-UNC-007."
+        ]
+      },
+      "artifact_ids": [
+        "A-UNC-CURVATURE-PROTOCOL-001",
+        "A-UNC-CURVATURE-SUMMARY-001",
+        "A-UNC-CURVATURE-METRICS-001",
+        "A-UNC-CURVATURE-MANIFEST-001"
+      ]
+    },
+    {
+      "id": "E-UNC-010",
+      "name": "Fresh reachable-anchor radius and precision check",
+      "system": "demian_v1_gate_state_with_stateless_public_evidence_encoder",
+      "protocol_version": "demian-uncertainty-radius-v1",
+      "replication_scope": {
+        "parameter_seed_count": 4,
+        "initial_state_count": 4,
+        "input_seed_count": 0,
+        "history_condition_count": 4,
+        "trajectory_count": 16,
+        "checkpoint_row_count": 16,
+        "independent_unit": "parameter_seed",
+        "dependent_observations": [
+          "Four fixed histories, two fixed directions, signs, radii and horizons are dependent within each fresh parameter seed; no cached E-UNC-007 targets reused."
+        ]
+      },
+      "artifact_ids": [
+        "A-UNC-RADIUS-PROTOCOL-001",
+        "A-UNC-RADIUS-SUMMARY-001",
+        "A-UNC-RADIUS-METRICS-001",
+        "A-UNC-RADIUS-MANIFEST-001"
+      ]
+    },
     {
       "id": "E-UNC-006",
       "name": "Fresh heldout-order paired similarity geometry",
@@ -490,6 +586,66 @@
   ],
   "controls": [
     {
+      "id": "C-UNC-JACOBIAN-001",
+      "name": "Two-axis fixed-centroid Jacobian geometry controls",
+      "semantics": "Identity, fitted translation/similarity, randomized training pairing, and rank8 JVP are matched to full JVP on the same heldout states.",
+      "limitations": [
+        "Four parameter seeds and two-step window.",
+        "Label-free geometry; not an evidence-decoding test."
+      ],
+      "artifact_ids": [
+        "A-UNC-JACOBIAN-PROTOCOL-001",
+        "A-UNC-JACOBIAN-SUMMARY-001",
+        "A-UNC-JACOBIAN-METRICS-001",
+        "A-UNC-JACOBIAN-MANIFEST-001"
+      ]
+    },
+    {
+      "id": "C-UNC-HORIZON-001",
+      "name": "Cached fixed-centroid horizon scope controls",
+      "semantics": "Identity and model-derived centroid translation compared with fixed-centroid JVP; nonlinear cached targets remain unchanged.",
+      "limitations": [
+        "Same four seeds and cached cases as E-UNC-007, not independent replication.",
+        "Residuals use A-cloud scatter, not induced-response normalization."
+      ],
+      "artifact_ids": [
+        "A-UNC-HORIZON-PROTOCOL-001",
+        "A-UNC-HORIZON-SUMMARY-001",
+        "A-UNC-HORIZON-METRICS-001",
+        "A-UNC-HORIZON-MANIFEST-001"
+      ]
+    },
+    {
+      "id": "C-UNC-CURVATURE-001",
+      "name": "Cached directional second-order model check controls",
+      "semantics": "First-order versus half-Hessian correction at the same fixed source centroid with identical nonlinear targets.",
+      "limitations": [
+        "Reuses four parameter seeds and target cases; no new replication.",
+        "Failure in seed994 remains retained."
+      ],
+      "artifact_ids": [
+        "A-UNC-CURVATURE-PROTOCOL-001",
+        "A-UNC-CURVATURE-SUMMARY-001",
+        "A-UNC-CURVATURE-METRICS-001",
+        "A-UNC-CURVATURE-MANIFEST-001"
+      ]
+    },
+    {
+      "id": "C-UNC-RADIUS-001",
+      "name": "Fresh reachable-anchor radius and precision check controls",
+      "semantics": "Source-local JVP compared with exact nonlinear float64 and native32 responses; same representable input, declared10x absolute arithmetic floor.",
+      "limitations": [
+        "Four seeds, four selected histories, two fixed isotropic directions and both signs.",
+        "Largest radius only0.325–0.351% of anchor L2 norm; not a global stability ball."
+      ],
+      "artifact_ids": [
+        "A-UNC-RADIUS-PROTOCOL-001",
+        "A-UNC-RADIUS-SUMMARY-001",
+        "A-UNC-RADIUS-METRICS-001",
+        "A-UNC-RADIUS-MANIFEST-001"
+      ]
+    },
+    {
       "id": "C-UNC-SIMILARITY-001",
       "name": "Identity, training-mean translation and randomized pairing",
       "semantics": "Fits geometric maps only on paired training states; randomized-pair map uses the identical training basis; all errors use heldout A-cloud scatter.",
@@ -638,6 +794,216 @@
     }
   ],
   "results": [
+    {
+      "id": "R-UNC-JACOBIAN-001",
+      "hypothesis_ids": [
+        "H-UNC-001"
+      ],
+      "experiment_id": "E-UNC-007",
+      "evaluable": true,
+      "outcome": "observed",
+      "observation": "Fixed full-state JVP meets the two-step relative residual <=0.1 criterion in all eight seed/heldout-axis cells; unseen-order median 0.050 versus 0.107 for fitted similarity. All512 native continuation checks match exactly.",
+      "interpretation": "Generic local recurrent flow accounts for sampled two-step geometry. Low within-cloud excluded variance does not ensure cross-order centroid displacement coverage.",
+      "analysis_scope": {
+        "independent_unit": "parameter_seed",
+        "independent_unit_count": 4,
+        "comparison_count": 8,
+        "comparison_unit": "parameter-seed by axis/horizon cells",
+        "dependent_observations": [
+          "Four parameter seeds and two-step window.",
+          "Label-free geometry; not an evidence-decoding test."
+        ],
+        "scope_note": "Astra scientific review2026-10-13: evaluable geometry/precision diagnostic only; H-UNC-001 status unchanged."
+      },
+      "evaluation_conditions_met": [
+        "two_heldout_axes",
+        "train_only_centroid_and_maps",
+        "exact_native_continuation"
+      ],
+      "missing_evaluation_conditions": [
+        "long_horizon_adequacy",
+        "causal_channel_intervention"
+      ],
+      "effect_summary": {
+        "unseen_order_full_jvp_median": 0.05009,
+        "unseen_order_similarity_median": 0.10725
+      },
+      "uncertainty": [
+        "Four parameter seeds and two-step window.",
+        "Label-free geometry; not an evidence-decoding test."
+      ],
+      "exclusions": [
+        "No evidence-decoding, calibrated belief, memory use, causal channel, chaos, learning or adaptation claim."
+      ],
+      "control_ids": [
+        "C-UNC-JACOBIAN-001"
+      ],
+      "artifact_ids": [
+        "A-UNC-JACOBIAN-PROTOCOL-001",
+        "A-UNC-JACOBIAN-SUMMARY-001",
+        "A-UNC-JACOBIAN-METRICS-001",
+        "A-UNC-JACOBIAN-MANIFEST-001"
+      ]
+    },
+    {
+      "id": "R-UNC-HORIZON-001",
+      "hypothesis_ids": [
+        "H-UNC-001"
+      ],
+      "experiment_id": "E-UNC-008",
+      "evaluable": true,
+      "outcome": "observed",
+      "observation": "Fixed-centroid first-order model meets all-seed criterion at h2, first fails at h4, and fails every cell by h8. Median same/new residuals progress from0.046/0.050 at h2 to2.649/2.901 at h32.",
+      "interpretation": "One fixed local-linear account has a short tested forecast horizon. Failure does not establish chaos, information loss or unstable underlying trajectories.",
+      "analysis_scope": {
+        "independent_unit": "parameter_seed",
+        "independent_unit_count": 4,
+        "comparison_count": 40,
+        "comparison_unit": "parameter-seed by axis/horizon cells",
+        "dependent_observations": [
+          "Same four seeds and cached cases as E-UNC-007, not independent replication.",
+          "Residuals use A-cloud scatter, not induced-response normalization."
+        ],
+        "scope_note": "Astra scientific review2026-10-13: evaluable geometry/precision diagnostic only; H-UNC-001 status unchanged."
+      },
+      "evaluation_conditions_met": [
+        "immutable_cached_states",
+        "source_hash_verification",
+        "exact_two_step_anchors",
+        "fixed_reference_across_horizons"
+      ],
+      "missing_evaluation_conditions": [
+        "independent_replication",
+        "reachable_anchor_radius"
+      ],
+      "effect_summary": {
+        "h2_same_median": 0.04598,
+        "h2_new_median": 0.05009,
+        "h32_same_median": 2.64852,
+        "h32_new_median": 2.90072
+      },
+      "uncertainty": [
+        "Same four seeds and cached cases as E-UNC-007, not independent replication.",
+        "Residuals use A-cloud scatter, not induced-response normalization."
+      ],
+      "exclusions": [
+        "No evidence-decoding, calibrated belief, memory use, causal channel, chaos, learning or adaptation claim."
+      ],
+      "control_ids": [
+        "C-UNC-HORIZON-001"
+      ],
+      "artifact_ids": [
+        "A-UNC-HORIZON-PROTOCOL-001",
+        "A-UNC-HORIZON-SUMMARY-001",
+        "A-UNC-HORIZON-METRICS-001",
+        "A-UNC-HORIZON-MANIFEST-001"
+      ]
+    },
+    {
+      "id": "R-UNC-CURVATURE-001",
+      "hypothesis_ids": [
+        "H-UNC-001"
+      ],
+      "experiment_id": "E-UNC-009",
+      "evaluable": true,
+      "outcome": "observed",
+      "observation": "Second order reduces h4 median same/new residuals from0.104/0.112 to0.042/0.047 and h8 from0.237/0.261 to0.096/0.104. Seed994 already misses0.1 at h4 and worsens versus first order at h16. Directional Hessian finite-difference maximum error0.000191 meets0.001 tolerance.",
+      "interpretation": "Ordinary curvature is a partial seed/horizon-dependent account, not a universally adequate quadratic model.",
+      "analysis_scope": {
+        "independent_unit": "parameter_seed",
+        "independent_unit_count": 4,
+        "comparison_count": 24,
+        "comparison_unit": "parameter-seed by axis/horizon cells",
+        "dependent_observations": [
+          "Reuses four parameter seeds and target cases; no new replication.",
+          "Failure in seed994 remains retained."
+        ],
+        "scope_note": "Astra scientific review2026-10-13: evaluable geometry/precision diagnostic only; H-UNC-001 status unchanged."
+      },
+      "evaluation_conditions_met": [
+        "cached_target_identity",
+        "source_hash_verification",
+        "directional_hessian_validation"
+      ],
+      "missing_evaluation_conditions": [
+        "all_seed_quadratic_adequacy"
+      ],
+      "effect_summary": {
+        "h4_same_second_median": 0.041968,
+        "h4_new_second_median": 0.046968,
+        "hessian_fd_max_error": 0.000190697
+      },
+      "uncertainty": [
+        "Reuses four parameter seeds and target cases; no new replication.",
+        "Failure in seed994 remains retained."
+      ],
+      "exclusions": [
+        "No evidence-decoding, calibrated belief, memory use, causal channel, chaos, learning or adaptation claim."
+      ],
+      "control_ids": [
+        "C-UNC-CURVATURE-001"
+      ],
+      "artifact_ids": [
+        "A-UNC-CURVATURE-PROTOCOL-001",
+        "A-UNC-CURVATURE-SUMMARY-001",
+        "A-UNC-CURVATURE-METRICS-001",
+        "A-UNC-CURVATURE-MANIFEST-001"
+      ]
+    },
+    {
+      "id": "R-UNC-RADIUS-001",
+      "hypothesis_ids": [
+        "H-UNC-001"
+      ],
+      "experiment_id": "E-UNC-010",
+      "evaluable": true,
+      "outcome": "observed",
+      "observation": "All768 precision-valid signed perturbation cases at radii0.001–1 meet0.1 relative local-linearity threshold; maximum mathematical error0.016679. All192 radius0.0001 cases are below10x arithmetic floor despite approximately94% coordinates changing. All48 native baselines replay exactly.",
+      "interpretation": "Sampled reachable states are locally well approximated along two fixed isotropic directions at the tested relative radii and horizons. Smallest responses are precision-limited, not demonstrated nonlinear fragility.",
+      "analysis_scope": {
+        "independent_unit": "parameter_seed",
+        "independent_unit_count": 4,
+        "comparison_count": 960,
+        "comparison_unit": "controlled perturbation cases",
+        "dependent_observations": [
+          "Four seeds, four selected histories, two fixed isotropic directions and both signs.",
+          "Largest radius only0.325–0.351% of anchor L2 norm; not a global stability ball."
+        ],
+        "scope_note": "Astra scientific review2026-10-13: evaluable geometry/precision diagnostic only; H-UNC-001 status unchanged."
+      },
+      "evaluation_conditions_met": [
+        "fresh_parameter_seeds",
+        "reachable_anchors",
+        "exact_native_baselines",
+        "effective_quantized_delta",
+        "native_float64_precision_control"
+      ],
+      "missing_evaluation_conditions": [
+        "natural_history_direction_check",
+        "operator_norm_bound"
+      ],
+      "effect_summary": {
+        "valid_cases": 768,
+        "precision_limited_cases": 192,
+        "max_valid_curvature_relative_error": 0.016679
+      },
+      "uncertainty": [
+        "Four seeds, four selected histories, two fixed isotropic directions and both signs.",
+        "Largest radius only0.325–0.351% of anchor L2 norm; not a global stability ball."
+      ],
+      "exclusions": [
+        "No evidence-decoding, calibrated belief, memory use, causal channel, chaos, learning or adaptation claim."
+      ],
+      "control_ids": [
+        "C-UNC-RADIUS-001"
+      ],
+      "artifact_ids": [
+        "A-UNC-RADIUS-PROTOCOL-001",
+        "A-UNC-RADIUS-SUMMARY-001",
+        "A-UNC-RADIUS-METRICS-001",
+        "A-UNC-RADIUS-MANIFEST-001"
+      ]
+    },
     {
       "id": "R-UNC-SIMILARITY-001",
       "hypothesis_ids": [
@@ -1026,6 +1392,134 @@
     }
   ],
   "artifacts": [
+    {
+      "id": "A-UNC-JACOBIAN-PROTOCOL-001",
+      "repository": "https://github.com/Aeshma-Daeva/Demian-Lab",
+      "commit": "d1ea1db07f4dd2c384f2c65003abe00dcf1fb0f0",
+      "path": "docs/DEMIAN_UNCERTAINTY_JACOBIAN_PROTOCOL.json",
+      "media_type": "application/json",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/d1ea1db07f4dd2c384f2c65003abe00dcf1fb0f0/docs/DEMIAN_UNCERTAINTY_JACOBIAN_PROTOCOL.json"
+    },
+    {
+      "id": "A-UNC-JACOBIAN-SUMMARY-001",
+      "repository": "https://github.com/Aeshma-Daeva/Demian-Lab",
+      "commit": "a6638b87fb305633503ab665184b6f55f43afbe8",
+      "path": "data/diagnostics/demian_uncertainty_jacobian_v1_20261013/summary.json",
+      "media_type": "application/json",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/a6638b87fb305633503ab665184b6f55f43afbe8/data/diagnostics/demian_uncertainty_jacobian_v1_20261013/summary.json"
+    },
+    {
+      "id": "A-UNC-JACOBIAN-METRICS-001",
+      "repository": "https://github.com/Aeshma-Daeva/Demian-Lab",
+      "commit": "a6638b87fb305633503ab665184b6f55f43afbe8",
+      "path": "data/diagnostics/demian_uncertainty_jacobian_v1_20261013/metrics.jsonl",
+      "media_type": "application/x-ndjson",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/a6638b87fb305633503ab665184b6f55f43afbe8/data/diagnostics/demian_uncertainty_jacobian_v1_20261013/metrics.jsonl"
+    },
+    {
+      "id": "A-UNC-JACOBIAN-MANIFEST-001",
+      "repository": "https://github.com/Aeshma-Daeva/Demian-Lab",
+      "commit": "a6638b87fb305633503ab665184b6f55f43afbe8",
+      "path": "data/diagnostics/demian_uncertainty_jacobian_v1_20261013/manifest.json",
+      "media_type": "application/json",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/a6638b87fb305633503ab665184b6f55f43afbe8/data/diagnostics/demian_uncertainty_jacobian_v1_20261013/manifest.json"
+    },
+    {
+      "id": "A-UNC-HORIZON-PROTOCOL-001",
+      "repository": "https://github.com/Aeshma-Daeva/Demian-Lab",
+      "commit": "eaf5d6bb5e6792e0e574d0d5802fd975cc848860",
+      "path": "docs/DEMIAN_UNCERTAINTY_HORIZON_PROTOCOL.json",
+      "media_type": "application/json",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/eaf5d6bb5e6792e0e574d0d5802fd975cc848860/docs/DEMIAN_UNCERTAINTY_HORIZON_PROTOCOL.json"
+    },
+    {
+      "id": "A-UNC-HORIZON-SUMMARY-001",
+      "repository": "https://github.com/Aeshma-Daeva/Demian-Lab",
+      "commit": "3e3ef54b8271cb18dea726510043c1a6e52d57d8",
+      "path": "data/diagnostics/demian_uncertainty_horizon_v1_20261013/summary.json",
+      "media_type": "application/json",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/3e3ef54b8271cb18dea726510043c1a6e52d57d8/data/diagnostics/demian_uncertainty_horizon_v1_20261013/summary.json"
+    },
+    {
+      "id": "A-UNC-HORIZON-METRICS-001",
+      "repository": "https://github.com/Aeshma-Daeva/Demian-Lab",
+      "commit": "3e3ef54b8271cb18dea726510043c1a6e52d57d8",
+      "path": "data/diagnostics/demian_uncertainty_horizon_v1_20261013/metrics.jsonl",
+      "media_type": "application/x-ndjson",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/3e3ef54b8271cb18dea726510043c1a6e52d57d8/data/diagnostics/demian_uncertainty_horizon_v1_20261013/metrics.jsonl"
+    },
+    {
+      "id": "A-UNC-HORIZON-MANIFEST-001",
+      "repository": "https://github.com/Aeshma-Daeva/Demian-Lab",
+      "commit": "3e3ef54b8271cb18dea726510043c1a6e52d57d8",
+      "path": "data/diagnostics/demian_uncertainty_horizon_v1_20261013/manifest.json",
+      "media_type": "application/json",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/3e3ef54b8271cb18dea726510043c1a6e52d57d8/data/diagnostics/demian_uncertainty_horizon_v1_20261013/manifest.json"
+    },
+    {
+      "id": "A-UNC-CURVATURE-PROTOCOL-001",
+      "repository": "https://github.com/Aeshma-Daeva/Demian-Lab",
+      "commit": "2fa9bbc12fe41415c509e9b257992495aa9b8caf",
+      "path": "docs/DEMIAN_UNCERTAINTY_CURVATURE_PROTOCOL.json",
+      "media_type": "application/json",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/2fa9bbc12fe41415c509e9b257992495aa9b8caf/docs/DEMIAN_UNCERTAINTY_CURVATURE_PROTOCOL.json"
+    },
+    {
+      "id": "A-UNC-CURVATURE-SUMMARY-001",
+      "repository": "https://github.com/Aeshma-Daeva/Demian-Lab",
+      "commit": "1140dcfd96e895c04df0de7689dbafdbcad589e8",
+      "path": "data/diagnostics/demian_uncertainty_curvature_v1_20261013/summary.json",
+      "media_type": "application/json",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/1140dcfd96e895c04df0de7689dbafdbcad589e8/data/diagnostics/demian_uncertainty_curvature_v1_20261013/summary.json"
+    },
+    {
+      "id": "A-UNC-CURVATURE-METRICS-001",
+      "repository": "https://github.com/Aeshma-Daeva/Demian-Lab",
+      "commit": "1140dcfd96e895c04df0de7689dbafdbcad589e8",
+      "path": "data/diagnostics/demian_uncertainty_curvature_v1_20261013/metrics.jsonl",
+      "media_type": "application/x-ndjson",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/1140dcfd96e895c04df0de7689dbafdbcad589e8/data/diagnostics/demian_uncertainty_curvature_v1_20261013/metrics.jsonl"
+    },
+    {
+      "id": "A-UNC-CURVATURE-MANIFEST-001",
+      "repository": "https://github.com/Aeshma-Daeva/Demian-Lab",
+      "commit": "1140dcfd96e895c04df0de7689dbafdbcad589e8",
+      "path": "data/diagnostics/demian_uncertainty_curvature_v1_20261013/manifest.json",
+      "media_type": "application/json",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/1140dcfd96e895c04df0de7689dbafdbcad589e8/data/diagnostics/demian_uncertainty_curvature_v1_20261013/manifest.json"
+    },
+    {
+      "id": "A-UNC-RADIUS-PROTOCOL-001",
+      "repository": "https://github.com/Aeshma-Daeva/Demian-Lab",
+      "commit": "8f9f67ea5c9345e68af356d24663f97cf6138162",
+      "path": "docs/DEMIAN_UNCERTAINTY_RADIUS_PROTOCOL.json",
+      "media_type": "application/json",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/8f9f67ea5c9345e68af356d24663f97cf6138162/docs/DEMIAN_UNCERTAINTY_RADIUS_PROTOCOL.json"
+    },
+    {
+      "id": "A-UNC-RADIUS-SUMMARY-001",
+      "repository": "https://github.com/Aeshma-Daeva/Demian-Lab",
+      "commit": "aef4a0dd16eb02bdf18e79145ad9ad62dfd03cb9",
+      "path": "data/diagnostics/demian_uncertainty_radius_v1_20261013/summary.json",
+      "media_type": "application/json",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/aef4a0dd16eb02bdf18e79145ad9ad62dfd03cb9/data/diagnostics/demian_uncertainty_radius_v1_20261013/summary.json"
+    },
+    {
+      "id": "A-UNC-RADIUS-METRICS-001",
+      "repository": "https://github.com/Aeshma-Daeva/Demian-Lab",
+      "commit": "aef4a0dd16eb02bdf18e79145ad9ad62dfd03cb9",
+      "path": "data/diagnostics/demian_uncertainty_radius_v1_20261013/metrics.jsonl",
+      "media_type": "application/x-ndjson",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/aef4a0dd16eb02bdf18e79145ad9ad62dfd03cb9/data/diagnostics/demian_uncertainty_radius_v1_20261013/metrics.jsonl"
+    },
+    {
+      "id": "A-UNC-RADIUS-MANIFEST-001",
+      "repository": "https://github.com/Aeshma-Daeva/Demian-Lab",
+      "commit": "aef4a0dd16eb02bdf18e79145ad9ad62dfd03cb9",
+      "path": "data/diagnostics/demian_uncertainty_radius_v1_20261013/manifest.json",
+      "media_type": "application/json",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/aef4a0dd16eb02bdf18e79145ad9ad62dfd03cb9/data/diagnostics/demian_uncertainty_radius_v1_20261013/manifest.json"
+    },
     {
       "id": "A-UNC-SIM-PROTOCOL-001",
       "commit": "e41fff6911914c8d0f84334ae63c75cdec5ddf3f",

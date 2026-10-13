@@ -8,6 +8,51 @@
   },
   "runs": [
     {
+      "id": "demian_uncertainty_radius_v1_20261013",
+      "program": "demian-v1",
+      "date": "2026-10-13",
+      "family": "reachable_anchor_radius_precision",
+      "status": "active_evidence",
+      "primary_summary": "data/diagnostics/demian_uncertainty_radius_v1_20261013/summary.json",
+      "artifacts": [
+        "data/diagnostics/demian_uncertainty_radius_v1_20261013/summary.json",
+        "data/diagnostics/demian_uncertainty_radius_v1_20261013/manifest.json",
+        "data/diagnostics/demian_uncertainty_radius_v1_20261013/metrics.jsonl",
+        "data/diagnostics/demian_uncertainty_radius_v1_20261013/states.npz",
+        "data/diagnostics/demian_uncertainty_radius_v1_20261013/state_metadata.jsonl",
+        "data/diagnostics/demian_uncertainty_radius_v1_20261013/transforms.npz",
+        "data/diagnostics/demian_uncertainty_radius_v1_20261013/predictions.npz",
+        "docs/DEMIAN_UNCERTAINTY_RADIUS_PROTOCOL.json"
+      ],
+      "claim_ids": [],
+      "interpretation": "Astra-reviewed R-UNC-RADIUS-001: sampled local linearity; smallest responses precision-limited, not a dynamics failure."
+    },
+    {
+      "id": "demian_uncertainty_horizon_v1_20261013",
+      "program": "demian-v1", "date": "2026-10-13",
+      "family": "cached_fixed_centroid_horizon_scope", "status": "active_evidence",
+      "primary_summary": "data/diagnostics/demian_uncertainty_horizon_v1_20261013/summary.json",
+      "artifacts": ["data/diagnostics/demian_uncertainty_horizon_v1_20261013/summary.json", "data/diagnostics/demian_uncertainty_horizon_v1_20261013/manifest.json", "data/diagnostics/demian_uncertainty_horizon_v1_20261013/metrics.jsonl", "data/diagnostics/demian_uncertainty_horizon_v1_20261013/states.npz", "data/diagnostics/demian_uncertainty_horizon_v1_20261013/transforms.npz", "data/diagnostics/demian_uncertainty_horizon_v1_20261013/predictions.npz", "docs/DEMIAN_UNCERTAINTY_HORIZON_PROTOCOL.json"],
+      "claim_ids": [], "interpretation": "Astra-reviewed R-UNC-HORIZON-001: reused-case characterization; fixed local-linear model meets all-seed threshold at2 steps, first sampled failure at4."
+    },
+    {
+      "id": "demian_uncertainty_curvature_v1_20261013",
+      "program": "demian-v1", "date": "2026-10-13",
+      "family": "cached_directional_curvature_model_check", "status": "active_evidence",
+      "primary_summary": "data/diagnostics/demian_uncertainty_curvature_v1_20261013/summary.json",
+      "artifacts": ["data/diagnostics/demian_uncertainty_curvature_v1_20261013/summary.json", "data/diagnostics/demian_uncertainty_curvature_v1_20261013/manifest.json", "data/diagnostics/demian_uncertainty_curvature_v1_20261013/metrics.jsonl", "data/diagnostics/demian_uncertainty_curvature_v1_20261013/states.npz", "data/diagnostics/demian_uncertainty_curvature_v1_20261013/transforms.npz", "data/diagnostics/demian_uncertainty_curvature_v1_20261013/predictions.npz", "docs/DEMIAN_UNCERTAINTY_CURVATURE_PROTOCOL.json"],
+      "claim_ids": [], "interpretation": "Astra-reviewed R-UNC-CURVATURE-001: reused-case model-check; second order partly improves forecast errors but fails all-seed criterion."
+    },
+    {
+      "id": "demian_uncertainty_jacobian_v1_20261013",
+      "program": "demian-v1", "date": "2026-10-13",
+      "family": "two_axis_fixed_jacobian_geometry", "status": "active_evidence",
+      "primary_summary": "data/diagnostics/demian_uncertainty_jacobian_v1_20261013/summary.json",
+      "artifacts": ["data/diagnostics/demian_uncertainty_jacobian_v1_20261013/summary.json", "data/diagnostics/demian_uncertainty_jacobian_v1_20261013/manifest.json", "data/diagnostics/demian_uncertainty_jacobian_v1_20261013/metrics.jsonl", "data/diagnostics/demian_uncertainty_jacobian_v1_20261013/states.npz", "data/diagnostics/demian_uncertainty_jacobian_v1_20261013/transforms.npz", "data/diagnostics/demian_uncertainty_jacobian_v1_20261013/predictions.npz", "docs/DEMIAN_UNCERTAINTY_JACOBIAN_PROTOCOL.json"],
+      "claim_ids": [],
+      "interpretation": "Astra-reviewed R-UNC-JACOBIAN-001: fixed-centroid JVP accounts for sampled two-delay geometry across both axes."
+    },
+    {
       "id": "demian_uncertainty_similarity_v1_20261013",
       "program": "demian-v1", "date": "2026-10-13",
       "family": "heldout_label_free_similarity_geometry", "status": "active_evidence",

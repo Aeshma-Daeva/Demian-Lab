@@ -1013,3 +1013,41 @@ Next:
 - Review/registry pending. Exact states/transforms and hashes preserved.
 - Review complete: Astra confirms evaluability; registered
   `R-UNC-SIMILARITY-001` as geometry diagnostics, with no hypothesis promotion.
+
+## 2026-10-13 - Two-axis Jacobian baseline
+
+- Artifact: `data/diagnostics/demian_uncertainty_jacobian_v1_20261013/`.
+- Observation: fixed full-state Jacobian meets the two-step <=0.1 criterion in
+  all seed/axis cells. Similarity fails strict unseen-order placement.
+- Interpretation: generic local recurrent flow suffices for this finite window.
+  Cloud variance coverage does not imply cross-order centroid coverage.
+- Astra review complete; registration pending; no hypothesis promotion.
+- Record: `docs/DEMIAN_UNCERTAINTY_JACOBIAN_RESULTS.md`.
+- Continue: cached-case horizons 2/4/8/16/32 with one fixed source centroid.
+
+## 2026-10-13 - Local horizon and curvature scope
+
+- Horizon artifact: `data/diagnostics/demian_uncertainty_horizon_v1_20261013/`.
+- Curvature artifact: `data/diagnostics/demian_uncertainty_curvature_v1_20261013/`.
+- Observation: one fixed-centroid linear model meets all-seed threshold only
+  at 2 steps; quadratic correction helps most cases but fails all-seed criterion.
+- Interpretation: partial ordinary-curvature account, with seed/horizon limits.
+- Astra reviews complete; registry entries pending. No evidence-status promotion.
+- Record: `docs/DEMIAN_UNCERTAINTY_LOCAL_MODELS_RESULTS.md`.
+- Continue: fresh reachable-anchor radius check; no higher Taylor-order search.
+
+## 2026-10-13 - Reachable-anchor radius and precision
+
+- Artifact: `data/diagnostics/demian_uncertainty_radius_v1_20261013/`.
+- Observation:768/768 valid responses satisfy local-linear threshold;
+ 192 smallest responses are precision-limited, despite representable inputs.
+- Interpretation: local smoothness in sampled directions, not stable memory.
+- Astra review: evaluable. Registered Jacobian, horizon, curvature and radius
+  diagnostics; `H-UNC-001` unchanged.
+- Verification: full suite488 passed,4 failed in historical artifact/manifest
+  tests: `test_current_artifact_loaders`, `test_manifest_validation_runs`,
+  `test_v10_summary_contract_digest`, `test_rebuild_v10_summary_core_fields`.
+- Ruling: exhaustive32 pairs per cue flip, both orientations, rather than
+  selected backgrounds; additional compute buys complete finite-history coverage.
+- Continue: fresh natural-history chord gate; all64 histories, two cue positions,
+  norm-matched controls and exact native endpoint replay.

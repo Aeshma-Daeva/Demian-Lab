@@ -87,6 +87,9 @@ Purpose:
 - Geometry: [diagnostics/demian_uncertainty_geometry_v1_20261013/summary.json](diagnostics/demian_uncertainty_geometry_v1_20261013/summary.json)
 - Fresh channelwise gate: [diagnostics/demian_uncertainty_channel_invariance_v1_20261013/summary.json](diagnostics/demian_uncertainty_channel_invariance_v1_20261013/summary.json)
 - Heldout similarity: [diagnostics/demian_uncertainty_similarity_v1_20261013/summary.json](diagnostics/demian_uncertainty_similarity_v1_20261013/summary.json); [record](../docs/DEMIAN_UNCERTAINTY_SIMILARITY_RESULTS.md).
+- Two-axis Jacobian: [diagnostics/demian_uncertainty_jacobian_v1_20261013/summary.json](diagnostics/demian_uncertainty_jacobian_v1_20261013/summary.json); [record](../docs/DEMIAN_UNCERTAINTY_JACOBIAN_RESULTS.md).
+- Horizon/curvature: [record](../docs/DEMIAN_UNCERTAINTY_LOCAL_MODELS_RESULTS.md), [horizon summary](diagnostics/demian_uncertainty_horizon_v1_20261013/summary.json), [curvature summary](diagnostics/demian_uncertainty_curvature_v1_20261013/summary.json).
+- Reachable-anchor radius: [record](../docs/DEMIAN_UNCERTAINTY_RADIUS_RESULTS.md), [summary](diagnostics/demian_uncertainty_radius_v1_20261013/summary.json).
 - Formal registry entries pending; no additional hypothesis promotion.
 
 ## Closed-Loop Baseline
