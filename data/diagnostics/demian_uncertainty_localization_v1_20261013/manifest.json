@@ -1,0 +1,99 @@
+{
+  "file_sha256": {
+    "metrics.jsonl": "cf6fe75bb5eb416ef672152fcfa259c8fbf13880daca226e370311e337292a12",
+    "predictions.npz": "49998681fdfc6ec492dc0fd2c4665b6777be620b3301dc41fc38c6390aa48b1a",
+    "state_metadata.jsonl": "ecd5450dd7f5af6a467d2ee5cff9139ea126c1a1b014e470347a3892fd042411",
+    "states.npz": "f7e721ec01a44407a1f9ae0670e5ed74bb11c624d04ae2713934827e7cc62c21",
+    "summary.json": "e82c75a55cfefedbcfa88f8c118714e2e1bcd5e8a77af09c879d1b683208d466",
+    "transforms.npz": "6bafd2d04a8169626a607ddb63f2fce8e883f4608885d2ef255b70470cda0914"
+  },
+  "protocol": {
+    "analytic_public_controls": "current/latest single-cue log odds from known public reliability semantics, no evaluation-label fitting; avoids weak frozen latest baseline trained on a neutral last cue. No accumulated-history oracle predictor used as model evidence",
+    "artifact_directory": "data/diagnostics/demian_uncertainty_localization_v1_20261013",
+    "calibration": "prediction=slope*oracle+intercept descriptive regression; R2, correlation and MAE; no evaluation-label calibration applied to predictions",
+    "channel_probes": "six channels projected separately, descriptive decoding availability, not causal ownership or necessity",
+    "checkpoints": [
+      {
+        "delay_steps": 0,
+        "evidence_count": 2,
+        "id": "cue2"
+      },
+      {
+        "delay_steps": 0,
+        "evidence_count": 4,
+        "id": "cue4"
+      },
+      {
+        "delay_steps": 0,
+        "evidence_count": 6,
+        "id": "cue6"
+      },
+      {
+        "delay_steps": 2,
+        "evidence_count": 6,
+        "id": "delay2"
+      },
+      {
+        "delay_steps": 8,
+        "evidence_count": 6,
+        "id": "delay8"
+      },
+      {
+        "delay_steps": 32,
+        "evidence_count": 6,
+        "id": "delay32"
+      },
+      {
+        "delay_steps": 64,
+        "evidence_count": 6,
+        "id": "delay64"
+      }
+    ],
+    "claim_boundary": "locate frozen public-evidence calibration across order/time; not information erasure, causal memory ownership, calibrated uncertainty, learning or adaptation",
+    "controls": "current and latest public encodings, schedule-only, and full-state conditional train-label shuffle within latest-symbol strata; reliability fixed within each order/time. Shuffle seed=model_seed*10000+fit_tick*100+projection_seed; retain changed-label count",
+    "decision_rule": "primary time-refit projected full-state R2 must exceed analytic latest and matched projection-seed shuffled control in every declared projection/parameter seed for a seed-robust decoding statement; otherwise mixed or unestablished. Frozen cue6 temporal R2<0 denotes worse-than-mean calibration, not erasure. No early categorical onset or automatic status promotion",
+    "evaluation_order": [
+      0.75,
+      0.95,
+      0.75,
+      0.5,
+      0.5,
+      0.95
+    ],
+    "falsifier": "frozen primary projected-state decoding fails to exceed matched public/shuffle controls across fresh seeds; inability to decode does not prove erasure",
+    "fit_modes": "time_refit: train on one order at each checkpoint, frozen evaluate other order. cue_end_frozen: freeze cue6 fit/projection/scale, evaluate both orders through delays",
+    "frozen_reference_checkpoint": "cue6",
+    "hidden_size": 256,
+    "label": "public prefix Bayesian reference log odds; no hidden target or resolve frame enters system",
+    "model_seeds": [
+      1494,
+      1495,
+      1594,
+      1595
+    ],
+    "primary": "cue6 and delays only; cue2/cue4 descriptive small-support localization, not categorical onset evidence",
+    "projection_dimension": 16,
+    "projection_seeds": [
+      17,
+      29,
+      43
+    ],
+    "protocol_id": "demian-uncertainty-localization-v1",
+    "public_control_identity": "at evidence checkpoints current and latest semantic controls identical; learned latest remains deliberately train-support-limited",
+    "ridge_alpha": 1.0,
+    "schedule_control_boundary": "one-order schedule vector constant across histories; trivial negative sanity only, not substantive exclusion of schedule exploitation",
+    "scope": "four independent parameter seeds; two fixed orders, prefix histories, checkpoints, projections and channels dependent within seed; no threshold search or architecture change",
+    "state_diagnostics": "order and cue6-reference centroid shifts, full/channel norms; raw-scale summaries non-causal",
+    "support": "exhaustive unique binary prefixes; deduplicate before fitting/evaluation: cue2=4, cue4=16, cue6/delay=64. Repeated future suffixes checked exactly, never reweighted as training samples",
+    "train_order": [
+      0.95,
+      0.75,
+      0.5,
+      0.75,
+      0.95,
+      0.5
+    ]
+  },
+  "protocol_sha256": "6030d3f472c33ad0dd9ba02522da9be77246258b1beb8d657b4a4731c922d872",
+  "source_commit": "073d7dbe51d9a1c426ada399c0f83f7b26bdc3c2"
+}
