@@ -1,0 +1,90 @@
+{
+  "file_sha256": {
+    "metrics.jsonl": "252338749af601c560f3ba1df2fbcccd0285d8119d81da46cab72e76d82e8298",
+    "predictions.npz": "2f1ec14a6df6622974dbab6b70a400586d5883dd20f2c9966afdc8223a57b8f5",
+    "state_metadata.jsonl": "f928c07e548b8a7751184665462ca788543cb85a2aaeb79ace13d2d99e29af63",
+    "states.npz": "b271994d533ae59dd6965931facfe3505f6b61b687f5a0fddc7d7d6e4e39be6d",
+    "summary.json": "127644eebe6eeb52c9f6e09d5d2b7ec81be28e8b3894a13eadeee57e6a65dbc3",
+    "transforms.npz": "a0d768cfb1586f23d72765cc629738e67e81858646c0c4cc1ada25535ea5ff26"
+  },
+  "protocol": {
+    "analytic_public_controls": "current/latest single-cue log odds from known public reliability semantics, no evaluation-label fitting; avoids weak frozen latest baseline trained on a neutral last cue. No accumulated-history oracle predictor used as model evidence",
+    "artifact_directory": "data/diagnostics/demian_uncertainty_history_matrix_v1_20261013",
+    "calibration": "prediction=slope*oracle+intercept descriptive regression; R2, correlation and MAE; no evaluation-label calibration applied to predictions",
+    "channel_probes": "six channels projected separately, descriptive decoding availability, not causal ownership or necessity",
+    "checkpoints": [
+      {
+        "delay_steps": 0,
+        "evidence_count": 6,
+        "id": "cue6"
+      },
+      {
+        "delay_steps": 2,
+        "evidence_count": 6,
+        "id": "delay2"
+      },
+      {
+        "delay_steps": 8,
+        "evidence_count": 6,
+        "id": "delay8"
+      },
+      {
+        "delay_steps": 32,
+        "evidence_count": 6,
+        "id": "delay32"
+      },
+      {
+        "delay_steps": 64,
+        "evidence_count": 6,
+        "id": "delay64"
+      }
+    ],
+    "claim_boundary": "locate frozen public-evidence calibration across order/time; not information erasure, causal memory ownership, calibrated uncertainty, learning or adaptation",
+    "controls": "current and latest public encodings, schedule-only, and full-state conditional train-label shuffle within latest-symbol strata; reliability fixed within each order/time. Shuffle seed=model_seed*10000+fit_tick*100+projection_seed; retain changed-label count",
+    "decision_rule": "For each primary time/order family, projected full-state R2 must exceed analytic latest and matched conditional-shuffle R2 in every declared projection and parameter seed for a seed/projection-robust comparative statement; otherwise mixed or unestablished. Within-order failure is probe availability failure, not erasure. No automatic hypothesis promotion.",
+    "evaluation_order": [
+      0.75,
+      0.95,
+      0.75,
+      0.5,
+      0.5,
+      0.95
+    ],
+    "falsifier": "Within-order heldout-history projected-state decoding fails fair public/shuffle controls; cross-order and temporal calibration assessed separately, not conflated with availability.",
+    "fit_modes": "time_refit: fit base-order train histories at each time, evaluate unseen histories in both orders. cue_end_frozen: fit only base-order train histories at cue6, evaluate the same heldout history IDs in both orders at each delay.",
+    "frozen_reference_checkpoint": "cue6",
+    "hidden_size": 256,
+    "history_split_seed": 71,
+    "label": "public prefix Bayesian reference log odds; no hidden target or resolve frame enters system",
+    "model_seeds": [
+      1694,
+      1695,
+      1794,
+      1795
+    ],
+    "primary": "Within-order unseen-history availability versus cross-order unseen-history transfer at each time; cue6-frozen heldout histories separately test temporal calibration.",
+    "projection_dimension": 16,
+    "projection_seeds": [
+      17,
+      29,
+      43
+    ],
+    "protocol_id": "demian-uncertainty-history-matrix-v1",
+    "public_control_identity": "at evidence checkpoints current and latest semantic controls identical; learned latest remains deliberately train-support-limited",
+    "ridge_alpha": 1,
+    "schedule_control_boundary": "one-order schedule vector constant across histories; trivial negative sanity only, not substantive exclusion of schedule exploitation",
+    "scope": "Four fresh independent parameter seeds; one frozen32/32 allocation, two fixed orders, histories, checkpoints, projections and channels dependent within seed. No interventions, new geometry sweep or architecture change.",
+    "state_diagnostics": "order and cue6-reference centroid shifts, full/channel norms; raw-scale summaries non-causal",
+    "support": "All64 full histories collected per order/seed/time; train32/eval32 split within train-order final-symbol and public log-odds-sign strata (zero tolerance1e-12). Same fixed heldout history IDs across orders/times/seeds; no fit/eval overlap.",
+    "train_order": [
+      0.95,
+      0.75,
+      0.5,
+      0.75,
+      0.95,
+      0.5
+    ]
+  },
+  "protocol_sha256": "f07f7216e65b52d48351440d408953b6c2af151e4c389ab775ae10781d2893d8",
+  "source_commit": "63746d2ed39147605c1a4696a7152d610338b010"
+}
