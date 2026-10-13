@@ -1,0 +1,76 @@
+{
+  "protocol": {
+    "analysis_scope": "per-model-seed and delay; complete public episodes remain within one split",
+    "checkpoint": "post-transition final delay frame; before resolution",
+    "claim_boundary": "held-out frozen-probe measurement only; no causal, routing, utility, learning, or adaptation claim",
+    "controls": [
+      "current_observation",
+      "latest_observation",
+      "constant",
+      "full_state_shuffled_label"
+    ],
+    "delay_steps": [
+      8,
+      32
+    ],
+    "episode_count": 96,
+    "episode_seed_start": 1001,
+    "falsifier": "full-state held-out log-odds score does not exceed current-observation and shuffled-label controls consistently across model seeds",
+    "heldout_fraction": 0.3333333333333333,
+    "hidden_size": 256,
+    "model_seeds": [
+      294,
+      295,
+      296,
+      297,
+      394,
+      395,
+      396,
+      397
+    ],
+    "primary_feature": "full_state",
+    "primary_target": "public-evidence log_odds",
+    "protocol_id": "demian-uncertainty-representation-v1",
+    "reliability_schedules": [
+      [
+        0.95,
+        0.75,
+        0.5,
+        0.75,
+        0.95,
+        0.5
+      ],
+      [
+        0.5,
+        0.95,
+        0.75,
+        0.5,
+        0.75,
+        0.95
+      ],
+      [
+        0.75,
+        0.95,
+        0.5,
+        0.95,
+        0.75,
+        0.5
+      ],
+      [
+        0.5,
+        0.75,
+        0.95,
+        0.75,
+        0.5,
+        0.95
+      ]
+    ],
+    "ridge_alpha": 0.001,
+    "sampling": "fresh generative public evidence; resolved public histories are unique; evaluator target is never passed to Demian",
+    "secondary_target": "public-evidence entropy",
+    "source_harness": "demian-uncertainty-discovery-v1"
+  },
+  "protocol_sha256": "ff9a17662030410e6d720da91c132ebe96dfbc5cc1a88ac2f71dc3b8fc19a89d",
+  "row_count": 3072,
+  "score_count": 320
+}

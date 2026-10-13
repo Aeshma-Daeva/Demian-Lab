@@ -1,0 +1,53 @@
+{
+  "claim_boundary": "held-out frozen-probe measurement only; no causal, routing, utility, learning, or adaptation claim",
+  "experiment": "demian-uncertainty-representation",
+  "integrity": {
+    "all_finite": true,
+    "probe_scope": "per-model-seed; held-out complete public episodes"
+  },
+  "row_count": 3072,
+  "schema_version": 1,
+  "score_count": 320,
+  "summary": {
+    "carrier": {
+      "mean_r2": -0.08722210049863637,
+      "seed_delay_cell_count": 32
+    },
+    "control": {
+      "mean_r2": -0.5174861519848587,
+      "seed_delay_cell_count": 32
+    },
+    "current_observation": {
+      "mean_r2": -0.7227295863215786,
+      "seed_delay_cell_count": 32
+    },
+    "fast": {
+      "mean_r2": -0.23702675241482768,
+      "seed_delay_cell_count": 32
+    },
+    "full_state": {
+      "mean_r2": 0.15457202451994237,
+      "seed_delay_cell_count": 32
+    },
+    "full_state_shuffled_label": {
+      "mean_r2": -14.742643952747922,
+      "seed_delay_cell_count": 32
+    },
+    "gate": {
+      "mean_r2": -0.06516818820995716,
+      "seed_delay_cell_count": 32
+    },
+    "latest_observation": {
+      "mean_r2": -1.148000033404155,
+      "seed_delay_cell_count": 32
+    },
+    "message": {
+      "mean_r2": -0.052810732764488375,
+      "seed_delay_cell_count": 32
+    },
+    "slow": {
+      "mean_r2": -0.07749921111100821,
+      "seed_delay_cell_count": 32
+    }
+  }
+}
