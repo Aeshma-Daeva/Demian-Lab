@@ -1,0 +1,103 @@
+{
+  "claim_boundary": "fresh-corpus frozen-probe transfer after a prescribed channelwise transform; no native calibration, causal channel, utility, learning, or adaptation claim",
+  "experiment": "demian-uncertainty-channel-invariance-v1",
+  "integrity": {
+    "all_finite": true,
+    "probe_scope": "heldout reliability order; train-only frozen projection and coefficients; neutral suffixes dependent within base history"
+  },
+  "row_count": 4096,
+  "schema_version": 1,
+  "score_count": 2784,
+  "summary": {
+    "base/channel_l2_conditional_shuffle": {
+      "mean_r2": -0.6922428953349022
+    },
+    "base/current_observation": {
+      "mean_r2": 0.0
+    },
+    "base/full_state_conditional_shuffle": {
+      "mean_r2": -1.3548940473836504
+    },
+    "base/latest_informative_observation": {
+      "mean_r2": 0.05424977359587957
+    },
+    "base/latest_observation": {
+      "mean_r2": 0.05424977359587957
+    },
+    "base/projected_full_state": {
+      "mean_r2": -0.784371427361991
+    },
+    "base/projected_full_state_channel_l2_normalized": {
+      "mean_r2": -0.6792213542643797
+    },
+    "base/projected_full_state_condition_normalized": {
+      "mean_r2": 0.48850090439500676
+    },
+    "base/projected_full_state_l2_normalized": {
+      "mean_r2": -0.7738963887472864
+    },
+    "base/schedule_only": {
+      "mean_r2": 0.0
+    },
+    "delay_plus_two/channel_l2_conditional_shuffle": {
+      "mean_r2": -207.19453686761557
+    },
+    "delay_plus_two/current_observation": {
+      "mean_r2": 0.0
+    },
+    "delay_plus_two/full_state_conditional_shuffle": {
+      "mean_r2": -189.62296435274234
+    },
+    "delay_plus_two/latest_informative_observation": {
+      "mean_r2": 0.05424977359587957
+    },
+    "delay_plus_two/latest_observation": {
+      "mean_r2": 0.05424977359587957
+    },
+    "delay_plus_two/projected_full_state": {
+      "mean_r2": -175.9217187977555
+    },
+    "delay_plus_two/projected_full_state_channel_l2_normalized": {
+      "mean_r2": -176.45562060979944
+    },
+    "delay_plus_two/projected_full_state_condition_normalized": {
+      "mean_r2": 0.36747575399123766
+    },
+    "delay_plus_two/projected_full_state_l2_normalized": {
+      "mean_r2": -100.85217741052718
+    },
+    "delay_plus_two/schedule_only": {
+      "mean_r2": 0.0
+    },
+    "neutral_cue_plus_two/channel_l2_conditional_shuffle": {
+      "mean_r2": -195.46017587386763
+    },
+    "neutral_cue_plus_two/current_observation": {
+      "mean_r2": 0.0
+    },
+    "neutral_cue_plus_two/full_state_conditional_shuffle": {
+      "mean_r2": -237.25168510330928
+    },
+    "neutral_cue_plus_two/latest_informative_observation": {
+      "mean_r2": 0.05424977359587957
+    },
+    "neutral_cue_plus_two/latest_observation": {
+      "mean_r2": -0.10887252027119887
+    },
+    "neutral_cue_plus_two/projected_full_state": {
+      "mean_r2": -203.03866687337916
+    },
+    "neutral_cue_plus_two/projected_full_state_channel_l2_normalized": {
+      "mean_r2": -181.56070738025858
+    },
+    "neutral_cue_plus_two/projected_full_state_condition_normalized": {
+      "mean_r2": 0.30275751342491986
+    },
+    "neutral_cue_plus_two/projected_full_state_l2_normalized": {
+      "mean_r2": -119.63048126185852
+    },
+    "neutral_cue_plus_two/schedule_only": {
+      "mean_r2": 0.0
+    }
+  }
+}

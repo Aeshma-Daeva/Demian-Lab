@@ -1,0 +1,84 @@
+{
+  "protocol": {
+    "acceptance_criterion": "strictly positive R2 margin over the maximum matched control and training-mean constant in every seed, fixed projection, A/B and all four C suffixes; report seedwise minimum margin without automatic scientific-status promotion",
+    "allocation_seed": 20261014,
+    "artifact_directory": "data/diagnostics/demian_uncertainty_channel_invariance_v1_20261013",
+    "base_delay_steps": 32,
+    "claim_boundary": "fresh-corpus frozen-probe transfer after a prescribed channelwise transform; no native calibration, causal channel, utility, learning, or adaptation claim",
+    "conditions": {
+      "base": "A: six evidence plus 32 delay frames",
+      "delay_plus_two": "B: identical six evidence plus 34 delay frames",
+      "neutral_cue_plus_two": "C: identical six evidence plus every two-symbol reliability-0.5 suffix plus 32 delay frames"
+    },
+    "controls": [
+      "current_observation",
+      "latest_informative_observation",
+      "latest_observation",
+      "schedule_only",
+      "channel_l2_conditional_shuffle",
+      "constant"
+    ],
+    "falsifier": "any failed sensitivity ends the radial-normalization branch; causal channel intervention remains gated",
+    "fit_scope": "train-family A only; fixed projections, train-only standardization and coefficients reused for heldout A/B/all C suffixes",
+    "heldout_reliability_schedules": [
+      [
+        0.95,
+        0.5,
+        0.75,
+        0.95,
+        0.5,
+        0.75
+      ]
+    ],
+    "hidden_size": 256,
+    "hypothesis_id": "H-UNC-001",
+    "independent_unit": "model seed; histories, projections and suffixes are dependent sensitivity conditions",
+    "model_seeds": [
+      494,
+      495,
+      496,
+      497,
+      594,
+      595,
+      596,
+      597
+    ],
+    "primary_feature": "projected_full_state_channel_l2_normalized",
+    "primary_target": "six-event public log odds, copied unchanged across paired variants",
+    "primary_transform": "normalize each actual checkpoint-state channel vector by its own L2 norm and concatenate in V1_CHANNELS order; zero channels remain zero; no shared-width assumption, labels, or test-distribution statistics",
+    "projection_dimensions": [
+      8,
+      16,
+      32
+    ],
+    "projection_seeds": [
+      17,
+      29,
+      43
+    ],
+    "protocol_id": "demian-uncertainty-channel-invariance-v1",
+    "ridge_alpha": 1.0,
+    "shuffle_conditioning": "training labels permuted within sorted reliability multiset and final symbol/reliability groups; fit on identically channel-normalized features",
+    "train_reliability_schedules": [
+      [
+        0.95,
+        0.75,
+        0.5,
+        0.75,
+        0.95,
+        0.5
+      ],
+      [
+        0.5,
+        0.95,
+        0.75,
+        0.5,
+        0.75,
+        0.95
+      ]
+    ]
+  },
+  "protocol_sha256": "e6ae7c83f443939d60582312af6fbd3a49a1f76d912091d7a109779b0f526b7b",
+  "row_count": 4096,
+  "score_count": 2784
+}
