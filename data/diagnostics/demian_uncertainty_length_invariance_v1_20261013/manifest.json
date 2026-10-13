@@ -1,0 +1,80 @@
+{
+  "protocol": {
+    "acceptance_criterion": "for every seed, delay-equivalent condition, neutral suffix, and fixed projection sensitivity, frozen projected state must exceed every matched control; B failure indicates elapsed-time calibration failure, B pass/C failure indicates neutral-input invariance failure",
+    "allocation_seed": 20261013,
+    "base_delay_steps": 32,
+    "claim_boundary": "paired frozen-probe calibration measurement only; no causal, routing, utility, learning, adaptation, calibrated-belief, or general capability claim without manual review",
+    "condition_normalized_sensitivity": "separate label-free coordinate centering/scaling within train-base and each heldout condition; reported only as a predeclared sensitivity, never as frozen-calibration evidence",
+    "conditions": {
+      "base": "six public evidence events plus D delay frames",
+      "delay_plus_two": "same six evidence events plus D+2 delay frames",
+      "neutral_cue_plus_two": "same six evidence events plus every two-symbol suffix at reliability 0.5, 0.5 plus D delay frames"
+    },
+    "controls": [
+      "current_delay_observation",
+      "latest_informative_sixth_observation",
+      "literal_latest_observation",
+      "padded_reliability_schedule_plus_length",
+      "conditional_label_shuffle",
+      "constant"
+    ],
+    "falsifier": "failure of the criterion in B or any C suffix; no causal channel intervention follows a failed gate",
+    "fit_scope": "fit on all train-family base rows only; reuse fixed coefficients, train standardization, and label-independent projection for heldout-order A/B/C evaluations",
+    "heldout_reliability_schedules": [
+      [
+        0.75,
+        0.95,
+        0.5,
+        0.95,
+        0.75,
+        0.5
+      ]
+    ],
+    "hidden_size": 256,
+    "independent_unit": "model seed; suffixes and projection settings are dependent sensitivity conditions",
+    "model_seeds": [
+      294,
+      295,
+      296,
+      297,
+      394,
+      395,
+      396,
+      397
+    ],
+    "primary_target": "public-evidence log_odds computed from the original six evidence events; byte-identical across paired variants",
+    "projection_dimensions": [
+      8,
+      16,
+      32
+    ],
+    "projection_seeds": [
+      17,
+      29,
+      43
+    ],
+    "protocol_id": "demian-uncertainty-length-invariance-v1",
+    "ridge_alpha": 1.0,
+    "train_reliability_schedules": [
+      [
+        0.95,
+        0.75,
+        0.5,
+        0.75,
+        0.95,
+        0.5
+      ],
+      [
+        0.5,
+        0.95,
+        0.75,
+        0.5,
+        0.75,
+        0.95
+      ]
+    ]
+  },
+  "protocol_sha256": "feacd156937cf2538371f1ff6358baa0df68ce1b4c5a6ba8dda19f558d5eca89",
+  "row_count": 4096,
+  "score_count": 1488
+}

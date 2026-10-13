@@ -1,0 +1,76 @@
+{
+  "claim_boundary": "paired frozen-probe calibration measurement only; no causal, routing, utility, learning, or adaptation claim without review",
+  "experiment": "demian-uncertainty-length-invariance",
+  "integrity": {
+    "all_finite": true,
+    "probe_scope": "heldout reliability order; train-only frozen projection and coefficients; neutral suffixes dependent within base history"
+  },
+  "row_count": 4096,
+  "schema_version": 1,
+  "score_count": 1488,
+  "summary": {
+    "base/current_observation": {
+      "mean_r2": 0.0
+    },
+    "base/full_state_conditional_shuffle": {
+      "mean_r2": -0.3366752581931399
+    },
+    "base/latest_informative_observation": {
+      "mean_r2": -0.10887252027119865
+    },
+    "base/latest_observation": {
+      "mean_r2": -0.10887252027119865
+    },
+    "base/projected_full_state": {
+      "mean_r2": 0.32770799888731994
+    },
+    "base/projected_full_state_condition_normalized": {
+      "mean_r2": 0.44758165251942994
+    },
+    "base/schedule_only": {
+      "mean_r2": 0.0
+    },
+    "delay_plus_two/current_observation": {
+      "mean_r2": 0.0
+    },
+    "delay_plus_two/full_state_conditional_shuffle": {
+      "mean_r2": -109.49378052028133
+    },
+    "delay_plus_two/latest_informative_observation": {
+      "mean_r2": -0.10887252027119865
+    },
+    "delay_plus_two/latest_observation": {
+      "mean_r2": -0.10887252027119865
+    },
+    "delay_plus_two/projected_full_state": {
+      "mean_r2": -112.4176570261873
+    },
+    "delay_plus_two/projected_full_state_condition_normalized": {
+      "mean_r2": 0.2627137599916366
+    },
+    "delay_plus_two/schedule_only": {
+      "mean_r2": 0.0
+    },
+    "neutral_cue_plus_two/current_observation": {
+      "mean_r2": 0.0
+    },
+    "neutral_cue_plus_two/full_state_conditional_shuffle": {
+      "mean_r2": -131.76646593278474
+    },
+    "neutral_cue_plus_two/latest_informative_observation": {
+      "mean_r2": -0.10887252027119865
+    },
+    "neutral_cue_plus_two/latest_observation": {
+      "mean_r2": -0.10887252027119876
+    },
+    "neutral_cue_plus_two/projected_full_state": {
+      "mean_r2": -162.87708036885513
+    },
+    "neutral_cue_plus_two/projected_full_state_condition_normalized": {
+      "mean_r2": 0.20417217523986755
+    },
+    "neutral_cue_plus_two/schedule_only": {
+      "mean_r2": 0.0
+    }
+  }
+}
