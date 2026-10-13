@@ -22,10 +22,11 @@ Last updated: 2026-10-12
   does not separate seed identity from state dependence. E3–E5 remain
   conditional downstream stages. See
   `docs/DEMIAN_ROUTE_DYNAMICS_PROGRAM.md`.
-- Uncertainty branch: the first held-out probe is unevaluable because schedule
-  index was paired with target parity. Next: a schedule-target-balanced
-  corrective corpus with schedule-only controls and stratified episode splits;
-  no retained-evidence claim is active.
+- Uncertainty branch: the balanced six-event corpus supports a narrow delayed
+  public-evidence decoding claim. Low-capacity transfer to one unseen six-event
+  order is partial; frozen six-to-eight transfer fails under a length-dependent
+  state scale shift. Next: neutral-cue length-invariance/calibration gate; no
+  causal-channel claim is active.
 
 Primary records:
 

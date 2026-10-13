@@ -72,6 +72,13 @@ Purpose:
 - Status: superseded as unevaluable because schedule index was paired with
   target parity; retained-evidence conclusion withdrawn pending correction.
 
+## Low-Capacity Uncertainty Transfer
+
+- Protocol: [../docs/DEMIAN_UNCERTAINTY_TRANSFER_PROTOCOL.json](../docs/DEMIAN_UNCERTAINTY_TRANSFER_PROTOCOL.json)
+- Summary: [diagnostics/demian_uncertainty_transfer_v1_20261013/summary.json](diagnostics/demian_uncertainty_transfer_v1_20261013/summary.json)
+- Status: evaluable. Six-event order transfer is partial; frozen six-to-eight
+  calibrated transfer fails under a large length-conditioned state-scale shift.
+
 ## Closed-Loop Baseline
 
 - Protocol: [CLOSED_LOOP_PROTOCOL.json](CLOSED_LOOP_PROTOCOL.json)

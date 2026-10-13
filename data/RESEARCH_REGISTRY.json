@@ -252,12 +252,12 @@
       "evaluation_conditions": ["target_private_interface", "frozen_probe", "heldout_public_sequences", "time_and_current_observation_controls"],
       "evidence_status": "preliminary_support",
       "lifecycle": "active",
-      "status_basis": {"method": "manual_review", "rule": "Preliminary support requires label-balanced held-out decoding beyond current, latest-observation, schedule-only, and shuffled-label controls; it does not establish calibrated uncertainty or causal use.", "considered_result_ids": ["R-UNC-HARNESS-001", "R-UNC-REP-001", "R-UNC-CORR-001"], "supporting_result_ids": ["R-UNC-CORR-001"], "conflicting_result_ids": [], "reviewer": "Astra scientific review", "reviewed_on": "2026-10-13"},
-      "status_history": [{"evidence_status": "untested", "lifecycle": "active", "changed_on": "2026-10-12", "reviewer": "Codex implementation review", "basis": "The discovery harness records traces but no frozen transfer probe or intervention."},{"evidence_status": "preliminary_support", "lifecycle": "active", "changed_on": "2026-10-12", "reviewer": "Astra scientific review", "basis": "Initially reviewed as held-out decoding support."},{"evidence_status": "untested", "lifecycle": "active", "changed_on": "2026-10-13", "reviewer": "Astra scientific review", "basis": "Correction: schedule index and target parity were deterministically paired, leaving a schedule-to-label confound. The result is unevaluable for retained evidence."},{"evidence_status": "preliminary_support", "lifecycle": "active", "changed_on": "2026-10-13", "reviewer": "Astra scientific review", "basis": "Corrective exhaustive corpus balances labels across reliability orders; held-out full-state decoding exceeds current, latest, schedule-only, and shuffled-label controls."}],
-      "result_ids": ["R-UNC-HARNESS-001", "R-UNC-REP-001", "R-UNC-CORR-001"],
+      "status_basis": {"method": "manual_review", "rule": "Preliminary support requires label-balanced held-out decoding beyond current, latest-observation, schedule-only, and shuffled-label controls; it does not establish calibrated uncertainty or causal use.", "considered_result_ids": ["R-UNC-HARNESS-001", "R-UNC-REP-001", "R-UNC-CORR-001", "R-UNC-TRANSFER-001"], "supporting_result_ids": ["R-UNC-CORR-001"], "conflicting_result_ids": ["R-UNC-TRANSFER-001"], "reviewer": "Astra scientific review", "reviewed_on": "2026-10-13"},
+      "status_history": [{"evidence_status": "untested", "lifecycle": "active", "changed_on": "2026-10-12", "reviewer": "Codex implementation review", "basis": "The discovery harness records traces but no frozen transfer probe or intervention."},{"evidence_status": "preliminary_support", "lifecycle": "active", "changed_on": "2026-10-12", "reviewer": "Astra scientific review", "basis": "Initially reviewed as held-out decoding support."},{"evidence_status": "untested", "lifecycle": "active", "changed_on": "2026-10-13", "reviewer": "Astra scientific review", "basis": "Correction: schedule index and target parity were deterministically paired, leaving a schedule-to-label confound. The result is unevaluable for retained evidence."},{"evidence_status": "preliminary_support", "lifecycle": "active", "changed_on": "2026-10-13", "reviewer": "Astra scientific review", "basis": "Corrective exhaustive corpus balances labels across reliability orders; held-out full-state decoding exceeds current, latest, schedule-only, and shuffled-label controls."},{"evidence_status": "preliminary_support", "lifecycle": "active", "changed_on": "2026-10-13", "reviewer": "Astra scientific review", "basis": "Low-capacity decoding transfers to one unseen six-event reliability order but fails the preregistered frozen six-to-eight-event criterion due a major length-conditioned state scale shift; the within-length claim remains preliminary only."}],
+      "result_ids": ["R-UNC-HARNESS-001", "R-UNC-REP-001", "R-UNC-CORR-001", "R-UNC-TRANSFER-001"],
       "alternative_explanations": ["A probe may recover time, current cue, generic state magnitude, or evaluator-side schedule structure rather than retained evidence."],
       "falsifiers": ["Held-out probe performance does not exceed time and current-observation controls."],
-      "next_test": "Run a preregistered low-capacity probe on a new corpus with held-out reliability-order and history-length transfer before matched channel reset/restore."
+      "next_test": "Run a preregistered neutral-cue length-invariance and calibration gate before any matched channel reset/restore."
     },
     {
       "id": "H-ROUTE-005",
@@ -417,6 +417,14 @@
       "artifact_ids": ["A-UNC-CORR-PROTOCOL-001", "A-UNC-CORR-SUMMARY-001", "A-UNC-CORR-SCORES-001"]
     },
     {
+      "id": "E-UNC-004",
+      "name": "Low-capacity unseen-order and unseen-length evidence transfer",
+      "system": "demian_v1_gate_state_with_stateless_public_evidence_encoder",
+      "protocol_version": "demian-uncertainty-transfer-v1",
+      "replication_scope": {"parameter_seed_count": 8, "initial_state_count": 8, "input_seed_count": 256, "history_condition_count": 3, "trajectory_count": 4096, "checkpoint_row_count": 4096, "independent_unit": "parameter_seed", "dependent_observations": ["delays, projection dimensions, and projection seeds repeat within parameter seeds"]},
+      "artifact_ids": ["A-UNC-TRANSFER-PROTOCOL-001", "A-UNC-TRANSFER-SUMMARY-001", "A-UNC-TRANSFER-SCORES-001"]
+    },
+    {
       "id": "E-ROUTE-004",
       "name": "Fixed-forcing matched carrier/random-direction route selectivity",
       "system": "demian_v1_gate_state",
@@ -539,6 +547,13 @@
       "semantics": "Scores frozen linear probes at matched pre-resolution delay checkpoints against current observation, latest evidence observation, and a deterministically shuffled full-state label fit.",
       "limitations": ["Does not establish channel causality, calibrated belief, or generalization beyond the frozen public-history distribution."],
       "artifact_ids": ["A-UNC-REP-PROTOCOL-001", "A-UNC-REP-SCORES-001"]
+    },
+    {
+      "id": "C-UNC-TRANSFER-001",
+      "name": "Frozen low-capacity transfer controls",
+      "semantics": "Uses fixed label-independent random projections, train-only standardization and coefficients, current/latest observation, padded reliability-plus-length, conditional-label-shuffle, and constant controls on unseen public histories.",
+      "limitations": ["Does not identify a causal channel or prove calibrated belief.", "The eight-event condition contains a preregistered 64-history subset."],
+      "artifact_ids": ["A-UNC-TRANSFER-PROTOCOL-001", "A-UNC-TRANSFER-SUMMARY-001", "A-UNC-TRANSFER-SCORES-001"]
     },
     {
       "id": "C-MATCHED-RANDOM-GAIN-001",
@@ -806,6 +821,23 @@
       "exclusions": ["No calibrated uncertainty or belief claim.", "No specific channel, causal mechanism, routing utility, learning, adaptation, or OOD retention claim."],
       "control_ids": ["C-UNC-REPLAY-001", "C-UNC-PROBE-001"],
       "artifact_ids": ["A-UNC-CORR-PROTOCOL-001", "A-UNC-CORR-SUMMARY-001", "A-UNC-CORR-SCORES-001"]
+    },
+    {
+      "id": "R-UNC-TRANSFER-001",
+      "hypothesis_ids": ["H-UNC-001"],
+      "experiment_id": "E-UNC-004",
+      "evaluable": true,
+      "outcome": "observed",
+      "observation": "Train-only low-capacity frozen probes transferred to one unseen six-event reliability order (mean projected-state R² 0.242; median cell R² 0.449; median Pearson r 0.721), but did not meet the preregistered seed-robust criterion. Frozen six-to-eight-event transfer failed, with large negative R² caused by a major length-conditioned state baseline and scale shift outside the six-event standardization range.",
+      "interpretation": "The fixed finite system supports some low-capacity order transfer at six events, but no calibrated frozen transfer across the tested history length. The length result does not determine whether target-related rank information remains after the length shift.",
+      "analysis_scope": {"independent_unit": "parameter_seed", "independent_unit_count": 8, "comparison_count": 32, "comparison_unit": "parameter-seed by delay and held-out family", "dependent_observations": ["three projection dimensions and three fixed projection seeds are sensitivity conditions within each parameter seed"], "scope_note": "Projections are fixed label-independent sensitivity conditions, not independent replications."},
+      "evaluation_conditions_met": ["target_private_interface", "train_only_fit", "frozen_low_capacity_projection", "unseen_reliability_order", "unseen_history_length", "matched_public_controls"],
+      "missing_evaluation_conditions": ["length_invariance_or_predeclared_length_calibration", "causal_channel_intervention"],
+      "effect_summary": {"unseen_order_projected_mean_r2": 0.2418, "unseen_order_projected_median_r2": 0.4493, "unseen_order_projected_median_pearson_r": 0.7208, "unseen_length_projected_mean_r2": -8587.5117, "unseen_length_projected_median_r2": -276.9504},
+      "uncertainty": ["Eight fixed parameter seeds.", "The predeclared eight-event evaluation uses 64 of 256 possible histories.", "The length failure is consistent with a measured extrapolation/calibration failure, not proof that all rank information vanished."],
+      "exclusions": ["No calibrated uncertainty or belief claim.", "No causal channel, routing, utility, learning, adaptation, or general capability claim."],
+      "control_ids": ["C-UNC-REPLAY-001", "C-UNC-TRANSFER-001"],
+      "artifact_ids": ["A-UNC-TRANSFER-PROTOCOL-001", "A-UNC-TRANSFER-SUMMARY-001", "A-UNC-TRANSFER-SCORES-001"]
     }
   ],
   "artifacts": [
@@ -888,6 +920,30 @@
       "path": "data/diagnostics/demian_uncertainty_corrective_v1_20261013/scores.jsonl",
       "media_type": "application/x-ndjson",
       "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/bb17c33ae69d86e63a80d668dbfc25623ba69d3f/data/diagnostics/demian_uncertainty_corrective_v1_20261013/scores.jsonl"
+    },
+    {
+      "id": "A-UNC-TRANSFER-PROTOCOL-001",
+      "repository": "Aeshma-Daeva/Demian-Lab",
+      "commit": "6605e6b822431a70376a01c79d922dcbf33b6cf2",
+      "path": "docs/DEMIAN_UNCERTAINTY_TRANSFER_PROTOCOL.json",
+      "media_type": "application/json",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/6605e6b822431a70376a01c79d922dcbf33b6cf2/docs/DEMIAN_UNCERTAINTY_TRANSFER_PROTOCOL.json"
+    },
+    {
+      "id": "A-UNC-TRANSFER-SUMMARY-001",
+      "repository": "Aeshma-Daeva/Demian-Lab",
+      "commit": "98859ee519def8b6c59208f9fe5661fbca5dea1b",
+      "path": "data/diagnostics/demian_uncertainty_transfer_v1_20261013/summary.json",
+      "media_type": "application/json",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/98859ee519def8b6c59208f9fe5661fbca5dea1b/data/diagnostics/demian_uncertainty_transfer_v1_20261013/summary.json"
+    },
+    {
+      "id": "A-UNC-TRANSFER-SCORES-001",
+      "repository": "Aeshma-Daeva/Demian-Lab",
+      "commit": "98859ee519def8b6c59208f9fe5661fbca5dea1b",
+      "path": "data/diagnostics/demian_uncertainty_transfer_v1_20261013/scores.jsonl",
+      "media_type": "application/x-ndjson",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/98859ee519def8b6c59208f9fe5661fbca5dea1b/data/diagnostics/demian_uncertainty_transfer_v1_20261013/scores.jsonl"
     },
     {
       "id": "A-CHAR-SUMMARY-001",

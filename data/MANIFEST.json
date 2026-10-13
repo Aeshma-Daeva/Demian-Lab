@@ -1,12 +1,27 @@
 {
   "schema_version": 1,
-  "updated": "2026-10-11",
+  "updated": "2026-10-13",
   "policy": {
     "raw_data": "Keep raw run directories in place until manifest references and doc links are stable.",
     "status_values": ["active_evidence", "historical", "superseded", "baseline"],
     "promotion_rule": "Promoted claims must point to indexed artifacts or explicitly cite code/test evidence."
   },
   "runs": [
+    {
+      "id": "demian_uncertainty_transfer_v1_20261013",
+      "program": "demian-v1",
+      "date": "2026-10-13",
+      "family": "six_channel_ambiguous_evidence_low_capacity_transfer",
+      "status": "active_evidence",
+      "primary_summary": "data/diagnostics/demian_uncertainty_transfer_v1_20261013/summary.json",
+      "artifacts": [
+        "data/diagnostics/demian_uncertainty_transfer_v1_20261013/summary.json",
+        "data/diagnostics/demian_uncertainty_transfer_v1_20261013/scores.jsonl",
+        "docs/DEMIAN_UNCERTAINTY_TRANSFER_PROTOCOL.json"
+      ],
+      "claim_ids": ["H-UNC-001"],
+      "interpretation": "Evaluable low-capacity transfer result. One unseen six-event order is partially decodable, but frozen six-to-eight transfer fails due a major length-conditioned state baseline and scale shift."
+    },
     {
       "id": "demian_uncertainty_representation_v1_20261012",
       "program": "demian-v1",

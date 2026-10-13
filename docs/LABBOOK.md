@@ -948,3 +948,32 @@ Next:
 - Run the balanced corrective corpus: each reliability permutation receives all
   64 symbol histories, independent balanced targets, schedule-only controls,
   and stratified complete-episode splits.
+
+## 2026-10-13 - Low-Capacity Uncertainty Transfer
+
+Purpose:
+
+- Test frozen low-capacity transfer to a new six-event reliability order and
+  to an eight-event history family.
+
+Artifacts:
+
+- `docs/DEMIAN_UNCERTAINTY_TRANSFER_PROTOCOL.json`
+- `data/diagnostics/demian_uncertainty_transfer_v1_20261013/summary.json`
+
+Observation:
+
+- Six-event order transfer is positive but not seed-robust under the
+  preregistered criterion.
+- Frozen six-to-eight transfer fails; eight-event state scale lies far outside
+  six-event training normalization.
+
+Interpretation:
+
+- This is a calibrated-transfer failure, not evidence that all target-related
+  rank information vanished.
+
+Next:
+
+- Test two appended reliability-0.5 cues, which leave public log odds unchanged,
+  with predeclared length-aware controls before causal channel interventions.
