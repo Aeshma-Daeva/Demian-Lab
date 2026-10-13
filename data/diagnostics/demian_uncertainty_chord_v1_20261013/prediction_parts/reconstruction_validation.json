@@ -1,0 +1,13 @@
+{
+  "original_sha256": "f88f82e557ff3973c1dc041ae85f9b1d2f12882f617f38962983cd433942d5db",
+  "case_count": 13824,
+  "array_sha256": {
+    "linear_responses64": "0cbfabf721a4e84370b57ae4ea4d47b437d1a77ca89daa43655bfc1d6e3ab576",
+    "mathematical_responses64": "813aa4a2af8973f10f942c61e7b1b12b88777f69f6b72c4341c2e024d44a0002",
+    "native_outputs32": "2a73963487037351085cbc506f39dcc0912bb78aa06ef4abe52a21e9335af4ba",
+    "perturbed_inputs32": "81c9d9034ecdd499c1c8a5283963be619589e103fb3b4ea909514d2409eebf61"
+  },
+  "canonical_array_bytes_verified": true,
+  "validation_source_commit": "70427ab5def0d25d8d0862b7f8dab8890a0bf172",
+  "validation_function": "development.partition_uncertainty_predictions.validate_reconstruction"
+}
