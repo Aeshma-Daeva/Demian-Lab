@@ -1,0 +1,9 @@
+{
+  "channel_metric_count": 17920,
+  "experiment": "demian-uncertainty-geometry-v1",
+  "integrity": {
+    "all_finite": true,
+    "scope": "label-free paired geometry only"
+  },
+  "pair_metric_count": 40
+}
