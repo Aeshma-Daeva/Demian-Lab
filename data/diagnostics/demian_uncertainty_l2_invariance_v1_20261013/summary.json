@@ -1,6 +1,6 @@
 {
-  "claim_boundary": "paired frozen-probe calibration measurement only; no causal, routing, utility, learning, or adaptation claim without review",
-  "experiment": "demian-uncertainty-length-invariance",
+  "claim_boundary": "paired scale-normalized frozen-probe measurement only; no causal, routing, utility, learning, adaptation, calibrated-belief, or general capability claim without manual review",
+  "experiment": "demian-uncertainty-l2-invariance-v1",
   "integrity": {
     "all_finite": true,
     "probe_scope": "heldout reliability order; train-only frozen projection and coefficients; neutral suffixes dependent within base history"

@@ -162,7 +162,7 @@ def write_artifacts(out: Path, protocol: dict[str, Any], payload: dict[str, Any]
     with (out / "scores.jsonl").open("x") as stream:
         for row in payload["scores"]:
             stream.write(json.dumps(row, sort_keys=True, allow_nan=False) + "\n")
-    (out / "summary.json").write_text(json.dumps({"schema_version": 1, "experiment": "demian-uncertainty-length-invariance", "claim_boundary": "paired frozen-probe calibration measurement only; no causal, routing, utility, learning, or adaptation claim without review", "row_count": len(payload["rows"]), "score_count": len(payload["scores"]), "summary": payload["summary"], "integrity": payload["integrity"]}, indent=2, sort_keys=True, allow_nan=False) + "\n")
+    (out / "summary.json").write_text(json.dumps({"schema_version": 1, "experiment": protocol["protocol_id"], "claim_boundary": protocol["claim_boundary"], "row_count": len(payload["rows"]), "score_count": len(payload["scores"]), "summary": payload["summary"], "integrity": payload["integrity"]}, indent=2, sort_keys=True, allow_nan=False) + "\n")
 
 
 def main() -> None:

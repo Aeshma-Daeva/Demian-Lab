@@ -1,3 +1,5 @@
+import json
+
 from development import run_demian_uncertainty_length_invariance
 
 
@@ -44,5 +46,6 @@ def test_length_invariance_protocol_scores_all_paired_conditions(tmp_path) -> No
         "projected_full_state", "projected_full_state_l2_normalized", "projected_full_state_condition_normalized", "current_observation", "latest_observation", "schedule_only", "full_state_conditional_shuffle"
     }
     out = tmp_path / "length"
-    run_demian_uncertainty_length_invariance.write_artifacts(out, {"protocol_id": "test"}, payload)
+    run_demian_uncertainty_length_invariance.write_artifacts(out, {"protocol_id": "test", "claim_boundary": "test boundary"}, payload)
     assert (out / "summary.json").is_file()
+    assert json.loads((out / "summary.json").read_text())["experiment"] == "test"
