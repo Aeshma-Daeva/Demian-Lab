@@ -183,8 +183,11 @@ def run_protocol(protocol: dict[str, Any]) -> dict[str, Any]:
                         **_score(train, evaluate, feature_set=feature_set, alpha=float(protocol["ridge_alpha"])),
                     })
     summary = {
-        key: {"mean_r2": float(np.mean([row["r2"] for row in scores if (row["evaluation_family"], row["feature_set"]) == key]))}
-        for key in sorted({(row["evaluation_family"], row["feature_set"]) for row in scores})
+        f"{family}/{feature_set}": {"mean_r2": float(np.mean([
+            row["r2"] for row in scores
+            if (row["evaluation_family"], row["feature_set"]) == (family, feature_set)
+        ]))}
+        for family, feature_set in sorted({(row["evaluation_family"], row["feature_set"]) for row in scores})
     }
     return {
         "rows": rows, "scores": scores, "summary": summary,

@@ -21,7 +21,7 @@ def test_transfer_corpus_uses_disjoint_train_and_test_order_families() -> None:
     )
 
 
-def test_transfer_protocol_scores_frozen_low_capacity_features_on_both_test_families() -> None:
+def test_transfer_protocol_scores_frozen_low_capacity_features_on_both_test_families(tmp_path) -> None:
     payload = run_demian_uncertainty_transfer.run_protocol({
         "hidden_size": 16,
         "model_seeds": [94],
@@ -42,3 +42,9 @@ def test_transfer_protocol_scores_frozen_low_capacity_features_on_both_test_fami
         "projected_full_state", "current_observation", "latest_observation", "schedule_only", "full_state_conditional_shuffle"
     }
     assert all(row["projection_dimension"] == 2 for row in payload["scores"] if row["feature_set"] == "projected_full_state")
+
+    out = tmp_path / "transfer"
+    run_demian_uncertainty_transfer.write_artifacts(out, {
+        "protocol_id": "test-transfer",
+    }, payload)
+    assert (out / "summary.json").is_file()
