@@ -41,10 +41,19 @@ def _state_hash(state: tuple[torch.Tensor, ...]) -> str:
     return digest.hexdigest()
 
 
-def run_uncertainty_episode(*, model_seed: int, hidden_size: int, public_frames: Sequence[EvidenceObservation]) -> dict[str, object]:
+def run_uncertainty_episode(
+    *,
+    model_seed: int,
+    hidden_size: int,
+    public_frames: Sequence[EvidenceObservation],
+    checkpoint_phases: Sequence[str] = ("evidence", "resolve"),
+) -> dict[str, object]:
     """Run public frames only; evaluator truth/labels never enter this interface."""
     if not public_frames:
         raise ValueError("at least one public frame is required")
+    invalid_phases = set(checkpoint_phases) - set(_PHASES)
+    if invalid_phases:
+        raise ValueError(f"unknown checkpoint phases: {sorted(invalid_phases)}")
     torch.manual_seed(model_seed)
     model = DemianV1GateState(hidden_size, trace_routes=True)
     state = model.initial_state(1, torch.device("cpu"))
@@ -59,13 +68,13 @@ def run_uncertainty_episode(*, model_seed: int, hidden_size: int, public_frames:
         measurements.append({
             "tick": observation.tick,
             "phase": observation.phase,
-            "state_norm": float(torch.cat([part.reshape(-1) for part in state]).norm()),
-            "channel_norms": {name: float(value.norm()) for name, value in zip(V1_CHANNELS, state, strict=True)},
-            "increment_norm": float(torch.cat([(now - prior).reshape(-1) for now, prior in zip(state, before, strict=True)]).norm()),
-            "gate_pressure_mean": float(torch.sigmoid(state[-1]).mean()),
-            "carrier_to_slow_norm": None if route is None else float(route.values["carrier_to_slow"].norm()),
+            "state_norm": float(torch.cat([part.reshape(-1) for part in state]).norm().detach()),
+            "channel_norms": {name: float(value.norm().detach()) for name, value in zip(V1_CHANNELS, state, strict=True)},
+            "increment_norm": float(torch.cat([(now - prior).reshape(-1) for now, prior in zip(state, before, strict=True)]).norm().detach()),
+            "gate_pressure_mean": float(torch.sigmoid(state[-1]).mean().detach()),
+            "carrier_to_slow_norm": None if route is None else float(route.values["carrier_to_slow"].norm().detach()),
         })
-        if observation.phase in {"evidence", "resolve"}:
+        if observation.phase in checkpoint_phases:
             snapshots[f"{observation.phase}:{observation.tick}"] = capture_v1_runtime(model, state)
         hashes.append(_state_hash(state))
     final_snapshot = capture_v1_runtime(model, state)

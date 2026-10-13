@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import math
+import random
 from dataclasses import dataclass
 from typing import Literal, Sequence
 
@@ -29,6 +30,19 @@ def _validate_event(symbol: int, reliability: float) -> None:
         raise ValueError("evidence symbol must be 0 or 1")
     if reliability not in _RELIABILITIES:
         raise ValueError("reliability must be one of 0.5, 0.75, 0.95")
+
+
+def sample_evidence(*, hidden_target: int, reliabilities: Sequence[float], seed: int) -> list[tuple[int, float]]:
+    """Sample public evidence from the declared binary observation model."""
+    if hidden_target not in {0, 1}:
+        raise ValueError("hidden target must be 0 or 1")
+    generator = random.Random(seed)
+    events: list[tuple[int, float]] = []
+    for reliability in reliabilities:
+        _validate_event(0, reliability)
+        symbol = hidden_target if generator.random() < reliability else 1 - hidden_target
+        events.append((symbol, reliability))
+    return events
 
 
 def reference_belief(public_prefix: Sequence[EvidenceObservation]) -> dict[str, float]:

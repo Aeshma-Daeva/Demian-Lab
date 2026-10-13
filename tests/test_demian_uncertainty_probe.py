@@ -17,3 +17,15 @@ def test_episode_replay_is_target_leak_free_and_exact() -> None:
     right = run_uncertainty_episode(model_seed=94, hidden_size=16, public_frames=public)
     assert left["state_hashes"] == right["state_hashes"]
     assert left["replay_exact"] is True
+
+
+def test_episode_can_capture_pre_resolution_delay_state() -> None:
+    public = AmbiguousEvidenceWorld(hidden_target=1, evidence=[(1, 0.75)], delay_steps=2).frames()
+    trace = run_uncertainty_episode(
+        model_seed=94,
+        hidden_size=16,
+        public_frames=public,
+        checkpoint_phases=("delay",),
+    )
+
+    assert set(trace["checkpoints"]) == {"delay:1", "delay:2"}

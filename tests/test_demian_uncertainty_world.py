@@ -2,7 +2,24 @@ import math
 
 import pytest
 
+from development import demian_uncertainty_world
 from development.demian_uncertainty_world import AmbiguousEvidenceWorld, EvidenceObservation, reference_belief
+
+
+def test_sampled_evidence_is_seed_reproducible_and_respects_public_schedule() -> None:
+    schedule = [0.95, 0.75, 0.5, 0.95]
+    left = demian_uncertainty_world.sample_evidence(hidden_target=1, reliabilities=schedule, seed=17)
+    right = demian_uncertainty_world.sample_evidence(hidden_target=1, reliabilities=schedule, seed=17)
+
+    assert left == right
+    assert [reliability for _, reliability in left] == schedule
+
+
+def test_sampled_evidence_rejects_invalid_generation_inputs() -> None:
+    with pytest.raises(ValueError, match="hidden target"):
+        demian_uncertainty_world.sample_evidence(hidden_target=2, reliabilities=[0.75], seed=1)
+    with pytest.raises(ValueError, match="reliability"):
+        demian_uncertainty_world.sample_evidence(hidden_target=1, reliabilities=[0.6], seed=1)
 
 
 def test_reference_belief_uses_public_evidence_only() -> None:
