@@ -1,0 +1,75 @@
+{
+  "file_sha256": {
+    "metrics.jsonl": "ab5c1756b165a68de2f0dfc01f2427c5678f0f11596547f645e41e49c6e1c706",
+    "predictions.npz": "7548f15413091db70c2b511107c8cb20669157ba5df80b1fe25ac47dcea575f7",
+    "state_metadata.jsonl": "c245b7f6c26cab8aefd9a70b0591364435ec74e16bd6f145b036ae2b491c18f7",
+    "states.npz": "27862c58d046c4fe65d72d7e42d4532077157ea46cc2ffb7a578e5186cc793b4",
+    "summary.json": "3dd1dab6bb67515bb96caf87c6cffa896a64604f6e1276b29cd90cfdb5075554",
+    "transforms.npz": "2ee592243c051aae1bbb678528a90cb45813fa3170d2573149b7b0b41f0d6415"
+  },
+  "protocol": {
+    "allocation_seed": 20261016,
+    "alternative_model_comparison": "if fixed local Jacobian matches or outperforms similarity in each axis, generic local recurrent flow is sufficient for the measured geometry; not a distinctive memory mechanism",
+    "artifact_directory": "data/diagnostics/demian_uncertainty_jacobian_v1_20261013",
+    "axes": [
+      "same_order_histories",
+      "unseen_order"
+    ],
+    "base_delay_steps": 32,
+    "basis_fit": "rank8 SVD of separately centered A/B training-half clouds only; means and map coefficients use only those32 paired histories",
+    "claim_boundary": "label-free finite-window geometry and mechanistic local-linear baseline only; no evidence code, decoder recovery, causal channel, utility, learning or adaptation claim",
+    "corpus": "all64 base histories per reliability order; independent balanced targets; B adds two blanks to A; 1024 paired state rows over4 seeds",
+    "coverage_condition": "heldout source/target excluded fractions <=0.01 for rank8 geometry conclusions",
+    "descriptive_threshold": "full relative residual <=0.1 in every seed/axis for each named map; no automatic hypothesis promotion",
+    "falsifier": "large residual rejects the tested common map/local-linear model; inadequate coverage or dominant shared offset prevents a broad deformation claim",
+    "heldout_reliability_schedule": [
+      0.75,
+      0.5,
+      0.95,
+      0.5,
+      0.95,
+      0.75
+    ],
+    "hidden_size": 256,
+    "hypothesis_id": "H-UNC-001",
+    "independent_unit": "model seed; histories, axes and map comparisons dependent within seed",
+    "jacobian_reference": "G(mu_train_A)+DG(mu_train_A)*(zA-mu_train_A), full-state autodiff JVP per evaluation direction; centroid fixed for every evaluation, no relinearization or fitted correction",
+    "maps": [
+      "identity",
+      "translation_only",
+      "similarity",
+      "randomized_pair_similarity",
+      "jacobian_rank8",
+      "jacobian_full"
+    ],
+    "metrics": "full/centroid/centered residuals and in/out subspace residuals, divided by evaluation A-cloud RMS; source/target excluded fractions; displacement fraction explained",
+    "model_seeds": [
+      894,
+      895,
+      994,
+      995
+    ],
+    "permutation_seed": 71,
+    "protocol_id": "demian-uncertainty-jacobian-v1",
+    "rank8_jacobian": "apply DG to rank8-projected source difference, retain source difference outside basis unchanged; identical fixed training basis to similarity comparison",
+    "sanity": "float32 exact G(zA) must equal independently run B for every history; exact rollout is integrity-only, never explanatory prediction; report float64 rollout numerical error",
+    "split": "resolve32/32 same-order histories before collection, half each terminal-symbol stratum; exhaustive64 new-order histories evaluation-only",
+    "split_seed": 61,
+    "subspace_rank": 8,
+    "train_reliability_schedule": [
+      0.95,
+      0.75,
+      0.5,
+      0.75,
+      0.95,
+      0.5
+    ],
+    "transition_G": "reconstruct identical seed weights; reset runtime step index to38 and clear frozen/trace state inside every closure evaluation; inject encoded blank into fast and step, twice",
+    "variants": [
+      "base",
+      "extra_delay"
+    ]
+  },
+  "protocol_sha256": "3ad67977bf784db5c5fc9d6ab871a9a7fbb72ccbae5dd0492df335a186a29ad9",
+  "source_commit": "d1ea1db07f4dd2c384f2c65003abe00dcf1fb0f0"
+}

@@ -31,6 +31,7 @@ def test_small_jacobian_protocol_has_exact_continuation_and_both_axes(tmp_path):
         'permutation_seed': 51, 'variants': ['base', 'extra_delay'],
     }
     payload = geometry.run_protocol(protocol)
+    assert payload['state_count'] == 32
     assert payload['integrity']['exact_float32_continuation']
     assert payload['integrity']['all_finite']
     assert {row['axis'] for row in payload['metrics']} == {'same_order_histories', 'unseen_order'}

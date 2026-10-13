@@ -1,0 +1,13 @@
+{
+  "claim_boundary": "label-free finite-window geometry and mechanistic local-linear baseline only; no evidence code, decoder recovery, causal channel, utility, learning or adaptation claim",
+  "experiment": "demian-uncertainty-jacobian-v1",
+  "integrity": {
+    "all_finite": true,
+    "double_rollout_max_norm_error": 2.7141821478903e-05,
+    "exact_continuation_count": 512,
+    "exact_float32_continuation": true,
+    "scope": "train-history-only fitted maps and fixed training-centroid JVP; two heldout axes; no labels"
+  },
+  "metric_count": 48,
+  "state_count": 1024
+}
