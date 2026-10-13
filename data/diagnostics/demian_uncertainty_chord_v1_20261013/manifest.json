@@ -1,0 +1,71 @@
+{
+  "file_sha256": {
+    "metrics.jsonl": "2feece4176bbe2895ea7775280aac5e279d2916030f9acdf9d29198629192db8",
+    "predictions.npz": "f88f82e557ff3973c1dc041ae85f9b1d2f12882f617f38962983cd433942d5db",
+    "state_metadata.jsonl": "edc9a684ff51472e8441064e1ada2dcc640ac5e221123c98506371e414defad5",
+    "states.npz": "2f214eb2818b7bcb6df81cc44992ff35ed4541103179347086a54e9014552f49",
+    "summary.json": "dbe8169cab384a4e722cc8cce295eb49a2c89db78263bbd49dfa9421437d7343",
+    "transforms.npz": "3c34cdba3539260da893138849e59b62410ce443ef9cced8f3a28bd03ced66cf"
+  },
+  "protocol": {
+    "artifact_directory": "data/diagnostics/demian_uncertainty_chord_v1_20261013",
+    "base_delay_steps": 32,
+    "chord": "d=float64(x_alt)-float64(x); xpert=q32(x+f*d); delta_eff=float64(xpert)-float64(x); no renormalization",
+    "claim_boundary": "local geometry along actual one-cue history differences; no memory use, causal route mechanism, belief, adaptation or global stability claim",
+    "comparison": "within seed/source/flip/horizon/fraction, compare natural curvature error with mean of two norm-matched random errors; retain both orientations as dependent observations",
+    "conditions": [
+      "natural_chord",
+      "norm_matched_random"
+    ],
+    "confound": "early informative versus final neutral flips differ in cue position AND reliability; no reliability-specific mechanism inference",
+    "control": "two fixed isotropic unit directions per seed from RNG(seed*10000+direction_seed); requested L2 radius=f*norm(d), same source anchor; actual q32 delta retained",
+    "decision": "if natural chords resemble random controls, stop local-geometry tuning and inspect upstream representation formation; if natural-only failures, characterize direction/channel composition first",
+    "direction_seeds": [
+      17,
+      29
+    ],
+    "falsifier": "precision-valid natural endpoints exceed0.1 relative curvature error; do not infer failure from invalid cells",
+    "flip_positions": [
+      0,
+      5
+    ],
+    "fractions": [
+      0.25,
+      0.5,
+      1.0
+    ],
+    "hidden_size": 256,
+    "history_support": "all64 histories; all32 distinct pairs per flip, both orientations; no selected backgrounds",
+    "horizons": [
+      2,
+      4,
+      8
+    ],
+    "independent_unit": "four fresh parameter seeds; histories, orientations, fractions, directions and horizons dependent within seed",
+    "model_seeds": [
+      1294,
+      1295,
+      1394,
+      1395
+    ],
+    "orientation": "positive chord fractions only; reversed natural pair is the counterpart orientation; no negative extrapolation called natural",
+    "precision_floor": "max(norm(G32(xpert)-q32(G64(xpert))),norm(G32(x)-q32(G64(x))),1e-12)",
+    "precision_floor_multiple": 10.0,
+    "protocol_id": "demian-uncertainty-chord-v1",
+    "reachability": "f=1 endpoints independently replayed histories; f<1 controlled interpolants not claimed reachable",
+    "relative_linearity_threshold": 0.1,
+    "reliability_schedule": [
+      0.95,
+      0.75,
+      0.5,
+      0.75,
+      0.95,
+      0.5
+    ],
+    "response_validity": "nonzero effective delta and induced64 response >=10*precision_floor",
+    "sanity": "all source baselines independently replayed; f=1 chord input/output must exactly equal counterfactual native checkpoint/continuation",
+    "transition": "identical seed weights; blank steps; runtime index38 and auxiliary state reset inside every native32/float64/JVP call"
+  },
+  "protocol_sha256": "ec69925f345e8d5586a8fed4883cfdd04ecb2308aeb5dafa66d667b835de9b24",
+  "source_commit": "b2ede51e8bc0660895e8aa46e72b1690903900ad"
+}

@@ -1,0 +1,14 @@
+{
+  "claim_boundary": "local geometry along actual one-cue history differences; no memory use, causal route mechanism, belief, adaptation or global stability claim",
+  "experiment": "demian-uncertainty-chord-v1",
+  "integrity": {
+    "all_finite": true,
+    "baseline_check_count": 768,
+    "endpoint_check_count": 1536,
+    "exact_baseline_continuation": true,
+    "exact_endpoint_continuation": true,
+    "scope": "all public histories; oriented one-cue chords; interpolants not asserted reachable; precision-limited cells inconclusive"
+  },
+  "metric_count": 13824,
+  "state_count": 256
+}
