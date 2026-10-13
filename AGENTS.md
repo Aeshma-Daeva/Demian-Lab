@@ -13,6 +13,11 @@ For research, experiment, claim, protocol, or interpretation work, read:
 
 ## Research Loop
 
+- Within an already authorized program, continue routine implementation, runs,
+  independent review and record updates without user-approval checkpoints.
+  Pause for a material scientific-objective/resource choice or missing authority,
+  not merely because an intermediate gate finished.
+
 - Before a nontrivial run, define or link its hypothesis, protocol, controls,
   falsifier, and intended artifact location.
 - After a run, preserve artifacts and record observation, interpretation,
