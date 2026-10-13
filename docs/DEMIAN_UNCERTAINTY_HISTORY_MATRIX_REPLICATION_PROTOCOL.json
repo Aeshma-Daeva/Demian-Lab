@@ -1,0 +1,79 @@
+{
+  "protocol_id": "demian-uncertainty-history-matrix-replication-v1",
+  "claim_boundary": "locate frozen public-evidence calibration across order/time; not information erasure, causal memory ownership, calibrated uncertainty, learning or adaptation",
+  "hidden_size": 256,
+  "model_seeds": [
+    1894,
+    1895,
+    1994,
+    1995
+  ],
+  "train_order": [
+    0.75,
+    0.95,
+    0.95,
+    0.5,
+    0.5,
+    0.75
+  ],
+  "evaluation_order": [
+    0.95,
+    0.75,
+    0.5,
+    0.95,
+    0.75,
+    0.5
+  ],
+  "checkpoints": [
+    {
+      "id": "cue6",
+      "evidence_count": 6,
+      "delay_steps": 0
+    },
+    {
+      "id": "delay2",
+      "evidence_count": 6,
+      "delay_steps": 2
+    },
+    {
+      "id": "delay8",
+      "evidence_count": 6,
+      "delay_steps": 8
+    },
+    {
+      "id": "delay32",
+      "evidence_count": 6,
+      "delay_steps": 32
+    },
+    {
+      "id": "delay64",
+      "evidence_count": 6,
+      "delay_steps": 64
+    }
+  ],
+  "frozen_reference_checkpoint": "cue6",
+  "projection_dimension": 16,
+  "projection_seeds": [
+    17,
+    29,
+    43
+  ],
+  "ridge_alpha": 1,
+  "support": "All64 full histories collected per order/seed/time; train32/eval32 split within train-order final-symbol and public log-odds-sign strata (zero tolerance1e-12). Same fixed heldout history IDs across orders/times/seeds; no fit/eval overlap.",
+  "primary": "Within-order unseen-history availability versus cross-order unseen-history transfer at each time; cue6-frozen heldout histories separately test temporal calibration.",
+  "label": "public prefix Bayesian reference log odds; no hidden target or resolve frame enters system",
+  "fit_modes": "time_refit: fit base-order train histories at each time, evaluate unseen histories in both orders. cue_end_frozen: fit only base-order train histories at cue6, evaluate the same heldout history IDs in both orders at each delay.",
+  "channel_probes": "six channels projected separately, descriptive decoding availability, not causal ownership or necessity",
+  "controls": "current and latest public encodings, schedule-only, and full-state conditional train-label shuffle within latest-symbol strata; reliability fixed within each order/time. Shuffle seed=model_seed*10000+fit_tick*100+projection_seed; retain changed-label count",
+  "schedule_control_boundary": "one-order schedule vector constant across histories; trivial negative sanity only, not substantive exclusion of schedule exploitation",
+  "analytic_public_controls": "current/latest single-cue log odds from known public reliability semantics, no evaluation-label fitting; avoids weak frozen latest baseline trained on a neutral last cue. No accumulated-history oracle predictor used as model evidence",
+  "public_control_identity": "at evidence checkpoints current and latest semantic controls identical; learned latest remains deliberately train-support-limited",
+  "decision_rule": "For each primary time/order family, projected full-state R2 must exceed analytic latest and matched conditional-shuffle R2 in every declared projection and parameter seed for a seed/projection-robust comparative statement; otherwise mixed or unestablished. Within-order failure is probe availability failure, not erasure. No automatic hypothesis promotion.",
+  "calibration": "prediction=slope*oracle+intercept descriptive regression; R2, correlation and MAE; no evaluation-label calibration applied to predictions",
+  "state_diagnostics": "order and cue6-reference centroid shifts, full/channel norms; raw-scale summaries non-causal",
+  "falsifier": "Within-order heldout-history projected-state decoding fails fair public/shuffle controls; cross-order and temporal calibration assessed separately, not conflated with availability.",
+  "scope": "Four fresh independent parameter seeds; one frozen32/32 allocation, two fixed orders, histories, checkpoints, projections and channels dependent within seed. No interventions, new geometry sweep or architecture change.",
+  "artifact_directory": "data/diagnostics/demian_uncertainty_history_matrix_replication_v1_20261013",
+  "history_split_seed": 83,
+  "replication": "Independent fresh parameter seeds, split83 and second reliability-order pair. Same projection seeds/dimension, ridge alpha, checkpoints, fair controls and all-cell criterion. No result-dependent tuning."
+}
