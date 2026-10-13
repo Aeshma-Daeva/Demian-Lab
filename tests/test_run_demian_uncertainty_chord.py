@@ -51,3 +51,22 @@ def test_small_chord_run_preserves_endpoint_replay_and_matched_controls(tmp_path
         assert abs(random['effective_radius']/random['requested_radius'] - 1) < .001
     chord.write_artifacts(tmp_path/'result', protocol, payload)
     assert (tmp_path/'result'/'predictions.npz').is_file()
+
+
+def test_summary_pairs_controls_by_source_and_excludes_invalid_pairs():
+    chord = chord_module()
+    assert hasattr(chord, 'summarize_metrics'), 'paired chord summary missing'
+    base = {'model_seed': 94, 'flip_position': 0, 'horizon': 2, 'fraction': 1.,
+            'requested_radius': 1., 'response_valid_above_precision_floor': True,
+            'mathematical_linearity_within_threshold': False}
+    rows = [
+        dict(base, history_index=0, condition='natural_chord', direction_seed=None, curvature_relative_error=.2),
+        dict(base, history_index=0, condition='norm_matched_random', direction_seed=17, curvature_relative_error=.1),
+        dict(base, history_index=1, condition='natural_chord', direction_seed=None, curvature_relative_error=9., response_valid_above_precision_floor=False),
+        dict(base, history_index=1, condition='norm_matched_random', direction_seed=17, curvature_relative_error=.3),
+    ]
+    result = chord.summarize_metrics(rows, [17])[0]
+    assert result['paired_valid_count'] == 1
+    assert result['natural_precision_valid_count'] == 1
+    assert result['control_precision_valid_count'] == 2
+    assert result['median_paired_natural_minus_control_error'] == .1

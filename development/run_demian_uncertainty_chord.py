@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import json
 import subprocess
+from collections import defaultdict
 from pathlib import Path
 
 import numpy as np
@@ -25,6 +26,47 @@ def oriented_pairs(length: int, position: int) -> list[tuple[int, int]]:
 def quantized_chord(anchor: np.ndarray, endpoint: np.ndarray, fraction: float):
     point = (anchor.astype(np.float64) + fraction * (endpoint.astype(np.float64) - anchor.astype(np.float64))).astype(np.float32)
     return point, point.astype(np.float64) - anchor.astype(np.float64)
+
+
+def summarize_metrics(rows: list[dict], direction_seeds: list[int]) -> list[dict]:
+    """Descriptive seedwise summaries; no independence or status inference."""
+    group_keys = ('model_seed', 'flip_position', 'horizon', 'fraction')
+    grouped = defaultdict(list)
+    for row in rows:
+        grouped[tuple(row[key] for key in group_keys)].append(row)
+    summaries = []
+    for key, group in sorted(grouped.items()):
+        natural = [row for row in group if row['condition'] == 'natural_chord']
+        controls = [row for row in group if row['condition'] == 'norm_matched_random']
+        by_source = defaultdict(dict)
+        for row in controls:
+            source = by_source[row['history_index']]
+            if row['direction_seed'] in source:
+                raise ValueError('duplicate source control direction')
+            source[row['direction_seed']] = row
+        deltas = []
+        for row in natural:
+            matched = by_source[row['history_index']]
+            if set(matched) != set(direction_seeds):
+                raise ValueError('missing or mismatched source control directions')
+            if row['response_valid_above_precision_floor'] and all(c['response_valid_above_precision_floor'] for c in matched.values()):
+                deltas.append(row['curvature_relative_error'] - float(np.mean([c['curvature_relative_error'] for c in matched.values()])))
+        valid_natural = [row for row in natural if row['response_valid_above_precision_floor']]
+        valid_controls = [row for row in controls if row['response_valid_above_precision_floor']]
+        summaries.append({
+            **dict(zip(group_keys, key, strict=True)), 'natural_case_count': len(natural),
+            'natural_precision_valid_count': len(valid_natural),
+            'control_case_count': len(controls), 'control_precision_valid_count': len(valid_controls),
+            'natural_threshold_failure_count': sum(not row['mathematical_linearity_within_threshold'] for row in valid_natural),
+            'control_threshold_failure_count': sum(not row['mathematical_linearity_within_threshold'] for row in valid_controls),
+            'natural_median_error': float(np.median([row['curvature_relative_error'] for row in valid_natural])) if valid_natural else None,
+            'natural_max_error': max((row['curvature_relative_error'] for row in valid_natural), default=None),
+            'control_median_error': float(np.median([row['curvature_relative_error'] for row in valid_controls])) if valid_controls else None,
+            'paired_valid_count': len(deltas),
+            'median_paired_natural_minus_control_error': float(np.median(deltas)) if deltas else None,
+            'requested_radius_median': float(np.median([row['requested_radius'] for row in natural])),
+        })
+    return summaries
 
 
 def run_protocol(protocol: dict) -> dict:
