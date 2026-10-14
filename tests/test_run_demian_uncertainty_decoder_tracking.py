@@ -186,3 +186,36 @@ def test_channel_transport_calibration_is_independent_of_heldout_values():
 
     assert np.allclose(apply_channel_transport(fit, base_order_target), source, atol=1e-10)
     assert not np.allclose(apply_channel_transport(fit, heldout_target), source, atol=1e-10)
+
+
+def test_permutation_decomposition_materializes_identity_and_rejects_changed_pairs():
+    """Every heldout schedule must move intact symbol-reliability evidence pairs."""
+    from development.run_demian_uncertainty_permutation_decomposition import (
+        materialize_condition_protocol,
+        validate_decomposition_protocol,
+    )
+
+    protocol = {
+        "protocol_id": "test-decomposition",
+        "train_order": [0.95, 0.75, 0.5],
+        "conditions": [
+            {"id": "identity", "evaluation_order": [0.95, 0.75, 0.5],
+             "evaluation_symbol_permutation": [0, 1, 2]},
+            {"id": "swap", "evaluation_order": [0.75, 0.95, 0.5],
+             "evaluation_symbol_permutation": [1, 0, 2]},
+        ],
+    }
+
+    validate_decomposition_protocol(protocol)
+    materialized = materialize_condition_protocol(protocol, protocol["conditions"][1])
+    assert materialized["protocol_id"] == "test-decomposition-swap"
+    assert materialized["evaluation_order"] == [0.75, 0.95, 0.5]
+    assert materialized["evaluation_symbol_permutation"] == [1, 0, 2]
+
+    protocol["conditions"][1]["evaluation_order"] = [0.95, 0.75, 0.5]
+    try:
+        validate_decomposition_protocol(protocol)
+    except ValueError as error:
+        assert "preserve evidence pairs" in str(error)
+    else:
+        raise AssertionError("reliability-only permutation accepted")
