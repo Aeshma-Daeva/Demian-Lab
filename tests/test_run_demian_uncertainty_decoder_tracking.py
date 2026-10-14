@@ -1,5 +1,7 @@
 import importlib
 import importlib.util
+import hashlib
+import json
 
 import numpy as np
 
@@ -44,3 +46,34 @@ def test_dynamic_feature_builders_have_declared_small_capacity():
 
     assert module.time_features(projected, rows, checkpoints).shape == (4, 6)
     assert module.regime_features(projected, rows).shape == (4, 9)
+
+
+def test_matrix_loader_rejects_nonfinite_states_and_duplicate_histories(tmp_path):
+    module = tracking_module()
+    artifact = tmp_path / "matrix"
+    artifact.mkdir()
+    np.savez(artifact / "states.npz", states=np.asarray([[np.nan, 0.0]]))
+    (artifact / "state_metadata.jsonl").write_text(json.dumps({"symbols": [0]}) + "\n")
+    (artifact / "summary.json").write_text(json.dumps({"integrity": {"history_split": {}}}))
+    hashes = {name: hashlib.sha256((artifact / name).read_bytes()).hexdigest()
+              for name in ("states.npz", "state_metadata.jsonl", "summary.json")}
+    (artifact / "manifest.json").write_text(json.dumps({"file_sha256": hashes}))
+    batch = {"artifact_directory": str(artifact),
+             "source_manifest_sha256": hashlib.sha256((artifact / "manifest.json").read_bytes()).hexdigest()}
+
+    try:
+        module._load_batch(batch)
+    except ValueError as error:
+        assert "nonfinite" in str(error)
+    else:
+        raise AssertionError("nonfinite source state accepted")
+
+    states = np.asarray([[0.0], [1.0]])
+    rows = [{"model_seed": 1, "order": "train", "checkpoint_id": "cue", "symbols": [0]},
+            {"model_seed": 1, "order": "train", "checkpoint_id": "cue", "symbols": [0]}]
+    try:
+        module._cell(states, rows, 1, "train", "cue")
+    except ValueError as error:
+        assert "duplicate history" in str(error)
+    else:
+        raise AssertionError("duplicate history accepted")

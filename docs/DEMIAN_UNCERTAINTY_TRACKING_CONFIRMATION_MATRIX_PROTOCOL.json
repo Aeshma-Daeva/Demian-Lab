@@ -1,0 +1,23 @@
+{
+  "protocol_id": "demian-uncertainty-tracking-confirmation-matrix-v1",
+  "claim_boundary": "fresh fixed-weight state collection for external diagnostic decoder tracking; no claim of Demian learning, adaptation, self-readout, routing control, or causal channel mechanism",
+  "hidden_size": 256,
+  "model_seeds": [2094, 2095, 2194, 2195],
+  "train_order": [0.95, 0.5, 0.75, 0.95, 0.75, 0.5],
+  "evaluation_order": [0.5, 0.95, 0.75, 0.5, 0.75, 0.95],
+  "checkpoints": [
+    {"id": "cue6", "evidence_count": 6, "delay_steps": 0},
+    {"id": "delay2", "evidence_count": 6, "delay_steps": 2},
+    {"id": "delay8", "evidence_count": 6, "delay_steps": 8}
+  ],
+  "frozen_reference_checkpoint": "cue6",
+  "projection_dimension": 16,
+  "projection_seeds": [17, 29, 43],
+  "ridge_alpha": 1.0,
+  "history_split_seed": 97,
+  "support": "All 64 binary histories are collected for each order, seed and checkpoint. The base-order final-symbol/log-odds-sign procedure allocates 32 train and 32 evaluation histories, paired across orders and checkpoints.",
+  "controls": "Analytic latest-cue semantics and conditional train-label shuffle. No target-order states or evaluation histories fit a decoder, normalization, projection, translation, scale, or rotation.",
+  "novelty": "Seeds 2094/2095/2194/2195, split97 and both reliability orders differ from the two prior matrix protocols; each order contains exactly two .95, two .75 and two .5 reliabilities.",
+  "decision_rule": "For each delay2 and delay8 separately, orthogonal-tracked true-label R2 must exceed analytic latest-cue and matched shuffled-label R2 in all 12 seed-by-projection cells for a within-order confirmation. Cross-order scores are secondary strict portability: the base-trained tracker is applied unchanged.",
+  "artifact_directory": "data/diagnostics/demian_uncertainty_tracking_confirmation_matrix_v1_20261014"
+}

@@ -94,12 +94,17 @@ def _load_batch(batch):
     summary = json.loads((directory/"summary.json").read_text())
     if len(states) != len(metadata):
         raise ValueError("state and metadata row counts differ")
+    if not np.isfinite(states).all():
+        raise ValueError("source states contain nonfinite values")
     return states, metadata, summary["integrity"]["history_split"]
 
 
 def _cell(states, metadata, seed, order, checkpoint):
     indexes = [i for i, row in enumerate(metadata) if row["model_seed"] == seed and row["order"] == order and row["checkpoint_id"] == checkpoint]
     indexes.sort(key=lambda i: _history_index(metadata[i]))
+    histories = [_history_index(metadata[i]) for i in indexes]
+    if len(histories) != len(set(histories)):
+        raise ValueError(f"duplicate history in cell {seed}/{order}/{checkpoint}")
     return states[indexes], [metadata[i] for i in indexes]
 
 
@@ -141,6 +146,9 @@ def run_protocol(protocol):
                 frozen = fit_probe(x_source, source_labels, alpha=alpha)
                 shuffled = fit_probe(x_source, _shuffled_labels([source_rows_all[i] for i in source_train], int(seed)*10000+int(projection_seed)), alpha=alpha)
                 transforms[f"{batch['id']}_{seed}_{projection_seed}_basis"] = basis
+                for label_kind, fitted in (("true", frozen), ("conditional_shuffle", shuffled)):
+                    for name, value in fitted.items():
+                        transforms[f"{batch['id']}_{seed}_{projection_seed}_cue6_{label_kind}_{name}"] = value
                 # Fit every temporal tracker once on base-order train histories.
                 # The same tracker is applied to the heldout order: it is a
                 # strict portability score, not target-domain calibration.
@@ -178,6 +186,8 @@ def run_protocol(protocol):
                             "projection_dimension": None, "checkpoint_id": checkpoint, "evaluation_order": order,
                             "decoder": "analytic_latest", "tracking_mode": "none", "label_kind": "public_baseline", "scope": "control",
                             "fit_history_indices": [], "evaluation_history_indices": sorted(eval_ids)}, target=y, prediction=latest)
+                if not protocol.get("include_dynamic_observers", True):
+                    continue
                 # Dynamic observers: fit only base-order train histories across every checkpoint.
                 dynamic_states, dynamic_rows = [], []
                 for checkpoint in checkpoints:

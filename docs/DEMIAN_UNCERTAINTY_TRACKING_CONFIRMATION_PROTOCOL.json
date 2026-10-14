@@ -1,0 +1,25 @@
+{
+  "protocol_id": "demian-uncertainty-tracking-confirmation-v1",
+  "claim_boundary": "fresh external decoder-tracking confirmation only; Demian weights, architecture, encoder and recurrent dynamics remain fixed",
+  "source_matrix_protocol": "DEMIAN_UNCERTAINTY_TRACKING_CONFIRMATION_MATRIX_PROTOCOL.json",
+  "source_matrix_directory": "data/diagnostics/demian_uncertainty_tracking_confirmation_matrix_v1_20261014",
+  "checkpoints": ["cue6", "delay2", "delay8"],
+  "projection_dimension": 16,
+  "projection_seeds": [17, 29, 43],
+  "ridge_alpha": 1.0,
+  "include_dynamic_observers": false,
+  "fitting_rule": "Fit cue6 readout, standardization and cue6-to-delay transforms only on base-order train32 histories. Apply the frozen objects to base-order eval32 and heldout-order eval32. Do not fit any object using heldout-order or evaluation states.",
+  "primary_measurement": "orthogonal_track frozen cue6 readout versus analytic latest-cue and matched conditional-label-shuffle controls on within-order eval32",
+  "secondary_measurement": "same base-trained frozen objects on heldout-order eval32; reliability-order changes may change the public evidence target, so this does not isolate geometry alone",
+  "decision_rule": "Confirmation requires true-label orthogonal_track R2 greater than both controls in every one of four seed by three projection cells at each of delay2 and delay8. Identity and scalar-scale rows are descriptive controls. Projections and delays are dependent within seed.",
+  "falsifier": "Any primary cell at either delay fails either control comparison; report mixed or failed declared tracking criterion without inferring information erasure.",
+  "artifact_directory": "data/diagnostics/demian_uncertainty_tracking_confirmation_v1_20261014",
+  "batches": [
+    {
+      "id": "fresh_confirmation",
+      "artifact_directory": "data/diagnostics/demian_uncertainty_tracking_confirmation_matrix_v1_20261014",
+      "source_manifest_sha256": "TO_BE_FILLED_AFTER_FROZEN_MATRIX_RUN",
+      "model_seeds": [2094, 2095, 2194, 2195]
+    }
+  ]
+}
