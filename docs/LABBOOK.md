@@ -1153,8 +1153,11 @@ Next:
 - Artifacts: `demian_uncertainty_matched_target_descriptor_{matrix,tracking,v1}_20261014`.
 - Protocol: new seeds 2494/2495/2594/2595, reliability-preserving cue
   permutation, split131, and base-order-only fits.
-- Observation: strict heldout transport passes 0/12 at delay2 and 2/12 at
-  delay8. No preregistered residual descriptor separates outcomes in three of
-  four seeds.
+- Correction: the first descriptor artifact fit channel maps with heldout-order
+  train states, so its association result is unevaluable. Corrected fits use
+  base-order train32 only and save fitted objects.
+- Observation: strict heldout transport remains 0/12 at delay2 and 2/12 at
+  delay8. No descriptor is nomination-eligible because neither delay has a
+  sufficient pass/fail seed contrast.
 - Interpretation: no residual or channel candidate is nominated. This does
   not imply information erasure or a causal channel conclusion.

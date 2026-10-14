@@ -13,18 +13,20 @@
       "date": "2026-10-14",
       "family": "fresh_matched_target_transport_descriptor_gate",
       "status": "active_evidence",
-      "primary_summary": "data/diagnostics/demian_uncertainty_matched_target_descriptor_v1_20261014/summary.json",
+      "primary_summary": "data/diagnostics/demian_uncertainty_matched_target_descriptor_corrected_v1_20261014/summary.json",
       "artifacts": [
         "docs/DEMIAN_UNCERTAINTY_MATCHED_TARGET_DESCRIPTOR_MATRIX_PROTOCOL.json",
         "docs/DEMIAN_UNCERTAINTY_MATCHED_TARGET_DESCRIPTOR_TRACKING_PROTOCOL.json",
         "docs/DEMIAN_UNCERTAINTY_MATCHED_TARGET_DESCRIPTOR_PROTOCOL.json",
+        "docs/DEMIAN_UNCERTAINTY_MATCHED_TARGET_DESCRIPTOR_CORRECTED_PROTOCOL.json",
         "docs/DEMIAN_UNCERTAINTY_MATCHED_TARGET_DESCRIPTOR_RESULTS.md",
         "data/diagnostics/demian_uncertainty_matched_target_descriptor_matrix_v1_20261014/manifest.json",
         "data/diagnostics/demian_uncertainty_matched_target_descriptor_tracking_v1_20261014/manifest.json",
-        "data/diagnostics/demian_uncertainty_matched_target_descriptor_v1_20261014/manifest.json"
+        "data/diagnostics/demian_uncertainty_matched_target_descriptor_v1_20261014/manifest.json",
+        "data/diagnostics/demian_uncertainty_matched_target_descriptor_corrected_v1_20261014/manifest.json"
       ],
       "claim_ids": [],
-      "interpretation": "Fresh matched-target strict transport is unstable and no preregistered residual or channel descriptor is nominated."
+      "interpretation": "The corrected base-order-only descriptor gate has unstable strict transport and no descriptor nomination; the earlier association artifact is unevaluable due heldout-order fitting."
     },
     {
       "id": "demian_uncertainty_tracking_confirmation_v2_20261014",

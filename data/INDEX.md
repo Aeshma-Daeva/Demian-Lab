@@ -74,9 +74,10 @@ Purpose:
 
 - Protocol: [../docs/DEMIAN_UNCERTAINTY_MATCHED_TARGET_DESCRIPTOR_PROTOCOL.json](../docs/DEMIAN_UNCERTAINTY_MATCHED_TARGET_DESCRIPTOR_PROTOCOL.json)
 - Record: [../docs/DEMIAN_UNCERTAINTY_MATCHED_TARGET_DESCRIPTOR_RESULTS.md](../docs/DEMIAN_UNCERTAINTY_MATCHED_TARGET_DESCRIPTOR_RESULTS.md)
-- Summary: [diagnostics/demian_uncertainty_matched_target_descriptor_v1_20261014/summary.json](diagnostics/demian_uncertainty_matched_target_descriptor_v1_20261014/summary.json)
-- Status: fresh matched-target frozen-fit gate; no residual or channel relation
-  met the preregistered three-of-four-seed nomination criterion.
+- Summary: [diagnostics/demian_uncertainty_matched_target_descriptor_corrected_v1_20261014/summary.json](diagnostics/demian_uncertainty_matched_target_descriptor_corrected_v1_20261014/summary.json)
+- Status: corrected base-order-only fit. No residual or channel relation met the
+  preregistered nomination criterion; prior association artifact is retained
+  as unevaluable.
 
 ## Representation geometry and channel relations
 
