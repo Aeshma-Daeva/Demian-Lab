@@ -1,0 +1,26 @@
+{
+  "protocol_id": "demian-uncertainty-final-slot-matched-confirmation-v1",
+  "stage": "independent_fresh_seed_confirmation",
+  "source_protocol": "DEMIAN_UNCERTAINTY_FINAL_SLOT_MATCHED_PROTOCOL.json",
+  "claim_boundary": "fixed-weight confirmation of one specified upstream cue-pair swap under a matched final cue-pair; no geometry, channel, routing, adaptation, learning, or causal claim",
+  "hidden_size": 256,
+  "model_seeds": [3494, 3495, 3594, 3595],
+  "train_order": [0.95, 0.75, 0.5, 0.75, 0.5, 0.95],
+  "history_split_seed": 181,
+  "checkpoints": [{"id":"cue6","evidence_count":6,"delay_steps":0},{"id":"delay2","evidence_count":6,"delay_steps":2},{"id":"delay8","evidence_count":6,"delay_steps":8}],
+  "frozen_reference_checkpoint": "cue6",
+  "projection_dimension": 16,
+  "projection_seeds": [17,29,43],
+  "ridge_alpha": 1.0,
+  "conditions": [
+    {"id":"identity","kind":"recency_reference","evaluation_order":[0.95,0.75,0.5,0.75,0.5,0.95],"evaluation_symbol_permutation":[0,1,2,3,4,5]},
+    {"id":"final05_base","kind":"matched_final_slot","evaluation_order":[0.95,0.75,0.5,0.75,0.95,0.5],"evaluation_symbol_permutation":[0,1,2,3,5,4]},
+    {"id":"final05_upstream_swap12","kind":"matched_final_slot","evaluation_order":[0.75,0.95,0.5,0.75,0.95,0.5],"evaluation_symbol_permutation":[1,0,2,3,5,4]}
+  ],
+  "target_rule":"Each condition applies its exact listed permutation jointly to symbols and reliabilities. Base and heldout paired histories retain the same complete symbol-reliability evidence-pair multiset and public log-odds target, subject to recorded floating-point tolerance 1e-12.",
+  "fitting_rule":"For every condition, fit the projection, cue6 decoder, normalization, and temporal tracker solely on base-order train32. Apply unchanged objects to paired heldout eval32. No heldout-order state, label, transform, or threshold may fit an object.",
+  "primary_outcome":"At delay8, final05_base minus final05_upstream_swap12 seed-median true tracked R2. Continuous margin and its decompositions are supporting only. Identity is a recency reference only.",
+  "seed_level_aggregation":"For each condition and parameter seed, use the median across three fixed projection seeds. Projection and checkpoint cells are dependent descriptive measurements.",
+  "confirmation_rule":"Confirm only if the primary base-minus-upstream true-R2 contrast is positive in at least three of four fresh seeds. On failure, report nonconfirmation and do not select another swap. On success, a separate descriptive geometry protocol may be considered; channel analysis and intervention remain excluded.",
+  "artifact_directory":"data/diagnostics/demian_uncertainty_final_slot_matched_confirmation_v1_20261014"
+}
