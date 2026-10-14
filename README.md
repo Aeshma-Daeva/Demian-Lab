@@ -119,17 +119,6 @@ and [research registry](data/RESEARCH_REGISTRY.json).
 Next gate: decompose matched cue permutations into recency and local-swap
 effects, using continuous frozen-transport scores and fresh seeds before any
 channel intervention.
-
-Demian local visibility pilot (fresh output directory):
-
-```bash
-./venv/bin/python -m development.run_demian_channel_visibility --out data/diagnostics/demian_channel_visibility_pilot
-```
-
-This is a paired local-sensitivity measurement, not evidence of adaptation or memory.
-Latest [pilot result](docs/DEMIAN_CHANNEL_VISIBILITY_RESULTS.md): direct visibility for
-`fast`, `message`, `carrier`, `gate`; one-transition visibility for `slow`, `control`.
-
 Demian local visibility pilot (fresh output directory):
 
 ```bash
