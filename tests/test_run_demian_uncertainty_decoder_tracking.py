@@ -171,3 +171,18 @@ def test_channel_transport_fit_is_frozen_to_calibration_rows():
     assert np.allclose(apply_channel_transport(fit, target), source, atol=1e-10)
     assert fit["fit_sample_count"] == 4
     assert np.linalg.det(fit["rotation"]) > 0.0
+
+
+def test_channel_transport_calibration_is_independent_of_heldout_values():
+    from development.analyze_demian_uncertainty_transport_descriptors import (
+        apply_channel_transport,
+        fit_channel_transport,
+    )
+
+    source = np.asarray([[0.0, 0.0], [1.0, 0.0], [0.0, 2.0], [2.0, 1.0]])
+    base_order_target = source + np.asarray([3.0, -2.0])
+    heldout_target = source * 1000.0
+    fit = fit_channel_transport(source, base_order_target)
+
+    assert np.allclose(apply_channel_transport(fit, base_order_target), source, atol=1e-10)
+    assert not np.allclose(apply_channel_transport(fit, heldout_target), source, atol=1e-10)

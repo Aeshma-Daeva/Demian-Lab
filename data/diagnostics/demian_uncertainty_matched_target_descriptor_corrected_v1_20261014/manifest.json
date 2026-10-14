@@ -1,0 +1,49 @@
+{
+  "file_sha256": {
+    "descriptors.jsonl": "aa427357f8197fee9c3c1fe6f370843169b0597ad08d10886765055f63aa0b1a",
+    "fitted_objects.npz": "0f9c2617277ef53a2d4beae5722feb1bc83ab1add46f23577a4cc43bab7972c4",
+    "summary.json": "feee0b21fe1c04ad9d28f54569c45ffe7fa84302319c5b60e975690826760069"
+  },
+  "protocol": {
+    "artifact_directory": "data/diagnostics/demian_uncertainty_matched_target_descriptor_corrected_v1_20261014",
+    "batch": {
+      "artifact_directory": "data/diagnostics/demian_uncertainty_matched_target_descriptor_matrix_v1_20261014",
+      "id": "matched_target_descriptor",
+      "model_seeds": [
+        2494,
+        2495,
+        2594,
+        2595
+      ],
+      "source_manifest_sha256": "6d6e927b682a820504a2031a2a4b5bfd5ef48681b499b1b5604918ff838536df"
+    },
+    "checkpoints": [
+      "delay2",
+      "delay8"
+    ],
+    "claim_boundary": "corrected frozen-fit descriptive association between heldout transport outcome and residual geometry; no channel causality, intervention, routing, adaptation, learning, or architectural claim",
+    "correction_of": "demian-uncertainty-matched-target-descriptor-v1",
+    "correction_reason": "All channel transport maps and relationship predictors fit only paired base-order cue6-to-checkpoint train32 states. The prior descriptor artifact used heldout-order calibration and is unevaluable for descriptor association.",
+    "decision_rule": "For each checkpoint and descriptor, report all seed-by-projection cells. A descriptor is nomination-eligible only if its predeclared direction separates pass from fail cells in at least three of four seeds. No descriptor is nominated if that criterion fails; associations remain descriptive even if it passes.",
+    "descriptors": [
+      "full_projected_residual_energy",
+      "six channel_residual_energy_fraction values",
+      "carrier_slow_residual_norm_correlation",
+      "gate_message_residual_norm_correlation",
+      "carrier_to_slow_residual_prediction_r2",
+      "gate_to_message_residual_prediction_r2"
+    ],
+    "fitting_rule": "Fit and save every channel transport map and relationship predictor using only paired base-order cue6-to-checkpoint train32. Apply all objects unchanged to paired heldout-order eval32. No heldout-order state, label, normalization, map, predictor, or threshold participates in fitting.",
+    "outcome_rule": "Strict transport pass is the frozen tracking rule: heldout proper-orthogonal true-label R2 exceeds both matched conditional-shuffle and analytic latest-cue R2. It is not an independent observation from the tracking artifact.",
+    "projection_seeds": [
+      17,
+      29,
+      43
+    ],
+    "protocol_id": "demian-uncertainty-matched-target-descriptor-corrected-v1",
+    "relationship_ridge_alpha": 1.0,
+    "tracking_artifact_directory": "data/diagnostics/demian_uncertainty_matched_target_descriptor_tracking_v1_20261014",
+    "tracking_manifest_sha256": "017be35734f96538cf298ffefc8c070d5c48f8bb77d1fe9ea2641ffd5249df9e"
+  },
+  "protocol_sha256": "79afeba785fcb56d5b3a44f35c77d3e6c25f8fede840ac804022f65262b811ba"
+}

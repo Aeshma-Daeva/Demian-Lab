@@ -115,19 +115,24 @@ def run_protocol(protocol: dict) -> dict:
     metrics = [json.loads(line) for line in (tracking_directory / "metrics.jsonl").read_text().splitlines()]
     transforms = np.load(tracking_directory / "transforms.npz")
     train_ids, eval_ids = set(split["train_history_indices"]), set(split["evaluation_history_indices"])
-    rows = []
+    rows, saved_fits = [], {}
     for seed in batch["model_seeds"]:
         source_all, source_meta = _cell(states, metadata, seed, "train", "cue6")
         train_ix = np.asarray([i for i, row in enumerate(source_meta) if _paired(row) in train_ids])
         eval_ix = np.asarray([i for i, row in enumerate(source_meta) if _paired(row) in eval_ids])
         channel_slices = _slices(source_meta[0]["channel_widths"])
         for checkpoint in protocol["checkpoints"]:
+            base_target_all, base_target_meta = _cell(states, metadata, seed, "train", checkpoint)
             target_all, target_meta = _cell(states, metadata, seed, "heldout", checkpoint)
+            if [_paired(row) for row in source_meta] != [_paired(row) for row in base_target_meta]:
+                raise ValueError("base-order history pairing changed")
             if [_paired(row) for row in source_meta] != [_paired(row) for row in target_meta]:
                 raise ValueError("cross-order history pairing changed")
             channel_residuals = {}
             for channel, channel_slice in channel_slices.items():
-                fit = fit_channel_transport(source_all[train_ix, channel_slice], target_all[train_ix, channel_slice])
+                fit = fit_channel_transport(source_all[train_ix, channel_slice], base_target_all[train_ix, channel_slice])
+                for name, value in fit.items():
+                    saved_fits[f"{seed}_{checkpoint}_{channel}_transport_{name}"] = value
                 channel_residuals[channel] = (apply_channel_transport(fit, target_all[eval_ix, channel_slice])
                                               - source_all[eval_ix, channel_slice])
             channel_energy = {channel: float(np.mean(np.sum(value ** 2, axis=1)))
@@ -138,11 +143,13 @@ def run_protocol(protocol: dict) -> dict:
                 left_norm = np.linalg.norm(channel_residuals[left], axis=1)
                 right_norm = np.linalg.norm(channel_residuals[right], axis=1)
                 # The predictor is fit on base-order calibration residuals only.
-                base_left = (apply_channel_transport(fit_channel_transport(source_all[train_ix, channel_slices[left]], target_all[train_ix, channel_slices[left]]), target_all[train_ix, channel_slices[left]])
+                base_left = (apply_channel_transport(fit_channel_transport(source_all[train_ix, channel_slices[left]], base_target_all[train_ix, channel_slices[left]]), base_target_all[train_ix, channel_slices[left]])
                              - source_all[train_ix, channel_slices[left]])
-                base_right = (apply_channel_transport(fit_channel_transport(source_all[train_ix, channel_slices[right]], target_all[train_ix, channel_slices[right]]), target_all[train_ix, channel_slices[right]])
+                base_right = (apply_channel_transport(fit_channel_transport(source_all[train_ix, channel_slices[right]], base_target_all[train_ix, channel_slices[right]]), base_target_all[train_ix, channel_slices[right]])
                               - source_all[train_ix, channel_slices[right]])
                 predictor = fit_probe(base_left, base_right, alpha=float(protocol["relationship_ridge_alpha"]))
+                for name, value in predictor.items():
+                    saved_fits[f"{seed}_{checkpoint}_{left}_to_{right}_residual_{name}"] = value
                 relationship[f"{left}_to_{right}_residual_prediction_r2"] = _vector_r2(base_right * 0 + channel_residuals[right], predict_probe(predictor, channel_residuals[left]))
                 relationship[f"{left}_{right}_residual_norm_correlation"] = _correlation(left_norm, right_norm)
             for projection in protocol["projection_seeds"]:
@@ -156,7 +163,7 @@ def run_protocol(protocol: dict) -> dict:
                              "channel_residual_energy_fraction": {channel: value / total_channel_energy if total_channel_energy else 0.0
                                                                  for channel, value in channel_energy.items()},
                              **relationship})
-    return {"descriptors": rows, "integrity": {"analysis_only": True, "architecture_changed": False,
+    return {"descriptors": rows, "fitted_objects": saved_fits, "integrity": {"analysis_only": True, "architecture_changed": False,
             "weights_changed": False, "state_count": len(states), "descriptor_count": len(rows),
             "matrix_manifest_sha256": batch["source_manifest_sha256"],
             "tracking_manifest_sha256": protocol["tracking_manifest_sha256"]}}
@@ -166,6 +173,7 @@ def write_artifacts(out: Path, protocol: dict, payload: dict) -> None:
     out.mkdir(parents=True, exist_ok=False)
     (out / "descriptors.jsonl").write_text("".join(json.dumps(row, sort_keys=True, allow_nan=False) + "\n"
                                                 for row in payload["descriptors"]))
+    np.savez(out / "fitted_objects.npz", **payload["fitted_objects"])
     (out / "summary.json").write_text(json.dumps({"experiment": protocol["protocol_id"],
         "claim_boundary": protocol["claim_boundary"], "integrity": payload["integrity"]}, indent=2, sort_keys=True) + "\n")
     hashes = {path.name: _sha(path) for path in out.iterdir()}
