@@ -111,7 +111,7 @@ def _channels(states: np.ndarray, widths: list[int]) -> dict[str, np.ndarray]:
 
 def _cell(states, metadata, seed, order, checkpoint):
     indices = [index for index, row in enumerate(metadata) if row["model_seed"] == seed and row["order"] == order and row["checkpoint_id"] == checkpoint]
-    indices.sort(key=lambda index: tuple(metadata[index]["symbols"]))
+    indices.sort(key=lambda index: int(metadata[index].get("paired_history_index", sum(int(bit) << (len(metadata[index]["symbols"])-1-position) for position, bit in enumerate(metadata[index]["symbols"])))))
     if not indices:
         raise ValueError(f"missing cell {seed}/{order}/{checkpoint}")
     return states[indices], [metadata[index] for index in indices]
