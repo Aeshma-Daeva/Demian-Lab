@@ -79,6 +79,11 @@ Purpose:
   preregistered nomination criterion; prior association artifact is retained
   as unevaluable.
 
+## Matched-target cue-order factorial
+
+- Record: [../docs/DEMIAN_UNCERTAINTY_MATCHED_TARGET_FACTORIAL_RESULTS.md](../docs/DEMIAN_UNCERTAINTY_MATCHED_TARGET_FACTORIAL_RESULTS.md)
+- Status: within-seed cue-order condition dependence; no mechanism attribution.
+
 ## Representation geometry and channel relations
 
 - Protocol: [../docs/DEMIAN_UNCERTAINTY_REPRESENTATION_RELATIONS_PROTOCOL.json](../docs/DEMIAN_UNCERTAINTY_REPRESENTATION_RELATIONS_PROTOCOL.json)

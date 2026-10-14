@@ -1161,3 +1161,10 @@ Next:
   sufficient pass/fail seed contrast.
 - Interpretation: no residual or channel candidate is nominated. This does
   not imply information erasure or a causal channel conclusion.
+
+## 2026-10-14 - Matched-target cue-order factorial
+
+- Same four fresh seeds and split, two reliability-preserving cue permutations.
+- Strict heldout passes: A/B = `3/12`/`8/12` at delay2 and `4/12`/`10/12` at
+  delay8; B exceeds A within every seed at both delays.
+- Boundary: a condition-dependence observation, not a channel or routing mechanism.
