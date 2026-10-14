@@ -141,18 +141,28 @@ def run_protocol(protocol):
                 frozen = fit_probe(x_source, source_labels, alpha=alpha)
                 shuffled = fit_probe(x_source, _shuffled_labels([source_rows_all[i] for i in source_train], int(seed)*10000+int(projection_seed)), alpha=alpha)
                 transforms[f"{batch['id']}_{seed}_{projection_seed}_basis"] = basis
+                # Fit every temporal tracker once on base-order train histories.
+                # The same tracker is applied to the heldout order: it is a
+                # strict portability score, not target-domain calibration.
+                base_trackers = {}
+                base_target, base_target_rows = cells[("train", checkpoints[0])]
+                for checkpoint in checkpoints:
+                    base_target, base_target_rows = cells[("train", checkpoint)]
+                    base_target_train = np.asarray([i for i, row in enumerate(base_target_rows) if _history_index(row) in train_ids])
+                    if [_history_index(source_rows_all[i]) for i in source_train] != [_history_index(base_target_rows[i]) for i in base_target_train]:
+                        raise ValueError("base tracker history pairing changed")
+                    base_trackers[checkpoint] = {mode: fit_tracker(x_source, (base_target @ basis)[base_target_train], mode=mode)
+                                                 for mode in ("identity", "scale_track", "orthogonal_track")}
                 for order in ("train", "heldout"):
                     for checkpoint in checkpoints:
                         target_all, target_rows_all = cells[(order, checkpoint)]
                         target_train = np.asarray([i for i, row in enumerate(target_rows_all) if _history_index(row) in train_ids])
                         target_eval = np.asarray([i for i, row in enumerate(target_rows_all) if _history_index(row) in eval_ids])
-                        if [ _history_index(source_rows_all[i]) for i in source_train ] != [ _history_index(target_rows_all[i]) for i in target_train ]:
-                            raise ValueError("calibration history pairing changed")
                         y = np.asarray([target_rows_all[i]["target_value"] for i in target_eval])
                         target_projected = target_all @ basis
                         for mode in ("identity", "scale_track", "orthogonal_track"):
-                            tracker = fit_tracker(x_source, target_projected[target_train], mode=mode)
-                            key = f"{batch['id']}_{seed}_{projection_seed}_{order}_{checkpoint}_{mode}"
+                            tracker = base_trackers[checkpoint][mode]
+                            key = f"{batch['id']}_{seed}_{projection_seed}_base_{checkpoint}_{mode}"
                             for name, value in tracker.items():
                                 transforms[f"{key}_{name}"] = value
                             corrected = apply_tracker(tracker, target_projected[target_eval])

@@ -1,13 +1,13 @@
 {
   "file_sha256": {
-    "metrics.jsonl": "404b83e36c114d19a4ce68949479f410690bceea1c695f82b05d0f19d16ae843",
-    "predictions.npz": "5f09c4f49c251da1ac52b8c968025d51964a0f03c6bd6f1fdbc24be00474ff43",
+    "metrics.jsonl": "1e5ec459607eaf765100cd6fe4a978dfe982cd6d0a5e5abbdbe8c2bcdc902971",
+    "predictions.npz": "317d2d5b43810251032815dbc3f0fa5cd3ca2111aff1dd4317806596b3582e78",
     "summary.json": "9934949d32a8baf9c47706af2e8a3b804b79fd0d077e94cf8cffb03d433edaff",
-    "transforms.npz": "6aebb34fa72f2d651181ff832710abc6c3150e57722875e757f8ed48103c916d"
+    "transforms.npz": "449791e649404b62c665a5a8bacad7279352c2bbf059652d0dc15aa49ffce432"
   },
   "protocol": {
     "architecture_and_weights": "unchanged",
-    "artifact_directory": "data/diagnostics/demian_uncertainty_decoder_tracking_v1_20261014",
+    "artifact_directory": "data/diagnostics/demian_uncertainty_decoder_tracking_v2_20261014",
     "batches": [
       {
         "artifact_directory": "data/diagnostics/demian_uncertainty_history_matrix_v1_20261013",
@@ -64,5 +64,5 @@
     ],
     "state_source": "E-UNC-013 and E-UNC-014 immutable history-matrix artifacts; no trajectories are newly generated"
   },
-  "protocol_sha256": "2645b5a06423e67c929a0b3261e904ebfdd2fb093e69057f385bbda9cc6c91a4"
+  "protocol_sha256": "846b0f9c709ec46d53549423faaa08b06e8a988d11cb65cc8e8a655728b4f221"
 }

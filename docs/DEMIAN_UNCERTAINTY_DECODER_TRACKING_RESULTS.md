@@ -1,7 +1,7 @@
 # External decoder tracking
 
 Protocol: `DEMIAN_UNCERTAINTY_DECODER_TRACKING_PROTOCOL.json`.
-Artifact: `data/diagnostics/demian_uncertainty_decoder_tracking_v1_20261014/`.
+Artifact: `data/diagnostics/demian_uncertainty_decoder_tracking_v2_20261014/`.
 This is an analysis-only external-observer result. Demian architecture and
 weights were unchanged; no readout fed back into the system.
 
@@ -10,8 +10,9 @@ weights were unchanged; no readout fed back into the system.
 The frozen 16-D cue6 decoder plus train-only translation/scale/proper-rotation
 tracking wins against both analytic latest-cue and matched shuffled-label
 controls in all 24 seed-by-projection within-order cells through delay8. At
-delay32 it wins 12/24; at delay64, 0/24. Across the heldout cue order it wins
-12/24, 16/24, 22/24, 10/24, and 0/24 cells from cue6 through delay64.
+delay32 it wins 12/24; at delay64, 0/24. The same base-order tracker applied
+unchanged to the heldout cue order wins 2/24, 8/24, 8/24, 9/24, and 0/24 cells
+from cue6 through delay64.
 
 The dynamic external observers are feasible but not self-regulation. The
 checkpoint-conditioned observer has mean R2 around `.54-.61` within order and
