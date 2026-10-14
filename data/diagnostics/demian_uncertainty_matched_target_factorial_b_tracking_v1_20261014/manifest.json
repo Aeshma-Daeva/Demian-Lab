@@ -1,0 +1,47 @@
+{
+  "dependency_versions": {
+    "numpy": "2.5.3"
+  },
+  "file_sha256": {
+    "metrics.jsonl": "25a80f58d011cee41a87b77ac7b01621bf463f7621bfa490ee29687fd5bced05",
+    "predictions.npz": "7baab608369e4d89b995d7870aa1fc8d422e04a532fc99d6e61deca42b9217a5",
+    "summary.json": "f151c50c7df259c1d68740d513b289bfad7e8d674c2183c72e87a3cf47f16779",
+    "transforms.npz": "56efa1350f7b695b57c5b9c8845fab158d4df0122270e62ca2df3be36a149392"
+  },
+  "protocol": {
+    "artifact_directory": "data/diagnostics/demian_uncertainty_matched_target_factorial_b_tracking_v1_20261014",
+    "batches": [
+      {
+        "artifact_directory": "data/diagnostics/demian_uncertainty_matched_target_factorial_b_matrix_v1_20261014",
+        "id": "factorial_b",
+        "model_seeds": [
+          2694,
+          2695,
+          2794,
+          2795
+        ],
+        "source_manifest_sha256": "68e4aaefeb38076cc0e92a8018069504a6ba913b0b98805c773ee98b2f7f6c0b"
+      }
+    ],
+    "checkpoints": [
+      "cue6",
+      "delay2",
+      "delay8"
+    ],
+    "claim_boundary": "external frozen matched-target coordinate tracking for factorial condition B; no internal adaptation, routing, learning, or causal channel claim",
+    "decision_rule": "Compare this condition with factorial A within parameter seed. A strict heldout pass requires orthogonal true-label R2 greater than latest-cue and conditional-shuffle R2. No condition effect is claimed without the same seed-level direction in at least three of four seeds.",
+    "fitting_rule": "Fit cue6 decoder, normalization and trackers only on base-order train32. Apply unchanged objects to paired base-order eval32 and heldout-order eval32.",
+    "include_dynamic_observers": false,
+    "projection_dimension": 16,
+    "projection_seeds": [
+      17,
+      29,
+      43
+    ],
+    "protocol_id": "demian-uncertainty-matched-target-factorial-b-tracking-v1",
+    "ridge_alpha": 1.0,
+    "source_matrix_directory": "data/diagnostics/demian_uncertainty_matched_target_factorial_b_matrix_v1_20261014"
+  },
+  "protocol_sha256": "800af46ad147a06c0a220de7c34bed7a8d814401ac1632a8c978b89b498fae70",
+  "source_commit": "15b89565e8dfa04478b057812e6126c42b2ac1af"
+}

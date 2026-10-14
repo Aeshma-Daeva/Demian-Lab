@@ -1,0 +1,78 @@
+{
+  "file_sha256": {
+    "metrics.jsonl": "1ec02b53f81dca2af97d177e6ab6c7af5a7e92903c2320e0f2aef5b8e633a1d3",
+    "predictions.npz": "ed051b23b432d7c24edf86367821a91d6d8e3031187a3829158a5200b75b6f45",
+    "state_metadata.jsonl": "2f7ee373785765b6d251679274c66bd0a5daec090b4244d7c02a29dc05821e71",
+    "states.npz": "f61e8bba2d629da5d336593e2e914881eb9f35a7f21da355fe5119dfdd54fa23",
+    "summary.json": "b1f85ca239a1dfda17877af3c34a908be5346aa0d2555e890806cddf00d47ea9",
+    "transforms.npz": "1fd2dc7a230903a56ee9bd3215dcbe1b847911e53d4a745c00208a8efd31b31d"
+  },
+  "protocol": {
+    "artifact_directory": "data/diagnostics/demian_uncertainty_matched_target_factorial_a_matrix_v1_20261014",
+    "checkpoints": [
+      {
+        "delay_steps": 0,
+        "evidence_count": 6,
+        "id": "cue6"
+      },
+      {
+        "delay_steps": 2,
+        "evidence_count": 6,
+        "id": "delay2"
+      },
+      {
+        "delay_steps": 8,
+        "evidence_count": 6,
+        "id": "delay8"
+      }
+    ],
+    "claim_boundary": "fixed-weight seed-by-cue-order transport characterization; no intervention, adaptation, learning, routing, or causal-channel claim",
+    "condition": "A",
+    "decision_rule": "Run condition B on exactly the same seeds, base order, checkpoints, projections, and split. Compare schedule conditions within seed; projections remain dependent sensitivity conditions. No condition effect is claimed without a preregistered consistent seed-level contrast.",
+    "evaluation_order": [
+      0.5,
+      0.95,
+      0.75,
+      0.5,
+      0.95,
+      0.75
+    ],
+    "evaluation_symbol_permutation": [
+      2,
+      0,
+      1,
+      4,
+      5,
+      3
+    ],
+    "factorial_family": "demian-uncertainty-matched-target-factorial-v1",
+    "frozen_reference_checkpoint": "cue6",
+    "hidden_size": 256,
+    "history_split_seed": 149,
+    "matched_target_rule": "Heldout symbols are [s2,s0,s1,s4,s5,s3]; each moved symbol retains its base-order reliability, preserving every history's evidence-pair multiset and log-odds target.",
+    "model_seeds": [
+      2694,
+      2695,
+      2794,
+      2795
+    ],
+    "projection_dimension": 16,
+    "projection_seeds": [
+      17,
+      29,
+      43
+    ],
+    "protocol_id": "demian-uncertainty-matched-target-factorial-a-matrix-v1",
+    "ridge_alpha": 1.0,
+    "train_order": [
+      0.95,
+      0.75,
+      0.5,
+      0.75,
+      0.5,
+      0.95
+    ]
+  },
+  "protocol_sha256": "e685ac4582b573373c66a3ae1a79aa9dbe1a3542ba5187c96368dcbf30144f4c",
+  "source_commit": "476e6ee97efeff6a2dd2dc1dbcfc02bb9f73f3ef"
+}

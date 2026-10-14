@@ -1,0 +1,470 @@
+{
+  "claim_boundary": "fixed-weight seed-by-cue-order transport characterization; no intervention, adaptation, learning, routing, or causal-channel claim",
+  "experiment": "demian-uncertainty-matched-target-factorial-b-matrix-v1",
+  "integrity": {
+    "all_finite": true,
+    "history_split": {
+      "evaluation_history_indices": [
+        4,
+        6,
+        9,
+        11,
+        12,
+        13,
+        15,
+        16,
+        18,
+        19,
+        21,
+        22,
+        24,
+        26,
+        27,
+        29,
+        31,
+        33,
+        34,
+        35,
+        37,
+        38,
+        40,
+        43,
+        44,
+        46,
+        48,
+        53,
+        54,
+        55,
+        60,
+        63
+      ],
+      "seed": 149,
+      "strata": "train-order final symbol and public log-odds sign, zero tolerance1e-12; paired allocation fixed across orders, times and parameter seeds",
+      "train_history_indices": [
+        0,
+        1,
+        2,
+        3,
+        5,
+        7,
+        8,
+        10,
+        14,
+        17,
+        20,
+        23,
+        25,
+        28,
+        30,
+        32,
+        36,
+        39,
+        41,
+        42,
+        45,
+        47,
+        49,
+        50,
+        51,
+        52,
+        56,
+        57,
+        58,
+        59,
+        61,
+        62
+      ]
+    },
+    "scope": "train-only frozen coefficients and scale; early checkpoints descriptive; no erasure or causal interpretation",
+    "state_shift_rows": [
+      {
+        "channel_norm_means": {
+          "carrier": 6.754528352717079,
+          "control": 1.717082139181346,
+          "fast": 1.215642983805306,
+          "gate": 10.733483152094902,
+          "message": 4.552321348000136,
+          "slow": 6.103896784571945
+        },
+        "checkpoint_id": "cue6",
+        "frozen_reference_centroid_shift": 0.0,
+        "model_seed": 2694,
+        "order": "train",
+        "order_centroid_shift": 0.0,
+        "state_norm_mean": 14.94119870833065
+      },
+      {
+        "channel_norm_means": {
+          "carrier": 6.754828568603054,
+          "control": 1.716763739162766,
+          "fast": 1.2193711631351114,
+          "gate": 10.728404881052763,
+          "message": 4.551221871728838,
+          "slow": 6.104193286240111
+        },
+        "checkpoint_id": "cue6",
+        "frozen_reference_centroid_shift": 0.13936482891870203,
+        "model_seed": 2694,
+        "order": "heldout",
+        "order_centroid_shift": 0.13936482891870203,
+        "state_norm_mean": 14.937740304336259
+      },
+      {
+        "channel_norm_means": {
+          "carrier": 9.736987415202268,
+          "control": 2.035076509922075,
+          "fast": 1.2218026079308228,
+          "gate": 16.846755716938937,
+          "message": 5.825839061845588,
+          "slow": 8.45287097902002
+        },
+        "checkpoint_id": "delay2",
+        "frozen_reference_centroid_shift": 8.770406924354964,
+        "model_seed": 2694,
+        "order": "train",
+        "order_centroid_shift": 0.0,
+        "state_norm_mean": 22.128016827195133
+      },
+      {
+        "channel_norm_means": {
+          "carrier": 9.73708305879857,
+          "control": 2.033616219769927,
+          "fast": 1.2251934366750432,
+          "gate": 16.846166993930936,
+          "message": 5.824412784206813,
+          "slow": 8.454170328508402
+        },
+        "checkpoint_id": "delay2",
+        "frozen_reference_centroid_shift": 8.770250645881653,
+        "model_seed": 2694,
+        "order": "heldout",
+        "order_centroid_shift": 0.07320383700206702,
+        "state_norm_mean": 22.12778495759767
+      },
+      {
+        "channel_norm_means": {
+          "carrier": 27.652091353678806,
+          "control": 3.7358002035428033,
+          "fast": 1.9930667061735874,
+          "gate": 47.33562681954115,
+          "message": 12.283609707963219,
+          "slow": 20.32101834602613
+        },
+        "checkpoint_id": "delay8",
+        "frozen_reference_centroid_shift": 50.831491846771,
+        "model_seed": 2694,
+        "order": "train",
+        "order_centroid_shift": 0.0,
+        "state_norm_mean": 59.892123550782394
+      },
+      {
+        "channel_norm_means": {
+          "carrier": 27.650410336095455,
+          "control": 3.73626801340746,
+          "fast": 1.993032447167356,
+          "gate": 47.33965779362117,
+          "message": 12.284350696238533,
+          "slow": 20.324346154000224
+        },
+        "checkpoint_id": "delay8",
+        "frozen_reference_centroid_shift": 50.83433484453676,
+        "model_seed": 2694,
+        "order": "heldout",
+        "order_centroid_shift": 0.09565346052986541,
+        "state_norm_mean": 59.8958426406252
+      },
+      {
+        "channel_norm_means": {
+          "carrier": 7.38084329751822,
+          "control": 1.5619067111789657,
+          "fast": 1.1571747193705302,
+          "gate": 9.660240673181384,
+          "message": 4.802684102856345,
+          "slow": 6.299696428891478
+        },
+        "checkpoint_id": "cue6",
+        "frozen_reference_centroid_shift": 0.0,
+        "model_seed": 2695,
+        "order": "train",
+        "order_centroid_shift": 0.0,
+        "state_norm_mean": 14.639956011469662
+      },
+      {
+        "channel_norm_means": {
+          "carrier": 7.379267259043767,
+          "control": 1.5585860658042896,
+          "fast": 1.1419797088209909,
+          "gate": 9.658857633724443,
+          "message": 4.7990451529633225,
+          "slow": 6.299908070185603
+        },
+        "checkpoint_id": "cue6",
+        "frozen_reference_centroid_shift": 0.1423657916631554,
+        "model_seed": 2695,
+        "order": "heldout",
+        "order_centroid_shift": 0.1423657916631554,
+        "state_norm_mean": 14.635597294471687
+      },
+      {
+        "channel_norm_means": {
+          "carrier": 10.619240327497515,
+          "control": 1.940849107733586,
+          "fast": 1.2256805791963439,
+          "gate": 14.849165230462274,
+          "message": 6.349322756923612,
+          "slow": 8.785094641474874
+        },
+        "checkpoint_id": "delay2",
+        "frozen_reference_centroid_shift": 8.34355766689711,
+        "model_seed": 2695,
+        "order": "train",
+        "order_centroid_shift": 0.0,
+        "state_norm_mean": 21.354797381338408
+      },
+      {
+        "channel_norm_means": {
+          "carrier": 10.617829532676168,
+          "control": 1.9399060279628548,
+          "fast": 1.2226297781675102,
+          "gate": 14.844788129131501,
+          "message": 6.345916375278542,
+          "slow": 8.785966885768541
+        },
+        "checkpoint_id": "delay2",
+        "frozen_reference_centroid_shift": 8.339801488409421,
+        "model_seed": 2695,
+        "order": "heldout",
+        "order_centroid_shift": 0.07491997409069952,
+        "state_norm_mean": 21.350137753124123
+      },
+      {
+        "channel_norm_means": {
+          "carrier": 28.939281491504808,
+          "control": 3.461924148909455,
+          "fast": 2.014950907762835,
+          "gate": 41.638612027265424,
+          "message": 14.069228187763445,
+          "slow": 21.660503949712393
+        },
+        "checkpoint_id": "delay8",
+        "frozen_reference_centroid_shift": 48.392978367224465,
+        "model_seed": 2695,
+        "order": "train",
+        "order_centroid_shift": 0.0,
+        "state_norm_mean": 57.047562326791315
+      },
+      {
+        "channel_norm_means": {
+          "carrier": 28.937504758563094,
+          "control": 3.4635209766424775,
+          "fast": 2.016387196086953,
+          "gate": 41.62834607138551,
+          "message": 14.06881185562331,
+          "slow": 21.657723674139426
+        },
+        "checkpoint_id": "delay8",
+        "frozen_reference_centroid_shift": 48.38268092308991,
+        "model_seed": 2695,
+        "order": "heldout",
+        "order_centroid_shift": 0.11528154797134374,
+        "state_norm_mean": 57.038157567340875
+      },
+      {
+        "channel_norm_means": {
+          "carrier": 7.51155585425616,
+          "control": 1.2953693943075275,
+          "fast": 1.2225023387967269,
+          "gate": 9.314396588830956,
+          "message": 5.175081163215275,
+          "slow": 5.551540141612526
+        },
+        "checkpoint_id": "cue6",
+        "frozen_reference_centroid_shift": 0.0,
+        "model_seed": 2794,
+        "order": "train",
+        "order_centroid_shift": 0.0,
+        "state_norm_mean": 14.281290735179038
+      },
+      {
+        "channel_norm_means": {
+          "carrier": 7.512465579530048,
+          "control": 1.2954042428139165,
+          "fast": 1.2227612516180957,
+          "gate": 9.313814488036408,
+          "message": 5.173049460308913,
+          "slow": 5.551851405315174
+        },
+        "checkpoint_id": "cue6",
+        "frozen_reference_centroid_shift": 0.1379928604137669,
+        "model_seed": 2794,
+        "order": "heldout",
+        "order_centroid_shift": 0.1379928604137669,
+        "state_norm_mean": 14.280799567559502
+      },
+      {
+        "channel_norm_means": {
+          "carrier": 10.831049632555398,
+          "control": 1.663883562565045,
+          "fast": 1.3119920949668638,
+          "gate": 14.570753388629615,
+          "message": 6.400599682609066,
+          "slow": 8.003595062780247
+        },
+        "checkpoint_id": "delay2",
+        "frozen_reference_centroid_shift": 8.310512880557878,
+        "model_seed": 2794,
+        "order": "train",
+        "order_centroid_shift": 0.0,
+        "state_norm_mean": 20.95552329622025
+      },
+      {
+        "channel_norm_means": {
+          "carrier": 10.832147559443335,
+          "control": 1.6675322950076406,
+          "fast": 1.310506961551237,
+          "gate": 14.57240103591821,
+          "message": 6.39814341170643,
+          "slow": 8.002512077572373
+        },
+        "checkpoint_id": "delay2",
+        "frozen_reference_centroid_shift": 8.311014044212977,
+        "model_seed": 2794,
+        "order": "heldout",
+        "order_centroid_shift": 0.07843861435393772,
+        "state_norm_mean": 20.956269813360663
+      },
+      {
+        "channel_norm_means": {
+          "carrier": 29.58339205114273,
+          "control": 4.279871388427395,
+          "fast": 2.0570339729144327,
+          "gate": 44.381418436442736,
+          "message": 12.440712325625096,
+          "slow": 23.499700385422805
+        },
+        "checkpoint_id": "delay8",
+        "frozen_reference_centroid_shift": 51.71901647127139,
+        "model_seed": 2794,
+        "order": "train",
+        "order_centroid_shift": 0.0,
+        "state_norm_mean": 59.786695769973534
+      },
+      {
+        "channel_norm_means": {
+          "carrier": 29.587647136401575,
+          "control": 4.282930463916729,
+          "fast": 2.0578077581911356,
+          "gate": 44.38910482630004,
+          "message": 12.43643858720749,
+          "slow": 23.495826384939342
+        },
+        "checkpoint_id": "delay8",
+        "frozen_reference_centroid_shift": 51.723037138884514,
+        "model_seed": 2794,
+        "order": "heldout",
+        "order_centroid_shift": 0.1422048671222293,
+        "state_norm_mean": 59.79234099467091
+      },
+      {
+        "channel_norm_means": {
+          "carrier": 7.2004158960272004,
+          "control": 1.384313871715735,
+          "fast": 1.229570576291195,
+          "gate": 9.74765037531543,
+          "message": 4.750920730611292,
+          "slow": 6.44179502576862
+        },
+        "checkpoint_id": "cue6",
+        "frozen_reference_centroid_shift": 0.0,
+        "model_seed": 2795,
+        "order": "train",
+        "order_centroid_shift": 0.0,
+        "state_norm_mean": 14.641013237042321
+      },
+      {
+        "channel_norm_means": {
+          "carrier": 7.2005599667422855,
+          "control": 1.3834845518939933,
+          "fast": 1.2163269649839612,
+          "gate": 9.751449233700786,
+          "message": 4.750629208410853,
+          "slow": 6.4432164006179224
+        },
+        "checkpoint_id": "cue6",
+        "frozen_reference_centroid_shift": 0.14187616749848406,
+        "model_seed": 2795,
+        "order": "heldout",
+        "order_centroid_shift": 0.14187616749848406,
+        "state_norm_mean": 14.642959372086047
+      },
+      {
+        "channel_norm_means": {
+          "carrier": 10.596840727873909,
+          "control": 1.6962534441283679,
+          "fast": 1.31354063108223,
+          "gate": 14.99923354586203,
+          "message": 6.208105392837188,
+          "slow": 9.053093844376473
+        },
+        "checkpoint_id": "delay2",
+        "frozen_reference_centroid_shift": 8.474619620200123,
+        "model_seed": 2795,
+        "order": "train",
+        "order_centroid_shift": 0.0,
+        "state_norm_mean": 21.50283896536515
+      },
+      {
+        "channel_norm_means": {
+          "carrier": 10.597329323639176,
+          "control": 1.6934249283112388,
+          "fast": 1.3045691375279411,
+          "gate": 15.007395868755792,
+          "message": 6.208207305337563,
+          "slow": 9.052486191679373
+        },
+        "checkpoint_id": "delay2",
+        "frozen_reference_centroid_shift": 8.480126671967982,
+        "model_seed": 2795,
+        "order": "heldout",
+        "order_centroid_shift": 0.07922251534045105,
+        "state_norm_mean": 21.507778746743007
+      },
+      {
+        "channel_norm_means": {
+          "carrier": 28.880694910354457,
+          "control": 3.9813550472172827,
+          "fast": 2.2161296563054957,
+          "gate": 42.769802887401184,
+          "message": 13.247508960926272,
+          "slow": 21.896786255859013
+        },
+        "checkpoint_id": "delay8",
+        "frozen_reference_centroid_shift": 49.180560801264996,
+        "model_seed": 2795,
+        "order": "train",
+        "order_centroid_shift": 0.0,
+        "state_norm_mean": 57.78476584104925
+      },
+      {
+        "channel_norm_means": {
+          "carrier": 28.880556969652645,
+          "control": 3.9841817617754627,
+          "fast": 2.2155741288601325,
+          "gate": 42.76275864469963,
+          "message": 13.248444994142712,
+          "slow": 21.893417748810542
+        },
+        "checkpoint_id": "delay8",
+        "frozen_reference_centroid_shift": 49.172474447090345,
+        "model_seed": 2795,
+        "order": "heldout",
+        "order_centroid_shift": 0.11844062213606599,
+        "state_norm_mean": 57.778594969413476
+      }
+    ],
+    "suffix_invariance_checked": true,
+    "unique_prefixes_deduplicated": true
+  },
+  "metric_count": 1344,
+  "state_count": 1536
+}
