@@ -1,0 +1,49 @@
+{
+  "dependency_versions": {
+    "numpy": "2.5.3"
+  },
+  "file_sha256": {
+    "metrics.jsonl": "4f90723e204084828d42a72e74964be29372208cdcbbb77494d8aef7226d7f5e",
+    "predictions.npz": "6311b90a9389cfdeaf9e20454dcd167f9cfb1a216128222a32c0917af7ce0ee3",
+    "summary.json": "75c600e4d6b197dd72775d44c09c06bfdb79a75b2e8c860c71b371da85fa46f0",
+    "transforms.npz": "dfd368d1ce6bb83b1898e99b7564551e908fc29a40711ce30906b9cfcb7af353"
+  },
+  "protocol": {
+    "artifact_directory": "data/diagnostics/demian_uncertainty_matched_target_tracking_v1_20261014",
+    "batches": [
+      {
+        "artifact_directory": "data/diagnostics/demian_uncertainty_matched_target_matrix_v1_20261014",
+        "id": "matched_target",
+        "model_seeds": [
+          2294,
+          2295,
+          2394,
+          2395
+        ],
+        "source_manifest_sha256": "c13350153acfcebf72ddd5fe06a440afbe463fb78efbfb198d2278edb6f81cb9"
+      }
+    ],
+    "checkpoints": [
+      "cue6",
+      "delay2",
+      "delay8"
+    ],
+    "claim_boundary": "external frozen decoder coordinate tracking on fresh matched-target order states; not Demian adaptation, self-decoding, routing, learning, or channel causality",
+    "controls": "Identity, scalar-scale, proper-orthogonal tracking; analytic latest-cue; conditional train-label shuffle.",
+    "decision_rule": "Report every seed-by-projection cell. Strong matched-target portability requires orthogonal-track true-label R2 to exceed latest-cue and shuffle in all 12 heldout-order cells at a delay. A failure is a frozen transport failure, not evidence erasure.",
+    "fitting_rule": "Fit cue6 readout, standardization and temporal tracker only on base-order train32. Apply unchanged objects to paired base-order eval32 and heldout-order eval32. The heldout order has paired histories with exactly equal public evidence targets.",
+    "include_dynamic_observers": false,
+    "projection_dimension": 16,
+    "projection_seeds": [
+      17,
+      29,
+      43
+    ],
+    "protocol_id": "demian-uncertainty-matched-target-tracking-v1",
+    "ridge_alpha": 1.0,
+    "source_matrix_directory": "data/diagnostics/demian_uncertainty_matched_target_matrix_v1_20261014",
+    "source_matrix_protocol": "DEMIAN_UNCERTAINTY_MATCHED_TARGET_MATRIX_PROTOCOL.json"
+  },
+  "protocol_sha256": "c1656a53c00fb1e9e1cab16d549fa7cd6af06e7e5e1017c5a2aa3cfe8b8e3efa",
+  "source_commit": "52c4219ba4db212f981947e352a7797c20679f36"
+}

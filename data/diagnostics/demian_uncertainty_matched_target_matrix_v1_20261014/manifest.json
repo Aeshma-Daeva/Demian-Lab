@@ -1,0 +1,77 @@
+{
+  "file_sha256": {
+    "metrics.jsonl": "3f751c27a7d87f572f928f9cd997ee37cf862766a5697f7a61828769b8678a6d",
+    "predictions.npz": "6f5e9392998df956d04ddda2698c8b832b1f9338c02e29f36aff834b7a370c68",
+    "state_metadata.jsonl": "1e7c41aeca85c7397b410a2ada4e5fe1ccd9a5232d34cd351387739e0a19ba85",
+    "states.npz": "63a4fd4d70f100bba3cd7cafca76d59edefbf0f0fd8905871fbc0c99cd123554",
+    "summary.json": "78d64dcf8be28743e73460a89cd28a4962da9db18f22e25f599be1d02d9495db",
+    "transforms.npz": "a87f6f564367ee01e4b44595ac8b11512174902d5971728a0bfb4534f2cae385"
+  },
+  "protocol": {
+    "artifact_directory": "data/diagnostics/demian_uncertainty_matched_target_matrix_v1_20261014",
+    "checkpoints": [
+      {
+        "delay_steps": 0,
+        "evidence_count": 6,
+        "id": "cue6"
+      },
+      {
+        "delay_steps": 2,
+        "evidence_count": 6,
+        "id": "delay2"
+      },
+      {
+        "delay_steps": 8,
+        "evidence_count": 6,
+        "id": "delay8"
+      }
+    ],
+    "claim_boundary": "fresh fixed-weight matched-target state collection for external decoder tracking; no internal adaptation, routing, learning, or causal mechanism claim",
+    "controls": "All 64 histories per order/seed/checkpoint; base-order stratified train32/eval32 split; analytic latest-cue and matched conditional-label shuffle. No heldout-order state or evaluation history fits an object.",
+    "decision_rule": "Within-order delay2/delay8 uses the prior all-cell criterion. The primary matched-target question is strict heldout-order performance of the unchanged base decoder/tracker, reported against identity, scalar-scale, analytic latest-cue and shuffle. This separates target mismatch from coordinate transport but does not establish a causal channel mechanism.",
+    "evaluation_order": [
+      0.75,
+      0.95,
+      0.5,
+      0.5,
+      0.75,
+      0.95
+    ],
+    "evaluation_symbol_permutation": [
+      1,
+      0,
+      2,
+      4,
+      3,
+      5
+    ],
+    "frozen_reference_checkpoint": "cue6",
+    "hidden_size": 256,
+    "history_split_seed": 109,
+    "matched_target_rule": "For every base binary history s, heldout order receives symbols [s1,s0,s2,s4,s3,s5]. Each symbol remains paired with the same reliability as in base order, so public evidence pairs and log-odds targets are identical while cue sequence position changes.",
+    "model_seeds": [
+      2294,
+      2295,
+      2394,
+      2395
+    ],
+    "projection_dimension": 16,
+    "projection_seeds": [
+      17,
+      29,
+      43
+    ],
+    "protocol_id": "demian-uncertainty-matched-target-matrix-v1",
+    "ridge_alpha": 1.0,
+    "train_order": [
+      0.95,
+      0.75,
+      0.5,
+      0.75,
+      0.5,
+      0.95
+    ]
+  },
+  "protocol_sha256": "fe7050d6fe3056b52b94b7f54fd01232de7b07b2f0fd63999c2f0c697688cb1f",
+  "source_commit": "52c4219ba4db212f981947e352a7797c20679f36"
+}
