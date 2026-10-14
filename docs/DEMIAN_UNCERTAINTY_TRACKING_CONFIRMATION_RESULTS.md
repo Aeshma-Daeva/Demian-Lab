@@ -2,6 +2,8 @@
 
 Protocol: `DEMIAN_UNCERTAINTY_TRACKING_CONFIRMATION_PROTOCOL.json`.
 Artifacts: `data/diagnostics/demian_uncertainty_tracking_confirmation_matrix_v1_20261014/` and `data/diagnostics/demian_uncertainty_tracking_confirmation_v2_20261014/`.
+Precheck: `DEMIAN_UNCERTAINTY_DECODER_TRACKING_PRECHECK.md` records an excluded
+secondary-observer description/implementation discrepancy.
 
 ## Observation
 
