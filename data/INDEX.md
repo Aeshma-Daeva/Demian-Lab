@@ -70,6 +70,14 @@ Purpose:
 
 ## Uncertainty Discovery Harness
 
+## Matched-target transport descriptor gate
+
+- Protocol: [../docs/DEMIAN_UNCERTAINTY_MATCHED_TARGET_DESCRIPTOR_PROTOCOL.json](../docs/DEMIAN_UNCERTAINTY_MATCHED_TARGET_DESCRIPTOR_PROTOCOL.json)
+- Record: [../docs/DEMIAN_UNCERTAINTY_MATCHED_TARGET_DESCRIPTOR_RESULTS.md](../docs/DEMIAN_UNCERTAINTY_MATCHED_TARGET_DESCRIPTOR_RESULTS.md)
+- Summary: [diagnostics/demian_uncertainty_matched_target_descriptor_v1_20261014/summary.json](diagnostics/demian_uncertainty_matched_target_descriptor_v1_20261014/summary.json)
+- Status: fresh matched-target frozen-fit gate; no residual or channel relation
+  met the preregistered three-of-four-seed nomination criterion.
+
 ## Representation geometry and channel relations
 
 - Protocol: [../docs/DEMIAN_UNCERTAINTY_REPRESENTATION_RELATIONS_PROTOCOL.json](../docs/DEMIAN_UNCERTAINTY_REPRESENTATION_RELATIONS_PROTOCOL.json)

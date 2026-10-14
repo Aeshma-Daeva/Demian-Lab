@@ -1147,3 +1147,14 @@ Next:
   reproduced 504 metrics, prediction rows and 732 saved arrays. Review agrees
   with mixed and no status promotion; adversarial isolation and replay tests
   added afterward.
+
+## 2026-10-14 - Fresh matched-target transport descriptor gate
+
+- Artifacts: `demian_uncertainty_matched_target_descriptor_{matrix,tracking,v1}_20261014`.
+- Protocol: new seeds 2494/2495/2594/2595, reliability-preserving cue
+  permutation, split131, and base-order-only fits.
+- Observation: strict heldout transport passes 0/12 at delay2 and 2/12 at
+  delay8. No preregistered residual descriptor separates outcomes in three of
+  four seeds.
+- Interpretation: no residual or channel candidate is nominated. This does
+  not imply information erasure or a causal channel conclusion.
