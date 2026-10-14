@@ -748,7 +748,7 @@
       "name": "Strict base-trained short-horizon tracker controls",
       "semantics": "Fits the cue6 decoder and delay transforms only on base-order train32 histories, then applies unchanged objects to paired heldout histories in both orders; compares analytic latest-cue, conditional-label shuffle, identity and scalar-scale controls.",
       "limitations": ["Projection and checkpoint cells are dependent within seed.", "Cue-order changes can change the public evidence target as well as state geometry."],
-      "artifact_ids": ["A-UNC-TRACK-CONF-PROTOCOL-001", "A-UNC-TRACK-CONF-SUMMARY-001", "A-UNC-TRACK-CONF-METRICS-001"]
+      "artifact_ids": ["A-UNC-TRACK-CONF-PROTOCOL-001", "A-UNC-TRACK-CONF-SUMMARY-001", "A-UNC-TRACK-CONF-METRICS-001", "A-UNC-TRACK-PRECHECK-001"]
     },
     {
       "id": "C-UNC-TRACK-001",
@@ -1993,7 +1993,7 @@
     {
       "id": "A-UNC-TRACK-CONF-PROTOCOL-001",
       "repository": "Aeshma-Daeva/Demian-Lab",
-      "commit": "6866ab83d2bd3f479b7f1c6a59dc3f9543aad949",
+      "commit": "eeabb0e2a69daef72eae386655c6b5939e892406",
       "path": "docs/DEMIAN_UNCERTAINTY_TRACKING_CONFIRMATION_PROTOCOL.json",
       "media_type": "application/json",
       "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/6866ab83d2bd3f479b7f1c6a59dc3f9543aad949/docs/DEMIAN_UNCERTAINTY_TRACKING_CONFIRMATION_PROTOCOL.json"
@@ -2017,10 +2017,18 @@
     {
       "id": "A-UNC-TRACK-CONF-RESULTS-001",
       "repository": "Aeshma-Daeva/Demian-Lab",
-      "commit": "6866ab83d2bd3f479b7f1c6a59dc3f9543aad949",
+      "commit": "4b1f5e254363de00bff2715eabeb67f009f2e4fc",
       "path": "docs/DEMIAN_UNCERTAINTY_TRACKING_CONFIRMATION_RESULTS.md",
       "media_type": "text/markdown",
-      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/6866ab83d2bd3f479b7f1c6a59dc3f9543aad949/docs/DEMIAN_UNCERTAINTY_TRACKING_CONFIRMATION_RESULTS.md"
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/4b1f5e254363de00bff2715eabeb67f009f2e4fc/docs/DEMIAN_UNCERTAINTY_TRACKING_CONFIRMATION_RESULTS.md"
+    },
+    {
+      "id": "A-UNC-TRACK-PRECHECK-001",
+      "repository": "Aeshma-Daeva/Demian-Lab",
+      "commit": "eeabb0e2a69daef72eae386655c6b5939e892406",
+      "path": "docs/DEMIAN_UNCERTAINTY_DECODER_TRACKING_PRECHECK.md",
+      "media_type": "text/markdown",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/eeabb0e2a69daef72eae386655c6b5939e892406/docs/DEMIAN_UNCERTAINTY_DECODER_TRACKING_PRECHECK.md"
     },
     {
       "id": "A-UNC-TRACK-PROTOCOL-001",
