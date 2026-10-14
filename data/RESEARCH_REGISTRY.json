@@ -284,6 +284,23 @@
   ],
   "experiments": [
     {
+      "id": "E-UNC-016",
+      "name": "Analysis-only external decoder coordinate tracking",
+      "system": "demian_v1_gate_state_existing_history_matrix_states",
+      "protocol_version": "demian-uncertainty-decoder-tracking-v1",
+      "replication_scope": {
+        "parameter_seed_count": 8,
+        "initial_state_count": 8,
+        "input_seed_count": 0,
+        "history_condition_count": 128,
+        "trajectory_count": 1024,
+        "checkpoint_row_count": 5120,
+        "independent_unit": "parameter_seed",
+        "dependent_observations": ["No new trajectories were generated. Orders, checkpoints, projections and external readouts reuse the two existing four-seed state batches."]
+      },
+      "artifact_ids": ["A-UNC-TRACK-PROTOCOL-001", "A-UNC-TRACK-SUMMARY-001", "A-UNC-TRACK-METRICS-001", "A-UNC-TRACK-MANIFEST-001", "A-UNC-TRACK-RESULTS-001"]
+    },
+    {
       "id": "E-UNC-015",
       "name": "Analysis-only representation geometry and channel co-change",
       "system": "demian_v1_gate_state_existing_history_matrix_states",
@@ -710,6 +727,13 @@
   ],
   "controls": [
     {
+      "id": "C-UNC-TRACK-001",
+      "name": "Train-only low-rank tracker and external-readout controls",
+      "semantics": "Fits 16-D translation, scalar scale and proper orthogonal tracking plus cue6 readout on allocated base-order train histories only; evaluates paired unseen histories against analytic latest-cue and conditional-label-shuffle controls.",
+      "limitations": ["Dynamic checkpoint and state-regime readouts are external observers, not Demian mechanisms.", "The source batches were already inspected; candidate patterns require new-seed confirmation."],
+      "artifact_ids": ["A-UNC-TRACK-PROTOCOL-001", "A-UNC-TRACK-SUMMARY-001", "A-UNC-TRACK-METRICS-001", "A-UNC-TRACK-MANIFEST-001"]
+    },
+    {
       "id": "C-UNC-REL-001",
       "name": "Hash-pinned paired history geometry",
       "semantics": "Verifies source manifest, state and metadata hashes, then pairs identical public history identities across time or reliability order before geometric comparison.",
@@ -998,6 +1022,30 @@
     }
   ],
   "results": [
+    {
+      "id": "R-UNC-TRACK-001",
+      "hypothesis_ids": [],
+      "experiment_id": "E-UNC-016",
+      "evaluable": true,
+      "outcome": "mixed",
+      "observation": "Across two existing four-seed batches and three fixed projections, train-only 16-D orthogonal tracking of a frozen cue6 decoder beats latest-cue and shuffled-label controls in all within-order cells through delay8, but only 12/24 at delay32 and 0/24 at delay64. Heldout-order all-cell wins are absent. External checkpoint-conditioned readouts retain moderate decoding at late times.",
+      "interpretation": "A bounded offline coordinate correction is adequate at short within-order delays and inadequate as a robust late or cross-order coordinate system. External dynamic-readout feasibility is not evidence that Demian adapts or self-decodes.",
+      "analysis_scope": {
+        "independent_unit": "parameter_seed",
+        "independent_unit_count": 8,
+        "comparison_count": 2160,
+        "comparison_unit": "seed by fixed projection by checkpoint by order by decoder/control score",
+        "dependent_observations": ["Checkpoints, orders, projections and readouts are dependent within each parameter seed and reuse E-UNC-013/E-UNC-014 states."],
+        "scope_note": "Exploratory analysis of already-inspected batches; no hypothesis status promotion."
+      },
+      "evaluation_conditions_met": ["hash_pinned_source_states", "disjoint_train_evaluation_histories", "fixed_16d_projection", "train_only_tracker_and_decoder", "matched_shuffle_and_latest_controls"],
+      "missing_evaluation_conditions": ["fresh_preregistered_parameter_seed_confirmation", "adaptive_decoder_feedback_test", "causal_route_intervention"],
+      "effect_summary": {"source_parameter_seed_count": 8, "projection_count_per_seed": 3, "within_order_all_cell_wins_delay2": 24, "within_order_all_cell_wins_delay8": 24, "within_order_all_cell_wins_delay32": 12, "within_order_all_cell_wins_delay64": 0, "heldout_order_all_cell_wins_delay8": 22},
+      "uncertainty": ["This is not an independent confirmation.", "A low-rank external correction can fail despite other retained information.", "Time-conditioned observer performance is an external decoder result."],
+      "exclusions": ["No H-UNC-001 status change.", "No adaptation, learning, self-readout, routing, causal channel or utility claim."],
+      "control_ids": ["C-UNC-TRACK-001"],
+      "artifact_ids": ["A-UNC-TRACK-PROTOCOL-001", "A-UNC-TRACK-SUMMARY-001", "A-UNC-TRACK-METRICS-001", "A-UNC-TRACK-MANIFEST-001", "A-UNC-TRACK-RESULTS-001"]
+    },
     {
       "id": "R-UNC-REL-001",
       "hypothesis_ids": [],
@@ -1878,6 +1926,46 @@
     }
   ],
   "artifacts": [
+    {
+      "id": "A-UNC-TRACK-PROTOCOL-001",
+      "repository": "Aeshma-Daeva/Demian-Lab",
+      "commit": "932418ba01f973d996d2329cfc91723d77193905",
+      "path": "docs/DEMIAN_UNCERTAINTY_DECODER_TRACKING_PROTOCOL.json",
+      "media_type": "application/json",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/932418ba01f973d996d2329cfc91723d77193905/docs/DEMIAN_UNCERTAINTY_DECODER_TRACKING_PROTOCOL.json"
+    },
+    {
+      "id": "A-UNC-TRACK-SUMMARY-001",
+      "repository": "Aeshma-Daeva/Demian-Lab",
+      "commit": "1d0c6c4f7c3c3183f9caeb5f29af002c10ba8563",
+      "path": "data/diagnostics/demian_uncertainty_decoder_tracking_v1_20261014/summary.json",
+      "media_type": "application/json",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/1d0c6c4f7c3c3183f9caeb5f29af002c10ba8563/data/diagnostics/demian_uncertainty_decoder_tracking_v1_20261014/summary.json"
+    },
+    {
+      "id": "A-UNC-TRACK-METRICS-001",
+      "repository": "Aeshma-Daeva/Demian-Lab",
+      "commit": "1d0c6c4f7c3c3183f9caeb5f29af002c10ba8563",
+      "path": "data/diagnostics/demian_uncertainty_decoder_tracking_v1_20261014/metrics.jsonl",
+      "media_type": "application/jsonl",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/1d0c6c4f7c3c3183f9caeb5f29af002c10ba8563/data/diagnostics/demian_uncertainty_decoder_tracking_v1_20261014/metrics.jsonl"
+    },
+    {
+      "id": "A-UNC-TRACK-MANIFEST-001",
+      "repository": "Aeshma-Daeva/Demian-Lab",
+      "commit": "1d0c6c4f7c3c3183f9caeb5f29af002c10ba8563",
+      "path": "data/diagnostics/demian_uncertainty_decoder_tracking_v1_20261014/manifest.json",
+      "media_type": "application/json",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/1d0c6c4f7c3c3183f9caeb5f29af002c10ba8563/data/diagnostics/demian_uncertainty_decoder_tracking_v1_20261014/manifest.json"
+    },
+    {
+      "id": "A-UNC-TRACK-RESULTS-001",
+      "repository": "Aeshma-Daeva/Demian-Lab",
+      "commit": "a387aaa29fd46529cd8f5fe56028f6b9b4379ca1",
+      "path": "docs/DEMIAN_UNCERTAINTY_DECODER_TRACKING_RESULTS.md",
+      "media_type": "text/markdown",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/a387aaa29fd46529cd8f5fe56028f6b9b4379ca1/docs/DEMIAN_UNCERTAINTY_DECODER_TRACKING_RESULTS.md"
+    },
     {
       "id": "A-UNC-REL-PROTOCOL-001",
       "repository": "https://github.com/Aeshma-Daeva/Demian-Lab",
