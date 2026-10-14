@@ -1,0 +1,10 @@
+{
+  "protocol_id": "demian-uncertainty-matched-target-factorial-a-tracking-v1",
+  "claim_boundary": "external frozen matched-target coordinate tracking for factorial condition A; no internal adaptation, routing, learning, or causal channel claim",
+  "source_matrix_directory": "data/diagnostics/demian_uncertainty_matched_target_factorial_a_matrix_v1_20261014",
+  "checkpoints": ["cue6", "delay2", "delay8"], "projection_dimension": 16, "projection_seeds": [17,29,43], "ridge_alpha": 1.0, "include_dynamic_observers": false,
+  "fitting_rule": "Fit cue6 decoder, normalization and trackers only on base-order train32. Apply unchanged objects to paired base-order eval32 and heldout-order eval32.",
+  "decision_rule": "Compare this condition with factorial B within parameter seed. A strict heldout pass requires orthogonal true-label R2 greater than latest-cue and conditional-shuffle R2. No condition effect is claimed without the same seed-level direction in at least three of four seeds.",
+  "artifact_directory": "data/diagnostics/demian_uncertainty_matched_target_factorial_a_tracking_v1_20261014",
+  "batches": [{"id":"factorial_a","artifact_directory":"data/diagnostics/demian_uncertainty_matched_target_factorial_a_matrix_v1_20261014","source_manifest_sha256":"3ad44cc07f054f404a094da50e33c10dff6b5b2fa454f369191d20f57b6dc59a","model_seeds":[2694,2695,2794,2795]}]
+}
