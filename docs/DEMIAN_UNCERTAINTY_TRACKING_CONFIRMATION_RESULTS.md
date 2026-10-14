@@ -1,7 +1,7 @@
 # Fresh short-horizon decoder tracking confirmation
 
 Protocol: `DEMIAN_UNCERTAINTY_TRACKING_CONFIRMATION_PROTOCOL.json`.
-Artifacts: `data/diagnostics/demian_uncertainty_tracking_confirmation_matrix_v1_20261014/` and `data/diagnostics/demian_uncertainty_tracking_confirmation_v1_20261014/`.
+Artifacts: `data/diagnostics/demian_uncertainty_tracking_confirmation_matrix_v1_20261014/` and `data/diagnostics/demian_uncertainty_tracking_confirmation_v2_20261014/`.
 
 ## Observation
 

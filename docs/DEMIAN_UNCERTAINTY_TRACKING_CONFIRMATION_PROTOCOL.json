@@ -13,7 +13,7 @@
   "secondary_measurement": "same base-trained frozen objects on heldout-order eval32; reliability-order changes may change the public evidence target, so this does not isolate geometry alone",
   "decision_rule": "Confirmation requires true-label orthogonal_track R2 greater than both controls in every one of four seed by three projection cells at each of delay2 and delay8. Identity and scalar-scale rows are descriptive controls. Projections and delays are dependent within seed.",
   "falsifier": "Any primary cell at either delay fails either control comparison; report mixed or failed declared tracking criterion without inferring information erasure.",
-  "artifact_directory": "data/diagnostics/demian_uncertainty_tracking_confirmation_v1_20261014",
+  "artifact_directory": "data/diagnostics/demian_uncertainty_tracking_confirmation_v2_20261014",
   "batches": [
     {
       "id": "fresh_confirmation",
