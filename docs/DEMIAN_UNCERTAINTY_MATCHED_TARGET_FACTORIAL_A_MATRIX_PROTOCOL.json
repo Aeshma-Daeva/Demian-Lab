@@ -1,0 +1,20 @@
+{
+  "protocol_id": "demian-uncertainty-matched-target-factorial-a-matrix-v1",
+  "claim_boundary": "fixed-weight seed-by-cue-order transport characterization; no intervention, adaptation, learning, routing, or causal-channel claim",
+  "factorial_family": "demian-uncertainty-matched-target-factorial-v1",
+  "condition": "A",
+  "hidden_size": 256,
+  "model_seeds": [2694, 2695, 2794, 2795],
+  "train_order": [0.95, 0.75, 0.5, 0.75, 0.5, 0.95],
+  "evaluation_order": [0.5, 0.95, 0.75, 0.5, 0.95, 0.75],
+  "evaluation_symbol_permutation": [2, 0, 1, 4, 5, 3],
+  "checkpoints": [{"id":"cue6","evidence_count":6,"delay_steps":0},{"id":"delay2","evidence_count":6,"delay_steps":2},{"id":"delay8","evidence_count":6,"delay_steps":8}],
+  "frozen_reference_checkpoint": "cue6",
+  "projection_dimension": 16,
+  "projection_seeds": [17, 29, 43],
+  "ridge_alpha": 1.0,
+  "history_split_seed": 149,
+  "matched_target_rule": "Heldout symbols are [s2,s0,s1,s4,s5,s3]; each moved symbol retains its base-order reliability, preserving every history's evidence-pair multiset and log-odds target.",
+  "decision_rule": "Run condition B on exactly the same seeds, base order, checkpoints, projections, and split. Compare schedule conditions within seed; projections remain dependent sensitivity conditions. No condition effect is claimed without a preregistered consistent seed-level contrast.",
+  "artifact_directory": "data/diagnostics/demian_uncertainty_matched_target_factorial_a_matrix_v1_20261014"
+}
