@@ -77,6 +77,8 @@ Full version: [Research Lineage](docs/RESEARCH_LINEAGE.md).
 | Route tracing is operational | Thirty implemented terms reconstruct all six target updates; tracing is trajectory-invariant. | The three-seed pilot validates measurement only. Route causality remains untested. |
 | Closed-loop boundary is validated | Deterministic cue-delay-query world, bounded register, checkpoint/replay controls. | Interface validation only; no task ability or adaptive behavior claim. |
 | Control helps capsule maintenance | Continuous control clamp degrades the capsule more than one-shot control zeroing. | Control is stabilizing; current data do not prove setpoints, selfhood, or narrative integration. |
+| Delayed public evidence is externally decodable | Two fresh heldout-history batches pass within-order matched-time decoding through delay64. | Evidence availability is not a common frozen coordinate system or functional memory claim. |
+| Frozen portability is cue-order dependent | In a four-seed matched-target factorial, cue order B exceeds A in every seed at delays2 and8. | Order condition changes readout usability; no channel, route, or causal mechanism is identified. |
 
 Details and falsifiers: [Claims Ledger](docs/CLAIMS.md).
 
@@ -97,17 +99,36 @@ are useful after the reader knows what question they answer.
 
 ## Current Status
 
-Current protocol: [regime-matched characterization](docs/REGIME_MATCHED_CHARACTERIZATION.md).
-Phase 0 [confirmation passed post-run audit](docs/PHASE0_CONFIRMATION_RESULTS.md): sampled regime separation at both horizons across 100 fresh seeds.
-Phase 0b recurrent-only RNN gain calibration is admitted; matched-pulse claims and plasticity remain gated.
+Demian v1 is an untrained six-channel recurrent system. The active branch
+measures history representation before modifying architecture or adding routing.
 
-- This is an active research notebook, not a finished architecture announcement.
-- Demian v1 is a prototype/design consequence of the lineage, not a completed
-  empirical result.
-- The strongest stable lesson is methodological: measure internal state,
-  ablations, resumes, and held-out behavior before naming a mechanism.
-- The current live target is to turn the message/carrier/control/gate-state
-  evidence into matched route interventions and surface-matched comparisons.
+- Matched-time, within-order evidence is externally decodable on fresh heldout
+  histories through delay64.
+- A base-order frozen readout has mixed portability across matched cue orders;
+  the latest within-seed factorial shows cue-order condition dependence.
+- A corrected residual/channel descriptor gate nominated no mechanism. The
+  earlier descriptor association is preserved as unevaluable due a heldout-fit
+  leak; its corrected rerun is valid.
+- No result establishes functional memory, state sufficiency for action/value,
+  adaptation, learning, smart routing, or channel causality.
+
+Current records: [factorial result](docs/DEMIAN_UNCERTAINTY_MATCHED_TARGET_FACTORIAL_RESULTS.md),
+[corrected descriptor result](docs/DEMIAN_UNCERTAINTY_MATCHED_TARGET_DESCRIPTOR_RESULTS.md),
+and [research registry](data/RESEARCH_REGISTRY.json).
+
+Next gate: decompose matched cue permutations into recency and local-swap
+effects, using continuous frozen-transport scores and fresh seeds before any
+channel intervention.
+
+Demian local visibility pilot (fresh output directory):
+
+```bash
+./venv/bin/python -m development.run_demian_channel_visibility --out data/diagnostics/demian_channel_visibility_pilot
+```
+
+This is a paired local-sensitivity measurement, not evidence of adaptation or memory.
+Latest [pilot result](docs/DEMIAN_CHANNEL_VISIBILITY_RESULTS.md): direct visibility for
+`fast`, `message`, `carrier`, `gate`; one-transition visibility for `slow`, `control`.
 
 Quick links: [Research Lineage](docs/RESEARCH_LINEAGE.md) |
 [Claims](docs/CLAIMS.md) | [Reproducibility](docs/REPRODUCIBILITY.md) |
