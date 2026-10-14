@@ -1028,7 +1028,7 @@
       "experiment_id": "E-UNC-016",
       "evaluable": true,
       "outcome": "mixed",
-      "observation": "Across two existing four-seed batches and three fixed projections, train-only 16-D orthogonal tracking of a frozen cue6 decoder beats latest-cue and shuffled-label controls in all within-order cells through delay8, but only 12/24 at delay32 and 0/24 at delay64. Heldout-order all-cell wins are absent. External checkpoint-conditioned readouts retain moderate decoding at late times.",
+      "observation": "Across two existing four-seed batches and three fixed projections, train-only 16-D orthogonal tracking of a frozen cue6 decoder beats latest-cue and shuffled-label controls in all within-order cells through delay8, but only 12/24 at delay32 and 0/24 at delay64. The unchanged base-trained tracker wins only 2/24, 8/24, 8/24, 9/24 and 0/24 heldout-order cells from cue6 through delay64. External checkpoint-conditioned readouts retain moderate decoding at late times.",
       "interpretation": "A bounded offline coordinate correction is adequate at short within-order delays and inadequate as a robust late or cross-order coordinate system. External dynamic-readout feasibility is not evidence that Demian adapts or self-decodes.",
       "analysis_scope": {
         "independent_unit": "parameter_seed",
@@ -1040,7 +1040,7 @@
       },
       "evaluation_conditions_met": ["hash_pinned_source_states", "disjoint_train_evaluation_histories", "fixed_16d_projection", "train_only_tracker_and_decoder", "matched_shuffle_and_latest_controls"],
       "missing_evaluation_conditions": ["fresh_preregistered_parameter_seed_confirmation", "adaptive_decoder_feedback_test", "causal_route_intervention"],
-      "effect_summary": {"source_parameter_seed_count": 8, "projection_count_per_seed": 3, "within_order_all_cell_wins_delay2": 24, "within_order_all_cell_wins_delay8": 24, "within_order_all_cell_wins_delay32": 12, "within_order_all_cell_wins_delay64": 0, "heldout_order_all_cell_wins_delay8": 22},
+      "effect_summary": {"source_parameter_seed_count": 8, "projection_count_per_seed": 3, "within_order_all_cell_wins_delay2": 24, "within_order_all_cell_wins_delay8": 24, "within_order_all_cell_wins_delay32": 12, "within_order_all_cell_wins_delay64": 0, "strict_base_tracker_heldout_order_wins_delay8": 8},
       "uncertainty": ["This is not an independent confirmation.", "A low-rank external correction can fail despite other retained information.", "Time-conditioned observer performance is an external decoder result."],
       "exclusions": ["No H-UNC-001 status change.", "No adaptation, learning, self-readout, routing, causal channel or utility claim."],
       "control_ids": ["C-UNC-TRACK-001"],
@@ -1929,42 +1929,42 @@
     {
       "id": "A-UNC-TRACK-PROTOCOL-001",
       "repository": "Aeshma-Daeva/Demian-Lab",
-      "commit": "932418ba01f973d996d2329cfc91723d77193905",
+      "commit": "11df44637cc6da82a8aa54a97b65bab90dd27b11",
       "path": "docs/DEMIAN_UNCERTAINTY_DECODER_TRACKING_PROTOCOL.json",
       "media_type": "application/json",
-      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/932418ba01f973d996d2329cfc91723d77193905/docs/DEMIAN_UNCERTAINTY_DECODER_TRACKING_PROTOCOL.json"
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/11df44637cc6da82a8aa54a97b65bab90dd27b11/docs/DEMIAN_UNCERTAINTY_DECODER_TRACKING_PROTOCOL.json"
     },
     {
       "id": "A-UNC-TRACK-SUMMARY-001",
       "repository": "Aeshma-Daeva/Demian-Lab",
-      "commit": "1d0c6c4f7c3c3183f9caeb5f29af002c10ba8563",
-      "path": "data/diagnostics/demian_uncertainty_decoder_tracking_v1_20261014/summary.json",
+      "commit": "11df44637cc6da82a8aa54a97b65bab90dd27b11",
+      "path": "data/diagnostics/demian_uncertainty_decoder_tracking_v2_20261014/summary.json",
       "media_type": "application/json",
-      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/1d0c6c4f7c3c3183f9caeb5f29af002c10ba8563/data/diagnostics/demian_uncertainty_decoder_tracking_v1_20261014/summary.json"
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/11df44637cc6da82a8aa54a97b65bab90dd27b11/data/diagnostics/demian_uncertainty_decoder_tracking_v2_20261014/summary.json"
     },
     {
       "id": "A-UNC-TRACK-METRICS-001",
       "repository": "Aeshma-Daeva/Demian-Lab",
-      "commit": "1d0c6c4f7c3c3183f9caeb5f29af002c10ba8563",
-      "path": "data/diagnostics/demian_uncertainty_decoder_tracking_v1_20261014/metrics.jsonl",
+      "commit": "11df44637cc6da82a8aa54a97b65bab90dd27b11",
+      "path": "data/diagnostics/demian_uncertainty_decoder_tracking_v2_20261014/metrics.jsonl",
       "media_type": "application/jsonl",
-      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/1d0c6c4f7c3c3183f9caeb5f29af002c10ba8563/data/diagnostics/demian_uncertainty_decoder_tracking_v1_20261014/metrics.jsonl"
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/11df44637cc6da82a8aa54a97b65bab90dd27b11/data/diagnostics/demian_uncertainty_decoder_tracking_v2_20261014/metrics.jsonl"
     },
     {
       "id": "A-UNC-TRACK-MANIFEST-001",
       "repository": "Aeshma-Daeva/Demian-Lab",
-      "commit": "1d0c6c4f7c3c3183f9caeb5f29af002c10ba8563",
-      "path": "data/diagnostics/demian_uncertainty_decoder_tracking_v1_20261014/manifest.json",
+      "commit": "11df44637cc6da82a8aa54a97b65bab90dd27b11",
+      "path": "data/diagnostics/demian_uncertainty_decoder_tracking_v2_20261014/manifest.json",
       "media_type": "application/json",
-      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/1d0c6c4f7c3c3183f9caeb5f29af002c10ba8563/data/diagnostics/demian_uncertainty_decoder_tracking_v1_20261014/manifest.json"
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/11df44637cc6da82a8aa54a97b65bab90dd27b11/data/diagnostics/demian_uncertainty_decoder_tracking_v2_20261014/manifest.json"
     },
     {
       "id": "A-UNC-TRACK-RESULTS-001",
       "repository": "Aeshma-Daeva/Demian-Lab",
-      "commit": "a387aaa29fd46529cd8f5fe56028f6b9b4379ca1",
+      "commit": "11df44637cc6da82a8aa54a97b65bab90dd27b11",
       "path": "docs/DEMIAN_UNCERTAINTY_DECODER_TRACKING_RESULTS.md",
       "media_type": "text/markdown",
-      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/a387aaa29fd46529cd8f5fe56028f6b9b4379ca1/docs/DEMIAN_UNCERTAINTY_DECODER_TRACKING_RESULTS.md"
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/11df44637cc6da82a8aa54a97b65bab90dd27b11/docs/DEMIAN_UNCERTAINTY_DECODER_TRACKING_RESULTS.md"
     },
     {
       "id": "A-UNC-REL-PROTOCOL-001",
