@@ -1,0 +1,23 @@
+{
+  "protocol_id": "demian-uncertainty-matched-target-descriptor-matrix-v1",
+  "claim_boundary": "fresh fixed-weight matched-target state collection for descriptive transport-residual analysis; no intervention, routing, adaptation, learning, or channel-causality claim",
+  "hidden_size": 256,
+  "model_seeds": [2494, 2495, 2594, 2595],
+  "train_order": [0.95, 0.75, 0.5, 0.75, 0.5, 0.95],
+  "evaluation_order": [0.5, 0.95, 0.75, 0.5, 0.95, 0.75],
+  "evaluation_symbol_permutation": [2, 0, 1, 4, 5, 3],
+  "checkpoints": [
+    {"id": "cue6", "evidence_count": 6, "delay_steps": 0},
+    {"id": "delay2", "evidence_count": 6, "delay_steps": 2},
+    {"id": "delay8", "evidence_count": 6, "delay_steps": 8}
+  ],
+  "frozen_reference_checkpoint": "cue6",
+  "projection_dimension": 16,
+  "projection_seeds": [17, 29, 43],
+  "ridge_alpha": 1.0,
+  "history_split_seed": 131,
+  "matched_target_rule": "For every base binary history s, heldout order receives symbols [s2,s0,s1,s4,s5,s3]. Every moved symbol retains its base-order reliability, so the complete evidence-pair multiset and log-odds target are identical while cue position changes.",
+  "controls": "All 64 histories per order/seed/checkpoint; base-order stratified train32/eval32 split; analytic latest-cue and conditional train-label shuffle. No heldout-order state, label, normalization, decoder, tracker, centering, relationship map, or threshold fits an object.",
+  "decision_rule": "Collect this batch before computing descriptors. The following analysis must use only base-order train32-fitted projection, centering, proper-orthogonal tracker, and relationship maps. It will report per-projection full residual energy, six channel residual-energy fractions, and carrier-to-slow plus gate-to-message residual cross-covariance/cross-prediction. A descriptor is a confirmation candidate only if its predeclared direction separates strict heldout pass/fail cells in at least three of four seeds at a checkpoint; otherwise no descriptor is nominated. This is descriptive association, not route causality.",
+  "artifact_directory": "data/diagnostics/demian_uncertainty_matched_target_descriptor_matrix_v1_20261014"
+}
