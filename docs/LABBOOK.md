@@ -1133,7 +1133,7 @@ Next:
 ## 2026-10-14 - Fresh short-horizon decoder tracking confirmation
 
 - Artifacts: `demian_uncertainty_tracking_confirmation_matrix_v1_20261014` and
-  `demian_uncertainty_tracking_confirmation_v1_20261014`.
+  `demian_uncertainty_tracking_confirmation_v2_20261014`.
 - Protocol: four fresh parameter seeds, new reliability-order pair and split97;
   cue6/delay2/delay8 only; frozen 16-D base-order tracker and readout.
 - Observation: within-order orthogonal tracking clears 12/12 delay2 cells and

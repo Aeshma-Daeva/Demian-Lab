@@ -8,23 +8,23 @@
   },
   "runs": [
     {
-      "id": "demian_uncertainty_tracking_confirmation_v1_20261014",
+      "id": "demian_uncertainty_tracking_confirmation_v2_20261014",
       "program": "demian-v1",
       "date": "2026-10-14",
       "family": "fresh_short_horizon_external_decoder_tracking",
       "status": "active_evidence",
-      "primary_summary": "data/diagnostics/demian_uncertainty_tracking_confirmation_v1_20261014/summary.json",
+      "primary_summary": "data/diagnostics/demian_uncertainty_tracking_confirmation_v2_20261014/summary.json",
       "artifacts": [
         "docs/DEMIAN_UNCERTAINTY_TRACKING_CONFIRMATION_MATRIX_PROTOCOL.json",
         "docs/DEMIAN_UNCERTAINTY_TRACKING_CONFIRMATION_PROTOCOL.json",
         "docs/DEMIAN_UNCERTAINTY_TRACKING_CONFIRMATION_RESULTS.md",
         "data/diagnostics/demian_uncertainty_tracking_confirmation_matrix_v1_20261014/summary.json",
         "data/diagnostics/demian_uncertainty_tracking_confirmation_matrix_v1_20261014/manifest.json",
-        "data/diagnostics/demian_uncertainty_tracking_confirmation_v1_20261014/summary.json",
-        "data/diagnostics/demian_uncertainty_tracking_confirmation_v1_20261014/metrics.jsonl",
-        "data/diagnostics/demian_uncertainty_tracking_confirmation_v1_20261014/transforms.npz",
-        "data/diagnostics/demian_uncertainty_tracking_confirmation_v1_20261014/predictions.npz",
-        "data/diagnostics/demian_uncertainty_tracking_confirmation_v1_20261014/manifest.json"
+        "data/diagnostics/demian_uncertainty_tracking_confirmation_v2_20261014/summary.json",
+        "data/diagnostics/demian_uncertainty_tracking_confirmation_v2_20261014/metrics.jsonl",
+        "data/diagnostics/demian_uncertainty_tracking_confirmation_v2_20261014/transforms.npz",
+        "data/diagnostics/demian_uncertainty_tracking_confirmation_v2_20261014/predictions.npz",
+        "data/diagnostics/demian_uncertainty_tracking_confirmation_v2_20261014/manifest.json"
       ],
       "claim_ids": [],
       "interpretation": "Fresh strict confirmation is mixed: train-only orthogonal tracking clears every delay2 cell and misses one delay8 shuffle comparison; unchanged base-order objects do not port across the changed reliability order."

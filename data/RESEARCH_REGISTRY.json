@@ -296,7 +296,7 @@
         "trajectory_count": 512,
         "checkpoint_row_count": 1536,
         "independent_unit": "parameter_seed",
-        "dependent_observations": ["Three fixed projections, two delays, orders and controls are dependent within each fresh parameter seed."]
+        "dependent_observations": ["Three fixed projections, checkpoints, orders and controls are dependent within each fresh parameter seed."]
       },
       "artifact_ids": ["A-UNC-TRACK-CONF-MATRIX-PROTOCOL-001", "A-UNC-TRACK-CONF-MATRIX-SUMMARY-001", "A-UNC-TRACK-CONF-PROTOCOL-001", "A-UNC-TRACK-CONF-SUMMARY-001", "A-UNC-TRACK-CONF-METRICS-001", "A-UNC-TRACK-CONF-RESULTS-001"]
     },
@@ -1993,34 +1993,34 @@
     {
       "id": "A-UNC-TRACK-CONF-PROTOCOL-001",
       "repository": "Aeshma-Daeva/Demian-Lab",
-      "commit": "749af54cf07b564260a1ccd8c264673819937e85",
+      "commit": "6866ab83d2bd3f479b7f1c6a59dc3f9543aad949",
       "path": "docs/DEMIAN_UNCERTAINTY_TRACKING_CONFIRMATION_PROTOCOL.json",
       "media_type": "application/json",
-      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/749af54cf07b564260a1ccd8c264673819937e85/docs/DEMIAN_UNCERTAINTY_TRACKING_CONFIRMATION_PROTOCOL.json"
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/6866ab83d2bd3f479b7f1c6a59dc3f9543aad949/docs/DEMIAN_UNCERTAINTY_TRACKING_CONFIRMATION_PROTOCOL.json"
     },
     {
       "id": "A-UNC-TRACK-CONF-SUMMARY-001",
       "repository": "Aeshma-Daeva/Demian-Lab",
-      "commit": "749af54cf07b564260a1ccd8c264673819937e85",
-      "path": "data/diagnostics/demian_uncertainty_tracking_confirmation_v1_20261014/summary.json",
+      "commit": "6866ab83d2bd3f479b7f1c6a59dc3f9543aad949",
+      "path": "data/diagnostics/demian_uncertainty_tracking_confirmation_v2_20261014/summary.json",
       "media_type": "application/json",
-      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/749af54cf07b564260a1ccd8c264673819937e85/data/diagnostics/demian_uncertainty_tracking_confirmation_v1_20261014/summary.json"
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/6866ab83d2bd3f479b7f1c6a59dc3f9543aad949/data/diagnostics/demian_uncertainty_tracking_confirmation_v2_20261014/summary.json"
     },
     {
       "id": "A-UNC-TRACK-CONF-METRICS-001",
       "repository": "Aeshma-Daeva/Demian-Lab",
-      "commit": "749af54cf07b564260a1ccd8c264673819937e85",
-      "path": "data/diagnostics/demian_uncertainty_tracking_confirmation_v1_20261014/metrics.jsonl",
+      "commit": "6866ab83d2bd3f479b7f1c6a59dc3f9543aad949",
+      "path": "data/diagnostics/demian_uncertainty_tracking_confirmation_v2_20261014/metrics.jsonl",
       "media_type": "application/jsonl",
-      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/749af54cf07b564260a1ccd8c264673819937e85/data/diagnostics/demian_uncertainty_tracking_confirmation_v1_20261014/metrics.jsonl"
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/6866ab83d2bd3f479b7f1c6a59dc3f9543aad949/data/diagnostics/demian_uncertainty_tracking_confirmation_v2_20261014/metrics.jsonl"
     },
     {
       "id": "A-UNC-TRACK-CONF-RESULTS-001",
       "repository": "Aeshma-Daeva/Demian-Lab",
-      "commit": "749af54cf07b564260a1ccd8c264673819937e85",
+      "commit": "6866ab83d2bd3f479b7f1c6a59dc3f9543aad949",
       "path": "docs/DEMIAN_UNCERTAINTY_TRACKING_CONFIRMATION_RESULTS.md",
       "media_type": "text/markdown",
-      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/749af54cf07b564260a1ccd8c264673819937e85/docs/DEMIAN_UNCERTAINTY_TRACKING_CONFIRMATION_RESULTS.md"
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/6866ab83d2bd3f479b7f1c6a59dc3f9543aad949/docs/DEMIAN_UNCERTAINTY_TRACKING_CONFIRMATION_RESULTS.md"
     },
     {
       "id": "A-UNC-TRACK-PROTOCOL-001",
