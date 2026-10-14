@@ -1129,3 +1129,17 @@ Next:
   implemented. No hypothesis-status change or causal interpretation.
 - Next: if descriptive work continues, preregister a single identity-versus-
   alignment decoder-transfer test rather than another broad geometry sweep.
+
+## 2026-10-14 - Fresh short-horizon decoder tracking confirmation
+
+- Artifacts: `demian_uncertainty_tracking_confirmation_matrix_v1_20261014` and
+  `demian_uncertainty_tracking_confirmation_v1_20261014`.
+- Protocol: four fresh parameter seeds, new reliability-order pair and split97;
+  cue6/delay2/delay8 only; frozen 16-D base-order tracker and readout.
+- Observation: within-order orthogonal tracking clears 12/12 delay2 cells and
+  11/12 delay8 cells. Strict cross-order portability clears 0/12 at both delays.
+- Interpretation: short within-order correction is present but the declared
+  all-cell two-delay confirmation is mixed. No internal adaptive-readout or
+  routing conclusion.
+- Next: matched-target order design to separate changed evidence targets from
+  coordinate deformation before controllability work.

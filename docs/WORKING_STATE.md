@@ -229,6 +229,14 @@ Epistemic guardrails:
 - named findings should map to artifacts in `data/INDEX.md`
 - best-case runs do not become working truth without comparison or rerun support
 
+## Current decoder-tracking boundary
+
+The fresh short-horizon confirmation is recorded in
+`DEMIAN_UNCERTAINTY_TRACKING_CONFIRMATION_RESULTS.md`: a frozen external
+16-D tracker clears all delay2 within-order cells but misses one delay8 cell;
+strict changed-order portability is absent. The next uncertainty gate is a
+matched-target order design, before controllability or smart routing.
+
 ## Immediate Open Questions
 
 Priority 1:

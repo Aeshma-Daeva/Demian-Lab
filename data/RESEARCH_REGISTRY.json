@@ -284,6 +284,23 @@
   ],
   "experiments": [
     {
+      "id": "E-UNC-017",
+      "name": "Fresh short-horizon external decoder tracking confirmation",
+      "system": "demian_v1_gate_state_with_stateless_public_evidence_encoder",
+      "protocol_version": "demian-uncertainty-tracking-confirmation-v1",
+      "replication_scope": {
+        "parameter_seed_count": 4,
+        "initial_state_count": 4,
+        "input_seed_count": 0,
+        "history_condition_count": 128,
+        "trajectory_count": 512,
+        "checkpoint_row_count": 1536,
+        "independent_unit": "parameter_seed",
+        "dependent_observations": ["Three fixed projections, two delays, orders and controls are dependent within each fresh parameter seed."]
+      },
+      "artifact_ids": ["A-UNC-TRACK-CONF-MATRIX-PROTOCOL-001", "A-UNC-TRACK-CONF-MATRIX-SUMMARY-001", "A-UNC-TRACK-CONF-PROTOCOL-001", "A-UNC-TRACK-CONF-SUMMARY-001", "A-UNC-TRACK-CONF-METRICS-001", "A-UNC-TRACK-CONF-RESULTS-001"]
+    },
+    {
       "id": "E-UNC-016",
       "name": "Analysis-only external decoder coordinate tracking",
       "system": "demian_v1_gate_state_existing_history_matrix_states",
@@ -727,6 +744,13 @@
   ],
   "controls": [
     {
+      "id": "C-UNC-TRACK-CONF-001",
+      "name": "Strict base-trained short-horizon tracker controls",
+      "semantics": "Fits the cue6 decoder and delay transforms only on base-order train32 histories, then applies unchanged objects to paired heldout histories in both orders; compares analytic latest-cue, conditional-label shuffle, identity and scalar-scale controls.",
+      "limitations": ["Projection and checkpoint cells are dependent within seed.", "Cue-order changes can change the public evidence target as well as state geometry."],
+      "artifact_ids": ["A-UNC-TRACK-CONF-PROTOCOL-001", "A-UNC-TRACK-CONF-SUMMARY-001", "A-UNC-TRACK-CONF-METRICS-001"]
+    },
+    {
       "id": "C-UNC-TRACK-001",
       "name": "Train-only low-rank tracker and external-readout controls",
       "semantics": "Fits 16-D translation, scalar scale and proper orthogonal tracking plus cue6 readout on allocated base-order train histories only; evaluates paired unseen histories against analytic latest-cue and conditional-label-shuffle controls.",
@@ -1022,6 +1046,30 @@
     }
   ],
   "results": [
+    {
+      "id": "R-UNC-TRACK-CONF-001",
+      "hypothesis_ids": [],
+      "experiment_id": "E-UNC-017",
+      "evaluable": true,
+      "outcome": "mixed",
+      "observation": "Across four fresh seeds, a new reliability-order pair and split97, the base-trained 16-D orthogonal tracker beat both controls in 12/12 within-order delay2 cells and 11/12 delay8 cells. The delay8 exception was seed2194/projection17: true R2 .131 versus shuffled-label R2 .155. The same frozen objects won 0/12 strict heldout-order cells at both delays.",
+      "interpretation": "The declared all-cell criterion confirms a short within-order delay2 correction but fails at delay8. The result supports a limited external coordinate correction, not internal adaptive decoding or robust cross-order portability.",
+      "analysis_scope": {
+        "independent_unit": "parameter_seed",
+        "independent_unit_count": 4,
+        "comparison_count": 48,
+        "comparison_unit": "four seeds by three projections by two delays by two order families",
+        "dependent_observations": ["Projection, delay and order comparisons reuse histories within each seed."],
+        "scope_note": "Fresh preregistered confirmation with 32/32 split97; status promotion requires manual review."
+      },
+      "evaluation_conditions_met": ["fresh_parameter_seeds", "new_order_pair", "new_history_split", "strict_base_order_train_only_fit", "saved_fitted_objects", "analytic_latest_and_shuffle_controls"],
+      "missing_evaluation_conditions": ["matched_target_cross_order_design", "causal_intervention", "internal_adaptive_readout_test"],
+      "effect_summary": {"within_order_delay2_control_wins": 12, "within_order_delay8_control_wins": 11, "strict_heldout_order_delay2_control_wins": 0, "strict_heldout_order_delay8_control_wins": 0},
+      "uncertainty": ["One of twelve delay8 projection cells missed the all-cell criterion.", "Cross-order public targets differ for a given binary history under the changed reliability order."],
+      "exclusions": ["No hypothesis-status change.", "No rotation-necessity, information-erasure, adaptation, learning, causal-channel or routing claim."],
+      "control_ids": ["C-UNC-TRACK-CONF-001"],
+      "artifact_ids": ["A-UNC-TRACK-CONF-MATRIX-PROTOCOL-001", "A-UNC-TRACK-CONF-MATRIX-SUMMARY-001", "A-UNC-TRACK-CONF-PROTOCOL-001", "A-UNC-TRACK-CONF-SUMMARY-001", "A-UNC-TRACK-CONF-METRICS-001", "A-UNC-TRACK-CONF-RESULTS-001"]
+    },
     {
       "id": "R-UNC-TRACK-001",
       "hypothesis_ids": [],
@@ -1926,6 +1974,54 @@
     }
   ],
   "artifacts": [
+    {
+      "id": "A-UNC-TRACK-CONF-MATRIX-PROTOCOL-001",
+      "repository": "Aeshma-Daeva/Demian-Lab",
+      "commit": "c0e0f79c4d033eda60d1b4c12074ccadfe5d3d64",
+      "path": "docs/DEMIAN_UNCERTAINTY_TRACKING_CONFIRMATION_MATRIX_PROTOCOL.json",
+      "media_type": "application/json",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/c0e0f79c4d033eda60d1b4c12074ccadfe5d3d64/docs/DEMIAN_UNCERTAINTY_TRACKING_CONFIRMATION_MATRIX_PROTOCOL.json"
+    },
+    {
+      "id": "A-UNC-TRACK-CONF-MATRIX-SUMMARY-001",
+      "repository": "Aeshma-Daeva/Demian-Lab",
+      "commit": "749af54cf07b564260a1ccd8c264673819937e85",
+      "path": "data/diagnostics/demian_uncertainty_tracking_confirmation_matrix_v1_20261014/summary.json",
+      "media_type": "application/json",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/749af54cf07b564260a1ccd8c264673819937e85/data/diagnostics/demian_uncertainty_tracking_confirmation_matrix_v1_20261014/summary.json"
+    },
+    {
+      "id": "A-UNC-TRACK-CONF-PROTOCOL-001",
+      "repository": "Aeshma-Daeva/Demian-Lab",
+      "commit": "749af54cf07b564260a1ccd8c264673819937e85",
+      "path": "docs/DEMIAN_UNCERTAINTY_TRACKING_CONFIRMATION_PROTOCOL.json",
+      "media_type": "application/json",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/749af54cf07b564260a1ccd8c264673819937e85/docs/DEMIAN_UNCERTAINTY_TRACKING_CONFIRMATION_PROTOCOL.json"
+    },
+    {
+      "id": "A-UNC-TRACK-CONF-SUMMARY-001",
+      "repository": "Aeshma-Daeva/Demian-Lab",
+      "commit": "749af54cf07b564260a1ccd8c264673819937e85",
+      "path": "data/diagnostics/demian_uncertainty_tracking_confirmation_v1_20261014/summary.json",
+      "media_type": "application/json",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/749af54cf07b564260a1ccd8c264673819937e85/data/diagnostics/demian_uncertainty_tracking_confirmation_v1_20261014/summary.json"
+    },
+    {
+      "id": "A-UNC-TRACK-CONF-METRICS-001",
+      "repository": "Aeshma-Daeva/Demian-Lab",
+      "commit": "749af54cf07b564260a1ccd8c264673819937e85",
+      "path": "data/diagnostics/demian_uncertainty_tracking_confirmation_v1_20261014/metrics.jsonl",
+      "media_type": "application/jsonl",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/749af54cf07b564260a1ccd8c264673819937e85/data/diagnostics/demian_uncertainty_tracking_confirmation_v1_20261014/metrics.jsonl"
+    },
+    {
+      "id": "A-UNC-TRACK-CONF-RESULTS-001",
+      "repository": "Aeshma-Daeva/Demian-Lab",
+      "commit": "749af54cf07b564260a1ccd8c264673819937e85",
+      "path": "docs/DEMIAN_UNCERTAINTY_TRACKING_CONFIRMATION_RESULTS.md",
+      "media_type": "text/markdown",
+      "url": "https://github.com/Aeshma-Daeva/Demian-Lab/blob/749af54cf07b564260a1ccd8c264673819937e85/docs/DEMIAN_UNCERTAINTY_TRACKING_CONFIRMATION_RESULTS.md"
+    },
     {
       "id": "A-UNC-TRACK-PROTOCOL-001",
       "repository": "Aeshma-Daeva/Demian-Lab",

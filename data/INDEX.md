@@ -22,6 +22,15 @@ Purpose:
 - reduce dependence on memory and prose summaries
 - keep the live epistemic surface tied to result paths
 
+## Fresh short-horizon decoder tracking confirmation
+
+- Protocol: [../docs/DEMIAN_UNCERTAINTY_TRACKING_CONFIRMATION_PROTOCOL.json](../docs/DEMIAN_UNCERTAINTY_TRACKING_CONFIRMATION_PROTOCOL.json)
+- Record: [../docs/DEMIAN_UNCERTAINTY_TRACKING_CONFIRMATION_RESULTS.md](../docs/DEMIAN_UNCERTAINTY_TRACKING_CONFIRMATION_RESULTS.md)
+- Summary: [diagnostics/demian_uncertainty_tracking_confirmation_v1_20261014/summary.json](diagnostics/demian_uncertainty_tracking_confirmation_v1_20261014/summary.json)
+- Status: fresh result; all 12 within-order delay2 cells clear the frozen gate,
+  while delay8 clears 11/12. Strict base-trained cross-order portability is 0/12
+  at both delays. No adaptation or routing claim.
+
 ## Route-Trajectory Pilot
 
 - Protocol: [ROUTE_TRAJECTORY_PROTOCOL.json](ROUTE_TRAJECTORY_PROTOCOL.json)

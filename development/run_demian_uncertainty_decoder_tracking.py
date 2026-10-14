@@ -9,6 +9,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import subprocess
 from pathlib import Path
 
 import numpy as np
@@ -127,6 +128,7 @@ def _record(metrics, predictions, *, base, target, prediction):
 
 
 def run_protocol(protocol):
+    source_commit = subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip()
     checkpoints = protocol["checkpoints"]
     dimension, alpha = int(protocol["projection_dimension"]), float(protocol["ridge_alpha"])
     metrics, predictions, transforms = [], [], {}
@@ -221,7 +223,8 @@ def run_protocol(protocol):
                                 "projection_dimension": dimension, "checkpoint_id": checkpoint, "evaluation_order": order,
                                 "decoder": decoder_name, "tracking_mode": "none", "label_kind": "true_labels", "scope": "secondary_external_upper_bound",
                                 "fit_history_indices": sorted(train_ids), "evaluation_history_indices": sorted(eval_ids)}, target=y, prediction=predict_probe(readout, features_eval))
-    return {"metrics": metrics, "predictions": np.asarray(predictions), "transforms": transforms,
+    return {"source_commit": source_commit, "dependency_versions": {"numpy": np.__version__},
+            "metrics": metrics, "predictions": np.asarray(predictions), "transforms": transforms,
             "integrity": {"analysis_only": True, "architecture_changed": False, "weights_changed": False,
                           "decoder_feedback_to_demian": False, "metric_count": len(metrics),
                           "claim_boundary": "external offline decoder tracking; not Demian adaptation, learning, or self-readout"}}
@@ -232,9 +235,11 @@ def write_artifacts(out, protocol, payload):
     (out/"metrics.jsonl").write_text("".join(json.dumps(row, sort_keys=True, allow_nan=False)+"\n" for row in payload["metrics"]))
     np.savez(out/"predictions.npz", score_and_history_target_prediction=payload["predictions"])
     np.savez(out/"transforms.npz", **payload["transforms"])
-    (out/"summary.json").write_text(json.dumps({"experiment": protocol["protocol_id"], **payload["integrity"]}, indent=2, sort_keys=True)+"\n")
+    (out/"summary.json").write_text(json.dumps({"experiment": protocol["protocol_id"], "source_commit": payload["source_commit"],
+        "dependency_versions": payload["dependency_versions"], **payload["integrity"]}, indent=2, sort_keys=True)+"\n")
     hashes = {path.name: _sha(path) for path in out.iterdir()}
-    (out/"manifest.json").write_text(json.dumps({"protocol": protocol, "protocol_sha256": hashlib.sha256(json.dumps(protocol, sort_keys=True).encode()).hexdigest(), "file_sha256": hashes}, indent=2, sort_keys=True)+"\n")
+    (out/"manifest.json").write_text(json.dumps({"protocol": protocol, "protocol_sha256": hashlib.sha256(json.dumps(protocol, sort_keys=True).encode()).hexdigest(),
+        "source_commit": payload["source_commit"], "dependency_versions": payload["dependency_versions"], "file_sha256": hashes}, indent=2, sort_keys=True)+"\n")
 
 
 def main():
