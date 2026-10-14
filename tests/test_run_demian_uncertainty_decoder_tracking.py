@@ -2,6 +2,8 @@ import importlib
 import importlib.util
 import hashlib
 import json
+import shutil
+from pathlib import Path
 
 import numpy as np
 
@@ -77,3 +79,78 @@ def test_matrix_loader_rejects_nonfinite_states_and_duplicate_histories(tmp_path
         assert "duplicate history" in str(error)
     else:
         raise AssertionError("duplicate history accepted")
+
+
+def test_pairing_rejects_missing_history_in_any_order_or_checkpoint():
+    module = tracking_module()
+    rows = [{"symbols": [0]}, {"symbols": [1]}]
+    cells = {("train", "cue"): (np.zeros((2, 1)), rows),
+             ("heldout", "cue"): (np.zeros((1, 1)), [{"symbols": [0]}])}
+    try:
+        module.validate_history_pairing(cells)
+    except ValueError as error:
+        assert "pairing changed" in str(error)
+    else:
+        raise AssertionError("mismatched paired histories accepted")
+
+
+def test_heldout_state_and_label_changes_cannot_change_base_fits_or_predictions(tmp_path):
+    """Exercise the frozen fitting boundary against adversarial heldout edits."""
+    module = tracking_module()
+    root = Path(__file__).resolve().parents[1]
+    source = root / "data/diagnostics/demian_uncertainty_tracking_confirmation_matrix_v1_20261014"
+    base_protocol = json.loads((root / "docs/DEMIAN_UNCERTAINTY_TRACKING_CONFIRMATION_PROTOCOL.json").read_text())
+
+    def payload_for(name, *, change_states=False, change_labels=False):
+        copied = tmp_path / name
+        shutil.copytree(source, copied)
+        states_path, metadata_path = copied / "states.npz", copied / "state_metadata.jsonl"
+        states = np.load(states_path)["states"]
+        rows = [json.loads(line) for line in metadata_path.read_text().splitlines()]
+        heldout = [index for index, row in enumerate(rows) if row["order"] == "heldout"]
+        if change_states:
+            states[heldout] += 1234.0
+            np.savez(states_path, states=states)
+        if change_labels:
+            for index in heldout:
+                rows[index]["target_value"] += 999.0
+            metadata_path.write_text("".join(json.dumps(row) + "\n" for row in rows))
+        manifest_path = copied / "manifest.json"
+        manifest = json.loads(manifest_path.read_text())
+        for filename in ("states.npz", "state_metadata.jsonl"):
+            manifest["file_sha256"][filename] = hashlib.sha256((copied / filename).read_bytes()).hexdigest()
+        manifest_path.write_text(json.dumps(manifest))
+        protocol = json.loads(json.dumps(base_protocol))
+        protocol["batches"][0]["artifact_directory"] = str(copied)
+        protocol["batches"][0]["source_manifest_sha256"] = hashlib.sha256(manifest_path.read_bytes()).hexdigest()
+        return module.run_protocol(protocol)
+
+    baseline = payload_for("baseline")
+    changed_states = payload_for("states", change_states=True)
+    changed_labels = payload_for("labels", change_labels=True)
+
+    def base_metrics(payload):
+        return [row for row in payload["metrics"] if row["evaluation_order"] == "train"]
+
+    for changed in (changed_states, changed_labels):
+        assert baseline["transforms"].keys() == changed["transforms"].keys()
+        for key in baseline["transforms"]:
+            assert np.array_equal(baseline["transforms"][key], changed["transforms"][key])
+        assert base_metrics(baseline) == base_metrics(changed)
+
+
+def test_pinned_confirmation_replays_saved_metrics_predictions_and_fits():
+    module = tracking_module()
+    root = Path(__file__).resolve().parents[1]
+    protocol = json.loads((root / "docs/DEMIAN_UNCERTAINTY_TRACKING_CONFIRMATION_PROTOCOL.json").read_text())
+    artifact = root / "data/diagnostics/demian_uncertainty_tracking_confirmation_v2_20261014"
+    replay = module.run_protocol(protocol)
+    saved_metrics = [json.loads(line) for line in (artifact / "metrics.jsonl").read_text().splitlines()]
+    saved_predictions = np.load(artifact / "predictions.npz")["score_and_history_target_prediction"]
+    saved_transforms = np.load(artifact / "transforms.npz")
+
+    assert replay["metrics"] == saved_metrics
+    assert np.array_equal(replay["predictions"], saved_predictions)
+    assert set(replay["transforms"]) == set(saved_transforms.files)
+    for key, value in replay["transforms"].items():
+        assert np.array_equal(value, saved_transforms[key])

@@ -109,6 +109,19 @@ def _cell(states, metadata, seed, order, checkpoint):
     return states[indexes], [metadata[i] for i in indexes]
 
 
+def validate_history_pairing(cells):
+    """Require the same complete, unique history identities in every cell."""
+    reference = None
+    for key, (_, rows) in sorted(cells.items()):
+        histories = [_history_index(row) for row in rows]
+        if len(histories) != len(set(histories)):
+            raise ValueError(f"duplicate history in paired cell {key}")
+        if reference is None:
+            reference = histories
+        elif histories != reference:
+            raise ValueError(f"history pairing changed in cell {key}")
+
+
 def _basis(width, dimension, seed):
     return np.linalg.qr(np.random.default_rng(seed).normal(size=(width, dimension)))[0]
 
@@ -140,6 +153,7 @@ def run_protocol(protocol):
                 basis = _basis(states.shape[1], dimension, int(projection_seed))
                 cells = {(order, checkpoint): _cell(states, metadata, seed, order, checkpoint)
                          for order in ("train", "heldout") for checkpoint in checkpoints}
+                validate_history_pairing(cells)
                 source_all, source_rows_all = cells[("train", checkpoints[0])]
                 source_train = np.asarray([i for i, row in enumerate(source_rows_all) if _history_index(row) in train_ids])
                 source_eval = np.asarray([i for i, row in enumerate(source_rows_all) if _history_index(row) in eval_ids])

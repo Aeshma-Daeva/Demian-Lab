@@ -32,3 +32,11 @@ order changes also change the public evidence target for a binary history, so
 the cross-order result cannot isolate geometry alone. Do not add routing yet.
 The next bounded package should use matched-target cue orders to separate target
 change from coordinate deformation before testing controllability.
+
+## Independent review
+
+Astra review completed: both source manifests validate, replay reproduces all
+504 metric rows, predictions and 732 saved transform arrays exactly, and the
+fit boundary is base-order train-only. The review agrees with `mixed` and no
+status promotion. It required direct adversarial tests for heldout-state/label
+isolation and replay; those tests now pass.

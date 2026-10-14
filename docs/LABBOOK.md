@@ -1143,3 +1143,7 @@ Next:
   routing conclusion.
 - Next: matched-target order design to separate changed evidence targets from
   coordinate deformation before controllability work.
+- Astra review: complete. Both artifacts hash-validate; recomputation exactly
+  reproduced 504 metrics, prediction rows and 732 saved arrays. Review agrees
+  with mixed and no status promotion; adversarial isolation and replay tests
+  added afterward.
