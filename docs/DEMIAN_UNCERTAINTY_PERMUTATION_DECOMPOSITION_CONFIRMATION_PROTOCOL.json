@@ -1,0 +1,27 @@
+{
+  "protocol_id": "demian-uncertainty-permutation-decomposition-confirmation-v1",
+  "stage": "fresh_seed_confirmation",
+  "source_protocol": "DEMIAN_UNCERTAINTY_PERMUTATION_DECOMPOSITION_PROTOCOL.json",
+  "source_artifact": "data/diagnostics/demian_uncertainty_permutation_decomposition_v1_20261014",
+  "selection_rule_result": "swap_56 minus identity at delay8: largest absolute eligible mean seed-level continuous-margin contrast (+0.3711); same positive direction in four of four discovery seeds",
+  "claim_boundary": "fixed-weight descriptive confirmation of an order-dependent continuous transport score; no channel, routing, adaptation, learning, geometric-mechanism, or causal claim",
+  "hidden_size": 256,
+  "model_seeds": [3094, 3095, 3194, 3195],
+  "train_order": [0.95, 0.75, 0.5, 0.75, 0.5, 0.95],
+  "history_split_seed": 173,
+  "checkpoints": [{"id":"cue6","evidence_count":6,"delay_steps":0},{"id":"delay2","evidence_count":6,"delay_steps":2},{"id":"delay8","evidence_count":6,"delay_steps":8}],
+  "frozen_reference_checkpoint": "cue6",
+  "projection_dimension": 16,
+  "projection_seeds": [17,29,43],
+  "ridge_alpha": 1.0,
+  "conditions": [
+    {"id":"identity","kind":"identity","evaluation_order":[0.95,0.75,0.5,0.75,0.5,0.95],"evaluation_symbol_permutation":[0,1,2,3,4,5]},
+    {"id":"swap_56","kind":"adjacent_swap","evaluation_order":[0.95,0.75,0.5,0.75,0.95,0.5],"evaluation_symbol_permutation":[0,1,2,3,5,4]}
+  ],
+  "target_rule":"Each condition applies its exact listed permutation jointly to symbols and reliabilities. Base and heldout paired histories retain the same complete symbol-reliability evidence-pair multiset and public log-odds target, subject to recorded floating-point tolerance 1e-12.",
+  "fitting_rule":"For every condition, fit the projection, cue6 decoder, normalization, and temporal tracker solely on base-order train32. Apply unchanged objects to paired heldout eval32. No heldout-order state, label, transform, or threshold may fit an object.",
+  "primary_outcome":"continuous_transport_margin = heldout orthogonal true-label R2 - max(heldout analytic latest-cue R2, heldout conditional-shuffle R2); report true-minus-latest, true-minus-shuffle, true R2, and both comparator R2 values separately.",
+  "seed_level_aggregation":"For every condition and parameter seed, use the median continuous transport margin across the three projection seeds. Projection cells remain dependent descriptive sensitivity measurements.",
+  "confirmation_rule":"At delay8, swap_56 minus identity must be positive in at least three of four fresh parameter seeds. If it confirms, report the decomposition into true R2 and both comparator R2 changes; do not treat confirmation as evidence of a channel mechanism. If it does not, report nonconfirmation and do not analyze or intervene on channels.",
+  "artifact_directory":"data/diagnostics/demian_uncertainty_permutation_decomposition_confirmation_v1_20261014"
+}
