@@ -1,0 +1,19 @@
+{
+  "protocol_id":"demian-uncertainty-final-slot-matched-geometry-v1",
+  "stage":"third_fresh_seed_confirmatory_geometry",
+  "claim_boundary":"fixed-weight, base-fit-only global geometry covariates; no geometry mechanism, channel relation, routing, adaptation, learning, or causal claim",
+  "hidden_size":256,"model_seeds":[3694,3695,3794,3795],"train_order":[0.95,0.75,0.5,0.75,0.5,0.95],"history_split_seed":191,
+  "checkpoints":[{"id":"cue6","evidence_count":6,"delay_steps":0},{"id":"delay2","evidence_count":6,"delay_steps":2},{"id":"delay8","evidence_count":6,"delay_steps":8}],"frozen_reference_checkpoint":"cue6","projection_dimension":16,"projection_seeds":[17,29,43],"ridge_alpha":1.0,
+  "conditions":[
+    {"id":"identity","kind":"recency_reference","evaluation_order":[0.95,0.75,0.5,0.75,0.5,0.95],"evaluation_symbol_permutation":[0,1,2,3,4,5]},
+    {"id":"final05_base","kind":"matched_final_slot","evaluation_order":[0.95,0.75,0.5,0.75,0.95,0.5],"evaluation_symbol_permutation":[0,1,2,3,5,4]},
+    {"id":"final05_upstream_swap12","kind":"matched_final_slot","evaluation_order":[0.75,0.95,0.5,0.75,0.95,0.5],"evaluation_symbol_permutation":[1,0,2,3,5,4]}
+  ],
+  "target_rule":"Each condition applies its listed permutation jointly to symbols and reliabilities; paired histories retain the full evidence-pair multiset and public log-odds target within 1e-12.",
+  "fitting_rule":"Fit every projection, mean/scale, tracker, and subspace basis only on base-order train32 cue6-to-delay8 states. Apply unchanged objects to paired eval32 clouds.",
+  "descriptors":["frozen tracker heldout-eval residual energy","frozen centroid residual norm","frozen centered-spread ratio","frozen subspace reconstruction error"],
+  "aggregation":"Within seed, median descriptor differences across fixed projections; all cells remain dependent descriptions.",
+  "control":"Identity is calibration only. Retain true R2/latest/shuffle only to verify final-slot matching.",
+  "decision_rule":"Report a descriptor only as a descriptive covariate if base-minus-upstream has one nonzero direction in at least three of four seeds. Do not infer explanation or nominate channels.",
+  "artifact_directory":"data/diagnostics/demian_uncertainty_final_slot_matched_geometry_v1_20261014"
+}
