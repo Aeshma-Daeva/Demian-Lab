@@ -1,0 +1,70 @@
+{
+  "file_sha256": {
+    "metrics.jsonl": "b92c054f45793bb03d733eaccf8615301ecc09d3c6f8a8438500af748b2bcc8d",
+    "predictions.npz": "192346120aafda7e36f175a9d45ea246328b5f8766bf7e598943a183b48eeb13",
+    "state_metadata.jsonl": "5b5e28f78c8a313c6efbc25b506e7701e7643cd7768e8bb9253b67ec85ce6cf1",
+    "states.npz": "7b87916ea3a2bedf7ad7fa14226944001ef6f23e3eb1f8f86c8990e6edb7394a",
+    "summary.json": "78590eff04ed893926bc137e0dd823c9fce5c58a579aa7f574e6ac748e6b7423",
+    "transforms.npz": "84bbeaeda0aa84ca9c59a3955eba5f78ae9910e49fefd79431fdede38c6da4e1"
+  },
+  "protocol": {
+    "artifact_directory": "data/diagnostics/demian_uncertainty_tracking_confirmation_matrix_v1_20261014",
+    "checkpoints": [
+      {
+        "delay_steps": 0,
+        "evidence_count": 6,
+        "id": "cue6"
+      },
+      {
+        "delay_steps": 2,
+        "evidence_count": 6,
+        "id": "delay2"
+      },
+      {
+        "delay_steps": 8,
+        "evidence_count": 6,
+        "id": "delay8"
+      }
+    ],
+    "claim_boundary": "fresh fixed-weight state collection for external diagnostic decoder tracking; no claim of Demian learning, adaptation, self-readout, routing control, or causal channel mechanism",
+    "controls": "Analytic latest-cue semantics and conditional train-label shuffle. No target-order states or evaluation histories fit a decoder, normalization, projection, translation, scale, or rotation.",
+    "decision_rule": "For each delay2 and delay8 separately, orthogonal-tracked true-label R2 must exceed analytic latest-cue and matched shuffled-label R2 in all 12 seed-by-projection cells for a within-order confirmation. Cross-order scores are secondary strict portability: the base-trained tracker is applied unchanged.",
+    "evaluation_order": [
+      0.5,
+      0.95,
+      0.75,
+      0.5,
+      0.75,
+      0.95
+    ],
+    "frozen_reference_checkpoint": "cue6",
+    "hidden_size": 256,
+    "history_split_seed": 97,
+    "model_seeds": [
+      2094,
+      2095,
+      2194,
+      2195
+    ],
+    "novelty": "Seeds 2094/2095/2194/2195, split97 and both reliability orders differ from the two prior matrix protocols; each order contains exactly two .95, two .75 and two .5 reliabilities.",
+    "projection_dimension": 16,
+    "projection_seeds": [
+      17,
+      29,
+      43
+    ],
+    "protocol_id": "demian-uncertainty-tracking-confirmation-matrix-v1",
+    "ridge_alpha": 1.0,
+    "support": "All 64 binary histories are collected for each order, seed and checkpoint. The base-order final-symbol/log-odds-sign procedure allocates 32 train and 32 evaluation histories, paired across orders and checkpoints.",
+    "train_order": [
+      0.95,
+      0.5,
+      0.75,
+      0.95,
+      0.75,
+      0.5
+    ]
+  },
+  "protocol_sha256": "6e13e88d35bbbe81467231dd0ca26788531f5ef5d3494c6a037ff4ba9fbc82e4",
+  "source_commit": "c0e0f79c4d033eda60d1b4c12074ccadfe5d3d64"
+}

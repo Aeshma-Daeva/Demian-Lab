@@ -1,0 +1,47 @@
+{
+  "file_sha256": {
+    "metrics.jsonl": "fbe0e4da986ff1f5e9b58a3a25176d12604c6100ae5b7327e7477df334dceabc",
+    "predictions.npz": "83fe88205448b0c4f3b738c097743885f1808812255449168544f133af8aac02",
+    "summary.json": "83fc1369b36e1f34db4aa8f024ce375b5337b0aab5258eafb87aa0e33ec31f07",
+    "transforms.npz": "7120532180e36dcd0853351b936c693b146b64b6772631868b3fe94218671555"
+  },
+  "protocol": {
+    "artifact_directory": "data/diagnostics/demian_uncertainty_tracking_confirmation_v1_20261014",
+    "batches": [
+      {
+        "artifact_directory": "data/diagnostics/demian_uncertainty_tracking_confirmation_matrix_v1_20261014",
+        "id": "fresh_confirmation",
+        "model_seeds": [
+          2094,
+          2095,
+          2194,
+          2195
+        ],
+        "source_manifest_sha256": "45b1a7fdcb3c3871b939ec0385620de03c800439d806f5b1df11679b4f32b687"
+      }
+    ],
+    "checkpoints": [
+      "cue6",
+      "delay2",
+      "delay8"
+    ],
+    "claim_boundary": "fresh external decoder-tracking confirmation only; Demian weights, architecture, encoder and recurrent dynamics remain fixed",
+    "decision_rule": "Confirmation requires true-label orthogonal_track R2 greater than both controls in every one of four seed by three projection cells at each of delay2 and delay8. Identity and scalar-scale rows are descriptive controls. Projections and delays are dependent within seed.",
+    "falsifier": "Any primary cell at either delay fails either control comparison; report mixed or failed declared tracking criterion without inferring information erasure.",
+    "fitting_rule": "Fit cue6 readout, standardization and cue6-to-delay transforms only on base-order train32 histories. Apply the frozen objects to base-order eval32 and heldout-order eval32. Do not fit any object using heldout-order or evaluation states.",
+    "include_dynamic_observers": false,
+    "primary_measurement": "orthogonal_track frozen cue6 readout versus analytic latest-cue and matched conditional-label-shuffle controls on within-order eval32",
+    "projection_dimension": 16,
+    "projection_seeds": [
+      17,
+      29,
+      43
+    ],
+    "protocol_id": "demian-uncertainty-tracking-confirmation-v1",
+    "ridge_alpha": 1.0,
+    "secondary_measurement": "same base-trained frozen objects on heldout-order eval32; reliability-order changes may change the public evidence target, so this does not isolate geometry alone",
+    "source_matrix_directory": "data/diagnostics/demian_uncertainty_tracking_confirmation_matrix_v1_20261014",
+    "source_matrix_protocol": "DEMIAN_UNCERTAINTY_TRACKING_CONFIRMATION_MATRIX_PROTOCOL.json"
+  },
+  "protocol_sha256": "624b6d10227a9d0f310a2eb608206c863b0664b28d8a3f10079f962f4e18d56e"
+}

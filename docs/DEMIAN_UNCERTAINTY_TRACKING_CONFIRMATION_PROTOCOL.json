@@ -18,7 +18,7 @@
     {
       "id": "fresh_confirmation",
       "artifact_directory": "data/diagnostics/demian_uncertainty_tracking_confirmation_matrix_v1_20261014",
-      "source_manifest_sha256": "TO_BE_FILLED_AFTER_FROZEN_MATRIX_RUN",
+      "source_manifest_sha256": "45b1a7fdcb3c3871b939ec0385620de03c800439d806f5b1df11679b4f32b687",
       "model_seeds": [2094, 2095, 2194, 2195]
     }
   ]
