@@ -22,6 +22,10 @@ def _history_index(row):
                for position, bit in enumerate(row["symbols"]))
 
 
+def _paired_history_index(row):
+    return int(row.get("paired_history_index", _history_index(row)))
+
+
 def fit_tracker(source, target, *, mode):
     """Fit target-to-source translation/scale/(proper) rotation on calibration rows."""
     source, target = np.asarray(source, dtype=np.float64), np.asarray(target, dtype=np.float64)
@@ -102,8 +106,8 @@ def _load_batch(batch):
 
 def _cell(states, metadata, seed, order, checkpoint):
     indexes = [i for i, row in enumerate(metadata) if row["model_seed"] == seed and row["order"] == order and row["checkpoint_id"] == checkpoint]
-    indexes.sort(key=lambda i: _history_index(metadata[i]))
-    histories = [_history_index(metadata[i]) for i in indexes]
+    indexes.sort(key=lambda i: _paired_history_index(metadata[i]))
+    histories = [_paired_history_index(metadata[i]) for i in indexes]
     if len(histories) != len(set(histories)):
         raise ValueError(f"duplicate history in cell {seed}/{order}/{checkpoint}")
     return states[indexes], [metadata[i] for i in indexes]
@@ -113,7 +117,7 @@ def validate_history_pairing(cells):
     """Require the same complete, unique history identities in every cell."""
     reference = None
     for key, (_, rows) in sorted(cells.items()):
-        histories = [_history_index(row) for row in rows]
+        histories = [_paired_history_index(row) for row in rows]
         if len(histories) != len(set(histories)):
             raise ValueError(f"duplicate history in paired cell {key}")
         if reference is None:
@@ -155,8 +159,8 @@ def run_protocol(protocol):
                          for order in ("train", "heldout") for checkpoint in checkpoints}
                 validate_history_pairing(cells)
                 source_all, source_rows_all = cells[("train", checkpoints[0])]
-                source_train = np.asarray([i for i, row in enumerate(source_rows_all) if _history_index(row) in train_ids])
-                source_eval = np.asarray([i for i, row in enumerate(source_rows_all) if _history_index(row) in eval_ids])
+                source_train = np.asarray([i for i, row in enumerate(source_rows_all) if _paired_history_index(row) in train_ids])
+                source_eval = np.asarray([i for i, row in enumerate(source_rows_all) if _paired_history_index(row) in eval_ids])
                 x_source = source_all[source_train] @ basis
                 source_labels = np.asarray([source_rows_all[i]["target_value"] for i in source_train])
                 frozen = fit_probe(x_source, source_labels, alpha=alpha)
@@ -172,16 +176,16 @@ def run_protocol(protocol):
                 base_target, base_target_rows = cells[("train", checkpoints[0])]
                 for checkpoint in checkpoints:
                     base_target, base_target_rows = cells[("train", checkpoint)]
-                    base_target_train = np.asarray([i for i, row in enumerate(base_target_rows) if _history_index(row) in train_ids])
-                    if [_history_index(source_rows_all[i]) for i in source_train] != [_history_index(base_target_rows[i]) for i in base_target_train]:
+                    base_target_train = np.asarray([i for i, row in enumerate(base_target_rows) if _paired_history_index(row) in train_ids])
+                    if [_paired_history_index(source_rows_all[i]) for i in source_train] != [_paired_history_index(base_target_rows[i]) for i in base_target_train]:
                         raise ValueError("base tracker history pairing changed")
                     base_trackers[checkpoint] = {mode: fit_tracker(x_source, (base_target @ basis)[base_target_train], mode=mode)
                                                  for mode in ("identity", "scale_track", "orthogonal_track")}
                 for order in ("train", "heldout"):
                     for checkpoint in checkpoints:
                         target_all, target_rows_all = cells[(order, checkpoint)]
-                        target_train = np.asarray([i for i, row in enumerate(target_rows_all) if _history_index(row) in train_ids])
-                        target_eval = np.asarray([i for i, row in enumerate(target_rows_all) if _history_index(row) in eval_ids])
+                        target_train = np.asarray([i for i, row in enumerate(target_rows_all) if _paired_history_index(row) in train_ids])
+                        target_eval = np.asarray([i for i, row in enumerate(target_rows_all) if _paired_history_index(row) in eval_ids])
                         y = np.asarray([target_rows_all[i]["target_value"] for i in target_eval])
                         target_projected = target_all @ basis
                         for mode in ("identity", "scale_track", "orthogonal_track"):
@@ -209,11 +213,11 @@ def run_protocol(protocol):
                 for checkpoint in checkpoints:
                     cell_states, cell_rows = cells[("train", checkpoint)]
                     for index, row in enumerate(cell_rows):
-                        if _history_index(row) in train_ids:
+                        if _paired_history_index(row) in train_ids:
                             dynamic_states.append(cell_states[index]); dynamic_rows.append(row)
                 dynamic_states = np.asarray(dynamic_states) @ basis
                 dynamic_labels = np.asarray([row["target_value"] for row in dynamic_rows])
-                original_train = np.vstack([cells[("train", checkpoint)][0][i] for checkpoint in checkpoints for i, row in enumerate(cells[("train", checkpoint)][1]) if _history_index(row) in train_ids])
+                original_train = np.vstack([cells[("train", checkpoint)][0][i] for checkpoint in checkpoints for i, row in enumerate(cells[("train", checkpoint)][1]) if _paired_history_index(row) in train_ids])
                 controls = _controls(original_train, dynamic_rows)
                 feature_sets = {"time_conditioned_external": time_features(dynamic_states, dynamic_rows, checkpoints),
                                 "regime_conditioned_external": regime_features(dynamic_states, dynamic_rows, controls=controls)}
@@ -224,7 +228,7 @@ def run_protocol(protocol):
                     for order in ("train", "heldout"):
                         for checkpoint in checkpoints:
                             cell_states, cell_rows = cells[(order, checkpoint)]
-                            evaluate = [i for i, row in enumerate(cell_rows) if _history_index(row) in eval_ids]
+                            evaluate = [i for i, row in enumerate(cell_rows) if _paired_history_index(row) in eval_ids]
                             projected = cell_states[evaluate] @ basis
                             if decoder_name == "time_conditioned_external":
                                 features_eval = time_features(projected, [cell_rows[i] for i in evaluate], checkpoints)

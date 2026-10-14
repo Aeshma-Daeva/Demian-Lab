@@ -50,6 +50,12 @@ def collect_rows(protocol):
         raise ValueError('distinct equal-length reliability orders required')
     checkpoints = protocol['checkpoints']
     length = len(train)
+    symbol_permutation = protocol.get('evaluation_symbol_permutation')
+    if symbol_permutation is not None:
+        if sorted(symbol_permutation) != list(range(length)):
+            raise ValueError('evaluation symbol permutation must index each cue position once')
+        if any(evaluation[position] != train[source] for position, source in enumerate(symbol_permutation)):
+            raise ValueError('evaluation symbol permutation must preserve evidence pairs')
     for point in checkpoints:
         count, delay = int(point['evidence_count']), int(point['delay_steps'])
         if not 1 <= count <= length or delay < 0 or (delay and count != length):
@@ -62,7 +68,10 @@ def collect_rows(protocol):
         for order_name, schedule in [('train', train), ('heldout', evaluation)]:
             seen = {}
             for symbols in itertools.product((0, 1), repeat=length):
-                evidence = tuple(zip(symbols, schedule, strict=True))
+                paired_history_index = sum(int(symbol) << (length-1-position) for position, symbol in enumerate(symbols))
+                actual_symbols = (tuple(symbols[source] for source in symbol_permutation)
+                                  if order_name == 'heldout' and symbol_permutation is not None else symbols)
+                evidence = tuple(zip(actual_symbols, schedule, strict=True))
                 frames = AmbiguousEvidenceWorld(hidden_target=0, evidence=evidence, delay_steps=max_delay).frames()[:length+max_delay]
                 trace = run_uncertainty_episode(model_seed=int(seed), hidden_size=int(protocol['hidden_size']), public_frames=frames, checkpoint_phases=('evidence', 'delay'))
                 for point in checkpoints:
@@ -72,7 +81,7 @@ def collect_rows(protocol):
                     snapshot = trace['checkpoints'][f'{phase}:{tick}']
                     parts = [p.detach().numpy().reshape(-1) for p in snapshot.state]
                     state = np.concatenate(parts)
-                    key = (point['id'], symbols[:count])
+                    key = (point['id'], actual_symbols[:count])
                     if key in seen:
                         if not np.array_equal(state, seen[key]):
                             raise RuntimeError('identical prefix differs across future suffixes')
@@ -82,7 +91,8 @@ def collect_rows(protocol):
                     rows.append({
                         'model_seed': int(seed), 'order': order_name, 'checkpoint_id': point['id'],
                         'evidence_count': count, 'delay_steps': delay, 'tick': tick,
-                        'symbols': symbols[:count], 'reliabilities': schedule[:count],
+                        'symbols': actual_symbols[:count], 'paired_history_index': paired_history_index,
+                        'reliabilities': schedule[:count],
                         'unique_prefix_count': 2**count, 'channel_widths': [len(p) for p in parts],
                         'target_value': float(reference_belief(prefix)['log_odds']),
                         'current_semantic_log_odds': float(reference_belief([frames[tick]])['log_odds']),
@@ -107,6 +117,10 @@ def _shuffled_labels(rows, seed):
 
 def _history_index(row):
     return sum(int(symbol) << (len(row['symbols'])-1-position) for position, symbol in enumerate(row['symbols']))
+
+
+def _paired_history_index(row):
+    return int(row.get('paired_history_index', _history_index(row)))
 
 
 def split_histories(rows, seed):
@@ -146,7 +160,7 @@ def run_protocol(protocol):
         cells = {(point['id'], order): [r for r in rows if r['model_seed']==int(seed) and r['checkpoint_id']==point['id'] and r['order']==order]
                  for point in protocol['checkpoints'] for order in ('train', 'heldout')}
         def evaluation_rows(cp, order):
-            return [r for r in cells[(cp, order)] if allocation is None or _history_index(r) in allocation['evaluation_history_indices']]
+            return [r for r in cells[(cp, order)] if allocation is None or _paired_history_index(r) in allocation['evaluation_history_indices']]
         def family(order):
             return ('within_order_heldout_history' if order=='train' else 'cross_order_heldout_history') if allocation is not None else order
         for point in protocol['checkpoints']:
@@ -181,7 +195,7 @@ def run_protocol(protocol):
                 if mode == 'cue_end_frozen' and int(point['evidence_count']) != len(protocol['train_order']):
                     continue
                 fit_cp = cp if mode=='time_refit' else protocol['frozen_reference_checkpoint']
-                train_rows = [r for r in cells[(fit_cp, 'train')] if allocation is None or _history_index(r) in allocation['train_history_indices']]
+                train_rows = [r for r in cells[(fit_cp, 'train')] if allocation is None or _paired_history_index(r) in allocation['train_history_indices']]
                 labels = np.asarray([r['target_value'] for r in train_rows])
                 for feature in (*neural, *controls):
                     projection_seeds = protocol['projection_seeds'] if feature in neural else [None]

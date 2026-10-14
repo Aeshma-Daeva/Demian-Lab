@@ -1,0 +1,23 @@
+{
+  "protocol_id": "demian-uncertainty-matched-target-matrix-v1",
+  "claim_boundary": "fresh fixed-weight matched-target state collection for external decoder tracking; no internal adaptation, routing, learning, or causal mechanism claim",
+  "hidden_size": 256,
+  "model_seeds": [2294, 2295, 2394, 2395],
+  "train_order": [0.95, 0.75, 0.5, 0.75, 0.5, 0.95],
+  "evaluation_order": [0.75, 0.95, 0.5, 0.5, 0.75, 0.95],
+  "evaluation_symbol_permutation": [1, 0, 2, 4, 3, 5],
+  "checkpoints": [
+    {"id": "cue6", "evidence_count": 6, "delay_steps": 0},
+    {"id": "delay2", "evidence_count": 6, "delay_steps": 2},
+    {"id": "delay8", "evidence_count": 6, "delay_steps": 8}
+  ],
+  "frozen_reference_checkpoint": "cue6",
+  "projection_dimension": 16,
+  "projection_seeds": [17, 29, 43],
+  "ridge_alpha": 1.0,
+  "history_split_seed": 109,
+  "matched_target_rule": "For every base binary history s, heldout order receives symbols [s1,s0,s2,s4,s3,s5]. Each symbol remains paired with the same reliability as in base order, so public evidence pairs and log-odds targets are identical while cue sequence position changes.",
+  "controls": "All 64 histories per order/seed/checkpoint; base-order stratified train32/eval32 split; analytic latest-cue and matched conditional-label shuffle. No heldout-order state or evaluation history fits an object.",
+  "decision_rule": "Within-order delay2/delay8 uses the prior all-cell criterion. The primary matched-target question is strict heldout-order performance of the unchanged base decoder/tracker, reported against identity, scalar-scale, analytic latest-cue and shuffle. This separates target mismatch from coordinate transport but does not establish a causal channel mechanism.",
+  "artifact_directory": "data/diagnostics/demian_uncertainty_matched_target_matrix_v1_20261014"
+}

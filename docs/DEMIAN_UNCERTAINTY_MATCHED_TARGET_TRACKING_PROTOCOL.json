@@ -1,0 +1,16 @@
+{
+  "protocol_id": "demian-uncertainty-matched-target-tracking-v1",
+  "claim_boundary": "external frozen decoder coordinate tracking on fresh matched-target order states; not Demian adaptation, self-decoding, routing, learning, or channel causality",
+  "source_matrix_protocol": "DEMIAN_UNCERTAINTY_MATCHED_TARGET_MATRIX_PROTOCOL.json",
+  "source_matrix_directory": "data/diagnostics/demian_uncertainty_matched_target_matrix_v1_20261014",
+  "checkpoints": ["cue6", "delay2", "delay8"],
+  "projection_dimension": 16,
+  "projection_seeds": [17, 29, 43],
+  "ridge_alpha": 1.0,
+  "include_dynamic_observers": false,
+  "fitting_rule": "Fit cue6 readout, standardization and temporal tracker only on base-order train32. Apply unchanged objects to paired base-order eval32 and heldout-order eval32. The heldout order has paired histories with exactly equal public evidence targets.",
+  "controls": "Identity, scalar-scale, proper-orthogonal tracking; analytic latest-cue; conditional train-label shuffle.",
+  "decision_rule": "Report every seed-by-projection cell. Strong matched-target portability requires orthogonal-track true-label R2 to exceed latest-cue and shuffle in all 12 heldout-order cells at a delay. A failure is a frozen transport failure, not evidence erasure.",
+  "artifact_directory": "data/diagnostics/demian_uncertainty_matched_target_tracking_v1_20261014",
+  "batches": [{"id": "matched_target", "artifact_directory": "data/diagnostics/demian_uncertainty_matched_target_matrix_v1_20261014", "source_manifest_sha256": "TO_BE_FILLED_AFTER_MATRIX_RUN", "model_seeds": [2294, 2295, 2394, 2395]}]
+}
