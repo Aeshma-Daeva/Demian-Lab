@@ -1,0 +1,16 @@
+{
+  "claim_boundary": "descriptive geometry and channel-relation analysis of fresh fixed-weight matched-target traces; no causal, adaptation, routing, or channel-mechanism claim",
+  "experiment": "demian-uncertainty-matched-target-relations-v1",
+  "integrity": {
+    "analysis_only": true,
+    "architecture_changed": false,
+    "metric_count": 28,
+    "relation_metric_count": 80,
+    "source_manifest_sha256": {
+      "matched_target": "c13350153acfcebf72ddd5fe06a440afbe463fb78efbfb198d2278edb6f81cb9"
+    },
+    "weights_changed": false
+  },
+  "metric_count": 28,
+  "relation_metric_count": 80
+}

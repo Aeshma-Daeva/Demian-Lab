@@ -1,0 +1,58 @@
+{
+  "file_sha256": {
+    "metrics.jsonl": "71c1f39016f4c97f9485fdeaf360b52250cb2ebb8f877c886faf861b7d840191",
+    "relation_metrics.jsonl": "3e27a2281411dca918d5c23de12e1eb67d63a6cfc397cdb914c70c8c071f0ed5",
+    "summary.json": "465f8609949fbdb74c6175ed95b6efaf3eef03ca3b0707d4efab1d72871c5c93"
+  },
+  "protocol": {
+    "artifact_directory": "data/diagnostics/demian_uncertainty_matched_target_relations_v1_20261014",
+    "batches": [
+      {
+        "artifact_directory": "data/diagnostics/demian_uncertainty_matched_target_matrix_v1_20261014",
+        "checkpoints": [
+          {
+            "id": "cue6"
+          },
+          {
+            "id": "delay2"
+          },
+          {
+            "id": "delay8"
+          }
+        ],
+        "id": "matched_target",
+        "model_seeds": [
+          2294,
+          2295,
+          2394,
+          2395
+        ],
+        "source_manifest_sha256": "c13350153acfcebf72ddd5fe06a440afbe463fb78efbfb198d2278edb6f81cb9"
+      }
+    ],
+    "claim_boundary": "descriptive geometry and channel-relation analysis of fresh fixed-weight matched-target traces; no causal, adaptation, routing, or channel-mechanism claim",
+    "comparison_families": [
+      "within-order cue6-to-delay2/delay8",
+      "matched-target cross-order at cue6/delay2/delay8"
+    ],
+    "controls_and_limits": [
+      "Pair histories by preserved paired_history_index, not their permuted exposed symbol string.",
+      "All comparisons reuse one fresh four-seed batch and are descriptive.",
+      "Cross-channel co-change is not directional or causal."
+    ],
+    "falsifier": "No geometry or channel-relation pattern is stable across seeds; report heterogeneity and do not nominate a mechanism.",
+    "primary_measurements": [
+      "paired cross-order centroid shift",
+      "RMS scale ratio",
+      "scale-normalized orthogonal Procrustes residual",
+      "rank-8 history-space overlap",
+      "pairwise-distance alignment",
+      "cue6-to-delay gate/non-gate change-norm relations"
+    ],
+    "protocol_id": "demian-uncertainty-matched-target-relations-v1",
+    "source": "E-UNC-018 matched-target state matrix; no new trajectories",
+    "subspace_rank": 8
+  },
+  "protocol_sha256": "2877af8ba6121257686fd21ba92052f55696652747866bdd5456658108c374d8",
+  "source_commit": "analysis-only"
+}
