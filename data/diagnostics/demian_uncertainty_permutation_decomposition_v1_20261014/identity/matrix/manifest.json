@@ -1,0 +1,81 @@
+{
+  "file_sha256": {
+    "metrics.jsonl": "7e48921dc263605140db2958763a3d8e95bad93532fbeac7b3c0548f31f9d950",
+    "predictions.npz": "dc48aa56c6fa948e80c221dbbe715997c85fa9208f87e5160f02278f23b36fcc",
+    "state_metadata.jsonl": "5d8fa66b75f024971476310cce56bca659a387f39a8a49ad7ac9809bc86611b9",
+    "states.npz": "d82476b05a47aaca3b3d52a76321ce276222f847e30c2d5f080321983c11a855",
+    "summary.json": "e852575c8cabc5e5a242c37e25d5522b04b0bd01997cd3f0c7956b3cc25c9c7c",
+    "transforms.npz": "917823d31e5b72bc44c3ab05bae21f4a3df5445fac3758aa83f2745b9573079e"
+  },
+  "protocol": {
+    "checkpoints": [
+      {
+        "delay_steps": 0,
+        "evidence_count": 6,
+        "id": "cue6"
+      },
+      {
+        "delay_steps": 2,
+        "evidence_count": 6,
+        "id": "delay2"
+      },
+      {
+        "delay_steps": 8,
+        "evidence_count": 6,
+        "id": "delay8"
+      }
+    ],
+    "claim_boundary": "fixed-weight descriptive decomposition of matched-target cue-order sensitivity; no channel, routing, adaptation, learning, or causal claim",
+    "condition": "identity",
+    "evaluation_order": [
+      0.95,
+      0.75,
+      0.5,
+      0.75,
+      0.5,
+      0.95
+    ],
+    "evaluation_symbol_permutation": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "fitting_rule": "For every condition, fit projection, cue6 decoder, normalization, and temporal tracker solely on base-order train32. Apply unchanged objects to paired heldout eval32. No heldout-order state, label, transform, or threshold may fit an object.",
+    "frozen_reference_checkpoint": "cue6",
+    "hidden_size": 256,
+    "history_split_seed": 167,
+    "matched_target_rule": "Each condition applies its exact listed permutation jointly to symbols and reliabilities. Base and heldout paired histories retain the same complete symbol-reliability evidence-pair multiset and public log-odds target, subject to recorded floating-point tolerance 1e-12.",
+    "model_seeds": [
+      2894,
+      2895,
+      2994,
+      2995
+    ],
+    "primary_outcome": "continuous_transport_margin = heldout orthogonal true-label R2 - max(heldout analytic latest-cue R2, heldout conditional-shuffle R2); also report true-minus-latest and true-minus-shuffle separately",
+    "projection_dimension": 16,
+    "projection_seeds": [
+      17,
+      29,
+      43
+    ],
+    "protocol_id": "demian-uncertainty-permutation-decomposition-v1-identity",
+    "ridge_alpha": 1.0,
+    "secondary_outcome": "strict transport pass when continuous_transport_margin is positive",
+    "seed_level_aggregation": "For every condition, delay and parameter seed, use the median continuous transport margin across the three projection seeds. Projection and checkpoint cells remain dependent descriptive measurements.",
+    "stage": "discovery_then_fresh_seed_confirmation",
+    "target_rule": "Each condition applies its exact listed permutation jointly to symbols and reliabilities. Base and heldout paired histories retain the same complete symbol-reliability evidence-pair multiset and public log-odds target, subject to recorded floating-point tolerance 1e-12.",
+    "train_order": [
+      0.95,
+      0.75,
+      0.5,
+      0.75,
+      0.5,
+      0.95
+    ]
+  },
+  "protocol_sha256": "52e8aacb159901743682936f7f7ce2cbcaa187b648e6789502e2015a84440fdd",
+  "source_commit": "009c0805067ffcc97340bfc1c2a13206aeabd1f5"
+}

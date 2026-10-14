@@ -1,0 +1,84 @@
+{
+  "file_sha256": {
+    "metrics.jsonl": "5657c732b41dbbae34a8a5bf29d262924ef19ab829b92c5bd14911edd9285227",
+    "predictions.npz": "191075d77fbb139157ebaf332f3fc6cea5dbd0195d72de02a3fc4d36e2217843",
+    "state_metadata.jsonl": "74099622559bd768bbd676af9bb03559e28180a78680de10718372dd1b838a32",
+    "states.npz": "60979a01bc6a7400866b2fbd5f13fdcd45353bad8d0c6f1c5c94ec986b3c5094",
+    "summary.json": "d67205537810d22f254d0a5eb99207460a415f4d845fc67517b334cdaed8aa6f",
+    "transforms.npz": "57121169a9592ebaa1a9c75a00d36ebda1570bc5d9afdd32b15cee30f0d51635"
+  },
+  "protocol": {
+    "checkpoints": [
+      {
+        "delay_steps": 0,
+        "evidence_count": 6,
+        "id": "cue6"
+      },
+      {
+        "delay_steps": 2,
+        "evidence_count": 6,
+        "id": "delay2"
+      },
+      {
+        "delay_steps": 8,
+        "evidence_count": 6,
+        "id": "delay8"
+      }
+    ],
+    "claim_boundary": "fixed-weight descriptive confirmation of an order-dependent continuous transport score; no channel, routing, adaptation, learning, geometric-mechanism, or causal claim",
+    "condition": "identity",
+    "confirmation_rule": "At delay8, swap_56 minus identity must be positive in at least three of four fresh parameter seeds. If it confirms, report the decomposition into true R2 and both comparator R2 changes; do not treat confirmation as evidence of a channel mechanism. If it does not, report nonconfirmation and do not analyze or intervene on channels.",
+    "evaluation_order": [
+      0.95,
+      0.75,
+      0.5,
+      0.75,
+      0.5,
+      0.95
+    ],
+    "evaluation_symbol_permutation": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "fitting_rule": "For every condition, fit the projection, cue6 decoder, normalization, and temporal tracker solely on base-order train32. Apply unchanged objects to paired heldout eval32. No heldout-order state, label, transform, or threshold may fit an object.",
+    "frozen_reference_checkpoint": "cue6",
+    "hidden_size": 256,
+    "history_split_seed": 173,
+    "matched_target_rule": "Each condition applies its exact listed permutation jointly to symbols and reliabilities. Base and heldout paired histories retain the same complete symbol-reliability evidence-pair multiset and public log-odds target, subject to recorded floating-point tolerance 1e-12.",
+    "model_seeds": [
+      3094,
+      3095,
+      3194,
+      3195
+    ],
+    "primary_outcome": "continuous_transport_margin = heldout orthogonal true-label R2 - max(heldout analytic latest-cue R2, heldout conditional-shuffle R2); report true-minus-latest, true-minus-shuffle, true R2, and both comparator R2 values separately.",
+    "projection_dimension": 16,
+    "projection_seeds": [
+      17,
+      29,
+      43
+    ],
+    "protocol_id": "demian-uncertainty-permutation-decomposition-confirmation-v1-identity",
+    "ridge_alpha": 1.0,
+    "seed_level_aggregation": "For every condition and parameter seed, use the median continuous transport margin across the three projection seeds. Projection cells remain dependent descriptive sensitivity measurements.",
+    "selection_rule_result": "swap_56 minus identity at delay8: largest absolute eligible mean seed-level continuous-margin contrast (+0.3711); same positive direction in four of four discovery seeds",
+    "source_artifact": "data/diagnostics/demian_uncertainty_permutation_decomposition_v1_20261014",
+    "source_protocol": "DEMIAN_UNCERTAINTY_PERMUTATION_DECOMPOSITION_PROTOCOL.json",
+    "stage": "fresh_seed_confirmation",
+    "target_rule": "Each condition applies its exact listed permutation jointly to symbols and reliabilities. Base and heldout paired histories retain the same complete symbol-reliability evidence-pair multiset and public log-odds target, subject to recorded floating-point tolerance 1e-12.",
+    "train_order": [
+      0.95,
+      0.75,
+      0.5,
+      0.75,
+      0.5,
+      0.95
+    ]
+  },
+  "protocol_sha256": "9d356126de51a5ecbd2ff4b9168bea274ea60b6d00ca8db62f41e4e7305a0945",
+  "source_commit": "d019617105351702918eb143f874c3a7373450a8"
+}

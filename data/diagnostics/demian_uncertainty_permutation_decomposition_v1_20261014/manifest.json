@@ -1,0 +1,268 @@
+{
+  "analysis_sha256": "9a279b4b4f13ca493734ad05e114a8f99dbe8c105315de975c74e765fddbc37d",
+  "file_sha256": {
+    "identity/matrix/manifest.json": "cc25a3d35a442c3352fa3d202795f41efdddb340ddd9c5351ea923a18eae853e",
+    "identity/matrix/metrics.jsonl": "7e48921dc263605140db2958763a3d8e95bad93532fbeac7b3c0548f31f9d950",
+    "identity/matrix/predictions.npz": "dc48aa56c6fa948e80c221dbbe715997c85fa9208f87e5160f02278f23b36fcc",
+    "identity/matrix/state_metadata.jsonl": "5d8fa66b75f024971476310cce56bca659a387f39a8a49ad7ac9809bc86611b9",
+    "identity/matrix/states.npz": "d82476b05a47aaca3b3d52a76321ce276222f847e30c2d5f080321983c11a855",
+    "identity/matrix/summary.json": "e852575c8cabc5e5a242c37e25d5522b04b0bd01997cd3f0c7956b3cc25c9c7c",
+    "identity/matrix/transforms.npz": "917823d31e5b72bc44c3ab05bae21f4a3df5445fac3758aa83f2745b9573079e",
+    "identity/tracking/manifest.json": "e7f91aeb4072f969e178294d7a65d32c7fd57825f21a84c56f600f29c65333d8",
+    "identity/tracking/metrics.jsonl": "5e446750218073cb3831768ca9977d2fb451a6a8652776edec684ec0130a657f",
+    "identity/tracking/predictions.npz": "94e95f37eed610ee7477ce5b16800a6c3230d80afc0913e32cf01ebee83b48d4",
+    "identity/tracking/summary.json": "7b3b1ae8ea25739e5c45ea4e9f1e213bf851272918808225453ab2d2ffd6c0ab",
+    "identity/tracking/transforms.npz": "9f53b60a5a261acd601e8e3d91703559d8b1520b30e15cb8c71130a71a09a56c",
+    "summary.json": "062fde5f6170330373dd4d53810bc800aa3132d5c5ca538a7e94298f72935111",
+    "swap_12/matrix/manifest.json": "afec478324ef1c4dc01e35e0469a96587796df56dac5cc627d62224a2db352c5",
+    "swap_12/matrix/metrics.jsonl": "716b924d55dd84db6cffd4aef756236401c40c3c5ac71f5d79ce619e2a5ee987",
+    "swap_12/matrix/predictions.npz": "9b7ee93922499fe249f585c3b9ceb2e8058ab238c05d06e1d4dac8e1a352bd35",
+    "swap_12/matrix/state_metadata.jsonl": "218b82b95c237f778613ec8ffea90e8394ce2a6f3a77c1e1246fd8688e7d80f5",
+    "swap_12/matrix/states.npz": "299c13f7252c87eeacdf3b5c4074edb6be8290534641433069cd8e17d0844d35",
+    "swap_12/matrix/summary.json": "74b6a8c66ca2baf5ba0d86abb494fb93be27a2e767b1095cd86aeaff75564e6a",
+    "swap_12/matrix/transforms.npz": "917823d31e5b72bc44c3ab05bae21f4a3df5445fac3758aa83f2745b9573079e",
+    "swap_12/tracking/manifest.json": "57edf4f8cf72e1bf799a34974aa7d8e546b32b8f3cbc9804ae60a241d92e0d86",
+    "swap_12/tracking/metrics.jsonl": "160034b321e0b7196ef2ad4a7fd55648969e84effe9b249afd778818dc40b411",
+    "swap_12/tracking/predictions.npz": "495913218bdaae09c63c41cedc0ccba18310117ad4ccefa79d99492dcdb9e6d5",
+    "swap_12/tracking/summary.json": "17fd1850b4e4bd04932ad14f64abbae9073043a03935a6fb6f693c3cceea0d45",
+    "swap_12/tracking/transforms.npz": "1eaa4464de78b6f823e8b656d4a3be7415347ce2e750e9dd971fd1d91ac4e1d6",
+    "swap_23/matrix/manifest.json": "ee96ed622e5f6f5146aee4c94466d623bd3a1976888e4dabc9a647c6b6ef0007",
+    "swap_23/matrix/metrics.jsonl": "adb3a172c982c26764c86094f5c1cf99541f1365dbc1f5d0f0f041bf70bcb69a",
+    "swap_23/matrix/predictions.npz": "dd94045f4667d136a14a15447a1e0c313f004b0b5b0317441d3914ff4a0df042",
+    "swap_23/matrix/state_metadata.jsonl": "8c03ee92f519356358c49b11f9e30498aafe9ec0e9e59ea8015cc8a4bd72eddf",
+    "swap_23/matrix/states.npz": "82d5e8f16bf4ee95bfd89afc281a261947846e05b2124bbfbfccfb51179b6b18",
+    "swap_23/matrix/summary.json": "0f6867586764864ec39e0df6cc06ad5acf7ef40bd934f55e47a5a2d9a9cb118f",
+    "swap_23/matrix/transforms.npz": "917823d31e5b72bc44c3ab05bae21f4a3df5445fac3758aa83f2745b9573079e",
+    "swap_23/tracking/manifest.json": "39f2409a6ab6ab0425b9e1de1c3bacb47623a4b047ad184dc2dca9be0eafdaf9",
+    "swap_23/tracking/metrics.jsonl": "8197eaa30a69564e2382533346a633c00525d31fa1e2c657a27be2bec70167ef",
+    "swap_23/tracking/predictions.npz": "a79ccd571877e285a8044c0f482bc234dca5b4e59d3c419dbf01ac7dfbc669bf",
+    "swap_23/tracking/summary.json": "d80dd56c111698c5ec4864a047b0b5b2942b02231cd579786e09f4b4bb633dba",
+    "swap_23/tracking/transforms.npz": "9177fe530fa03c67590e3a2e4db00e7b303a828e44a0aaf1d97858e14b8ab505",
+    "swap_34/matrix/manifest.json": "5bf57ee048ca088aadf3d93630149254ce372805b4799c84407a7207a45ee3cc",
+    "swap_34/matrix/metrics.jsonl": "51a430709ad33746097627116d9bea796df541dc556be1788b1fbed30db02e81",
+    "swap_34/matrix/predictions.npz": "2c616da148a4e2717b6e4d16cca4691d9d19478299c8bc261d1b176e6a3aeeb8",
+    "swap_34/matrix/state_metadata.jsonl": "cff6ca3538e5436a9b810acc2d9e85f9f60bd5d040b1e77afd87c58ea1b7e9dd",
+    "swap_34/matrix/states.npz": "c24f57890493bf8dfc3690c01394e1463ed02fab9168b46b58d187829fb38248",
+    "swap_34/matrix/summary.json": "0b86c4b1905fd155de08961d8843f31edc00e73812ec9933c32e889407dee809",
+    "swap_34/matrix/transforms.npz": "917823d31e5b72bc44c3ab05bae21f4a3df5445fac3758aa83f2745b9573079e",
+    "swap_34/tracking/manifest.json": "af305b15e008b5195e340025dd895d39e31b8cc6bc4fe479c007adfab9bddfe9",
+    "swap_34/tracking/metrics.jsonl": "696bffef563a6d52425bea379bbd15b67d5ee8af65a2662b1b479d57349a920e",
+    "swap_34/tracking/predictions.npz": "cc4f526a95b3e5e4a396fa5f44881cab50d1737016f236bbdc6d606b1dcfd90d",
+    "swap_34/tracking/summary.json": "42d4139d9936d1c6808589edad1abcfa7a8de141c2454d64fd269a45e49f1d3b",
+    "swap_34/tracking/transforms.npz": "cefd5d441df27067229ac461afeb1dd052963bf4649221143ab9f074ca809b52",
+    "swap_45/matrix/manifest.json": "29414b56e5d27457e139917c72c409f704b565dba652b68b0d9d98f30c33f009",
+    "swap_45/matrix/metrics.jsonl": "f5c9e385daf74eabeafd2f5bec6dea786271c7d3701cf07b70729b5f689d13e5",
+    "swap_45/matrix/predictions.npz": "acbdb6db188931ecd06fd6a2c782f6bb617206d698942f28d9a49ef0a78345a0",
+    "swap_45/matrix/state_metadata.jsonl": "725c94e9f3d0de3f14c9bb4dfa3175e85cafcc667f2700ffe071d495c13e976e",
+    "swap_45/matrix/states.npz": "82d49c0025a5099e5eba6b9663299129361bbaed90ecf011bfa501210785663d",
+    "swap_45/matrix/summary.json": "6f3bcb70fd666a5d173878cc005abaaf4d4193c1388ac063e779cac21910fad7",
+    "swap_45/matrix/transforms.npz": "917823d31e5b72bc44c3ab05bae21f4a3df5445fac3758aa83f2745b9573079e",
+    "swap_45/tracking/manifest.json": "693acf3ac4e0df15340748327cbea5d95afca039a8fce1ba8ceb98c26535106a",
+    "swap_45/tracking/metrics.jsonl": "f0fd287cf3b18c869d76c1e91c478ec53e77f57fdcb07ad3588d609a1abe7d0b",
+    "swap_45/tracking/predictions.npz": "c786dbafbfe7bb6dc0977fb0b0a6677e8e1d0738ce98f2bf987eefe07c68bbe7",
+    "swap_45/tracking/summary.json": "bdf80f8d5391b5bb5fc2dfbac56d01cb48b33d1cd42b4d7e50643e962910b513",
+    "swap_45/tracking/transforms.npz": "7af1d64ab0c1e48dd7fb9752167141472985bdf06447f5100e239d26e0dec170",
+    "swap_56/matrix/manifest.json": "53395476be52470518d4c1ff269b535e879851591588bd8369c1dfe8ca212ffc",
+    "swap_56/matrix/metrics.jsonl": "aa0e75665f81aacb77fdf3a849397d3b1dd1dfbb4eee2a777f667a92adb04ef5",
+    "swap_56/matrix/predictions.npz": "add32ace3163509d12250a96ee958fcf42edf72d6e400d61d1e2622a605dc551",
+    "swap_56/matrix/state_metadata.jsonl": "947539ec6641c0dc2435755d94dbaa49d7662fb12d4b020d09f63f71be9f62e5",
+    "swap_56/matrix/states.npz": "578a454604b261b8cb954742e32165a4f8581e9b77f2ae3de2ce220f7a6085df",
+    "swap_56/matrix/summary.json": "176a555c7e74001048ce423f3dea63bd2372bfd067e284b4abf827e73dd0e1f3",
+    "swap_56/matrix/transforms.npz": "917823d31e5b72bc44c3ab05bae21f4a3df5445fac3758aa83f2745b9573079e",
+    "swap_56/tracking/manifest.json": "0b4202dc5df1b81b67a8ff07f31e085632ba19d98e5689efdefa3b162fd88206",
+    "swap_56/tracking/metrics.jsonl": "66ab4a45134bf58f3602ec87393c820a0257aeba945e8aeed2c4a5d8bf374407",
+    "swap_56/tracking/predictions.npz": "7e64aeca9370e88b7a6d2012d5d416f3d3af655b2a7ee7b7cb40f1d3d20a5ed5",
+    "swap_56/tracking/summary.json": "2c18d7ae8b16b6f154c90f8b6a118d29da5f3db3d1ef20863961dd0349a112f4",
+    "swap_56/tracking/transforms.npz": "31d7a323c2e5885e789bf50c405ceefc24521ac9a5e32d0feec3dc88696f7315"
+  },
+  "protocol": {
+    "artifact_directory": "data/diagnostics/demian_uncertainty_permutation_decomposition_v1_20261014",
+    "checkpoints": [
+      {
+        "delay_steps": 0,
+        "evidence_count": 6,
+        "id": "cue6"
+      },
+      {
+        "delay_steps": 2,
+        "evidence_count": 6,
+        "id": "delay2"
+      },
+      {
+        "delay_steps": 8,
+        "evidence_count": 6,
+        "id": "delay8"
+      }
+    ],
+    "claim_boundary": "fixed-weight descriptive decomposition of matched-target cue-order sensitivity; no channel, routing, adaptation, learning, or causal claim",
+    "conditions": [
+      {
+        "contrast": "base-order replay",
+        "evaluation_order": [
+          0.95,
+          0.75,
+          0.5,
+          0.75,
+          0.5,
+          0.95
+        ],
+        "evaluation_symbol_permutation": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "id": "identity",
+        "kind": "identity"
+      },
+      {
+        "evaluation_order": [
+          0.75,
+          0.95,
+          0.5,
+          0.75,
+          0.5,
+          0.95
+        ],
+        "evaluation_symbol_permutation": [
+          1,
+          0,
+          2,
+          3,
+          4,
+          5
+        ],
+        "id": "swap_12",
+        "kind": "adjacent_swap"
+      },
+      {
+        "evaluation_order": [
+          0.95,
+          0.5,
+          0.75,
+          0.75,
+          0.5,
+          0.95
+        ],
+        "evaluation_symbol_permutation": [
+          0,
+          2,
+          1,
+          3,
+          4,
+          5
+        ],
+        "id": "swap_23",
+        "kind": "adjacent_swap",
+        "recency_role": "same base cue-pair 2 moves from position3 to position2 (farther by one)"
+      },
+      {
+        "evaluation_order": [
+          0.95,
+          0.75,
+          0.75,
+          0.5,
+          0.5,
+          0.95
+        ],
+        "evaluation_symbol_permutation": [
+          0,
+          1,
+          3,
+          2,
+          4,
+          5
+        ],
+        "id": "swap_34",
+        "kind": "adjacent_swap",
+        "recency_role": "same base cue-pair 2 moves from position3 to position4 (nearer by one)"
+      },
+      {
+        "evaluation_order": [
+          0.95,
+          0.75,
+          0.5,
+          0.5,
+          0.75,
+          0.95
+        ],
+        "evaluation_symbol_permutation": [
+          0,
+          1,
+          2,
+          4,
+          3,
+          5
+        ],
+        "id": "swap_45",
+        "kind": "adjacent_swap"
+      },
+      {
+        "evaluation_order": [
+          0.95,
+          0.75,
+          0.5,
+          0.75,
+          0.95,
+          0.5
+        ],
+        "evaluation_symbol_permutation": [
+          0,
+          1,
+          2,
+          3,
+          5,
+          4
+        ],
+        "id": "swap_56",
+        "kind": "adjacent_swap"
+      }
+    ],
+    "confirmation": {
+      "history_split_seed": 173,
+      "model_seeds": [
+        3094,
+        3095,
+        3194,
+        3195
+      ],
+      "required_conditions": "selected contrast, its declared comparator, and identity",
+      "rule": "Repeat the selected signed contrast unchanged. Confirm only if its sign agrees with discovery in at least three of four fresh parameter seeds at the frozen selected delay. Otherwise report nonconfirmation; do not analyze or intervene on channels."
+    },
+    "discovery_rule": "At each delay, calculate the signed recency contrast swap_34 minus swap_23 from the seed-level aggregates. It is confirmation-eligible only if the same nonzero sign occurs in at least three of four parameter seeds. Separately, calculate every adjacent-swap-minus-identity contrast; a local interaction is confirmation-eligible only if its same signed direction occurs in at least three seeds. Select the eligible contrast with greatest absolute mean seed-level effect; ties resolve delay2 before delay8, then recency before lexical condition id. No geometry, channel analysis, or intervention follows from discovery alone.",
+    "fitting_rule": "For every condition, fit projection, cue6 decoder, normalization, and temporal tracker solely on base-order train32. Apply unchanged objects to paired heldout eval32. No heldout-order state, label, transform, or threshold may fit an object.",
+    "frozen_reference_checkpoint": "cue6",
+    "hidden_size": 256,
+    "history_split_seed": 167,
+    "model_seeds": [
+      2894,
+      2895,
+      2994,
+      2995
+    ],
+    "primary_outcome": "continuous_transport_margin = heldout orthogonal true-label R2 - max(heldout analytic latest-cue R2, heldout conditional-shuffle R2); also report true-minus-latest and true-minus-shuffle separately",
+    "projection_dimension": 16,
+    "projection_seeds": [
+      17,
+      29,
+      43
+    ],
+    "protocol_id": "demian-uncertainty-permutation-decomposition-v1",
+    "ridge_alpha": 1.0,
+    "secondary_outcome": "strict transport pass when continuous_transport_margin is positive",
+    "seed_level_aggregation": "For every condition, delay and parameter seed, use the median continuous transport margin across the three projection seeds. Projection and checkpoint cells remain dependent descriptive measurements.",
+    "stage": "discovery_then_fresh_seed_confirmation",
+    "target_rule": "Each condition applies its exact listed permutation jointly to symbols and reliabilities. Base and heldout paired histories retain the same complete symbol-reliability evidence-pair multiset and public log-odds target, subject to recorded floating-point tolerance 1e-12.",
+    "train_order": [
+      0.95,
+      0.75,
+      0.5,
+      0.75,
+      0.5,
+      0.95
+    ]
+  },
+  "protocol_sha256": "06c4afe0cfd255ab0972be821fb9da7599f83ee554877bd53829c9313eba5e78"
+}

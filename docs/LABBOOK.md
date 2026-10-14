@@ -1168,3 +1168,16 @@ Next:
 - Strict heldout passes: A/B = `3/12`/`8/12` at delay2 and `4/12`/`10/12` at
   delay8; B exceeds A within every seed at both delays.
 - Boundary: a condition-dependence observation, not a channel or routing mechanism.
+
+## 2026-10-14 - Cue-pair permutation decomposition
+
+- Discovery: identity plus five adjacent pair-preserving swaps; continuous
+  transport margin selected `swap_56 - identity` at delay8.
+- Fresh confirmation: positive in 4/4 parameter seeds; mean margin difference
+  `+0.2363`.
+- Boundary: `swap_56` places reliability `.5` at the final slot. Its large
+  margin difference is mainly the analytic latest-cue baseline changing
+  (`0.4062 -> -0.0069`), while true R² changes `0.2369 -> 0.2792`.
+- Geometry: small centroid displacement and nearly unchanged spread; no
+  channel relation was analyzed or intervened on.
+- Next: final-slot-matched control before mechanism work.

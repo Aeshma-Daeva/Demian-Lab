@@ -1,0 +1,15 @@
+{
+  "conditions": [
+    {
+      "condition": "identity",
+      "matrix_manifest_sha256": "8ffe5b765876ddc4ff909744b9d5bc0d4c40c74eb6c25e443bd0131e2d11b87c",
+      "tracking_manifest_sha256": "98344c7001de07b0fb386af6c95247389acc61cc171cd11e3c5898e403e82641"
+    },
+    {
+      "condition": "swap_56",
+      "matrix_manifest_sha256": "12e0d5e0b2cf67bb6db323289dc6e4f3c3f135676dea7f29dcd07c4fdfb60301",
+      "tracking_manifest_sha256": "780b07bb166c164ce494bfd09b45b18437cfd56b9ba847c0743925e16823eeb9"
+    }
+  ],
+  "experiment": "demian-uncertainty-permutation-decomposition-confirmation-v1"
+}

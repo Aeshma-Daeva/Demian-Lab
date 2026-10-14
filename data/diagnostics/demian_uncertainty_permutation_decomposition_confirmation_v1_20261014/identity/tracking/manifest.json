@@ -1,0 +1,43 @@
+{
+  "dependency_versions": {
+    "numpy": "2.5.3"
+  },
+  "file_sha256": {
+    "metrics.jsonl": "6862614a660aac73956557318a57578723d5387263fa22ce1af75567973020f3",
+    "predictions.npz": "d2372da26705ed373c2bc9734f7002a42b8e8da0369b8f5f66ac22e731c098be",
+    "summary.json": "8b3a0641edf7225d6b05d6e01378039a015fb4549eb73ca121e72c34c6c77cfa",
+    "transforms.npz": "ed25920b3ecc320f1afe8653708e0d2ef893e86e3adf89fd381c34d805c8e22e"
+  },
+  "protocol": {
+    "batches": [
+      {
+        "artifact_directory": "data/diagnostics/demian_uncertainty_permutation_decomposition_confirmation_v1_20261014/identity/matrix",
+        "id": "identity",
+        "model_seeds": [
+          3094,
+          3095,
+          3194,
+          3195
+        ],
+        "source_manifest_sha256": "8ffe5b765876ddc4ff909744b9d5bc0d4c40c74eb6c25e443bd0131e2d11b87c"
+      }
+    ],
+    "checkpoints": [
+      "cue6",
+      "delay2",
+      "delay8"
+    ],
+    "claim_boundary": "fixed-weight descriptive confirmation of an order-dependent continuous transport score; no channel, routing, adaptation, learning, geometric-mechanism, or causal claim",
+    "include_dynamic_observers": false,
+    "projection_dimension": 16,
+    "projection_seeds": [
+      17,
+      29,
+      43
+    ],
+    "protocol_id": "demian-uncertainty-permutation-decomposition-confirmation-v1-identity-tracking",
+    "ridge_alpha": 1.0
+  },
+  "protocol_sha256": "910724bd9c5c990d56935c07a1f90605daec5b80427846f2cbbcb7a25e00e77e",
+  "source_commit": "d019617105351702918eb143f874c3a7373450a8"
+}

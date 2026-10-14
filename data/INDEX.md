@@ -518,6 +518,14 @@ Use with:
 - Caveat:
   - treat as existence evidence, not stability-across-seeds evidence
 
+## Cue-pair permutation decomposition
+
+- Discovery and confirmation: `data/diagnostics/demian_uncertainty_permutation_decomposition*_20261014/`.
+- Supports: reproducible order-dependent continuous-margin change under a
+  frozen external decoder.
+- Caveat: the selected `swap_56` also changes the latest-cue baseline; it is
+  not evidence for a channel, route, or recency mechanism.
+
 ## How To Use This Index
 
 When adding a live claim:

@@ -1,0 +1,35 @@
+{
+  "conditions": [
+    {
+      "condition": "identity",
+      "matrix_manifest_sha256": "cc25a3d35a442c3352fa3d202795f41efdddb340ddd9c5351ea923a18eae853e",
+      "tracking_manifest_sha256": "e7f91aeb4072f969e178294d7a65d32c7fd57825f21a84c56f600f29c65333d8"
+    },
+    {
+      "condition": "swap_12",
+      "matrix_manifest_sha256": "afec478324ef1c4dc01e35e0469a96587796df56dac5cc627d62224a2db352c5",
+      "tracking_manifest_sha256": "57edf4f8cf72e1bf799a34974aa7d8e546b32b8f3cbc9804ae60a241d92e0d86"
+    },
+    {
+      "condition": "swap_23",
+      "matrix_manifest_sha256": "ee96ed622e5f6f5146aee4c94466d623bd3a1976888e4dabc9a647c6b6ef0007",
+      "tracking_manifest_sha256": "39f2409a6ab6ab0425b9e1de1c3bacb47623a4b047ad184dc2dca9be0eafdaf9"
+    },
+    {
+      "condition": "swap_34",
+      "matrix_manifest_sha256": "5bf57ee048ca088aadf3d93630149254ce372805b4799c84407a7207a45ee3cc",
+      "tracking_manifest_sha256": "af305b15e008b5195e340025dd895d39e31b8cc6bc4fe479c007adfab9bddfe9"
+    },
+    {
+      "condition": "swap_45",
+      "matrix_manifest_sha256": "29414b56e5d27457e139917c72c409f704b565dba652b68b0d9d98f30c33f009",
+      "tracking_manifest_sha256": "693acf3ac4e0df15340748327cbea5d95afca039a8fce1ba8ceb98c26535106a"
+    },
+    {
+      "condition": "swap_56",
+      "matrix_manifest_sha256": "53395476be52470518d4c1ff269b535e879851591588bd8369c1dfe8ca212ffc",
+      "tracking_manifest_sha256": "0b4202dc5df1b81b67a8ff07f31e085632ba19d98e5689efdefa3b162fd88206"
+    }
+  ],
+  "experiment": "demian-uncertainty-permutation-decomposition-v1"
+}

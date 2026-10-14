@@ -219,3 +219,15 @@ def test_permutation_decomposition_materializes_identity_and_rejects_changed_pai
         assert "preserve evidence pairs" in str(error)
     else:
         raise AssertionError("reliability-only permutation accepted")
+
+
+def test_permutation_geometry_reports_translation_spread_and_centered_overlap():
+    from development.analyze_demian_uncertainty_permutation_decomposition import geometry_descriptors
+
+    source = np.asarray([[0., 0.], [1., 0.], [0., 2.], [2., 1.]])
+    shifted = source + np.asarray([5., -3.])
+    descriptors = geometry_descriptors(source, shifted, rank=2)
+
+    assert descriptors['centroid_displacement'] == np.sqrt(34.)
+    assert descriptors['source_centered_spread'] == descriptors['target_centered_spread']
+    assert descriptors['centered_subspace_overlap'] == 1.

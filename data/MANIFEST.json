@@ -8,6 +8,25 @@
   },
   "runs": [
     {
+      "id": "demian_uncertainty_permutation_decomposition_v1_20261014",
+      "program": "demian-v1",
+      "date": "2026-10-14",
+      "family": "matched_target_cue_pair_permutation_decomposition",
+      "status": "active_evidence",
+      "primary_summary": "data/diagnostics/demian_uncertainty_permutation_decomposition_confirmation_v1_20261014/analysis.json",
+      "artifacts": [
+        "docs/DEMIAN_UNCERTAINTY_PERMUTATION_DECOMPOSITION_PROTOCOL.json",
+        "docs/DEMIAN_UNCERTAINTY_PERMUTATION_DECOMPOSITION_CONFIRMATION_PROTOCOL.json",
+        "docs/DEMIAN_UNCERTAINTY_PERMUTATION_DECOMPOSITION_RESULTS.md",
+        "data/diagnostics/demian_uncertainty_permutation_decomposition_v1_20261014/manifest.json",
+        "data/diagnostics/demian_uncertainty_permutation_decomposition_v1_20261014/analysis.json",
+        "data/diagnostics/demian_uncertainty_permutation_decomposition_confirmation_v1_20261014/manifest.json",
+        "data/diagnostics/demian_uncertainty_permutation_decomposition_confirmation_v1_20261014/analysis.json"
+      ],
+      "claim_ids": [],
+      "interpretation": "Fresh confirmation reproduces a selected order-dependent continuous-margin contrast, but its final-slot latest-cue baseline changes substantially; no mechanism claim."
+    },
+    {
       "id": "demian_uncertainty_matched_target_descriptor_v1_20261014",
       "program": "demian-v1",
       "date": "2026-10-14",

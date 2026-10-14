@@ -1,0 +1,128 @@
+{
+  "analysis_sha256": "7c2f87b75a732c9b524d95099656d12764331529c57dffc9b47e729213dfa66a",
+  "file_sha256": {
+    "identity/matrix/manifest.json": "8ffe5b765876ddc4ff909744b9d5bc0d4c40c74eb6c25e443bd0131e2d11b87c",
+    "identity/matrix/metrics.jsonl": "5657c732b41dbbae34a8a5bf29d262924ef19ab829b92c5bd14911edd9285227",
+    "identity/matrix/predictions.npz": "191075d77fbb139157ebaf332f3fc6cea5dbd0195d72de02a3fc4d36e2217843",
+    "identity/matrix/state_metadata.jsonl": "74099622559bd768bbd676af9bb03559e28180a78680de10718372dd1b838a32",
+    "identity/matrix/states.npz": "60979a01bc6a7400866b2fbd5f13fdcd45353bad8d0c6f1c5c94ec986b3c5094",
+    "identity/matrix/summary.json": "d67205537810d22f254d0a5eb99207460a415f4d845fc67517b334cdaed8aa6f",
+    "identity/matrix/transforms.npz": "57121169a9592ebaa1a9c75a00d36ebda1570bc5d9afdd32b15cee30f0d51635",
+    "identity/tracking/manifest.json": "98344c7001de07b0fb386af6c95247389acc61cc171cd11e3c5898e403e82641",
+    "identity/tracking/metrics.jsonl": "6862614a660aac73956557318a57578723d5387263fa22ce1af75567973020f3",
+    "identity/tracking/predictions.npz": "d2372da26705ed373c2bc9734f7002a42b8e8da0369b8f5f66ac22e731c098be",
+    "identity/tracking/summary.json": "8b3a0641edf7225d6b05d6e01378039a015fb4549eb73ca121e72c34c6c77cfa",
+    "identity/tracking/transforms.npz": "ed25920b3ecc320f1afe8653708e0d2ef893e86e3adf89fd381c34d805c8e22e",
+    "summary.json": "368d8c08f02ba173fc71855ef6ec4e14978fc9d55d798845e83d056726baf79c",
+    "swap_56/matrix/manifest.json": "12e0d5e0b2cf67bb6db323289dc6e4f3c3f135676dea7f29dcd07c4fdfb60301",
+    "swap_56/matrix/metrics.jsonl": "6dd2aa8c71fab051bc7e19b5788370b33ca86ff412dab23f54f087fb0bb7c038",
+    "swap_56/matrix/predictions.npz": "3398fdd2f1ea16e07ba685801c9ef750cf5a128ad16a50f025e38276f4ea505e",
+    "swap_56/matrix/state_metadata.jsonl": "b6dd97ccbf740e5964e0059c689d6846c5d7466e763d7ff49c1ccb7f46dbf162",
+    "swap_56/matrix/states.npz": "e8765654586d9ea4532eec11c34809abb0214ed27d84cfc69ba0932341e4b9f4",
+    "swap_56/matrix/summary.json": "b18703e3317680c25c828a7eb0989008d4d17776a659c2c6385ee34849c7eb5d",
+    "swap_56/matrix/transforms.npz": "57121169a9592ebaa1a9c75a00d36ebda1570bc5d9afdd32b15cee30f0d51635",
+    "swap_56/tracking/manifest.json": "780b07bb166c164ce494bfd09b45b18437cfd56b9ba847c0743925e16823eeb9",
+    "swap_56/tracking/metrics.jsonl": "082bc9ec734263f736a3f9b54bd792bbc378ab279f79301ba65d9212313f3c7c",
+    "swap_56/tracking/predictions.npz": "7386bbed6afcde49a6f428a948b23ba06e49867a77d964ad1090d65e2625954d",
+    "swap_56/tracking/summary.json": "e83177cef6f2cfd50fc1a2eb60d32202fafd62f92f41d2687010eae81a308308",
+    "swap_56/tracking/transforms.npz": "fd1b0dfbbf98007751501d0e7b6b4082f0f6bc378c3e8d193869ab0e5aed5453"
+  },
+  "protocol": {
+    "artifact_directory": "data/diagnostics/demian_uncertainty_permutation_decomposition_confirmation_v1_20261014",
+    "checkpoints": [
+      {
+        "delay_steps": 0,
+        "evidence_count": 6,
+        "id": "cue6"
+      },
+      {
+        "delay_steps": 2,
+        "evidence_count": 6,
+        "id": "delay2"
+      },
+      {
+        "delay_steps": 8,
+        "evidence_count": 6,
+        "id": "delay8"
+      }
+    ],
+    "claim_boundary": "fixed-weight descriptive confirmation of an order-dependent continuous transport score; no channel, routing, adaptation, learning, geometric-mechanism, or causal claim",
+    "conditions": [
+      {
+        "evaluation_order": [
+          0.95,
+          0.75,
+          0.5,
+          0.75,
+          0.5,
+          0.95
+        ],
+        "evaluation_symbol_permutation": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "id": "identity",
+        "kind": "identity"
+      },
+      {
+        "evaluation_order": [
+          0.95,
+          0.75,
+          0.5,
+          0.75,
+          0.95,
+          0.5
+        ],
+        "evaluation_symbol_permutation": [
+          0,
+          1,
+          2,
+          3,
+          5,
+          4
+        ],
+        "id": "swap_56",
+        "kind": "adjacent_swap"
+      }
+    ],
+    "confirmation_rule": "At delay8, swap_56 minus identity must be positive in at least three of four fresh parameter seeds. If it confirms, report the decomposition into true R2 and both comparator R2 changes; do not treat confirmation as evidence of a channel mechanism. If it does not, report nonconfirmation and do not analyze or intervene on channels.",
+    "fitting_rule": "For every condition, fit the projection, cue6 decoder, normalization, and temporal tracker solely on base-order train32. Apply unchanged objects to paired heldout eval32. No heldout-order state, label, transform, or threshold may fit an object.",
+    "frozen_reference_checkpoint": "cue6",
+    "hidden_size": 256,
+    "history_split_seed": 173,
+    "model_seeds": [
+      3094,
+      3095,
+      3194,
+      3195
+    ],
+    "primary_outcome": "continuous_transport_margin = heldout orthogonal true-label R2 - max(heldout analytic latest-cue R2, heldout conditional-shuffle R2); report true-minus-latest, true-minus-shuffle, true R2, and both comparator R2 values separately.",
+    "projection_dimension": 16,
+    "projection_seeds": [
+      17,
+      29,
+      43
+    ],
+    "protocol_id": "demian-uncertainty-permutation-decomposition-confirmation-v1",
+    "ridge_alpha": 1.0,
+    "seed_level_aggregation": "For every condition and parameter seed, use the median continuous transport margin across the three projection seeds. Projection cells remain dependent descriptive sensitivity measurements.",
+    "selection_rule_result": "swap_56 minus identity at delay8: largest absolute eligible mean seed-level continuous-margin contrast (+0.3711); same positive direction in four of four discovery seeds",
+    "source_artifact": "data/diagnostics/demian_uncertainty_permutation_decomposition_v1_20261014",
+    "source_protocol": "DEMIAN_UNCERTAINTY_PERMUTATION_DECOMPOSITION_PROTOCOL.json",
+    "stage": "fresh_seed_confirmation",
+    "target_rule": "Each condition applies its exact listed permutation jointly to symbols and reliabilities. Base and heldout paired histories retain the same complete symbol-reliability evidence-pair multiset and public log-odds target, subject to recorded floating-point tolerance 1e-12.",
+    "train_order": [
+      0.95,
+      0.75,
+      0.5,
+      0.75,
+      0.5,
+      0.95
+    ]
+  },
+  "protocol_sha256": "18859f5c597799b4ca9bf387c2f9429e6c01976fac544b55dce6704966b61046"
+}

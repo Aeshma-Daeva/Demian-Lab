@@ -1,0 +1,43 @@
+{
+  "dependency_versions": {
+    "numpy": "2.5.3"
+  },
+  "file_sha256": {
+    "metrics.jsonl": "8197eaa30a69564e2382533346a633c00525d31fa1e2c657a27be2bec70167ef",
+    "predictions.npz": "a79ccd571877e285a8044c0f482bc234dca5b4e59d3c419dbf01ac7dfbc669bf",
+    "summary.json": "d80dd56c111698c5ec4864a047b0b5b2942b02231cd579786e09f4b4bb633dba",
+    "transforms.npz": "9177fe530fa03c67590e3a2e4db00e7b303a828e44a0aaf1d97858e14b8ab505"
+  },
+  "protocol": {
+    "batches": [
+      {
+        "artifact_directory": "data/diagnostics/demian_uncertainty_permutation_decomposition_v1_20261014/swap_23/matrix",
+        "id": "swap_23",
+        "model_seeds": [
+          2894,
+          2895,
+          2994,
+          2995
+        ],
+        "source_manifest_sha256": "ee96ed622e5f6f5146aee4c94466d623bd3a1976888e4dabc9a647c6b6ef0007"
+      }
+    ],
+    "checkpoints": [
+      "cue6",
+      "delay2",
+      "delay8"
+    ],
+    "claim_boundary": "fixed-weight descriptive decomposition of matched-target cue-order sensitivity; no channel, routing, adaptation, learning, or causal claim",
+    "include_dynamic_observers": false,
+    "projection_dimension": 16,
+    "projection_seeds": [
+      17,
+      29,
+      43
+    ],
+    "protocol_id": "demian-uncertainty-permutation-decomposition-v1-swap_23-tracking",
+    "ridge_alpha": 1.0
+  },
+  "protocol_sha256": "724a256a20ccfea61a57ab720d4a19d3deea15c90d6fe7345ef83021cbe9d212",
+  "source_commit": "009c0805067ffcc97340bfc1c2a13206aeabd1f5"
+}
