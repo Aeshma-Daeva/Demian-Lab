@@ -1,0 +1,39 @@
+{
+  "protocol_id": "demian-uncertainty-decoder-tracking-v1",
+  "claim_boundary": "analysis of existing fixed-weight traces using external train-only readouts; no claim of Demian adaptation, learning, self-readout, routing control, or causal mechanism",
+  "architecture_and_weights": "unchanged",
+  "state_source": "E-UNC-013 and E-UNC-014 immutable history-matrix artifacts; no trajectories are newly generated",
+  "checkpoints": ["cue6", "delay2", "delay8", "delay32", "delay64"],
+  "projection_dimension": 16,
+  "projection_seeds": [17, 29, 43],
+  "ridge_alpha": 1.0,
+  "primary_test": "Fit cue6 ridge decoder and target-to-cue6 proper orthogonal tracker only on base-order allocated train histories. Freeze both. Score unseen paired histories within base order and heldout cue order. Compare true labels with conditional-label-shuffle and analytic latest-cue controls.",
+  "secondary_observers": [
+    "time_conditioned_external: five fixed checkpoint blocks in the same 16-D projection; external checkpoint identity only",
+    "regime_conditioned_external: 16-D projection plus interactions with total-state log norm and gate-state mean; fit on base-order train histories only"
+  ],
+  "controls_and_limits": [
+    "All source manifests, state arrays, metadata and split summaries are SHA256-verified before use.",
+    "Transforms, standardization, decoder parameters and conditional-shuffle labels use allocated train histories only.",
+    "The orthogonal map is restricted to a fixed 16-D random projection; no full-state 1312-D rotation is fit from 32 samples.",
+    "No evaluation labels or evaluation-cloud fitting is used. Known checkpoint is allowed only as an external observer input.",
+    "Dynamic observer success is feasibility for an external readout, not evidence that Demian performs the same operation.",
+    "This is exploratory analysis on already-inspected matrix batches; any candidate requires a new preregistered seed confirmation."
+  ],
+  "decision_rule": "The only primary correction is orthogonal_track. A candidate within-order result requires its frozen true-label decoder to exceed both analytic_latest and matched conditional_shuffle in every seed-by-projection cell at a delay. Cross-order portability is secondary and requires the same all-cell pattern. Failure means this fixed low-rank offline correction is insufficient; it does not negate information availability.",
+  "batches": [
+    {
+      "id": "matrix",
+      "artifact_directory": "data/diagnostics/demian_uncertainty_history_matrix_v1_20261013",
+      "source_manifest_sha256": "c75befcf4555f07a1af6cf85c88048a9729e467999038e3897ba5eababe84489",
+      "model_seeds": [1694, 1695, 1794, 1795]
+    },
+    {
+      "id": "replication",
+      "artifact_directory": "data/diagnostics/demian_uncertainty_history_matrix_replication_v1_20261013",
+      "source_manifest_sha256": "1f21f1e277e090b47ac28646e18038574faff82f6977251c2651794ca995f1ff",
+      "model_seeds": [1894, 1895, 1994, 1995]
+    }
+  ],
+  "artifact_directory": "data/diagnostics/demian_uncertainty_decoder_tracking_v1_20261014"
+}
