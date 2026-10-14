@@ -1,0 +1,13 @@
+{
+  "analysis_only": true,
+  "architecture_changed": false,
+  "claim_boundary": "external offline decoder tracking; not Demian adaptation, learning, or self-readout",
+  "decoder_feedback_to_demian": false,
+  "dependency_versions": {
+    "numpy": "2.5.3"
+  },
+  "experiment": "demian-uncertainty-matched-target-descriptor-tracking-v1",
+  "metric_count": 504,
+  "source_commit": "f6c9e801b826a5491a56a91e1ae40ee595a9581e",
+  "weights_changed": false
+}

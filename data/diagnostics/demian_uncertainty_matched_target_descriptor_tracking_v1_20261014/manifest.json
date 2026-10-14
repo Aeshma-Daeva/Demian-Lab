@@ -1,0 +1,49 @@
+{
+  "dependency_versions": {
+    "numpy": "2.5.3"
+  },
+  "file_sha256": {
+    "metrics.jsonl": "2fc57e9efff58266963349ef27ab5d2e8a1d868a25aa5ac5a17b6a532d6de127",
+    "predictions.npz": "c873083fe7b7900e965d260400044e56b8edac011a1c0519eb5393c170a68bfd",
+    "summary.json": "2274a2390af751995e181314a152793131a44b6ff9fe921b8f1b9e434d46f839",
+    "transforms.npz": "26da7c47fe283536efbd0962b258b56ecc2b8d0646e089c53f1f839f19bd359e"
+  },
+  "protocol": {
+    "artifact_directory": "data/diagnostics/demian_uncertainty_matched_target_descriptor_tracking_v1_20261014",
+    "batches": [
+      {
+        "artifact_directory": "data/diagnostics/demian_uncertainty_matched_target_descriptor_matrix_v1_20261014",
+        "id": "matched_target_descriptor",
+        "model_seeds": [
+          2494,
+          2495,
+          2594,
+          2595
+        ],
+        "source_manifest_sha256": "6d6e927b682a820504a2031a2a4b5bfd5ef48681b499b1b5604918ff838536df"
+      }
+    ],
+    "checkpoints": [
+      "cue6",
+      "delay2",
+      "delay8"
+    ],
+    "claim_boundary": "external frozen decoder coordinate tracking on fresh matched-target order states; it creates pass/fail strata for a later descriptive residual analysis and does not test Demian adaptation, self-decoding, routing, learning, or channel causality",
+    "controls": "Identity, scalar-scale, proper-orthogonal tracking; analytic latest-cue; conditional train-label shuffle.",
+    "decision_rule": "A heldout cell is a strict transport pass only when proper-orthogonal true-label R2 exceeds both analytic latest-cue and conditional-shuffle R2. Report all cells; no all-cell portability claim follows unless all 12 heldout cells pass at a delay. The resulting strata are only descriptive inputs to the separately preregistered residual analysis.",
+    "fitting_rule": "Fit cue6 readout, standardization and temporal tracker only on base-order train32. Apply unchanged objects to paired base-order eval32 and heldout-order eval32. Heldout target_train is not used for any fit.",
+    "include_dynamic_observers": false,
+    "projection_dimension": 16,
+    "projection_seeds": [
+      17,
+      29,
+      43
+    ],
+    "protocol_id": "demian-uncertainty-matched-target-descriptor-tracking-v1",
+    "ridge_alpha": 1.0,
+    "source_matrix_directory": "data/diagnostics/demian_uncertainty_matched_target_descriptor_matrix_v1_20261014",
+    "source_matrix_protocol": "DEMIAN_UNCERTAINTY_MATCHED_TARGET_DESCRIPTOR_MATRIX_PROTOCOL.json"
+  },
+  "protocol_sha256": "fd051488de171d974e516dd197f80e9f6dabc09fcf6e8528fcc8ee82f90c56aa",
+  "source_commit": "f6c9e801b826a5491a56a91e1ae40ee595a9581e"
+}

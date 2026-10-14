@@ -1,0 +1,16 @@
+{
+  "protocol_id": "demian-uncertainty-matched-target-descriptor-tracking-v1",
+  "claim_boundary": "external frozen decoder coordinate tracking on fresh matched-target order states; it creates pass/fail strata for a later descriptive residual analysis and does not test Demian adaptation, self-decoding, routing, learning, or channel causality",
+  "source_matrix_protocol": "DEMIAN_UNCERTAINTY_MATCHED_TARGET_DESCRIPTOR_MATRIX_PROTOCOL.json",
+  "source_matrix_directory": "data/diagnostics/demian_uncertainty_matched_target_descriptor_matrix_v1_20261014",
+  "checkpoints": ["cue6", "delay2", "delay8"],
+  "projection_dimension": 16,
+  "projection_seeds": [17, 29, 43],
+  "ridge_alpha": 1.0,
+  "include_dynamic_observers": false,
+  "fitting_rule": "Fit cue6 readout, standardization and temporal tracker only on base-order train32. Apply unchanged objects to paired base-order eval32 and heldout-order eval32. Heldout target_train is not used for any fit.",
+  "controls": "Identity, scalar-scale, proper-orthogonal tracking; analytic latest-cue; conditional train-label shuffle.",
+  "decision_rule": "A heldout cell is a strict transport pass only when proper-orthogonal true-label R2 exceeds both analytic latest-cue and conditional-shuffle R2. Report all cells; no all-cell portability claim follows unless all 12 heldout cells pass at a delay. The resulting strata are only descriptive inputs to the separately preregistered residual analysis.",
+  "artifact_directory": "data/diagnostics/demian_uncertainty_matched_target_descriptor_tracking_v1_20261014",
+  "batches": [{"id": "matched_target_descriptor", "artifact_directory": "data/diagnostics/demian_uncertainty_matched_target_descriptor_matrix_v1_20261014", "source_manifest_sha256": "6d6e927b682a820504a2031a2a4b5bfd5ef48681b499b1b5604918ff838536df", "model_seeds": [2494, 2495, 2594, 2595]}]
+}

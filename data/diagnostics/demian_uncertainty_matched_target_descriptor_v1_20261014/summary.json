@@ -1,0 +1,13 @@
+{
+  "claim_boundary": "frozen-fit descriptive association between heldout transport outcome and residual geometry; no channel causality, intervention, routing, adaptation, learning, or architectural claim",
+  "experiment": "demian-uncertainty-matched-target-descriptor-v1",
+  "integrity": {
+    "analysis_only": true,
+    "architecture_changed": false,
+    "descriptor_count": 24,
+    "matrix_manifest_sha256": "6d6e927b682a820504a2031a2a4b5bfd5ef48681b499b1b5604918ff838536df",
+    "state_count": 1536,
+    "tracking_manifest_sha256": "017be35734f96538cf298ffefc8c070d5c48f8bb77d1fe9ea2641ffd5249df9e",
+    "weights_changed": false
+  }
+}

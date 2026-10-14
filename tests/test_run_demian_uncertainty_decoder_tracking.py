@@ -154,3 +154,20 @@ def test_pinned_confirmation_replays_saved_metrics_predictions_and_fits():
     assert set(replay["transforms"]) == set(saved_transforms.files)
     for key, value in replay["transforms"].items():
         assert np.array_equal(value, saved_transforms[key])
+
+
+def test_channel_transport_fit_is_frozen_to_calibration_rows():
+    from development.analyze_demian_uncertainty_transport_descriptors import (
+        apply_channel_transport,
+        fit_channel_transport,
+    )
+
+    source = np.asarray([[0.0, 0.0], [1.0, 0.0], [0.0, 2.0], [2.0, 1.0]])
+    rotation = np.asarray([[0.0, -1.0], [1.0, 0.0]])
+    target = (source - np.asarray([4.0, -3.0])) @ rotation.T / 3.0
+
+    fit = fit_channel_transport(source, target)
+
+    assert np.allclose(apply_channel_transport(fit, target), source, atol=1e-10)
+    assert fit["fit_sample_count"] == 4
+    assert np.linalg.det(fit["rotation"]) > 0.0

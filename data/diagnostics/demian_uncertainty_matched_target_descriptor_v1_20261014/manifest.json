@@ -1,0 +1,46 @@
+{
+  "file_sha256": {
+    "descriptors.jsonl": "ec776a94374ab83bbf9ba2e2ccb192537f8614ed1b06a017d0ec3d1179327fe9",
+    "summary.json": "313eff5eb7831bae1884d321cddfdc27a59b5d4c183b2e7aadc710f94df3a0ad"
+  },
+  "protocol": {
+    "artifact_directory": "data/diagnostics/demian_uncertainty_matched_target_descriptor_v1_20261014",
+    "batch": {
+      "artifact_directory": "data/diagnostics/demian_uncertainty_matched_target_descriptor_matrix_v1_20261014",
+      "id": "matched_target_descriptor",
+      "model_seeds": [
+        2494,
+        2495,
+        2594,
+        2595
+      ],
+      "source_manifest_sha256": "6d6e927b682a820504a2031a2a4b5bfd5ef48681b499b1b5604918ff838536df"
+    },
+    "checkpoints": [
+      "delay2",
+      "delay8"
+    ],
+    "claim_boundary": "frozen-fit descriptive association between heldout transport outcome and residual geometry; no channel causality, intervention, routing, adaptation, learning, or architectural claim",
+    "decision_rule": "For each checkpoint and descriptor, report all seed-by-projection cells. A descriptor is nomination-eligible only if its predeclared direction separates pass from fail cells in at least three of four seeds. No descriptor is nominated if that criterion fails; associations remain descriptive even if it passes.",
+    "descriptors": [
+      "full_projected_residual_energy",
+      "six channel_residual_energy_fraction values",
+      "carrier_slow_residual_norm_correlation",
+      "gate_message_residual_norm_correlation",
+      "carrier_to_slow_residual_prediction_r2",
+      "gate_to_message_residual_prediction_r2"
+    ],
+    "fitting_rule": "Fit every channel transport map and residual relationship predictor only on paired base-order train32. Apply all such objects unchanged to paired heldout-order eval32. The saved base-order proper-orthogonal full-state tracker defines the projected residual-energy descriptor.",
+    "outcome_rule": "Strict transport pass is the frozen tracking rule: heldout proper-orthogonal true-label R2 exceeds both matched conditional-shuffle and analytic latest-cue R2. It is not an independent observation from the tracking artifact.",
+    "projection_seeds": [
+      17,
+      29,
+      43
+    ],
+    "protocol_id": "demian-uncertainty-matched-target-descriptor-v1",
+    "relationship_ridge_alpha": 1.0,
+    "tracking_artifact_directory": "data/diagnostics/demian_uncertainty_matched_target_descriptor_tracking_v1_20261014",
+    "tracking_manifest_sha256": "017be35734f96538cf298ffefc8c070d5c48f8bb77d1fe9ea2641ffd5249df9e"
+  },
+  "protocol_sha256": "04c58bb82b0b3aa63eae024b4643f811ab6a0472a4eb6b8cdd52ea86642ffd08"
+}
