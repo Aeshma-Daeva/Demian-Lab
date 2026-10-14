@@ -117,6 +117,10 @@ def _cell(states, metadata, seed, order, checkpoint):
     return states[indices], [metadata[index] for index in indices]
 
 
+def _pair_id(row):
+    return int(row.get("paired_history_index", sum(int(bit) << (len(row["symbols"])-1-position) for position, bit in enumerate(row["symbols"]))))
+
+
 def run_protocol(protocol: dict) -> dict:
     rank = int(protocol["subspace_rank"])
     rows, relation_rows = [], []
@@ -128,7 +132,7 @@ def run_protocol(protocol: dict) -> dict:
                 reference, reference_meta = _cell(states, metadata, seed, order, checkpoints[0])
                 for checkpoint in checkpoints[1:]:
                     target, target_meta = _cell(states, metadata, seed, order, checkpoint)
-                    if [row["symbols"] for row in reference_meta] != [row["symbols"] for row in target_meta]:
+                    if [_pair_id(row) for row in reference_meta] != [_pair_id(row) for row in target_meta]:
                         raise ValueError("history pairing changed across checkpoints")
                     rows.append({"batch": batch["id"], "model_seed": seed, "comparison": "within_order_time",
                                  "order": order, "source_checkpoint": checkpoints[0], "target_checkpoint": checkpoint,
@@ -144,7 +148,7 @@ def run_protocol(protocol: dict) -> dict:
             for checkpoint in checkpoints:
                 train, train_meta = _cell(states, metadata, seed, "train", checkpoint)
                 heldout, heldout_meta = _cell(states, metadata, seed, "heldout", checkpoint)
-                if [row["symbols"] for row in train_meta] != [row["symbols"] for row in heldout_meta]:
+                if [_pair_id(row) for row in train_meta] != [_pair_id(row) for row in heldout_meta]:
                     raise ValueError("history pairing changed across orders")
                 rows.append({"batch": batch["id"], "model_seed": seed, "comparison": "cross_order",
                              "order": None, "source_checkpoint": checkpoint, "target_checkpoint": checkpoint,
