@@ -44,6 +44,19 @@ def test_collection_deduplicates_prefix_states_before_probe_fits():
     }), rtol=1e-14, atol=1e-14)
 
 
+def test_collection_allows_an_explicit_identity_replay_control():
+    module = localization_module()
+    protocol = {
+        'hidden_size': 16, 'model_seeds': [94],
+        'train_order': [.95, .75], 'evaluation_order': [.95, .75],
+        'evaluation_symbol_permutation': [0, 1],
+        'checkpoints': [{'id': 'cue2', 'evidence_count': 2, 'delay_steps': 0}],
+    }
+    rows = module.collect_rows(protocol)
+    assert len(rows) == 8
+    assert {row['order'] for row in rows} == {'train', 'heldout'}
+
+
 def test_small_localization_run_has_time_refit_and_cue_end_frozen_controls(tmp_path):
     module = localization_module()
     protocol = {

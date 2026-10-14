@@ -46,8 +46,8 @@ def calibration_metrics(target, prediction):
 
 def collect_rows(protocol):
     train, evaluation = protocol['train_order'], protocol['evaluation_order']
-    if len(train) != len(evaluation) or train == evaluation:
-        raise ValueError('distinct equal-length reliability orders required')
+    if len(train) != len(evaluation):
+        raise ValueError('equal-length reliability orders required')
     checkpoints = protocol['checkpoints']
     length = len(train)
     symbol_permutation = protocol.get('evaluation_symbol_permutation')
