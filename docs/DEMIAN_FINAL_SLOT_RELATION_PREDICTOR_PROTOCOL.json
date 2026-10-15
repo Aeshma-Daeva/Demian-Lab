@@ -1,0 +1,16 @@
+{
+  "protocol_id":"demian-final-slot-relation-predictor-v1",
+  "stage":"six_seed_directional_predictor_screen",
+  "claim_boundary":"fixed-weight descriptive channel/relationship predictor screen; no mechanism, intervention, routing, adaptation, or learning claim",
+  "hidden_size":256,"model_seeds":[4094,4095,4194,4195,4294,4295],"history_split_seed":197,
+  "arms":["identity","final05_base","final05_upstream_swap12"],"final_slot_match":"both primary arms end with base cue-pair4 at reliability .5",
+  "paired_histories":64,"fitting_boundary":"Fit projections, centering/scales, decoders, trackers, PCA/subspaces, and coupling/modulation models only on base-order train32. Apply unchanged to paired eval32; condition labels/outcomes never enter a fit.",
+  "timepoints":["cue6","delay1","delay2","delay3","delay4","delay5","delay6","delay7","delay8"],
+  "outcome":"per-seed median across projections of delay8 base-minus-upstream true R2; latest/shuffle verify controls only",
+  "selection_family":{"channel_endpoint_residual_fractions":["carrier","slow","fast","gate","message","control"],"relations":{"carrier_to_slow":["route_contribution_rms_auc","frozen_lagged_prediction_deficit_auc","base_fit_gate_modulation_coefficient"],"gate_to_message":["route_contribution_rms_auc","frozen_lagged_prediction_deficit_auc","base_fit_gate_modulation_coefficient"]}},
+  "baseline_only":["full 6x6 Jacobian-block Frobenius atlas at cue6 and delay8","finite-time source-channel sensitivity to every target at horizons1,2,8"],
+  "integrity":["route accounting exactly reconstructs target preactivation/update","preregistered analytic Jacobian blocks agree with central finite differences","identity calibration","final-slot/latest baseline match","heldout-state and label adversarial fit-isolation tests","save states, route tensors, fits, predictions, hashes"],
+  "screen_gate":"Nominate at most one metric only if its base-minus-upstream contrast and rank association with the seed-level outcome have the same direction in at least 5/6 seeds; resolve eligible ties by standardized base-train-scaled effect magnitude. No nomination means stop. Jacobian/sensitivity atlas is never eligible for selection.",
+  "confirmation":"Run only a winning named metric and exact controls on six fresh seeds. Confirm the same contrast and association direction before any perturbation/rescue protocol.",
+  "artifact_directory":"data/diagnostics/demian_final_slot_relation_predictor_v1_20261015"
+}
