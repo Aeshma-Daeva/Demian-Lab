@@ -231,3 +231,16 @@ def test_permutation_geometry_reports_translation_spread_and_centered_overlap():
     assert descriptors['centroid_displacement'] == np.sqrt(34.)
     assert descriptors['source_centered_spread'] == descriptors['target_centered_spread']
     assert descriptors['centered_subspace_overlap'] == 1.
+
+
+def test_frozen_geometry_keeps_base_subspace_fixed():
+    from development.analyze_demian_uncertainty_permutation_decomposition import frozen_geometry_descriptors
+
+    train = np.asarray([[0., 0.], [1., 0.], [0., 2.], [2., 1.]])
+    evaluation = train + np.asarray([1., -2.])
+    descriptors = frozen_geometry_descriptors(train, train, evaluation, rank=2)
+
+    assert descriptors['tracker_residual_energy'] == 5.
+    assert descriptors['centroid_residual_norm'] == np.sqrt(5.)
+    assert descriptors['centered_spread_ratio'] == 1.
+    assert descriptors['subspace_reconstruction_error'] < 1e-20

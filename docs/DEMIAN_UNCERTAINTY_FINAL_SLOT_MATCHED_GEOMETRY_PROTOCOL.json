@@ -12,6 +12,7 @@
   "target_rule":"Each condition applies its listed permutation jointly to symbols and reliabilities; paired histories retain the full evidence-pair multiset and public log-odds target within 1e-12.",
   "fitting_rule":"Fit every projection, mean/scale, tracker, and subspace basis only on base-order train32 cue6-to-delay8 states. Apply unchanged objects to paired eval32 clouds.",
   "descriptors":["frozen tracker heldout-eval residual energy","frozen centroid residual norm","frozen centered-spread ratio","frozen subspace reconstruction error"],
+  "subspace_rank":8,
   "aggregation":"Within seed, median descriptor differences across fixed projections; all cells remain dependent descriptions.",
   "control":"Identity is calibration only. Retain true R2/latest/shuffle only to verify final-slot matching.",
   "decision_rule":"Report a descriptor only as a descriptive covariate if base-minus-upstream has one nonzero direction in at least three of four seeds. Do not infer explanation or nominate channels.",

@@ -1,0 +1,14 @@
+{
+  "protocol_id":"demian-uncertainty-final-slot-matched-geometry-confirmation-v1",
+  "stage":"independent_geometry_covariate_confirmation",
+  "claim_boundary":"independent confirmation of predeclared base-fit global descriptor directions; no geometry mechanism, channel relation, routing, adaptation, learning, or causal claim",
+  "hidden_size":256,"model_seeds":[3894,3895,3994,3995],"train_order":[0.95,0.75,0.5,0.75,0.5,0.95],"history_split_seed":193,
+  "checkpoints":[{"id":"cue6","evidence_count":6,"delay_steps":0},{"id":"delay2","evidence_count":6,"delay_steps":2},{"id":"delay8","evidence_count":6,"delay_steps":8}],"frozen_reference_checkpoint":"cue6","projection_dimension":16,"projection_seeds":[17,29,43],"ridge_alpha":1.0,
+  "conditions":[{"id":"identity","kind":"recency_reference","evaluation_order":[0.95,0.75,0.5,0.75,0.5,0.95],"evaluation_symbol_permutation":[0,1,2,3,4,5]},{"id":"final05_base","kind":"matched_final_slot","evaluation_order":[0.95,0.75,0.5,0.75,0.95,0.5],"evaluation_symbol_permutation":[0,1,2,3,5,4]},{"id":"final05_upstream_swap12","kind":"matched_final_slot","evaluation_order":[0.75,0.95,0.5,0.75,0.95,0.5],"evaluation_symbol_permutation":[1,0,2,3,5,4]}],
+  "target_rule":"Each condition applies its listed permutation jointly to symbols and reliabilities; paired histories retain the evidence-pair multiset and public log-odds target within 1e-12.",
+  "fitting_rule":"Fit projection, mean/scale, tracker, and rank-8 subspace basis only on base-order train32 cue6-to-delay8 states; apply unchanged objects to paired eval32 clouds.",
+  "descriptors":["frozen tracker heldout-eval residual energy","frozen centroid residual norm","frozen centered-spread ratio","frozen rank-8 subspace reconstruction error"],
+  "aggregation":"Within seed, median base-minus-upstream descriptor difference across fixed projections.",
+  "confirmation_rule":"Each descriptor confirms only if its base-minus-upstream direction matches the preceding prospective geometry batch in at least three of four fresh seeds. Report order readout only as control. Do not nominate channels or interventions.",
+  "artifact_directory":"data/diagnostics/demian_uncertainty_final_slot_matched_geometry_confirmation_v1_20261014"
+}

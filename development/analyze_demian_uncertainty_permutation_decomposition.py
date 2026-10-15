@@ -9,6 +9,8 @@ from pathlib import Path
 
 import numpy as np
 
+from development.run_demian_uncertainty_decoder_tracking import apply_tracker
+
 
 def geometry_descriptors(source, target, *, rank=16):
     source, target = np.asarray(source, dtype=np.float64), np.asarray(target, dtype=np.float64)
@@ -25,6 +27,25 @@ def geometry_descriptors(source, target, *, rank=16):
         "target_centered_spread": float(np.sqrt(np.mean(np.sum(target_centered**2, axis=1)))),
         "centered_subspace_overlap": float(overlap),
     }
+
+
+def frozen_geometry_descriptors(source_train, source_eval, target_eval, *, rank):
+    """Evaluate target coordinates against a base-train-only centered subspace."""
+    source_train = np.asarray(source_train, dtype=np.float64)
+    source_eval, target_eval = np.asarray(source_eval, dtype=np.float64), np.asarray(target_eval, dtype=np.float64)
+    if source_train.ndim != 2 or source_eval.shape != target_eval.shape or source_eval.shape[1] != source_train.shape[1]:
+        raise ValueError("frozen geometry requires compatible state matrices")
+    mean = source_train.mean(axis=0)
+    axes = np.linalg.svd(source_train-mean, full_matrices=False)[2][:min(rank, *source_train.shape)]
+    source_centered, target_centered = source_eval-source_eval.mean(axis=0), target_eval-target_eval.mean(axis=0)
+    source_spread = np.sqrt(np.mean(np.sum(source_centered**2, axis=1)))
+    target_spread = np.sqrt(np.mean(np.sum(target_centered**2, axis=1)))
+    target_relative_to_base = target_eval-mean
+    residual = target_relative_to_base - (target_relative_to_base @ axes.T) @ axes
+    return {"tracker_residual_energy": float(np.mean(np.sum((target_eval-source_eval)**2, axis=1))),
+            "centroid_residual_norm": float(np.linalg.norm(target_eval.mean(axis=0)-source_eval.mean(axis=0))),
+            "centered_spread_ratio": float(target_spread/source_spread) if source_spread > 1e-12 else 1.,
+            "subspace_reconstruction_error": float(np.mean(np.sum(residual**2, axis=1)))}
 
 
 def _rows(path):
@@ -80,12 +101,49 @@ def analyze(root):
     return output
 
 
+def analyze_frozen_geometry(root, *, rank=8):
+    """Base-train-only delay8 geometry for each saved permutation condition."""
+    root = Path(root)
+    output = {"conditions": {}}
+    for condition_dir in sorted(path for path in root.iterdir() if path.is_dir()):
+        condition = condition_dir.name
+        matrix_dir, tracking_dir = condition_dir / "matrix", condition_dir / "tracking"
+        states = np.load(matrix_dir / "states.npz")["states"].astype(np.float64)
+        metadata = _rows(matrix_dir / "state_metadata.jsonl")
+        split = json.loads((matrix_dir / "summary.json").read_text())["integrity"]["history_split"]
+        train_ids, eval_ids = set(split["train_history_indices"]), set(split["evaluation_history_indices"])
+        transforms = np.load(tracking_dir / "transforms.npz")
+        seeds = sorted({row["model_seed"] for row in metadata})
+        projections = sorted({int(key.removeprefix(condition+"_").split("_")[1])
+                              for key in transforms.files if key.startswith(condition+"_") and key.endswith("_basis")})
+        per_seed = []
+        for seed in seeds:
+            per_projection = []
+            for projection in projections:
+                basis = transforms[f"{condition}_{seed}_{projection}_basis"]
+                def cell(order, checkpoint, ids):
+                    indexes = sorted([i for i, row in enumerate(metadata) if row["model_seed"] == seed and row["order"] == order and row["checkpoint_id"] == checkpoint and row["paired_history_index"] in ids], key=lambda i: metadata[i]["paired_history_index"])
+                    return states[indexes] @ basis
+                source_train, source_eval = cell("train", "cue6", train_ids), cell("train", "cue6", eval_ids)
+                target_eval = cell("heldout", "delay8", eval_ids)
+                prefix = f"{condition}_{seed}_{projection}_base_delay8_orthogonal_track_"
+                tracker = {name: transforms[prefix+name] for name in ("source_mean", "target_mean", "scale", "rotation")}
+                transformed = apply_tracker(tracker, target_eval)
+                per_projection.append(frozen_geometry_descriptors(source_train, source_eval, transformed, rank=rank))
+            per_seed.append({"model_seed": seed, **{key: float(np.median([row[key] for row in per_projection])) for key in per_projection[0]}})
+        output["conditions"][condition] = {"per_seed": per_seed,
+            "mean": {key: float(np.mean([row[key] for row in per_seed])) for key in per_seed[0] if key != "model_seed"}}
+    return output
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, required=True)
     parser.add_argument("--out", type=Path, required=True)
+    parser.add_argument("--frozen-geometry", action="store_true")
     args = parser.parse_args()
-    args.out.write_text(json.dumps(analyze(args.root), indent=2, sort_keys=True) + "\n")
+    payload = analyze_frozen_geometry(args.root) if args.frozen_geometry else analyze(args.root)
+    args.out.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n")
     manifest_path = args.root / "manifest.json"
     if manifest_path.exists():
         manifest = json.loads(manifest_path.read_text())
