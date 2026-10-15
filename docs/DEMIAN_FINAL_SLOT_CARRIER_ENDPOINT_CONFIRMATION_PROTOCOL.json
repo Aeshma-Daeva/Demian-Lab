@@ -1,0 +1,15 @@
+{
+  "protocol_id":"demian-final-slot-carrier-endpoint-confirmation-v1",
+  "source_selection":"demian-final-slot-relation-predictor-v2-tiebreak-v1",
+  "claim_boundary":"fresh-seed confirmation of one descriptive carrier endpoint metric; no route, causal, routing, adaptation, or learning claim",
+  "hidden_size":256,
+  "model_seeds":[4694,4695,4794,4795,4894,4895],
+  "history_split_seed":211,
+  "arms":{"identity":{"reliabilities":[0.95,0.75,0.5,0.75,0.5,0.95],"symbol_permutation":[0,1,2,3,4,5]},"final05_base":{"reliabilities":[0.95,0.75,0.5,0.75,0.95,0.5],"symbol_permutation":[0,1,2,3,5,4]},"final05_upstream_swap12":{"reliabilities":[0.75,0.95,0.5,0.75,0.95,0.5],"symbol_permutation":[1,0,2,3,5,4]}},
+  "fitting_boundary":"Fit decoder, projections, normalization and carrier tracker only on base-order train32; apply unchanged to paired eval32 in both primary arms.",
+  "primary_metric":"carrier_endpoint_residual_fraction",
+  "expected_direction":"base-minus-upstream < 0",
+  "outcome_check":"per-seed median delay8 base-minus-upstream true R2 > 0 across fixed projections 17,29,43",
+  "confirmation_gate":"Confirm only if the carrier residual contrast is negative in at least 5/6 fresh seeds and the decoding outcome check is positive in at least 5/6 fresh seeds. Otherwise retain no confirmed metric.",
+  "artifact_directory":"data/diagnostics/demian_final_slot_carrier_endpoint_confirmation_v1_20261015"
+}

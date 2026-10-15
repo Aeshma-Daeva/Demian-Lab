@@ -1,0 +1,15 @@
+{
+  "protocol_id":"demian-final-slot-carrier-localization-v2",
+  "supersedes":"demian-final-slot-carrier-localization-v1",
+  "claim_boundary":"fixed-weight carrier-localization versus global endpoint geometry discrimination; no carrier necessity, route mechanism, or causal claim",
+  "hidden_size":256,
+  "model_seeds":[5594,5595,5694,5695,5794,5795],
+  "history_split_seed":229,
+  "arms":{"identity":{"reliabilities":[0.95,0.75,0.5,0.75,0.5,0.95],"symbol_permutation":[0,1,2,3,4,5]},"final05_base":{"reliabilities":[0.95,0.75,0.5,0.75,0.95,0.5],"symbol_permutation":[0,1,2,3,5,4]},"final05_upstream_swap12":{"reliabilities":[0.75,0.95,0.5,0.75,0.95,0.5],"symbol_permutation":[1,0,2,3,5,4]}},
+  "fitting_boundary":"Fit all six base-order endpoint trackers, their base-train means/SDs, the carrier nuisance model, decoder and projections only on base-order train32. Apply unchanged to paired eval32 in both primary arms.",
+  "atomic_metric":"per-history mean squared frozen endpoint-tracker residual across channel coordinates.",
+  "nuisance":"For each history, g is the mean standardized atomic residual of the five noncarrier base-fitted endpoint trackers, standardized by each tracker’s base-train mean and population SD. Fit carrier atomic error from g on base train32 only using ridge alpha1; apply unchanged.",
+  "localization_gate":"Pass only if in at least 5/6 seeds: residualized carrier base-minus-upstream mean error is negative; carrier dominance is positive, where dominance=absolute carrier standardized contrast minus max absolute noncarrier standardized contrast; and leave-one-seed-out Spearman(residualized carrier contrast, fixed decoding outcome) is negative in at least 5/6 omissions. No substitution or causal intervention on failure.",
+  "controls":["identity calibration","final-slot/latest baseline match","heldout-state and label isolation","fixed architecture and weights","save raw per-history errors nuisance predictions fits states and hashes"],
+  "artifact_directory":"data/diagnostics/demian_final_slot_carrier_localization_v2_20261015"
+}

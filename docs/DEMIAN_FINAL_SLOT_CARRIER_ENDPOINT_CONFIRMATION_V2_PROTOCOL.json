@@ -1,0 +1,16 @@
+{
+  "protocol_id":"demian-final-slot-carrier-endpoint-confirmation-v2",
+  "supersedes":"demian-final-slot-carrier-endpoint-confirmation-v1",
+  "claim_boundary":"fresh-seed confirmation of one descriptive carrier endpoint metric; no channel necessity, route mechanism, routing, adaptation, or learning claim",
+  "hidden_size":256,
+  "model_seeds":[4994,4995,5094,5095,5194,5195],
+  "history_split_seed":223,
+  "arms":{"identity":{"reliabilities":[0.95,0.75,0.5,0.75,0.5,0.95],"symbol_permutation":[0,1,2,3,4,5]},"final05_base":{"reliabilities":[0.95,0.75,0.5,0.75,0.95,0.5],"symbol_permutation":[0,1,2,3,5,4]},"final05_upstream_swap12":{"reliabilities":[0.75,0.95,0.5,0.75,0.95,0.5],"symbol_permutation":[1,0,2,3,5,4]}},
+  "fitting_boundary":"Fit only the base-order cue6 decoder, fixed projections 17/29/43, and carrier endpoint orthogonal tracker on base-order train32. Apply unchanged to paired eval32 in both primary arms.",
+  "primary_metric":"carrier_endpoint_residual_fraction",
+  "carrier_metric":"per-seed arm value is the mean over paired eval32 histories of mean squared frozen-carrier-tracker residual across carrier coordinates at delay8; c_s=base-upstream",
+  "outcome":"per-seed median over fixed projections of delay8 base-minus-upstream true R2",
+  "confirmation_gate":"Pass only if c_s<0 in at least 5/6 finite seeds, outcome>0 in at least 5/6 finite seeds, and leave-one-seed-out Spearman(c_-s,outcome_-s)<0 in at least 5/6 omissions. No alternate metric is considered on failure.",
+  "controls":["identity calibration","final-slot/latest baseline match","unchanged heldout-state and label isolation","fixed architecture and weights","save states fitted carrier tracker predictions per-history residuals and hashes"],
+  "artifact_directory":"data/diagnostics/demian_final_slot_carrier_endpoint_confirmation_v2_20261015"
+}
