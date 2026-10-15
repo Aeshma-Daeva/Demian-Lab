@@ -1,0 +1,14 @@
+{
+  "protocol_id":"demian-final-slot-global-endpoint-composite-v1",
+  "source_result":"demian-final-slot-carrier-localization-v2",
+  "claim_boundary":"fixed-weight global endpoint composite confirmation; no channel, route, causal, routing, adaptation, or learning claim",
+  "hidden_size":256,
+  "model_seeds":[5894,5895,5994,5995,6094,6095],
+  "history_split_seed":233,
+  "arms":{"identity":{"reliabilities":[0.95,0.75,0.5,0.75,0.5,0.95],"symbol_permutation":[0,1,2,3,4,5]},"final05_base":{"reliabilities":[0.95,0.75,0.5,0.75,0.95,0.5],"symbol_permutation":[0,1,2,3,5,4]},"final05_upstream_swap12":{"reliabilities":[0.75,0.95,0.5,0.75,0.95,0.5],"symbol_permutation":[1,0,2,3,5,4]}},
+  "fitting_boundary":"Fit the five noncarrier endpoint trackers, their base-train means/SDs, decoder and projections only on base-order train32. Apply unchanged to paired eval32 in both primary arms.",
+  "global_composite":"For each eval history G is the mean standardized squared residual of fast, slow, control, message and gate endpoint trackers, standardized only with that tracker’s frozen base-train mean and population SD. Arm value is mean G over eval32; cG=base-upstream.",
+  "outcome":"per-seed median over fixed projections 17/29/43 of delay8 base-minus-upstream true R2",
+  "gate":"Pass only if cG<0 in at least 5/6 finite seeds and leave-one-seed-out Spearman(cG,outcome)<0 in at least 5/6 omissions. No alternate metric or mechanism follow-up on failure.",
+  "artifact_directory":"data/diagnostics/demian_final_slot_global_endpoint_composite_v1_20261015"
+}
