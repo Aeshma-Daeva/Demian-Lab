@@ -48,6 +48,7 @@ def run_uncertainty_episode(
     hidden_size: int,
     public_frames: Sequence[EvidenceObservation],
     checkpoint_phases: Sequence[str] = ("evidence", "resolve"),
+    capture_route_tensors: bool = False,
 ) -> dict[str, object]:
     """Run public frames only; evaluator truth/labels never enter this interface."""
     if not public_frames:
@@ -60,12 +61,17 @@ def run_uncertainty_episode(
     state = model.initial_state(1, torch.device("cpu"))
     snapshots: dict[str, object] = {}
     measurements: list[dict[str, object]] = []
+    route_tensors: list[dict[str, torch.Tensor]] = []
     hashes: list[str] = []
     for observation in public_frames:
         before = tuple(value.detach().clone() for value in state)
         state = (state[0] + encode_evidence(observation, hidden_size), *state[1:])
         state = model.step(state)
         route = model.route_trace()
+        if capture_route_tensors:
+            if route is None:
+                raise RuntimeError("route capture requested but model did not emit a route trace")
+            route_tensors.append({name: value.detach().clone() for name, value in route.values.items()})
         measurements.append({
             "tick": observation.tick,
             "phase": observation.phase,
@@ -84,6 +90,7 @@ def run_uncertainty_episode(
     return {
         "state_hashes": hashes,
         "measurements": measurements,
+        "route_tensors": route_tensors,
         "checkpoints": snapshots,
         "replay_exact": _state_hash(restored) == hashes[-1],
         "input_count": len(public_frames),

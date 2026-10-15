@@ -3,7 +3,7 @@
   "stage":"six_seed_directional_predictor_screen",
   "claim_boundary":"fixed-weight descriptive channel/relationship predictor screen; no mechanism, intervention, routing, adaptation, or learning claim",
   "hidden_size":256,"model_seeds":[4094,4095,4194,4195,4294,4295],"history_split_seed":197,
-  "arms":["identity","final05_base","final05_upstream_swap12"],"final_slot_match":"both primary arms end with base cue-pair4 at reliability .5",
+  "arms":{"identity":{"reliabilities":[0.95,0.75,0.5,0.75,0.5,0.95],"symbol_permutation":[0,1,2,3,4,5]},"final05_base":{"reliabilities":[0.95,0.75,0.5,0.75,0.95,0.5],"symbol_permutation":[0,1,2,3,5,4]},"final05_upstream_swap12":{"reliabilities":[0.75,0.95,0.5,0.75,0.95,0.5],"symbol_permutation":[1,0,2,3,5,4]}},"final_slot_match":"both primary arms end with base cue-pair4 at reliability .5",
   "paired_histories":64,"fitting_boundary":"Fit projections, centering/scales, decoders, trackers, PCA/subspaces, and coupling/modulation models only on base-order train32. Apply unchanged to paired eval32; condition labels/outcomes never enter a fit.",
   "timepoints":["cue6","delay1","delay2","delay3","delay4","delay5","delay6","delay7","delay8"],
   "outcome":"per-seed median across projections of delay8 base-minus-upstream true R2; latest/shuffle verify controls only",
