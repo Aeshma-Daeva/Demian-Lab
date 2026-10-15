@@ -1,0 +1,9 @@
+{
+  "addendum_id":"demian-final-slot-relation-predictor-v2-tiebreak-v1",
+  "applies_to":"demian-final-slot-relation-predictor-v2",
+  "scope":"hash-pinned analysis-only clarification; no collection, seed, model, or fitting-boundary change",
+  "reason":"v2 declared SD_train_base but did not define its atomic observation.",
+  "dispersion_rule":"For each seed and candidate, use the population SD over the 32 base-train histories of the same history-level quantity averaged by that metric: endpoint residual is per-history mean squared frozen-tracker residual across channel coordinates; lag deficit is per-history mean squared frozen-model residual across its eight transitions; route AUC is per-history time-mean route norm. Zero or nonfinite SD excludes that seed from the standardized median.",
+  "tie_break":"For every eligible metric, calculate per-seed c[m,s]/SD_train_base[m,s], take its median over valid seeds, and select the unique largest absolute standardized effect magnitude. Exact equality means no nomination.",
+  "claim_boundary":"Selection remains descriptive and does not establish a channel or route mechanism."
+}

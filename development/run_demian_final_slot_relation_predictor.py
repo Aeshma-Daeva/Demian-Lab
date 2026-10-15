@@ -222,6 +222,41 @@ def analyze(protocol, states, routes, rows):
     return {"metrics": metrics, "history_split": split, "fits": fits, "selection": selection_gate(metrics), "integrity": {"architecture_changed": False, "weights_changed": False, "analysis_only": True, "fit_boundary": "base-order train32 only"}}
 
 
+def tiebreak_rows(protocol, states, routes, rows):
+    """Atomic base-train dispersions for the v2 hash-pinned tie-break."""
+    _, _, reference = _cell(states, routes, rows, int(protocol["model_seeds"][0]), "final05_base")
+    split = split_histories([{**row, "symbols": row["canonical_symbols"]} for row in reference], int(protocol["history_split_seed"]))
+    train_ids, eval_ids = set(split["train_history_indices"]), set(split["evaluation_history_indices"])
+    offsets = {name: slice(i*int(protocol["hidden_size"]), (i+1)*int(protocol["hidden_size"])) for i, name in enumerate(V1_CHANNELS)}
+    output = []
+    for seed in protocol["model_seeds"]:
+        base, base_routes, base_rows = _cell(states, routes, rows, int(seed), "final05_base")
+        upstream, upstream_routes, upstream_rows = _cell(states, routes, rows, int(seed), "final05_upstream_swap12")
+        train = np.asarray([i for i, row in enumerate(base_rows) if row["paired_history_index"] in train_ids])
+        evaluate = np.asarray([i for i, row in enumerate(base_rows) if row["paired_history_index"] in eval_ids])
+        upstream_evaluate = np.asarray([i for i, row in enumerate(upstream_rows) if row["paired_history_index"] in eval_ids])
+        for channel in V1_CHANNELS:
+            s = offsets[channel]; tracker = fit_tracker(base[train, 0, s], base[train, -1, s], mode="orthogonal_track")
+            atom = lambda data, indexes: np.mean((apply_tracker(tracker, data[indexes, -1, s]) - data[indexes, 0, s]) ** 2, axis=1)
+            train_values, base_values, upstream_values = atom(base, train), atom(base, evaluate), atom(upstream, upstream_evaluate)
+            output.append({"model_seed": int(seed), "metric": f"{channel}_endpoint_residual_fraction", "base_train_sd": float(np.std(train_values)), "base_value": float(np.mean(base_values)), "upstream_value": float(np.mean(upstream_values))})
+        for route_index, relation in ((0, "carrier_to_slow"), (2, "gate_to_message")):
+            atom = lambda route_data, indexes: _route_auc(route_data[indexes, :, route_index])
+            train_values, base_values, upstream_values = atom(base_routes, train), atom(base_routes, evaluate), atom(upstream_routes, upstream_evaluate)
+            output.append({"model_seed": int(seed), "metric": f"{relation}_route_contribution_rms_auc", "base_train_sd": float(np.std(train_values)), "base_value": float(np.mean(base_values)), "upstream_value": float(np.mean(upstream_values))})
+            source_name, target_name = (("carrier", "slow") if relation == "carrier_to_slow" else ("gate", "message"))
+            ss, ts = offsets[source_name], offsets[target_name]
+            lag_fit = _fit_lag_model(base[:, :, ss], base[:, :, ts], train)
+            def lag_atoms(data, indexes):
+                sn, tn = np.linalg.norm(data[:, :, ss], axis=-1), np.linalg.norm(data[:, :, ts], axis=-1)
+                x = np.stack((tn[:, :-1], sn[:, :-1]), axis=-1)
+                prediction = predict_probe(lag_fit, x.reshape(-1, 2)).reshape(x.shape[:2])
+                return np.mean((tn[:, 1:] - prediction) ** 2, axis=1)[indexes]
+            train_values, base_values, upstream_values = lag_atoms(base, train), lag_atoms(base, evaluate), lag_atoms(upstream, upstream_evaluate)
+            output.append({"model_seed": int(seed), "metric": f"{relation}_frozen_lagged_prediction_deficit_auc", "base_train_sd": float(np.std(train_values)), "base_value": float(np.mean(base_values)), "upstream_value": float(np.mean(upstream_values))})
+    return output
+
+
 def write_artifacts(out, protocol, states, routes, rows, payload):
     out.mkdir(parents=True, exist_ok=False)
     np.savez_compressed(out / "states_and_routes.npz", states=states, routes=routes)
