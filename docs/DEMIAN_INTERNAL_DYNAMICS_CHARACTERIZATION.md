@@ -75,6 +75,7 @@ information to a channel or establish a regulating mechanism.
 - `DEMIAN_UNCERTAINTY_LOCAL_MODELS_RESULTS.md`
 - `DEMIAN_ROUTE_STABILITY_RESULTS.md`
 - `DEMIAN_ROUTE_SELECTIVITY_RESULTS.md`
+- `DEMIAN_CROSS_SEED_GEOMETRY_RESULTS.md`
 - `data/RESEARCH_REGISTRY.json`
 
 Falsifier for the central synthesis: a protocol-matched replication fails to
