@@ -12,6 +12,14 @@ from development.run_demian_frozen_readout_delayed_cue import basis
 from development.run_demian_uncertainty_localization import fit_probe, predict_probe
 
 
+def channel_slices(width: int) -> dict[str, tuple[int, int]]:
+    """State-vector slices follow ``DemianV1GateState.initial_state`` exactly."""
+    sizes = (width, width, width // 8, width, width, width)
+    edges = np.cumsum((0, *sizes))
+    return {channel: (int(left), int(right))
+            for channel, left, right in zip(V1_CHANNELS, edges[:-1], edges[1:], strict=True)}
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--artifact", type=Path, required=True)
@@ -23,10 +31,8 @@ def main() -> None:
     states = np.load(args.artifact / "states.npz")["states"]
     rows = [json.loads(line) for line in (args.artifact / "rows.jsonl").read_text().splitlines()]
     width, train_ids = int(protocol["hidden_size"]), set(protocol["train_history_ids"])
-    sizes = [width] * 5 + [width // 8]
-    offsets = np.cumsum([0, *sizes])
     metrics = []
-    for channel, left, right in zip(V1_CHANNELS, offsets[:-1], offsets[1:], strict=True):
+    for channel, (left, right) in channel_slices(width).items():
         features = states[:, left:right]
         projection = basis(features.shape[1], 1000 + left)
         for seed in protocol["model_seeds"]:
