@@ -1,0 +1,10 @@
+{
+  "protocol_id": "demian-cross-seed-relational-geometry-v1",
+  "source_artifact": "data/diagnostics/demian_uncertainty_history_matrix_v1_20261013",
+  "source_selection": "train order; 64 identical binary histories; checkpoints cue6, delay2, delay8, delay32, delay64; four frozen parameter seeds",
+  "question": "Do identical history clouds share relational geometry across parameter seeds beyond a shuffled-history pairing control?",
+  "measurements": ["centered pairwise-distance Pearson correlation", "unit-RMS distance discrepancy", "paired-minus-shuffled correlation lift"],
+  "control": "32 deterministic permutations of history pairing for every seed-pair/checkpoint",
+  "claim_boundary": "descriptive cross-seed relational geometry only; not a common coordinate system, causal mechanism, information use, channel ownership, learning, or adaptation",
+  "artifact_directory": "data/diagnostics/demian_cross_seed_relational_geometry_v1_20261016"
+}
