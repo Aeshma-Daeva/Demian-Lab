@@ -44,10 +44,11 @@ Six fresh seeds receive identical length-32 distractor histories at delays 2,
 projection. Only delay 32 passes the declared all-seed gate (6/6; .931–1.000).
 Delays 2 and 8 fail. A descriptive per-channel audit on the same states finds
 that `fast` alone is decodable at delay 2 (mean .914) while the fixed 16-D
-full-state projection is not (mean .361). The remaining channel slices are
-being recomputed from preserved state data after an audit found their original
-layout offsets wrong. This identifies projection-sensitive, time-dependent
-external availability, not channel ownership or mechanism.
+full-state projection is not (mean .361). With corrected state slices, means
+at delay 32 range .896–.991 across separately fitted channel probes. These
+post-hoc, shared-episode probes establish only projection/source-sensitive
+external availability—not channel ownership, causal routing, or a channel
+ranking.
 
 ## Current picture
 
