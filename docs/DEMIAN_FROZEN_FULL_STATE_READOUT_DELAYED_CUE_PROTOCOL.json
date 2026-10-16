@@ -1,0 +1,19 @@
+{
+  "protocol_id": "demian-frozen-full-state-readout-delayed-cue-v2",
+  "claim_boundary": "external supervised full-state readout availability only; not Demian action selection, internal storage, channel ownership, recovery, adaptation, learning, or architecture benefit",
+  "hidden_size": 256,
+  "model_seeds": [7094, 7095, 7194, 7195, 7294, 7295],
+  "symbols": [0, 1, 2],
+  "delays": [2, 8, 32],
+  "histories_per_cue_delay": 48,
+  "train_history_ids": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23],
+  "history_design": "one balanced length-32 distractor corpus per seed/cue; delay states use exact prefixes",
+  "feature_source": "full_state",
+  "projection_dimension": 16,
+  "projection_seed": 431,
+  "ridge_alpha": 1,
+  "fit": "one readout per seed on all train histories/delays; frozen thereafter",
+  "comparators": ["latest distractor categorical ridge", "fixed no-storage answer0"],
+  "decision_rule": "at each delay in >=5/6 seeds, heldout Demian readout accuracy >=.50 and exceeds both latest and no-storage by >=.15; otherwise exact task unestablished with no retuning",
+  "artifact_directory": "data/diagnostics/demian_frozen_full_state_readout_delayed_cue_v2_20261016"
+}
