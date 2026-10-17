@@ -20,6 +20,10 @@ Last updated: 2026-10-17
 - Evidence: `DEMIAN_DISTANCE_CONDITIONING_RESULTS.md`. Both executions and
   Astra reviews are complete; no background run remains active.
 - No routing extension or hypothesis-status promotion is authorized by this result.
+- Planned next program: `superpowers/plans/2026-10-17-dynamic-maze-regulation.md`.
+  Target: improved regulation through experience. First package builds the
+  dynamic world and frozen behavioral baseline; learning/routing remains a
+  separately specified later branch. No maze execution has started.
 
 The following sections retain earlier program context; restart from the record above.
 
