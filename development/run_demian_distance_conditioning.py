@@ -77,7 +77,9 @@ def main():
     (out/"source").mkdir()
     for file in (Path(__file__), Path("development/demian_cross_seed_transfer.py"),
                  Path("development/run_demian_cross_seed_transfer.py"), Path("development/cross_seed_reservoir_reference.py"),
-                 Path("development/demian_v1_gate_state.py"), Path("development/run_demian_uncertainty_localization.py")):
+                 Path("development/demian_v1_gate_state.py"), Path("development/run_demian_uncertainty_localization.py"),
+                 Path("development/demian_uncertainty_probe.py"), Path("development/demian_uncertainty_world.py"),
+                 Path("development/substrate_lab.py")):
         (out/"source"/file.name).write_bytes(file.read_bytes())
     split = make_split(original["split_seed"])
     dump(out/"split.json", split)
@@ -98,6 +100,9 @@ def main():
                     np.savez_compressed(out/f"fit_{key}.npz", **fitted)
     fit_hashes = {p.name: sha(p) for p in out.glob("fit_*.npz")}
     dump(out/"frozen_fit_manifest.json", fit_hashes)
+    dump(out/"conditioning.json", {key: {"rank": int(np.linalg.matrix_rank(fit["white_matrix"])),
+         "singular_values": np.linalg.svd(fit["white_matrix"], compute_uv=False).tolist()}
+         for key, fit in objects.items() if key.endswith("_true")})
     print(json.dumps({"stage": "fits_frozen", "count": len(objects)}), flush=True)
     metrics, predictions = [], {"targets": y[evaluate], "history_ids": np.array(evaluate)}
     permutations = [np.random.default_rng(original["anchor_permutation_seed"]+i).permutation(16)
@@ -135,7 +140,11 @@ def main():
         counts = {str(d): sum(c["gate_pass"] for c in metrics if c["model"] == model and
                               c["variant"] == protocol["primary_variant"] and c["delay"] == d)
                   for d in protocol["primary_delays"]}
-        gates[model] = {"passing_seeds_by_delay": counts, "overall_pass": all(n >= 5 for n in counts.values())}
+        intersection = [s for s in protocol["evaluation_seeds"] if all(next(c["gate_pass"] for c in metrics
+             if c["model"] == model and c["seed"] == s and c["delay"] == d and c["variant"] == protocol["primary_variant"])
+             for d in protocol["primary_delays"])]
+        gates[model] = {"passing_seeds_by_delay": counts, "overall_pass": all(n >= 5 for n in counts.values()),
+                        "passing_seed_intersection": intersection}
     dump(out/"summary.json", {"protocol_id": protocol["protocol_id"], "primary_variant": protocol["primary_variant"],
                               "gates": gates, "claim_boundary": protocol["claim_boundary"]})
     dump(out/"execution.json", {**execution, "status": "complete"})
