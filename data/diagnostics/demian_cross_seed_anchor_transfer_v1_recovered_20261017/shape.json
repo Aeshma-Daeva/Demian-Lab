@@ -1,0 +1,1802 @@
+[
+  {
+    "model": "demian",
+    "seed": 82001,
+    "delay": 0,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.7453300011037601,
+    "effective_rank": 1.6460859823547298,
+    "heldout_bit_linear_variance_explained": 0.9999825233965249
+  },
+  {
+    "model": "demian",
+    "seed": 82002,
+    "delay": 0,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.752833585702651,
+    "effective_rank": 1.6224400890402468,
+    "heldout_bit_linear_variance_explained": 0.9999912702222646
+  },
+  {
+    "model": "demian",
+    "seed": 82003,
+    "delay": 0,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.7159273034184688,
+    "effective_rank": 1.7338967538389338,
+    "heldout_bit_linear_variance_explained": 0.9999515326864262
+  },
+  {
+    "model": "demian",
+    "seed": 82004,
+    "delay": 0,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.748068609827255,
+    "effective_rank": 1.6374205475957775,
+    "heldout_bit_linear_variance_explained": 0.9999918657038699
+  },
+  {
+    "model": "demian",
+    "seed": 82005,
+    "delay": 0,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.7308675184185884,
+    "effective_rank": 1.6897240368801734,
+    "heldout_bit_linear_variance_explained": 0.9999961630355934
+  },
+  {
+    "model": "demian",
+    "seed": 82006,
+    "delay": 0,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.7362484405596097,
+    "effective_rank": 1.6707819252565008,
+    "heldout_bit_linear_variance_explained": 0.9999945847116906
+  },
+  {
+    "model": "demian",
+    "seed": 82001,
+    "delay": 2,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.894667550557953,
+    "effective_rank": 1.2344484087564516,
+    "heldout_bit_linear_variance_explained": 0.9999818129678271
+  },
+  {
+    "model": "demian",
+    "seed": 82002,
+    "delay": 2,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.8907473799971577,
+    "effective_rank": 1.243989843816624,
+    "heldout_bit_linear_variance_explained": 0.9999882028942539
+  },
+  {
+    "model": "demian",
+    "seed": 82003,
+    "delay": 2,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.8835268193483979,
+    "effective_rank": 1.2621925192355947,
+    "heldout_bit_linear_variance_explained": 0.9999634278603922
+  },
+  {
+    "model": "demian",
+    "seed": 82004,
+    "delay": 2,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.9043634683612036,
+    "effective_rank": 1.2108881559300129,
+    "heldout_bit_linear_variance_explained": 0.9999887405484236
+  },
+  {
+    "model": "demian",
+    "seed": 82005,
+    "delay": 2,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.8920306444484385,
+    "effective_rank": 1.2410037264984013,
+    "heldout_bit_linear_variance_explained": 0.9999917527696435
+  },
+  {
+    "model": "demian",
+    "seed": 82006,
+    "delay": 2,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.8889365369270384,
+    "effective_rank": 1.248594223958991,
+    "heldout_bit_linear_variance_explained": 0.9999911161374191
+  },
+  {
+    "model": "demian",
+    "seed": 82001,
+    "delay": 8,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.9617121786913906,
+    "effective_rank": 1.079598578108941,
+    "heldout_bit_linear_variance_explained": 0.999858522252908
+  },
+  {
+    "model": "demian",
+    "seed": 82002,
+    "delay": 8,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.9602400493126453,
+    "effective_rank": 1.0827689801365619,
+    "heldout_bit_linear_variance_explained": 0.9999051204044519
+  },
+  {
+    "model": "demian",
+    "seed": 82003,
+    "delay": 8,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.9518449143209108,
+    "effective_rank": 1.1010677258952803,
+    "heldout_bit_linear_variance_explained": 0.9998568760058762
+  },
+  {
+    "model": "demian",
+    "seed": 82004,
+    "delay": 8,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.9654432638901965,
+    "effective_rank": 1.071565645465347,
+    "heldout_bit_linear_variance_explained": 0.9998807861898359
+  },
+  {
+    "model": "demian",
+    "seed": 82005,
+    "delay": 8,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.9488150930379669,
+    "effective_rank": 1.1077161999366114,
+    "heldout_bit_linear_variance_explained": 0.9999142005392734
+  },
+  {
+    "model": "demian",
+    "seed": 82006,
+    "delay": 8,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.9514181635275102,
+    "effective_rank": 1.102012630289599,
+    "heldout_bit_linear_variance_explained": 0.999919669997139
+  },
+  {
+    "model": "demian",
+    "seed": 82001,
+    "delay": 16,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.9696895941533296,
+    "effective_rank": 1.0625785571301778,
+    "heldout_bit_linear_variance_explained": 0.9990975738727794
+  },
+  {
+    "model": "demian",
+    "seed": 82002,
+    "delay": 16,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.9802917446652458,
+    "effective_rank": 1.0402487483970446,
+    "heldout_bit_linear_variance_explained": 0.9989551778933726
+  },
+  {
+    "model": "demian",
+    "seed": 82003,
+    "delay": 16,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.9657286589352843,
+    "effective_rank": 1.0709826362298416,
+    "heldout_bit_linear_variance_explained": 0.9991919586511442
+  },
+  {
+    "model": "demian",
+    "seed": 82004,
+    "delay": 16,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.9794135952775027,
+    "effective_rank": 1.0420704416073445,
+    "heldout_bit_linear_variance_explained": 0.9990017908779038
+  },
+  {
+    "model": "demian",
+    "seed": 82005,
+    "delay": 16,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.9517101051170491,
+    "effective_rank": 1.1013710114057567,
+    "heldout_bit_linear_variance_explained": 0.9993419459801437
+  },
+  {
+    "model": "demian",
+    "seed": 82006,
+    "delay": 16,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.9533477725594951,
+    "effective_rank": 1.0978181233489204,
+    "heldout_bit_linear_variance_explained": 0.999260816592649
+  },
+  {
+    "model": "demian",
+    "seed": 82001,
+    "delay": 24,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.9594735568053243,
+    "effective_rank": 1.0848828278710967,
+    "heldout_bit_linear_variance_explained": 0.9920412074948954
+  },
+  {
+    "model": "demian",
+    "seed": 82002,
+    "delay": 24,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.9791688299333252,
+    "effective_rank": 1.042764631540319,
+    "heldout_bit_linear_variance_explained": 0.9895021568209778
+  },
+  {
+    "model": "demian",
+    "seed": 82003,
+    "delay": 24,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.9543514161930847,
+    "effective_rank": 1.0958455589186993,
+    "heldout_bit_linear_variance_explained": 0.9953606324330299
+  },
+  {
+    "model": "demian",
+    "seed": 82004,
+    "delay": 24,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.9829397782290177,
+    "effective_rank": 1.0347994212887421,
+    "heldout_bit_linear_variance_explained": 0.9961412836048594
+  },
+  {
+    "model": "demian",
+    "seed": 82005,
+    "delay": 24,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.9493511932613031,
+    "effective_rank": 1.1067727694398752,
+    "heldout_bit_linear_variance_explained": 0.9968719791999648
+  },
+  {
+    "model": "demian",
+    "seed": 82006,
+    "delay": 24,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.9601563384060755,
+    "effective_rank": 1.0830875718877124,
+    "heldout_bit_linear_variance_explained": 0.9976486775717337
+  },
+  {
+    "model": "demian",
+    "seed": 82001,
+    "delay": 32,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.933365574467313,
+    "effective_rank": 1.1449719713811914,
+    "heldout_bit_linear_variance_explained": 0.9629523788903287
+  },
+  {
+    "model": "demian",
+    "seed": 82002,
+    "delay": 32,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.9675206817422328,
+    "effective_rank": 1.067637596062061,
+    "heldout_bit_linear_variance_explained": 0.9713013418750157
+  },
+  {
+    "model": "demian",
+    "seed": 82003,
+    "delay": 32,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.928777178003824,
+    "effective_rank": 1.1541195323858358,
+    "heldout_bit_linear_variance_explained": 0.9865069773476557
+  },
+  {
+    "model": "demian",
+    "seed": 82004,
+    "delay": 32,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.9771944641243198,
+    "effective_rank": 1.0469192691956497,
+    "heldout_bit_linear_variance_explained": 0.9895958393935022
+  },
+  {
+    "model": "demian",
+    "seed": 82005,
+    "delay": 32,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.9594230536944571,
+    "effective_rank": 1.0849596019689007,
+    "heldout_bit_linear_variance_explained": 0.9921059691037635
+  },
+  {
+    "model": "demian",
+    "seed": 82006,
+    "delay": 32,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.9602553731764176,
+    "effective_rank": 1.083425763805576,
+    "heldout_bit_linear_variance_explained": 0.9844656249280914
+  },
+  {
+    "model": "demian",
+    "seed": 82001,
+    "delay": 40,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.8953899864544843,
+    "effective_rank": 1.2392921992506152,
+    "heldout_bit_linear_variance_explained": 0.9082462579417518
+  },
+  {
+    "model": "demian",
+    "seed": 82002,
+    "delay": 40,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.9589023133878027,
+    "effective_rank": 1.086418886258572,
+    "heldout_bit_linear_variance_explained": 0.9584789917236964
+  },
+  {
+    "model": "demian",
+    "seed": 82003,
+    "delay": 40,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.906326562849948,
+    "effective_rank": 1.2103357197978784,
+    "heldout_bit_linear_variance_explained": 0.9606514064626955
+  },
+  {
+    "model": "demian",
+    "seed": 82004,
+    "delay": 40,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.960014747672871,
+    "effective_rank": 1.084134779950924,
+    "heldout_bit_linear_variance_explained": 0.9751800756422581
+  },
+  {
+    "model": "demian",
+    "seed": 82005,
+    "delay": 40,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.9479129115682823,
+    "effective_rank": 1.1112778422011573,
+    "heldout_bit_linear_variance_explained": 0.9702941834660691
+  },
+  {
+    "model": "demian",
+    "seed": 82006,
+    "delay": 40,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.9423735161957716,
+    "effective_rank": 1.1239901943718995,
+    "heldout_bit_linear_variance_explained": 0.9532203071046611
+  },
+  {
+    "model": "demian",
+    "seed": 82001,
+    "delay": 48,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.8600190279247241,
+    "effective_rank": 1.3356838255708294,
+    "heldout_bit_linear_variance_explained": 0.8477271524401209
+  },
+  {
+    "model": "demian",
+    "seed": 82002,
+    "delay": 48,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.926422092325998,
+    "effective_rank": 1.1607052907650004,
+    "heldout_bit_linear_variance_explained": 0.9155930705995117
+  },
+  {
+    "model": "demian",
+    "seed": 82003,
+    "delay": 48,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.936215009248561,
+    "effective_rank": 1.1382500436153091,
+    "heldout_bit_linear_variance_explained": 0.9655525825772907
+  },
+  {
+    "model": "demian",
+    "seed": 82004,
+    "delay": 48,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.9388899284196282,
+    "effective_rank": 1.1321364471820523,
+    "heldout_bit_linear_variance_explained": 0.956760675159407
+  },
+  {
+    "model": "demian",
+    "seed": 82005,
+    "delay": 48,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.920091782391248,
+    "effective_rank": 1.1771935258286177,
+    "heldout_bit_linear_variance_explained": 0.9310218192255532
+  },
+  {
+    "model": "demian",
+    "seed": 82006,
+    "delay": 48,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.9062341757299195,
+    "effective_rank": 1.210641313038319,
+    "heldout_bit_linear_variance_explained": 0.8997648242636986
+  },
+  {
+    "model": "demian",
+    "seed": 82001,
+    "delay": 56,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.8033881555644689,
+    "effective_rank": 1.510005149690981,
+    "heldout_bit_linear_variance_explained": 0.7767454274439096
+  },
+  {
+    "model": "demian",
+    "seed": 82002,
+    "delay": 56,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.8690500598280656,
+    "effective_rank": 1.3051361908357852,
+    "heldout_bit_linear_variance_explained": 0.8436074329719034
+  },
+  {
+    "model": "demian",
+    "seed": 82003,
+    "delay": 56,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.9137743038922657,
+    "effective_rank": 1.193132731964441,
+    "heldout_bit_linear_variance_explained": 0.9423054395571786
+  },
+  {
+    "model": "demian",
+    "seed": 82004,
+    "delay": 56,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.9024251493733779,
+    "effective_rank": 1.2214085151224805,
+    "heldout_bit_linear_variance_explained": 0.917301023921139
+  },
+  {
+    "model": "demian",
+    "seed": 82005,
+    "delay": 56,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.8644711578367725,
+    "effective_rank": 1.3229035826388194,
+    "heldout_bit_linear_variance_explained": 0.8650532652969245
+  },
+  {
+    "model": "demian",
+    "seed": 82006,
+    "delay": 56,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.8741034572220607,
+    "effective_rank": 1.294337937787319,
+    "heldout_bit_linear_variance_explained": 0.8557334554131609
+  },
+  {
+    "model": "demian",
+    "seed": 82001,
+    "delay": 64,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.7667505152661309,
+    "effective_rank": 1.6443878406474735,
+    "heldout_bit_linear_variance_explained": 0.7247701552570438
+  },
+  {
+    "model": "demian",
+    "seed": 82002,
+    "delay": 64,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.7877684037690613,
+    "effective_rank": 1.5418212902662576,
+    "heldout_bit_linear_variance_explained": 0.748632434403087
+  },
+  {
+    "model": "demian",
+    "seed": 82003,
+    "delay": 64,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.8765654567504916,
+    "effective_rank": 1.2913643969484634,
+    "heldout_bit_linear_variance_explained": 0.8868251844684379
+  },
+  {
+    "model": "demian",
+    "seed": 82004,
+    "delay": 64,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.8530542909909657,
+    "effective_rank": 1.3568890166695835,
+    "heldout_bit_linear_variance_explained": 0.8473247597008547
+  },
+  {
+    "model": "demian",
+    "seed": 82005,
+    "delay": 64,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.8179140283118782,
+    "effective_rank": 1.4615871402686773,
+    "heldout_bit_linear_variance_explained": 0.7990980937018922
+  },
+  {
+    "model": "demian",
+    "seed": 82006,
+    "delay": 64,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.8435066972311637,
+    "effective_rank": 1.3814416598780497,
+    "heldout_bit_linear_variance_explained": 0.8222883134807761
+  },
+  {
+    "model": "reservoir",
+    "seed": 82001,
+    "delay": 0,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.2650260402195727,
+    "effective_rank": 5.201852556308126,
+    "heldout_bit_linear_variance_explained": 0.9999998054322604
+  },
+  {
+    "model": "reservoir",
+    "seed": 82002,
+    "delay": 0,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.310747455612387,
+    "effective_rank": 4.818230086714215,
+    "heldout_bit_linear_variance_explained": 0.999999841117345
+  },
+  {
+    "model": "reservoir",
+    "seed": 82003,
+    "delay": 0,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.28137986384645386,
+    "effective_rank": 5.11903445960428,
+    "heldout_bit_linear_variance_explained": 0.9999998048399819
+  },
+  {
+    "model": "reservoir",
+    "seed": 82004,
+    "delay": 0,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.2771990344728405,
+    "effective_rank": 5.198894389887794,
+    "heldout_bit_linear_variance_explained": 0.999999793186728
+  },
+  {
+    "model": "reservoir",
+    "seed": 82005,
+    "delay": 0,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.2913957008220743,
+    "effective_rank": 5.008652952033933,
+    "heldout_bit_linear_variance_explained": 0.9999998306729526
+  },
+  {
+    "model": "reservoir",
+    "seed": 82006,
+    "delay": 0,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.2919581663438739,
+    "effective_rank": 5.027566316409347,
+    "heldout_bit_linear_variance_explained": 0.9999998067772299
+  },
+  {
+    "model": "reservoir",
+    "seed": 82001,
+    "delay": 2,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.295460679233635,
+    "effective_rank": 4.940731135168687,
+    "heldout_bit_linear_variance_explained": 0.9999996710370131
+  },
+  {
+    "model": "reservoir",
+    "seed": 82002,
+    "delay": 2,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.30304572210462455,
+    "effective_rank": 4.906393675984755,
+    "heldout_bit_linear_variance_explained": 0.9999997423554564
+  },
+  {
+    "model": "reservoir",
+    "seed": 82003,
+    "delay": 2,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.282364727841323,
+    "effective_rank": 5.100016879405398,
+    "heldout_bit_linear_variance_explained": 0.9999996899046948
+  },
+  {
+    "model": "reservoir",
+    "seed": 82004,
+    "delay": 2,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.2729574869973924,
+    "effective_rank": 5.226359011339348,
+    "heldout_bit_linear_variance_explained": 0.9999996799786566
+  },
+  {
+    "model": "reservoir",
+    "seed": 82005,
+    "delay": 2,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.304845996973031,
+    "effective_rank": 4.926783199813683,
+    "heldout_bit_linear_variance_explained": 0.9999997261288712
+  },
+  {
+    "model": "reservoir",
+    "seed": 82006,
+    "delay": 2,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.2853973593997763,
+    "effective_rank": 5.00743499495236,
+    "heldout_bit_linear_variance_explained": 0.9999996873413045
+  },
+  {
+    "model": "reservoir",
+    "seed": 82001,
+    "delay": 8,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.29603690103206426,
+    "effective_rank": 4.978867829183507,
+    "heldout_bit_linear_variance_explained": 0.9999995053060381
+  },
+  {
+    "model": "reservoir",
+    "seed": 82002,
+    "delay": 8,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.3083831931829807,
+    "effective_rank": 4.837788400880176,
+    "heldout_bit_linear_variance_explained": 0.9999996516309847
+  },
+  {
+    "model": "reservoir",
+    "seed": 82003,
+    "delay": 8,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.2862146796380928,
+    "effective_rank": 5.025522898716575,
+    "heldout_bit_linear_variance_explained": 0.9999995362959834
+  },
+  {
+    "model": "reservoir",
+    "seed": 82004,
+    "delay": 8,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.3046735424240299,
+    "effective_rank": 4.944209788645839,
+    "heldout_bit_linear_variance_explained": 0.9999996140863455
+  },
+  {
+    "model": "reservoir",
+    "seed": 82005,
+    "delay": 8,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.2975783731729039,
+    "effective_rank": 5.005379288386927,
+    "heldout_bit_linear_variance_explained": 0.9999996358324064
+  },
+  {
+    "model": "reservoir",
+    "seed": 82006,
+    "delay": 8,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.29770921142707923,
+    "effective_rank": 4.958915184744618,
+    "heldout_bit_linear_variance_explained": 0.9999995758291034
+  },
+  {
+    "model": "reservoir",
+    "seed": 82001,
+    "delay": 16,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.3040544947969212,
+    "effective_rank": 4.862317226741568,
+    "heldout_bit_linear_variance_explained": 0.9999994791474732
+  },
+  {
+    "model": "reservoir",
+    "seed": 82002,
+    "delay": 16,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.29896399554530945,
+    "effective_rank": 4.891097209371158,
+    "heldout_bit_linear_variance_explained": 0.9999996403663518
+  },
+  {
+    "model": "reservoir",
+    "seed": 82003,
+    "delay": 16,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.2973078247740284,
+    "effective_rank": 4.990897424431551,
+    "heldout_bit_linear_variance_explained": 0.9999995391884232
+  },
+  {
+    "model": "reservoir",
+    "seed": 82004,
+    "delay": 16,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.31131055647928,
+    "effective_rank": 4.744247429610406,
+    "heldout_bit_linear_variance_explained": 0.9999995984253057
+  },
+  {
+    "model": "reservoir",
+    "seed": 82005,
+    "delay": 16,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.32029449038369096,
+    "effective_rank": 4.755421445513146,
+    "heldout_bit_linear_variance_explained": 0.9999996216489068
+  },
+  {
+    "model": "reservoir",
+    "seed": 82006,
+    "delay": 16,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.3308239474057573,
+    "effective_rank": 4.683899784538189,
+    "heldout_bit_linear_variance_explained": 0.9999995246265382
+  },
+  {
+    "model": "reservoir",
+    "seed": 82001,
+    "delay": 24,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.3116726438651712,
+    "effective_rank": 4.828547165819646,
+    "heldout_bit_linear_variance_explained": 0.9999994627218414
+  },
+  {
+    "model": "reservoir",
+    "seed": 82002,
+    "delay": 24,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.3228662915453801,
+    "effective_rank": 4.605538192277622,
+    "heldout_bit_linear_variance_explained": 0.9999996214085197
+  },
+  {
+    "model": "reservoir",
+    "seed": 82003,
+    "delay": 24,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.3249639945802932,
+    "effective_rank": 4.658394515124272,
+    "heldout_bit_linear_variance_explained": 0.9999994845703185
+  },
+  {
+    "model": "reservoir",
+    "seed": 82004,
+    "delay": 24,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.3565192981050396,
+    "effective_rank": 4.451224678114585,
+    "heldout_bit_linear_variance_explained": 0.9999995799422972
+  },
+  {
+    "model": "reservoir",
+    "seed": 82005,
+    "delay": 24,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.3390556998722624,
+    "effective_rank": 4.557731475385841,
+    "heldout_bit_linear_variance_explained": 0.9999996272965761
+  },
+  {
+    "model": "reservoir",
+    "seed": 82006,
+    "delay": 24,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.3565383024018652,
+    "effective_rank": 4.411765203395515,
+    "heldout_bit_linear_variance_explained": 0.9999995309343864
+  },
+  {
+    "model": "reservoir",
+    "seed": 82001,
+    "delay": 32,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.2833738333919266,
+    "effective_rank": 5.0234456226015745,
+    "heldout_bit_linear_variance_explained": 0.9999994422528048
+  },
+  {
+    "model": "reservoir",
+    "seed": 82002,
+    "delay": 32,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.304843346643693,
+    "effective_rank": 4.699781795603461,
+    "heldout_bit_linear_variance_explained": 0.9999996322099756
+  },
+  {
+    "model": "reservoir",
+    "seed": 82003,
+    "delay": 32,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.32203608331738104,
+    "effective_rank": 4.753319979485995,
+    "heldout_bit_linear_variance_explained": 0.9999993566052495
+  },
+  {
+    "model": "reservoir",
+    "seed": 82004,
+    "delay": 32,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.3312234827946099,
+    "effective_rank": 4.519298178802962,
+    "heldout_bit_linear_variance_explained": 0.999999587037468
+  },
+  {
+    "model": "reservoir",
+    "seed": 82005,
+    "delay": 32,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.32090182609580065,
+    "effective_rank": 4.610425026784799,
+    "heldout_bit_linear_variance_explained": 0.9999996332218678
+  },
+  {
+    "model": "reservoir",
+    "seed": 82006,
+    "delay": 32,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.38162452725979507,
+    "effective_rank": 4.151994778240674,
+    "heldout_bit_linear_variance_explained": 0.9999995130295369
+  },
+  {
+    "model": "reservoir",
+    "seed": 82001,
+    "delay": 40,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.29580156105414757,
+    "effective_rank": 4.845912738522894,
+    "heldout_bit_linear_variance_explained": 0.9999993173979476
+  },
+  {
+    "model": "reservoir",
+    "seed": 82002,
+    "delay": 40,
+    "precision_limited": false,
+    "residual_precision_limited": true,
+    "pc1_fraction": 0.3229185583622051,
+    "effective_rank": 4.469574406238878,
+    "heldout_bit_linear_variance_explained": 0.9999995274419083
+  },
+  {
+    "model": "reservoir",
+    "seed": 82003,
+    "delay": 40,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.3168663035563115,
+    "effective_rank": 4.789702815323176,
+    "heldout_bit_linear_variance_explained": 0.9999991632880595
+  },
+  {
+    "model": "reservoir",
+    "seed": 82004,
+    "delay": 40,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.3204431008012809,
+    "effective_rank": 4.677569905010079,
+    "heldout_bit_linear_variance_explained": 0.9999995777280019
+  },
+  {
+    "model": "reservoir",
+    "seed": 82005,
+    "delay": 40,
+    "precision_limited": false,
+    "residual_precision_limited": true,
+    "pc1_fraction": 0.3344689842812946,
+    "effective_rank": 4.464094822186226,
+    "heldout_bit_linear_variance_explained": 0.9999996739580275
+  },
+  {
+    "model": "reservoir",
+    "seed": 82006,
+    "delay": 40,
+    "precision_limited": false,
+    "residual_precision_limited": false,
+    "pc1_fraction": 0.3420925916838482,
+    "effective_rank": 4.5491917659956,
+    "heldout_bit_linear_variance_explained": 0.9999994031286757
+  },
+  {
+    "model": "reservoir",
+    "seed": 82001,
+    "delay": 48,
+    "precision_limited": false,
+    "residual_precision_limited": true,
+    "pc1_fraction": 0.31605590526945476,
+    "effective_rank": 4.594033337329248,
+    "heldout_bit_linear_variance_explained": 0.9999991928092821
+  },
+  {
+    "model": "reservoir",
+    "seed": 82002,
+    "delay": 48,
+    "precision_limited": false,
+    "residual_precision_limited": true,
+    "pc1_fraction": 0.3587167328278629,
+    "effective_rank": 4.135645378012476,
+    "heldout_bit_linear_variance_explained": 0.9999992099711534
+  },
+  {
+    "model": "reservoir",
+    "seed": 82003,
+    "delay": 48,
+    "precision_limited": false,
+    "residual_precision_limited": true,
+    "pc1_fraction": 0.2986547234413415,
+    "effective_rank": 4.916009974647387,
+    "heldout_bit_linear_variance_explained": 0.9999986954424152
+  },
+  {
+    "model": "reservoir",
+    "seed": 82004,
+    "delay": 48,
+    "precision_limited": false,
+    "residual_precision_limited": true,
+    "pc1_fraction": 0.33012312643783764,
+    "effective_rank": 4.549485408419752,
+    "heldout_bit_linear_variance_explained": 0.999999546471963
+  },
+  {
+    "model": "reservoir",
+    "seed": 82005,
+    "delay": 48,
+    "precision_limited": false,
+    "residual_precision_limited": true,
+    "pc1_fraction": 0.381539446798707,
+    "effective_rank": 4.178752252852705,
+    "heldout_bit_linear_variance_explained": 0.999999551615355
+  },
+  {
+    "model": "reservoir",
+    "seed": 82006,
+    "delay": 48,
+    "precision_limited": false,
+    "residual_precision_limited": true,
+    "pc1_fraction": 0.3189814903362453,
+    "effective_rank": 4.765806835348793,
+    "heldout_bit_linear_variance_explained": 0.9999991300510338
+  },
+  {
+    "model": "reservoir",
+    "seed": 82001,
+    "delay": 56,
+    "precision_limited": false,
+    "residual_precision_limited": true,
+    "pc1_fraction": 0.3319675619059579,
+    "effective_rank": 4.478043498333097,
+    "heldout_bit_linear_variance_explained": 0.9999987146549277
+  },
+  {
+    "model": "reservoir",
+    "seed": 82002,
+    "delay": 56,
+    "precision_limited": false,
+    "residual_precision_limited": true,
+    "pc1_fraction": 0.4177057475049314,
+    "effective_rank": 3.617998409863232,
+    "heldout_bit_linear_variance_explained": 0.9999973925968128
+  },
+  {
+    "model": "reservoir",
+    "seed": 82003,
+    "delay": 56,
+    "precision_limited": false,
+    "residual_precision_limited": true,
+    "pc1_fraction": 0.27672254862375495,
+    "effective_rank": 5.087758550910721,
+    "heldout_bit_linear_variance_explained": 0.999996352027299
+  },
+  {
+    "model": "reservoir",
+    "seed": 82004,
+    "delay": 56,
+    "precision_limited": false,
+    "residual_precision_limited": true,
+    "pc1_fraction": 0.30680644689755726,
+    "effective_rank": 4.665789014245131,
+    "heldout_bit_linear_variance_explained": 0.9999991051306643
+  },
+  {
+    "model": "reservoir",
+    "seed": 82005,
+    "delay": 56,
+    "precision_limited": false,
+    "residual_precision_limited": true,
+    "pc1_fraction": 0.4052056293501174,
+    "effective_rank": 3.998429064158546,
+    "heldout_bit_linear_variance_explained": 0.9999988593393139
+  },
+  {
+    "model": "reservoir",
+    "seed": 82006,
+    "delay": 56,
+    "precision_limited": false,
+    "residual_precision_limited": true,
+    "pc1_fraction": 0.33134043386914763,
+    "effective_rank": 4.552195402832075,
+    "heldout_bit_linear_variance_explained": 0.9999977329791309
+  },
+  {
+    "model": "reservoir",
+    "seed": 82001,
+    "delay": 64,
+    "precision_limited": false,
+    "residual_precision_limited": true,
+    "pc1_fraction": 0.34923872451336296,
+    "effective_rank": 4.166778584122993,
+    "heldout_bit_linear_variance_explained": 0.9999963991685266
+  },
+  {
+    "model": "reservoir",
+    "seed": 82002,
+    "delay": 64,
+    "precision_limited": false,
+    "residual_precision_limited": true,
+    "pc1_fraction": 0.4972875773615388,
+    "effective_rank": 3.039189660133009,
+    "heldout_bit_linear_variance_explained": 0.9999848883181152
+  },
+  {
+    "model": "reservoir",
+    "seed": 82003,
+    "delay": 64,
+    "precision_limited": false,
+    "residual_precision_limited": true,
+    "pc1_fraction": 0.3291621437120233,
+    "effective_rank": 4.589409643955798,
+    "heldout_bit_linear_variance_explained": 0.9999819851336276
+  },
+  {
+    "model": "reservoir",
+    "seed": 82004,
+    "delay": 64,
+    "precision_limited": false,
+    "residual_precision_limited": true,
+    "pc1_fraction": 0.33889514136975374,
+    "effective_rank": 4.29580577167747,
+    "heldout_bit_linear_variance_explained": 0.999996412001087
+  },
+  {
+    "model": "reservoir",
+    "seed": 82005,
+    "delay": 64,
+    "precision_limited": false,
+    "residual_precision_limited": true,
+    "pc1_fraction": 0.3884939614990223,
+    "effective_rank": 4.099142720015258,
+    "heldout_bit_linear_variance_explained": 0.999994558312111
+  },
+  {
+    "model": "reservoir",
+    "seed": 82006,
+    "delay": 64,
+    "precision_limited": false,
+    "residual_precision_limited": true,
+    "pc1_fraction": 0.3411144165401645,
+    "effective_rank": 4.573111497800151,
+    "heldout_bit_linear_variance_explained": 0.9999863672663878
+  },
+  {
+    "model": "current_input",
+    "seed": 82001,
+    "delay": 0,
+    "precision_limited": false,
+    "residual_precision_limited": true,
+    "pc1_fraction": 0.9999999999999976,
+    "effective_rank": 1.0000000000000049,
+    "heldout_bit_linear_variance_explained": 1.0
+  },
+  {
+    "model": "current_input",
+    "seed": 82002,
+    "delay": 0,
+    "precision_limited": false,
+    "residual_precision_limited": true,
+    "pc1_fraction": 0.9999999999999976,
+    "effective_rank": 1.0000000000000049,
+    "heldout_bit_linear_variance_explained": 1.0
+  },
+  {
+    "model": "current_input",
+    "seed": 82003,
+    "delay": 0,
+    "precision_limited": false,
+    "residual_precision_limited": true,
+    "pc1_fraction": 0.9999999999999976,
+    "effective_rank": 1.0000000000000049,
+    "heldout_bit_linear_variance_explained": 1.0
+  },
+  {
+    "model": "current_input",
+    "seed": 82004,
+    "delay": 0,
+    "precision_limited": false,
+    "residual_precision_limited": true,
+    "pc1_fraction": 0.9999999999999976,
+    "effective_rank": 1.0000000000000049,
+    "heldout_bit_linear_variance_explained": 1.0
+  },
+  {
+    "model": "current_input",
+    "seed": 82005,
+    "delay": 0,
+    "precision_limited": false,
+    "residual_precision_limited": true,
+    "pc1_fraction": 0.9999999999999976,
+    "effective_rank": 1.0000000000000049,
+    "heldout_bit_linear_variance_explained": 1.0
+  },
+  {
+    "model": "current_input",
+    "seed": 82006,
+    "delay": 0,
+    "precision_limited": false,
+    "residual_precision_limited": true,
+    "pc1_fraction": 0.9999999999999976,
+    "effective_rank": 1.0000000000000049,
+    "heldout_bit_linear_variance_explained": 1.0
+  },
+  {
+    "model": "current_input",
+    "seed": 82001,
+    "delay": 2,
+    "precision_limited": true,
+    "residual_precision_limited": true,
+    "pc1_fraction": null,
+    "effective_rank": null,
+    "heldout_bit_linear_variance_explained": null
+  },
+  {
+    "model": "current_input",
+    "seed": 82002,
+    "delay": 2,
+    "precision_limited": true,
+    "residual_precision_limited": true,
+    "pc1_fraction": null,
+    "effective_rank": null,
+    "heldout_bit_linear_variance_explained": null
+  },
+  {
+    "model": "current_input",
+    "seed": 82003,
+    "delay": 2,
+    "precision_limited": true,
+    "residual_precision_limited": true,
+    "pc1_fraction": null,
+    "effective_rank": null,
+    "heldout_bit_linear_variance_explained": null
+  },
+  {
+    "model": "current_input",
+    "seed": 82004,
+    "delay": 2,
+    "precision_limited": true,
+    "residual_precision_limited": true,
+    "pc1_fraction": null,
+    "effective_rank": null,
+    "heldout_bit_linear_variance_explained": null
+  },
+  {
+    "model": "current_input",
+    "seed": 82005,
+    "delay": 2,
+    "precision_limited": true,
+    "residual_precision_limited": true,
+    "pc1_fraction": null,
+    "effective_rank": null,
+    "heldout_bit_linear_variance_explained": null
+  },
+  {
+    "model": "current_input",
+    "seed": 82006,
+    "delay": 2,
+    "precision_limited": true,
+    "residual_precision_limited": true,
+    "pc1_fraction": null,
+    "effective_rank": null,
+    "heldout_bit_linear_variance_explained": null
+  },
+  {
+    "model": "current_input",
+    "seed": 82001,
+    "delay": 8,
+    "precision_limited": true,
+    "residual_precision_limited": true,
+    "pc1_fraction": null,
+    "effective_rank": null,
+    "heldout_bit_linear_variance_explained": null
+  },
+  {
+    "model": "current_input",
+    "seed": 82002,
+    "delay": 8,
+    "precision_limited": true,
+    "residual_precision_limited": true,
+    "pc1_fraction": null,
+    "effective_rank": null,
+    "heldout_bit_linear_variance_explained": null
+  },
+  {
+    "model": "current_input",
+    "seed": 82003,
+    "delay": 8,
+    "precision_limited": true,
+    "residual_precision_limited": true,
+    "pc1_fraction": null,
+    "effective_rank": null,
+    "heldout_bit_linear_variance_explained": null
+  },
+  {
+    "model": "current_input",
+    "seed": 82004,
+    "delay": 8,
+    "precision_limited": true,
+    "residual_precision_limited": true,
+    "pc1_fraction": null,
+    "effective_rank": null,
+    "heldout_bit_linear_variance_explained": null
+  },
+  {
+    "model": "current_input",
+    "seed": 82005,
+    "delay": 8,
+    "precision_limited": true,
+    "residual_precision_limited": true,
+    "pc1_fraction": null,
+    "effective_rank": null,
+    "heldout_bit_linear_variance_explained": null
+  },
+  {
+    "model": "current_input",
+    "seed": 82006,
+    "delay": 8,
+    "precision_limited": true,
+    "residual_precision_limited": true,
+    "pc1_fraction": null,
+    "effective_rank": null,
+    "heldout_bit_linear_variance_explained": null
+  },
+  {
+    "model": "current_input",
+    "seed": 82001,
+    "delay": 16,
+    "precision_limited": true,
+    "residual_precision_limited": true,
+    "pc1_fraction": null,
+    "effective_rank": null,
+    "heldout_bit_linear_variance_explained": null
+  },
+  {
+    "model": "current_input",
+    "seed": 82002,
+    "delay": 16,
+    "precision_limited": true,
+    "residual_precision_limited": true,
+    "pc1_fraction": null,
+    "effective_rank": null,
+    "heldout_bit_linear_variance_explained": null
+  },
+  {
+    "model": "current_input",
+    "seed": 82003,
+    "delay": 16,
+    "precision_limited": true,
+    "residual_precision_limited": true,
+    "pc1_fraction": null,
+    "effective_rank": null,
+    "heldout_bit_linear_variance_explained": null
+  },
+  {
+    "model": "current_input",
+    "seed": 82004,
+    "delay": 16,
+    "precision_limited": true,
+    "residual_precision_limited": true,
+    "pc1_fraction": null,
+    "effective_rank": null,
+    "heldout_bit_linear_variance_explained": null
+  },
+  {
+    "model": "current_input",
+    "seed": 82005,
+    "delay": 16,
+    "precision_limited": true,
+    "residual_precision_limited": true,
+    "pc1_fraction": null,
+    "effective_rank": null,
+    "heldout_bit_linear_variance_explained": null
+  },
+  {
+    "model": "current_input",
+    "seed": 82006,
+    "delay": 16,
+    "precision_limited": true,
+    "residual_precision_limited": true,
+    "pc1_fraction": null,
+    "effective_rank": null,
+    "heldout_bit_linear_variance_explained": null
+  },
+  {
+    "model": "current_input",
+    "seed": 82001,
+    "delay": 24,
+    "precision_limited": true,
+    "residual_precision_limited": true,
+    "pc1_fraction": null,
+    "effective_rank": null,
+    "heldout_bit_linear_variance_explained": null
+  },
+  {
+    "model": "current_input",
+    "seed": 82002,
+    "delay": 24,
+    "precision_limited": true,
+    "residual_precision_limited": true,
+    "pc1_fraction": null,
+    "effective_rank": null,
+    "heldout_bit_linear_variance_explained": null
+  },
+  {
+    "model": "current_input",
+    "seed": 82003,
+    "delay": 24,
+    "precision_limited": true,
+    "residual_precision_limited": true,
+    "pc1_fraction": null,
+    "effective_rank": null,
+    "heldout_bit_linear_variance_explained": null
+  },
+  {
+    "model": "current_input",
+    "seed": 82004,
+    "delay": 24,
+    "precision_limited": true,
+    "residual_precision_limited": true,
+    "pc1_fraction": null,
+    "effective_rank": null,
+    "heldout_bit_linear_variance_explained": null
+  },
+  {
+    "model": "current_input",
+    "seed": 82005,
+    "delay": 24,
+    "precision_limited": true,
+    "residual_precision_limited": true,
+    "pc1_fraction": null,
+    "effective_rank": null,
+    "heldout_bit_linear_variance_explained": null
+  },
+  {
+    "model": "current_input",
+    "seed": 82006,
+    "delay": 24,
+    "precision_limited": true,
+    "residual_precision_limited": true,
+    "pc1_fraction": null,
+    "effective_rank": null,
+    "heldout_bit_linear_variance_explained": null
+  },
+  {
+    "model": "current_input",
+    "seed": 82001,
+    "delay": 32,
+    "precision_limited": true,
+    "residual_precision_limited": true,
+    "pc1_fraction": null,
+    "effective_rank": null,
+    "heldout_bit_linear_variance_explained": null
+  },
+  {
+    "model": "current_input",
+    "seed": 82002,
+    "delay": 32,
+    "precision_limited": true,
+    "residual_precision_limited": true,
+    "pc1_fraction": null,
+    "effective_rank": null,
+    "heldout_bit_linear_variance_explained": null
+  },
+  {
+    "model": "current_input",
+    "seed": 82003,
+    "delay": 32,
+    "precision_limited": true,
+    "residual_precision_limited": true,
+    "pc1_fraction": null,
+    "effective_rank": null,
+    "heldout_bit_linear_variance_explained": null
+  },
+  {
+    "model": "current_input",
+    "seed": 82004,
+    "delay": 32,
+    "precision_limited": true,
+    "residual_precision_limited": true,
+    "pc1_fraction": null,
+    "effective_rank": null,
+    "heldout_bit_linear_variance_explained": null
+  },
+  {
+    "model": "current_input",
+    "seed": 82005,
+    "delay": 32,
+    "precision_limited": true,
+    "residual_precision_limited": true,
+    "pc1_fraction": null,
+    "effective_rank": null,
+    "heldout_bit_linear_variance_explained": null
+  },
+  {
+    "model": "current_input",
+    "seed": 82006,
+    "delay": 32,
+    "precision_limited": true,
+    "residual_precision_limited": true,
+    "pc1_fraction": null,
+    "effective_rank": null,
+    "heldout_bit_linear_variance_explained": null
+  },
+  {
+    "model": "current_input",
+    "seed": 82001,
+    "delay": 40,
+    "precision_limited": true,
+    "residual_precision_limited": true,
+    "pc1_fraction": null,
+    "effective_rank": null,
+    "heldout_bit_linear_variance_explained": null
+  },
+  {
+    "model": "current_input",
+    "seed": 82002,
+    "delay": 40,
+    "precision_limited": true,
+    "residual_precision_limited": true,
+    "pc1_fraction": null,
+    "effective_rank": null,
+    "heldout_bit_linear_variance_explained": null
+  },
+  {
+    "model": "current_input",
+    "seed": 82003,
+    "delay": 40,
+    "precision_limited": true,
+    "residual_precision_limited": true,
+    "pc1_fraction": null,
+    "effective_rank": null,
+    "heldout_bit_linear_variance_explained": null
+  },
+  {
+    "model": "current_input",
+    "seed": 82004,
+    "delay": 40,
+    "precision_limited": true,
+    "residual_precision_limited": true,
+    "pc1_fraction": null,
+    "effective_rank": null,
+    "heldout_bit_linear_variance_explained": null
+  },
+  {
+    "model": "current_input",
+    "seed": 82005,
+    "delay": 40,
+    "precision_limited": true,
+    "residual_precision_limited": true,
+    "pc1_fraction": null,
+    "effective_rank": null,
+    "heldout_bit_linear_variance_explained": null
+  },
+  {
+    "model": "current_input",
+    "seed": 82006,
+    "delay": 40,
+    "precision_limited": true,
+    "residual_precision_limited": true,
+    "pc1_fraction": null,
+    "effective_rank": null,
+    "heldout_bit_linear_variance_explained": null
+  },
+  {
+    "model": "current_input",
+    "seed": 82001,
+    "delay": 48,
+    "precision_limited": true,
+    "residual_precision_limited": true,
+    "pc1_fraction": null,
+    "effective_rank": null,
+    "heldout_bit_linear_variance_explained": null
+  },
+  {
+    "model": "current_input",
+    "seed": 82002,
+    "delay": 48,
+    "precision_limited": true,
+    "residual_precision_limited": true,
+    "pc1_fraction": null,
+    "effective_rank": null,
+    "heldout_bit_linear_variance_explained": null
+  },
+  {
+    "model": "current_input",
+    "seed": 82003,
+    "delay": 48,
+    "precision_limited": true,
+    "residual_precision_limited": true,
+    "pc1_fraction": null,
+    "effective_rank": null,
+    "heldout_bit_linear_variance_explained": null
+  },
+  {
+    "model": "current_input",
+    "seed": 82004,
+    "delay": 48,
+    "precision_limited": true,
+    "residual_precision_limited": true,
+    "pc1_fraction": null,
+    "effective_rank": null,
+    "heldout_bit_linear_variance_explained": null
+  },
+  {
+    "model": "current_input",
+    "seed": 82005,
+    "delay": 48,
+    "precision_limited": true,
+    "residual_precision_limited": true,
+    "pc1_fraction": null,
+    "effective_rank": null,
+    "heldout_bit_linear_variance_explained": null
+  },
+  {
+    "model": "current_input",
+    "seed": 82006,
+    "delay": 48,
+    "precision_limited": true,
+    "residual_precision_limited": true,
+    "pc1_fraction": null,
+    "effective_rank": null,
+    "heldout_bit_linear_variance_explained": null
+  },
+  {
+    "model": "current_input",
+    "seed": 82001,
+    "delay": 56,
+    "precision_limited": true,
+    "residual_precision_limited": true,
+    "pc1_fraction": null,
+    "effective_rank": null,
+    "heldout_bit_linear_variance_explained": null
+  },
+  {
+    "model": "current_input",
+    "seed": 82002,
+    "delay": 56,
+    "precision_limited": true,
+    "residual_precision_limited": true,
+    "pc1_fraction": null,
+    "effective_rank": null,
+    "heldout_bit_linear_variance_explained": null
+  },
+  {
+    "model": "current_input",
+    "seed": 82003,
+    "delay": 56,
+    "precision_limited": true,
+    "residual_precision_limited": true,
+    "pc1_fraction": null,
+    "effective_rank": null,
+    "heldout_bit_linear_variance_explained": null
+  },
+  {
+    "model": "current_input",
+    "seed": 82004,
+    "delay": 56,
+    "precision_limited": true,
+    "residual_precision_limited": true,
+    "pc1_fraction": null,
+    "effective_rank": null,
+    "heldout_bit_linear_variance_explained": null
+  },
+  {
+    "model": "current_input",
+    "seed": 82005,
+    "delay": 56,
+    "precision_limited": true,
+    "residual_precision_limited": true,
+    "pc1_fraction": null,
+    "effective_rank": null,
+    "heldout_bit_linear_variance_explained": null
+  },
+  {
+    "model": "current_input",
+    "seed": 82006,
+    "delay": 56,
+    "precision_limited": true,
+    "residual_precision_limited": true,
+    "pc1_fraction": null,
+    "effective_rank": null,
+    "heldout_bit_linear_variance_explained": null
+  },
+  {
+    "model": "current_input",
+    "seed": 82001,
+    "delay": 64,
+    "precision_limited": true,
+    "residual_precision_limited": true,
+    "pc1_fraction": null,
+    "effective_rank": null,
+    "heldout_bit_linear_variance_explained": null
+  },
+  {
+    "model": "current_input",
+    "seed": 82002,
+    "delay": 64,
+    "precision_limited": true,
+    "residual_precision_limited": true,
+    "pc1_fraction": null,
+    "effective_rank": null,
+    "heldout_bit_linear_variance_explained": null
+  },
+  {
+    "model": "current_input",
+    "seed": 82003,
+    "delay": 64,
+    "precision_limited": true,
+    "residual_precision_limited": true,
+    "pc1_fraction": null,
+    "effective_rank": null,
+    "heldout_bit_linear_variance_explained": null
+  },
+  {
+    "model": "current_input",
+    "seed": 82004,
+    "delay": 64,
+    "precision_limited": true,
+    "residual_precision_limited": true,
+    "pc1_fraction": null,
+    "effective_rank": null,
+    "heldout_bit_linear_variance_explained": null
+  },
+  {
+    "model": "current_input",
+    "seed": 82005,
+    "delay": 64,
+    "precision_limited": true,
+    "residual_precision_limited": true,
+    "pc1_fraction": null,
+    "effective_rank": null,
+    "heldout_bit_linear_variance_explained": null
+  },
+  {
+    "model": "current_input",
+    "seed": 82006,
+    "delay": 64,
+    "precision_limited": true,
+    "residual_precision_limited": true,
+    "pc1_fraction": null,
+    "effective_rank": null,
+    "heldout_bit_linear_variance_explained": null
+  }
+]

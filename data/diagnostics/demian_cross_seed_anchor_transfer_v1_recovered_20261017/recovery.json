@@ -1,0 +1,19 @@
+{
+  "source_directory": "/home/azael/Documents/Codex/2026-10-04/use-this-as-the-work-instruction/work/demian-afp-v2/data/diagnostics/demian_cross_seed_anchor_transfer_v1_20261016",
+  "collection_manifest_sha256": "7bf7b963b5db0fc0a70dc86e9cd9cbac7bf79162513b31c9dbb960d9c8bdec63",
+  "collection_execution": {
+    "source_revision": "8ec1ecf6c12c788be259d47d66b446016fe29d7f",
+    "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+    "numpy": "2.5.3",
+    "torch": "2.4.1+cu121",
+    "threads": 1,
+    "status": "failed",
+    "failure_stage": "metrics_json_export_after_collection_fits_and_predictions",
+    "error": "TypeError: Object of type float32 is not JSON serializable",
+    "status_corrected_on": "2026-10-17",
+    "observations_and_frozen_fits_preserved": true
+  },
+  "change": "Convert precision_floor scalar to Python float for JSON export; replay saved observations and frozen fits.",
+  "recollected": false,
+  "refitted_primary_readouts": false
+}

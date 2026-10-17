@@ -1,0 +1,12 @@
+{
+  "source_revision": "8ec1ecf6c12c788be259d47d66b446016fe29d7f",
+  "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "numpy": "2.5.3",
+  "torch": "2.4.1+cu121",
+  "threads": 1,
+  "status": "failed",
+  "failure_stage": "metrics_json_export_after_collection_fits_and_predictions",
+  "error": "TypeError: Object of type float32 is not JSON serializable",
+  "status_corrected_on": "2026-10-17",
+  "observations_and_frozen_fits_preserved": true
+}

@@ -1,0 +1,21 @@
+{
+  "seed": 82002,
+  "channel_widths": [
+    256,
+    256,
+    32,
+    256,
+    256,
+    256
+  ],
+  "channels": [
+    "fast",
+    "slow",
+    "control",
+    "message",
+    "carrier",
+    "gate"
+  ],
+  "parameter_count": 1545056,
+  "frozen_weights_verified": true
+}

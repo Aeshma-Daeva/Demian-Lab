@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "model": "frozen_tanh_echo_state_reference",
+  "seed": 81001,
+  "rng": "numpy.random.default_rng(seed); W draw followed by P draw; independent of Torch RNG",
+  "state_width": 1312,
+  "input_width": 256,
+  "state_shape": [
+    64,
+    10,
+    1312
+  ],
+  "history_count": 64,
+  "cue_count": 6,
+  "reliabilities": [
+    0.95,
+    0.75,
+    0.5,
+    0.75,
+    0.95,
+    0.5
+  ],
+  "delays": [
+    0,
+    2,
+    8,
+    16,
+    24,
+    32,
+    40,
+    48,
+    56,
+    64
+  ],
+  "input_encoder": "development.demian_uncertainty_probe.encode_evidence",
+  "input_scale": 0.25,
+  "delay_input": "encoded delay phase at every delay tick",
+  "input_projection_method": "Gaussian reduced QR; positive R diagonal; orthonormal columns before float32 rounding",
+  "recurrence": "h_next = tanh(W @ h + P @ u + b)",
+  "leak": 1.0,
+  "initial_state": "zeros",
+  "bias_initialization": "zeros; frozen",
+  "recurrent_initialization": "Gaussian N(0, 1 / state_width), rescaled by full float64 eigenspectrum",
+  "spectral_radius_target": 0.9,
+  "spectral_radius_raw": 1.0092349938166545,
+  "spectral_radius": 0.899999999951198,
+  "spectral_radius_method": "torch.linalg.eigvals; all eigenvalues; float64; CPU",
+  "parameter_count": 2058528,
+  "parameter_count_includes": "W, P, and fixed zero bias",
+  "trainable_parameter_count": 0,
+  "learning": false,
+  "device": "cpu",
+  "dtype": "float32",
+  "initialization_linear_algebra_dtype": "float64",
+  "torch_threads": 1,
+  "numpy_version": "2.5.3",
+  "torch_version": "2.4.1+cu121",
+  "hash_algorithm": "sha256; array C-order bytes; shapes/dtypes declared separately",
+  "parameter_hashes": {
+    "weights": "fa37fab9d69d2d2ffbf39f13c780e0184a564176610e36141206c03d0b8434c6",
+    "input_projection": "d11fd3ea27df66d9f279b90119952d8eafa98ae49dcef8fa2cdee343f40f0181",
+    "bias": "106a421892418247d826dec66e54bd03fe38db018682883950ab63486f4bb876"
+  },
+  "parameter_shapes": {
+    "weights": [
+      1312,
+      1312
+    ],
+    "input_projection": [
+      1312,
+      256
+    ],
+    "bias": [
+      1312
+    ]
+  },
+  "parameter_dtype": "float32",
+  "states_sha256": "ce60cf3673c419a6ebe2595de6e2e334e66defa57ef4fac1d034f56c6d3bb6c4",
+  "histories_sha256": "d6872a1c84ee288c42517c3753bd6245470877380005b350e8cdaecd00759d70",
+  "histories_dtype": "uint8",
+  "mismatch_notes": [
+    "Default 1312 state coordinates and 256 input coordinates match Demian full-state and encoder widths only.",
+    "Parameter count, channel structure, initialization, input injection, and dynamical timescales are not matched.",
+    "The reservoir mixes the input through P; Demian adds the encoded input to its fast channel before its step.",
+    "A shared seed identifier pairs runs but does not couple the two architectures' random parameters.",
+    "Spectral radius 0.9 is a declared setting, not a demonstrated echo-state-property guarantee.",
+    "This frozen reference alone cannot establish architectural superiority or a causal mechanism."
+  ]
+}

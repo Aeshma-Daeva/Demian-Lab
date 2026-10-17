@@ -1,0 +1,8 @@
+{
+  "source_revision": "5ad71b6195a1c527849358f74ff34f6d8c294ccd",
+  "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "numpy": "2.5.3",
+  "torch": "2.4.1+cu121",
+  "threads": 1,
+  "status": "complete"
+}

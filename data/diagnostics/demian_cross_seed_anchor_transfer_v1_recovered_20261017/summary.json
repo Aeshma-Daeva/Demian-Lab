@@ -1,0 +1,42 @@
+{
+  "protocol_id": "demian-cross-seed-anchor-transfer-v1",
+  "status": "complete",
+  "gates": {
+    "demian": {
+      "passing_seeds_by_delay": {
+        "2": 0,
+        "8": 0,
+        "32": 0,
+        "64": 0
+      },
+      "overall_pass": false,
+      "passing_seed_intersection": []
+    },
+    "reservoir": {
+      "passing_seeds_by_delay": {
+        "2": 6,
+        "8": 6,
+        "32": 6,
+        "64": 4
+      },
+      "overall_pass": false,
+      "passing_seed_intersection": [
+        82003,
+        82004,
+        82005,
+        82006
+      ]
+    },
+    "current_input": {
+      "passing_seeds_by_delay": {
+        "2": 0,
+        "8": 0,
+        "32": 0,
+        "64": 0
+      },
+      "overall_pass": false,
+      "passing_seed_intersection": []
+    }
+  },
+  "claim_boundary": "Reference-calibrated external transfer and descriptive geometry; no autonomous readout, causal channel, adaptation, architecture advantage or common aligned coordinates."
+}

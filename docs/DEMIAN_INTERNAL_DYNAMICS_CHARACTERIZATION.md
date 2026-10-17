@@ -10,7 +10,7 @@ is a synthesis of reviewed artifacts, not a new hypothesis promotion.
 state, not the full state itself. Explicit flow is
 `fast -> message -> carrier -> slow`; `control/message/carrier/slow -> gate`;
 the gate modulates implemented routes. The full state has 1,312 coordinates at
-width 256 (five 256-wide channels plus 32 gate coordinates).
+width 256 (five 256-wide channels plus 32 control coordinates).
 
 ## What is measured
 

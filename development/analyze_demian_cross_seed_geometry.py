@@ -23,7 +23,7 @@ def _correlation(left: np.ndarray, right: np.ndarray) -> float:
 
 
 def _input_history_geometry(rows: list[dict]) -> np.ndarray:
-    """Ordered symbol histories: an encoder-only relational baseline."""
+    """Ordered raw symbols: a Hamming-like baseline, not encoded-state geometry."""
     return np.asarray([row["symbols"] for row in rows], dtype=np.float64)
 
 

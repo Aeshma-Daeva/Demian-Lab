@@ -1,0 +1,23 @@
+{
+  "reviewer": "Astra independent scientific review (/root/astra_cross_seed_audit)",
+  "reviewed_on": "2026-10-17",
+  "status": "returned",
+  "integrity": {
+    "manifest_entries_verified": 328,
+    "original_frozen_fit_hashes_verified": 30,
+    "original_recovered_prediction_arrays_identical": 1084,
+    "independently_recomputed_prediction_arrays_bitwise_exact": 1080,
+    "split": "16 anchors, 24 fit, 24 evaluation; disjoint",
+    "seeds": "4 fitting and 6 evaluation; distinct parameter hashes",
+    "metrics_and_gates_recomputed": true
+  },
+  "conclusion": "The declared correspondence-specificity gate fails for Demian despite positive cross-seed R2. Neither system passes the overall gate. Shared geometry alone does not establish useful decoding or a distinctive nonlinear mechanism.",
+  "interpretation_constraints": [
+    "Some upper-tail anchor permutations outperform identity; typical permutation R2 is negative.",
+    "The same permutations recur across seeds and delays; these comparisons are dependent.",
+    "Within-seed distance probes are similarly limited; no erasure or universal portability failure conclusion.",
+    "The affine state model is a serious alternative; later residual geometry remains structured.",
+    "Reservoir parameter count, input mixing, initialization and regime differ."
+  ],
+  "hypothesis_status_changes": []
+}
