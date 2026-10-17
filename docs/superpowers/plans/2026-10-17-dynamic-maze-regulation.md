@@ -60,8 +60,10 @@ then advances the world clock. A closed door blocks entry; an occupant may
 leave after closure. Reject layouts without a route when the door is closed.
 
 Conditions: static-open reference, static-closed reference, recurring door
-schedule, and one schedule change at tick48 within an episode. Introduce layout transfer
-later; do not change several environmental mechanisms together initially.
+schedule, and one schedule change at tick2 within an episode. Initial fit/evaluation
+layouts use disjoint D4 orientations; broader topology transfer remains later.
+Tick2 can occur after direct-route entry, so elapsed switch time alone does not
+establish an experienced obstruction. Log actual visibility and observed changes.
 Require a validated pair of equal-length observation histories reaching the
 same junction with identical current observations, energy and acknowledgement,
 but different earlier observed door conditions and different optimal route
@@ -82,6 +84,8 @@ Teacher may know the static map and observed history, but no future door tape
 or currently hidden door state. Identical complete observation histories must
 not acquire different labels through privileged information. A separate oracle
 may use privileged state for solvability/reference scores only. No test-layout fitting.
+Teacher waits once at a visibly closed entry before detouring, supplying actual
+wait targets. Forced training coverage steps retain the desired teacher labels.
 
 Pilot: width16 smoke checks, then width256; four development seeds84001–84004.
 Reserve six fresh confirmation seeds85001–85006, not used to revise the pilot.
@@ -94,12 +98,12 @@ Benchmark pilot wall time and storage before any larger campaign.
 
 ## Implementation tasks
 
-- [ ] **World:** create `development/demian_maze_world.py` and
+- [x] **World:** create `development/demian_maze_world.py` and
   `tests/test_demian_maze_world.py`. Interfaces: `MazeConfig`, `MazeObservation`,
   `MazeAction`, `MazeSnapshot`; `reset(config)`, `observe()`, `step(action)`,
   `snapshot()`, `restore(snapshot)`. Test motion, blocked/wait cost, termination,
   door timing, exact replay and invalid configuration/action rejection.
-- [ ] **Boundary:** create `development/demian_maze_runner.py` and
+- [x] **Boundary:** create `development/demian_maze_runner.py` and
   `tests/test_demian_maze_runner.py`. Consume world observations; produce
   `MazeStepRecord` with observation, action, acknowledgement, state and route
   trace. Add stateless encoder and independently fitted/frozen action heads.
