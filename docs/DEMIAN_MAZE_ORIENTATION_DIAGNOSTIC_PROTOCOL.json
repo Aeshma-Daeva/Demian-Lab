@@ -1,0 +1,14 @@
+{
+  "protocol_id": "demian-maze-orientation-diagnostic-v1",
+  "scope": "Post-pilot explanatory comparison; no new primary success claim or model fitting.",
+  "source_protocol": "docs/DEMIAN_DYNAMIC_MAZE_PROTOCOL.json",
+  "source_artifact": "data/diagnostics/demian_dynamic_maze_baseline_v1_20261017/development",
+  "model_seeds": [84001,84002,84003,84004],
+  "orientation_mapping": {"1":0,"3":2,"5":4,"7":6},
+  "policies": ["recurrent","reset_matched","observation"],
+  "question": "Does the frozen policy fail primarily under heldout orientations, or also under interactive rollout in familiar orientations?",
+  "comparison": "Reuse original24evaluation seeds/tapes/budgets; change only orientation into its corresponding training orientation. Keep all frozen heads and Demian weights. Report paired seed-level success/cost and teacher-frame imitation accuracy separately.",
+  "controls": "Assert paired door tapes identical, loaded head hashes match original freeze manifest, body parameters equal archived original arrays, and no original artifacts are written.",
+  "interpretation": "Orientation/representation-transfer and on-policy exposure remain separate from internal memory capacity, adaptation or learning. These are the same four development parameter seeds, not independent confirmation.",
+  "artifact_directory": "data/diagnostics/demian_maze_orientation_diagnostic_v1_20261017"
+}
