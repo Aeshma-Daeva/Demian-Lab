@@ -1195,3 +1195,18 @@ Next:
   no remaining invalidating issue. `R-CROSS-TRANSFER-001`; no status promotion.
 - Verification:38 focused pass; full560 pass/4 historical-artifact failures.
 - Continue with a frozen feature-conditioning diagnosis before channel hypotheses.
+
+## 2026-10-17 - Fresh squared-distance conditioning
+
+- Artifact: `demian_distance_conditioning_v1_20261017`; protocol/code frozen
+  before six new evaluation seeds83001–83006; original four fitting seeds reused.
+- Four prespecified variants; sole primary is conditioned squared contrasts.
+  Demian passes5/0/0/1of6 at2/8/32/64; reservoir6/6/0/0. Both overall gates fail.
+- Delay2 Demian median true R² decreases .297→.235; incorrect-anchor controls
+  deteriorate sharply. Criterion passage is not improved task accuracy.
+- Post-result frozen-feature energy audit finds large later extrapolation.
+  Origin of amplified residual directions remains unresolved.
+- Astra returned review:214manifest hashes,160fits,1,440predictions and480metrics
+  independently verified. No invalidating implementation issue found.
+- Registered `R-CROSS-CONDITION-001`; no hypothesis-status promotion.
+- Both packages complete; stable scientific baseline retained for discussion.

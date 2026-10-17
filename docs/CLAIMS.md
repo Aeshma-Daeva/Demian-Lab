@@ -14,6 +14,15 @@ Last updated: 2026-10-17
 - Boundary: reference-calibrated external prediction; no adaptation, erasure,
   nonlinear mechanism, causal channel or architecture ranking.
 
+- Observation: fresh conditioned contrasts fail the overall gate in both
+  systems; Demian's delay2 criterion pass accompanies reduced median R².
+- Inference: criterion passage can reflect worsened incorrect-correspondence
+  controls; it does not establish improved prediction.
+- Evidence: `R-CROSS-CONDITION-001`; `DEMIAN_DISTANCE_CONDITIONING_RESULTS.md`.
+- Falsifier: prospective replication does not reproduce these paired contrasts.
+- Boundary: large transformed-feature extrapolation is descriptive; its
+  numerical or dynamical origin is unresolved.
+
 ## Scientific Hierarchy
 
 - **System:** Demian is a discrete-time nonlinear recurrent system,

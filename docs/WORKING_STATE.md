@@ -12,8 +12,13 @@ Last updated: 2026-10-17
   at64; regime and parameter differences prevent architecture ranking.
 - Strong low-rank affine response is an active alternative explanation.
 - Evidence and returned Astra review: `DEMIAN_CROSS_SEED_TRANSFER_RESULTS.md`.
-- Continue with fixed squared-distance contrasts and train-only whitening as
-  a readout-conditioning diagnosis; fresh seeds required for confirmation.
+- `R-CROSS-CONDITION-001`: six new seeds complete the conditioned-contrast test.
+  Both overall gates fail. A delay2 Demian criterion pass accompanies lower
+  true decoding accuracy; later whitening produces large feature extrapolation.
+- Unwhitened contrasts modestly improve the prespecified secondary score;
+  readout conditioning and small residual directions remain unresolved.
+- Evidence: `DEMIAN_DISTANCE_CONDITIONING_RESULTS.md`. Both executions and
+  Astra reviews are complete; no background run remains active.
 - No routing extension or hypothesis-status promotion is authorized by this result.
 
 The following sections retain earlier program context; restart from the record above.

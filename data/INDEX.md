@@ -4,6 +4,10 @@ Last updated: 2026-10-17
 
 ## Cross-seed anchor transfer
 
+- Fresh conditioning follow-up: `../docs/DEMIAN_DISTANCE_CONDITIONING_RESULTS.md`;
+  registry `R-CROSS-CONDITION-001`; evidence and returned review in
+  `diagnostics/demian_distance_conditioning_v1_20261017/`.
+
 - Protocol: `../docs/DEMIAN_CROSS_SEED_TRANSFER_PROTOCOL.json`.
 - Record: `../docs/DEMIAN_CROSS_SEED_TRANSFER_RESULTS.md`; registry `R-CROSS-TRANSFER-001`.
 - Evidence: `diagnostics/demian_cross_seed_anchor_transfer_v1_recovered_20261017/`.
