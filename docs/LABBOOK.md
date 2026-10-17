@@ -1181,3 +1181,17 @@ Next:
 - Geometry: small centroid displacement and nearly unchanged spread; no
   channel relation was analyzed or intervened on.
 - Next: final-slot-matched control before mechanism work.
+
+## 2026-10-17 - Prospective cross-seed anchor transfer
+
+- Protocol frozen at `8ec1ecf`; artifact `demian_cross_seed_anchor_transfer_v1_recovered_20261017`.
+- Four fitting / six fresh evaluation seeds; Demian and weights unchanged.
+- Observation: Demian has positive R² but0/6 seeds pass at2/8/32/64, specifically
+  due permutation-q95+.10. Reservoir passes6/6 through32 and4/6 at64.
+- Shared geometry replicates; low-rank affine response explains most early variation.
+- JSON export failed after predictions were saved. Report-only correction `5ad71b6`
+  exactly reproduces1,084 prediction arrays; original failure preserved.
+- Astra review returned: hashes, splits, independent predictions and gates verified;
+  no remaining invalidating issue. `R-CROSS-TRANSFER-001`; no status promotion.
+- Verification:38 focused pass; full560 pass/4 historical-artifact failures.
+- Continue with a frozen feature-conditioning diagnosis before channel hypotheses.

@@ -1,6 +1,22 @@
 # Working State
 
-Last updated: 2026-10-13
+Last updated: 2026-10-17
+
+## Current restart
+
+- Architecture, encoder and weights remain frozen. External diagnostic fits only.
+- `R-CROSS-TRANSFER-001`: shared cross-seed history geometry replicates, but
+  ordinary anchor distances fail the frozen advantage over incorrect anchor
+  correspondence. Positive decoding remains present; no erasure conclusion.
+- Conventional reservoir clears the same criterion through32, then4/6 seeds
+  at64; regime and parameter differences prevent architecture ranking.
+- Strong low-rank affine response is an active alternative explanation.
+- Evidence and returned Astra review: `DEMIAN_CROSS_SEED_TRANSFER_RESULTS.md`.
+- Continue with fixed squared-distance contrasts and train-only whitening as
+  a readout-conditioning diagnosis; fresh seeds required for confirmation.
+- No routing extension or hypothesis-status promotion is authorized by this result.
+
+The following sections retain earlier program context; restart from the record above.
 
 ## Demian v1 Current State
 

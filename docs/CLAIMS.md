@@ -1,6 +1,18 @@
 # Claims Ledger
 
-Last updated: 2026-10-13
+Last updated: 2026-10-17
+
+## Cross-seed history geometry and decoding
+
+- Observation: fresh-seed history clouds have highly correlated pairwise distances;
+  the ordinary-distance decoder gives positive evidence R² but fails the frozen
+  advantage over the upper tail of incorrect anchor correspondence.
+- Inference: geometric agreement alone does not establish this readout's
+  correspondence-specific use. Low-rank affine filtering remains an explanation.
+- Evidence: `R-CROSS-TRANSFER-001`; `DEMIAN_CROSS_SEED_TRANSFER_RESULTS.md`.
+- Falsifier: prospective seeds fail the recorded geometry or decoder/control contrasts.
+- Boundary: reference-calibrated external prediction; no adaptation, erasure,
+  nonlinear mechanism, causal channel or architecture ranking.
 
 ## Scientific Hierarchy
 
