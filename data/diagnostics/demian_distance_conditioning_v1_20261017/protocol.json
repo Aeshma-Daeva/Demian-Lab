@@ -1,0 +1,65 @@
+{
+  "protocol_id": "demian-distance-conditioning-v1",
+  "status": "frozen_before_new_seed_collection",
+  "question": "Does a fixed change of distance features and train-only conditioning improve correspondence-specific evidence decoding?",
+  "training_artifact": "data/diagnostics/demian_cross_seed_anchor_transfer_v1_20261016",
+  "source_protocol": "docs/DEMIAN_CROSS_SEED_TRANSFER_PROTOCOL.json",
+  "train_seeds": [
+    81001,
+    81002,
+    81003,
+    81004
+  ],
+  "evaluation_seeds": [
+    83001,
+    83002,
+    83003,
+    83004,
+    83005,
+    83006
+  ],
+  "delays": [
+    0,
+    2,
+    8,
+    16,
+    24,
+    32,
+    40,
+    48,
+    56,
+    64
+  ],
+  "primary_delays": [
+    2,
+    8,
+    32,
+    64
+  ],
+  "split": "Reuse original disjoint 16 anchor/24 fit/24 evaluation histories. Fresh parameter seeds provide confirmation; binary histories are the same finite corpus.",
+  "variants": [
+    "distance",
+    "contrast",
+    "contrast_white",
+    "affine_contrast_white"
+  ],
+  "contrast": "Squared normalized anchor distances minus their within-row mean across anchors. This removes the common state-norm term and exposes signed anchor-span linear coordinates up to anchor constants.",
+  "whitening": "Fit mean and covariance only on pooled training-seed fitting histories. Symmetric eigenvalue whitening retains eigenvalues >1e-8 times maximum; discarded directions map to zero. Freeze before fresh evaluation collection. Ridge alpha1, same existing train-only feature standardization.",
+  "affine_control": "Fit six signed cue bits plus intercept to each seed's 16 anchor states without evaluation labels, then apply the same contrasts/whitening pipeline. Independently fit its training readout.",
+  "primary_variant": "contrast_white",
+  "controls": [
+    "original ordinary distances",
+    "unwhitened squared-distance contrasts",
+    "affine state surrogate",
+    "conditional-label shuffle",
+    "same 32 fixed anchor permutations before frozen whitening",
+    "analytic latest cue",
+    "conventional reservoir with unchanged original settings"
+  ],
+  "decision_rule": "Primary contrast_white R2 >=.10 and >=.10 above latest, conditional-label shuffle and permutation q95 in >=5/6 fresh seeds at each primary delay. Overall requires all four delays. Other variants are prespecified descriptive comparisons, not alternate success routes.",
+  "fitting_boundary": "Only original four training seeds and their fit24 target labels fit readouts/whitening. Fresh-seed anchors calibrate distances and label-free affine map only. No evaluation labels, histories or states fit pooled objects.",
+  "precision": "Reuse original float32 precision floor. Precision-limited cells cannot pass; no cutoff tuning.",
+  "claim_boundary": "External feature/readout-conditioning experiment. Success does not establish novel nonlinear computation, autonomous memory use, adaptation, causal routing or architecture superiority.",
+  "falsifier": "Primary conditioned contrasts fail the declared fresh-seed criterion. Alternative variants cannot rescue it.",
+  "artifact_directory": "data/diagnostics/demian_distance_conditioning_v1_20261017"
+}

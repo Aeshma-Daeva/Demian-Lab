@@ -1,0 +1,8 @@
+{
+  "status": "complete",
+  "source_revision": "ae8f2a0f66e678b007016c0b27947cbb8bb67ea5",
+  "numpy": "2.5.3",
+  "torch": "2.4.1+cu121",
+  "threads": 1,
+  "training_collection_manifest_sha256": "7bf7b963b5db0fc0a70dc86e9cd9cbac7bf79162513b31c9dbb960d9c8bdec63"
+}

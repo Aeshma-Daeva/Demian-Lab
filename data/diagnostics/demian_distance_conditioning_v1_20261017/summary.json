@@ -1,0 +1,27 @@
+{
+  "protocol_id": "demian-distance-conditioning-v1",
+  "primary_variant": "contrast_white",
+  "gates": {
+    "demian": {
+      "passing_seeds_by_delay": {
+        "2": 5,
+        "8": 0,
+        "32": 0,
+        "64": 1
+      },
+      "overall_pass": false,
+      "passing_seed_intersection": []
+    },
+    "reservoir": {
+      "passing_seeds_by_delay": {
+        "2": 6,
+        "8": 6,
+        "32": 0,
+        "64": 0
+      },
+      "overall_pass": false,
+      "passing_seed_intersection": []
+    }
+  },
+  "claim_boundary": "External feature/readout-conditioning experiment. Success does not establish novel nonlinear computation, autonomous memory use, adaptation, causal routing or architecture superiority."
+}

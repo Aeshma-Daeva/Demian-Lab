@@ -1,0 +1,2228 @@
+{
+  "scope": "Post-result descriptive transformed-feature energy; no refitting or new success gate.",
+  "definition": "Mean squared norm after frozen training mean and whitening; ratio to pooled fitting-history energy.",
+  "rows": [
+    {
+      "model": "demian",
+      "delay": 0,
+      "variant": "contrast_white",
+      "seed": 83001,
+      "training_energy": 10.999999998231937,
+      "evaluation_energy": 2479.282397045571,
+      "energy_ratio": 225.38930885855214
+    },
+    {
+      "model": "demian",
+      "delay": 0,
+      "variant": "contrast_white",
+      "seed": 83002,
+      "training_energy": 10.999999998231937,
+      "evaluation_energy": 2185.693979418516,
+      "energy_ratio": 198.6994527063481
+    },
+    {
+      "model": "demian",
+      "delay": 0,
+      "variant": "contrast_white",
+      "seed": 83003,
+      "training_energy": 10.999999998231937,
+      "evaluation_energy": 97.27100438832564,
+      "energy_ratio": 8.842818582178209
+    },
+    {
+      "model": "demian",
+      "delay": 0,
+      "variant": "contrast_white",
+      "seed": 83004,
+      "training_energy": 10.999999998231937,
+      "evaluation_energy": 4052.256898211303,
+      "energy_ratio": 368.38699080569404
+    },
+    {
+      "model": "demian",
+      "delay": 0,
+      "variant": "contrast_white",
+      "seed": 83005,
+      "training_energy": 10.999999998231937,
+      "evaluation_energy": 2978.2818883366613,
+      "energy_ratio": 270.7528989832154
+    },
+    {
+      "model": "demian",
+      "delay": 0,
+      "variant": "contrast_white",
+      "seed": 83006,
+      "training_energy": 10.999999998231937,
+      "evaluation_energy": 370.1681126507428,
+      "energy_ratio": 33.65164661002191
+    },
+    {
+      "model": "demian",
+      "delay": 0,
+      "variant": "affine_contrast_white",
+      "seed": 83001,
+      "training_energy": 9.000000000565768,
+      "evaluation_energy": 12.802654469886903,
+      "energy_ratio": 1.4225171632313431
+    },
+    {
+      "model": "demian",
+      "delay": 0,
+      "variant": "affine_contrast_white",
+      "seed": 83002,
+      "training_energy": 9.000000000565768,
+      "evaluation_energy": 24.091517098711336,
+      "energy_ratio": 2.6768352330218743
+    },
+    {
+      "model": "demian",
+      "delay": 0,
+      "variant": "affine_contrast_white",
+      "seed": 83003,
+      "training_energy": 9.000000000565768,
+      "evaluation_energy": 14.74993210149909,
+      "energy_ratio": 1.6388813445079848
+    },
+    {
+      "model": "demian",
+      "delay": 0,
+      "variant": "affine_contrast_white",
+      "seed": 83004,
+      "training_energy": 9.000000000565768,
+      "evaluation_energy": 17.10065664222233,
+      "energy_ratio": 1.900072960127481
+    },
+    {
+      "model": "demian",
+      "delay": 0,
+      "variant": "affine_contrast_white",
+      "seed": 83005,
+      "training_energy": 9.000000000565768,
+      "evaluation_energy": 20.850678871368935,
+      "energy_ratio": 2.316742096673133
+    },
+    {
+      "model": "demian",
+      "delay": 0,
+      "variant": "affine_contrast_white",
+      "seed": 83006,
+      "training_energy": 9.000000000565768,
+      "evaluation_energy": 22.23652698252862,
+      "energy_ratio": 2.47072522012564
+    },
+    {
+      "model": "demian",
+      "delay": 2,
+      "variant": "contrast_white",
+      "seed": 83001,
+      "training_energy": 9.000000000245485,
+      "evaluation_energy": 12.006949835139457,
+      "energy_ratio": 1.3341055372013282
+    },
+    {
+      "model": "demian",
+      "delay": 2,
+      "variant": "contrast_white",
+      "seed": 83002,
+      "training_energy": 9.000000000245485,
+      "evaluation_energy": 31.88223322974892,
+      "energy_ratio": 3.542470358764366
+    },
+    {
+      "model": "demian",
+      "delay": 2,
+      "variant": "contrast_white",
+      "seed": 83003,
+      "training_energy": 9.000000000245485,
+      "evaluation_energy": 41.91154597331994,
+      "energy_ratio": 4.656838441352972
+    },
+    {
+      "model": "demian",
+      "delay": 2,
+      "variant": "contrast_white",
+      "seed": 83004,
+      "training_energy": 9.000000000245485,
+      "evaluation_energy": 80.45918637501232,
+      "energy_ratio": 8.939909596979746
+    },
+    {
+      "model": "demian",
+      "delay": 2,
+      "variant": "contrast_white",
+      "seed": 83005,
+      "training_energy": 9.000000000245485,
+      "evaluation_energy": 39.25268351077782,
+      "energy_ratio": 4.3614092788563505
+    },
+    {
+      "model": "demian",
+      "delay": 2,
+      "variant": "contrast_white",
+      "seed": 83006,
+      "training_energy": 9.000000000245485,
+      "evaluation_energy": 36.29907582957474,
+      "energy_ratio": 4.033230647620516
+    },
+    {
+      "model": "demian",
+      "delay": 2,
+      "variant": "affine_contrast_white",
+      "seed": 83001,
+      "training_energy": 8.00000000069986,
+      "evaluation_energy": 13.162684608966387,
+      "energy_ratio": 1.6453355759768604
+    },
+    {
+      "model": "demian",
+      "delay": 2,
+      "variant": "affine_contrast_white",
+      "seed": 83002,
+      "training_energy": 8.00000000069986,
+      "evaluation_energy": 45.08019349797154,
+      "energy_ratio": 5.635024186753477
+    },
+    {
+      "model": "demian",
+      "delay": 2,
+      "variant": "affine_contrast_white",
+      "seed": 83003,
+      "training_energy": 8.00000000069986,
+      "evaluation_energy": 49.14954257180941,
+      "energy_ratio": 6.143692820938711
+    },
+    {
+      "model": "demian",
+      "delay": 2,
+      "variant": "affine_contrast_white",
+      "seed": 83004,
+      "training_energy": 8.00000000069986,
+      "evaluation_energy": 46.05214825861509,
+      "energy_ratio": 5.756518531823292
+    },
+    {
+      "model": "demian",
+      "delay": 2,
+      "variant": "affine_contrast_white",
+      "seed": 83005,
+      "training_energy": 8.00000000069986,
+      "evaluation_energy": 65.12593480348927,
+      "energy_ratio": 8.140741849723987
+    },
+    {
+      "model": "demian",
+      "delay": 2,
+      "variant": "affine_contrast_white",
+      "seed": 83006,
+      "training_energy": 8.00000000069986,
+      "evaluation_energy": 68.09742228522123,
+      "energy_ratio": 8.512177784907987
+    },
+    {
+      "model": "demian",
+      "delay": 8,
+      "variant": "contrast_white",
+      "seed": 83001,
+      "training_energy": 9.000000001760506,
+      "evaluation_energy": 98.37105603167906,
+      "energy_ratio": 10.930117334715169
+    },
+    {
+      "model": "demian",
+      "delay": 8,
+      "variant": "contrast_white",
+      "seed": 83002,
+      "training_energy": 9.000000001760506,
+      "evaluation_energy": 189.11745669116067,
+      "energy_ratio": 21.013050739351897
+    },
+    {
+      "model": "demian",
+      "delay": 8,
+      "variant": "contrast_white",
+      "seed": 83003,
+      "training_energy": 9.000000001760506,
+      "evaluation_energy": 64.89621198306094,
+      "energy_ratio": 7.210690218929608
+    },
+    {
+      "model": "demian",
+      "delay": 8,
+      "variant": "contrast_white",
+      "seed": 83004,
+      "training_energy": 9.000000001760506,
+      "evaluation_energy": 58.48352171065327,
+      "energy_ratio": 6.498169077690356
+    },
+    {
+      "model": "demian",
+      "delay": 8,
+      "variant": "contrast_white",
+      "seed": 83005,
+      "training_energy": 9.000000001760506,
+      "evaluation_energy": 39.955548092639035,
+      "energy_ratio": 4.43950534275814
+    },
+    {
+      "model": "demian",
+      "delay": 8,
+      "variant": "contrast_white",
+      "seed": 83006,
+      "training_energy": 9.000000001760506,
+      "evaluation_energy": 112.70867434911986,
+      "energy_ratio": 12.523186036341412
+    },
+    {
+      "model": "demian",
+      "delay": 8,
+      "variant": "affine_contrast_white",
+      "seed": 83001,
+      "training_energy": 7.000000000144773,
+      "evaluation_energy": 27.84253756331187,
+      "energy_ratio": 3.9775053661051474
+    },
+    {
+      "model": "demian",
+      "delay": 8,
+      "variant": "affine_contrast_white",
+      "seed": 83002,
+      "training_energy": 7.000000000144773,
+      "evaluation_energy": 8.874758823174922,
+      "energy_ratio": 1.2678226889987678
+    },
+    {
+      "model": "demian",
+      "delay": 8,
+      "variant": "affine_contrast_white",
+      "seed": 83003,
+      "training_energy": 7.000000000144773,
+      "evaluation_energy": 25.7195599619786,
+      "energy_ratio": 3.6742228516352387
+    },
+    {
+      "model": "demian",
+      "delay": 8,
+      "variant": "affine_contrast_white",
+      "seed": 83004,
+      "training_energy": 7.000000000144773,
+      "evaluation_energy": 43.93283797870567,
+      "energy_ratio": 6.276119711113865
+    },
+    {
+      "model": "demian",
+      "delay": 8,
+      "variant": "affine_contrast_white",
+      "seed": 83005,
+      "training_energy": 7.000000000144773,
+      "evaluation_energy": 17.54527981598442,
+      "energy_ratio": 2.5064685450887927
+    },
+    {
+      "model": "demian",
+      "delay": 8,
+      "variant": "affine_contrast_white",
+      "seed": 83006,
+      "training_energy": 7.000000000144773,
+      "evaluation_energy": 55.67322542851889,
+      "energy_ratio": 7.953317918195352
+    },
+    {
+      "model": "demian",
+      "delay": 16,
+      "variant": "contrast_white",
+      "seed": 83001,
+      "training_energy": 8.999999999848274,
+      "evaluation_energy": 239.08696770470047,
+      "energy_ratio": 26.565218634303456
+    },
+    {
+      "model": "demian",
+      "delay": 16,
+      "variant": "contrast_white",
+      "seed": 83002,
+      "training_energy": 8.999999999848274,
+      "evaluation_energy": 416.90267889354027,
+      "energy_ratio": 46.32251987784095
+    },
+    {
+      "model": "demian",
+      "delay": 16,
+      "variant": "contrast_white",
+      "seed": 83003,
+      "training_energy": 8.999999999848274,
+      "evaluation_energy": 57.41323396338771,
+      "energy_ratio": 6.3792482182617345
+    },
+    {
+      "model": "demian",
+      "delay": 16,
+      "variant": "contrast_white",
+      "seed": 83004,
+      "training_energy": 8.999999999848274,
+      "evaluation_energy": 105.76688081683169,
+      "energy_ratio": 11.75187564651275
+    },
+    {
+      "model": "demian",
+      "delay": 16,
+      "variant": "contrast_white",
+      "seed": 83005,
+      "training_energy": 8.999999999848274,
+      "evaluation_energy": 532.3082189355516,
+      "energy_ratio": 59.14535766050283
+    },
+    {
+      "model": "demian",
+      "delay": 16,
+      "variant": "contrast_white",
+      "seed": 83006,
+      "training_energy": 8.999999999848274,
+      "evaluation_energy": 120.65192891818981,
+      "energy_ratio": 13.405769880024868
+    },
+    {
+      "model": "demian",
+      "delay": 16,
+      "variant": "affine_contrast_white",
+      "seed": 83001,
+      "training_energy": 7.0000000007272725,
+      "evaluation_energy": 34.35398289538296,
+      "energy_ratio": 4.907711841687674
+    },
+    {
+      "model": "demian",
+      "delay": 16,
+      "variant": "affine_contrast_white",
+      "seed": 83002,
+      "training_energy": 7.0000000007272725,
+      "evaluation_energy": 46.56124596916134,
+      "energy_ratio": 6.651606566331973
+    },
+    {
+      "model": "demian",
+      "delay": 16,
+      "variant": "affine_contrast_white",
+      "seed": 83003,
+      "training_energy": 7.0000000007272725,
+      "evaluation_energy": 43.42118685855373,
+      "energy_ratio": 6.2030266934346345
+    },
+    {
+      "model": "demian",
+      "delay": 16,
+      "variant": "affine_contrast_white",
+      "seed": 83004,
+      "training_energy": 7.0000000007272725,
+      "evaluation_energy": 57.002957971534094,
+      "energy_ratio": 8.143279709373102
+    },
+    {
+      "model": "demian",
+      "delay": 16,
+      "variant": "affine_contrast_white",
+      "seed": 83005,
+      "training_energy": 7.0000000007272725,
+      "evaluation_energy": 49.99321591717328,
+      "energy_ratio": 7.141887987425598
+    },
+    {
+      "model": "demian",
+      "delay": 16,
+      "variant": "affine_contrast_white",
+      "seed": 83006,
+      "training_energy": 7.0000000007272725,
+      "evaluation_energy": 31.28143038073054,
+      "energy_ratio": 4.468775768211503
+    },
+    {
+      "model": "demian",
+      "delay": 24,
+      "variant": "contrast_white",
+      "seed": 83001,
+      "training_energy": 9.000000000017971,
+      "evaluation_energy": 6512.873837133768,
+      "energy_ratio": 723.6526485689736
+    },
+    {
+      "model": "demian",
+      "delay": 24,
+      "variant": "contrast_white",
+      "seed": 83002,
+      "training_energy": 9.000000000017971,
+      "evaluation_energy": 4885.770289333506,
+      "energy_ratio": 542.8633654804167
+    },
+    {
+      "model": "demian",
+      "delay": 24,
+      "variant": "contrast_white",
+      "seed": 83003,
+      "training_energy": 9.000000000017971,
+      "evaluation_energy": 5943.702120010762,
+      "energy_ratio": 660.4113466665437
+    },
+    {
+      "model": "demian",
+      "delay": 24,
+      "variant": "contrast_white",
+      "seed": 83004,
+      "training_energy": 9.000000000017971,
+      "evaluation_energy": 672.3779941268143,
+      "energy_ratio": 74.7086660139413
+    },
+    {
+      "model": "demian",
+      "delay": 24,
+      "variant": "contrast_white",
+      "seed": 83005,
+      "training_energy": 9.000000000017971,
+      "evaluation_energy": 1524.3918929716892,
+      "energy_ratio": 169.37687699651613
+    },
+    {
+      "model": "demian",
+      "delay": 24,
+      "variant": "contrast_white",
+      "seed": 83006,
+      "training_energy": 9.000000000017971,
+      "evaluation_energy": 6294.367600076042,
+      "energy_ratio": 699.3741777848304
+    },
+    {
+      "model": "demian",
+      "delay": 24,
+      "variant": "affine_contrast_white",
+      "seed": 83001,
+      "training_energy": 7.999999997512638,
+      "evaluation_energy": 1216.7479482567358,
+      "energy_ratio": 152.09349357938092
+    },
+    {
+      "model": "demian",
+      "delay": 24,
+      "variant": "affine_contrast_white",
+      "seed": 83002,
+      "training_energy": 7.999999997512638,
+      "evaluation_energy": 1183.4239415093455,
+      "energy_ratio": 147.92799273466198
+    },
+    {
+      "model": "demian",
+      "delay": 24,
+      "variant": "affine_contrast_white",
+      "seed": 83003,
+      "training_energy": 7.999999997512638,
+      "evaluation_energy": 566.0466706395763,
+      "energy_ratio": 70.75583385194646
+    },
+    {
+      "model": "demian",
+      "delay": 24,
+      "variant": "affine_contrast_white",
+      "seed": 83004,
+      "training_energy": 7.999999997512638,
+      "evaluation_energy": 212.29789689980475,
+      "energy_ratio": 26.53723712072656
+    },
+    {
+      "model": "demian",
+      "delay": 24,
+      "variant": "affine_contrast_white",
+      "seed": 83005,
+      "training_energy": 7.999999997512638,
+      "evaluation_energy": 160.2778583844564,
+      "energy_ratio": 20.034732304286255
+    },
+    {
+      "model": "demian",
+      "delay": 24,
+      "variant": "affine_contrast_white",
+      "seed": 83006,
+      "training_energy": 7.999999997512638,
+      "evaluation_energy": 1123.4630958356272,
+      "energy_ratio": 140.43288702311685
+    },
+    {
+      "model": "demian",
+      "delay": 32,
+      "variant": "contrast_white",
+      "seed": 83001,
+      "training_energy": 8.999999999900245,
+      "evaluation_energy": 1572.9435437678803,
+      "energy_ratio": 174.77150486503496
+    },
+    {
+      "model": "demian",
+      "delay": 32,
+      "variant": "contrast_white",
+      "seed": 83002,
+      "training_energy": 8.999999999900245,
+      "evaluation_energy": 3693.4970399266044,
+      "energy_ratio": 410.3885599963936
+    },
+    {
+      "model": "demian",
+      "delay": 32,
+      "variant": "contrast_white",
+      "seed": 83003,
+      "training_energy": 8.999999999900245,
+      "evaluation_energy": 590.6240065310188,
+      "energy_ratio": 65.62488961528503
+    },
+    {
+      "model": "demian",
+      "delay": 32,
+      "variant": "contrast_white",
+      "seed": 83004,
+      "training_energy": 8.999999999900245,
+      "evaluation_energy": 83.94220154334344,
+      "energy_ratio": 9.326911282697095
+    },
+    {
+      "model": "demian",
+      "delay": 32,
+      "variant": "contrast_white",
+      "seed": 83005,
+      "training_energy": 8.999999999900245,
+      "evaluation_energy": 339.99370252268324,
+      "energy_ratio": 37.77707805849463
+    },
+    {
+      "model": "demian",
+      "delay": 32,
+      "variant": "contrast_white",
+      "seed": 83006,
+      "training_energy": 8.999999999900245,
+      "evaluation_energy": 586.9833784487189,
+      "energy_ratio": 65.22037538391389
+    },
+    {
+      "model": "demian",
+      "delay": 32,
+      "variant": "affine_contrast_white",
+      "seed": 83001,
+      "training_energy": 7.9999999989442445,
+      "evaluation_energy": 562.8140205383719,
+      "energy_ratio": 70.35175257658076
+    },
+    {
+      "model": "demian",
+      "delay": 32,
+      "variant": "affine_contrast_white",
+      "seed": 83002,
+      "training_energy": 7.9999999989442445,
+      "evaluation_energy": 107.16158831243827,
+      "energy_ratio": 13.395198540822541
+    },
+    {
+      "model": "demian",
+      "delay": 32,
+      "variant": "affine_contrast_white",
+      "seed": 83003,
+      "training_energy": 7.9999999989442445,
+      "evaluation_energy": 134.8132986279229,
+      "energy_ratio": 16.851662330714266
+    },
+    {
+      "model": "demian",
+      "delay": 32,
+      "variant": "affine_contrast_white",
+      "seed": 83004,
+      "training_energy": 7.9999999989442445,
+      "evaluation_energy": 46.90648523049134,
+      "energy_ratio": 5.863310654585195
+    },
+    {
+      "model": "demian",
+      "delay": 32,
+      "variant": "affine_contrast_white",
+      "seed": 83005,
+      "training_energy": 7.9999999989442445,
+      "evaluation_energy": 123.56654341618155,
+      "energy_ratio": 15.44581792906107
+    },
+    {
+      "model": "demian",
+      "delay": 32,
+      "variant": "affine_contrast_white",
+      "seed": 83006,
+      "training_energy": 7.9999999989442445,
+      "evaluation_energy": 269.7281338912442,
+      "energy_ratio": 33.71601674085501
+    },
+    {
+      "model": "demian",
+      "delay": 40,
+      "variant": "contrast_white",
+      "seed": 83001,
+      "training_energy": 9.999999998267631,
+      "evaluation_energy": 19588.179750103376,
+      "energy_ratio": 1958.8179753496772
+    },
+    {
+      "model": "demian",
+      "delay": 40,
+      "variant": "contrast_white",
+      "seed": 83002,
+      "training_energy": 9.999999998267631,
+      "evaluation_energy": 1481.9190523602167,
+      "energy_ratio": 148.191905261694
+    },
+    {
+      "model": "demian",
+      "delay": 40,
+      "variant": "contrast_white",
+      "seed": 83003,
+      "training_energy": 9.999999998267631,
+      "evaluation_energy": 59571.17171500819,
+      "energy_ratio": 5957.117172532811
+    },
+    {
+      "model": "demian",
+      "delay": 40,
+      "variant": "contrast_white",
+      "seed": 83004,
+      "training_energy": 9.999999998267631,
+      "evaluation_energy": 3868.330017059329,
+      "energy_ratio": 386.83300177294666
+    },
+    {
+      "model": "demian",
+      "delay": 40,
+      "variant": "contrast_white",
+      "seed": 83005,
+      "training_energy": 9.999999998267631,
+      "evaluation_energy": 6070.6762243661115,
+      "energy_ratio": 607.0676225417776
+    },
+    {
+      "model": "demian",
+      "delay": 40,
+      "variant": "contrast_white",
+      "seed": 83006,
+      "training_energy": 9.999999998267631,
+      "evaluation_energy": 44073.57416782508,
+      "energy_ratio": 4407.357417546024
+    },
+    {
+      "model": "demian",
+      "delay": 40,
+      "variant": "affine_contrast_white",
+      "seed": 83001,
+      "training_energy": 8.999999999854483,
+      "evaluation_energy": 1021.031574918146,
+      "energy_ratio": 113.44795277051719
+    },
+    {
+      "model": "demian",
+      "delay": 40,
+      "variant": "affine_contrast_white",
+      "seed": 83002,
+      "training_energy": 8.999999999854483,
+      "evaluation_energy": 542.9714452149661,
+      "energy_ratio": 60.330160580416134
+    },
+    {
+      "model": "demian",
+      "delay": 40,
+      "variant": "affine_contrast_white",
+      "seed": 83003,
+      "training_energy": 8.999999999854483,
+      "evaluation_energy": 818.4321699594117,
+      "energy_ratio": 90.93690777473829
+    },
+    {
+      "model": "demian",
+      "delay": 40,
+      "variant": "affine_contrast_white",
+      "seed": 83004,
+      "training_energy": 8.999999999854483,
+      "evaluation_energy": 378.9009929031211,
+      "energy_ratio": 42.10011032324971
+    },
+    {
+      "model": "demian",
+      "delay": 40,
+      "variant": "affine_contrast_white",
+      "seed": 83005,
+      "training_energy": 8.999999999854483,
+      "evaluation_energy": 220.39695758432745,
+      "energy_ratio": 24.488550843098995
+    },
+    {
+      "model": "demian",
+      "delay": 40,
+      "variant": "affine_contrast_white",
+      "seed": 83006,
+      "training_energy": 8.999999999854483,
+      "evaluation_energy": 571.8799240890743,
+      "energy_ratio": 63.542213788702306
+    },
+    {
+      "model": "demian",
+      "delay": 48,
+      "variant": "contrast_white",
+      "seed": 83001,
+      "training_energy": 11.99999999867096,
+      "evaluation_energy": 3641.6929793678487,
+      "energy_ratio": 303.4744149809315
+    },
+    {
+      "model": "demian",
+      "delay": 48,
+      "variant": "contrast_white",
+      "seed": 83002,
+      "training_energy": 11.99999999867096,
+      "evaluation_energy": 1697.5613080585233,
+      "energy_ratio": 141.4634423538778
+    },
+    {
+      "model": "demian",
+      "delay": 48,
+      "variant": "contrast_white",
+      "seed": 83003,
+      "training_energy": 11.99999999867096,
+      "evaluation_energy": 8418.215698227665,
+      "energy_ratio": 701.5179749300008
+    },
+    {
+      "model": "demian",
+      "delay": 48,
+      "variant": "contrast_white",
+      "seed": 83004,
+      "training_energy": 11.99999999867096,
+      "evaluation_energy": 1006.4146594286309,
+      "energy_ratio": 83.86788829500789
+    },
+    {
+      "model": "demian",
+      "delay": 48,
+      "variant": "contrast_white",
+      "seed": 83005,
+      "training_energy": 11.99999999867096,
+      "evaluation_energy": 1329.8403869606911,
+      "energy_ratio": 110.82003225899795
+    },
+    {
+      "model": "demian",
+      "delay": 48,
+      "variant": "contrast_white",
+      "seed": 83006,
+      "training_energy": 11.99999999867096,
+      "evaluation_energy": 8145.176293754451,
+      "energy_ratio": 678.7646912213797
+    },
+    {
+      "model": "demian",
+      "delay": 48,
+      "variant": "affine_contrast_white",
+      "seed": 83001,
+      "training_energy": 9.000000001304477,
+      "evaluation_energy": 151.1629771769093,
+      "energy_ratio": 16.795886350555495
+    },
+    {
+      "model": "demian",
+      "delay": 48,
+      "variant": "affine_contrast_white",
+      "seed": 83002,
+      "training_energy": 9.000000001304477,
+      "evaluation_energy": 97.59753167576714,
+      "energy_ratio": 10.844170184624575
+    },
+    {
+      "model": "demian",
+      "delay": 48,
+      "variant": "affine_contrast_white",
+      "seed": 83003,
+      "training_energy": 9.000000001304477,
+      "evaluation_energy": 148.8620803806409,
+      "energy_ratio": 16.540231151007173
+    },
+    {
+      "model": "demian",
+      "delay": 48,
+      "variant": "affine_contrast_white",
+      "seed": 83004,
+      "training_energy": 9.000000001304477,
+      "evaluation_energy": 59.45240808238253,
+      "energy_ratio": 6.605823119307265
+    },
+    {
+      "model": "demian",
+      "delay": 48,
+      "variant": "affine_contrast_white",
+      "seed": 83005,
+      "training_energy": 9.000000001304477,
+      "evaluation_energy": 64.73816261572843,
+      "energy_ratio": 7.1931291784827955
+    },
+    {
+      "model": "demian",
+      "delay": 48,
+      "variant": "affine_contrast_white",
+      "seed": 83006,
+      "training_energy": 9.000000001304477,
+      "evaluation_energy": 191.40461661975996,
+      "energy_ratio": 21.26717962133527
+    },
+    {
+      "model": "demian",
+      "delay": 56,
+      "variant": "contrast_white",
+      "seed": 83001,
+      "training_energy": 13.000000001983837,
+      "evaluation_energy": 675.9385640603617,
+      "energy_ratio": 51.995274150554735
+    },
+    {
+      "model": "demian",
+      "delay": 56,
+      "variant": "contrast_white",
+      "seed": 83002,
+      "training_energy": 13.000000001983837,
+      "evaluation_energy": 433.90311124324893,
+      "energy_ratio": 33.37716239823339
+    },
+    {
+      "model": "demian",
+      "delay": 56,
+      "variant": "contrast_white",
+      "seed": 83003,
+      "training_energy": 13.000000001983837,
+      "evaluation_energy": 1733.0348910644805,
+      "energy_ratio": 133.31037621538573
+    },
+    {
+      "model": "demian",
+      "delay": 56,
+      "variant": "contrast_white",
+      "seed": 83004,
+      "training_energy": 13.000000001983837,
+      "evaluation_energy": 1312.1036442769325,
+      "energy_ratio": 100.93104954436167
+    },
+    {
+      "model": "demian",
+      "delay": 56,
+      "variant": "contrast_white",
+      "seed": 83005,
+      "training_energy": 13.000000001983837,
+      "evaluation_energy": 1402.4527937826922,
+      "energy_ratio": 107.88098412066722
+    },
+    {
+      "model": "demian",
+      "delay": 56,
+      "variant": "contrast_white",
+      "seed": 83006,
+      "training_energy": 13.000000001983837,
+      "evaluation_energy": 1363.492136963074,
+      "energy_ratio": 104.88401051961547
+    },
+    {
+      "model": "demian",
+      "delay": 56,
+      "variant": "affine_contrast_white",
+      "seed": 83001,
+      "training_energy": 9.000000000911855,
+      "evaluation_energy": 91.11112858749699,
+      "energy_ratio": 10.12345873091843
+    },
+    {
+      "model": "demian",
+      "delay": 56,
+      "variant": "affine_contrast_white",
+      "seed": 83002,
+      "training_energy": 9.000000000911855,
+      "evaluation_energy": 21.75986739651316,
+      "energy_ratio": 2.417763043812057
+    },
+    {
+      "model": "demian",
+      "delay": 56,
+      "variant": "affine_contrast_white",
+      "seed": 83003,
+      "training_energy": 9.000000000911855,
+      "evaluation_energy": 91.7718201995839,
+      "energy_ratio": 10.196868910031759
+    },
+    {
+      "model": "demian",
+      "delay": 56,
+      "variant": "affine_contrast_white",
+      "seed": 83004,
+      "training_energy": 9.000000000911855,
+      "evaluation_energy": 97.02508198386708,
+      "energy_ratio": 10.780564663781863
+    },
+    {
+      "model": "demian",
+      "delay": 56,
+      "variant": "affine_contrast_white",
+      "seed": 83005,
+      "training_energy": 9.000000000911855,
+      "evaluation_energy": 61.10172959773228,
+      "energy_ratio": 6.7890810657268466
+    },
+    {
+      "model": "demian",
+      "delay": 56,
+      "variant": "affine_contrast_white",
+      "seed": 83006,
+      "training_energy": 9.000000000911855,
+      "evaluation_energy": 170.79750825491996,
+      "energy_ratio": 18.97750091529058
+    },
+    {
+      "model": "demian",
+      "delay": 64,
+      "variant": "contrast_white",
+      "seed": 83001,
+      "training_energy": 13.999999999518485,
+      "evaluation_energy": 667.4014978262478,
+      "energy_ratio": 47.67153556065731
+    },
+    {
+      "model": "demian",
+      "delay": 64,
+      "variant": "contrast_white",
+      "seed": 83002,
+      "training_energy": 13.999999999518485,
+      "evaluation_energy": 674.5370501886508,
+      "energy_ratio": 48.181217872275056
+    },
+    {
+      "model": "demian",
+      "delay": 64,
+      "variant": "contrast_white",
+      "seed": 83003,
+      "training_energy": 13.999999999518485,
+      "evaluation_energy": 4171.505611124859,
+      "energy_ratio": 297.96468651916666
+    },
+    {
+      "model": "demian",
+      "delay": 64,
+      "variant": "contrast_white",
+      "seed": 83004,
+      "training_energy": 13.999999999518485,
+      "evaluation_energy": 3019.7398395446894,
+      "energy_ratio": 215.6957028320393
+    },
+    {
+      "model": "demian",
+      "delay": 64,
+      "variant": "contrast_white",
+      "seed": 83005,
+      "training_energy": 13.999999999518485,
+      "evaluation_energy": 253.0847081531485,
+      "energy_ratio": 18.07747915441808
+    },
+    {
+      "model": "demian",
+      "delay": 64,
+      "variant": "contrast_white",
+      "seed": 83006,
+      "training_energy": 13.999999999518485,
+      "evaluation_energy": 2226.3090267626158,
+      "energy_ratio": 159.02207334565622
+    },
+    {
+      "model": "demian",
+      "delay": 64,
+      "variant": "affine_contrast_white",
+      "seed": 83001,
+      "training_energy": 9.000000000686176,
+      "evaluation_energy": 29.541976726868928,
+      "energy_ratio": 3.2824418582907327
+    },
+    {
+      "model": "demian",
+      "delay": 64,
+      "variant": "affine_contrast_white",
+      "seed": 83002,
+      "training_energy": 9.000000000686176,
+      "evaluation_energy": 27.028727101817783,
+      "energy_ratio": 3.003191899973007
+    },
+    {
+      "model": "demian",
+      "delay": 64,
+      "variant": "affine_contrast_white",
+      "seed": 83003,
+      "training_energy": 9.000000000686176,
+      "evaluation_energy": 75.8055920186492,
+      "energy_ratio": 8.422843556985516
+    },
+    {
+      "model": "demian",
+      "delay": 64,
+      "variant": "affine_contrast_white",
+      "seed": 83004,
+      "training_energy": 9.000000000686176,
+      "evaluation_energy": 170.11365174694527,
+      "energy_ratio": 18.90151685933061
+    },
+    {
+      "model": "demian",
+      "delay": 64,
+      "variant": "affine_contrast_white",
+      "seed": 83005,
+      "training_energy": 9.000000000686176,
+      "evaluation_energy": 17.98816122512007,
+      "energy_ratio": 1.9986845804165132
+    },
+    {
+      "model": "demian",
+      "delay": 64,
+      "variant": "affine_contrast_white",
+      "seed": 83006,
+      "training_energy": 9.000000000686176,
+      "evaluation_energy": 84.46863362151281,
+      "energy_ratio": 9.385403735008085
+    },
+    {
+      "model": "reservoir",
+      "delay": 0,
+      "variant": "contrast_white",
+      "seed": 83001,
+      "training_energy": 9.000000000000032,
+      "evaluation_energy": 15.5094731862158,
+      "energy_ratio": 1.723274798468416
+    },
+    {
+      "model": "reservoir",
+      "delay": 0,
+      "variant": "contrast_white",
+      "seed": 83002,
+      "training_energy": 9.000000000000032,
+      "evaluation_energy": 17.438862469308358,
+      "energy_ratio": 1.9376513854786996
+    },
+    {
+      "model": "reservoir",
+      "delay": 0,
+      "variant": "contrast_white",
+      "seed": 83003,
+      "training_energy": 9.000000000000032,
+      "evaluation_energy": 10.2427120700905,
+      "energy_ratio": 1.1380791188989403
+    },
+    {
+      "model": "reservoir",
+      "delay": 0,
+      "variant": "contrast_white",
+      "seed": 83004,
+      "training_energy": 9.000000000000032,
+      "evaluation_energy": 11.26218387987668,
+      "energy_ratio": 1.2513537644307378
+    },
+    {
+      "model": "reservoir",
+      "delay": 0,
+      "variant": "contrast_white",
+      "seed": 83005,
+      "training_energy": 9.000000000000032,
+      "evaluation_energy": 12.318330158733843,
+      "energy_ratio": 1.3687033509704223
+    },
+    {
+      "model": "reservoir",
+      "delay": 0,
+      "variant": "contrast_white",
+      "seed": 83006,
+      "training_energy": 9.000000000000032,
+      "evaluation_energy": 14.634850564990879,
+      "energy_ratio": 1.626094507221203
+    },
+    {
+      "model": "reservoir",
+      "delay": 0,
+      "variant": "affine_contrast_white",
+      "seed": 83001,
+      "training_energy": 9.00000000000019,
+      "evaluation_energy": 15.505388140351068,
+      "energy_ratio": 1.7228209044834155
+    },
+    {
+      "model": "reservoir",
+      "delay": 0,
+      "variant": "affine_contrast_white",
+      "seed": 83002,
+      "training_energy": 9.00000000000019,
+      "evaluation_energy": 17.44118844434252,
+      "energy_ratio": 1.9379098271491277
+    },
+    {
+      "model": "reservoir",
+      "delay": 0,
+      "variant": "affine_contrast_white",
+      "seed": 83003,
+      "training_energy": 9.00000000000019,
+      "evaluation_energy": 10.24245768838579,
+      "energy_ratio": 1.1380508542650636
+    },
+    {
+      "model": "reservoir",
+      "delay": 0,
+      "variant": "affine_contrast_white",
+      "seed": 83004,
+      "training_energy": 9.00000000000019,
+      "evaluation_energy": 11.26229691121995,
+      "energy_ratio": 1.251366323468857
+    },
+    {
+      "model": "reservoir",
+      "delay": 0,
+      "variant": "affine_contrast_white",
+      "seed": 83005,
+      "training_energy": 9.00000000000019,
+      "evaluation_energy": 12.318125727543558,
+      "energy_ratio": 1.3686806363936999
+    },
+    {
+      "model": "reservoir",
+      "delay": 0,
+      "variant": "affine_contrast_white",
+      "seed": 83006,
+      "training_energy": 9.00000000000019,
+      "evaluation_energy": 14.63548443715797,
+      "energy_ratio": 1.6261649374619624
+    },
+    {
+      "model": "reservoir",
+      "delay": 2,
+      "variant": "contrast_white",
+      "seed": 83001,
+      "training_energy": 9.000000000000751,
+      "evaluation_energy": 35.962935289234935,
+      "energy_ratio": 3.995881698803548
+    },
+    {
+      "model": "reservoir",
+      "delay": 2,
+      "variant": "contrast_white",
+      "seed": 83002,
+      "training_energy": 9.000000000000751,
+      "evaluation_energy": 23.556978822038023,
+      "energy_ratio": 2.6174420913373395
+    },
+    {
+      "model": "reservoir",
+      "delay": 2,
+      "variant": "contrast_white",
+      "seed": 83003,
+      "training_energy": 9.000000000000751,
+      "evaluation_energy": 10.282400161770196,
+      "energy_ratio": 1.1424889068632598
+    },
+    {
+      "model": "reservoir",
+      "delay": 2,
+      "variant": "contrast_white",
+      "seed": 83004,
+      "training_energy": 9.000000000000751,
+      "evaluation_energy": 19.607711957784968,
+      "energy_ratio": 2.178634661975926
+    },
+    {
+      "model": "reservoir",
+      "delay": 2,
+      "variant": "contrast_white",
+      "seed": 83005,
+      "training_energy": 9.000000000000751,
+      "evaluation_energy": 10.003811204697486,
+      "energy_ratio": 1.111534578299628
+    },
+    {
+      "model": "reservoir",
+      "delay": 2,
+      "variant": "contrast_white",
+      "seed": 83006,
+      "training_energy": 9.000000000000751,
+      "evaluation_energy": 35.2511662649124,
+      "energy_ratio": 3.9167962516566064
+    },
+    {
+      "model": "reservoir",
+      "delay": 2,
+      "variant": "affine_contrast_white",
+      "seed": 83001,
+      "training_energy": 8.999999999999401,
+      "evaluation_energy": 35.94328780042514,
+      "energy_ratio": 3.993698644491948
+    },
+    {
+      "model": "reservoir",
+      "delay": 2,
+      "variant": "affine_contrast_white",
+      "seed": 83002,
+      "training_energy": 8.999999999999401,
+      "evaluation_energy": 23.564179503490124,
+      "energy_ratio": 2.6182421670546323
+    },
+    {
+      "model": "reservoir",
+      "delay": 2,
+      "variant": "affine_contrast_white",
+      "seed": 83003,
+      "training_energy": 8.999999999999401,
+      "evaluation_energy": 10.280765992423538,
+      "energy_ratio": 1.1423073324915802
+    },
+    {
+      "model": "reservoir",
+      "delay": 2,
+      "variant": "affine_contrast_white",
+      "seed": 83004,
+      "training_energy": 8.999999999999401,
+      "evaluation_energy": 19.609018961208005,
+      "energy_ratio": 2.178779884578812
+    },
+    {
+      "model": "reservoir",
+      "delay": 2,
+      "variant": "affine_contrast_white",
+      "seed": 83005,
+      "training_energy": 8.999999999999401,
+      "evaluation_energy": 10.002720071318356,
+      "energy_ratio": 1.111413341257669
+    },
+    {
+      "model": "reservoir",
+      "delay": 2,
+      "variant": "affine_contrast_white",
+      "seed": 83006,
+      "training_energy": 8.999999999999401,
+      "evaluation_energy": 35.24587646496275,
+      "energy_ratio": 3.9162084961072323
+    },
+    {
+      "model": "reservoir",
+      "delay": 8,
+      "variant": "contrast_white",
+      "seed": 83001,
+      "training_energy": 8.99999999999989,
+      "evaluation_energy": 11.083913998781211,
+      "energy_ratio": 1.2315459998645941
+    },
+    {
+      "model": "reservoir",
+      "delay": 8,
+      "variant": "contrast_white",
+      "seed": 83002,
+      "training_energy": 8.99999999999989,
+      "evaluation_energy": 15.006921326060505,
+      "energy_ratio": 1.6674357028956321
+    },
+    {
+      "model": "reservoir",
+      "delay": 8,
+      "variant": "contrast_white",
+      "seed": 83003,
+      "training_energy": 8.99999999999989,
+      "evaluation_energy": 9.161589582103367,
+      "energy_ratio": 1.0179543980114978
+    },
+    {
+      "model": "reservoir",
+      "delay": 8,
+      "variant": "contrast_white",
+      "seed": 83004,
+      "training_energy": 8.99999999999989,
+      "evaluation_energy": 11.699109274818277,
+      "energy_ratio": 1.29990103053538
+    },
+    {
+      "model": "reservoir",
+      "delay": 8,
+      "variant": "contrast_white",
+      "seed": 83005,
+      "training_energy": 8.99999999999989,
+      "evaluation_energy": 18.279955326144236,
+      "energy_ratio": 2.0311061473493845
+    },
+    {
+      "model": "reservoir",
+      "delay": 8,
+      "variant": "contrast_white",
+      "seed": 83006,
+      "training_energy": 8.99999999999989,
+      "evaluation_energy": 40.381500847908335,
+      "energy_ratio": 4.486833427545426
+    },
+    {
+      "model": "reservoir",
+      "delay": 8,
+      "variant": "affine_contrast_white",
+      "seed": 83001,
+      "training_energy": 8.999999999999757,
+      "evaluation_energy": 11.08478643566759,
+      "energy_ratio": 1.2316429372964321
+    },
+    {
+      "model": "reservoir",
+      "delay": 8,
+      "variant": "affine_contrast_white",
+      "seed": 83002,
+      "training_energy": 8.999999999999757,
+      "evaluation_energy": 15.00386570202709,
+      "energy_ratio": 1.6670961891141662
+    },
+    {
+      "model": "reservoir",
+      "delay": 8,
+      "variant": "affine_contrast_white",
+      "seed": 83003,
+      "training_energy": 8.999999999999757,
+      "evaluation_energy": 9.160977559538162,
+      "energy_ratio": 1.0178863955042678
+    },
+    {
+      "model": "reservoir",
+      "delay": 8,
+      "variant": "affine_contrast_white",
+      "seed": 83004,
+      "training_energy": 8.999999999999757,
+      "evaluation_energy": 11.700325863758556,
+      "energy_ratio": 1.3000362070843192
+    },
+    {
+      "model": "reservoir",
+      "delay": 8,
+      "variant": "affine_contrast_white",
+      "seed": 83005,
+      "training_energy": 8.999999999999757,
+      "evaluation_energy": 18.279120806224523,
+      "energy_ratio": 2.0310134229138908
+    },
+    {
+      "model": "reservoir",
+      "delay": 8,
+      "variant": "affine_contrast_white",
+      "seed": 83006,
+      "training_energy": 8.999999999999757,
+      "evaluation_energy": 40.37301693333109,
+      "energy_ratio": 4.485890770370242
+    },
+    {
+      "model": "reservoir",
+      "delay": 16,
+      "variant": "contrast_white",
+      "seed": 83001,
+      "training_energy": 8.99999999999998,
+      "evaluation_energy": 7.735574526895714,
+      "energy_ratio": 0.8595082807661923
+    },
+    {
+      "model": "reservoir",
+      "delay": 16,
+      "variant": "contrast_white",
+      "seed": 83002,
+      "training_energy": 8.99999999999998,
+      "evaluation_energy": 19.550995645142446,
+      "energy_ratio": 2.1723328494602767
+    },
+    {
+      "model": "reservoir",
+      "delay": 16,
+      "variant": "contrast_white",
+      "seed": 83003,
+      "training_energy": 8.99999999999998,
+      "evaluation_energy": 28.36433356362461,
+      "energy_ratio": 3.1515926181805187
+    },
+    {
+      "model": "reservoir",
+      "delay": 16,
+      "variant": "contrast_white",
+      "seed": 83004,
+      "training_energy": 8.99999999999998,
+      "evaluation_energy": 7.573778973106184,
+      "energy_ratio": 0.8415309970118
+    },
+    {
+      "model": "reservoir",
+      "delay": 16,
+      "variant": "contrast_white",
+      "seed": 83005,
+      "training_energy": 8.99999999999998,
+      "evaluation_energy": 9.984481728487628,
+      "energy_ratio": 1.10938685872085
+    },
+    {
+      "model": "reservoir",
+      "delay": 16,
+      "variant": "contrast_white",
+      "seed": 83006,
+      "training_energy": 8.99999999999998,
+      "evaluation_energy": 14.577380815362645,
+      "energy_ratio": 1.619708979484742
+    },
+    {
+      "model": "reservoir",
+      "delay": 16,
+      "variant": "affine_contrast_white",
+      "seed": 83001,
+      "training_energy": 8.99999999999978,
+      "evaluation_energy": 7.741129161415503,
+      "energy_ratio": 0.8601254623795214
+    },
+    {
+      "model": "reservoir",
+      "delay": 16,
+      "variant": "affine_contrast_white",
+      "seed": 83002,
+      "training_energy": 8.99999999999978,
+      "evaluation_energy": 19.575157162458428,
+      "energy_ratio": 2.175017462495434
+    },
+    {
+      "model": "reservoir",
+      "delay": 16,
+      "variant": "affine_contrast_white",
+      "seed": 83003,
+      "training_energy": 8.99999999999978,
+      "evaluation_energy": 28.395847456464363,
+      "energy_ratio": 3.155094161829451
+    },
+    {
+      "model": "reservoir",
+      "delay": 16,
+      "variant": "affine_contrast_white",
+      "seed": 83004,
+      "training_energy": 8.99999999999978,
+      "evaluation_energy": 7.578416892358707,
+      "energy_ratio": 0.8420463213732102
+    },
+    {
+      "model": "reservoir",
+      "delay": 16,
+      "variant": "affine_contrast_white",
+      "seed": 83005,
+      "training_energy": 8.99999999999978,
+      "evaluation_energy": 9.983332923182191,
+      "energy_ratio": 1.1092592136869373
+    },
+    {
+      "model": "reservoir",
+      "delay": 16,
+      "variant": "affine_contrast_white",
+      "seed": 83006,
+      "training_energy": 8.99999999999978,
+      "evaluation_energy": 14.595976094215843,
+      "energy_ratio": 1.6217751215795777
+    },
+    {
+      "model": "reservoir",
+      "delay": 24,
+      "variant": "contrast_white",
+      "seed": 83001,
+      "training_energy": 10.000000000434634,
+      "evaluation_energy": 4021.896547048924,
+      "energy_ratio": 402.18965468741186
+    },
+    {
+      "model": "reservoir",
+      "delay": 24,
+      "variant": "contrast_white",
+      "seed": 83002,
+      "training_energy": 10.000000000434634,
+      "evaluation_energy": 27532.17973714028,
+      "energy_ratio": 2753.2179735943637
+    },
+    {
+      "model": "reservoir",
+      "delay": 24,
+      "variant": "contrast_white",
+      "seed": 83003,
+      "training_energy": 10.000000000434634,
+      "evaluation_energy": 125.84639234589548,
+      "energy_ratio": 12.584639234042577
+    },
+    {
+      "model": "reservoir",
+      "delay": 24,
+      "variant": "contrast_white",
+      "seed": 83004,
+      "training_energy": 10.000000000434634,
+      "evaluation_energy": 197094.00095926362,
+      "energy_ratio": 19709.400095069726
+    },
+    {
+      "model": "reservoir",
+      "delay": 24,
+      "variant": "contrast_white",
+      "seed": 83005,
+      "training_energy": 10.000000000434634,
+      "evaluation_energy": 1461.743053389867,
+      "energy_ratio": 146.17430533263348
+    },
+    {
+      "model": "reservoir",
+      "delay": 24,
+      "variant": "contrast_white",
+      "seed": 83006,
+      "training_energy": 10.000000000434634,
+      "evaluation_energy": 332519.54865828063,
+      "energy_ratio": 33251.954864382824
+    },
+    {
+      "model": "reservoir",
+      "delay": 24,
+      "variant": "affine_contrast_white",
+      "seed": 83001,
+      "training_energy": 8.999999999999972,
+      "evaluation_energy": 17.73457123666633,
+      "energy_ratio": 1.970507915185154
+    },
+    {
+      "model": "reservoir",
+      "delay": 24,
+      "variant": "affine_contrast_white",
+      "seed": 83002,
+      "training_energy": 8.999999999999972,
+      "evaluation_energy": 8.134526028007105,
+      "energy_ratio": 0.9038362253341257
+    },
+    {
+      "model": "reservoir",
+      "delay": 24,
+      "variant": "affine_contrast_white",
+      "seed": 83003,
+      "training_energy": 8.999999999999972,
+      "evaluation_energy": 9.968448862748328,
+      "energy_ratio": 1.1076054291942623
+    },
+    {
+      "model": "reservoir",
+      "delay": 24,
+      "variant": "affine_contrast_white",
+      "seed": 83004,
+      "training_energy": 8.999999999999972,
+      "evaluation_energy": 9.973972462208717,
+      "energy_ratio": 1.1082191624676387
+    },
+    {
+      "model": "reservoir",
+      "delay": 24,
+      "variant": "affine_contrast_white",
+      "seed": 83005,
+      "training_energy": 8.999999999999972,
+      "evaluation_energy": 25.00979527795612,
+      "energy_ratio": 2.7788661419951333
+    },
+    {
+      "model": "reservoir",
+      "delay": 24,
+      "variant": "affine_contrast_white",
+      "seed": 83006,
+      "training_energy": 8.999999999999972,
+      "evaluation_energy": 11.816335590977468,
+      "energy_ratio": 1.3129261767752785
+    },
+    {
+      "model": "reservoir",
+      "delay": 32,
+      "variant": "contrast_white",
+      "seed": 83001,
+      "training_energy": 10.000000003343866,
+      "evaluation_energy": 1717420.6624731254,
+      "energy_ratio": 171742.0661898843
+    },
+    {
+      "model": "reservoir",
+      "delay": 32,
+      "variant": "contrast_white",
+      "seed": 83002,
+      "training_energy": 10.000000003343866,
+      "evaluation_energy": 46565.40079337731,
+      "energy_ratio": 4656.540077780646
+    },
+    {
+      "model": "reservoir",
+      "delay": 32,
+      "variant": "contrast_white",
+      "seed": 83003,
+      "training_energy": 10.000000003343866,
+      "evaluation_energy": 3163.94879354194,
+      "energy_ratio": 316.3948792483958
+    },
+    {
+      "model": "reservoir",
+      "delay": 32,
+      "variant": "contrast_white",
+      "seed": 83004,
+      "training_energy": 10.000000003343866,
+      "evaluation_energy": 526804.0703910411,
+      "energy_ratio": 52680.40702148849
+    },
+    {
+      "model": "reservoir",
+      "delay": 32,
+      "variant": "contrast_white",
+      "seed": 83005,
+      "training_energy": 10.000000003343866,
+      "evaluation_energy": 318813.99685094686,
+      "energy_ratio": 31881.399674433975
+    },
+    {
+      "model": "reservoir",
+      "delay": 32,
+      "variant": "contrast_white",
+      "seed": 83006,
+      "training_energy": 10.000000003343866,
+      "evaluation_energy": 1439000.788797876,
+      "energy_ratio": 143900.07883166935
+    },
+    {
+      "model": "reservoir",
+      "delay": 32,
+      "variant": "affine_contrast_white",
+      "seed": 83001,
+      "training_energy": 8.999999999999945,
+      "evaluation_energy": 26.62876705104436,
+      "energy_ratio": 2.9587518945605025
+    },
+    {
+      "model": "reservoir",
+      "delay": 32,
+      "variant": "affine_contrast_white",
+      "seed": 83002,
+      "training_energy": 8.999999999999945,
+      "evaluation_energy": 20.95183497377301,
+      "energy_ratio": 2.327981663752571
+    },
+    {
+      "model": "reservoir",
+      "delay": 32,
+      "variant": "affine_contrast_white",
+      "seed": 83003,
+      "training_energy": 8.999999999999945,
+      "evaluation_energy": 21.889598704156395,
+      "energy_ratio": 2.43217763379517
+    },
+    {
+      "model": "reservoir",
+      "delay": 32,
+      "variant": "affine_contrast_white",
+      "seed": 83004,
+      "training_energy": 8.999999999999945,
+      "evaluation_energy": 8.059207114727736,
+      "energy_ratio": 0.8954674571919761
+    },
+    {
+      "model": "reservoir",
+      "delay": 32,
+      "variant": "affine_contrast_white",
+      "seed": 83005,
+      "training_energy": 8.999999999999945,
+      "evaluation_energy": 31.164090733715025,
+      "energy_ratio": 3.4626767481905794
+    },
+    {
+      "model": "reservoir",
+      "delay": 32,
+      "variant": "affine_contrast_white",
+      "seed": 83006,
+      "training_energy": 8.999999999999945,
+      "evaluation_energy": 7.606602924229296,
+      "energy_ratio": 0.8451781026921492
+    },
+    {
+      "model": "reservoir",
+      "delay": 40,
+      "variant": "contrast_white",
+      "seed": 83001,
+      "training_energy": 9.999999997228285,
+      "evaluation_energy": 121584.55866794112,
+      "energy_ratio": 12158.455870164089
+    },
+    {
+      "model": "reservoir",
+      "delay": 40,
+      "variant": "contrast_white",
+      "seed": 83002,
+      "training_energy": 9.999999997228285,
+      "evaluation_energy": 27451.381386793804,
+      "energy_ratio": 2745.1381394402547
+    },
+    {
+      "model": "reservoir",
+      "delay": 40,
+      "variant": "contrast_white",
+      "seed": 83003,
+      "training_energy": 9.999999997228285,
+      "evaluation_energy": 1215001.5795833878,
+      "energy_ratio": 121500.15799201517
+    },
+    {
+      "model": "reservoir",
+      "delay": 40,
+      "variant": "contrast_white",
+      "seed": 83004,
+      "training_energy": 9.999999997228285,
+      "evaluation_energy": 188133.91352805417,
+      "energy_ratio": 18813.39135801995
+    },
+    {
+      "model": "reservoir",
+      "delay": 40,
+      "variant": "contrast_white",
+      "seed": 83005,
+      "training_energy": 9.999999997228285,
+      "evaluation_energy": 722630.0285099183,
+      "energy_ratio": 72263.00287102108
+    },
+    {
+      "model": "reservoir",
+      "delay": 40,
+      "variant": "contrast_white",
+      "seed": 83006,
+      "training_energy": 9.999999997228285,
+      "evaluation_energy": 407220.08823403757,
+      "energy_ratio": 40722.008834690736
+    },
+    {
+      "model": "reservoir",
+      "delay": 40,
+      "variant": "affine_contrast_white",
+      "seed": 83001,
+      "training_energy": 9.00000000000008,
+      "evaluation_energy": 32.68301162823772,
+      "energy_ratio": 3.631445736470826
+    },
+    {
+      "model": "reservoir",
+      "delay": 40,
+      "variant": "affine_contrast_white",
+      "seed": 83002,
+      "training_energy": 9.00000000000008,
+      "evaluation_energy": 35.22164328624086,
+      "energy_ratio": 3.9135159206933943
+    },
+    {
+      "model": "reservoir",
+      "delay": 40,
+      "variant": "affine_contrast_white",
+      "seed": 83003,
+      "training_energy": 9.00000000000008,
+      "evaluation_energy": 57.733790750165134,
+      "energy_ratio": 6.41486563890718
+    },
+    {
+      "model": "reservoir",
+      "delay": 40,
+      "variant": "affine_contrast_white",
+      "seed": 83004,
+      "training_energy": 9.00000000000008,
+      "evaluation_energy": 8.86659636830273,
+      "energy_ratio": 0.9851773742558502
+    },
+    {
+      "model": "reservoir",
+      "delay": 40,
+      "variant": "affine_contrast_white",
+      "seed": 83005,
+      "training_energy": 9.00000000000008,
+      "evaluation_energy": 16.155538714689072,
+      "energy_ratio": 1.7950598571876588
+    },
+    {
+      "model": "reservoir",
+      "delay": 40,
+      "variant": "affine_contrast_white",
+      "seed": 83006,
+      "training_energy": 9.00000000000008,
+      "evaluation_energy": 22.70466951133483,
+      "energy_ratio": 2.522741056814959
+    },
+    {
+      "model": "reservoir",
+      "delay": 48,
+      "variant": "contrast_white",
+      "seed": 83001,
+      "training_energy": 9.999999998548326,
+      "evaluation_energy": 975384.8019867586,
+      "energy_ratio": 97538.48021283527
+    },
+    {
+      "model": "reservoir",
+      "delay": 48,
+      "variant": "contrast_white",
+      "seed": 83002,
+      "training_energy": 9.999999998548326,
+      "evaluation_energy": 222369.4622322036,
+      "energy_ratio": 22236.94622644844
+    },
+    {
+      "model": "reservoir",
+      "delay": 48,
+      "variant": "contrast_white",
+      "seed": 83003,
+      "training_energy": 9.999999998548326,
+      "evaluation_energy": 16920319.349703077,
+      "energy_ratio": 1692031.9352159356
+    },
+    {
+      "model": "reservoir",
+      "delay": 48,
+      "variant": "contrast_white",
+      "seed": 83004,
+      "training_energy": 9.999999998548326,
+      "evaluation_energy": 17073.933510073748,
+      "energy_ratio": 1707.3933512552328
+    },
+    {
+      "model": "reservoir",
+      "delay": 48,
+      "variant": "contrast_white",
+      "seed": 83005,
+      "training_energy": 9.999999998548326,
+      "evaluation_energy": 289447.5641605183,
+      "energy_ratio": 28944.756420253663
+    },
+    {
+      "model": "reservoir",
+      "delay": 48,
+      "variant": "contrast_white",
+      "seed": 83006,
+      "training_energy": 9.999999998548326,
+      "evaluation_energy": 1651509.6290586523,
+      "energy_ratio": 165150.96292983976
+    },
+    {
+      "model": "reservoir",
+      "delay": 48,
+      "variant": "affine_contrast_white",
+      "seed": 83001,
+      "training_energy": 8.999999999999991,
+      "evaluation_energy": 10.156650019906527,
+      "energy_ratio": 1.1285166688785042
+    },
+    {
+      "model": "reservoir",
+      "delay": 48,
+      "variant": "affine_contrast_white",
+      "seed": 83002,
+      "training_energy": 8.999999999999991,
+      "evaluation_energy": 12.376263678166529,
+      "energy_ratio": 1.3751404086851713
+    },
+    {
+      "model": "reservoir",
+      "delay": 48,
+      "variant": "affine_contrast_white",
+      "seed": 83003,
+      "training_energy": 8.999999999999991,
+      "evaluation_energy": 74.28794155166916,
+      "energy_ratio": 8.254215727963249
+    },
+    {
+      "model": "reservoir",
+      "delay": 48,
+      "variant": "affine_contrast_white",
+      "seed": 83004,
+      "training_energy": 8.999999999999991,
+      "evaluation_energy": 8.381007115445415,
+      "energy_ratio": 0.9312230128272693
+    },
+    {
+      "model": "reservoir",
+      "delay": 48,
+      "variant": "affine_contrast_white",
+      "seed": 83005,
+      "training_energy": 8.999999999999991,
+      "evaluation_energy": 41.68984538061642,
+      "energy_ratio": 4.6322050422907175
+    },
+    {
+      "model": "reservoir",
+      "delay": 48,
+      "variant": "affine_contrast_white",
+      "seed": 83006,
+      "training_energy": 8.999999999999991,
+      "evaluation_energy": 19.42933445353107,
+      "energy_ratio": 2.158814939281232
+    },
+    {
+      "model": "reservoir",
+      "delay": 56,
+      "variant": "contrast_white",
+      "seed": 83001,
+      "training_energy": 11.000000012132508,
+      "evaluation_energy": 641769.0364092711,
+      "energy_ratio": 58342.63960922077
+    },
+    {
+      "model": "reservoir",
+      "delay": 56,
+      "variant": "contrast_white",
+      "seed": 83002,
+      "training_energy": 11.000000012132508,
+      "evaluation_energy": 1433096.4080662953,
+      "energy_ratio": 130281.49149869582
+    },
+    {
+      "model": "reservoir",
+      "delay": 56,
+      "variant": "contrast_white",
+      "seed": 83003,
+      "training_energy": 11.000000012132508,
+      "evaluation_energy": 18140326.38551691,
+      "energy_ratio": 1649120.5786826313
+    },
+    {
+      "model": "reservoir",
+      "delay": 56,
+      "variant": "contrast_white",
+      "seed": 83004,
+      "training_energy": 11.000000012132508,
+      "evaluation_energy": 170420.40743187902,
+      "energy_ratio": 15492.764294901175
+    },
+    {
+      "model": "reservoir",
+      "delay": 56,
+      "variant": "contrast_white",
+      "seed": 83005,
+      "training_energy": 11.000000012132508,
+      "evaluation_energy": 1497410.1437544737,
+      "energy_ratio": 136128.19473662702
+    },
+    {
+      "model": "reservoir",
+      "delay": 56,
+      "variant": "contrast_white",
+      "seed": 83006,
+      "training_energy": 11.000000012132508,
+      "evaluation_energy": 686307.8767029325,
+      "energy_ratio": 62391.62508599687
+    },
+    {
+      "model": "reservoir",
+      "delay": 56,
+      "variant": "affine_contrast_white",
+      "seed": 83001,
+      "training_energy": 9.00000000000002,
+      "evaluation_energy": 8.413122611060894,
+      "energy_ratio": 0.9347914012289862
+    },
+    {
+      "model": "reservoir",
+      "delay": 56,
+      "variant": "affine_contrast_white",
+      "seed": 83002,
+      "training_energy": 9.00000000000002,
+      "evaluation_energy": 50.01378706912152,
+      "energy_ratio": 5.557087452124601
+    },
+    {
+      "model": "reservoir",
+      "delay": 56,
+      "variant": "affine_contrast_white",
+      "seed": 83003,
+      "training_energy": 9.00000000000002,
+      "evaluation_energy": 70.86934826778146,
+      "energy_ratio": 7.874372029753479
+    },
+    {
+      "model": "reservoir",
+      "delay": 56,
+      "variant": "affine_contrast_white",
+      "seed": 83004,
+      "training_energy": 9.00000000000002,
+      "evaluation_energy": 13.092120782068648,
+      "energy_ratio": 1.4546800868965133
+    },
+    {
+      "model": "reservoir",
+      "delay": 56,
+      "variant": "affine_contrast_white",
+      "seed": 83005,
+      "training_energy": 9.00000000000002,
+      "evaluation_energy": 44.579854636788376,
+      "energy_ratio": 4.953317181865365
+    },
+    {
+      "model": "reservoir",
+      "delay": 56,
+      "variant": "affine_contrast_white",
+      "seed": 83006,
+      "training_energy": 9.00000000000002,
+      "evaluation_energy": 25.682726780676187,
+      "energy_ratio": 2.8536363089640147
+    },
+    {
+      "model": "reservoir",
+      "delay": 64,
+      "variant": "contrast_white",
+      "seed": 83001,
+      "training_energy": 12.99999999942097,
+      "evaluation_energy": 1204120.8323572318,
+      "energy_ratio": 92624.67941622033
+    },
+    {
+      "model": "reservoir",
+      "delay": 64,
+      "variant": "contrast_white",
+      "seed": 83002,
+      "training_energy": 12.99999999942097,
+      "evaluation_energy": 7402391.278070574,
+      "energy_ratio": 569414.7137230986
+    },
+    {
+      "model": "reservoir",
+      "delay": 64,
+      "variant": "contrast_white",
+      "seed": 83003,
+      "training_energy": 12.99999999942097,
+      "evaluation_energy": 16835010.30711948,
+      "energy_ratio": 1295000.792913025
+    },
+    {
+      "model": "reservoir",
+      "delay": 64,
+      "variant": "contrast_white",
+      "seed": 83004,
+      "training_energy": 12.99999999942097,
+      "evaluation_energy": 393567.5032668202,
+      "energy_ratio": 30274.423329565387
+    },
+    {
+      "model": "reservoir",
+      "delay": 64,
+      "variant": "contrast_white",
+      "seed": 83005,
+      "training_energy": 12.99999999942097,
+      "evaluation_energy": 4612139.7754809875,
+      "energy_ratio": 354779.9827451089
+    },
+    {
+      "model": "reservoir",
+      "delay": 64,
+      "variant": "contrast_white",
+      "seed": 83006,
+      "training_energy": 12.99999999942097,
+      "evaluation_energy": 737279.5492124213,
+      "energy_ratio": 56713.81148040464
+    },
+    {
+      "model": "reservoir",
+      "delay": 64,
+      "variant": "affine_contrast_white",
+      "seed": 83001,
+      "training_energy": 8.999999999999863,
+      "evaluation_energy": 181.6466283927607,
+      "energy_ratio": 20.18295871030705
+    },
+    {
+      "model": "reservoir",
+      "delay": 64,
+      "variant": "affine_contrast_white",
+      "seed": 83002,
+      "training_energy": 8.999999999999863,
+      "evaluation_energy": 244.40039587197995,
+      "energy_ratio": 27.15559954133152
+    },
+    {
+      "model": "reservoir",
+      "delay": 64,
+      "variant": "affine_contrast_white",
+      "seed": 83003,
+      "training_energy": 8.999999999999863,
+      "evaluation_energy": 276.7627384637131,
+      "energy_ratio": 30.75141538485748
+    },
+    {
+      "model": "reservoir",
+      "delay": 64,
+      "variant": "affine_contrast_white",
+      "seed": 83004,
+      "training_energy": 8.999999999999863,
+      "evaluation_energy": 74.50645961491979,
+      "energy_ratio": 8.278495512768991
+    },
+    {
+      "model": "reservoir",
+      "delay": 64,
+      "variant": "affine_contrast_white",
+      "seed": 83005,
+      "training_energy": 8.999999999999863,
+      "evaluation_energy": 654.3714363825345,
+      "energy_ratio": 72.70793737583827
+    },
+    {
+      "model": "reservoir",
+      "delay": 64,
+      "variant": "affine_contrast_white",
+      "seed": 83006,
+      "training_energy": 8.999999999999863,
+      "evaluation_energy": 86.4091568785293,
+      "energy_ratio": 9.601017430947847
+    }
+  ],
+  "source_hashes": {
+    "data/diagnostics/demian_distance_conditioning_v1_20261017/fit_demian_0_contrast_white_true.npz": "b525916fcca272b227954aab4bcc8b148bfb73e1c8cf4896d3482892f9848bdb",
+    "data/diagnostics/demian_cross_seed_anchor_transfer_v1_20261016/demian_81001_states.npz": "30c26c3fcf7ba51c21bc0ef8d1e9862efef4895e1396a9475e39649d042aac47",
+    "data/diagnostics/demian_cross_seed_anchor_transfer_v1_20261016/demian_81002_states.npz": "32d060f752b8b38e2253a827a096e9a9f90027face7a26da8676255a5dc97074",
+    "data/diagnostics/demian_cross_seed_anchor_transfer_v1_20261016/demian_81003_states.npz": "ec8deff976dfe312831d6c97a04b0bba7006d5b63c6ed786ff0e2f1e672f4118",
+    "data/diagnostics/demian_cross_seed_anchor_transfer_v1_20261016/demian_81004_states.npz": "c0681258a2d9c67c5fb946372270639c1d24091c241656d55c769a86f213607f",
+    "data/diagnostics/demian_distance_conditioning_v1_20261017/demian_83001_states.npz": "b5a563a35ab173467aed57ed195ee621e174091d9b68a46b8bcb316790d51a62",
+    "data/diagnostics/demian_distance_conditioning_v1_20261017/demian_83002_states.npz": "cc514ed31c2faca121d64dcd36c6846fc045e9b732f7aaa1e61dc36e50b6d5f2",
+    "data/diagnostics/demian_distance_conditioning_v1_20261017/demian_83003_states.npz": "c0ae6129dbb78c23bd0ff6d5d0875b62268f14c8b89194c213e3a336bf679b1d",
+    "data/diagnostics/demian_distance_conditioning_v1_20261017/demian_83004_states.npz": "52c8c37f8da0019a355511e6adf4a6c13783f445d05970ef19639029e53452e6",
+    "data/diagnostics/demian_distance_conditioning_v1_20261017/demian_83005_states.npz": "7faf13f416b898d5becf2b60103ac2527fd11b7d09432cf81500ece3e54fcdd1",
+    "data/diagnostics/demian_distance_conditioning_v1_20261017/demian_83006_states.npz": "01d4fe7b20ecc4af0f97f9ae88a9bf71819375f10b090b98b2a9d9ef2a10c1ca",
+    "data/diagnostics/demian_distance_conditioning_v1_20261017/fit_demian_0_affine_contrast_white_true.npz": "bf0beba77c633203dfbfb4c2013fdeab30f55ba98cfbc431f4ebef6b1300e5db",
+    "data/diagnostics/demian_distance_conditioning_v1_20261017/fit_demian_2_contrast_white_true.npz": "7717af9e7e57b75d29676bd8d81c926f328ca10d7391c7d2c5dd008a242550f5",
+    "data/diagnostics/demian_distance_conditioning_v1_20261017/fit_demian_2_affine_contrast_white_true.npz": "ab6c36bb0bef54897bc36990fe429b38896ff5a9879260b460b3de735341eaca",
+    "data/diagnostics/demian_distance_conditioning_v1_20261017/fit_demian_8_contrast_white_true.npz": "eab53ae2e060746bc15cefdaca6c6702b4ddb7e7439ce0ba3328d1bc6259aa2e",
+    "data/diagnostics/demian_distance_conditioning_v1_20261017/fit_demian_8_affine_contrast_white_true.npz": "35324df2bac75f936b198cb98b2b7e4574d5522d0ad904c6211c76c743bdfc15",
+    "data/diagnostics/demian_distance_conditioning_v1_20261017/fit_demian_16_contrast_white_true.npz": "6f5f20ca4b4a0b7b7cd239adbd9951648ffba4c542211327af1bf9a18b585d97",
+    "data/diagnostics/demian_distance_conditioning_v1_20261017/fit_demian_16_affine_contrast_white_true.npz": "3acdd9c03f22fe9439cd92626db780a0308e1e85d3be21bc133ca2fee20c92cf",
+    "data/diagnostics/demian_distance_conditioning_v1_20261017/fit_demian_24_contrast_white_true.npz": "cf617a6ab49343738a5b627273365e80430b67e23d761af95bf3f2faed52e5c9",
+    "data/diagnostics/demian_distance_conditioning_v1_20261017/fit_demian_24_affine_contrast_white_true.npz": "7c0c0c980611a5ab2d5946ded7f932f0afc16c65401d3a3c62f26d1e33808af1",
+    "data/diagnostics/demian_distance_conditioning_v1_20261017/fit_demian_32_contrast_white_true.npz": "01d196265dc4754e7a56f451fb61604b803c638db860b33bc68cfd2f0050495a",
+    "data/diagnostics/demian_distance_conditioning_v1_20261017/fit_demian_32_affine_contrast_white_true.npz": "8738b549ced8c93ec37bcef26a11d9f7fad64b212b507e6de5c8f0207d70d9ed",
+    "data/diagnostics/demian_distance_conditioning_v1_20261017/fit_demian_40_contrast_white_true.npz": "6f4439d3fc736d569d5fd941a3cb3a4388b32a85d395739cd5874f7b82824da0",
+    "data/diagnostics/demian_distance_conditioning_v1_20261017/fit_demian_40_affine_contrast_white_true.npz": "62ce98d0f3228b13de965ee827b2d3069da334ad8dfbbe4dc93cd144474271c2",
+    "data/diagnostics/demian_distance_conditioning_v1_20261017/fit_demian_48_contrast_white_true.npz": "6eec8b84b402fa2b62a0180de415afd0176fb8bfc7df6410aca5ff3eaae86ad4",
+    "data/diagnostics/demian_distance_conditioning_v1_20261017/fit_demian_48_affine_contrast_white_true.npz": "7a718f6ced4e4dad0de5d2a78b0b8fc5c116d72c8d87ac224d77494015cd306d",
+    "data/diagnostics/demian_distance_conditioning_v1_20261017/fit_demian_56_contrast_white_true.npz": "9ee17a21db94c0ce09e001cdeb1421b475a07ce97acafc69290ec27dc9ae6d26",
+    "data/diagnostics/demian_distance_conditioning_v1_20261017/fit_demian_56_affine_contrast_white_true.npz": "60ee1e8d708c7f3527319d1b54366dd5e9acac1b1b8f08471a6f90d4d6f2b98b",
+    "data/diagnostics/demian_distance_conditioning_v1_20261017/fit_demian_64_contrast_white_true.npz": "d44e7eccc79e46b841c7f370b7e260311c97f5bab04e9da90004edea9b573b89",
+    "data/diagnostics/demian_distance_conditioning_v1_20261017/fit_demian_64_affine_contrast_white_true.npz": "b0a9eec75e201eea31f718c7a93a048d5dced61a1544bf65180931276bc8f920",
+    "data/diagnostics/demian_distance_conditioning_v1_20261017/fit_reservoir_0_contrast_white_true.npz": "b406789683365eeeba7e0677b816f44760f2727ef8016e4bb1412321b7478317",
+    "data/diagnostics/demian_cross_seed_anchor_transfer_v1_20261016/reservoir_81001_states.npz": "87af4578d74a945227c56db21cef261d87acbc4334cc4c745b0340dfff9cad00",
+    "data/diagnostics/demian_cross_seed_anchor_transfer_v1_20261016/reservoir_81002_states.npz": "d247f0fb7a0af60052fdb39fbf91e475daad951916438f884fd3d8b47d29609b",
+    "data/diagnostics/demian_cross_seed_anchor_transfer_v1_20261016/reservoir_81003_states.npz": "05b482f76e30b7ccae1c8e321233cfbe25d4949b3d29bf845c44cf0104556027",
+    "data/diagnostics/demian_cross_seed_anchor_transfer_v1_20261016/reservoir_81004_states.npz": "a5208d1804c9be754e1b14ebb648fff80021d00949d046e4a245d79b14285ccb",
+    "data/diagnostics/demian_distance_conditioning_v1_20261017/reservoir_83001_states.npz": "d90c1ae13ec049c9cc57d14e88fdcefaf78ec975006b1fe705c562f57ec561a5",
+    "data/diagnostics/demian_distance_conditioning_v1_20261017/reservoir_83002_states.npz": "b80f18f0e66069c8584ae142eadc6dcba0a82e4e048a1a0b7a54968cab1e2f41",
+    "data/diagnostics/demian_distance_conditioning_v1_20261017/reservoir_83003_states.npz": "1c7fd33b1b1871f8cf536d8337f99e72407ec2c62439f27fb67d97473db40855",
+    "data/diagnostics/demian_distance_conditioning_v1_20261017/reservoir_83004_states.npz": "b0a95594b8f4a0070f6c64a4f72e5485f1780535f7640cd3d7d128c2a01e4b99",
+    "data/diagnostics/demian_distance_conditioning_v1_20261017/reservoir_83005_states.npz": "a8e42a3912b6ed8c245a2e6e7e473023cf704eb1c6797214fb83184e802759b5",
+    "data/diagnostics/demian_distance_conditioning_v1_20261017/reservoir_83006_states.npz": "c794d8e75c13602761c4dfde5d87a1f13831db8cd6d42f1d7d277999758fb6fd",
+    "data/diagnostics/demian_distance_conditioning_v1_20261017/fit_reservoir_0_affine_contrast_white_true.npz": "ba4e209191d79dde9b47117853a137522d1b999914a37d55b0272a4c005a0a34",
+    "data/diagnostics/demian_distance_conditioning_v1_20261017/fit_reservoir_2_contrast_white_true.npz": "94ed3c217af6b5357557d4589d7159854a97a4931a1d7835dff13c130bf9500e",
+    "data/diagnostics/demian_distance_conditioning_v1_20261017/fit_reservoir_2_affine_contrast_white_true.npz": "e9c5c8030933767ce74cc4a7396ef313a445029bb040f3f9b216d5b3d4c7f1a7",
+    "data/diagnostics/demian_distance_conditioning_v1_20261017/fit_reservoir_8_contrast_white_true.npz": "7bd1a203a82af5cc2109a719cd604cbb91658944cf13cfa4236e2d1737e069b5",
+    "data/diagnostics/demian_distance_conditioning_v1_20261017/fit_reservoir_8_affine_contrast_white_true.npz": "ba6ab0fbee5b4bd8df2e2942e52cc88b9b6909ff404c09086d1a4bc642288c33",
+    "data/diagnostics/demian_distance_conditioning_v1_20261017/fit_reservoir_16_contrast_white_true.npz": "2ca2126acaeb6fbdd2edb22a5784c5abba4934458099600f46e174c83f587dfa",
+    "data/diagnostics/demian_distance_conditioning_v1_20261017/fit_reservoir_16_affine_contrast_white_true.npz": "3a97e2b533e1f6cac135cfce9e881c0da638686b55b0714b935514eca2f8dab4",
+    "data/diagnostics/demian_distance_conditioning_v1_20261017/fit_reservoir_24_contrast_white_true.npz": "327323ff8f7fcd017b6e40d1dfceede1c92041d07bbc02fe704f56801b6c228b",
+    "data/diagnostics/demian_distance_conditioning_v1_20261017/fit_reservoir_24_affine_contrast_white_true.npz": "97c4007ee3e03a7e22c7b5ad64310beb073e6f6f67f6fe335997635bfbe90671",
+    "data/diagnostics/demian_distance_conditioning_v1_20261017/fit_reservoir_32_contrast_white_true.npz": "98aeacd960aa71160d8e79f33cae5c519e2b8b473adf10cb141a7a6b0f4e3837",
+    "data/diagnostics/demian_distance_conditioning_v1_20261017/fit_reservoir_32_affine_contrast_white_true.npz": "cbaef6070ce3afac33e6b1a142656222038611cd68519f9ca310caa1c4dfb9cc",
+    "data/diagnostics/demian_distance_conditioning_v1_20261017/fit_reservoir_40_contrast_white_true.npz": "02bf3977d93ee721e7d4cd658294c2f2a37dd9911d3db8178f5ca70c1cbb305d",
+    "data/diagnostics/demian_distance_conditioning_v1_20261017/fit_reservoir_40_affine_contrast_white_true.npz": "d14ee9d17e887956a3abc7343b68eee9307fe2e837f5afc917b34a075dbf06a5",
+    "data/diagnostics/demian_distance_conditioning_v1_20261017/fit_reservoir_48_contrast_white_true.npz": "462aa636e8fb0a2c2943b928a95aa2a19273558d7581c0a9906d90ef82b58a0e",
+    "data/diagnostics/demian_distance_conditioning_v1_20261017/fit_reservoir_48_affine_contrast_white_true.npz": "430cc14f79c99a127f92c9054fd0fa0d2775d0c8d500369a05b152ca56ade98d",
+    "data/diagnostics/demian_distance_conditioning_v1_20261017/fit_reservoir_56_contrast_white_true.npz": "aaa7cc44ea201168c48276ca26d2ed0aaa9d9266130ef9ad82e88eb9efe94d79",
+    "data/diagnostics/demian_distance_conditioning_v1_20261017/fit_reservoir_56_affine_contrast_white_true.npz": "21b7ca86b9014c4c5e57fc2c4360cd4780b4b293a23a033e838370ad4c3f7b7b",
+    "data/diagnostics/demian_distance_conditioning_v1_20261017/fit_reservoir_64_contrast_white_true.npz": "132faa1af12658e3664fba934a035fcdf5ba70bf8e97c1c53d74048e2baad860",
+    "data/diagnostics/demian_distance_conditioning_v1_20261017/fit_reservoir_64_affine_contrast_white_true.npz": "65f08c546853ee37b14d746a977720e4b4b914b7354dcfd76b3fa58d50d3ce90"
+  }
+}
