@@ -1,0 +1,20 @@
+{
+  "reviewer": "Astra independent scientific review (/root/astra_cross_seed_audit)",
+  "reviewed_on": "2026-10-17",
+  "status": "returned",
+  "integrity": {
+    "manifest_hashes_verified": 214,
+    "frozen_fit_hashes_verified": 160,
+    "independently_recomputed_prediction_arrays_bitwise_exact": 1440,
+    "metric_and_gate_rows_exact": 480
+  },
+  "implementation": "No contrast algebra, frozen-fitting boundary or gate bug found.",
+  "conclusion": "Neither model passes the full primary gate. Frozen whitening amplifies feature extrapolation and residual directions at later delays. Source of those directions remains unresolved.",
+  "interpretation_constraints": [
+    "Delay2 Demian criterion pass does not imply increased prediction accuracy.",
+    "Incorrect-anchor controls can leave whitening training support; these scores are not ordinary chance accuracy.",
+    "Retained low-variance directions are not established as numerical noise.",
+    "Affine-surrogate results remain separate explanatory controls.",
+    "No architecture or hypothesis-status change."
+  ]
+}

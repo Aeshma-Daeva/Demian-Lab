@@ -28,7 +28,9 @@ reservoir6/6 through32,4/6 at64.
 Demian's delay2 criterion pass is not improved prediction: median true R² falls
 while incorrect-anchor permutation q95 falls to approximately-1522. The
 transformation makes incorrect correspondences costly without improving
-the primary task score. Alternative variants cannot rescue the frozen gate.
+the primary task score. Permuted features can leave the whitener's training
+distribution; this is a control on the entire fitted pipeline, not ordinary
+chance accuracy. Alternative variants cannot rescue the frozen gate.
 
 ## Conditioning audit
 
