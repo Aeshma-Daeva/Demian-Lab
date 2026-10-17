@@ -542,6 +542,18 @@ Use with:
 
 ## How To Use This Index
 
+## Frozen dynamic maze
+
+- Baseline: `diagnostics/demian_dynamic_maze_baseline_v1_20261017/`
+  (`development/`, `confirmation/`, independent `review.json`).
+- Paired diagnostic: `diagnostics/demian_maze_orientation_diagnostic_v1_20261017/`.
+- Interpretation: `docs/DEMIAN_DYNAMIC_MAZE_RESULTS.md`.
+- Compact metrics, protocols, heads, logits and manifests are versioned;
+  bulky raw states/traces remain local and hash-listed. No recurrence advantage,
+  learning or causal-routing claim; orientation and safe-detour limits apply.
+
+## Index maintenance
+
 When adding a live claim:
 1. add or update the claim in [docs/CLAIMS.md](/home/xenith/demian/docs/CLAIMS.md)
 2. add the main artifact path here if it is not already indexed

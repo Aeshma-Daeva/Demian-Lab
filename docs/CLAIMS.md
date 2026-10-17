@@ -23,7 +23,18 @@ Last updated: 2026-10-17
 - Boundary: large transformed-feature extrapolation is descriptive; its
   numerical or dynamical origin is unresolved.
 
-## Scientific Hierarchy
+## Frozen dynamic-maze baseline
+
+- Observation: recurrence advantage fails across ten parameter seeds;
+  observation-only and separately fitted reset controls solve every evaluation.
+- Inference: familiar-orientation recovery localizes a whole-pipeline transfer
+  limitation, not memory erasure. A safe detour removes memory necessity.
+- Evidence: `R-MAZE-BASELINE-001`, `R-MAZE-ORIENTATION-001`;
+  `DEMIAN_DYNAMIC_MAZE_RESULTS.md`.
+- Falsifier: independent replay or paired orientation evaluation contradicts
+  the stored policy outcomes. No learning or causal-route claim is promoted.
+
+## Scientific hierarchy (definitions)
 
 - **System:** Demian is a discrete-time nonlinear recurrent system,
   $z_{t+1}=F(z_t,x_t)$, with exposed readout $y_t=R(z_t)$.

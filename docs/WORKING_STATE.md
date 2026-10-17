@@ -23,7 +23,11 @@ Last updated: 2026-10-17
 - Planned next program: `superpowers/plans/2026-10-17-dynamic-maze-regulation.md`.
   Target: improved regulation through experience. First package builds the
   dynamic world and frozen behavioral baseline; learning/routing remains a
-  separately specified later branch. No maze execution has started.
+  separately specified later branch. First package and Astra review complete:
+  `DEMIAN_DYNAMIC_MAZE_RESULTS.md`. Frozen recurrence gate fails0/4 development
+  and0/6 confirmation; familiar-orientation recovery also occurs without memory.
+  Safe detour makes memory unnecessary for success. No run remains active.
+  Resolve task pressure/action transfer before any routing-learning branch.
 
 The following sections retain earlier program context; restart from the record above.
 

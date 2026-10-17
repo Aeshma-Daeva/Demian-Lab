@@ -1210,3 +1210,22 @@ Next:
   independently verified. No invalidating implementation issue found.
 - Registered `R-CROSS-CONDITION-001`; no hypothesis-status promotion.
 - Both packages complete; stable scientific baseline retained for discussion.
+
+## 2026-10-17 — Frozen dynamic maze and orientation diagnosis
+
+- Frozen world/interface/heads protocol at `d622671`; paired diagnosis at `a6ee68e`.
+- Four development and six reserved confirmation seeds;1,200 closed-loop
+  episodes/55,480 ticks. Original recurrence gate fails0/4 and0/6.
+- Confirmation: recurrent58.3% success; observation and separately fitted
+  per-tick-reset controls100%, using the eight-step safe detour.
+- Same four development heads recover100% on familiar orientations with
+  unchanged tapes. Matched-reset equals recurrent cost:6.458 actions.
+- Scripted history pairs change recurrent state but do not elicit both correct
+  actions; off-curriculum probe, not memory-capacity evidence.
+- Astra returned independent integrity review:238 baseline+43 diagnostic
+  manifest entries,30 heads, saved actions and selected exact state replay.
+- Verification:56 focused pass; full579 pass/four missing historical-artifact
+  failures. No active execution or pending review; no hypothesis promotion.
+- Results: `DEMIAN_DYNAMIC_MAZE_RESULTS.md`. Bulk raw arrays stay local,
+  hash-listed; compact evidence is versioned. Task pressure and action transfer
+  need separation before internal regulation learning can be evaluated.

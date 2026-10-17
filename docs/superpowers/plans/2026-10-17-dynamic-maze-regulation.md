@@ -109,7 +109,7 @@ Benchmark pilot wall time and storage before any larger campaign.
   trace. Add stateless encoder and independently fitted/frozen action heads.
   Test no privileged-field influence, fitting isolation, saved-fit prediction
   replay, one-action timing and unchanged Demian parameter hashes.
-- [ ] **Frozen controls:** intact recurrence, per-tick recurrence reset,
+- [x] **Frozen controls:** intact recurrence, per-tick recurrence reset,
   observation-only head, random policy and prerecorded-observation replay.
   Test acute resets with the intact head and a separately fitted reset-state
   head trained on the same allowed trajectories/labels and fitting budget.
@@ -119,14 +119,14 @@ Benchmark pilot wall time and storage before any larger campaign.
   Replay validates trajectories; it cannot supply a fair navigation score once
   actions and observations become inconsistent. Match exogenous world tapes;
   closed-loop trajectories may diverge because actions differ.
-- [ ] **Protocol/run:** create `docs/DEMIAN_DYNAMIC_MAZE_PROTOCOL.json` and
+- [x] **Protocol/run:** create `docs/DEMIAN_DYNAMIC_MAZE_PROTOCOL.json` and
   `development/run_demian_maze_baseline.py`. Verify seed novelty, fit/eval layout
   disjointness and snapshot completeness before execution. Save states,
   controller fits, world tapes, source/dependencies, predictions and hashes.
-- [ ] **Verification:** run `./venv/bin/python -m pytest -q
+- [x] **Verification:** run `./venv/bin/python -m pytest -q
   tests/test_demian_maze_world.py tests/test_demian_maze_runner.py`, then the
   existing closed-loop regression tests. Preserve and explain failures.
-- [ ] **Review/record:** Astra reviews leakage, action-head contribution,
+- [x] **Review/record:** Astra reviews leakage, action-head contribution,
   controls and conclusions. Register completed outcomes and artifact pins;
   append labbook, update working state and index. No automatic status promotion.
 
