@@ -1,0 +1,34 @@
+[
+  {
+    "seed": 84001,
+    "orientation": 0,
+    "same_current_observation": true,
+    "teacher_actions": [
+      "east",
+      "south"
+    ],
+    "predicted_actions": [
+      "east",
+      "east"
+    ],
+    "both_correct": false,
+    "state_history_gap": 0.3065570592880249,
+    "reset_gap": 0.0
+  },
+  {
+    "seed": 84001,
+    "orientation": 1,
+    "same_current_observation": true,
+    "teacher_actions": [
+      "south",
+      "west"
+    ],
+    "predicted_actions": [
+      "east",
+      "east"
+    ],
+    "both_correct": false,
+    "state_history_gap": 0.26028645038604736,
+    "reset_gap": 0.0
+  }
+]

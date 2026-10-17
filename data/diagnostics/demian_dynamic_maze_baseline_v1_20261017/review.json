@@ -1,0 +1,25 @@
+{
+  "reviewer": "Astra /root/astra_cross_seed_audit",
+  "date": "2026-10-17",
+  "status": "returned",
+  "conclusion": "No invalidating implementation bug found; no recurrence advantage under the frozen interface and protocol.",
+  "verification": {
+    "baseline_manifest_entries": 238,
+    "frozen_heads": 30,
+    "saved_policy_actions": 38710,
+    "selected_replay_episodes": 12,
+    "bitwise_state_and_public_vector_replay_ticks": 694,
+    "maximum_norm_summary_difference": 0.000061,
+    "orientation_manifest_entries": 43,
+    "orientation_saved_actions": 1884
+  },
+  "limitations": [
+    "Safe detour reaches control success ceiling; original ten-point advantage is impossible there.",
+    "Orientation recovery concerns the entire encoder-dynamics-readout pipeline, not the head alone.",
+    "Acute reset creates a readout distribution shift; matched-reset fitting is essential.",
+    "History-dependent state is not demonstrated useful memory; no learning or causal-route conclusion.",
+    "Norm summaries are not bitwise replay claims."
+  ],
+  "tests": {"maze_passed": 16, "focused_passed": 56, "full_passed": 579, "full_failed": 4, "failure_scope": "Missing historical v10/evolution artifacts"},
+  "raw_archive": "Large raw states, parameter arrays, training matrices and traces remain local and hash-listed. Compact versioned evidence is not the complete archive."
+}

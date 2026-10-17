@@ -1,0 +1,11 @@
+{
+  "status": "complete",
+  "stage": "smoke",
+  "hidden_size": 16,
+  "source_revision": "7ed0f0f7739e121f7da10811e17cf00d823ce9ae",
+  "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "numpy": "2.5.3",
+  "torch": "2.4.1+cu121",
+  "threads": 1,
+  "wall_seconds": 1.335485697999502
+}

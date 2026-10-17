@@ -1,0 +1,8 @@
+{
+  "protocol_id": "demian-dynamic-maze-baseline-v1",
+  "stage": "smoke",
+  "seed_count": 1,
+  "supporting_seeds": [],
+  "gate_pass": null,
+  "claim_boundary": "Frozen system with externally fitted action heads. Navigation/regulation, recurrence contribution and readout failure remain separate; no internal learning, smart-routing mechanism, AFP or architecture superiority claim."
+}

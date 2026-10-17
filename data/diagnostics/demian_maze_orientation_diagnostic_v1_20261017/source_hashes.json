@@ -1,0 +1,14 @@
+{
+  "data/diagnostics/demian_dynamic_maze_baseline_v1_20261017/development/fit_84001_recurrent.npz": "9650dcc7b6f163da0ece63943e14b15d63a3f8cc7b0526ff26440a60da341ec9",
+  "data/diagnostics/demian_dynamic_maze_baseline_v1_20261017/development/fit_84001_reset_matched.npz": "42cd39e4cf5ea5ae17ae15f64bdb3b448c03e5db248cceedb2ba1139e1ba00f9",
+  "data/diagnostics/demian_dynamic_maze_baseline_v1_20261017/development/fit_84001_observation.npz": "d15a926444e28b1403f57e570fbb4eff8281c59321e162cd9d8aa32cf45277ce",
+  "data/diagnostics/demian_dynamic_maze_baseline_v1_20261017/development/fit_84002_recurrent.npz": "d86a11aee6ef1d6ef64eb3eab2c2cda0fb00d224124e17268ecd044341ba1c0f",
+  "data/diagnostics/demian_dynamic_maze_baseline_v1_20261017/development/fit_84002_reset_matched.npz": "942e439bb1b4c2d678d6b4574a9dd591a0d7ba2b107424d7fd9430010cc4b3fb",
+  "data/diagnostics/demian_dynamic_maze_baseline_v1_20261017/development/fit_84002_observation.npz": "d15a926444e28b1403f57e570fbb4eff8281c59321e162cd9d8aa32cf45277ce",
+  "data/diagnostics/demian_dynamic_maze_baseline_v1_20261017/development/fit_84003_recurrent.npz": "9c2326267d262d95cb8a9648584bb77b232e778ff742d386b559a26b130b1e42",
+  "data/diagnostics/demian_dynamic_maze_baseline_v1_20261017/development/fit_84003_reset_matched.npz": "93be1eee7a7f02ecf377e3bfdf29582ff475c049f1e84e7d2a19797385f8bf36",
+  "data/diagnostics/demian_dynamic_maze_baseline_v1_20261017/development/fit_84003_observation.npz": "d15a926444e28b1403f57e570fbb4eff8281c59321e162cd9d8aa32cf45277ce",
+  "data/diagnostics/demian_dynamic_maze_baseline_v1_20261017/development/fit_84004_recurrent.npz": "fd5bec4a65f61ff8d07d37d6217a410a7201351d4db669ca4529c2454e6fb56a",
+  "data/diagnostics/demian_dynamic_maze_baseline_v1_20261017/development/fit_84004_reset_matched.npz": "485c7ec3f0614f9bfdb0d99a192fc0fc3c7f654316d1b5444743e59c21afa2fc",
+  "data/diagnostics/demian_dynamic_maze_baseline_v1_20261017/development/fit_84004_observation.npz": "d15a926444e28b1403f57e570fbb4eff8281c59321e162cd9d8aa32cf45277ce"
+}

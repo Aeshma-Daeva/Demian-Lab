@@ -1,0 +1,194 @@
+[
+  {
+    "seed": 85001,
+    "orientation": 0,
+    "same_current_observation": true,
+    "teacher_actions": [
+      "east",
+      "south"
+    ],
+    "predicted_actions": [
+      "south",
+      "south"
+    ],
+    "both_correct": false,
+    "state_history_gap": 0.24296711385250092,
+    "reset_gap": 0.0
+  },
+  {
+    "seed": 85001,
+    "orientation": 1,
+    "same_current_observation": true,
+    "teacher_actions": [
+      "south",
+      "west"
+    ],
+    "predicted_actions": [
+      "west",
+      "west"
+    ],
+    "both_correct": false,
+    "state_history_gap": 0.2501589357852936,
+    "reset_gap": 0.0
+  },
+  {
+    "seed": 85002,
+    "orientation": 0,
+    "same_current_observation": true,
+    "teacher_actions": [
+      "east",
+      "south"
+    ],
+    "predicted_actions": [
+      "south",
+      "south"
+    ],
+    "both_correct": false,
+    "state_history_gap": 0.23840652406215668,
+    "reset_gap": 0.0
+  },
+  {
+    "seed": 85002,
+    "orientation": 1,
+    "same_current_observation": true,
+    "teacher_actions": [
+      "south",
+      "west"
+    ],
+    "predicted_actions": [
+      "west",
+      "west"
+    ],
+    "both_correct": false,
+    "state_history_gap": 0.24266141653060913,
+    "reset_gap": 0.0
+  },
+  {
+    "seed": 85003,
+    "orientation": 0,
+    "same_current_observation": true,
+    "teacher_actions": [
+      "east",
+      "south"
+    ],
+    "predicted_actions": [
+      "south",
+      "south"
+    ],
+    "both_correct": false,
+    "state_history_gap": 0.24084030091762543,
+    "reset_gap": 0.0
+  },
+  {
+    "seed": 85003,
+    "orientation": 1,
+    "same_current_observation": true,
+    "teacher_actions": [
+      "south",
+      "west"
+    ],
+    "predicted_actions": [
+      "west",
+      "west"
+    ],
+    "both_correct": false,
+    "state_history_gap": 0.24175190925598145,
+    "reset_gap": 0.0
+  },
+  {
+    "seed": 85004,
+    "orientation": 0,
+    "same_current_observation": true,
+    "teacher_actions": [
+      "east",
+      "south"
+    ],
+    "predicted_actions": [
+      "south",
+      "south"
+    ],
+    "both_correct": false,
+    "state_history_gap": 0.2507367432117462,
+    "reset_gap": 0.0
+  },
+  {
+    "seed": 85004,
+    "orientation": 1,
+    "same_current_observation": true,
+    "teacher_actions": [
+      "south",
+      "west"
+    ],
+    "predicted_actions": [
+      "west",
+      "west"
+    ],
+    "both_correct": false,
+    "state_history_gap": 0.24746833741664886,
+    "reset_gap": 0.0
+  },
+  {
+    "seed": 85005,
+    "orientation": 0,
+    "same_current_observation": true,
+    "teacher_actions": [
+      "east",
+      "south"
+    ],
+    "predicted_actions": [
+      "south",
+      "south"
+    ],
+    "both_correct": false,
+    "state_history_gap": 0.25218451023101807,
+    "reset_gap": 0.0
+  },
+  {
+    "seed": 85005,
+    "orientation": 1,
+    "same_current_observation": true,
+    "teacher_actions": [
+      "south",
+      "west"
+    ],
+    "predicted_actions": [
+      "west",
+      "west"
+    ],
+    "both_correct": false,
+    "state_history_gap": 0.2517387270927429,
+    "reset_gap": 0.0
+  },
+  {
+    "seed": 85006,
+    "orientation": 0,
+    "same_current_observation": true,
+    "teacher_actions": [
+      "east",
+      "south"
+    ],
+    "predicted_actions": [
+      "south",
+      "south"
+    ],
+    "both_correct": false,
+    "state_history_gap": 0.25429072976112366,
+    "reset_gap": 0.0
+  },
+  {
+    "seed": 85006,
+    "orientation": 1,
+    "same_current_observation": true,
+    "teacher_actions": [
+      "south",
+      "west"
+    ],
+    "predicted_actions": [
+      "west",
+      "west"
+    ],
+    "both_correct": false,
+    "state_history_gap": 0.2574910819530487,
+    "reset_gap": 0.0
+  }
+]

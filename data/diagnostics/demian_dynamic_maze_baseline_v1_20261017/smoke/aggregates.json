@@ -1,0 +1,72 @@
+[
+  {
+    "seed": 84001,
+    "policy": "recurrent",
+    "condition": "all",
+    "success_rate": 0.0,
+    "cost": 96.0
+  },
+  {
+    "seed": 84001,
+    "policy": "recurrent",
+    "condition": "open",
+    "success_rate": 0.0,
+    "cost": 96.0
+  },
+  {
+    "seed": 84001,
+    "policy": "reset_matched",
+    "condition": "all",
+    "success_rate": 0.0,
+    "cost": 96.0
+  },
+  {
+    "seed": 84001,
+    "policy": "reset_matched",
+    "condition": "open",
+    "success_rate": 0.0,
+    "cost": 96.0
+  },
+  {
+    "seed": 84001,
+    "policy": "reset_acute",
+    "condition": "all",
+    "success_rate": 0.0,
+    "cost": 96.0
+  },
+  {
+    "seed": 84001,
+    "policy": "reset_acute",
+    "condition": "open",
+    "success_rate": 0.0,
+    "cost": 96.0
+  },
+  {
+    "seed": 84001,
+    "policy": "observation",
+    "condition": "all",
+    "success_rate": 0.0,
+    "cost": 96.0
+  },
+  {
+    "seed": 84001,
+    "policy": "observation",
+    "condition": "open",
+    "success_rate": 0.0,
+    "cost": 96.0
+  },
+  {
+    "seed": 84001,
+    "policy": "random",
+    "condition": "all",
+    "success_rate": 0.5,
+    "cost": 66.5
+  },
+  {
+    "seed": 84001,
+    "policy": "random",
+    "condition": "open",
+    "success_rate": 0.5,
+    "cost": 66.5
+  }
+]

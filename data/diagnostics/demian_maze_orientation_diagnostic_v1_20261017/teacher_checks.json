@@ -1,0 +1,62 @@
+[
+  {
+    "seed": 84001,
+    "policy": "recurrent",
+    "teacher_accuracy": 0.9932885906040269
+  },
+  {
+    "seed": 84001,
+    "policy": "reset_matched",
+    "teacher_accuracy": 0.9932885906040269
+  },
+  {
+    "seed": 84001,
+    "policy": "observation",
+    "teacher_accuracy": 0.9865771812080537
+  },
+  {
+    "seed": 84002,
+    "policy": "recurrent",
+    "teacher_accuracy": 0.9932885906040269
+  },
+  {
+    "seed": 84002,
+    "policy": "reset_matched",
+    "teacher_accuracy": 0.9932885906040269
+  },
+  {
+    "seed": 84002,
+    "policy": "observation",
+    "teacher_accuracy": 0.9865771812080537
+  },
+  {
+    "seed": 84003,
+    "policy": "recurrent",
+    "teacher_accuracy": 0.9932885906040269
+  },
+  {
+    "seed": 84003,
+    "policy": "reset_matched",
+    "teacher_accuracy": 0.9932885906040269
+  },
+  {
+    "seed": 84003,
+    "policy": "observation",
+    "teacher_accuracy": 0.9865771812080537
+  },
+  {
+    "seed": 84004,
+    "policy": "recurrent",
+    "teacher_accuracy": 0.9932885906040269
+  },
+  {
+    "seed": 84004,
+    "policy": "reset_matched",
+    "teacher_accuracy": 0.9932885906040269
+  },
+  {
+    "seed": 84004,
+    "policy": "observation",
+    "teacher_accuracy": 0.9865771812080537
+  }
+]

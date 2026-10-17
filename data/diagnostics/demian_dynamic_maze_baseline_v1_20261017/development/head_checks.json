@@ -1,0 +1,170 @@
+[
+  {
+    "seed": 84001,
+    "head": "recurrent",
+    "training_accuracy": 1.0,
+    "heldout_teacher_accuracy": 0.30201342281879195,
+    "training_action_counts": [
+      42,
+      50,
+      133,
+      133,
+      23
+    ],
+    "coefficient_count": 6565
+  },
+  {
+    "seed": 84001,
+    "head": "reset_matched",
+    "training_accuracy": 0.989501312335958,
+    "heldout_teacher_accuracy": 0.6912751677852349,
+    "training_action_counts": [
+      42,
+      50,
+      133,
+      133,
+      23
+    ],
+    "coefficient_count": 6565
+  },
+  {
+    "seed": 84001,
+    "head": "observation",
+    "training_accuracy": 0.9868766404199475,
+    "heldout_teacher_accuracy": 0.7248322147651006,
+    "training_action_counts": [
+      42,
+      50,
+      133,
+      133,
+      23
+    ],
+    "coefficient_count": 250
+  },
+  {
+    "seed": 84002,
+    "head": "recurrent",
+    "training_accuracy": 1.0,
+    "heldout_teacher_accuracy": 0.3422818791946309,
+    "training_action_counts": [
+      42,
+      50,
+      133,
+      133,
+      23
+    ],
+    "coefficient_count": 6565
+  },
+  {
+    "seed": 84002,
+    "head": "reset_matched",
+    "training_accuracy": 0.989501312335958,
+    "heldout_teacher_accuracy": 0.6644295302013423,
+    "training_action_counts": [
+      42,
+      50,
+      133,
+      133,
+      23
+    ],
+    "coefficient_count": 6565
+  },
+  {
+    "seed": 84002,
+    "head": "observation",
+    "training_accuracy": 0.9868766404199475,
+    "heldout_teacher_accuracy": 0.7248322147651006,
+    "training_action_counts": [
+      42,
+      50,
+      133,
+      133,
+      23
+    ],
+    "coefficient_count": 250
+  },
+  {
+    "seed": 84003,
+    "head": "recurrent",
+    "training_accuracy": 1.0,
+    "heldout_teacher_accuracy": 0.2684563758389262,
+    "training_action_counts": [
+      42,
+      50,
+      133,
+      133,
+      23
+    ],
+    "coefficient_count": 6565
+  },
+  {
+    "seed": 84003,
+    "head": "reset_matched",
+    "training_accuracy": 0.989501312335958,
+    "heldout_teacher_accuracy": 0.6778523489932886,
+    "training_action_counts": [
+      42,
+      50,
+      133,
+      133,
+      23
+    ],
+    "coefficient_count": 6565
+  },
+  {
+    "seed": 84003,
+    "head": "observation",
+    "training_accuracy": 0.9868766404199475,
+    "heldout_teacher_accuracy": 0.7248322147651006,
+    "training_action_counts": [
+      42,
+      50,
+      133,
+      133,
+      23
+    ],
+    "coefficient_count": 250
+  },
+  {
+    "seed": 84004,
+    "head": "recurrent",
+    "training_accuracy": 1.0,
+    "heldout_teacher_accuracy": 0.24161073825503357,
+    "training_action_counts": [
+      42,
+      50,
+      133,
+      133,
+      23
+    ],
+    "coefficient_count": 6565
+  },
+  {
+    "seed": 84004,
+    "head": "reset_matched",
+    "training_accuracy": 0.989501312335958,
+    "heldout_teacher_accuracy": 0.6174496644295302,
+    "training_action_counts": [
+      42,
+      50,
+      133,
+      133,
+      23
+    ],
+    "coefficient_count": 6565
+  },
+  {
+    "seed": 84004,
+    "head": "observation",
+    "training_accuracy": 0.9868766404199475,
+    "heldout_teacher_accuracy": 0.7248322147651006,
+    "training_action_counts": [
+      42,
+      50,
+      133,
+      133,
+      23
+    ],
+    "coefficient_count": 250
+  }
+]

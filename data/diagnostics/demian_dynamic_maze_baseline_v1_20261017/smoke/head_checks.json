@@ -1,0 +1,20 @@
+[
+  {
+    "seed": 84001,
+    "head": "recurrent",
+    "training_accuracy": 1.0,
+    "heldout_teacher_accuracy": 0.0
+  },
+  {
+    "seed": 84001,
+    "head": "reset_matched",
+    "training_accuracy": 1.0,
+    "heldout_teacher_accuracy": 0.0
+  },
+  {
+    "seed": 84001,
+    "head": "observation",
+    "training_accuracy": 1.0,
+    "heldout_teacher_accuracy": 0.0
+  }
+]

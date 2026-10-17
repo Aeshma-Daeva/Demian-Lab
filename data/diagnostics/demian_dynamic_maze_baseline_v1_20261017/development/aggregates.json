@@ -1,0 +1,702 @@
+[
+  {
+    "seed": 84001,
+    "policy": "recurrent",
+    "condition": "all",
+    "success_rate": 0.625,
+    "cost": 60.875
+  },
+  {
+    "seed": 84001,
+    "policy": "recurrent",
+    "condition": "open",
+    "success_rate": 0.6666666666666666,
+    "cost": 59.666666666666664
+  },
+  {
+    "seed": 84001,
+    "policy": "recurrent",
+    "condition": "closed",
+    "success_rate": 0.5,
+    "cost": 64.5
+  },
+  {
+    "seed": 84001,
+    "policy": "recurrent",
+    "condition": "periodic",
+    "success_rate": 0.6666666666666666,
+    "cost": 59.666666666666664
+  },
+  {
+    "seed": 84001,
+    "policy": "recurrent",
+    "condition": "switch",
+    "success_rate": 0.6666666666666666,
+    "cost": 59.666666666666664
+  },
+  {
+    "seed": 84001,
+    "policy": "reset_matched",
+    "condition": "all",
+    "success_rate": 1.0,
+    "cost": 8.0
+  },
+  {
+    "seed": 84001,
+    "policy": "reset_matched",
+    "condition": "open",
+    "success_rate": 1.0,
+    "cost": 8.0
+  },
+  {
+    "seed": 84001,
+    "policy": "reset_matched",
+    "condition": "closed",
+    "success_rate": 1.0,
+    "cost": 8.0
+  },
+  {
+    "seed": 84001,
+    "policy": "reset_matched",
+    "condition": "periodic",
+    "success_rate": 1.0,
+    "cost": 8.0
+  },
+  {
+    "seed": 84001,
+    "policy": "reset_matched",
+    "condition": "switch",
+    "success_rate": 1.0,
+    "cost": 8.0
+  },
+  {
+    "seed": 84001,
+    "policy": "reset_acute",
+    "condition": "all",
+    "success_rate": 0.0,
+    "cost": 96.0
+  },
+  {
+    "seed": 84001,
+    "policy": "reset_acute",
+    "condition": "open",
+    "success_rate": 0.0,
+    "cost": 96.0
+  },
+  {
+    "seed": 84001,
+    "policy": "reset_acute",
+    "condition": "closed",
+    "success_rate": 0.0,
+    "cost": 96.0
+  },
+  {
+    "seed": 84001,
+    "policy": "reset_acute",
+    "condition": "periodic",
+    "success_rate": 0.0,
+    "cost": 96.0
+  },
+  {
+    "seed": 84001,
+    "policy": "reset_acute",
+    "condition": "switch",
+    "success_rate": 0.0,
+    "cost": 96.0
+  },
+  {
+    "seed": 84001,
+    "policy": "observation",
+    "condition": "all",
+    "success_rate": 1.0,
+    "cost": 8.0
+  },
+  {
+    "seed": 84001,
+    "policy": "observation",
+    "condition": "open",
+    "success_rate": 1.0,
+    "cost": 8.0
+  },
+  {
+    "seed": 84001,
+    "policy": "observation",
+    "condition": "closed",
+    "success_rate": 1.0,
+    "cost": 8.0
+  },
+  {
+    "seed": 84001,
+    "policy": "observation",
+    "condition": "periodic",
+    "success_rate": 1.0,
+    "cost": 8.0
+  },
+  {
+    "seed": 84001,
+    "policy": "observation",
+    "condition": "switch",
+    "success_rate": 1.0,
+    "cost": 8.0
+  },
+  {
+    "seed": 84001,
+    "policy": "random",
+    "condition": "all",
+    "success_rate": 0.5416666666666666,
+    "cost": 69.95833333333333
+  },
+  {
+    "seed": 84001,
+    "policy": "random",
+    "condition": "open",
+    "success_rate": 0.6666666666666666,
+    "cost": 60.166666666666664
+  },
+  {
+    "seed": 84001,
+    "policy": "random",
+    "condition": "closed",
+    "success_rate": 0.16666666666666666,
+    "cost": 92.33333333333333
+  },
+  {
+    "seed": 84001,
+    "policy": "random",
+    "condition": "periodic",
+    "success_rate": 0.6666666666666666,
+    "cost": 63.833333333333336
+  },
+  {
+    "seed": 84001,
+    "policy": "random",
+    "condition": "switch",
+    "success_rate": 0.6666666666666666,
+    "cost": 63.5
+  },
+  {
+    "seed": 84002,
+    "policy": "recurrent",
+    "condition": "all",
+    "success_rate": 0.6666666666666666,
+    "cost": 40.166666666666664
+  },
+  {
+    "seed": 84002,
+    "policy": "recurrent",
+    "condition": "open",
+    "success_rate": 0.6666666666666666,
+    "cost": 40.166666666666664
+  },
+  {
+    "seed": 84002,
+    "policy": "recurrent",
+    "condition": "closed",
+    "success_rate": 0.6666666666666666,
+    "cost": 40.166666666666664
+  },
+  {
+    "seed": 84002,
+    "policy": "recurrent",
+    "condition": "periodic",
+    "success_rate": 0.6666666666666666,
+    "cost": 40.166666666666664
+  },
+  {
+    "seed": 84002,
+    "policy": "recurrent",
+    "condition": "switch",
+    "success_rate": 0.6666666666666666,
+    "cost": 40.166666666666664
+  },
+  {
+    "seed": 84002,
+    "policy": "reset_matched",
+    "condition": "all",
+    "success_rate": 1.0,
+    "cost": 8.0
+  },
+  {
+    "seed": 84002,
+    "policy": "reset_matched",
+    "condition": "open",
+    "success_rate": 1.0,
+    "cost": 8.0
+  },
+  {
+    "seed": 84002,
+    "policy": "reset_matched",
+    "condition": "closed",
+    "success_rate": 1.0,
+    "cost": 8.0
+  },
+  {
+    "seed": 84002,
+    "policy": "reset_matched",
+    "condition": "periodic",
+    "success_rate": 1.0,
+    "cost": 8.0
+  },
+  {
+    "seed": 84002,
+    "policy": "reset_matched",
+    "condition": "switch",
+    "success_rate": 1.0,
+    "cost": 8.0
+  },
+  {
+    "seed": 84002,
+    "policy": "reset_acute",
+    "condition": "all",
+    "success_rate": 0.0,
+    "cost": 96.0
+  },
+  {
+    "seed": 84002,
+    "policy": "reset_acute",
+    "condition": "open",
+    "success_rate": 0.0,
+    "cost": 96.0
+  },
+  {
+    "seed": 84002,
+    "policy": "reset_acute",
+    "condition": "closed",
+    "success_rate": 0.0,
+    "cost": 96.0
+  },
+  {
+    "seed": 84002,
+    "policy": "reset_acute",
+    "condition": "periodic",
+    "success_rate": 0.0,
+    "cost": 96.0
+  },
+  {
+    "seed": 84002,
+    "policy": "reset_acute",
+    "condition": "switch",
+    "success_rate": 0.0,
+    "cost": 96.0
+  },
+  {
+    "seed": 84002,
+    "policy": "observation",
+    "condition": "all",
+    "success_rate": 1.0,
+    "cost": 8.0
+  },
+  {
+    "seed": 84002,
+    "policy": "observation",
+    "condition": "open",
+    "success_rate": 1.0,
+    "cost": 8.0
+  },
+  {
+    "seed": 84002,
+    "policy": "observation",
+    "condition": "closed",
+    "success_rate": 1.0,
+    "cost": 8.0
+  },
+  {
+    "seed": 84002,
+    "policy": "observation",
+    "condition": "periodic",
+    "success_rate": 1.0,
+    "cost": 8.0
+  },
+  {
+    "seed": 84002,
+    "policy": "observation",
+    "condition": "switch",
+    "success_rate": 1.0,
+    "cost": 8.0
+  },
+  {
+    "seed": 84002,
+    "policy": "random",
+    "condition": "all",
+    "success_rate": 0.625,
+    "cost": 69.83333333333333
+  },
+  {
+    "seed": 84002,
+    "policy": "random",
+    "condition": "open",
+    "success_rate": 0.6666666666666666,
+    "cost": 66.83333333333333
+  },
+  {
+    "seed": 84002,
+    "policy": "random",
+    "condition": "closed",
+    "success_rate": 0.5,
+    "cost": 78.5
+  },
+  {
+    "seed": 84002,
+    "policy": "random",
+    "condition": "periodic",
+    "success_rate": 0.8333333333333334,
+    "cost": 61.833333333333336
+  },
+  {
+    "seed": 84002,
+    "policy": "random",
+    "condition": "switch",
+    "success_rate": 0.5,
+    "cost": 72.16666666666667
+  },
+  {
+    "seed": 84003,
+    "policy": "recurrent",
+    "condition": "all",
+    "success_rate": 0.625,
+    "cost": 44.083333333333336
+  },
+  {
+    "seed": 84003,
+    "policy": "recurrent",
+    "condition": "open",
+    "success_rate": 0.6666666666666666,
+    "cost": 40.5
+  },
+  {
+    "seed": 84003,
+    "policy": "recurrent",
+    "condition": "closed",
+    "success_rate": 0.5,
+    "cost": 54.5
+  },
+  {
+    "seed": 84003,
+    "policy": "recurrent",
+    "condition": "periodic",
+    "success_rate": 0.6666666666666666,
+    "cost": 40.666666666666664
+  },
+  {
+    "seed": 84003,
+    "policy": "recurrent",
+    "condition": "switch",
+    "success_rate": 0.6666666666666666,
+    "cost": 40.666666666666664
+  },
+  {
+    "seed": 84003,
+    "policy": "reset_matched",
+    "condition": "all",
+    "success_rate": 1.0,
+    "cost": 8.0
+  },
+  {
+    "seed": 84003,
+    "policy": "reset_matched",
+    "condition": "open",
+    "success_rate": 1.0,
+    "cost": 8.0
+  },
+  {
+    "seed": 84003,
+    "policy": "reset_matched",
+    "condition": "closed",
+    "success_rate": 1.0,
+    "cost": 8.0
+  },
+  {
+    "seed": 84003,
+    "policy": "reset_matched",
+    "condition": "periodic",
+    "success_rate": 1.0,
+    "cost": 8.0
+  },
+  {
+    "seed": 84003,
+    "policy": "reset_matched",
+    "condition": "switch",
+    "success_rate": 1.0,
+    "cost": 8.0
+  },
+  {
+    "seed": 84003,
+    "policy": "reset_acute",
+    "condition": "all",
+    "success_rate": 0.0,
+    "cost": 96.0
+  },
+  {
+    "seed": 84003,
+    "policy": "reset_acute",
+    "condition": "open",
+    "success_rate": 0.0,
+    "cost": 96.0
+  },
+  {
+    "seed": 84003,
+    "policy": "reset_acute",
+    "condition": "closed",
+    "success_rate": 0.0,
+    "cost": 96.0
+  },
+  {
+    "seed": 84003,
+    "policy": "reset_acute",
+    "condition": "periodic",
+    "success_rate": 0.0,
+    "cost": 96.0
+  },
+  {
+    "seed": 84003,
+    "policy": "reset_acute",
+    "condition": "switch",
+    "success_rate": 0.0,
+    "cost": 96.0
+  },
+  {
+    "seed": 84003,
+    "policy": "observation",
+    "condition": "all",
+    "success_rate": 1.0,
+    "cost": 8.0
+  },
+  {
+    "seed": 84003,
+    "policy": "observation",
+    "condition": "open",
+    "success_rate": 1.0,
+    "cost": 8.0
+  },
+  {
+    "seed": 84003,
+    "policy": "observation",
+    "condition": "closed",
+    "success_rate": 1.0,
+    "cost": 8.0
+  },
+  {
+    "seed": 84003,
+    "policy": "observation",
+    "condition": "periodic",
+    "success_rate": 1.0,
+    "cost": 8.0
+  },
+  {
+    "seed": 84003,
+    "policy": "observation",
+    "condition": "switch",
+    "success_rate": 1.0,
+    "cost": 8.0
+  },
+  {
+    "seed": 84003,
+    "policy": "random",
+    "condition": "all",
+    "success_rate": 0.625,
+    "cost": 65.25
+  },
+  {
+    "seed": 84003,
+    "policy": "random",
+    "condition": "open",
+    "success_rate": 0.5,
+    "cost": 72.33333333333333
+  },
+  {
+    "seed": 84003,
+    "policy": "random",
+    "condition": "closed",
+    "success_rate": 0.16666666666666666,
+    "cost": 91.66666666666667
+  },
+  {
+    "seed": 84003,
+    "policy": "random",
+    "condition": "periodic",
+    "success_rate": 0.8333333333333334,
+    "cost": 67.16666666666667
+  },
+  {
+    "seed": 84003,
+    "policy": "random",
+    "condition": "switch",
+    "success_rate": 1.0,
+    "cost": 29.833333333333332
+  },
+  {
+    "seed": 84004,
+    "policy": "recurrent",
+    "condition": "all",
+    "success_rate": 0.6666666666666666,
+    "cost": 41.666666666666664
+  },
+  {
+    "seed": 84004,
+    "policy": "recurrent",
+    "condition": "open",
+    "success_rate": 0.6666666666666666,
+    "cost": 41.666666666666664
+  },
+  {
+    "seed": 84004,
+    "policy": "recurrent",
+    "condition": "closed",
+    "success_rate": 0.6666666666666666,
+    "cost": 41.666666666666664
+  },
+  {
+    "seed": 84004,
+    "policy": "recurrent",
+    "condition": "periodic",
+    "success_rate": 0.6666666666666666,
+    "cost": 41.666666666666664
+  },
+  {
+    "seed": 84004,
+    "policy": "recurrent",
+    "condition": "switch",
+    "success_rate": 0.6666666666666666,
+    "cost": 41.666666666666664
+  },
+  {
+    "seed": 84004,
+    "policy": "reset_matched",
+    "condition": "all",
+    "success_rate": 1.0,
+    "cost": 8.0
+  },
+  {
+    "seed": 84004,
+    "policy": "reset_matched",
+    "condition": "open",
+    "success_rate": 1.0,
+    "cost": 8.0
+  },
+  {
+    "seed": 84004,
+    "policy": "reset_matched",
+    "condition": "closed",
+    "success_rate": 1.0,
+    "cost": 8.0
+  },
+  {
+    "seed": 84004,
+    "policy": "reset_matched",
+    "condition": "periodic",
+    "success_rate": 1.0,
+    "cost": 8.0
+  },
+  {
+    "seed": 84004,
+    "policy": "reset_matched",
+    "condition": "switch",
+    "success_rate": 1.0,
+    "cost": 8.0
+  },
+  {
+    "seed": 84004,
+    "policy": "reset_acute",
+    "condition": "all",
+    "success_rate": 0.0,
+    "cost": 96.0
+  },
+  {
+    "seed": 84004,
+    "policy": "reset_acute",
+    "condition": "open",
+    "success_rate": 0.0,
+    "cost": 96.0
+  },
+  {
+    "seed": 84004,
+    "policy": "reset_acute",
+    "condition": "closed",
+    "success_rate": 0.0,
+    "cost": 96.0
+  },
+  {
+    "seed": 84004,
+    "policy": "reset_acute",
+    "condition": "periodic",
+    "success_rate": 0.0,
+    "cost": 96.0
+  },
+  {
+    "seed": 84004,
+    "policy": "reset_acute",
+    "condition": "switch",
+    "success_rate": 0.0,
+    "cost": 96.0
+  },
+  {
+    "seed": 84004,
+    "policy": "observation",
+    "condition": "all",
+    "success_rate": 1.0,
+    "cost": 8.0
+  },
+  {
+    "seed": 84004,
+    "policy": "observation",
+    "condition": "open",
+    "success_rate": 1.0,
+    "cost": 8.0
+  },
+  {
+    "seed": 84004,
+    "policy": "observation",
+    "condition": "closed",
+    "success_rate": 1.0,
+    "cost": 8.0
+  },
+  {
+    "seed": 84004,
+    "policy": "observation",
+    "condition": "periodic",
+    "success_rate": 1.0,
+    "cost": 8.0
+  },
+  {
+    "seed": 84004,
+    "policy": "observation",
+    "condition": "switch",
+    "success_rate": 1.0,
+    "cost": 8.0
+  },
+  {
+    "seed": 84004,
+    "policy": "random",
+    "condition": "all",
+    "success_rate": 0.4583333333333333,
+    "cost": 75.83333333333333
+  },
+  {
+    "seed": 84004,
+    "policy": "random",
+    "condition": "open",
+    "success_rate": 0.8333333333333334,
+    "cost": 55.833333333333336
+  },
+  {
+    "seed": 84004,
+    "policy": "random",
+    "condition": "closed",
+    "success_rate": 0.3333333333333333,
+    "cost": 89.83333333333333
+  },
+  {
+    "seed": 84004,
+    "policy": "random",
+    "condition": "periodic",
+    "success_rate": 0.16666666666666666,
+    "cost": 89.66666666666667
+  },
+  {
+    "seed": 84004,
+    "policy": "random",
+    "condition": "switch",
+    "success_rate": 0.5,
+    "cost": 68.0
+  }
+]

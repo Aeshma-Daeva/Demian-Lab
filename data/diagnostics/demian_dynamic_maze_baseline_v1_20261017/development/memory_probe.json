@@ -1,0 +1,130 @@
+[
+  {
+    "seed": 84001,
+    "orientation": 0,
+    "same_current_observation": true,
+    "teacher_actions": [
+      "east",
+      "south"
+    ],
+    "predicted_actions": [
+      "south",
+      "south"
+    ],
+    "both_correct": false,
+    "state_history_gap": 0.24032288789749146,
+    "reset_gap": 0.0
+  },
+  {
+    "seed": 84001,
+    "orientation": 1,
+    "same_current_observation": true,
+    "teacher_actions": [
+      "south",
+      "west"
+    ],
+    "predicted_actions": [
+      "west",
+      "west"
+    ],
+    "both_correct": false,
+    "state_history_gap": 0.23248827457427979,
+    "reset_gap": 0.0
+  },
+  {
+    "seed": 84002,
+    "orientation": 0,
+    "same_current_observation": true,
+    "teacher_actions": [
+      "east",
+      "south"
+    ],
+    "predicted_actions": [
+      "south",
+      "south"
+    ],
+    "both_correct": false,
+    "state_history_gap": 0.23942553997039795,
+    "reset_gap": 0.0
+  },
+  {
+    "seed": 84002,
+    "orientation": 1,
+    "same_current_observation": true,
+    "teacher_actions": [
+      "south",
+      "west"
+    ],
+    "predicted_actions": [
+      "west",
+      "west"
+    ],
+    "both_correct": false,
+    "state_history_gap": 0.23211121559143066,
+    "reset_gap": 0.0
+  },
+  {
+    "seed": 84003,
+    "orientation": 0,
+    "same_current_observation": true,
+    "teacher_actions": [
+      "east",
+      "south"
+    ],
+    "predicted_actions": [
+      "south",
+      "south"
+    ],
+    "both_correct": false,
+    "state_history_gap": 0.230769544839859,
+    "reset_gap": 0.0
+  },
+  {
+    "seed": 84003,
+    "orientation": 1,
+    "same_current_observation": true,
+    "teacher_actions": [
+      "south",
+      "west"
+    ],
+    "predicted_actions": [
+      "west",
+      "west"
+    ],
+    "both_correct": false,
+    "state_history_gap": 0.23851525783538818,
+    "reset_gap": 0.0
+  },
+  {
+    "seed": 84004,
+    "orientation": 0,
+    "same_current_observation": true,
+    "teacher_actions": [
+      "east",
+      "south"
+    ],
+    "predicted_actions": [
+      "south",
+      "south"
+    ],
+    "both_correct": false,
+    "state_history_gap": 0.24291197955608368,
+    "reset_gap": 0.0
+  },
+  {
+    "seed": 84004,
+    "orientation": 1,
+    "same_current_observation": true,
+    "teacher_actions": [
+      "south",
+      "west"
+    ],
+    "predicted_actions": [
+      "west",
+      "west"
+    ],
+    "both_correct": false,
+    "state_history_gap": 0.2349141389131546,
+    "reset_gap": 0.0
+  }
+]

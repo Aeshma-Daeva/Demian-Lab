@@ -1,0 +1,102 @@
+{
+  "scope": "Post-pilot explanatory comparison; no new primary success claim or model fitting.",
+  "effects": [
+    {
+      "seed": 84001,
+      "policy": "recurrent",
+      "familiar_success": 1.0,
+      "heldout_success": 0.625,
+      "familiar_cost": 6.458333333333333,
+      "heldout_cost": 60.875
+    },
+    {
+      "seed": 84001,
+      "policy": "reset_matched",
+      "familiar_success": 1.0,
+      "heldout_success": 1.0,
+      "familiar_cost": 6.458333333333333,
+      "heldout_cost": 8.0
+    },
+    {
+      "seed": 84001,
+      "policy": "observation",
+      "familiar_success": 1.0,
+      "heldout_success": 1.0,
+      "familiar_cost": 6.708333333333333,
+      "heldout_cost": 8.0
+    },
+    {
+      "seed": 84002,
+      "policy": "recurrent",
+      "familiar_success": 1.0,
+      "heldout_success": 0.6666666666666666,
+      "familiar_cost": 6.458333333333333,
+      "heldout_cost": 40.166666666666664
+    },
+    {
+      "seed": 84002,
+      "policy": "reset_matched",
+      "familiar_success": 1.0,
+      "heldout_success": 1.0,
+      "familiar_cost": 6.458333333333333,
+      "heldout_cost": 8.0
+    },
+    {
+      "seed": 84002,
+      "policy": "observation",
+      "familiar_success": 1.0,
+      "heldout_success": 1.0,
+      "familiar_cost": 6.708333333333333,
+      "heldout_cost": 8.0
+    },
+    {
+      "seed": 84003,
+      "policy": "recurrent",
+      "familiar_success": 1.0,
+      "heldout_success": 0.625,
+      "familiar_cost": 6.458333333333333,
+      "heldout_cost": 44.083333333333336
+    },
+    {
+      "seed": 84003,
+      "policy": "reset_matched",
+      "familiar_success": 1.0,
+      "heldout_success": 1.0,
+      "familiar_cost": 6.458333333333333,
+      "heldout_cost": 8.0
+    },
+    {
+      "seed": 84003,
+      "policy": "observation",
+      "familiar_success": 1.0,
+      "heldout_success": 1.0,
+      "familiar_cost": 6.708333333333333,
+      "heldout_cost": 8.0
+    },
+    {
+      "seed": 84004,
+      "policy": "recurrent",
+      "familiar_success": 1.0,
+      "heldout_success": 0.6666666666666666,
+      "familiar_cost": 6.458333333333333,
+      "heldout_cost": 41.666666666666664
+    },
+    {
+      "seed": 84004,
+      "policy": "reset_matched",
+      "familiar_success": 1.0,
+      "heldout_success": 1.0,
+      "familiar_cost": 6.458333333333333,
+      "heldout_cost": 8.0
+    },
+    {
+      "seed": 84004,
+      "policy": "observation",
+      "familiar_success": 1.0,
+      "heldout_success": 1.0,
+      "familiar_cost": 6.708333333333333,
+      "heldout_cost": 8.0
+    }
+  ],
+  "interpretation": "Orientation/representation-transfer and on-policy exposure remain separate from internal memory capacity, adaptation or learning. These are the same four development parameter seeds, not independent confirmation."
+}
