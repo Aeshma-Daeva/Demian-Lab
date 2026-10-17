@@ -6,6 +6,7 @@ import hashlib
 import itertools
 import json
 from pathlib import Path
+import shutil
 import subprocess
 import sys
 
@@ -77,10 +78,47 @@ def save_collection(out, model, seed, states, metadata):
     dump(f"{stem}_metadata.json", info)
 
 
+def load_collected(source, protocol):
+    """Recover original observations and frozen fits, without collecting or fitting."""
+    manifest = json.loads((source/"collection_manifest.json").read_text())
+    for name, expected in manifest.items():
+        path = source/name
+        if not path.is_file() or sha(path) != expected:
+            raise ValueError(f"collection hash mismatch: {name}")
+    if json.loads((source/"protocol.json").read_text()) != protocol:
+        raise ValueError("recovery protocol mismatch")
+    split = make_split(protocol["split_seed"])
+    if json.loads((source/"split.json").read_text()) != split:
+        raise ValueError("recovery split mismatch")
+    corpus = {model: {} for model in ("demian", "reservoir", "current_input")}
+    for model in corpus:
+        for seed in protocol["train_seeds"]+protocol["evaluation_seeds"]:
+            name = f"{model}_{seed}_states.npz"
+            if name not in manifest:
+                raise ValueError(f"unhashed recovery input: {name}")
+            with np.load(source/name) as archive:
+                states = archive["states"]
+            if states.shape[:2] != (64, len(protocol["delays"])) or not np.isfinite(states).all():
+                raise ValueError(f"invalid recovery states: {name}")
+            corpus[model][seed] = states
+    frozen = {}
+    fits = json.loads((source/"frozen_fit_manifest.json").read_text())
+    for model in corpus:
+        for delay in protocol["delays"]:
+            name = f"fit_{model}_{delay}.npz"
+            if name not in manifest or fits.get(name) != sha(source/name):
+                raise ValueError(f"frozen fit hash mismatch: {name}")
+            with np.load(source/name) as archive:
+                frozen[(model, delay)] = dict(archive)
+    return corpus, frozen
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--protocol", type=Path, required=True)
     parser.add_argument("--out", type=Path, required=True)
+    parser.add_argument("--resume-from", type=Path,
+                        help="Analyze hash-verified collected states and frozen fits in a new directory")
     args = parser.parse_args()
     protocol = json.loads(args.protocol.read_text())
     if args.out.exists():
@@ -110,7 +148,19 @@ def main():
     corpus = {model: {} for model in ("demian", "reservoir", "current_input")}
     frozen_all = {}
     input_states = current_inputs(protocol)
-    for phase in ("train", "evaluation"):
+    if args.resume_from:
+        corpus, frozen_all = load_collected(args.resume_from, protocol)
+        names = json.loads((args.resume_from/"collection_manifest.json").read_text())
+        for name in names:
+            if name.endswith(("_states.npz", "_parameters.npz", "_metadata.json")) or name.startswith("fit_") or name == "frozen_fit_manifest.json":
+                shutil.copy2(args.resume_from/name, out/name)
+        shutil.copytree(args.resume_from/"source", out/"collection_source")
+        dump(out/"recovery.json", {"source_directory": str(args.resume_from.resolve()),
+             "collection_manifest_sha256": sha(args.resume_from/"collection_manifest.json"),
+             "collection_execution": json.loads((args.resume_from/"execution.json").read_text()),
+             "change": "Convert precision_floor scalar to Python float for JSON export; replay saved observations and frozen fits.",
+             "recollected": False, "refitted_primary_readouts": False})
+    for phase in (() if args.resume_from else ("train", "evaluation")):
         for seed in protocol[f"{phase}_seeds"]:
             for model in corpus:
                 if model == "demian":
@@ -184,6 +234,13 @@ def main():
                                             cells[a][evaluation, ti], cells[b][evaluation, ti])
                 geometry.append({"model": model, "delay": delay, "seed_a": a, "seed_b": b, **direct,
                                  "residual": residual})
+    if args.resume_from:
+        with np.load(args.resume_from/"predictions.npz") as original:
+            if set(original.files) != set(prediction_arrays) or any(
+                    not np.array_equal(original[k], prediction_arrays[k]) for k in prediction_arrays):
+                raise RuntimeError("recovered predictions differ from original execution")
+        dump(out/"replay_verification.json", {"prediction_arrays": len(prediction_arrays),
+             "exact_match": True, "original_sha256": sha(args.resume_from/"predictions.npz")})
     np.savez_compressed(out/"predictions.npz", **prediction_arrays)
     dump(out/"metrics.json", metrics)
     dump(out/"geometry.json", geometry)

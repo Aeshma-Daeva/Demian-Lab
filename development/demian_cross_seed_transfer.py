@@ -29,7 +29,7 @@ def anchor_features(states, anchors):
     center = a.mean(axis=0)
     scatter = float(np.sqrt(np.mean(np.sum((a-center)**2, axis=1))))
     norm = float(np.sqrt(np.mean(np.sum(a*a, axis=1))))
-    floor = 10*np.finfo(np.float32).eps*max(norm, 1.0)
+    floor = float(10*np.finfo(np.float32).eps*max(norm, 1.0))
     limited = scatter <= floor
     features = (np.zeros((len(x), len(a))) if limited else
                 np.sqrt(np.maximum(0, np.sum((x[:, None]-a[None, :])**2, axis=2)))/scatter)

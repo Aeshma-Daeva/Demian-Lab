@@ -93,3 +93,21 @@ def test_roundoff_residual_has_no_reportable_geometry():
     measured = guarded_geometry(residual, residual, x, x)
     assert measured["precision_limited"]
     assert measured["cka"] is None
+
+
+def test_anchor_diagnostics_are_json_serializable(tmp_path):
+    import json
+    from development.run_demian_cross_seed_transfer import dump
+    _, info = anchor_features(np.ones((64, 20)), make_split(1)["anchors"])
+    info.pop("center")
+    dump(tmp_path/"metrics.json", info)
+    assert json.loads((tmp_path/"metrics.json").read_text())["precision_limited"] is True
+
+
+def test_recovery_validates_all_preserved_hashes_before_loading(tmp_path):
+    import json
+    from development import run_demian_cross_seed_transfer as runner
+    (tmp_path/"protocol.json").write_text('{}')
+    (tmp_path/"collection_manifest.json").write_text(json.dumps({"protocol.json": "bad"}))
+    with pytest.raises(ValueError, match="hash mismatch"):
+        runner.load_collected(tmp_path, {})
