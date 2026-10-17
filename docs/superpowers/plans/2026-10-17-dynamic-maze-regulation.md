@@ -32,7 +32,7 @@ boundaries. Routine verification and runs need no approval checkpoint.
 | --- | --- | --- |
 | 1 World | Small dynamic maze, snapshots and valid actions | Exact replay, hidden-state isolation, solvability, deterministic matched disturbance tapes |
 | 2 Frozen baseline | Closed-loop trajectories and disclosed action-head fitting | Performance relative to random and observation-only policies; recurrence contribution measured |
-| 3 Internal organization | Channel/route timing around decisions and disturbances | Fresh histories predict outcomes beyond elapsed time, norms and seed identity |
+| 3 Internal organization | Channel/route timing around decisions and disturbances | Fresh histories predict outcomes beyond observable task state, recent actions, time, norms and seed identity |
 | 4 Internal learning | Explicit persistent routing variables, update rule and bounded influence budget | Experience improves later held-out probes relative to matched frozen learning and reset controls |
 | 5 Causality | Selective trace/route interventions and restore | Predicted behavioral loss and rescue beyond generic perturbation |
 | 6 Transfer | New layouts, schedules and interference | Benefit persists under a frozen learning rule and equal interaction budgets |
@@ -47,20 +47,25 @@ door on the shorter route and a reliable detour. Layout, start, goal, door cell
 and full event tape are saved per episode. Initial template must have detour
 length greater than the open-door shortest path; validate by oracle search.
 
-Observations: egocentric3×3 occupancy, locally visible door state, declared goal
-bearing, energy remaining and previous-action acknowledgement. No full map,
+Observations: egocentric3×3 occupancy, locally visible door state, goal bearing
+`(sign(goal_x-x), sign(goal_y-y))`, energy remaining and previous-action acknowledgement. No full map,
 door phase, hidden target, score accumulator or experiment condition flag.
 Energy reveals within-episode elapsed cost; record this timing proxy explicitly.
 Randomize initial door phase on saved tapes; energy must not uniquely reveal it.
 Actions: north/south/east/west/wait. One environment action per recurrent tick;
 blocked moves consume the same movement unit as successful moves. Wait also
 consumes one unit. Budget96units per episode; goal or exhaustion terminates.
-Initial layouts exclude crossings through an occupied door when it closes;
-door movement semantics and observation timing are protocol-frozen.
+Each tick observes the current tape-defined door state, executes one action,
+then advances the world clock. A closed door blocks entry; an occupant may
+leave after closure. Reject layouts without a route when the door is closed.
 
 Conditions: static-open reference, static-closed reference, recurring door
-schedule, and one changed schedule after exposure. Introduce layout transfer
+schedule, and one schedule change at tick48 within an episode. Introduce layout transfer
 later; do not change several environmental mechanisms together initially.
+Require a validated pair of equal-length observation histories reaching the
+same junction with identical current observations, energy and acknowledgement,
+but different earlier observed door conditions and different optimal route
+choices. If the template lacks such a case, it cannot test useful memory.
 
 Primary outcomes: goal success within96ticks and paired goal-reaching cost;
 report failures at full budget rather than dropping them from cost comparisons.
@@ -73,12 +78,17 @@ freeze it before evaluation. Record normalization, coefficients, labels, sample
 counts and training layouts. Fit an observation-only head on identical labels.
 Each confirmation seed receives its own head fit on the same permitted training
 layouts; fresh seeds do not imply a shared decoder or zero-shot policy transfer.
-Oracle uses privileged map information only for solvability and training labels;
-its score is a reference, not Demian evidence. No test-layout fitting.
+Teacher may know the static map and observed history, but no future door tape
+or currently hidden door state. Identical complete observation histories must
+not acquire different labels through privileged information. A separate oracle
+may use privileged state for solvability/reference scores only. No test-layout fitting.
 
 Pilot: width16 smoke checks, then width256; four development seeds84001–84004.
 Reserve six fresh confirmation seeds85001–85006, not used to revise the pilot.
-Use24episodes per seed,96ticks maximum; freeze exact layouts, episode allocation,
+Use24total episodes per policy per seed: six per condition,96ticks maximum.
+Analyze paired contrasts at parameter-seed level. Full Demian state and connector
+reset at each episode start; no between-episode learning in the frozen baseline.
+Freeze exact layouts, episode allocation,
 schedule tapes and effect criterion before collecting scientific outcomes.
 Benchmark pilot wall time and storage before any larger campaign.
 
@@ -97,6 +107,10 @@ Benchmark pilot wall time and storage before any larger campaign.
   replay, one-action timing and unchanged Demian parameter hashes.
 - [ ] **Frozen controls:** intact recurrence, per-tick recurrence reset,
   observation-only head, random policy and prerecorded-observation replay.
+  Test acute resets with the intact head and a separately fitted reset-state
+  head trained on the same allowed trajectories/labels and fitting budget.
+  Attribute recurrence benefits using the latter matched-fit comparison;
+  acute reset failure alone may reflect action-head distribution shift.
   Reset is a recurrence/state control, not a learning-ablation result.
   Replay validates trajectories; it cannot supply a fair navigation score once
   actions and observations become inconsistent. Match exogenous world tapes;
@@ -118,16 +132,27 @@ Specify the persistent internal variables, their owner, update equation,
 feedback signal, eligible routes, budget and credit-assignment horizon. Keep
 the action head fixed during this comparison. Separate task state from retained
 experience so their resets and transplants have explicit meanings.
+For initial eligible additive routes, distinguish a coefficient constraint
+`g_r>=0, sum(g_r)<=B_gain` from an effective injection constraint
+`sum(||g_r*v_r||²)<=B_injection²`, where `v_r` is the implemented route
+contribution. Freeze bounds/reference scaling before results. Neither is a
+compute budget; do not infer equal effective influence from equal gain sums.
 
 Compare: learning enabled, identical controller with learning disabled,
 experience-variable reset, shuffled feedback, replayed/yoked allocation and
 matched random allocation. Evaluation probes begin from matched world/task
 conditions; freeze learning during probes to measure acquired competence.
 Equalize exposure and action budgets. Paired exogenous tapes remain fixed.
+Different closed-loop policies encounter different observations despite equal
+budgets. Also compare update rules under a common controlled experience stream,
+then probe them interactively. Specify exposure/probe lengths, schedule change,
+ordinary task-state reset and retained-variable boundaries before that run.
 
 Learning gate: prior experience improves predeclared held-out behavioral
 outcomes across fresh seeds relative to learning-disabled and disrupted-
-experience controls. Restore the retained variables to test rescue. A decrease
+experience controls. Transplant only retained learning variables between matched
+controllers to test loss/rescue; do not restore an entire warmed-up controller.
+A decrease
 in energy cost must preserve success; fewer operations require actual skipped
 computation, not merely smaller route gains.
 
